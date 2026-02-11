@@ -1,0 +1,268 @@
+
+import React from 'react';
+import { Link } from 'react-router-dom';
+
+const PreventiveCheckups: React.FC = () => {
+  return (
+    <div className="animate-fade-in">
+      <header className="relative bg-white border-b border-slate-100 overflow-hidden">
+        <div className="absolute inset-0 bg-blue-50/50"></div>
+        <div className="container mx-auto px-6 py-16 lg:py-24 relative z-10">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div className="text-left">
+              <div className="inline-flex items-center gap-2 px-3 py-1 mb-6 text-xs font-semibold tracking-wider text-primary uppercase bg-blue-100 rounded-full">
+                <span className="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+                Preventive Care
+              </div>
+              <h1 className="text-4xl lg:text-5xl font-serif font-bold text-slate-900 mb-6 leading-tight">
+                Invest in Your Future Health with Comprehensive Checkups
+              </h1>
+              <p className="text-lg text-slate-600 leading-relaxed mb-8 max-w-lg">
+                Early detection is key to a long, healthy life. Our personalized screening packages provide a complete picture of your health status in a comfortable environment.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4">
+                <a href="#packages" className="inline-flex items-center justify-center px-8 py-3.5 text-base font-bold text-white bg-primary rounded-lg hover:bg-primary-dark shadow-lg shadow-blue-500/20 transition-all hover:-translate-y-0.5">
+                  View Packages
+                </a>
+                <Link to="#" className="inline-flex items-center justify-center px-8 py-3.5 text-base font-bold text-slate-700 bg-white border border-slate-200 rounded-lg hover:bg-slate-50 transition-colors">
+                  Learn More
+                </Link>
+              </div>
+            </div>
+            <div className="relative hidden lg:block">
+              <div className="relative rounded-2xl overflow-hidden shadow-2xl shadow-blue-900/10">
+                <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCTxuFTPJwgaIproSGkw_NVSntv72zft_WG8tOAn4Ce2yzYAcC0xuvtbBanu709zUk7w9lAYWQaMbXU5Xu_pgT5lUmUnVeujKkEAQyHi6Ua42Fs9-KDAXefN9H1AfqcCx6XNQhARxPB7YtxES8Tn4SsqghLnqzwBPZClijrKCOVd9awJyP3TbFw2ZhugWATZg5R_fqfMiOkOWbZ50TQKWiYTdl6Zrm5FznchMEJhDdMAOr5X6i9XR8P14K3_yTUb-U0iCSrFjGTvps" alt="Doctor Consultation" className="w-full h-auto object-cover transform hover:scale-105 transition-transform duration-700" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+                <div className="absolute bottom-6 left-6 right-6">
+                  <div className="bg-white/95 backdrop-blur-sm p-4 rounded-xl shadow-lg border border-slate-100 flex items-center gap-4">
+                    <div className="bg-green-100 p-2 rounded-lg text-green-600">
+                      <span className="material-symbols-outlined text-2xl">verified_user</span>
+                    </div>
+                    <div>
+                      <p className="text-sm font-semibold text-slate-900">Trusted by Families</p>
+                      <p className="text-xs text-slate-500">Over 10,000 checkups conducted annually</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="absolute -z-10 -top-8 -right-8 w-64 h-64 bg-primary/10 rounded-full blur-3xl"></div>
+              <div className="absolute -z-10 -bottom-8 -left-8 w-64 h-64 bg-secondary/10 rounded-full blur-3xl"></div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <section className="py-20 bg-slate-50">
+        <div className="container mx-auto px-6">
+          <div className="max-w-3xl mx-auto text-center mb-16">
+            <h2 className="text-3xl font-serif font-bold text-slate-900 mb-4">The Importance of Early Detection</h2>
+            <p className="text-slate-600 leading-relaxed">
+              Many chronic diseases are silent in their early stages. Regular health screenings can detect problems before they start, giving you the best chance for effective treatment and a healthy future.
+            </p>
+          </div>
+          <div className="grid md:grid-cols-3 gap-8">
+            {[
+              { icon: 'cardiology', title: 'Heart Health', desc: 'Identify risk factors like high blood pressure and cholesterol early to prevent heart disease and stroke.', color: 'red' },
+              { icon: 'glucose', title: 'Diabetes Screening', desc: 'Early detection of pre-diabetes allows for lifestyle changes that can prevent or delay the onset of Type 2 diabetes.', color: 'blue' },
+              { icon: 'oncology', title: 'Cancer Prevention', desc: 'Screening tests can find some cancers early, when treatment is most likely to be successful.', color: 'purple' }
+            ].map((item, i) => (
+              <div key={i} className="bg-white p-8 rounded-2xl shadow-card border border-slate-100">
+                <div className={`w-12 h-12 bg-${item.color}-50 rounded-xl flex items-center justify-center text-${item.color}-500 mb-6`}>
+                  <span className="material-symbols-outlined text-2xl">{item.icon}</span>
+                </div>
+                <h3 className="text-xl font-bold text-slate-900 mb-3">{item.title}</h3>
+                <p className="text-sm text-slate-500 leading-relaxed">
+                  {item.desc}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="py-20 bg-white relative" id="packages">
+        <div className="absolute top-0 left-0 w-full h-full opacity-5 pointer-events-none" style={{backgroundImage: "radial-gradient(#136dec 0.5px, transparent 0.5px), radial-gradient(#136dec 0.5px, #f6f7f8 0.5px)", backgroundSize: "20px 20px", backgroundPosition: "0 0, 10px 10px"}}></div>
+        <div className="container mx-auto px-6 relative z-10">
+          <div className="text-center mb-16">
+            <span className="text-primary font-semibold tracking-wider text-sm uppercase">Tailored for You</span>
+            <h2 className="text-3xl md:text-4xl font-serif font-bold text-slate-900 mt-2 mb-4">Comprehensive Screening Packages</h2>
+            <p className="text-slate-600 max-w-2xl mx-auto">Choose the package that best fits your age, lifestyle, and health concerns.</p>
+          </div>
+          <div className="grid lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            <div className="bg-white rounded-2xl shadow-card border border-slate-100 overflow-hidden flex flex-col hover:-translate-y-1 transition-transform duration-300">
+              <div className="p-8 border-b border-slate-100 bg-slate-50">
+                <h3 className="text-2xl font-bold text-slate-900 mb-2">Basic Wellness</h3>
+                <p className="text-slate-500 text-sm mb-4">Essential health monitoring for young adults.</p>
+                <div className="flex items-baseline">
+                  <span className="text-4xl font-bold text-slate-900">$199</span>
+                </div>
+              </div>
+              <div className="p-8 flex-grow">
+                <ul className="space-y-4">
+                  {['Physical Examination', 'Complete Blood Count (CBC)', 'Blood Sugar & Cholesterol', 'Urinalysis', 'Doctor Consultation'].map((feat, i) => (
+                    <li key={i} className="flex items-start gap-3 text-sm text-slate-600">
+                      <span className="material-icons text-green-500 text-lg">check_circle</span>
+                      <span>{feat}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div className="p-8 pt-0 mt-auto">
+                <Link to="/contact" className="block w-full py-3 px-4 bg-white border-2 border-primary text-primary font-bold text-center rounded-lg hover:bg-blue-50 transition-colors">Select Basic</Link>
+              </div>
+            </div>
+
+            <div className="bg-white rounded-2xl shadow-xl ring-2 ring-primary relative overflow-hidden flex flex-col transform md:-translate-y-4">
+              <div className="absolute top-0 right-0 bg-primary text-white text-xs font-bold px-3 py-1 rounded-bl-lg">POPULAR</div>
+              <div className="p-8 border-b border-slate-100 bg-primary/5">
+                <h3 className="text-2xl font-bold text-slate-900 mb-2">Executive Checkup</h3>
+                <p className="text-slate-500 text-sm mb-4">In-depth analysis for busy professionals.</p>
+                <div className="flex items-baseline">
+                  <span className="text-4xl font-bold text-slate-900">$399</span>
+                </div>
+              </div>
+              <div className="p-8 flex-grow">
+                <ul className="space-y-4">
+                  <li className="flex items-start gap-3 text-sm text-slate-600">
+                    <span className="material-icons text-green-500 text-lg">check_circle</span>
+                    <span className="font-semibold">All Basic Features</span>
+                  </li>
+                  {['Liver & Kidney Function Tests', 'ECG (Electrocardiogram)', 'Chest X-Ray', 'Abdominal Ultrasound', 'Dietary Consultation'].map((feat, i) => (
+                    <li key={i} className="flex items-start gap-3 text-sm text-slate-600">
+                      <span className="material-icons text-green-500 text-lg">check_circle</span>
+                      <span>{feat}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div className="p-8 pt-0 mt-auto">
+                <Link to="/contact" className="block w-full py-3 px-4 bg-primary text-white font-bold text-center rounded-lg hover:bg-primary-dark transition-colors shadow-lg shadow-primary/30">Select Executive</Link>
+              </div>
+            </div>
+
+            <div className="bg-white rounded-2xl shadow-card border border-slate-100 overflow-hidden flex flex-col hover:-translate-y-1 transition-transform duration-300">
+              <div className="p-8 border-b border-slate-100 bg-slate-50">
+                <h3 className="text-2xl font-bold text-slate-900 mb-2">Senior Health</h3>
+                <p className="text-slate-500 text-sm mb-4">Specialized care for age 60+.</p>
+                <div className="flex items-baseline">
+                  <span className="text-4xl font-bold text-slate-900">$499</span>
+                </div>
+              </div>
+              <div className="p-8 flex-grow">
+                <ul className="space-y-4">
+                  <li className="flex items-start gap-3 text-sm text-slate-600">
+                    <span className="material-icons text-green-500 text-lg">check_circle</span>
+                    <span className="font-semibold">All Executive Features</span>
+                  </li>
+                  {['Bone Density Scan', 'Cancer Markers (PSA/CEA)', 'Vision & Hearing Test', 'Cardiac Stress Test'].map((feat, i) => (
+                    <li key={i} className="flex items-start gap-3 text-sm text-slate-600">
+                      <span className="material-icons text-green-500 text-lg">check_circle</span>
+                      <span>{feat}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div className="p-8 pt-0 mt-auto">
+                <Link to="/contact" className="block w-full py-3 px-4 bg-white border-2 border-primary text-primary font-bold text-center rounded-lg hover:bg-blue-50 transition-colors">Select Senior</Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-20 bg-slate-50">
+        <div className="container mx-auto px-6">
+          <h2 className="text-2xl font-bold text-center text-slate-900 mb-10">Compare What's Included</h2>
+          <div className="overflow-x-auto bg-white rounded-xl shadow-card border border-slate-100">
+            <table className="w-full text-left border-collapse">
+              <thead>
+                <tr className="bg-slate-50 border-b border-slate-200">
+                  <th className="p-4 md:p-6 text-sm font-semibold text-slate-500">Tests / Features</th>
+                  <th className="p-4 md:p-6 text-sm font-bold text-center text-slate-900 w-1/5">Basic</th>
+                  <th className="p-4 md:p-6 text-sm font-bold text-center text-primary w-1/5">Executive</th>
+                  <th className="p-4 md:p-6 text-sm font-bold text-center text-slate-900 w-1/5">Senior</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-slate-100">
+                {[
+                  { name: 'Physical Exam & Consultation', basic: true, exec: true, senior: true },
+                  { name: 'Blood Work (CBC, Sugar, Cholesterol)', basic: true, exec: true, senior: true },
+                  { name: 'Detailed Lab (Liver, Kidney, Thyroid)', basic: false, exec: true, senior: true },
+                  { name: 'Imaging (X-Ray, Ultrasound)', basic: false, exec: true, senior: true },
+                  { name: 'Cancer Screening Markers', basic: false, exec: false, senior: true },
+                  { name: 'Customized Wellness Plan', basic: false, exec: true, senior: true }
+                ].map((row, i) => (
+                  <tr key={i}>
+                    <td className="p-4 md:p-6 text-sm text-slate-700 font-medium">{row.name}</td>
+                    <td className="p-4 md:p-6 text-center">{row.basic ? <span className="material-icons text-green-500 text-base">check_circle</span> : <span className="w-2 h-2 rounded-full bg-slate-200 inline-block"></span>}</td>
+                    <td className="p-4 md:p-6 text-center">{row.exec ? <span className="material-icons text-green-500 text-base">check_circle</span> : <span className="w-2 h-2 rounded-full bg-slate-200 inline-block"></span>}</td>
+                    <td className="p-4 md:p-6 text-center">{row.senior ? <span className="material-icons text-green-500 text-base">check_circle</span> : <span className="w-2 h-2 rounded-full bg-slate-200 inline-block"></span>}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-20 bg-white">
+        <div className="container mx-auto px-6">
+          <div className="flex flex-col lg:flex-row gap-12 items-center">
+            <div className="lg:w-1/2">
+              <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuC7x5mjAatY9aLrqycJ6GPFLs2r8Wfvfm1UUsGk0ZkHcqv_j3nAqU1RzfQvqd73NgLCeeCy9DW5hdDobBKg2c58_2Gf1aCsFMfSSH2YlqX18rtNbylG1fGEEP3b1Njo7Hfo1cJ_qVQY2DmsPM8VFyP0Go9iFfbctSw2UMru-Lau0vbCDml0aOj4oNn79AwLaNJN8PdnH_HZXWlA8m4oy6v71LM48ykSvHATBAw_2uJaYt3gfN7ZqwSF2ZOTGhsDmz4vE-2wAC8CCjI" alt="Wellness Planning" className="rounded-2xl shadow-xl w-full h-auto object-cover border border-slate-100" />
+            </div>
+            <div className="lg:w-1/2">
+              <h2 className="text-3xl font-serif font-bold text-slate-900 mb-6">Customized Wellness Plans</h2>
+              <p className="text-lg text-slate-600 mb-6 leading-relaxed">
+                Your checkup results are just the beginning. Our medical team works with you to create a personalized roadmap to better health, focusing on nutrition, exercise, and lifestyle adjustments tailored to your unique biological profile.
+              </p>
+              <ul className="space-y-4 mb-8">
+                <li className="flex items-start gap-3">
+                  <div className="bg-blue-100 p-1 rounded text-primary">
+                    <span className="material-symbols-outlined text-sm font-bold">nutrition</span>
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-slate-900 text-sm">Personalized Nutrition</h4>
+                    <p className="text-sm text-slate-500">Dietary recommendations based on your blood work.</p>
+                  </div>
+                </li>
+                <li className="flex items-start gap-3">
+                  <div className="bg-blue-100 p-1 rounded text-primary">
+                    <span className="material-symbols-outlined text-sm font-bold">directions_run</span>
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-slate-900 text-sm">Activity Guidance</h4>
+                    <p className="text-sm text-slate-500">Safe exercise routines for your fitness level.</p>
+                  </div>
+                </li>
+              </ul>
+              <Link to="#" className="inline-flex items-center font-semibold text-primary hover:text-primary-dark transition-colors">
+                Read success stories <span className="material-icons text-sm ml-1">arrow_forward</span>
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-20 bg-primary text-white relative overflow-hidden">
+        <div className="absolute inset-0 opacity-10" style={{backgroundImage: "url('https://www.transparenttextures.com/patterns/cubes.png')"}}></div>
+        <div className="container mx-auto px-6 relative z-10 text-center">
+          <h2 className="text-3xl md:text-4xl font-serif font-bold mb-6">Ready to prioritize your health?</h2>
+          <p className="text-blue-100 text-lg mb-8 max-w-2xl mx-auto leading-relaxed">
+            Take the first step towards a healthier future. Book your preventive checkup today with our simple online scheduling tool.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link to="/contact" className="inline-flex items-center justify-center px-8 py-4 text-base font-bold text-primary bg-white rounded-lg hover:bg-blue-50 shadow-lg transition-colors">
+              Schedule a Checkup
+            </Link>
+            <Link to="/contact" className="inline-flex items-center justify-center px-8 py-4 text-base font-bold text-white bg-white/10 border border-white/20 rounded-lg hover:bg-white/20 transition-colors">
+              Contact Support
+            </Link>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+};
+
+export default PreventiveCheckups;

@@ -1,0 +1,206 @@
+
+import React from 'react';
+import { Link } from 'react-router-dom';
+
+const Rehabilitation: React.FC = () => {
+  return (
+    <div className="animate-fade-in">
+      <header className="relative bg-white border-b border-slate-100 overflow-hidden">
+        <div className="absolute inset-0 hero-pattern pointer-events-none"></div>
+        <div className="container mx-auto px-6 py-16 md:py-24 relative z-10">
+          <div className="flex flex-col md:flex-row items-center gap-12">
+            <div className="flex-1">
+              <div className="inline-flex items-center gap-2 px-3 py-1 mb-6 text-xs font-semibold tracking-wider text-orange-600 uppercase bg-orange-50 rounded-full">
+                <span className="material-icons text-sm">accessibility_new</span>
+                Department of Rehabilitation
+              </div>
+              <h1 className="text-4xl lg:text-5xl font-serif font-bold text-slate-900 mb-6 leading-tight">Expert Rehabilitation & <br/>Physical Therapy</h1>
+              <p className="text-lg text-slate-600 leading-relaxed max-w-xl mb-8">
+                Our dedicated team of therapists and specialists help you regain strength, mobility, and independence. We create personalized recovery plans tailored to your specific needs.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4">
+                <Link to="/doctors" className="inline-flex items-center justify-center px-6 py-3 text-sm font-semibold text-white transition-all duration-200 bg-primary rounded-lg hover:bg-primary-dark shadow-soft hover:shadow-lg hover:-translate-y-0.5">
+                  Meet Our Specialists
+                </Link>
+                <a href="#services" className="inline-flex items-center justify-center px-6 py-3 text-sm font-semibold text-primary transition-all duration-200 bg-white border border-primary/20 rounded-lg hover:bg-primary/5">
+                  View Services
+                </a>
+              </div>
+            </div>
+            <div className="flex-1 relative">
+              <div className="relative rounded-3xl overflow-hidden shadow-2xl">
+                <div className="bg-gradient-to-tr from-orange-500/10 to-primary/10 absolute inset-0 z-10"></div>
+                <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDtbvZ3wCBMdO-ezXbqhqa5-aUcje5kFiTO_D8Aq-E-j8KTKz8fTexjNNre_Fk0c6KSLGN7Zbfv_fcm5OvPKV3JPiQXYRHNI65nuxDc3GfDI1bO-OsvLbo5DCmdI1onrNnsb4qUgtLZ-KqEU_T8o24JwdqtUZGo9W4kdYIi3RsQwiNJquKiU6cg6HriF3vG_2-pa5MVA21beOMSZ0k3dAC5VdRmyyC6swnSmS6BZuyq_kAcbPcZPl3etjqudVdhPzWszwdyFy5vKWA" alt="Rehabilitation Session" className="w-full h-auto object-cover transform hover:scale-105 transition-transform duration-700" />
+              </div>
+              <div className="absolute -bottom-6 -left-6 bg-white p-4 rounded-xl shadow-xl z-20 hidden md:block max-w-xs border border-slate-100">
+                <div className="flex items-center gap-3 mb-2">
+                  <div className="p-2 bg-green-100 rounded-full text-green-600">
+                    <span className="material-icons text-xl">verified</span>
+                  </div>
+                  <div>
+                    <p className="font-bold text-slate-900 text-sm">Patient Success</p>
+                    <p className="text-xs text-slate-500">98% Recovery Rate</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <section className="py-20 bg-slate-50">
+        <div className="container mx-auto px-6">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl font-serif font-bold text-slate-900 mb-4">Conditions We Treat</h2>
+            <p className="text-slate-600 max-w-2xl mx-auto">We specialize in treating a wide range of conditions to help you return to your daily activities pain-free.</p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {[
+              { title: 'Sports Injuries', icon: 'fitness_center', color: 'blue', desc: 'Comprehensive rehabilitation for ACL tears, rotator cuff injuries, and sprains to get athletes back in the game safely.' },
+              { title: 'Stroke Recovery', icon: 'favorite', color: 'red', desc: 'Neurological rehabilitation focused on relearning skills and improving mobility after a stroke event.' },
+              { title: 'Post-Surgical Rehab', icon: 'healing', color: 'teal', desc: 'Guided recovery programs following joint replacements, spinal surgeries, and other major procedures.' },
+              { title: 'Chronic Pain', icon: 'spa', color: 'purple', desc: 'Management strategies and therapies for back pain, arthritis, fibromyalgia, and other long-term pain conditions.' }
+            ].map((item, i) => (
+              <div key={i} className="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 hover:shadow-card transition-all duration-300 group">
+                <div className={`w-14 h-14 bg-${item.color}-50 rounded-xl flex items-center justify-center text-${item.color}-500 mb-6 group-hover:bg-${item.color}-500 group-hover:text-white transition-colors duration-300`}>
+                  <span className="material-icons text-2xl">{item.icon}</span>
+                </div>
+                <h3 className="text-xl font-bold text-slate-900 mb-3">{item.title}</h3>
+                <p className="text-sm text-slate-500 leading-relaxed">
+                  {item.desc}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="py-20 bg-white" id="services">
+        <div className="container mx-auto px-6">
+          <div className="flex flex-col md:flex-row gap-16 items-start">
+            <div className="w-full md:w-1/3">
+              <span className="text-primary font-bold tracking-wider uppercase text-sm mb-2 block">Our Expertise</span>
+              <h2 className="text-3xl font-serif font-bold text-slate-900 mb-6">Services & Procedures</h2>
+              <p className="text-slate-600 mb-8 leading-relaxed">
+                Our department is equipped with modern facilities and expert staff to provide a full spectrum of rehabilitation services designed for your unique recovery journey.
+              </p>
+              <Link to="#" className="text-primary font-semibold hover:text-primary-dark inline-flex items-center group">
+                View Full Service List <span className="material-icons text-sm ml-2 group-hover:translate-x-1 transition-transform">arrow_forward</span>
+              </Link>
+            </div>
+            <div className="w-full md:w-2/3">
+              <div className="space-y-6">
+                {[
+                  { title: 'Physical Therapy', desc: 'Focuses on improving movement, strength, and function through exercise, manual therapy, and education.', icon: 'directions_walk', color: 'orange' },
+                  { title: 'Occupational Therapy', desc: 'Helps patients develop, recover, or maintain the daily living and work skills ensuring independence.', icon: 'accessibility', color: 'green' },
+                  { title: 'Pain Management', desc: 'Multidisciplinary approach to diagnose, prevent, and treat chronic pain using various therapeutic techniques.', icon: 'sentiment_satisfied', color: 'blue' }
+                ].map((service, i) => (
+                  <div key={i} className="flex gap-6 p-6 rounded-xl hover:bg-slate-50 transition-colors border border-transparent hover:border-slate-100">
+                    <div className={`shrink-0 w-12 h-12 rounded-full bg-${service.color}-100 text-${service.color}-600 flex items-center justify-center`}>
+                      <span className="material-symbols-outlined">{service.icon}</span>
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-bold text-slate-900 mb-2">{service.title}</h3>
+                      <p className="text-slate-600 text-sm">{service.desc}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-20 bg-slate-50 relative">
+        <div className="absolute inset-0 bg-slate-900/5 skew-y-3 transform origin-bottom-right translate-y-20 z-0"></div>
+        <div className="container mx-auto px-6 relative z-10">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl font-serif font-bold text-slate-900 mb-4">Advanced Technology</h2>
+            <p className="text-slate-600 max-w-2xl mx-auto">We utilize cutting-edge equipment to accelerate your recovery.</p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            <div className="bg-white rounded-2xl overflow-hidden shadow-lg group">
+              <div className="h-48 overflow-hidden relative">
+                <div className="absolute inset-0 bg-slate-900/20 group-hover:bg-slate-900/10 transition-colors"></div>
+                <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCQ7k9a_wM8rvsPY745bEvTj-g3gWpikZ2rehLbCVgU6D1ytYKUtNzBYLPSdsZ6id0v_nuG0MXHItPzaJ5oUTVLAWWAXkHT77cr43uPM_OeXxPl3uk7c2edowXFIi-T65MzrdK0zx-k6yrKAujZDCevXqn8LbZqAclz_VfVWMX6qInk8EXsD0cthE9g_6PJCZs7IF8lKJ_7bH_-4cExgR5X-f6CJLFjMLJ1u9sw86zMQCrmnviGC5FGIphOrKFFb4zU4rTkpgvq8xw" alt="Advanced Mobility Aids" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+              </div>
+              <div className="p-8">
+                <h3 className="text-xl font-bold text-slate-900 mb-3">Advanced Mobility Aids</h3>
+                <p className="text-slate-600 text-sm mb-4">State-of-the-art robotic exoskeletons and computerized gait trainers to assist in walking re-education.</p>
+                <Link to="#" className="text-primary text-sm font-semibold hover:underline">Learn more</Link>
+              </div>
+            </div>
+            <div className="bg-white rounded-2xl overflow-hidden shadow-lg group">
+              <div className="h-48 overflow-hidden relative">
+                <div className="absolute inset-0 bg-slate-900/20 group-hover:bg-slate-900/10 transition-colors"></div>
+                <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuB8owibyrpEr_o1QDtI1yPTk_TsmVU_UGL_BY5PG0R146zXAFTR-btWBN6R9G56-c_aCsD0QbWB-6Xn7pQ2GZ2bGtObX_uDM62AW7h_TZKjpLXrPTrxM1Ok6JOFx7VNWvvbjKmXQqnE5RueOlzlhdHa83OQ8bkC-emXiapvhCEKIkR8HbsraxMnCPiEdu7CZRMmnDDhFl65UjTIjwOb3xLsaxCSZeBc-Q564M7OwA1YTbNVmqM9ot6qjVpYZbo0K9uilMVzH3YmX14" alt="Therapeutic Equipment" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+              </div>
+              <div className="p-8">
+                <h3 className="text-xl font-bold text-slate-900 mb-3">Therapeutic Equipment</h3>
+                <p className="text-slate-600 text-sm mb-4">Specialized hydrotherapy pools, electrical stimulation devices, and ultrasound therapy units.</p>
+                <Link to="#" className="text-primary text-sm font-semibold hover:underline">Learn more</Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-20 bg-white" id="specialists">
+        <div className="container mx-auto px-6">
+          <div className="flex justify-between items-end mb-12">
+            <div>
+              <h2 className="text-3xl font-serif font-bold text-slate-900 mb-2">Meet Our Specialists</h2>
+              <p className="text-slate-600">Expert care from certified rehabilitation professionals.</p>
+            </div>
+            <Link to="/doctors" className="hidden md:inline-flex items-center font-semibold text-primary hover:text-primary-dark transition-colors">
+              View All Doctors <span className="material-icons text-sm ml-1">arrow_forward</span>
+            </Link>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            {[
+              { name: 'Dr. Sarah Jenkins', role: 'Lead Physical Therapist', tags: ['Sports Rehab', 'Ortho'], img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBa9ex7Ww4CUP6_xP9bxUUOYl0Dpz6IkTAYHkME4SHfiL9e-z4ms83PoWx4pHrIiMmU5d9qiY1ePXnFfEKPXYfsyDU0dx8qQCXC2e9w_hoNwLC6vCq_cJqjGzfyODDjr-F7uAL9At-2CA_i6MUWBRth8wn7nAEro_yLgMbsxQR-o8d_CPZOFZfU_1rvFIM6qhgJ0mVekOvZ3kE96-w0e1yWVfJa2J0vk_z1frpzFMnha-khWMQWyoYIFfvMDaBnJxO4T-8MGkDnBBk' },
+              { name: 'Dr. Marcus Chen', role: 'Occupational Therapist', tags: ['Stroke', 'Hand Therapy'], img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuA2I2LuUK6hJausdvetWlNpaStCjH0T7kOkWxFUKdrVdoMDOwpwgOzN5Oc4hFzC5yXzVofaJbrncReaWPYParDWOuQDQmjfQg2CM-JbYCNViVVPeNFqCag03AGtvSk8802_mqu8TYknTCWwns3022e08K9DWVKZf1UA-T15EA8gcrKIoeow_vtadlPfcbn7JBn2yNjVWHLvN1rWqUgAYlVolG4d4Q3Atp4HWrJc6XZKpM3bMArASaVW2bjjrrg4sArayOhLP24q0b0' },
+              { name: 'Dr. Emily Ross', role: 'Pain Management Specialist', tags: ['Chronic Pain', 'Spine'], img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDYK4_eT0_ZZiEYlhWEYQ04ZPfOpuvbP5L0Zy-AgHPF586vw6ccWs5tXPKF5vp054vHftPdBn_NyuSYwjokC-rWNZNgUA-8Tnz00AmCX-xe2Wk-Rl-0w3Y7kxHhWixKb2nY844tiszzyfD5HTyG7s3a_i5RY6DK0l3EbmOElEJPAAIIwYwfEjdjawIrTkuzzKThg1hjJ-bXTfHdftGLUwBycosEnKZvt5DFkm4pdodvosXH_eUfR9V-tKJCp0ojHF7X3f1JMflvJ04' }
+            ].map((doc, i) => (
+              <div key={i} className="bg-slate-50 rounded-2xl p-6 text-center hover:shadow-card transition-all duration-300 border border-transparent hover:border-slate-100">
+                <div className="w-32 h-32 mx-auto rounded-full overflow-hidden mb-6 ring-4 ring-white shadow-md">
+                  <img src={doc.img} alt={doc.name} className="w-full h-full object-cover" />
+                </div>
+                <h3 className="text-xl font-bold text-slate-900 mb-1">{doc.name}</h3>
+                <p className="text-primary font-medium text-sm mb-4">{doc.role}</p>
+                <div className="flex justify-center gap-2 mb-6">
+                  {doc.tags.map(tag => (
+                    <span key={tag} className="px-3 py-1 bg-slate-200 text-slate-600 text-xs rounded-full">{tag}</span>
+                  ))}
+                </div>
+                <Link to="/contact" className="w-full inline-block py-2 rounded-lg border border-slate-300 text-slate-600 hover:bg-primary hover:border-primary hover:text-white transition-all text-sm font-semibold">
+                  Book Appointment
+                </Link>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="py-20 bg-primary text-white relative overflow-hidden">
+        <div className="absolute inset-0 opacity-10" style={{backgroundImage: "url('https://www.transparenttextures.com/patterns/cubes.png')"}}></div>
+        <div className="container mx-auto px-6 relative z-10 text-center">
+          <h2 className="text-3xl md:text-4xl font-serif font-bold mb-6">Start Your Recovery Today</h2>
+          <p className="text-blue-100 text-lg mb-8 max-w-2xl mx-auto leading-relaxed">
+            Take the first step towards a pain-free life. Schedule a consultation with our rehabilitation experts and get back to doing what you love.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link to="/contact" className="inline-flex items-center justify-center px-8 py-3.5 text-base font-bold text-primary bg-white rounded-lg hover:bg-blue-50 shadow-lg transition-colors">
+              Book Consultation
+            </Link>
+            <Link to="/contact" className="inline-flex items-center justify-center px-8 py-3.5 text-base font-bold text-white bg-white/10 border border-white/20 rounded-lg hover:bg-white/20 transition-colors">
+              Contact Department
+            </Link>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+};
+
+export default Rehabilitation;
