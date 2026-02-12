@@ -3,49 +3,43 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const Diagnostics: React.FC = () => {
+  const scrollToSection = (e: React.MouseEvent, id: string) => {
+    e.preventDefault();
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <div className="animate-fade-in">
       {/* Hero Section */}
-      <header className="bg-white border-b border-slate-100 relative">
-        <div className="absolute inset-0 opacity-5" style={{backgroundImage: "radial-gradient(#136dec 0.5px, transparent 0.5px), radial-gradient(#136dec 0.5px, #f6f7f8 0.5px)", backgroundSize: "20px 20px", backgroundPosition: "0 0, 10px 10px"}}></div>
-        <div className="container mx-auto px-6 py-16 lg:py-24 relative z-10">
-          <div className="flex flex-col lg:flex-row items-center gap-12">
-            <div className="lg:w-1/2">
-              <div className="inline-flex items-center gap-2 px-3 py-1 mb-6 text-xs font-semibold tracking-wider text-primary uppercase bg-blue-50 rounded-full">
-                <span className="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
-                Center of Excellence
-              </div>
-              <h1 className="text-4xl lg:text-5xl font-serif font-bold text-slate-900 mb-6 leading-tight">
-                Advanced <span className="text-primary">Diagnostic Services</span> for Precise Care
-              </h1>
-              <p className="text-lg text-slate-600 leading-relaxed mb-8">
-                Accurate diagnosis is the cornerstone of effective treatment. At Everleaf, we combine world-class expertise with cutting-edge technology to provide rapid, reliable results you can trust.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4">
-                <Link to="/contact" className="inline-flex items-center justify-center px-6 py-3 text-base font-semibold text-white bg-primary rounded-lg hover:bg-primary-dark shadow-lg shadow-primary/30 transition-all duration-200">
-                  Schedule a Test
-                  <span className="material-icons text-sm ml-2">calendar_today</span>
-                </Link>
-                <a href="#capabilities" className="inline-flex items-center justify-center px-6 py-3 text-base font-semibold text-slate-700 bg-white border border-slate-200 rounded-lg hover:bg-slate-50 transition-all duration-200">
-                  Explore Capabilities
-                </a>
-              </div>
+      <header className="relative bg-slate-900 text-white overflow-hidden">
+        <div className="absolute inset-0">
+          <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDmJ6m3X1-OCP_Qpavn3ySLxI7NyUiLSrCFFSEtSPmVB37uDa9thFM9x-xpGDb3dlcT9IBPlTe2371QdSX0fa5ijh6nOKkZJ39QqZDdEEbU6uhMlA7ORHfkan1J0YRHTUXmaneNb4JApA-YvqhFKBZ7VQmpsXWs4-7aTkheXF0vJYjFOTFaIxh54Ucc6izYoD0Q6FWnv_xvgj7XkDMEmATy4hzRMRp24E-lLQ23QOR4154KGMAjM34IJm5zu1vt2bcr30cxiDivIuU" alt="Advanced Diagnostics Center" className="w-full h-full object-cover opacity-40" />
+          <div className="absolute inset-0 bg-gradient-to-r from-slate-900 via-slate-900/80 to-transparent"></div>
+        </div>
+        <div className="container mx-auto px-6 py-24 md:py-32 relative z-10">
+          <div className="max-w-3xl">
+            <div className="flex items-center gap-2 mb-4 text-blue-300 font-semibold tracking-wide uppercase text-sm">
+              <span className="material-icons text-lg">medical_services</span>
+              <span>Center of Excellence</span>
             </div>
-            <div className="lg:w-1/2 relative">
-              <div className="relative rounded-2xl overflow-hidden shadow-2xl shadow-blue-900/10">
-                <img alt="Doctor analyzing MRI scan" className="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDmJ6m3X1-OCP_Qpavn3ySLxI7NyUiLSrCFFSEtSPmVB37uDa9thFM9x-xpGDb3dlcT9IBPlTe2371QdSX0fa5ijh6nOKkZJ39QqZDdEEbU6uhMlA7ORHfkan1J0YRHTUXmaneNb4JApA-YvqhFKBZ7VQmpsXWs4-7aTkheXF0vJYjFOTFaIxh54Ucc6izYoD0Q6FWnv_xvgj7XkDMEmATy4hzRMRp24E-lLQ23QOR4154KGMAjM34IJm5zu1vt2bcr30cxiDivIuU"/>
-                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-8">
-                  <div className="flex items-center gap-4 text-white">
-                    <div className="w-12 h-12 rounded-full bg-primary/90 flex items-center justify-center backdrop-blur-sm">
-                      <span className="material-icons">verified_user</span>
-                    </div>
-                    <div>
-                      <p className="font-bold text-lg">ACR Accredited</p>
-                      <p className="text-sm text-white/80">Gold Standard in Medical Imaging</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold mb-6 leading-tight">Advanced Diagnostic <br/>Services for Precise Care</h1>
+            <p className="text-lg md:text-xl text-slate-300 mb-8 max-w-2xl leading-relaxed">
+              Accurate diagnosis is the cornerstone of effective treatment. At Everleaf, we combine world-class expertise with cutting-edge technology to provide rapid, reliable results you can trust.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4">
+              <Link to="/contact" className="inline-flex items-center justify-center px-8 py-3.5 text-base font-bold text-white bg-primary rounded-lg hover:bg-primary-dark shadow-lg shadow-primary/30 hover:shadow-primary/50 transition-all transform hover:-translate-y-0.5">
+                Schedule a Test
+                <span className="material-icons text-sm ml-2">calendar_today</span>
+              </Link>
+              <button 
+                onClick={(e) => scrollToSection(e, 'capabilities')}
+                className="inline-flex items-center justify-center px-8 py-3.5 text-base font-bold text-white bg-white/10 border border-white/20 backdrop-blur-sm rounded-lg hover:bg-white/20 transition-all"
+              >
+                Explore Capabilities
+              </button>
             </div>
           </div>
         </div>
@@ -63,62 +57,60 @@ const Diagnostics: React.FC = () => {
         </div>
       </section>
 
-      {/* Capabilities Section */}
+       {/* Capabilities Section */}
       <section className="py-20 bg-white" id="capabilities">
         <div className="container mx-auto px-6">
-          <div className="flex flex-col md:flex-row justify-between items-end mb-12">
-            <div>
-              <span className="text-primary font-semibold tracking-wider uppercase text-sm">Our Services</span>
-              <h2 className="text-3xl md:text-4xl font-serif font-bold text-slate-900 mt-2">Diagnostic Capabilities</h2>
-            </div>
-            <p className="text-slate-500 max-w-lg mt-4 md:mt-0 text-right md:text-left">
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <span className="text-primary font-semibold tracking-wider uppercase text-sm">Our Services</span>
+            <h2 className="text-3xl md:text-4xl font-serif font-bold text-slate-900 mt-2 mb-4">Diagnostic Capabilities</h2>
+            <p className="text-slate-500 text-lg">
               Comprehensive testing facilities under one roof, from routine blood work to advanced neurological imaging.
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div className="p-6 rounded-xl border border-slate-100 bg-slate-50 hover:shadow-lg transition-all duration-300 group cursor-pointer">
+            <div className="p-6 rounded-xl border border-slate-100 bg-slate-50 hover:shadow-lg transition-all duration-300 group cursor-pointer flex flex-col">
               <div className="w-12 h-12 bg-white rounded-lg flex items-center justify-center text-primary mb-4 shadow-sm group-hover:scale-110 transition-transform">
-                <span className="material-icons text-3xl">radiology</span>
+                <span className="material-icons text-3xl">scanner</span>
               </div>
               <h3 className="text-xl font-bold text-slate-900 mb-2">Advanced Imaging</h3>
-              <p className="text-sm text-slate-500 mb-4">High-definition MRI (3T), 64-slice CT Scans, and Digital X-Rays for detailed anatomical views.</p>
-              <ul className="text-sm text-slate-600 space-y-2">
+              <p className="text-sm text-slate-500 mb-4 flex-grow">High-definition MRI (3T), 64-slice CT Scans, and Digital X-Rays for detailed anatomical views.</p>
+              <ul className="text-sm text-slate-600 space-y-2 mt-auto">
                 <li className="flex items-center gap-2"><span className="material-icons text-green-500 text-xs">check_circle</span> MRI & CT Scan</li>
                 <li className="flex items-center gap-2"><span className="material-icons text-green-500 text-xs">check_circle</span> Ultrasound</li>
                 <li className="flex items-center gap-2"><span className="material-icons text-green-500 text-xs">check_circle</span> Mammography</li>
               </ul>
             </div>
-            <div className="p-6 rounded-xl border border-slate-100 bg-slate-50 hover:shadow-lg transition-all duration-300 group cursor-pointer">
+            <div className="p-6 rounded-xl border border-slate-100 bg-slate-50 hover:shadow-lg transition-all duration-300 group cursor-pointer flex flex-col">
               <div className="w-12 h-12 bg-white rounded-lg flex items-center justify-center text-teal-500 mb-4 shadow-sm group-hover:scale-110 transition-transform">
                 <span className="material-icons text-3xl">science</span>
               </div>
               <h3 className="text-xl font-bold text-slate-900 mb-2">Pathology Lab</h3>
-              <p className="text-sm text-slate-500 mb-4">Fully automated laboratory providing accurate results for hematology, biochemistry, and microbiology.</p>
-              <ul className="text-sm text-slate-600 space-y-2">
+              <p className="text-sm text-slate-500 mb-4 flex-grow">Fully automated laboratory providing accurate results for hematology, biochemistry, and microbiology.</p>
+              <ul className="text-sm text-slate-600 space-y-2 mt-auto">
                 <li className="flex items-center gap-2"><span className="material-icons text-green-500 text-xs">check_circle</span> Blood Analysis</li>
                 <li className="flex items-center gap-2"><span className="material-icons text-green-500 text-xs">check_circle</span> Hormone Testing</li>
                 <li className="flex items-center gap-2"><span className="material-icons text-green-500 text-xs">check_circle</span> Biopsy Services</li>
               </ul>
             </div>
-            <div className="p-6 rounded-xl border border-slate-100 bg-slate-50 hover:shadow-lg transition-all duration-300 group cursor-pointer">
+            <div className="p-6 rounded-xl border border-slate-100 bg-slate-50 hover:shadow-lg transition-all duration-300 group cursor-pointer flex flex-col">
               <div className="w-12 h-12 bg-white rounded-lg flex items-center justify-center text-red-500 mb-4 shadow-sm group-hover:scale-110 transition-transform">
                 <span className="material-icons text-3xl">monitor_heart</span>
               </div>
               <h3 className="text-xl font-bold text-slate-900 mb-2">Cardiac Diagnostics</h3>
-              <p className="text-sm text-slate-500 mb-4">Specialized testing to monitor heart health and detect cardiovascular issues early.</p>
-              <ul className="text-sm text-slate-600 space-y-2">
+              <p className="text-sm text-slate-500 mb-4 flex-grow">Specialized testing to monitor heart health and detect cardiovascular issues early.</p>
+              <ul className="text-sm text-slate-600 space-y-2 mt-auto">
                 <li className="flex items-center gap-2"><span className="material-icons text-green-500 text-xs">check_circle</span> ECG & Echo</li>
                 <li className="flex items-center gap-2"><span className="material-icons text-green-500 text-xs">check_circle</span> Stress Testing</li>
                 <li className="flex items-center gap-2"><span className="material-icons text-green-500 text-xs">check_circle</span> Holter Monitoring</li>
               </ul>
             </div>
-            <div className="p-6 rounded-xl border border-slate-100 bg-slate-50 hover:shadow-lg transition-all duration-300 group cursor-pointer">
+            <div className="p-6 rounded-xl border border-slate-100 bg-slate-50 hover:shadow-lg transition-all duration-300 group cursor-pointer flex flex-col">
               <div className="w-12 h-12 bg-white rounded-lg flex items-center justify-center text-purple-500 mb-4 shadow-sm group-hover:scale-110 transition-transform">
                 <span className="material-icons text-3xl">psychology</span>
               </div>
               <h3 className="text-xl font-bold text-slate-900 mb-2">Neurodiagnostics</h3>
-              <p className="text-sm text-slate-500 mb-4">Evaluation of the nervous system function to assist in diagnosing neurological disorders.</p>
-              <ul className="text-sm text-slate-600 space-y-2">
+              <p className="text-sm text-slate-500 mb-4 flex-grow">Evaluation of the nervous system function to assist in diagnosing neurological disorders.</p>
+              <ul className="text-sm text-slate-600 space-y-2 mt-auto">
                 <li className="flex items-center gap-2"><span className="material-icons text-green-500 text-xs">check_circle</span> EEG (Brain Wave)</li>
                 <li className="flex items-center gap-2"><span className="material-icons text-green-500 text-xs">check_circle</span> EMG / NCS</li>
                 <li className="flex items-center gap-2"><span className="material-icons text-green-500 text-xs">check_circle</span> Sleep Studies</li>
@@ -271,7 +263,7 @@ const Diagnostics: React.FC = () => {
               <span className="material-icons mr-2">call</span> (555) 123-4567
             </a>
             <Link to="/contact" className="inline-flex items-center justify-center px-8 py-3.5 text-base font-bold text-white bg-white/10 border border-white/20 rounded-lg hover:bg-white/20 transition-colors">
-              Request Appointment Online
+              Request Appointment
             </Link>
           </div>
           <p className="mt-6 text-sm text-blue-200">

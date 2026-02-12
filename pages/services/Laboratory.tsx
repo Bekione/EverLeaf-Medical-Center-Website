@@ -1,47 +1,49 @@
 
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useOutletContext } from 'react-router-dom';
+import { OpenAppointmentFunc } from '../../Layout';
 
 const Laboratory: React.FC = () => {
+  const { openAppointment } = useOutletContext<{ openAppointment: OpenAppointmentFunc }>();
+
+  const scrollToSection = (e: React.MouseEvent, id: string) => {
+    e.preventDefault();
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <div className="animate-fade-in">
-      <header className="relative bg-white border-b border-slate-100 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-r from-blue-50/50 to-white/0 pointer-events-none"></div>
-        <div className="container mx-auto px-6 py-16 lg:py-24 relative z-10">
-          <div className="flex flex-col lg:flex-row items-center gap-12">
-            <div className="lg:w-1/2">
-              <div className="inline-flex items-center gap-2 px-3 py-1 mb-6 text-xs font-semibold tracking-wider text-primary uppercase bg-blue-50 rounded-full">
-                <span className="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
-                Advanced Diagnostics
-              </div>
-              <h1 className="text-4xl lg:text-5xl font-serif font-bold text-slate-900 mb-6 leading-tight">
-                Precision Laboratory <br/>
-                <span className="text-primary">Services You Can Trust</span>
-              </h1>
-              <p className="text-lg text-slate-600 leading-relaxed mb-8 max-w-xl">
-                Our ISO-certified laboratory operates 24/7, delivering accurate diagnostic results with speed and precision. From routine blood work to complex genetic testing, your health is our priority.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4">
-                <Link to="#" className="inline-flex items-center justify-center px-6 py-3 text-base font-semibold text-white transition-all duration-200 bg-primary rounded-lg hover:bg-primary-dark shadow-lg shadow-blue-500/20">
-                  View Test Catalog
-                </Link>
-                <Link to="#collection" className="inline-flex items-center justify-center px-6 py-3 text-base font-semibold text-slate-700 bg-white border border-slate-200 rounded-lg hover:bg-slate-50 transition-colors">
-                  Home Collection
-                </Link>
-              </div>
+      <header className="relative bg-slate-900 text-white overflow-hidden">
+        <div className="absolute inset-0">
+          <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuB_pz0LkLId6ZtK8txAyerpvUQ732I3XINGlxdNS2skUDdAcJbuO2zDCmYG0KgOzEQea9eCBt2ZOMuvhQ8WXR-sIAkS3pSFFZO61729sWktvqksqsAWsh3Pf6uHyPOzwgdrbS_0pTEB14D0Vx17WY5FUUirSL9l4hMJP9hhAdCtWJccKk1-p9urwJQefmVEzwx_PlqVo0eSn33-QyfXkBUO8jVW5eCK0P-hkhis4DJ7IxQo9-kOewUkBR3yFCPyb4I_u7FFlol2Qjc" alt="Modern medical laboratory environment" className="w-full h-full object-cover opacity-30" />
+          <div className="absolute inset-0 bg-gradient-to-r from-slate-900 via-slate-900/80 to-transparent"></div>
+        </div>
+        <div className="container mx-auto px-6 py-24 md:py-32 relative z-10">
+          <div className="max-w-3xl">
+            <div className="flex items-center gap-2 mb-4 text-blue-300 font-semibold tracking-wide uppercase text-sm">
+              <span className="material-icons text-lg">biotech</span>
+              <span>Advanced Diagnostics</span>
             </div>
-            <div className="lg:w-1/2 relative">
-              <div className="relative rounded-2xl overflow-hidden shadow-2xl shadow-blue-900/10 border-4 border-white">
-                <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuB_pz0LkLId6ZtK8txAyerpvUQ732I3XINGlxdNS2skUDdAcJbuO2zDCmYG0KgOzEQea9eCBt2ZOMuvhQ8WXR-sIAkS3pSFFZO61729sWktvqksqsAWsh3Pf6uHyPOzwgdrbS_0pTEB14D0Vx17WY5FUUirSL9l4hMJP9hhAdCtWJccKk1-p9urwJQefmVEzwx_PlqVo0eSn33-QyfXkBUO8jVW5eCK0P-hkhis4DJ7IxQo9-kOewUkBR3yFCPyb4I_u7FFlol2Qjc" alt="Modern medical laboratory environment with clean equipment" className="w-full h-auto object-cover" />
-                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent p-6">
-                  <div className="flex items-center gap-3 text-white">
-                    <span className="material-icons text-green-400">check_circle</span>
-                    <span className="font-medium">NABL Accredited Laboratory</span>
-                  </div>
-                </div>
-              </div>
-              <div className="absolute -z-10 top-10 -right-10 w-64 h-64 bg-blue-100 rounded-full blur-3xl opacity-60"></div>
-              <div className="absolute -z-10 -bottom-10 -left-10 w-64 h-64 bg-teal-100 rounded-full blur-3xl opacity-60"></div>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold mb-6 leading-tight">Precision Laboratory <br/>Services You Can Trust</h1>
+            <p className="text-lg md:text-xl text-slate-300 mb-8 max-w-2xl leading-relaxed">
+              Our ISO-certified laboratory operates 24/7, delivering accurate diagnostic results with speed and precision. From routine blood work to complex genetic testing, your health is our priority.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4">
+              <button 
+                onClick={() => openAppointment({ department: 'Laboratory' })}
+                className="inline-flex items-center justify-center px-8 py-3.5 text-base font-bold text-white bg-primary rounded-lg hover:bg-primary-dark shadow-lg shadow-primary/30 hover:shadow-primary/50 transition-all transform hover:-translate-y-0.5"
+              >
+                Book a Test
+              </button>
+              <button 
+                onClick={(e) => scrollToSection(e, 'collection')}
+                className="inline-flex items-center justify-center px-8 py-3.5 text-base font-bold text-white bg-white/10 border border-white/20 backdrop-blur-sm rounded-lg hover:bg-white/20 transition-all"
+              >
+                Home Collection
+              </button>
             </div>
           </div>
         </div>
@@ -58,7 +60,7 @@ const Laboratory: React.FC = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="bg-white p-8 rounded-2xl shadow-card border border-slate-100 group hover:-translate-y-1 transition-all duration-300">
               <div className="w-14 h-14 bg-blue-50 rounded-xl flex items-center justify-center text-primary mb-6 group-hover:scale-110 transition-transform">
-                <span className="material-symbols-outlined text-3xl">biotech</span>
+                <span className="material-icons text-3xl">biotech</span>
               </div>
               <h3 className="text-xl font-bold text-slate-900 mb-3">Biochemistry</h3>
               <p className="text-slate-500 mb-4 leading-relaxed">
@@ -74,7 +76,7 @@ const Laboratory: React.FC = () => {
             </div>
             <div className="bg-white p-8 rounded-2xl shadow-card border border-slate-100 group hover:-translate-y-1 transition-all duration-300">
               <div className="w-14 h-14 bg-teal-50 rounded-xl flex items-center justify-center text-teal-500 mb-6 group-hover:scale-110 transition-transform">
-                <span className="material-symbols-outlined text-3xl">coronavirus</span>
+                <span className="material-icons text-3xl">coronavirus</span>
               </div>
               <h3 className="text-xl font-bold text-slate-900 mb-3">Microbiology</h3>
               <p className="text-slate-500 mb-4 leading-relaxed">
@@ -90,7 +92,7 @@ const Laboratory: React.FC = () => {
             </div>
             <div className="bg-white p-8 rounded-2xl shadow-card border border-slate-100 group hover:-translate-y-1 transition-all duration-300">
               <div className="w-14 h-14 bg-red-50 rounded-xl flex items-center justify-center text-red-500 mb-6 group-hover:scale-110 transition-transform">
-                <span className="material-symbols-outlined text-3xl">bloodtype</span>
+                <span className="material-icons text-3xl">bloodtype</span>
               </div>
               <h3 className="text-xl font-bold text-slate-900 mb-3">Hematology</h3>
               <p className="text-slate-500 mb-4 leading-relaxed">
@@ -140,7 +142,7 @@ const Laboratory: React.FC = () => {
             </div>
             <div className="flex flex-col justify-center">
               <div className="inline-flex items-center gap-2 mb-4 text-primary font-semibold">
-                <span className="material-icons text-lg">home_health</span>
+                <span className="material-icons text-lg">home_work</span>
                 <span>Convenience First</span>
               </div>
               <h2 className="text-3xl md:text-4xl font-serif font-bold text-slate-900 mb-6">Home Collection Services</h2>
@@ -161,10 +163,13 @@ const Laboratory: React.FC = () => {
                   </li>
                 ))}
               </ul>
-              <Link to="/contact" className="text-primary font-bold hover:text-primary-dark inline-flex items-center gap-2 group">
+              <button 
+                onClick={() => openAppointment({ department: 'Laboratory', doctorName: 'Home Collection Service' })}
+                className="text-primary font-bold hover:text-primary-dark inline-flex items-center gap-2 group text-left"
+              >
                 Book Home Collection 
                 <span className="material-icons text-sm group-hover:translate-x-1 transition-transform">arrow_forward</span>
-              </Link>
+              </button>
             </div>
           </div>
         </div>
@@ -207,12 +212,15 @@ const Laboratory: React.FC = () => {
             Book your lab test today. Choose from our wide range of individual tests and health checkup packages.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link to="/contact" className="inline-flex items-center justify-center px-8 py-3.5 text-base font-bold text-primary bg-white rounded-lg hover:bg-blue-50 shadow-lg transition-colors group">
+            <button 
+              onClick={() => openAppointment({ department: 'Laboratory' })}
+              className="inline-flex items-center justify-center px-8 py-3.5 text-base font-bold text-primary bg-white rounded-lg hover:bg-blue-50 shadow-lg transition-colors group"
+            >
               Request a Test
               <span className="material-icons ml-2 group-hover:translate-x-1 transition-transform">arrow_forward</span>
-            </Link>
-            <Link to="#" className="inline-flex items-center justify-center px-8 py-3.5 text-base font-bold text-white bg-white/10 border border-white/20 rounded-lg hover:bg-white/20 transition-colors">
-              Download Price List
+            </button>
+            <Link to="/contact" className="inline-flex items-center justify-center px-8 py-3.5 text-base font-bold text-white bg-white/10 border border-white/20 rounded-lg hover:bg-white/20 transition-colors">
+              Contact for Pricing
             </Link>
           </div>
         </div>

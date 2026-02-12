@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 interface AppointmentModalProps {
   isOpen: boolean;
   onClose: () => void;
-  initialData?: { doctorName?: string; department?: string } | null;
+  initialData?: { doctorName?: string; department?: string; serviceName?: string } | null;
 }
 
 const AppointmentModal: React.FC<AppointmentModalProps> = ({ isOpen, onClose, initialData }) => {
@@ -21,9 +21,16 @@ const AppointmentModal: React.FC<AppointmentModalProps> = ({ isOpen, onClose, in
   // Reset or pre-fill form when modal opens with data
   useEffect(() => {
     if (isOpen && initialData) {
+      let defaultMessage = '';
+      if (initialData.serviceName) {
+        defaultMessage = `I am interested in booking the ${initialData.serviceName}.`;
+      } else if (initialData.doctorName) {
+        defaultMessage = `I would like to book an appointment with ${initialData.doctorName}.`;
+      }
+
       setFormData(prev => ({
         ...prev,
-        message: initialData.doctorName ? `I would like to book an appointment with ${initialData.doctorName}.` : '',
+        message: defaultMessage,
         department: initialData.department || ''
       }));
     }
@@ -140,6 +147,10 @@ const AppointmentModal: React.FC<AppointmentModalProps> = ({ isOpen, onClose, in
                 <option value="Orthopedics">Orthopedics</option>
                 <option value="Dermatology">Dermatology</option>
                 <option value="Oncology">Oncology</option>
+                <option value="Laboratory">Laboratory</option>
+                <option value="Radiology">Radiology</option>
+                <option value="Pharmacy">Pharmacy</option>
+                <option value="Preventive Checkups">Preventive Checkups</option>
               </select>
             </div>
           </div>

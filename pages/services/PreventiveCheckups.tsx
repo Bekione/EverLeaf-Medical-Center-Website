@@ -1,52 +1,48 @@
 
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useOutletContext } from 'react-router-dom';
+import { OpenAppointmentFunc } from '../../Layout';
 
 const PreventiveCheckups: React.FC = () => {
+  const { openAppointment } = useOutletContext<{ openAppointment: OpenAppointmentFunc }>();
+
+  const scrollToSection = (e: React.MouseEvent, id: string) => {
+    e.preventDefault();
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <div className="animate-fade-in">
-      <header className="relative bg-white border-b border-slate-100 overflow-hidden">
-        <div className="absolute inset-0 bg-blue-50/50"></div>
-        <div className="container mx-auto px-6 py-16 lg:py-24 relative z-10">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div className="text-left">
-              <div className="inline-flex items-center gap-2 px-3 py-1 mb-6 text-xs font-semibold tracking-wider text-primary uppercase bg-blue-100 rounded-full">
-                <span className="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
-                Preventive Care
-              </div>
-              <h1 className="text-4xl lg:text-5xl font-serif font-bold text-slate-900 mb-6 leading-tight">
-                Invest in Your Future Health with Comprehensive Checkups
-              </h1>
-              <p className="text-lg text-slate-600 leading-relaxed mb-8 max-w-lg">
-                Early detection is key to a long, healthy life. Our personalized screening packages provide a complete picture of your health status in a comfortable environment.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4">
-                <a href="#packages" className="inline-flex items-center justify-center px-8 py-3.5 text-base font-bold text-white bg-primary rounded-lg hover:bg-primary-dark shadow-lg shadow-blue-500/20 transition-all hover:-translate-y-0.5">
-                  View Packages
-                </a>
-                <Link to="#" className="inline-flex items-center justify-center px-8 py-3.5 text-base font-bold text-slate-700 bg-white border border-slate-200 rounded-lg hover:bg-slate-50 transition-colors">
-                  Learn More
-                </Link>
-              </div>
+      <header className="relative bg-slate-900 text-white overflow-hidden">
+        <div className="absolute inset-0">
+          <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCTxuFTPJwgaIproSGkw_NVSntv72zft_WG8tOAn4Ce2yzYAcC0xuvtbBanu709zUk7w9lAYWQaMbXU5Xu_pgT5lUmUnVeujKkEAQyHi6Ua42Fs9-KDAXefN9H1AfqcCx6XNQhARxPB7YtxES8Tn4SsqghLnqzwBPZClijrKCOVd9awJyP3TbFw2ZhugWATZg5R_fqfMiOkOWbZ50TQKWiYTdl6Zrm5FznchMEJhDdMAOr5X6i9XR8P14K3_yTUb-U0iCSrFjGTvps" alt="Preventive Health Checkup" className="w-full h-full object-cover opacity-40" />
+          <div className="absolute inset-0 bg-gradient-to-r from-slate-900 via-slate-900/80 to-transparent"></div>
+        </div>
+        <div className="container mx-auto px-6 py-24 md:py-32 relative z-10">
+          <div className="max-w-3xl">
+            <div className="flex items-center gap-2 mb-4 text-blue-300 font-semibold tracking-wide uppercase text-sm">
+              <span className="material-icons text-lg">health_and_safety</span>
+              <span>Preventive Care</span>
             </div>
-            <div className="relative hidden lg:block">
-              <div className="relative rounded-2xl overflow-hidden shadow-2xl shadow-blue-900/10">
-                <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCTxuFTPJwgaIproSGkw_NVSntv72zft_WG8tOAn4Ce2yzYAcC0xuvtbBanu709zUk7w9lAYWQaMbXU5Xu_pgT5lUmUnVeujKkEAQyHi6Ua42Fs9-KDAXefN9H1AfqcCx6XNQhARxPB7YtxES8Tn4SsqghLnqzwBPZClijrKCOVd9awJyP3TbFw2ZhugWATZg5R_fqfMiOkOWbZ50TQKWiYTdl6Zrm5FznchMEJhDdMAOr5X6i9XR8P14K3_yTUb-U0iCSrFjGTvps" alt="Doctor Consultation" className="w-full h-auto object-cover transform hover:scale-105 transition-transform duration-700" />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
-                <div className="absolute bottom-6 left-6 right-6">
-                  <div className="bg-white/95 backdrop-blur-sm p-4 rounded-xl shadow-lg border border-slate-100 flex items-center gap-4">
-                    <div className="bg-green-100 p-2 rounded-lg text-green-600">
-                      <span className="material-symbols-outlined text-2xl">verified_user</span>
-                    </div>
-                    <div>
-                      <p className="text-sm font-semibold text-slate-900">Trusted by Families</p>
-                      <p className="text-xs text-slate-500">Over 10,000 checkups conducted annually</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="absolute -z-10 -top-8 -right-8 w-64 h-64 bg-primary/10 rounded-full blur-3xl"></div>
-              <div className="absolute -z-10 -bottom-8 -left-8 w-64 h-64 bg-secondary/10 rounded-full blur-3xl"></div>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold mb-6 leading-tight">
+              Invest in Your Health with <br/>Comprehensive Checkups
+            </h1>
+            <p className="text-lg md:text-xl text-slate-300 mb-8 max-w-2xl leading-relaxed">
+              Early detection is key to a long, healthy life. Our personalized screening packages provide a complete picture of your health status in a comfortable environment.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4">
+              <button 
+                onClick={(e) => scrollToSection(e, 'packages')}
+                className="inline-flex items-center justify-center px-8 py-3.5 text-base font-bold text-white bg-primary rounded-lg hover:bg-primary-dark shadow-lg shadow-primary/30 hover:shadow-primary/50 transition-all transform hover:-translate-y-0.5"
+              >
+                View Packages
+              </button>
+              <Link to="/contact" className="inline-flex items-center justify-center px-8 py-3.5 text-base font-bold text-white bg-white/10 border border-white/20 backdrop-blur-sm rounded-lg hover:bg-white/20 transition-all">
+                Contact Us
+              </Link>
             </div>
           </div>
         </div>
@@ -62,13 +58,13 @@ const PreventiveCheckups: React.FC = () => {
           </div>
           <div className="grid md:grid-cols-3 gap-8">
             {[
-              { icon: 'cardiology', title: 'Heart Health', desc: 'Identify risk factors like high blood pressure and cholesterol early to prevent heart disease and stroke.', color: 'red' },
-              { icon: 'glucose', title: 'Diabetes Screening', desc: 'Early detection of pre-diabetes allows for lifestyle changes that can prevent or delay the onset of Type 2 diabetes.', color: 'blue' },
-              { icon: 'oncology', title: 'Cancer Prevention', desc: 'Screening tests can find some cancers early, when treatment is most likely to be successful.', color: 'purple' }
+              { icon: 'monitor_heart', title: 'Heart Health', desc: 'Identify risk factors like high blood pressure and cholesterol early to prevent heart disease and stroke.', color: 'red' },
+              { icon: 'water_drop', title: 'Diabetes Screening', desc: 'Early detection of pre-diabetes allows for lifestyle changes that can prevent or delay the onset of Type 2 diabetes.', color: 'blue' },
+              { icon: 'healing', title: 'Cancer Prevention', desc: 'Screening tests can find some cancers early, when treatment is most likely to be successful.', color: 'purple' }
             ].map((item, i) => (
               <div key={i} className="bg-white p-8 rounded-2xl shadow-card border border-slate-100">
                 <div className={`w-12 h-12 bg-${item.color}-50 rounded-xl flex items-center justify-center text-${item.color}-500 mb-6`}>
-                  <span className="material-symbols-outlined text-2xl">{item.icon}</span>
+                  <span className="material-icons text-2xl">{item.icon}</span>
                 </div>
                 <h3 className="text-xl font-bold text-slate-900 mb-3">{item.title}</h3>
                 <p className="text-sm text-slate-500 leading-relaxed">
@@ -108,7 +104,12 @@ const PreventiveCheckups: React.FC = () => {
                 </ul>
               </div>
               <div className="p-8 pt-0 mt-auto">
-                <Link to="/contact" className="block w-full py-3 px-4 bg-white border-2 border-primary text-primary font-bold text-center rounded-lg hover:bg-blue-50 transition-colors">Select Basic</Link>
+                <button 
+                  onClick={() => openAppointment({ department: 'Preventive Checkups', serviceName: 'Basic Wellness Package' })}
+                  className="block w-full py-3 px-4 bg-white border-2 border-primary text-primary font-bold text-center rounded-lg hover:bg-blue-50 transition-colors"
+                >
+                  Select Basic
+                </button>
               </div>
             </div>
 
@@ -136,7 +137,12 @@ const PreventiveCheckups: React.FC = () => {
                 </ul>
               </div>
               <div className="p-8 pt-0 mt-auto">
-                <Link to="/contact" className="block w-full py-3 px-4 bg-primary text-white font-bold text-center rounded-lg hover:bg-primary-dark transition-colors shadow-lg shadow-primary/30">Select Executive</Link>
+                <button 
+                  onClick={() => openAppointment({ department: 'Preventive Checkups', serviceName: 'Executive Checkup Package' })}
+                  className="block w-full py-3 px-4 bg-primary text-white font-bold text-center rounded-lg hover:bg-primary-dark transition-colors shadow-lg shadow-primary/30"
+                >
+                  Select Executive
+                </button>
               </div>
             </div>
 
@@ -163,7 +169,12 @@ const PreventiveCheckups: React.FC = () => {
                 </ul>
               </div>
               <div className="p-8 pt-0 mt-auto">
-                <Link to="/contact" className="block w-full py-3 px-4 bg-white border-2 border-primary text-primary font-bold text-center rounded-lg hover:bg-blue-50 transition-colors">Select Senior</Link>
+                <button 
+                  onClick={() => openAppointment({ department: 'Preventive Checkups', serviceName: 'Senior Health Package' })}
+                  className="block w-full py-3 px-4 bg-white border-2 border-primary text-primary font-bold text-center rounded-lg hover:bg-blue-50 transition-colors"
+                >
+                  Select Senior
+                </button>
               </div>
             </div>
           </div>
@@ -219,7 +230,7 @@ const PreventiveCheckups: React.FC = () => {
               <ul className="space-y-4 mb-8">
                 <li className="flex items-start gap-3">
                   <div className="bg-blue-100 p-1 rounded text-primary">
-                    <span className="material-symbols-outlined text-sm font-bold">nutrition</span>
+                    <span className="material-icons text-sm font-bold">restaurant</span>
                   </div>
                   <div>
                     <h4 className="font-bold text-slate-900 text-sm">Personalized Nutrition</h4>
@@ -228,7 +239,7 @@ const PreventiveCheckups: React.FC = () => {
                 </li>
                 <li className="flex items-start gap-3">
                   <div className="bg-blue-100 p-1 rounded text-primary">
-                    <span className="material-symbols-outlined text-sm font-bold">directions_run</span>
+                    <span className="material-icons text-sm font-bold">directions_run</span>
                   </div>
                   <div>
                     <h4 className="font-bold text-slate-900 text-sm">Activity Guidance</h4>
@@ -236,7 +247,7 @@ const PreventiveCheckups: React.FC = () => {
                   </div>
                 </li>
               </ul>
-              <Link to="#" className="inline-flex items-center font-semibold text-primary hover:text-primary-dark transition-colors">
+              <Link to="/blog" className="inline-flex items-center font-semibold text-primary hover:text-primary-dark transition-colors">
                 Read success stories <span className="material-icons text-sm ml-1">arrow_forward</span>
               </Link>
             </div>
@@ -252,9 +263,12 @@ const PreventiveCheckups: React.FC = () => {
             Take the first step towards a healthier future. Book your preventive checkup today with our simple online scheduling tool.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link to="/contact" className="inline-flex items-center justify-center px-8 py-4 text-base font-bold text-primary bg-white rounded-lg hover:bg-blue-50 shadow-lg transition-colors">
+            <button 
+              onClick={() => openAppointment({ department: 'Preventive Checkups' })}
+              className="inline-flex items-center justify-center px-8 py-4 text-base font-bold text-primary bg-white rounded-lg hover:bg-blue-50 shadow-lg transition-colors"
+            >
               Schedule a Checkup
-            </Link>
+            </button>
             <Link to="/contact" className="inline-flex items-center justify-center px-8 py-4 text-base font-bold text-white bg-white/10 border border-white/20 rounded-lg hover:bg-white/20 transition-colors">
               Contact Support
             </Link>

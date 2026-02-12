@@ -11,10 +11,10 @@ const Home: React.FC = () => {
     if (scrollContainerRef.current) {
       const scrollAmount = 400; // Approx width of card + gap
       const currentScroll = scrollContainerRef.current.scrollLeft;
-      const targetScroll = direction === 'left' 
-        ? currentScroll - scrollAmount 
+      const targetScroll = direction === 'left'
+        ? currentScroll - scrollAmount
         : currentScroll + scrollAmount;
-      
+
       scrollContainerRef.current.scrollTo({
         left: targetScroll,
         behavior: 'smooth'
@@ -35,7 +35,7 @@ const Home: React.FC = () => {
     <div className="animate-fade-in">
       {/* Hero Section */}
       <header className="relative overflow-hidden bg-slate-50 pt-16 pb-32 lg:pt-24 lg:pb-48">
-        <div className="absolute inset-0 pointer-events-none opacity-50" style={{backgroundImage: "radial-gradient(#136dec 0.5px, transparent 0.5px), radial-gradient(#136dec 0.5px, #f8fafc 0.5px)", backgroundSize: "20px 20px", backgroundPosition: "0 0, 10px 10px"}}></div>
+        <div className="absolute inset-0 pointer-events-none opacity-50" style={{ backgroundImage: "radial-gradient(#136dec 0.5px, transparent 0.5px), radial-gradient(#136dec 0.5px, #f8fafc 0.5px)", backgroundSize: "20px 20px", backgroundPosition: "0 0, 10px 10px" }}></div>
         <div className="container mx-auto px-6 relative z-10">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="max-w-2xl">
@@ -198,7 +198,7 @@ const Home: React.FC = () => {
                 </div>
               </div>
             </div>
-            
+
             <div className="group relative overflow-hidden rounded-2xl bg-slate-50 border border-slate-100 hover:shadow-card transition-all duration-300">
               <div className="relative h-80 overflow-hidden bg-slate-200">
                 <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuADGr580ge61fkfsxwBrM7N1TZyAY9Z-GTpjBUo_xK5lWfakoEU_qOziiT-so6DMVRYMjRbu0nVW-k1DcZ572-UwSxJBbHFxL921KxZ6v5xbrKCJfSDGPfGIKJ2lnbzJo8rsumPzZ1VnlvNztje35dbZ8OjoskrJoJWMwL2xyEuWVfFxTxZWLkj3322_nwECoDQOhnBsfJT-uJdBuBYvHW7tZFnkW3TihhkEKyTi4ionW16tPVhP7_Msgmo2tYXI-H3mW5DhYbZYTk" alt="Dr. Mark Williams" className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105" />
@@ -248,7 +248,7 @@ const Home: React.FC = () => {
 
       {/* CTA Section */}
       <section className="py-20 bg-primary relative overflow-hidden">
-        <div className="absolute inset-0 opacity-10" style={{backgroundImage: "url('https://lh3.googleusercontent.com/aida-public/AB6AXuAHt914qOU_iGyrkWF1DR1L_RCU6_CHbMNc5iiIVZzScOsU4h2i902S5H4r-4jdkrJXh_6AbGABEOVo93dvN66qGX0QMIQD5Stax-w6Ep6h_SQBpxLkjnF2BdPLxQEtQksxScRnzSYCj78ESAE4nAjzJbAEdCYUDGHS_EYJU4YQODmsuZG6oRhzC9TiexI31nCFq_GQhl_qKXL3uZtqbl7jfx2BX5FC0Lw5g7IohcKCawi0YiH14WDD2Zciz5HDaGLk7nVeqBsaZCI')"}}></div>
+        <div className="absolute inset-0 opacity-10" style={{ backgroundImage: "url('https://lh3.googleusercontent.com/aida-public/AB6AXuAHt914qOU_iGyrkWF1DR1L_RCU6_CHbMNc5iiIVZzScOsU4h2i902S5H4r-4jdkrJXh_6AbGABEOVo93dvN66qGX0QMIQD5Stax-w6Ep6h_SQBpxLkjnF2BdPLxQEtQksxScRnzSYCj78ESAE4nAjzJbAEdCYUDGHS_EYJU4YQODmsuZG6oRhzC9TiexI31nCFq_GQhl_qKXL3uZtqbl7jfx2BX5FC0Lw5g7IohcKCawi0YiH14WDD2Zciz5HDaGLk7nVeqBsaZCI')" }}></div>
         <div className="container mx-auto px-6 relative z-10 text-center">
           <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 font-serif">Ready to Prioritize Your Health?</h2>
           <p className="text-blue-100 text-lg md:text-xl max-w-2xl mx-auto mb-10">Schedule an appointment today to consult with our experts. We are committed to helping you lead a healthier life.</p>
@@ -274,13 +274,13 @@ const Home: React.FC = () => {
               <p className="text-slate-600 text-lg">Hear from those who have experienced our care firsthand.</p>
             </div>
             <div className="flex gap-2">
-              <button 
+              <button
                 onClick={() => scrollTestimonials('left')}
                 className="w-10 h-10 rounded-full border border-slate-300 flex items-center justify-center text-slate-500 hover:text-primary hover:border-primary transition-colors bg-white z-10"
               >
                 <span className="material-icons">arrow_back</span>
               </button>
-              <button 
+              <button
                 onClick={() => scrollTestimonials('right')}
                 className="w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center shadow-lg hover:bg-primary-dark transition-colors z-10"
               >
@@ -288,7 +288,7 @@ const Home: React.FC = () => {
               </button>
             </div>
           </div>
-          <div 
+          <div
             ref={scrollContainerRef}
             className="flex gap-6 overflow-x-auto pb-8 snap-x snap-mandatory scrollbar-hide scroll-smooth"
           >
@@ -317,16 +317,32 @@ const Home: React.FC = () => {
       {/* Partners */}
       <section className="py-12 bg-white border-t border-slate-100">
         <div className="container mx-auto px-6">
-          <p className="text-center text-slate-400 text-sm font-semibold uppercase tracking-wider mb-8">Trusted by Insurance Partners</p>
-          <div className="flex flex-nowrap overflow-x-auto justify-start md:justify-center items-center gap-12 opacity-50 grayscale hover:grayscale-0 transition-all duration-500 scrollbar-hide pb-2">
-            <div className="flex-shrink-0 flex items-center gap-2 text-2xl font-bold text-slate-600"><span className="material-icons text-3xl">health_and_safety</span> MediGuard</div>
-            <div className="flex-shrink-0 flex items-center gap-2 text-2xl font-bold text-slate-600"><span className="material-icons text-3xl">shield</span> LifeCare</div>
-            <div className="flex-shrink-0 flex items-center gap-2 text-2xl font-bold text-slate-600"><span className="material-icons text-3xl">add_moderator</span> HealthPlus</div>
-            <div className="flex-shrink-0 flex items-center gap-2 text-2xl font-bold text-slate-600"><span className="material-icons text-3xl">verified</span> GlobalAssure</div>
-            <div className="flex-shrink-0 flex items-center gap-2 text-2xl font-bold text-slate-600"><span className="material-icons text-3xl">favorite</span> CareFirst</div>
+          <p className="text-center text-slate-400 text-sm font-semibold uppercase tracking-wider mb-8">
+            Trusted by Insurance Partners
+          </p>
+
+          <div className="overflow-x-auto scrollbar-hide">
+            <div className="flex w-max items-center gap-12 opacity-50 grayscale hover:grayscale-0 transition-all duration-500 mx-auto">
+              <div className="flex-shrink-0 flex items-center gap-2 text-2xl font-bold text-slate-600">
+                <span className="material-icons text-3xl">health_and_safety</span> MediGuard
+              </div>
+              <div className="flex-shrink-0 flex items-center gap-2 text-2xl font-bold text-slate-600">
+                <span className="material-icons text-3xl">shield</span> LifeCare
+              </div>
+              <div className="flex-shrink-0 flex items-center gap-2 text-2xl font-bold text-slate-600">
+                <span className="material-icons text-3xl">add_moderator</span> HealthPlus
+              </div>
+              <div className="flex-shrink-0 flex items-center gap-2 text-2xl font-bold text-slate-600">
+                <span className="material-icons text-3xl">verified</span> GlobalAssure
+              </div>
+              <div className="flex-shrink-0 flex items-center gap-2 text-2xl font-bold text-slate-600">
+                <span className="material-icons text-3xl">favorite</span> CareFirst
+              </div>
+            </div>
           </div>
         </div>
       </section>
+
     </div>
   );
 };

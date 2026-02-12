@@ -1,8 +1,19 @@
 
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useOutletContext } from 'react-router-dom';
+import { OpenAppointmentFunc } from '../../Layout';
 
 const Imaging: React.FC = () => {
+  const { openAppointment } = useOutletContext<{ openAppointment: OpenAppointmentFunc }>();
+
+  const scrollToSection = (e: React.MouseEvent, id: string) => {
+    e.preventDefault();
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <div className="animate-fade-in">
       <header className="relative bg-slate-900 text-white overflow-hidden">
@@ -13,20 +24,26 @@ const Imaging: React.FC = () => {
         <div className="container mx-auto px-6 py-24 md:py-32 relative z-10">
           <div className="max-w-3xl">
             <div className="flex items-center gap-2 mb-4 text-blue-300 font-semibold tracking-wide uppercase text-sm">
-              <span className="material-symbols-outlined text-lg">radiology</span>
-              <span>Department of Radiology</span>
+              <span className="material-icons text-lg">scanner</span>
+              <span>Medical Imaging Services</span>
             </div>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold mb-6 leading-tight">Advanced Imaging &<br/>Diagnostics</h1>
             <p className="text-lg md:text-xl text-slate-300 mb-8 max-w-2xl leading-relaxed">
               Utilizing state-of-the-art technology to provide crystal-clear insights for precise diagnoses. From routine X-rays to advanced MRI scans, your health is our focus.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
-              <Link to="/contact" className="inline-flex items-center justify-center px-8 py-3.5 text-base font-bold text-white bg-primary rounded-lg hover:bg-primary-dark shadow-lg shadow-primary/30 hover:shadow-primary/50 transition-all transform hover:-translate-y-0.5">
+              <button 
+                onClick={() => openAppointment({ department: 'Radiology' })}
+                className="inline-flex items-center justify-center px-8 py-3.5 text-base font-bold text-white bg-primary rounded-lg hover:bg-primary-dark shadow-lg shadow-primary/30 hover:shadow-primary/50 transition-all transform hover:-translate-y-0.5"
+              >
                 Schedule a Scan
-              </Link>
-              <a href="#procedures" className="inline-flex items-center justify-center px-8 py-3.5 text-base font-bold text-white bg-white/10 border border-white/20 backdrop-blur-sm rounded-lg hover:bg-white/20 transition-all">
+              </button>
+              <button 
+                onClick={(e) => scrollToSection(e, 'procedures')}
+                className="inline-flex items-center justify-center px-8 py-3.5 text-base font-bold text-white bg-white/10 border border-white/20 backdrop-blur-sm rounded-lg hover:bg-white/20 transition-all"
+              >
                 View Procedures
-              </a>
+              </button>
             </div>
           </div>
         </div>
@@ -53,8 +70,7 @@ const Imaging: React.FC = () => {
                   </div>
                   <div className="p-6">
                     <h3 className="text-xl font-bold text-slate-900 mb-2">{item.title}</h3>
-                    <p className="text-slate-500 text-sm mb-4">{item.desc}</p>
-                    <Link to="#" className="text-primary font-semibold text-sm hover:underline inline-flex items-center">Learn details <span className="material-icons text-sm ml-1">arrow_forward</span></Link>
+                    <p className="text-slate-500 text-sm">{item.desc}</p>
                   </div>
                 </div>
               ))}
@@ -65,7 +81,7 @@ const Imaging: React.FC = () => {
             <div className="lg:col-span-2 bg-white rounded-2xl p-8 border border-slate-100 shadow-card">
               <div className="flex items-center gap-4 mb-6">
                 <div className="w-12 h-12 rounded-full bg-blue-100 text-primary flex items-center justify-center">
-                  <span className="material-symbols-outlined text-2xl">biotech</span>
+                  <span className="material-icons text-2xl">biotech</span>
                 </div>
                 <h2 className="text-2xl font-bold text-slate-900">Specialized Radiology</h2>
               </div>
@@ -94,7 +110,7 @@ const Imaging: React.FC = () => {
             <div className="bg-indigo-50 rounded-2xl p-8 border border-indigo-100">
               <div className="flex items-center gap-4 mb-6">
                 <div className="w-12 h-12 rounded-full bg-white text-indigo-600 flex items-center justify-center shadow-sm">
-                  <span className="material-symbols-outlined text-2xl">shield</span>
+                  <span className="material-icons text-2xl">shield</span>
                 </div>
                 <h2 className="text-xl font-bold text-slate-900">Safety First</h2>
               </div>
@@ -111,7 +127,6 @@ const Imaging: React.FC = () => {
                   </div>
                 </div>
               </div>
-              <Link to="#" className="text-indigo-600 font-semibold text-sm hover:text-indigo-800 transition-colors flex items-center">Read Safety Guidelines <span className="material-icons text-sm ml-1">open_in_new</span></Link>
             </div>
           </div>
 
@@ -121,7 +136,7 @@ const Imaging: React.FC = () => {
               <div className="p-8 md:p-12 text-white">
                 <h2 className="text-3xl font-bold mb-4">Accessing Your Results</h2>
                 <p className="text-blue-100 mb-6 leading-relaxed">
-                  Your imaging results and radiologist reports are available securely online through our Patient Portal, usually within 24-48 hours of your exam.
+                  Your imaging results and radiologist reports are available securely online. Please contact our reception for access details.
                 </p>
                 <ul className="space-y-4 mb-8">
                   <li className="flex items-center gap-3">
@@ -137,8 +152,8 @@ const Imaging: React.FC = () => {
                     <span>Share with Specialists</span>
                   </li>
                 </ul>
-                <Link to="/portal" className="inline-flex items-center px-6 py-3 bg-white text-primary font-bold rounded-lg hover:bg-blue-50 transition-colors">
-                  Login to Portal
+                <Link to="/contact" className="inline-flex items-center px-6 py-3 bg-white text-primary font-bold rounded-lg hover:bg-blue-50 transition-colors">
+                  Request Results
                 </Link>
               </div>
               <div className="h-64 md:h-full relative bg-slate-800">
@@ -146,6 +161,291 @@ const Imaging: React.FC = () => {
                 <div className="absolute inset-0 bg-gradient-to-l from-transparent to-primary/80 md:to-primary"></div>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-20 bg-slate-50">
+        <div className="container mx-auto px-6">
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <h2 className="text-3xl font-serif font-bold text-slate-900 mb-4">Conditions We Treat</h2>
+            <p className="text-slate-600">Our imaging capabilities allow us to detect and monitor a wide range of medical conditions with exceptional clarity.</p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="bg-white p-6 rounded-2xl shadow-sm hover:shadow-md transition-shadow border border-slate-100">
+              <div className="w-12 h-12 bg-orange-50 rounded-xl flex items-center justify-center text-orange-500 mb-4">
+                <span className="material-icons text-2xl">accessibility_new</span>
+              </div>
+              <h3 className="text-lg font-bold text-slate-900 mb-2">Fracture Detection</h3>
+              <p className="text-sm text-slate-500 leading-relaxed">
+                Precise identification of bone fractures, dislocations, and joint abnormalities using high-resolution X-rays.
+              </p>
+            </div>
+            <div className="bg-white p-6 rounded-2xl shadow-sm hover:shadow-md transition-shadow border border-slate-100">
+              <div className="w-12 h-12 bg-purple-50 rounded-xl flex items-center justify-center text-purple-500 mb-4">
+                <span className="material-icons text-2xl">biotech</span>
+              </div>
+              <h3 className="text-lg font-bold text-slate-900 mb-2">Tumor Screening</h3>
+              <p className="text-sm text-slate-500 leading-relaxed">
+                Early detection and staging of tumors in soft tissues and organs through advanced MRI and CT scanning.
+              </p>
+            </div>
+            <div className="bg-white p-6 rounded-2xl shadow-sm hover:shadow-md transition-shadow border border-slate-100">
+              <div className="w-12 h-12 bg-red-50 rounded-xl flex items-center justify-center text-red-500 mb-4">
+                <span className="material-icons text-2xl">favorite</span>
+              </div>
+              <h3 className="text-lg font-bold text-slate-900 mb-2">Cardiovascular Imaging</h3>
+              <p className="text-sm text-slate-500 leading-relaxed">
+                Detailed visualization of heart structure and blood flow to identify blockages and heart conditions.
+              </p>
+            </div>
+            <div className="bg-white p-6 rounded-2xl shadow-sm hover:shadow-md transition-shadow border border-slate-100">
+              <div className="w-12 h-12 bg-teal-50 rounded-xl flex items-center justify-center text-teal-500 mb-4">
+                <span className="material-icons text-2xl">healing</span>
+              </div>
+              <h3 className="text-lg font-bold text-slate-900 mb-2">Organ Health</h3>
+              <p className="text-sm text-slate-500 leading-relaxed">
+                Comprehensive assessment of internal organs including liver, kidneys, and lungs for function and pathology.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-20 bg-white relative overflow-hidden">
+        <div className="absolute top-0 right-0 -mr-20 -mt-20 w-80 h-80 bg-slate-50 rounded-full blur-3xl opacity-50"></div>
+        <div className="absolute bottom-0 left-0 -ml-20 -mb-20 w-80 h-80 bg-blue-50 rounded-full blur-3xl opacity-50"></div>
+        <div className="container mx-auto px-6 relative z-10">
+          <div className="flex flex-col md:flex-row justify-between items-end mb-12">
+            <div className="max-w-2xl">
+              <span className="text-primary font-semibold tracking-wider text-sm uppercase">Our Expertise</span>
+              <h2 className="text-3xl lg:text-4xl font-serif font-bold text-slate-900 mt-2">Services & Procedures</h2>
+            </div>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="flex gap-6 p-6 rounded-2xl border border-slate-100 hover:border-primary/30 hover:shadow-soft transition-all duration-300 bg-white group">
+              <div className="flex-shrink-0">
+                <div className="w-16 h-16 bg-white rounded-xl flex items-center justify-center shadow-sm text-primary group-hover:bg-primary group-hover:text-white transition-colors duration-300">
+                  <span className="material-icons text-3xl">image</span>
+                </div>
+              </div>
+              <div>
+                <h3 className="text-xl font-bold text-slate-900 mb-2">Digital X-Ray</h3>
+                <p className="text-slate-600 text-sm mb-4 leading-relaxed">
+                  High-resolution digital radiography for quick and accurate assessment of bones and chest with minimal radiation exposure.
+                </p>
+                <ul className="text-sm space-y-1 text-slate-500">
+                  <li className="flex items-center gap-2"><span className="material-icons text-green-500 text-xs">check</span> Instant Results</li>
+                  <li className="flex items-center gap-2"><span className="material-icons text-green-500 text-xs">check</span> Low Dose Radiation</li>
+                </ul>
+              </div>
+            </div>
+            <div className="flex gap-6 p-6 rounded-2xl border border-slate-100 hover:border-primary/30 hover:shadow-soft transition-all duration-300 bg-white group">
+              <div className="flex-shrink-0">
+                <div className="w-16 h-16 bg-white rounded-xl flex items-center justify-center shadow-sm text-pink-500 group-hover:bg-pink-500 group-hover:text-white transition-colors duration-300">
+                  <span className="material-icons text-3xl">female</span>
+                </div>
+              </div>
+              <div>
+                <h3 className="text-xl font-bold text-slate-900 mb-2">3D Mammography</h3>
+                <p className="text-slate-600 text-sm mb-4 leading-relaxed">
+                  Advanced tomosynthesis technology that provides a three-dimensional view of breast tissue for earlier cancer detection.
+                </p>
+                <ul className="text-sm space-y-1 text-slate-500">
+                  <li className="flex items-center gap-2"><span className="material-icons text-green-500 text-xs">check</span> Increased Accuracy</li>
+                  <li className="flex items-center gap-2"><span className="material-icons text-green-500 text-xs">check</span> Comfortable Design</li>
+                </ul>
+              </div>
+            </div>
+            <div className="flex gap-6 p-6 rounded-2xl border border-slate-100 hover:border-primary/30 hover:shadow-soft transition-all duration-300 bg-white group">
+              <div className="flex-shrink-0">
+                <div className="w-16 h-16 bg-white rounded-xl flex items-center justify-center shadow-sm text-indigo-500 group-hover:bg-indigo-500 group-hover:text-white transition-colors duration-300">
+                  <span className="material-icons text-3xl">all_inclusive</span>
+                </div>
+              </div>
+              <div>
+                <h3 className="text-xl font-bold text-slate-900 mb-2">MRI (Magnetic Resonance Imaging)</h3>
+                <p className="text-slate-600 text-sm mb-4 leading-relaxed">
+                  Detailed imaging of soft tissues, organs, and the nervous system using strong magnetic fields and radio waves.
+                </p>
+                <ul className="text-sm space-y-1 text-slate-500">
+                  <li className="flex items-center gap-2"><span className="material-icons text-green-500 text-xs">check</span> Wide-Bore Options</li>
+                  <li className="flex items-center gap-2"><span className="material-icons text-green-500 text-xs">check</span> Contrast Enhanced</li>
+                </ul>
+              </div>
+            </div>
+            <div className="flex gap-6 p-6 rounded-2xl border border-slate-100 hover:border-primary/30 hover:shadow-soft transition-all duration-300 bg-white group">
+              <div className="flex-shrink-0">
+                <div className="w-16 h-16 bg-white rounded-xl flex items-center justify-center shadow-sm text-blue-500 group-hover:bg-blue-500 group-hover:text-white transition-colors duration-300">
+                  <span className="material-icons text-3xl">donut_large</span>
+                </div>
+              </div>
+              <div>
+                <h3 className="text-xl font-bold text-slate-900 mb-2">CT Scans (Computed Tomography)</h3>
+                <p className="text-slate-600 text-sm mb-4 leading-relaxed">
+                  Cross-sectional images of the body used to diagnose complex conditions, guide biopsies, and monitor treatment effectiveness.
+                </p>
+                <ul className="text-sm space-y-1 text-slate-500">
+                  <li className="flex items-center gap-2"><span className="material-icons text-green-500 text-xs">check</span> 64-Slice Technology</li>
+                  <li className="flex items-center gap-2"><span className="material-icons text-green-500 text-xs">check</span> Low-Dose Protocols</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-20 bg-slate-50" id="specialists">
+        <div className="container mx-auto px-6">
+          <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-4">
+            <div className="max-w-2xl">
+              <span className="text-primary font-semibold tracking-wider text-sm uppercase">Our Experts</span>
+              <h2 className="text-3xl md:text-4xl font-serif font-bold text-slate-900 mt-2">Meet Our Radiologists</h2>
+              <p className="text-slate-600 mt-4 text-lg">
+                Highly qualified board-certified radiologists delivering precise diagnostics.
+              </p>
+            </div>
+            <div className="hidden md:block">
+              <Link to="/doctors" className="inline-flex items-center justify-center px-6 py-2.5 text-sm font-semibold text-primary bg-blue-50 border border-blue-100 rounded-lg hover:bg-blue-100 transition-all">
+                View All Doctors
+                <span className="material-icons text-sm ml-2">arrow_forward</span>
+              </Link>
+            </div>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="group relative overflow-hidden rounded-2xl bg-slate-50 border border-slate-100 hover:shadow-card transition-all duration-300">
+              <div className="relative h-80 overflow-hidden bg-slate-200">
+                <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuB9BZuqUAA5IOvQMgXBQ8ryTLzC7vKg69xiTlytVe-76cUVW84Bp8VWOapyKoqbwUVVWBuN_FfxCcsqFq1ao_QGijkga86eRCQeYgiaWkGi7WtZIQPN8Q2vpj9P49F7WLoa7Y9f-Oj_nR-hQM4ZVF-Hxf-HLyzlW5kk3Rk-ANh7DNvIi720KTGderseW5cc8dF6H7Wx6PDoI9ce9GfwndlXLLz4CsQbzfWS0_34TQzB04eBNYZK-S8nSZOkgY3aUVNpbGCAWq_I9vs" alt="Dr. Sarah Jenkins" className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105" />
+                <div className="absolute inset-0 bg-primary/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-4">
+                  <button className="w-10 h-10 bg-white rounded-full flex items-center justify-center text-primary hover:bg-slate-100 transition-colors"><span className="material-icons text-sm">email</span></button>
+                  <button className="w-10 h-10 bg-white rounded-full flex items-center justify-center text-primary hover:bg-slate-100 transition-colors"><span className="material-icons text-sm">calendar_today</span></button>
+                </div>
+              </div>
+              <div className="p-6 text-center">
+                <h3 className="text-xl font-bold text-slate-900 font-serif">Dr. Sarah Jenkins</h3>
+                <p className="text-primary font-medium text-sm mb-4">Chief Radiologist</p>
+                <div className="flex items-center justify-center gap-4 text-sm text-slate-500 border-t border-slate-200 pt-4">
+                  <span>15 Years Exp.</span>
+                  <span className="w-1 h-1 rounded-full bg-slate-300"></span>
+                  <span>Neuroradiology</span>
+                </div>
+              </div>
+            </div>
+            <div className="group relative overflow-hidden rounded-2xl bg-slate-50 border border-slate-100 hover:shadow-card transition-all duration-300">
+              <div className="relative h-80 overflow-hidden bg-slate-200">
+                <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuADGr580ge61fkfsxwBrM7N1TZyAY9Z-GTpjBUo_xK5lWfakoEU_qOziiT-so6DMVRYMjRbu0nVW-k1DcZ572-UwSxJBbHFxL921KxZ6v5xbrKCJfSDGPfGIKJ2lnbzJo8rsumPzZ1VnlvNztje35dbZ8OjoskrJoJWMwL2xyEuWVfFxTxZWLkj3322_nwECoDQOhnBsfJT-uJdBuBYvHW7tZFnkW3TihhkEKyTi4ionW16tPVhP7_Msgmo2tYXI-H3mW5DhYbZYTk" alt="Dr. Michael Chen" className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105" />
+                <div className="absolute inset-0 bg-primary/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-4">
+                  <button className="w-10 h-10 bg-white rounded-full flex items-center justify-center text-primary hover:bg-slate-100 transition-colors"><span className="material-icons text-sm">email</span></button>
+                  <button className="w-10 h-10 bg-white rounded-full flex items-center justify-center text-primary hover:bg-slate-100 transition-colors"><span className="material-icons text-sm">calendar_today</span></button>
+                </div>
+              </div>
+              <div className="p-6 text-center">
+                <h3 className="text-xl font-bold text-slate-900 font-serif">Dr. Michael Chen</h3>
+                <p className="text-primary font-medium text-sm mb-4">Interventional Radiologist</p>
+                <div className="flex items-center justify-center gap-4 text-sm text-slate-500 border-t border-slate-200 pt-4">
+                  <span>12 Years Exp.</span>
+                  <span className="w-1 h-1 rounded-full bg-slate-300"></span>
+                  <span>Vascular</span>
+                </div>
+              </div>
+            </div>
+            <div className="group relative overflow-hidden rounded-2xl bg-slate-50 border border-slate-100 hover:shadow-card transition-all duration-300">
+              <div className="relative h-80 overflow-hidden bg-slate-200">
+                <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAY7zDqNO2hoPrxpDGZpE92fSZkSGJgJi7hfuXKUusm09nz1u9rNHNBxuJ0N_t6HSXFbSkNan8ZuDt8AkK0PHqzsi4I6ipPzk2q3ALgTZVcC1uboMYQ6dZnjiBkO036p5ErpaA0vAjn6D8TivJDicjayQgEkLrG4PsZURfL7C-lOADFWh45AKVB0WfWyqvzWL5JcVEwzhhuOWO87RBPu2zcdEOcZJloL6qr9YD-oKjiSjrlq9KMwrQ9LL25SFVQnG3ZphZNrYFaNIs" alt="Dr. Emily Rodriguez" className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105" />
+                <div className="absolute inset-0 bg-primary/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-4">
+                  <button className="w-10 h-10 bg-white rounded-full flex items-center justify-center text-primary hover:bg-slate-100 transition-colors"><span className="material-icons text-sm">email</span></button>
+                  <button className="w-10 h-10 bg-white rounded-full flex items-center justify-center text-primary hover:bg-slate-100 transition-colors"><span className="material-icons text-sm">calendar_today</span></button>
+                </div>
+              </div>
+              <div className="p-6 text-center">
+                <h3 className="text-xl font-bold text-slate-900 font-serif">Dr. Emily Rodriguez</h3>
+                <p className="text-primary font-medium text-sm mb-4">Pediatric Radiologist</p>
+                <div className="flex items-center justify-center gap-4 text-sm text-slate-500 border-t border-slate-200 pt-4">
+                  <span>10 Years Exp.</span>
+                  <span className="w-1 h-1 rounded-full bg-slate-300"></span>
+                  <span>Pediatrics</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="mt-8 md:hidden text-center">
+            <Link to="/doctors" className="inline-flex items-center justify-center px-6 py-2.5 text-sm font-semibold text-primary bg-blue-50 border border-blue-100 rounded-lg hover:bg-blue-100 transition-all">
+              View All Doctors
+              <span className="material-icons text-sm ml-2">arrow_forward</span>
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-20 bg-slate-900 text-white">
+        <div className="container mx-auto px-6">
+          <div className="bg-gradient-to-br from-slate-900 to-slate-800 rounded-3xl p-8 md:p-12 text-white overflow-hidden relative shadow-2xl border border-slate-700">
+            <div className="absolute inset-0 opacity-10" style={{backgroundImage: "radial-gradient(#ffffff 1px, transparent 1px)", backgroundSize: "24px 24px"}}></div>
+            <div className="relative z-10 flex flex-col lg:flex-row items-center gap-12">
+              <div className="lg:w-1/2">
+                <h2 className="text-3xl font-bold mb-6">Advanced Technology</h2>
+                <p className="text-slate-300 mb-8 leading-relaxed">
+                  We invest in the latest imaging technology to ensure the highest quality results with the lowest possible risk to our patients. Our facility is equipped with next-generation scanners and software.
+                </p>
+                <div className="space-y-6">
+                  <div className="flex items-start gap-4">
+                    <div className="bg-primary/20 p-3 rounded-lg text-primary-light">
+                      <span className="material-icons text-2xl text-blue-400">psychology</span>
+                    </div>
+                    <div>
+                      <h4 className="font-bold text-lg text-white mb-1">AI-Assisted Imaging Analysis</h4>
+                      <p className="text-sm text-slate-400">Utilizing artificial intelligence to assist radiologists in detecting subtle abnormalities earlier and more accurately.</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-4">
+                    <div className="bg-secondary/20 p-3 rounded-lg">
+                      <span className="material-icons text-2xl text-emerald-400">security</span>
+                    </div>
+                    <div>
+                      <h4 className="font-bold text-lg text-white mb-1">Low-Radiation Equipment</h4>
+                      <p className="text-sm text-slate-400">Our CT and X-ray systems are optimized to reduce radiation dose by up to 60% without compromising image quality.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="lg:w-1/2 w-full">
+                <div className="grid grid-cols-2 gap-4">
+                  <div className="bg-white/5 backdrop-blur-sm p-6 rounded-2xl border border-white/10 text-center">
+                    <span className="text-4xl font-bold text-primary block mb-2">24/7</span>
+                    <span className="text-sm text-slate-300">Emergency Imaging</span>
+                  </div>
+                  <div className="bg-white/5 backdrop-blur-sm p-6 rounded-2xl border border-white/10 text-center">
+                    <span className="text-4xl font-bold text-emerald-400 block mb-2">4k+</span>
+                    <span className="text-sm text-slate-300">Scans Monthly</span>
+                  </div>
+                  <div className="bg-white/5 backdrop-blur-sm p-6 rounded-2xl border border-white/10 text-center col-span-2">
+                    <span className="text-4xl font-bold text-purple-400 block mb-2">100%</span>
+                    <span className="text-sm text-slate-300">Digital Archives</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-20 bg-primary text-white relative overflow-hidden" id="appointment">
+        <div className="absolute inset-0 opacity-10" style={{backgroundImage: "url('https://www.transparenttextures.com/patterns/cubes.png')"}}></div>
+        <div className="container mx-auto px-6 relative z-10 text-center">
+          <h2 className="text-3xl md:text-4xl font-serif font-bold mb-6">Ready for your scan?</h2>
+          <p className="text-blue-100 text-lg mb-8 max-w-2xl mx-auto leading-relaxed">
+            Whether you need a routine screening or a complex diagnostic procedure, our radiology team is here to provide exceptional care.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <button 
+              onClick={() => openAppointment({ department: 'Radiology' })}
+              className="inline-flex items-center justify-center px-8 py-3.5 text-base font-bold text-primary bg-white rounded-lg hover:bg-blue-50 shadow-lg transition-colors"
+            >
+              Request Your Imaging Appointment
+            </button>
+            <Link to="/contact" className="inline-flex items-center justify-center px-8 py-3.5 text-base font-bold text-white bg-white/10 border border-white/20 rounded-lg hover:bg-white/20 transition-colors">
+              Doctor Referrals
+            </Link>
           </div>
         </div>
       </section>

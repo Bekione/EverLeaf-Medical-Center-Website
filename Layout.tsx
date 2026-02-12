@@ -15,10 +15,10 @@ const ScrollToTop = () => {
   return null;
 };
 
-export type OpenAppointmentFunc = (data?: { doctorName?: string; department?: string }) => void;
+export type OpenAppointmentFunc = (data?: { doctorName?: string; department?: string; serviceName?: string }) => void;
 
 const Layout: React.FC = () => {
-  const [appointmentData, setAppointmentData] = useState<{ doctorName?: string; department?: string } | null>(null);
+  const [appointmentData, setAppointmentData] = useState<{ doctorName?: string; department?: string; serviceName?: string } | null>(null);
 
   const openAppointment: OpenAppointmentFunc = (data) => {
     setAppointmentData(data || {});

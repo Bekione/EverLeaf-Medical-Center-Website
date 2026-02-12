@@ -49,11 +49,11 @@ const Footer: React.FC = () => {
             <ul className="space-y-4">
               <li className="flex items-start gap-3">
                 <span className="material-icons text-primary mt-1">location_on</span>
-                <span>123 Health Avenue, Medical District,<br/>New York, NY 10012</span>
+                <span>123 Health Avenue, Medical District,<br/>Addis Abeba, AA 10012</span>
               </li>
               <li className="flex items-center gap-3">
                 <span className="material-icons text-primary">phone</span>
-                <span>+1 (555) 123-4567</span>
+                <span>+251 954 123-456</span>
               </li>
               <li className="flex items-center gap-3">
                 <span className="material-icons text-primary">email</span>

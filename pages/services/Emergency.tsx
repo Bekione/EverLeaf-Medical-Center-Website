@@ -1,30 +1,32 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 const Emergency: React.FC = () => {
+  const [showGuidelineModal, setShowGuidelineModal] = useState(false);
+
   return (
     <div className="animate-fade-in">
-      <header className="relative bg-white border-b border-slate-100 overflow-hidden">
-        <div className="absolute inset-0 z-0">
-          <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCCEXHj4w22ep_hWMarvG_GaeCc6rDznHa1Z-kIy3g9AT9mo84EZt3exyxFSbVu2brm9dCysNW9uWI4E90M7zrRFk8JnJdUNBX9aKPYF9lE2pKf0MfczXha6gAbRtSfuL1wb9U2UQvFx-ijmULU8HHbBOewZrGJ1CM56ZO9CU-lsPU3jEFDAEoYXktMBIUFFJ7-u929uGz8avKckbD7RVDTFloU4j6DZ1LblYkuZcS3_wlZwY9dyKYcdEJO6EBPNHtr-QhbfC9ipp4" alt="Emergency Room" className="w-full h-full object-cover opacity-10" />
-          <div className="absolute inset-0 bg-gradient-to-r from-white via-white/80 to-transparent"></div>
+      <header className="relative bg-slate-900 text-white overflow-hidden">
+        <div className="absolute inset-0">
+          <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCCEXHj4w22ep_hWMarvG_GaeCc6rDznHa1Z-kIy3g9AT9mo84EZt3exyxFSbVu2brm9dCysNW9uWI4E90M7zrRFk8JnJdUNBX9aKPYF9lE2pKf0MfczXha6gAbRtSfuL1wb9U2UQvFx-ijmULU8HHbBOewZrGJ1CM56ZO9CU-lsPU3jEFDAEoYXktMBIUFFJ7-u929uGz8avKckbD7RVDTFloU4j6DZ1LblYkuZcS3_wlZwY9dyKYcdEJO6EBPNHtr-QhbfC9ipp4" alt="Emergency Room" className="w-full h-full object-cover opacity-40" />
+          <div className="absolute inset-0 bg-gradient-to-r from-slate-900 via-slate-900/80 to-transparent"></div>
         </div>
-        <div className="container mx-auto px-6 py-16 lg:py-24 relative z-10">
+        <div className="container mx-auto px-6 py-24 md:py-32 relative z-10">
           <div className="max-w-3xl">
             <div className="flex items-center gap-2 mb-6">
-              <span className="inline-block px-3 py-1 text-xs font-bold tracking-wider text-red-600 uppercase bg-red-50 rounded-full border border-red-100">
+              <span className="inline-block px-3 py-1 text-xs font-bold tracking-wider text-red-100 uppercase bg-red-600/80 rounded-full border border-red-500/50 shadow-sm">
                 Critical Care Unit
               </span>
-              <span className="inline-flex items-center text-xs font-medium text-slate-500">
-                <span className="w-2 h-2 rounded-full bg-green-500 mr-2 animate-pulse"></span> Open 24 Hours
+              <span className="inline-flex items-center text-xs font-medium text-red-200">
+                <span className="w-2 h-2 rounded-full bg-red-500 mr-2 animate-pulse"></span> Open 24 Hours
               </span>
             </div>
-            <h1 className="text-4xl lg:text-6xl font-serif font-bold text-slate-900 mb-6 leading-tight">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold mb-6 leading-tight">
               Emergency Care <br/>
-              <span className="text-primary">When Seconds Count.</span>
+              <span className="text-white">When Seconds Count.</span>
             </h1>
-            <p className="text-lg text-slate-600 leading-relaxed max-w-2xl mb-8">
+            <p className="text-lg md:text-xl text-slate-300 mb-8 max-w-2xl leading-relaxed">
               Our Level I Trauma Center is staffed 24/7 by board-certified emergency physicians and specialized nurses, ready to handle any medical crisis with expertise, speed, and compassion.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
@@ -32,10 +34,10 @@ const Emergency: React.FC = () => {
                 Call Emergency
                 <span className="material-icons text-lg ml-2">phone_in_talk</span>
               </a>
-              <a href="#location" className="inline-flex items-center justify-center px-8 py-4 text-base font-bold text-slate-700 bg-white border border-slate-200 rounded-lg hover:bg-slate-50 transition-colors shadow-sm">
+              <Link to="/contact" className="inline-flex items-center justify-center px-8 py-4 text-base font-bold text-white bg-white/10 border border-white/20 backdrop-blur-sm rounded-lg hover:bg-white/20 transition-colors shadow-sm">
                 Get Directions
                 <span className="material-icons text-lg ml-2">directions</span>
-              </a>
+              </Link>
             </div>
           </div>
         </div>
@@ -75,7 +77,7 @@ const Emergency: React.FC = () => {
               <div className="absolute bottom-8 left-8 right-8 bg-white/95 backdrop-blur p-6 rounded-xl shadow-lg z-20 border border-slate-100">
                 <div className="flex items-start gap-4">
                   <div className="w-12 h-12 rounded-full bg-red-50 flex items-center justify-center text-red-600 flex-shrink-0">
-                    <span className="material-symbols-outlined text-2xl">ambulance</span>
+                    <span className="material-icons text-2xl">airport_shuttle</span>
                   </div>
                   <div>
                     <h4 className="font-bold text-slate-900">Ambulance Services</h4>
@@ -128,7 +130,7 @@ const Emergency: React.FC = () => {
               <div className="h-2 bg-red-500"></div>
               <div className="p-8">
                 <div className="w-14 h-14 bg-red-50 rounded-xl flex items-center justify-center text-red-500 mb-6 group-hover:scale-110 transition-transform">
-                  <span className="material-symbols-outlined text-3xl">cardiology</span>
+                  <span className="material-icons text-3xl">favorite</span>
                 </div>
                 <h3 className="text-xl font-bold text-slate-900 mb-3">Cardiac Care Team</h3>
                 <p className="text-slate-500 leading-relaxed mb-6">
@@ -144,7 +146,7 @@ const Emergency: React.FC = () => {
               <div className="h-2 bg-purple-500"></div>
               <div className="p-8">
                 <div className="w-14 h-14 bg-purple-50 rounded-xl flex items-center justify-center text-purple-500 mb-6 group-hover:scale-110 transition-transform">
-                  <span className="material-symbols-outlined text-3xl">neurology</span>
+                  <span className="material-icons text-3xl">psychology</span>
                 </div>
                 <h3 className="text-xl font-bold text-slate-900 mb-3">Stroke Center</h3>
                 <p className="text-slate-500 leading-relaxed mb-6">
@@ -160,7 +162,7 @@ const Emergency: React.FC = () => {
               <div className="h-2 bg-yellow-500"></div>
               <div className="p-8">
                 <div className="w-14 h-14 bg-yellow-50 rounded-xl flex items-center justify-center text-yellow-500 mb-6 group-hover:scale-110 transition-transform">
-                  <span className="material-symbols-outlined text-3xl">child_care</span>
+                  <span className="material-icons text-3xl">child_care</span>
                 </div>
                 <h3 className="text-xl font-bold text-slate-900 mb-3">Pediatric Emergency</h3>
                 <p className="text-slate-500 leading-relaxed mb-6">
@@ -188,7 +190,7 @@ const Emergency: React.FC = () => {
               </p>
               <div className="space-y-4">
                 <div className="flex items-center gap-4">
-                  <div className="w-10 h-10 rounded-full bg-urgent flex items-center justify-center shadow-glow">
+                  <div className="w-10 h-10 rounded-full bg-red-600 flex items-center justify-center shadow-glow">
                     <span className="material-icons text-white">phone_in_talk</span>
                   </div>
                   <div>
@@ -217,18 +219,96 @@ const Emergency: React.FC = () => {
               </div>
             </div>
             <div className="w-full lg:w-auto flex flex-col items-center justify-center text-center bg-white/10 rounded-2xl p-8 border border-white/10 max-w-sm">
-              <span className="material-icons text-5xl text-urgent mb-4 animate-pulse">notification_important</span>
+              <span className="material-icons text-5xl text-red-500 mb-4 animate-pulse">notification_important</span>
               <h3 className="text-xl font-bold mb-2">When to come to the ER?</h3>
               <p className="text-slate-300 text-sm mb-6">
                 Chest pain, difficulty breathing, severe bleeding, head injury, loss of consciousness, or severe abdominal pain.
               </p>
-              <button className="w-full py-3 bg-white text-slate-900 font-bold rounded-lg hover:bg-slate-200 transition-colors">
+              <button 
+                onClick={() => setShowGuidelineModal(true)}
+                className="w-full py-3 bg-white text-slate-900 font-bold rounded-lg hover:bg-slate-200 transition-colors"
+              >
                 View Full Guideline
               </button>
             </div>
           </div>
         </div>
       </section>
+
+      {/* Guideline Modal */}
+      {showGuidelineModal && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/80 backdrop-blur-sm">
+          <div className="bg-white rounded-2xl shadow-2xl max-w-lg w-full max-h-[90vh] overflow-y-auto animate-fade-in relative">
+            <button 
+              onClick={() => setShowGuidelineModal(false)}
+              className="absolute top-4 right-4 p-2 text-slate-400 hover:text-slate-600 transition-colors"
+            >
+              <span className="material-icons text-2xl">close</span>
+            </button>
+            
+            <div className="p-8">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center text-red-600">
+                  <span className="material-icons text-2xl">local_hospital</span>
+                </div>
+                <h3 className="text-2xl font-bold text-slate-900">ER Visitor Guidelines</h3>
+              </div>
+              
+              <div className="space-y-6">
+                <div>
+                  <h4 className="font-bold text-slate-900 mb-2 flex items-center gap-2">
+                    <span className="material-icons text-primary text-sm">priority_high</span> 
+                    When to call 911
+                  </h4>
+                  <ul className="list-disc pl-5 space-y-1 text-sm text-slate-600">
+                    <li>Difficulty breathing or shortness of breath</li>
+                    <li>Chest pain or upper abdominal pain or pressure</li>
+                    <li>Fainting, sudden dizziness, or weakness</li>
+                    <li>Changes in vision</li>
+                    <li>Confusion or changes in mental status</li>
+                    <li>Any sudden or severe pain</li>
+                    <li>Uncontrolled bleeding</li>
+                  </ul>
+                </div>
+
+                <div className="bg-blue-50 p-4 rounded-lg">
+                  <h4 className="font-bold text-slate-900 mb-2 text-sm">What to Bring</h4>
+                  <ul className="space-y-2 text-sm text-slate-600">
+                    <li className="flex items-start gap-2">
+                      <span className="material-icons text-blue-500 text-xs mt-0.5">check</span>
+                      <span>Photo ID and health insurance card</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="material-icons text-blue-500 text-xs mt-0.5">check</span>
+                      <span>List of current medications and allergies</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="material-icons text-blue-500 text-xs mt-0.5">check</span>
+                      <span>Emergency contact information</span>
+                    </li>
+                  </ul>
+                </div>
+
+                <div>
+                  <h4 className="font-bold text-slate-900 mb-2 text-sm">Visitor Policy</h4>
+                  <p className="text-sm text-slate-600">
+                    To ensure the safety of our patients and staff, we currently allow one visitor per patient in the ER. Masks are mandatory in all clinical areas.
+                  </p>
+                </div>
+              </div>
+
+              <div className="mt-8 pt-6 border-t border-slate-100">
+                <button 
+                  onClick={() => setShowGuidelineModal(false)}
+                  className="w-full py-3 bg-slate-900 text-white font-bold rounded-lg hover:bg-slate-800 transition-colors"
+                >
+                  Close Guidelines
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
