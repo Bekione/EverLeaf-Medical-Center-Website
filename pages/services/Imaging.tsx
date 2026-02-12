@@ -2,7 +2,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const Radiology: React.FC = () => {
+const Imaging: React.FC = () => {
   return (
     <div className="animate-fade-in">
       <header className="relative bg-slate-900 text-white overflow-hidden">
@@ -153,4 +153,4 @@ const Radiology: React.FC = () => {
   );
 };
 
-export default Radiology;
+export default Imaging;

@@ -21,12 +21,12 @@ const Services: React.FC = () => {
         <div className="container mx-auto px-6">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
-              { icon: 'stethoscope', title: 'Diagnostic Services', desc: 'Accurate and timely diagnosis is the first step to effective treatment. Our facility is equipped with the latest diagnostic tools.', link: '/services/diagnostics', color: 'blue' },
-              { icon: 'science', title: 'Laboratory', desc: 'Our full-service clinical laboratory operates 24/7, providing comprehensive testing in hematology, chemistry, microbiology, and more.', link: '/services/laboratory', color: 'teal' },
-              { icon: 'radiology', title: 'Imaging', desc: 'We offer high-resolution medical imaging services including MRI, CT scans, ultrasound, and digital X-rays to support precise diagnoses.', link: '#', color: 'indigo' },
-              { icon: 'pill', title: 'Pharmacy', desc: 'Our in-house pharmacy ensures patients have immediate access to necessary medications, offering prescription counseling.', link: '#', color: 'green' },
-              { icon: 'ambulance', title: 'Emergency Care', desc: 'Open 24/7, our emergency department is staffed by trauma specialists ready to handle critical situations with speed and expertise.', link: '#', color: 'red' },
-              { icon: 'health_and_safety', title: 'Preventive Checkups', desc: 'Stay ahead of potential health issues with our comprehensive health screening packages, tailored for all ages and lifestyles.', link: '#', color: 'purple' },
+              { icon: 'medical_services', title: 'Diagnostic Services', desc: 'Accurate and timely diagnosis is the first step to effective treatment. Our facility is equipped with the latest diagnostic tools.', link: '/services/diagnostics', color: 'blue' },
+              { icon: 'biotech', title: 'Laboratory', desc: 'Our full-service clinical laboratory operates 24/7, providing comprehensive testing in hematology, chemistry, microbiology, and more.', link: '/services/laboratory', color: 'teal' },
+              { icon: 'camera_roll', title: 'Imaging', desc: 'We offer high-resolution medical imaging services including MRI, CT scans, ultrasound, and digital X-rays to support precise diagnoses.', link: '/departments/radiology', color: 'indigo' },
+              { icon: 'local_pharmacy', title: 'Pharmacy', desc: 'Our in-house pharmacy ensures patients have immediate access to necessary medications, offering prescription counseling.', link: '/services/pharmacy', color: 'green' },
+              { icon: 'emergency', title: 'Emergency Care', desc: 'Open 24/7, our emergency department is staffed by trauma specialists ready to handle critical situations with speed and expertise.', link: '/services/emergency', color: 'red' },
+              { icon: 'health_and_safety', title: 'Preventive Checkups', desc: 'Stay ahead of potential health issues with our comprehensive health screening packages, tailored for all ages and lifestyles.', link: '/services/preventive-checkups', color: 'purple' },
             ].map((service, idx) => (
               <div key={idx} className="bg-white rounded-2xl p-8 shadow-card border border-slate-100 hover:-translate-y-2 transition-all duration-300 flex flex-col h-full group">
                 <div className={`w-16 h-16 bg-${service.color}-50 rounded-2xl flex items-center justify-center text-${service.color}-500 mb-6 group-hover:scale-110 transition-transform duration-300`}>
