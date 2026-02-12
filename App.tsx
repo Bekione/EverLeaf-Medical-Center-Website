@@ -21,6 +21,9 @@ import Neurology from './pages/departments/Neurology';
 import Surgery from './pages/departments/Surgery';
 import Dental from './pages/departments/Dental';
 import Rehabilitation from './pages/departments/Rehabilitation';
+import Pediatrics from './pages/departments/Pediatrics';
+import Ophthalmology from './pages/departments/Ophthalmology';
+import Radiology from './pages/departments/Radiology';
 import Emergency from './pages/services/Emergency';
 
 // Service Pages
@@ -83,22 +86,28 @@ const App: React.FC = () => {
             
             {/* Departments Routes */}
             <Route path="departments/cardiology" element={<Cardiology />} />
+            <Route path="cardiology" element={<Cardiology />} /> {/* Direct link alias */}
             <Route path="departments/neurology" element={<Neurology />} />
+            <Route path="neurology" element={<Neurology />} /> {/* Direct link alias */}
             <Route path="departments/surgery" element={<Surgery />} />
             <Route path="departments/dental" element={<Dental />} />
             <Route path="departments/rehabilitation" element={<Rehabilitation />} />
-            <Route path="departments/radiology" element={<></>} /> {/* need real page */}
-            <Route path="departments/laboratory" element={<Laboratory />} /> {/* This is duplicate of laboratory page under services */}
-            <Route path="departments/pediatrics" element={<></>} /> {/* need real page */}
-            <Route path="departments/ophthalmology" element={<></>} /> {/* need real page */}
+            <Route path="departments/radiology" element={<Radiology />} />
+            <Route path="departments/laboratory" element={<Laboratory />} />
+            <Route path="laboratory" element={<Laboratory />} /> {/* Direct link alias */}
+            <Route path="departments/pharmacy" element={<Pharmacy />} />
+            <Route path="departments/emergency" element={<Emergency />} />
+            <Route path="emergency" element={<Emergency />} /> {/* Direct link alias */}
+            <Route path="departments/pediatrics" element={<Pediatrics />} />
+            <Route path="departments/ophthalmology" element={<Ophthalmology />} />
             
             {/* Service Routes */}
+            <Route path="services/preventive-checkups" element={<PreventiveCheckups />} />
             <Route path="services/diagnostics" element={<Diagnostics />} />
             <Route path="services/imaging" element={<Imaging />} />
             <Route path="services/laboratory" element={<Laboratory />} />
             <Route path="services/pharmacy" element={<Pharmacy />} />
             <Route path="services/emergency" element={<Emergency />} />
-             <Route path="services/preventive-checkups" element={<PreventiveCheckups />} />
 
             {/* Specific Articles */}
             <Route path="blog/diabetes-management" element={<DiabetesManagement />} />
