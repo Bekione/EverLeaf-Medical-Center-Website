@@ -3,6 +3,23 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const ArticleDetail: React.FC = () => {
+  const handleShare = async () => {
+    if (navigator.share) {
+      try {
+        await navigator.share({
+          title: '5 Tips for Heart Health',
+          text: 'Check out this guide to cardiovascular wellness!',
+          url: window.location.href,
+        });
+      } catch (err) {
+        console.error('Error sharing:', err);
+      }
+    } else {
+      navigator.clipboard.writeText(window.location.href);
+      alert('Link copied to clipboard!');
+    }
+  };
+
   return (
     <div className="animate-fade-in bg-white min-h-screen">
       {/* Breadcrumb */}
@@ -23,13 +40,19 @@ const ArticleDetail: React.FC = () => {
           {/* Main Content */}
           <main className="lg:col-span-8">
             <header className="mb-10">
-              <div className="flex items-center gap-4 mb-6">
-                <span className="inline-block px-3 py-1 text-xs font-bold tracking-wider text-primary uppercase bg-blue-50 rounded-full border border-blue-100">
-                  Cardiology
-                </span>
-                <span className="text-sm text-slate-500 flex items-center gap-1">
-                  <span className="material-icons text-sm">schedule</span> 5 min read
-                </span>
+              <div className="flex items-center justify-between mb-6">
+                <div className="flex items-center gap-4">
+                  <span className="inline-block px-3 py-1 text-xs font-bold tracking-wider text-primary uppercase bg-blue-50 rounded-full border border-blue-100">
+                    Cardiology
+                  </span>
+                  <span className="text-sm text-slate-500 flex items-center gap-1">
+                    <span className="material-icons text-sm">schedule</span> 5 min read
+                  </span>
+                </div>
+                <button onClick={handleShare} className="flex items-center gap-2 text-slate-500 hover:text-primary transition-colors">
+                  <span className="material-icons text-lg">share</span>
+                  <span className="text-sm font-medium hidden sm:inline">Share</span>
+                </button>
               </div>
               <h1 className="text-4xl md:text-5xl font-serif font-bold text-slate-900 mb-6 leading-tight">
                 5 Tips for Heart Health: A Guide to Cardiovascular Wellness
@@ -95,7 +118,7 @@ const ArticleDetail: React.FC = () => {
             <hr className="border-slate-200 my-12" />
 
             <div className="bg-slate-50 rounded-2xl p-8 flex flex-col sm:flex-row gap-6 items-center sm:items-start text-center sm:text-left">
-              <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=150&h=150&fit=crop" alt="Dr. Sarah Jenkins" className="w-24 h-24 rounded-full object-cover shadow-lg border-2 border-white" />
+              <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBChCNT8erlVF0Jb3YnNa2Jwxeqc_G7B-uiUleBsEICKirjSMrw_SrDb1GtFJYE_2kXVPDvEQ9FZiSq9xDZWlzeXzG8Z_iJXZ0UhjaH0-zMnejmi_arf1Z2AFiTRF47V7ikISqdI30VzxwwefpXmX2B2G2DUYYlTvhQzqZbeC51CkUbkliXD1whIKgHDP6D6Ths5hVIR8Td0ilLpGSPmGvlI5lEcPHmuEZoWiAEk_YQDma6T3G90ZhtBFBD_wV7I7U8Oj9ub5mYqxI" alt="Dr. Sarah Jenkins" className="w-24 h-24 rounded-full object-cover shadow-lg border-2 border-white" />
               <div>
                 <h3 className="text-xl font-bold text-slate-900 mb-2">Dr. Sarah Jenkins</h3>
                 <p className="text-primary font-medium text-sm mb-3">Chief of Cardiology</p>
@@ -112,53 +135,47 @@ const ArticleDetail: React.FC = () => {
 
           {/* Sidebar */}
           <aside className="lg:col-span-4 space-y-8">
-            <div className="bg-white rounded-2xl shadow-card p-8 border border-slate-100 sticky top-28">
-              <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center text-primary mb-6">
-                <span className="material-icons text-2xl">calendar_month</span>
-              </div>
-              <h3 className="text-2xl font-bold text-slate-900 mb-3">Time for a Check-up?</h3>
-              <p className="text-slate-600 mb-6 leading-relaxed">
-                Don't wait until it's an emergency. Schedule a preventative screening with our cardiology team today.
-              </p>
-              <form className="space-y-4">
-                <input type="text" placeholder="Full Name" className="w-full rounded-lg border-slate-200 bg-slate-50 text-slate-900 focus:border-primary focus:ring-primary py-2.5 px-4" />
-                <input type="tel" placeholder="Phone Number" className="w-full rounded-lg border-slate-200 bg-slate-50 text-slate-900 focus:border-primary focus:ring-primary py-2.5 px-4" />
-                <button type="button" className="w-full bg-primary hover:bg-primary-dark text-white font-bold py-3 px-4 rounded-lg transition-colors shadow-soft">
-                  Request Appointment
-                </button>
-              </form>
-              <p className="text-xs text-slate-400 mt-4 text-center">
-                Or call us directly at <a href="tel:+15551234567" className="text-primary hover:underline font-semibold">555-123-4567</a>
-              </p>
-            </div>
-
-            <div>
+            {/* Related Articles */}
+            <div className="bg-white rounded-2xl shadow-card p-6 border border-slate-100 sticky top-28">
               <h3 className="text-lg font-bold text-slate-900 mb-6 border-b border-slate-200 pb-2">Related Articles</h3>
               <div className="space-y-6">
-                {[
-                  { title: 'Top 10 Superfoods for a Healthy Heart', cat: 'Nutrition', img: 'https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=150&h=150&fit=crop' },
-                  { title: 'Understanding Hypertension: The Silent Killer', cat: 'Prevention', img: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=150&h=150&fit=crop' },
-                  { title: 'How Much Exercise Do You Really Need?', cat: 'Lifestyle', img: 'https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=150&h=150&fit=crop' }
-                ].map((item, i) => (
-                  <Link to="#" key={i} className="group flex gap-4 items-start">
-                    <div className="w-20 h-20 flex-shrink-0 rounded-lg overflow-hidden">
-                      <img src={item.img} alt={item.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
-                    </div>
-                    <div>
-                      <span className="text-xs text-primary font-semibold uppercase tracking-wider mb-1 block">{item.cat}</span>
-                      <h4 className="font-bold text-slate-800 leading-snug group-hover:text-primary transition-colors text-sm font-serif">{item.title}</h4>
-                    </div>
-                  </Link>
-                ))}
+                <Link to="/blog/diabetes-management" className="group flex gap-4 items-start">
+                  <div className="w-20 h-20 flex-shrink-0 rounded-lg overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1579154204601-01588f351e67?w=150&h=150&fit=crop" alt="Diabetes Management" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+                  </div>
+                  <div>
+                    <span className="text-xs text-primary font-semibold uppercase tracking-wider mb-1 block">Research</span>
+                    <h4 className="font-bold text-slate-800 leading-snug group-hover:text-primary transition-colors text-sm font-serif">Breakthrough in Diabetes Management</h4>
+                  </div>
+                </Link>
+                <Link to="/blog/flu-season" className="group flex gap-4 items-start">
+                  <div className="w-20 h-20 flex-shrink-0 rounded-lg overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1633613286991-611fe299c4be?w=150&h=150&fit=crop" alt="Flu Season" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+                  </div>
+                  <div>
+                    <span className="text-xs text-green-600 font-semibold uppercase tracking-wider mb-1 block">Health Tips</span>
+                    <h4 className="font-bold text-slate-800 leading-snug group-hover:text-primary transition-colors text-sm font-serif">Flu Season 2023 Guide</h4>
+                  </div>
+                </Link>
+                <Link to="/blog/senior-mobility" className="group flex gap-4 items-start">
+                  <div className="w-20 h-20 flex-shrink-0 rounded-lg overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1555814965-74d430d12197?w=150&h=150&fit=crop" alt="Senior Mobility" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+                  </div>
+                  <div>
+                    <span className="text-xs text-blue-600 font-semibold uppercase tracking-wider mb-1 block">Research</span>
+                    <h4 className="font-bold text-slate-800 leading-snug group-hover:text-primary transition-colors text-sm font-serif">Mobility and Cognitive Health</h4>
+                  </div>
+                </Link>
               </div>
             </div>
 
-            <div className="bg-gradient-to-br from-primary to-primary-dark rounded-2xl p-8 text-white shadow-lg relative overflow-hidden">
+            {/* Newsletter */}
+            <div className="bg-gradient-to-br from-slate-900 to-blue-900 rounded-2xl p-8 text-white shadow-lg relative overflow-hidden">
               <div className="absolute top-0 right-0 w-32 h-32 bg-white opacity-10 rounded-full blur-2xl translate-x-1/2 -translate-y-1/2 pointer-events-none"></div>
-              <h3 className="text-xl font-bold mb-3 relative z-10">Subscribe to our Newsletter</h3>
-              <p className="text-blue-100 text-sm mb-6 relative z-10">Get the latest health tips and news delivered to your inbox weekly.</p>
+              <h3 className="text-xl font-bold mb-3 relative z-10">Subscribe to Updates</h3>
+              <p className="text-blue-100 text-sm mb-6 relative z-10">Get the latest heart health tips and research delivered to your inbox.</p>
               <div className="relative z-10">
-                <input type="email" placeholder="Your email address" className="w-full rounded-lg border-0 bg-white/20 text-white placeholder-blue-100 focus:ring-2 focus:ring-white mb-3 px-4 py-2" />
+                <input type="email" placeholder="Your email address" className="w-full rounded-lg border-0 bg-white/10 backdrop-blur-sm text-white placeholder-blue-200 focus:ring-2 focus:ring-white mb-3 px-4 py-2" />
                 <button className="w-full bg-white text-primary font-bold py-2 rounded-lg hover:bg-blue-50 transition-colors">Subscribe</button>
               </div>
             </div>

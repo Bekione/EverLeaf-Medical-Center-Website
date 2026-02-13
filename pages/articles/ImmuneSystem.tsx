@@ -3,6 +3,23 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const ImmuneSystem: React.FC = () => {
+  const handleShare = async () => {
+    if (navigator.share) {
+      try {
+        await navigator.share({
+          title: '5 Superfoods to Boost Your Immune System',
+          text: 'Great tips for staying healthy this winter!',
+          url: window.location.href,
+        });
+      } catch (err) {
+        console.error('Error sharing:', err);
+      }
+    } else {
+      navigator.clipboard.writeText(window.location.href);
+      alert('Link copied to clipboard!');
+    }
+  };
+
   return (
     <div className="animate-fade-in bg-white min-h-screen">
       <div className="bg-slate-50 border-b border-slate-200">
@@ -36,13 +53,19 @@ const ImmuneSystem: React.FC = () => {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
           <div className="lg:col-span-8">
             <header className="mb-10">
-              <div className="flex items-center gap-4 mb-6">
-                <span className="inline-block px-3 py-1 text-xs font-bold tracking-wider text-green-600 uppercase bg-green-50 rounded-full border border-green-100">
-                  Nutrition
-                </span>
-                <span className="text-sm text-slate-500 flex items-center gap-1">
-                  <span className="material-icons text-sm">schedule</span> 4 min read
-                </span>
+              <div className="flex items-center justify-between mb-6">
+                <div className="flex items-center gap-4">
+                  <span className="inline-block px-3 py-1 text-xs font-bold tracking-wider text-green-600 uppercase bg-green-50 rounded-full border border-green-100">
+                    Health Tips
+                  </span>
+                  <span className="text-sm text-slate-500 flex items-center gap-1">
+                    <span className="material-icons text-sm">schedule</span> 4 min read
+                  </span>
+                </div>
+                <button onClick={handleShare} className="flex items-center gap-2 text-slate-500 hover:text-primary transition-colors">
+                  <span className="material-icons text-lg">share</span>
+                  <span className="text-sm font-medium hidden sm:inline">Share</span>
+                </button>
               </div>
               <h1 className="text-4xl md:text-5xl font-serif font-bold text-slate-900 mb-6 leading-tight">
                 5 Superfoods to Boost Your Immune System This Winter
@@ -135,67 +158,53 @@ const ImmuneSystem: React.FC = () => {
                   Emily is a Registered Dietitian with a passion for functional medicine. She specializes in creating personalized nutrition plans that boost immunity and improve metabolic health.
                 </p>
                 <div className="flex gap-3 justify-center sm:justify-start">
-                  <Link to="#" className="text-slate-400 hover:text-primary transition-colors"><span className="material-icons text-sm">email</span></Link>
-                  <Link to="#" className="text-slate-400 hover:text-primary transition-colors"><span className="material-icons text-sm">link</span></Link>
+                  <a href="#" className="text-slate-400 hover:text-primary transition-colors"><span className="material-icons text-sm">email</span></a>
+                  <a href="#" className="text-slate-400 hover:text-primary transition-colors"><span className="material-icons text-sm">link</span></a>
                 </div>
               </div>
             </div>
           </div>
 
           <aside className="lg:col-span-4 space-y-8">
-            <div className="bg-white rounded-2xl shadow-card p-8 border border-slate-100 sticky top-28">
-              <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center text-primary mb-6">
-                <span className="material-symbols-outlined text-2xl">calendar_month</span>
-              </div>
-              <h3 className="text-2xl font-bold text-slate-900 mb-3">Time for a Check-up?</h3>
-              <p className="text-slate-600 mb-6 leading-relaxed">
-                Nutritional advice is best when personalized. Schedule a consultation with our nutrition team today.
-              </p>
-              <form className="space-y-4">
-                <div>
-                  <label htmlFor="name" className="sr-only">Full Name</label>
-                  <input type="text" id="name" placeholder="Full Name" className="w-full rounded-lg border-slate-200 bg-slate-50 text-slate-900 focus:border-primary focus:ring-primary" />
-                </div>
-                <div>
-                  <label htmlFor="phone" className="sr-only">Phone Number</label>
-                  <input type="tel" id="phone" placeholder="Phone Number" className="w-full rounded-lg border-slate-200 bg-slate-50 text-slate-900 focus:border-primary focus:ring-primary" />
-                </div>
-                <button type="button" className="w-full bg-primary hover:bg-primary-dark text-white font-bold py-3 px-4 rounded-lg transition-colors shadow-soft">
-                  Request Appointment
-                </button>
-              </form>
-              <p className="text-xs text-slate-400 mt-4 text-center">
-                Or call us directly at <a href="tel:+15551234567" className="text-primary hover:underline font-semibold">555-123-4567</a>
-              </p>
-            </div>
-
-            <div>
+            <div className="bg-white rounded-2xl shadow-card p-6 border border-slate-100 sticky top-28">
               <h3 className="text-lg font-bold text-slate-900 mb-6 border-b border-slate-200 pb-2">Related Articles</h3>
               <div className="space-y-6">
-                {[
-                  { title: '5 Tips for Heart Health: A Guide to Wellness', cat: 'Cardiology', img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAlFjjpPkZuPmGn_DWzxakEnDEayMJLRdZ6bFiddE91zMLTj7j-B316nVmbHuzt78lCw5kS9u00JAmVWKXJdMfYRQBND1LGt7dwaIQP7dxw3s6krW8q4aHl8pxo7BL74LvTZlRtdp5-97kKIzEFqAebbq1Nb5C7ZGfxFFGH-D_kcsCzML0VVgDlyUYyBgaeA9xX5KDNP9NklCIrlc7evMWlmCQNzdAT2eQOEJc1ZtxkbeOGgwdmghmwCPoMyZ14SVGwgBVKC3p1_FM' },
-                  { title: 'Why the Flu Shot is More Important Than Ever', cat: 'Prevention', img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuA2N8yNJO2FksSY2VL9aOORd-m7aLBKqwS5B8OVUya4ee0pPbyHbmAT3hU9azuBC7SpfJSUok1yqZQZoS8Jo-m1zgVY8y8eZrSWJe8ZT-ZMWrW0aUS2NgrXnoebEHBOOKRWNBt3WiZLUlxuxhrMRZhJlSy1hj8O0UQnwf8inWRb-1w4H_qHYp59geqyccrjHMhgYiKlPLQTiOPzNwcj7Ly58ovCe0lytrx-z0cTWyLE1YvXPFHc7HP3SXn6bKLnXiGXhIh62LSbBqw' },
-                  { title: 'The Hidden Benefits of Staying Hydrated', cat: 'Lifestyle', img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDuFBUN7DMvatkuHe2PXk6i7AfNOVLYp7qH75l0IVakiufCcGPlyZMeCJYFtYTOmmY29eJ_URHGrqmz1eC27ZzhfOYg2x-1W0Jy1J2TLqbpOjR8yDO6QpHCpy8v3ZiRe3GGGrPZAnCZrQgQHcPeSMLfofeg9aRNIdUL3CIeScdG-gBaVGkvx0B84weBhyiVElKP-PwmC2ZRZRPs9SpMeBj8xld8u930TFDyLoL7BcIosX3lnwpggL79ZB3dcmJnTNu6vrA3y2S_Th0' }
-                ].map((item, i) => (
-                  <Link to="#" key={i} className="group flex gap-4 items-start">
-                    <div className="w-20 h-20 flex-shrink-0 rounded-lg overflow-hidden">
-                      <img src={item.img} alt={item.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
-                    </div>
-                    <div>
-                      <span className="text-xs text-primary font-semibold uppercase tracking-wider mb-1 block">{item.cat}</span>
-                      <h4 className="font-bold text-slate-800 leading-snug group-hover:text-primary transition-colors text-sm font-serif">{item.title}</h4>
-                    </div>
-                  </Link>
-                ))}
+                <Link to="/blog/diabetes-management" className="group flex gap-4 items-start">
+                  <div className="w-20 h-20 flex-shrink-0 rounded-lg overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1579154204601-01588f351e67?w=150&h=150&fit=crop" alt="Diabetes Management" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+                  </div>
+                  <div>
+                    <span className="text-xs text-blue-600 font-semibold uppercase tracking-wider mb-1 block">Research</span>
+                    <h4 className="font-bold text-slate-800 leading-snug group-hover:text-primary transition-colors text-sm font-serif">Breakthrough in Diabetes Management</h4>
+                  </div>
+                </Link>
+                <Link to="/blog/flu-season" className="group flex gap-4 items-start">
+                  <div className="w-20 h-20 flex-shrink-0 rounded-lg overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1633613286991-611fe299c4be?w=150&h=150&fit=crop" alt="Flu Season" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+                  </div>
+                  <div>
+                    <span className="text-xs text-green-600 font-semibold uppercase tracking-wider mb-1 block">Health Tips</span>
+                    <h4 className="font-bold text-slate-800 leading-snug group-hover:text-primary transition-colors text-sm font-serif">Flu Season 2023 Guide</h4>
+                  </div>
+                </Link>
+                <Link to="/blog/preventive-cardiology" className="group flex gap-4 items-start">
+                  <div className="w-20 h-20 flex-shrink-0 rounded-lg overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1505751172876-fa1923c5c528?w=150&h=150&fit=crop" alt="Heart Health" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+                  </div>
+                  <div>
+                    <span className="text-xs text-primary font-semibold uppercase tracking-wider mb-1 block">Cardiology</span>
+                    <h4 className="font-bold text-slate-800 leading-snug group-hover:text-primary transition-colors text-sm font-serif">5 Tips for Heart Health</h4>
+                  </div>
+                </Link>
               </div>
             </div>
 
-            <div className="bg-gradient-to-br from-primary to-primary-dark rounded-2xl p-8 text-white shadow-lg relative overflow-hidden">
+            <div className="bg-gradient-to-br from-slate-900 to-blue-900 rounded-2xl p-8 text-white shadow-lg relative overflow-hidden">
               <div className="absolute top-0 right-0 w-32 h-32 bg-white opacity-10 rounded-full blur-2xl translate-x-1/2 -translate-y-1/2 pointer-events-none"></div>
               <h3 className="text-xl font-bold mb-3 relative z-10">Subscribe to our Newsletter</h3>
               <p className="text-blue-100 text-sm mb-6 relative z-10">Get the latest nutrition tips and recipes delivered to your inbox weekly.</p>
               <div className="relative z-10">
-                <input type="email" placeholder="Your email address" className="w-full rounded-lg border-0 bg-white/20 text-white placeholder-blue-100 focus:ring-2 focus:ring-white mb-3" />
+                <input type="email" placeholder="Your email address" className="w-full rounded-lg border-0 bg-white/10 backdrop-blur-sm text-white placeholder-blue-200 focus:ring-2 focus:ring-white mb-3 px-4 py-2" />
                 <button className="w-full bg-white text-primary font-bold py-2 rounded-lg hover:bg-blue-50 transition-colors">Subscribe</button>
               </div>
             </div>

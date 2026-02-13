@@ -1,17 +1,105 @@
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
-const articles = [
-  { id: 1, title: 'New Breakthrough in Diabetes Management Using AI Technology', category: 'Research', date: 'Nov 12, 2023', read: '5 min read', img: 'https://images.unsplash.com/photo-1579154204601-01588f351e67?w=800&q=80', author: 'Dr. Mark Johnson' },
-  { id: 2, title: '5 Superfoods to Boost Your Immune System This Winter', category: 'Health Tips', date: 'Nov 08, 2023', read: '4 min read', img: 'https://images.unsplash.com/photo-1498837167922-ddd27525d352?w=800&q=80', author: 'Emily Lewis, RD' },
-  { id: 3, title: 'MediCare Opens New Pediatric Wing in West Wing', category: 'Announcements', date: 'Nov 01, 2023', read: '2 min read', img: 'https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=800&q=80', author: 'Admin Team' },
-  { id: 4, title: 'Recognizing the Early Signs of Anxiety in Teenagers', category: 'Medical Awareness', date: 'Oct 28, 2023', read: '6 min read', img: 'https://images.unsplash.com/photo-1527137342181-19aab11a8ee8?w=800&q=80', author: 'Dr. James Wilson' },
-  { id: 5, title: 'Flu Season 2023: Why the Vaccine is More Important Than Ever', category: 'Health Tips', date: 'Oct 15, 2023', read: '3 min read', img: 'https://images.unsplash.com/photo-1633613286991-611fe299c4be?w=800&q=80', author: 'Karen Lee, RN' },
-  { id: 6, title: 'Mobility in Seniors: The Link Between Walking and Cognitive Health', category: 'Research', date: 'Oct 10, 2023', read: '7 min read', img: 'https://images.unsplash.com/photo-1555814965-74d430d12197?w=800&q=80', author: 'Dr. Robert Turner' },
+// Article Data Configuration
+const articlesData = [
+  { 
+    id: 'diabetes-management', 
+    title: 'New Breakthrough in Diabetes Management Using AI Technology', 
+    category: 'Research', 
+    date: 'Nov 12, 2023', 
+    read: '7 min read', 
+    img: 'https://images.unsplash.com/photo-1579154204601-01588f351e67?w=800&q=80', 
+    author: 'Dr. Mark Johnson' 
+  },
+  { 
+    id: 'immune-system', 
+    title: '5 Superfoods to Boost Your Immune System This Winter', 
+    category: 'Health Tips', 
+    date: 'Nov 08, 2023', 
+    read: '4 min read', 
+    img: 'https://images.unsplash.com/photo-1498837167922-ddd27525d352?w=800&q=80', 
+    author: 'Emily Lewis, RD' 
+  },
+  { 
+    id: 'pediatric-wing', 
+    title: 'MediCare Opens New Pediatric Wing in West Wing', 
+    category: 'Announcements', 
+    date: 'Nov 01, 2023', 
+    read: '2 min read', 
+    img: 'https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=800&q=80', 
+    author: 'Admin Team' 
+  },
+  { 
+    id: 'anxiety-in-teens', 
+    title: 'Recognizing the Early Signs of Anxiety in Teenagers', 
+    category: 'Medical Awareness', 
+    date: 'Oct 28, 2023', 
+    read: '6 min read', 
+    img: 'https://images.unsplash.com/photo-1527137342181-19aab11a8ee8?w=800&q=80', 
+    author: 'Dr. James Wilson' 
+  },
+  { 
+    id: 'flu-season', 
+    title: 'Flu Season 2023: Why the Vaccine is More Important Than Ever', 
+    category: 'Health Tips', 
+    date: 'Oct 15, 2023', 
+    read: '3 min read', 
+    img: 'https://images.unsplash.com/photo-1633613286991-611fe299c4be?w=800&q=80', 
+    author: 'Karen Lee, RN' 
+  },
+  { 
+    id: 'senior-mobility', 
+    title: 'Mobility in Seniors: The Link Between Walking and Cognitive Health', 
+    category: 'Research', 
+    date: 'Oct 10, 2023', 
+    read: '7 min read', 
+    img: 'https://images.unsplash.com/photo-1555814965-74d430d12197?w=800&q=80', 
+    author: 'Dr. Robert Turner' 
+  },
 ];
 
+const ITEMS_PER_PAGE = 3;
+
 const Blog: React.FC = () => {
+  const [filter, setFilter] = useState('All');
+  const [currentPage, setCurrentPage] = useState(1);
+
+  // Filter Logic
+  const filteredArticles = filter === 'All' 
+    ? articlesData 
+    : articlesData.filter(article => article.category === filter);
+
+  // Pagination Logic
+  const totalPages = Math.ceil(filteredArticles.length / ITEMS_PER_PAGE);
+  const paginatedArticles = filteredArticles.slice(
+    (currentPage - 1) * ITEMS_PER_PAGE,
+    currentPage * ITEMS_PER_PAGE
+  );
+
+  // Reset page when filter changes
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [filter]);
+
+  const handlePageChange = (page: number) => {
+    if (page >= 1 && page <= totalPages) {
+      setCurrentPage(page);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  };
+
+  const getCategoryColor = (category: string) => {
+    switch(category) {
+      case 'Research': return 'text-primary bg-blue-50';
+      case 'Health Tips': return 'text-secondary bg-green-50';
+      case 'Announcements': return 'text-red-500 bg-red-50';
+      case 'Medical Awareness': return 'text-purple-600 bg-purple-50';
+      default: return 'text-slate-600 bg-slate-100';
+    }
+  };
+
   return (
     <div className="animate-fade-in bg-slate-50 min-h-screen">
       {/* Featured Article Hero */}
@@ -59,24 +147,29 @@ const Blog: React.FC = () => {
         <div className="flex flex-col md:flex-row justify-between items-center mb-12 border-b border-slate-200 pb-4">
           <h2 className="text-2xl font-bold text-slate-900 mb-6 md:mb-0">Latest Health Insights</h2>
           <div className="flex flex-wrap justify-center gap-2">
-            <button className="px-4 py-2 rounded-full bg-primary text-white text-sm font-medium shadow-md">All Articles</button>
-            <button className="px-4 py-2 rounded-full bg-white text-slate-600 hover:bg-slate-100 hover:text-primary transition-colors text-sm font-medium border border-slate-200">Health Tips</button>
-            <button className="px-4 py-2 rounded-full bg-white text-slate-600 hover:bg-slate-100 hover:text-primary transition-colors text-sm font-medium border border-slate-200">Announcements</button>
-            <button className="px-4 py-2 rounded-full bg-white text-slate-600 hover:bg-slate-100 hover:text-primary transition-colors text-sm font-medium border border-slate-200">Research</button>
+            {['All', 'Health Tips', 'Announcements', 'Research', 'Medical Awareness'].map((cat) => (
+              <button
+                key={cat}
+                onClick={() => setFilter(cat)}
+                className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
+                  filter === cat 
+                    ? 'bg-primary text-white shadow-md' 
+                    : 'bg-white text-slate-600 hover:bg-slate-100 hover:text-primary border border-slate-200'
+                }`}
+              >
+                {cat === 'All' ? 'All Articles' : cat}
+              </button>
+            ))}
           </div>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {articles.map((article) => (
-            <article key={article.id} className="bg-white rounded-2xl overflow-hidden shadow-card hover:shadow-xl transition-all duration-300 group border border-slate-100 flex flex-col h-full">
+          {paginatedArticles.map((article) => (
+            <article key={article.id} className="bg-white rounded-2xl overflow-hidden shadow-card hover:shadow-xl transition-all duration-300 group border border-slate-100 flex flex-col h-full animate-fade-in">
               <div className="relative h-56 overflow-hidden">
                 <img src={article.img} alt={article.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
                 <div className="absolute top-4 left-4">
-                  <span className={`px-3 py-1 bg-white/90 backdrop-blur text-xs font-bold uppercase tracking-wider rounded-md shadow-sm ${
-                    article.category === 'Research' ? 'text-primary' : 
-                    article.category === 'Health Tips' ? 'text-secondary' : 
-                    article.category === 'Announcements' ? 'text-red-500' : 'text-purple-600'
-                  }`}>
+                  <span className={`px-3 py-1 backdrop-blur-md text-xs font-bold uppercase tracking-wider rounded-md shadow-sm ${getCategoryColor(article.category)} bg-white/90`}>
                     {article.category}
                   </span>
                 </div>
@@ -106,48 +199,92 @@ const Blog: React.FC = () => {
           ))}
         </div>
 
-        <div className="mt-16 flex justify-center">
-          <nav className="flex items-center gap-2">
-            <button className="w-10 h-10 flex items-center justify-center rounded-lg border border-slate-200 text-slate-500 hover:bg-slate-50 transition-colors">
-              <span className="material-icons text-sm">chevron_left</span>
+        {paginatedArticles.length === 0 && (
+          <div className="text-center py-20">
+            <p className="text-slate-500 text-lg">No articles found in this category.</p>
+            <button 
+              onClick={() => setFilter('All')} 
+              className="mt-4 px-6 py-2 bg-primary text-white rounded-lg hover:bg-primary-dark transition-colors"
+            >
+              View All
             </button>
-            <button className="w-10 h-10 flex items-center justify-center rounded-lg bg-primary text-white shadow-md">1</button>
-            <button className="w-10 h-10 flex items-center justify-center rounded-lg border border-slate-200 text-slate-500 hover:bg-slate-50 transition-colors">2</button>
-            <button className="w-10 h-10 flex items-center justify-center rounded-lg border border-slate-200 text-slate-500 hover:bg-slate-50 transition-colors">3</button>
-            <span className="px-2 text-slate-400">...</span>
-            <button className="w-10 h-10 flex items-center justify-center rounded-lg border border-slate-200 text-slate-500 hover:bg-slate-50 transition-colors">8</button>
-            <button className="w-10 h-10 flex items-center justify-center rounded-lg border border-slate-200 text-slate-500 hover:bg-slate-50 transition-colors">
-              <span className="material-icons text-sm">chevron_right</span>
-            </button>
-          </nav>
-        </div>
+          </div>
+        )}
+
+        {/* Pagination Controls */}
+        {filteredArticles.length > ITEMS_PER_PAGE && (
+          <div className="mt-16 flex justify-center">
+            <nav className="flex items-center gap-2">
+              <button 
+                onClick={() => handlePageChange(currentPage - 1)}
+                disabled={currentPage === 1}
+                className="w-10 h-10 flex items-center justify-center rounded-lg border border-slate-200 text-slate-500 hover:bg-slate-50 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+              >
+                <span className="material-icons text-sm">chevron_left</span>
+              </button>
+              
+              {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
+                <button
+                  key={page}
+                  onClick={() => handlePageChange(page)}
+                  className={`w-10 h-10 flex items-center justify-center rounded-lg font-medium transition-colors ${
+                    currentPage === page 
+                      ? 'bg-primary text-white shadow-md' 
+                      : 'border border-slate-200 text-slate-600 hover:bg-slate-50 hover:text-primary'
+                  }`}
+                >
+                  {page}
+                </button>
+              ))}
+
+              <button 
+                onClick={() => handlePageChange(currentPage + 1)}
+                disabled={currentPage === totalPages}
+                className="w-10 h-10 flex items-center justify-center rounded-lg border border-slate-200 text-slate-500 hover:bg-slate-50 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+              >
+                <span className="material-icons text-sm">chevron_right</span>
+              </button>
+            </nav>
+          </div>
+        )}
       </section>
 
-      {/* Newsletter Section */}
-      <section className="py-20 bg-white border-y border-slate-200">
-        <div className="container mx-auto px-6">
-          <div className="bg-primary rounded-3xl p-10 md:p-16 relative overflow-hidden text-center md:text-left shadow-2xl">
-            <div className="absolute top-0 right-0 -mr-20 -mt-20 w-80 h-80 bg-white opacity-10 rounded-full blur-3xl"></div>
-            <div className="absolute bottom-0 left-0 -ml-20 -mb-20 w-60 h-60 bg-blue-900 opacity-20 rounded-full blur-2xl"></div>
-            <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-10">
-              <div className="md:w-1/2">
-                <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Stay Informed, Stay Healthy</h2>
-                <p className="text-blue-100 text-lg leading-relaxed">
-                  Subscribe to our monthly newsletter for the latest medical news, health tips, and upcoming events at MediCare Center.
-                </p>
-              </div>
-              <div className="md:w-1/2 w-full max-w-md">
-                <form className="flex flex-col sm:flex-row gap-3">
-                  <input type="email" className="w-full px-6 py-4 rounded-xl text-slate-900 focus:outline-none focus:ring-2 focus:ring-blue-300 border-none shadow-lg placeholder:text-slate-400" placeholder="Enter your email address" />
-                  <button type="button" className="px-8 py-4 bg-slate-900 text-white font-bold rounded-xl hover:bg-slate-800 transition-colors shadow-lg whitespace-nowrap">
-                    Subscribe
-                  </button>
-                </form>
-                <p className="text-blue-200 text-xs mt-4 text-center sm:text-left">
-                  We respect your privacy. Unsubscribe at any time.
-                </p>
-              </div>
-            </div>
+      {/* Revamped Newsletter Section */}
+      <section className="py-24 relative overflow-hidden" id="newsletter">
+        <div className="absolute inset-0 bg-gradient-to-br from-slate-900 to-blue-900"></div>
+        <div className="absolute inset-0 opacity-10" style={{backgroundImage: "url('https://www.transparenttextures.com/patterns/cubes.png')"}}></div>
+        
+        {/* Decorative Elements */}
+        <div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/3 w-96 h-96 bg-white/10 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-0 left-0 translate-y-1/2 -translate-x-1/3 w-96 h-96 bg-blue-500/20 rounded-full blur-3xl"></div>
+        
+        <div className="container mx-auto px-6 relative z-10 text-center">
+          <div className="max-w-4xl mx-auto">
+            <span className="inline-block py-1 px-3 rounded-full bg-white/10 border border-white/20 text-white text-xs font-bold tracking-wider uppercase mb-6 backdrop-blur-md">
+              Stay Connected
+            </span>
+            <h2 className="text-3xl md:text-5xl lg:text-6xl font-serif font-bold text-white mb-6 leading-tight">
+              Health Insights <br/><span className="text-blue-300">Delivered to You</span>
+            </h2>
+            <p className="text-blue-100 text-lg md:text-xl mb-10 leading-relaxed max-w-2xl mx-auto">
+              Join over 50,000 subscribers who receive our latest medical news, health tips, and exclusive event invitations directly in their inbox.
+            </p>
+            <form className="max-w-lg mx-auto flex flex-col sm:flex-row gap-4">
+              <input 
+                type="email" 
+                placeholder="Enter your email address" 
+                className="w-full px-6 py-4 rounded-full text-slate-900 focus:outline-none focus:ring-4 focus:ring-blue-500/30 border-none shadow-xl placeholder:text-slate-400 bg-white/95 backdrop-blur-sm"
+              />
+              <button 
+                type="button" 
+                className="px-8 py-4 bg-primary text-white font-bold rounded-full hover:bg-blue-600 transition-all shadow-xl shadow-blue-900/30 whitespace-nowrap hover:scale-105"
+              >
+                Subscribe Now
+              </button>
+            </form>
+            <p className="text-blue-300 text-xs mt-6">
+              We respect your privacy. Unsubscribe at any time.
+            </p>
           </div>
         </div>
       </section>
