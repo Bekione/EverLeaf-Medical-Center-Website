@@ -65,7 +65,7 @@ const Header: React.FC<HeaderProps> = ({ onBookAppointment }) => {
                 <Link to="/services" className={`flex items-center gap-1 cursor-pointer font-medium transition-colors ${location.pathname.includes('services') ? 'text-primary' : 'text-slate-600 hover:text-primary'}`}>
                   Services <span className="material-icons text-sm">expand_more</span>
                 </Link>
-                <div className="absolute top-full left-0 mt-2 w-56 bg-white rounded-lg shadow-xl border border-slate-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform translate-y-2 group-hover:translate-y-0 z-50 py-2">
+                <div className="absolute top-full left-0 mt-2 w-56 bg-white rounded-lg shadow-xl border border-slate-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform translate-y-2 group-hover:translate-y-0 z-[9999] py-2">
                   <Link to="/services/diagnostics" className="block px-4 py-2 text-sm text-slate-600 hover:bg-slate-50 hover:text-primary">Diagnostic Services</Link>
                   <Link to="/services/laboratory" className="block px-4 py-2 text-sm text-slate-600 hover:bg-slate-50 hover:text-primary">Laboratory</Link>
                   <Link to="/services/imaging" className="block px-4 py-2 text-sm text-slate-600 hover:bg-slate-50 hover:text-primary">Imaging</Link>
@@ -80,7 +80,7 @@ const Header: React.FC<HeaderProps> = ({ onBookAppointment }) => {
                 <Link to="/departments" className={`flex items-center gap-1 cursor-pointer font-medium transition-colors ${location.pathname.includes('departments') ? 'text-primary' : 'text-slate-600 hover:text-primary'}`}>
                   Departments <span className="material-icons text-sm">expand_more</span>
                 </Link>
-                <div className="absolute top-full left-0 mt-2 w-56 bg-white rounded-lg shadow-xl border border-slate-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform translate-y-2 group-hover:translate-y-0 z-50 py-2">
+                <div className="absolute top-full left-0 mt-2 w-56 bg-white rounded-lg shadow-xl border border-slate-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform translate-y-2 group-hover:translate-y-0 z-[9999] py-2">
                   <Link to="/departments/cardiology" className="block px-4 py-2 text-sm text-slate-600 hover:bg-slate-50 hover:text-primary">Cardiology</Link>
                   <Link to="/departments/neurology" className="block px-4 py-2 text-sm text-slate-600 hover:bg-slate-50 hover:text-primary">Neurology</Link>
                   <Link to="/departments/pediatrics" className="block px-4 py-2 text-sm text-slate-600 hover:bg-slate-50 hover:text-primary">Pediatrics</Link>
@@ -124,7 +124,7 @@ const Header: React.FC<HeaderProps> = ({ onBookAppointment }) => {
               {/* Expandable Services Menu */}
               <div className="border-b border-slate-100 pb-2">
                 <div 
-                  className="flex justify-between items-center text-slate-800 font-bold cursor-pointer py-2"
+                  className="flex justify-between items-center text-slate-700 font-medium cursor-pointer pb-2"
                   onClick={() => toggleMobileSubmenu('services')}
                 >
                   <span>Services</span>
@@ -147,7 +147,7 @@ const Header: React.FC<HeaderProps> = ({ onBookAppointment }) => {
               {/* Expandable Departments Menu */}
               <div className="border-b border-slate-100 pb-2">
                 <div 
-                  className="flex justify-between items-center text-slate-800 font-bold cursor-pointer py-2"
+                  className="flex justify-between items-center text-slate-700 font-medium cursor-pointer pb-2"
                   onClick={() => toggleMobileSubmenu('departments')}
                 >
                   <span>Departments</span>
@@ -162,6 +162,10 @@ const Header: React.FC<HeaderProps> = ({ onBookAppointment }) => {
                     <Link onClick={() => setIsMenuOpen(false)} className="block text-slate-600 text-sm hover:text-primary" to="/departments/pediatrics">Pediatrics</Link>
                     <Link onClick={() => setIsMenuOpen(false)} className="block text-slate-600 text-sm hover:text-primary" to="/departments/surgery">Surgery</Link>
                     <Link onClick={() => setIsMenuOpen(false)} className="block text-slate-600 text-sm hover:text-primary" to="/departments/dental">Dental</Link>
+                    <Link onClick={() => setIsMenuOpen(false)} className="block text-slate-600 text-sm hover:text-primary" to="/departments/ophthalmology">Dental</Link>
+                    <Link onClick={() => setIsMenuOpen(false)} className="block text-slate-600 text-sm hover:text-primary" to="/services/laboratory">Dental</Link>
+                    <Link onClick={() => setIsMenuOpen(false)} className="block text-slate-600 text-sm hover:text-primary" to="/departments/radiology">Dental</Link>
+                    <Link onClick={() => setIsMenuOpen(false)} className="block text-slate-600 text-sm hover:text-primary" to="/departments/rehabilitation">Dental</Link>
                   </div>
                 </div>
               </div>

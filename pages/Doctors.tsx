@@ -261,6 +261,7 @@ const Doctors: React.FC = () => {
               <span className="material-icons absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none">expand_more</span>
             </div>
             
+            <div className="flex gap-4 w-full">
             <div className="relative min-w-[160px]">
               <select 
                 className="w-full px-4 py-3 rounded-lg border border-slate-200 bg-white focus:outline-none focus:ring-2 focus:ring-primary text-slate-600 cursor-pointer appearance-none shadow-sm"
@@ -288,6 +289,8 @@ const Doctors: React.FC = () => {
               </select>
               <span className="material-icons absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none">expand_more</span>
             </div>
+</div>
+
           </div>
         </div>
       </div>
