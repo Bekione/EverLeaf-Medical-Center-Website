@@ -1,19 +1,29 @@
 
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useOutletContext } from 'react-router-dom';
+import { OpenAppointmentFunc } from '../../Layout';
 
 const Surgery: React.FC = () => {
+  const { openAppointment } = useOutletContext<{ openAppointment: OpenAppointmentFunc }>();
+
+  const scrollToSection = (e: React.MouseEvent, id: string) => {
+    e.preventDefault();
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <div className="animate-fade-in">
-      <header className="bg-white border-b border-slate-100 py-20 relative overflow-hidden">
+      <header className="bg-white border-b border-slate-100 py-12 relative overflow-hidden">
         <div className="absolute right-0 top-0 h-full w-1/3 bg-blue-50/50 skew-x-12 translate-x-12"></div>
         <div className="container mx-auto px-6 relative z-10">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
-              <div className="inline-flex items-center gap-2 px-3 py-1 mb-6 text-xs font-semibold tracking-wider text-primary uppercase bg-blue-50 rounded-full">
-                <span className="w-2 h-2 rounded-full bg-primary"></span>
+              <span className="inline-block px-3 py-1 mb-4 text-xs font-bold tracking-wider text-blue-600 uppercase bg-blue-50 rounded-full">
                 Surgery Department
-              </div>
+              </span>
               <h1 className="text-4xl lg:text-5xl font-serif font-bold text-slate-900 mb-6 leading-tight">
                 Precision Surgical <span className="text-primary">Excellence</span>
               </h1>
@@ -21,17 +31,23 @@ const Surgery: React.FC = () => {
                 Our Surgery Department combines world-class surgeons with cutting-edge technology to deliver precise, minimally invasive, and effective surgical care tailored to your needs.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
-                <Link to="/contact" className="inline-flex items-center justify-center px-6 py-3 text-sm font-semibold text-white transition-all duration-200 bg-primary rounded-lg hover:bg-primary-dark shadow-soft hover:shadow-lg hover:-translate-y-0.5">
+                <button 
+                  onClick={() => openAppointment({ department: 'Surgery' })}
+                  className="inline-flex items-center justify-center px-6 py-3 text-sm font-semibold text-white transition-all duration-200 bg-primary rounded-lg hover:bg-primary-dark shadow-soft hover:shadow-lg hover:-translate-y-0.5"
+                >
                   Book Consultation
-                </Link>
-                <a href="#specialists" className="inline-flex items-center justify-center px-6 py-3 text-sm font-semibold text-slate-700 transition-all duration-200 bg-white border border-slate-200 rounded-lg hover:bg-slate-50">
+                </button>
+                <button 
+                  onClick={(e) => scrollToSection(e, 'specialists')}
+                  className="inline-flex items-center justify-center px-6 py-3 text-sm font-semibold text-slate-700 transition-all duration-200 bg-white border border-slate-200 rounded-lg hover:bg-slate-50"
+                >
                   Meet Our Surgeons
-                </a>
+                </button>
               </div>
             </div>
-            <div className="relative hidden lg:block">
-              <div className="relative z-10 rounded-2xl overflow-hidden shadow-2xl border-4 border-white transform rotate-2 hover:rotate-0 transition-transform duration-500">
-                <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuASpB4zEhU2d312bE6DML0nD_09L6xUkwbVl-4SSiHECRYzO9M687bP9Y0-aeNxD3KFcW5iw5pw3_r1_WM1FYmEr2VkBxf1BNrUXJirb-BDiuU2Z1p8OGO13dWa1TKogXhVnX3PdIrcL7W3mQE7Vu1Lh2Qp_85Ks3cEJ4e0FtiH4Oc3Mm6MJ_-mXEt-i7MLgdkI0MTch5GRoxToq4J9yXSWxCIVCDbd-5UM0Ey-lnxb2fYExx4AS5wtWdA4KBjKhAE1czMdyorFTxc" alt="Advanced Surgery Room" className="w-full h-auto object-cover" />
+            <div className="relative hidden lg:flex w-full justify-center">
+              <div className="relative z-10 rounded-2xl overflow-hidden shadow-2xl border-4 border-white transform rotate-2 hover:rotate-0 transition-transform duration-500 max-h-[450px] w-full max-w-lg">
+                <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuASpB4zEhU2d312bE6DML0nD_09L6xUkwbVl-4SSiHECRYzO9M687bP9Y0-aeNxD3KFcW5iw5pw3_r1_WM1FYmEr2VkBxf1BNrUXJirb-BDiuU2Z1p8OGO13dWa1TKogXhVnX3PdIrcL7W3mQE7Vu1Lh2Qp_85Ks3cEJ4e0FtiH4Oc3Mm6MJ_-mXEt-i7MLgdkI0MTch5GRoxToq4J9yXSWxCIVCDbd-5UM0Ey-lnxb2fYExx4AS5wtWdA4KBjKhAE1czMdyorFTxc" alt="Advanced Surgery Room" className="w-full h-full object-cover" />
               </div>
               <div className="absolute -bottom-6 -left-6 z-20 bg-white p-4 rounded-xl shadow-xl border border-slate-100 max-w-xs">
                 <div className="flex items-center gap-4">
@@ -77,15 +93,12 @@ const Surgery: React.FC = () => {
       <section className="py-20 bg-white">
         <div className="container mx-auto px-6">
           <div className="flex flex-col lg:flex-row gap-16 items-start">
-            <div className="lg:w-1/3 sticky top-24">
+            <div className="lg:w-1/3 lg:sticky lg:top-24 self-start">
               <span className="text-primary font-bold tracking-wider text-sm uppercase mb-2 block">Our Expertise</span>
               <h2 className="text-3xl md:text-4xl font-serif font-bold text-slate-900 mb-6">Services & Procedures</h2>
               <p className="text-slate-600 mb-8 leading-relaxed">
                 We specialize in a broad spectrum of surgical procedures, prioritizing patient safety and recovery speed through innovation.
               </p>
-              <Link to="#" className="inline-flex items-center font-semibold text-primary hover:text-primary-dark transition-colors group">
-                View Full Procedure List <span className="material-icons text-sm ml-2 group-hover:translate-x-1 transition-transform">arrow_forward</span>
-              </Link>
             </div>
             <div className="lg:w-2/3 grid md:grid-cols-2 gap-8">
               {[
@@ -151,36 +164,36 @@ const Surgery: React.FC = () => {
 
       <section className="py-20 bg-slate-50" id="specialists">
         <div className="container mx-auto px-6">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl font-serif font-bold text-slate-900 mb-4">Meet Our Specialists</h2>
-            <p className="text-slate-600 max-w-2xl mx-auto">Board-certified surgeons with decades of combined experience.</p>
+          <div className="flex justify-between items-end mb-12">
+            <div>
+              <span className="text-primary font-semibold tracking-wider text-sm uppercase block mb-2">Our Team</span>
+              <h2 className="text-3xl lg:text-4xl font-serif font-bold text-slate-900">Meet Our Surgeons</h2>
+            </div>
+            <Link to="/doctors" className="hidden md:flex items-center gap-2 text-primary font-semibold hover:text-primary-dark transition-colors">
+              View All Doctors <span className="material-icons text-sm">arrow_forward</span>
+            </Link>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
-              { name: 'Dr. Sarah Johnson', role: 'General Surgery Specialist', title: 'Chief Surgeon', desc: 'Dr. Johnson specializes in laparoscopic procedures and has over 15 years of experience in abdominal surgeries.', img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuC0QueLjCwWgxaddETOK-shQR73kouJo9t9W6zRv5ay5BTRojZm02Kl8Y8NCm9UhC4ADZe1_mh9xU1uSWUeRiNNgJsLhiQmUnp_nL6ufkGUidb_C-Nd00lZMTohXecbY9N3Wr9iDIwu__hKWOT0gjEjUd_6Z8WwSsCvTJhEMqmBThQqkC-p8csG8NSEDNyiZ1AmLCrLxaRc53sevYLriIyy4J8otaXve0J5m-7BAMr25ZLviCb0qg2jAu-G0cZAM7lEsRBbb5Ut0Ok' },
-              { name: 'Dr. Michael Chen', role: 'Trauma & Acute Care', title: 'Senior Surgeon', desc: 'Expert in emergency surgical care and trauma management. Dr. Chen leads our rapid response surgical team.', img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCVF7Vx5w8Ryb7hOWCqr7p6VYGmnbENuYJMI9koJjgakAo0tT6HwecQekM0p8cAJkfJtCEuEG5kxkOSqKsfwt1QpWfBnQ-romAZ_MC3EP_Mj7MrCf2bADuUqcuFshVJyzmuHqagWepcyR4bXdNh4HtLAnNonmtq_vTGPMaFnFCbmbPNjN1kyjMwmkWv4wEwOZKgRSy4q9Qu52UWPFQT1lw8kgEvd4lNZ9D0TXMPsjLDCX7l8dkflKYA6d8detnoMguojFlIoEi5XCg' },
-              { name: 'Dr. Emily Davis', role: 'Minimally Invasive Surgery', title: 'Robotic Surgery Lead', desc: 'Pioneer in robotic-assisted surgeries, ensuring maximum precision and minimal recovery time for patients.', img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuA6bhrrr0ZMVSYV0P5TqAweoZBjRflxtODiC0EhihtWXr27w5ittH1j1s8RikyFj00pBHaRDXU7Ao-A8a8UhSsh_FzMd5qgStPG9Xweslh2AdxW3dWg3pYuXAfxjP05dzbO8WgOTPyWVslotYafxf98HNdY0EdNxNPWwC7_cOKt2EIOnU_-jtevOf6TeL6UaONMToNe9edLxC5D6uAKY1F3xauI0fGJCDK_FLAoq7TKtP1R6cmH1f39mPae9FWxiUgZMSTiDg2BAfg' }
+              { name: 'Dr. Sarah Johnson', role: 'General Surgery Specialist', img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuC0QueLjCwWgxaddETOK-shQR73kouJo9t9W6zRv5ay5BTRojZm02Kl8Y8NCm9UhC4ADZe1_mh9xU1uSWUeRiNNgJsLhiQmUnp_nL6ufkGUidb_C-Nd00lZMTohXecbY9N3Wr9iDIwu__hKWOT0gjEjUd_6Z8WwSsCvTJhEMqmBThQqkC-p8csG8NSEDNyiZ1AmLCrLxaRc53sevYLriIyy4J8otaXve0J5m-7BAMr25ZLviCb0qg2jAu-G0cZAM7lEsRBbb5Ut0Ok' },
+              { name: 'Dr. Michael Chen', role: 'Trauma & Acute Care', img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCVF7Vx5w8Ryb7hOWCqr7p6VYGmnbENuYJMI9koJjgakAo0tT6HwecQekM0p8cAJkfJtCEuEG5kxkOSqKsfwt1QpWfBnQ-romAZ_MC3EP_Mj7MrCf2bADuUqcuFshVJyzmuHqagWepcyR4bXdNh4HtLAnNonmtq_vTGPMaFnFCbmbPNjN1kyjMwmkWv4wEwOZKgRSy4q9Qu52UWPFQT1lw8kgEvd4lNZ9D0TXMPsjLDCX7l8dkflKYA6d8detnoMguojFlIoEi5XCg' },
+              { name: 'Dr. Emily Davis', role: 'Minimally Invasive Surgery', img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuA6bhrrr0ZMVSYV0P5TqAweoZBjRflxtODiC0EhihtWXr27w5ittH1j1s8RikyFj00pBHaRDXU7Ao-A8a8UhSsh_FzMd5qgStPG9Xweslh2AdxW3dWg3pYuXAfxjP05dzbO8WgOTPyWVslotYafxf98HNdY0EdNxNPWwC7_cOKt2EIOnU_-jtevOf6TeL6UaONMToNe9edLxC5D6uAKY1F3xauI0fGJCDK_FLAoq7TKtP1R6cmH1f39mPae9FWxiUgZMSTiDg2BAfg' }
             ].map((doc, i) => (
-              <div key={i} className="bg-white rounded-2xl overflow-hidden shadow-card hover:-translate-y-2 transition-transform duration-300 border border-slate-100">
-                <div className="relative h-64 overflow-hidden">
-                  <img src={doc.img} alt={doc.name} className="w-full h-full object-cover object-top" />
-                  <div className="absolute bottom-0 left-0 w-full bg-gradient-to-t from-slate-900/80 to-transparent p-6">
-                    <span className="text-white/90 text-sm font-medium">{doc.title}</span>
+              <div key={i} className="bg-white rounded-2xl overflow-hidden shadow-card hover:shadow-xl transition-all duration-300 group">
+                <div className="h-64 overflow-hidden relative">
+                  <img src={doc.img} alt={doc.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-4">
+                    <button 
+                      onClick={() => openAppointment({ doctorName: doc.name, department: 'Surgery' })}
+                      className="text-white bg-primary hover:bg-primary-dark px-4 py-2 rounded-full text-sm font-medium"
+                    >
+                      Book Appointment
+                    </button>
                   </div>
                 </div>
-                <div className="p-6">
-                  <h3 className="text-xl font-bold text-slate-900 mb-1">{doc.name}</h3>
-                  <p className="text-primary text-sm font-medium mb-4">{doc.role}</p>
-                  <p className="text-slate-500 text-sm mb-6 line-clamp-3">
-                    {doc.desc}
-                  </p>
-                  <div className="flex items-center justify-between">
-                    <div className="flex gap-2">
-                      <a href="#" className="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center text-slate-500 hover:text-primary transition-colors"><span className="material-icons text-xs">email</span></a>
-                      <a href="#" className="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center text-slate-500 hover:text-primary transition-colors"><span className="material-icons text-xs">call</span></a>
-                    </div>
-                    <Link to="#" className="text-sm font-semibold text-primary hover:underline">View Profile</Link>
-                  </div>
+                <div className="p-6 text-center">
+                  <h3 className="text-xl font-bold text-slate-900">{doc.name}</h3>
+                  <p className="text-primary font-medium text-sm mb-3">{doc.role}</p>
                 </div>
               </div>
             ))}
@@ -188,20 +201,41 @@ const Surgery: React.FC = () => {
         </div>
       </section>
 
-      <section className="py-20 bg-primary text-white relative overflow-hidden" id="consultation">
+      <section className="py-24 relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-slate-800 to-slate-900"></div>
         <div className="absolute inset-0 opacity-10" style={{backgroundImage: "url('https://www.transparenttextures.com/patterns/cubes.png')"}}></div>
+        
+        {/* Decorative Elements */}
+        <div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/3 w-96 h-96 bg-white/5 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-0 left-0 translate-y-1/2 -translate-x-1/3 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl"></div>
+        
+        {/* Giant Icon */}
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 opacity-[0.03] pointer-events-none">
+          <span className="material-icons text-[20rem] text-white">medical_services</span>
+        </div>
+
         <div className="container mx-auto px-6 relative z-10 text-center">
-          <h2 className="text-3xl md:text-4xl font-serif font-bold mb-6">Ready for Your Consultation?</h2>
-          <p className="text-blue-100 text-lg mb-8 max-w-2xl mx-auto leading-relaxed">
-            Take the first step towards better health. Our surgical team is ready to provide you with a personalized treatment plan.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link to="/contact" className="inline-flex items-center justify-center px-8 py-3.5 text-base font-bold text-primary bg-white rounded-lg hover:bg-blue-50 shadow-lg transition-colors">
-              Book Consultation
-            </Link>
-            <Link to="/contact" className="inline-flex items-center justify-center px-8 py-3.5 text-base font-bold text-white bg-white/10 border border-white/20 rounded-lg hover:bg-white/20 transition-colors">
-              Contact Department
-            </Link>
+          <div className="max-w-4xl mx-auto">
+            <span className="inline-block py-1 px-3 rounded-full bg-white/10 border border-white/20 text-white text-xs font-bold tracking-wider uppercase mb-6 backdrop-blur-md">
+              Expert Surgical Care
+            </span>
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-white mb-6 leading-tight">
+              Ready for Your <br/><span className="text-blue-300">Consultation?</span>
+            </h2>
+            <p className="text-blue-100 text-lg md:text-xl mb-10 leading-relaxed max-w-2xl mx-auto">
+              Take the first step towards better health. Our surgical team is ready to provide you with a personalized treatment plan.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <button 
+                onClick={() => openAppointment({ department: 'Surgery' })}
+                className="inline-flex items-center justify-center px-8 py-4 text-lg font-bold text-slate-900 bg-white rounded-full hover:bg-blue-50 shadow-xl shadow-blue-900/20 transition-all hover:scale-105"
+              >
+                Book Consultation
+              </button>
+              <Link to="/contact" className="inline-flex items-center justify-center px-8 py-4 text-lg font-bold text-white border border-white/30 rounded-full hover:bg-white/10 backdrop-blur-sm transition-all">
+                Contact Department
+              </Link>
+            </div>
           </div>
         </div>
       </section>

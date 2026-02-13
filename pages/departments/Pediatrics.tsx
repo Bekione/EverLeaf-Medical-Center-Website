@@ -1,45 +1,67 @@
 
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useOutletContext } from 'react-router-dom';
+import { OpenAppointmentFunc } from '../../Layout';
 
 const Pediatrics: React.FC = () => {
+  const { openAppointment } = useOutletContext<{ openAppointment: OpenAppointmentFunc }>();
+
+  const scrollToSection = (e: React.MouseEvent, id: string) => {
+    e.preventDefault();
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <div className="animate-fade-in">
-      <header className="relative bg-white border-b border-slate-100 py-16 lg:py-24 overflow-hidden">
-        <div className="absolute inset-0 opacity-5" style={{backgroundImage: "radial-gradient(#136dec 0.5px, transparent 0.5px), radial-gradient(#136dec 0.5px, #f6f7f8 0.5px)", backgroundSize: "20px 20px", backgroundPosition: "0 0, 10px 10px"}}></div>
+      <header className="relative bg-white border-b border-slate-100 py-12 lg:py-16 overflow-hidden">
+        <div className="absolute right-0 top-0 h-full w-1/3 bg-sky-50/50 skew-x-12 translate-x-12 pointer-events-none"></div>
         <div className="absolute top-0 right-0 -mr-20 -mt-20 w-80 h-80 rounded-full bg-blue-50 blur-3xl opacity-60"></div>
-        <div className="absolute bottom-0 left-0 -ml-20 -mb-20 w-80 h-80 rounded-full bg-sky-50 blur-3xl opacity-60"></div>
         
         <div className="container mx-auto px-6 relative z-10">
-          <div className="flex flex-col lg:flex-row items-center gap-12">
-            <div className="lg:w-1/2">
-              <div className="flex items-center gap-2 text-primary mb-6">
-                <Link to="/departments" className="text-sm font-medium hover:underline">Departments</Link>
-                <span className="material-icons text-sm text-slate-400">chevron_right</span>
-                <span className="text-sm font-medium">Pediatrics</span>
-              </div>
-              <h1 className="text-4xl lg:text-6xl font-serif font-bold text-slate-900 mb-6 leading-tight">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div>
+              <span className="inline-block px-3 py-1 mb-4 text-xs font-bold tracking-wider text-sky-600 uppercase bg-sky-50 rounded-full">
+                Department of Pediatrics
+              </span>
+              <h1 className="text-4xl lg:text-5xl xl:text-6xl font-serif font-bold text-slate-900 mb-6 leading-tight">
                 Compassionate Care for <br className="hidden md:block" /> 
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-sky-500 to-blue-600">Your Little Ones</span>
               </h1>
-              <p className="text-lg text-slate-600 leading-relaxed mb-8">
-                From newborns to adolescents, our dedicated team of pediatricians provides comprehensive medical care in a warm, child-friendly environment designed to make every visit positive.
+              <p className="text-lg text-slate-600 leading-relaxed mb-8 max-w-lg">
+                From newborns to adolescents, our dedicated team of pediatricians provides comprehensive medical care in a warm, child-friendly environment.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
-                <Link to="/contact" className="inline-flex items-center justify-center px-8 py-3.5 text-base font-semibold text-white bg-primary rounded-lg hover:bg-primary-dark transition-all shadow-lg hover:shadow-primary/30">
+                <button 
+                  onClick={() => openAppointment({ department: 'Pediatrics' })}
+                  className="inline-flex items-center justify-center px-8 py-3.5 text-base font-semibold text-white bg-primary rounded-lg hover:bg-primary-dark transition-all shadow-lg hover:shadow-primary/30"
+                >
                   Book a Visit
-                </Link>
-                <a href="#specialists" className="inline-flex items-center justify-center px-8 py-3.5 text-base font-semibold text-slate-700 bg-white border border-slate-200 rounded-lg hover:bg-slate-50 hover:border-slate-300 transition-all">
+                </button>
+                <button 
+                  onClick={(e) => scrollToSection(e, 'specialists')}
+                  className="inline-flex items-center justify-center px-8 py-3.5 text-base font-semibold text-slate-700 bg-white border border-slate-200 rounded-lg hover:bg-slate-50 hover:border-slate-300 transition-all"
+                >
                   Meet Our Team
-                </a>
+                </button>
               </div>
             </div>
 
-            <div className="lg:w-1/2 relative">
-              <div className="relative rounded-3xl overflow-hidden shadow-2xl border-4 border-white">
-                <img alt="Pediatrician examining a child" className="w-full h-auto object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBcjQvLZLM7D8XM6G-ltI3zOfMe_16SIFhpMOp1bLHVdEjtdYZjpUsBAzQs44cnm4kfRY_CVK8NbXWUDDa4412BSTYonv0G_5AGW8FG8LGQ5z9Q8iNNj1bYp3qx0LnzidCBJ75-kWs_GKuSRxWn3GwuufvYRrgSZsucRIjRvWRRp9uFGGhtcPw20Co03HEIOSv7OnPKZtgv_JaExWODULC0-Zb9HFrFUwFo1v3JpiwWrOf-bEgQn2a6vB2n6-OJV-5Zpy2xjm7jgRo" />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent flex items-end p-8">
-                  <p className="text-lg font-bold text-white">Dedicated to Your Child's Health</p>
+            <div className="relative hidden lg:flex w-full justify-center">
+              <div className="relative z-10 rounded-2xl overflow-hidden shadow-2xl border-4 border-white transform rotate-2 hover:rotate-0 transition-transform duration-500 max-h-[450px] w-full max-w-lg">
+                <img alt="Pediatrician examining a child" className="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBcjQvLZLM7D8XM6G-ltI3zOfMe_16SIFhpMOp1bLHVdEjtdYZjpUsBAzQs44cnm4kfRY_CVK8NbXWUDDa4412BSTYonv0G_5AGW8FG8LGQ5z9Q8iNNj1bYp3qx0LnzidCBJ75-kWs_GKuSRxWn3GwuufvYRrgSZsucRIjRvWRRp9uFGGhtcPw20Co03HEIOSv7OnPKZtgv_JaExWODULC0-Zb9HFrFUwFo1v3JpiwWrOf-bEgQn2a6vB2n6-OJV-5Zpy2xjm7jgRo" />
+              </div>
+              <div className="absolute -bottom-6 -left-6 z-20 bg-white p-4 rounded-xl shadow-xl border border-slate-100 max-w-xs animate-fade-in hidden lg:block">
+                <div className="flex items-center gap-4">
+                  <div className="bg-orange-100 p-3 rounded-full text-orange-600">
+                    <span className="material-icons text-2xl">toys</span>
+                  </div>
+                  <div>
+                    <p className="text-xl font-bold text-slate-900">Child-Friendly</p>
+                    <p className="text-xs text-slate-500 uppercase tracking-wide font-semibold">Environment</p>
+                  </div>
                 </div>
               </div>
             </div>
@@ -207,40 +229,46 @@ const Pediatrics: React.FC = () => {
                   </div>
                 </div>
               </section>
-
-              <section id="specialists">
-                <div className="flex items-center justify-between mb-8">
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-full bg-indigo-100 flex items-center justify-center text-indigo-600">
-                      <span className="material-icons">group</span>
-                    </div>
-                    <h2 className="text-2xl font-bold text-slate-900">Meet Our Pediatricians</h2>
-                  </div>
-                  <Link to="/doctors" className="hidden md:flex items-center text-primary font-semibold hover:text-primary-dark transition-colors text-sm">
-                    View All Doctors <span className="material-icons text-sm ml-1">arrow_forward</span>
-                  </Link>
-                </div>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                  {[
-                    { name: 'Dr. Sarah Johnson', role: 'Pediatrician', desc: 'Specializes in newborn care and childhood development.', img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDXTpzVkTNCNnyheuB9XSytnIxWK6a1Yr59B3keA_3SMC5BmDM7eu7YEhVBNJMUgCI-DtfJFa679DUVODOytaqm2RHO3roS7_bUXkm1KCAHE2mf6SQVJ3VgbMOK2B9GoVMcYTZuM5YeC2WKSSlUPV4DWdHdOOKsdXvtD3pbzLTjI42RfP74QVP0IU2Li0d10GKZe420HPokQXchEwuXV2jwXdS21ZNOQ-1pY2fxs8HQd4Dy7S-MFX-DnEt3WDCqT9fcMu4_ACjoUJo' },
-                    { name: 'Dr. Michael Chen', role: 'Pediatric Surgeon', desc: 'Expert in minimally invasive surgical procedures for children.', img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCO-uflM2yEV1XDBHyULJchT8qcPNRWMubYasaPKX6oDGs4-T_1FW6fEbxOEovaGOduXaeiMi-hYHmjYYuCf8S0-Li7ye67yKHjSxy-5WeUwMgC1sUkbzHIWhe1wpBQeJLxOMC6DOuyGMlAtjb8k85hd73U7zCoPPMYljiSodK8flZx5RZlb20HdnT41oqOnMVRxDfj_GYvAirO-cqhOvBDHNN4i-pV2_3P54eBK8VpU-sO-E0eUhjBb5xC70UnJ9OFjdEkIMIup2g' },
-                    { name: 'Dr. Emily Rodriguez', role: 'Adolescent Specialist', desc: 'Focuses on teen health, mental wellness, and preventative care.', img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCTOVnU3UC9BG8L4mMKfgV6Kyvj0Tznu6eFrJs5-NYnLvMYP3wIXr90r1xRWepiIcsGmAgDTCtOKCXhwhsW6rXjMyP4-EHTHpZ3SOaBDKEdK-cK1iLe7pzMa8bCncczXK5Jbdo7L005nWI3TcrB8lh01XvDAnuJYG5NelPQkzJ5M9E-B_NkrOWt7qP_TwD2wZZJAG1Ot4HC0yc5nNPcbkg4lcJjiDX6c_LrSgFfZOddBMu1CSLUo8gcvPxVC19QiZOiNpxxw_KTCCo' }
-                  ].map((doc, idx) => (
-                    <div key={idx} className="bg-white rounded-xl p-6 shadow-sm border border-slate-100 text-center hover:-translate-y-1 transition-transform duration-300">
-                      <div className="w-24 h-24 mx-auto bg-slate-200 rounded-full mb-4 overflow-hidden">
-                        <img alt={doc.name} className="w-full h-full object-cover" src={doc.img} />
-                      </div>
-                      <h3 className="font-bold text-lg text-slate-900">{doc.name}</h3>
-                      <span className="text-primary text-sm font-medium block mb-3">{doc.role}</span>
-                      <p className="text-slate-500 text-xs mb-4">{doc.desc}</p>
-                      <Link to="#" className="inline-flex items-center justify-center w-full px-4 py-2 text-sm font-medium text-slate-700 bg-slate-50 border border-slate-200 rounded-lg hover:bg-white hover:text-primary transition-colors">
-                        View Profile
-                      </Link>
-                    </div>
-                  ))}
-                </div>
-              </section>
             </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-20 bg-slate-50" id="specialists">
+        <div className="container mx-auto px-6">
+          <div className="flex justify-between items-end mb-12">
+            <div>
+              <span className="text-primary font-semibold tracking-wider text-sm uppercase block mb-2">Our Team</span>
+              <h2 className="text-3xl lg:text-4xl font-serif font-bold text-slate-900">Meet Our Pediatricians</h2>
+            </div>
+            <Link to="/doctors" className="hidden md:flex items-center gap-2 text-primary font-semibold hover:text-primary-dark transition-colors">
+              View All Doctors <span className="material-icons text-sm">arrow_forward</span>
+            </Link>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {[
+              { name: 'Dr. Sarah Johnson', role: 'Pediatrician', img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDXTpzVkTNCNnyheuB9XSytnIxWK6a1Yr59B3keA_3SMC5BmDM7eu7YEhVBNJMUgCI-DtfJFa679DUVODOytaqm2RHO3roS7_bUXkm1KCAHE2mf6SQVJ3VgbMOK2B9GoVMcYTZuM5YeC2WKSSlUPV4DWdHdOOKsdXvtD3pbzLTjI42RfP74QVP0IU2Li0d10GKZe420HPokQXchEwuXV2jwXdS21ZNOQ-1pY2fxs8HQd4Dy7S-MFX-DnEt3WDCqT9fcMu4_ACjoUJo' },
+              { name: 'Dr. Michael Chen', role: 'Pediatric Surgeon', img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCO-uflM2yEV1XDBHyULJchT8qcPNRWMubYasaPKX6oDGs4-T_1FW6fEbxOEovaGOduXaeiMi-hYHmjYYuCf8S0-Li7ye67yKHjSxy-5WeUwMgC1sUkbzHIWhe1wpBQeJLxOMC6DOuyGMlAtjb8k85hd73U7zCoPPMYljiSodK8flZx5RZlb20HdnT41oqOnMVRxDfj_GYvAirO-cqhOvBDHNN4i-pV2_3P54eBK8VpU-sO-E0eUhjBb5xC70UnJ9OFjdEkIMIup2g' },
+              { name: 'Dr. Emily Rodriguez', role: 'Adolescent Specialist', img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCTOVnU3UC9BG8L4mMKfgV6Kyvj0Tznu6eFrJs5-NYnLvMYP3wIXr90r1xRWepiIcsGmAgDTCtOKCXhwhsW6rXjMyP4-EHTHpZ3SOaBDKEdK-cK1iLe7pzMa8bCncczXK5Jbdo7L005nWI3TcrB8lh01XvDAnuJYG5NelPQkzJ5M9E-B_NkrOWt7qP_TwD2wZZJAG1Ot4HC0yc5nNPcbkg4lcJjiDX6c_LrSgFfZOddBMu1CSLUo8gcvPxVC19QiZOiNpxxw_KTCCo' }
+            ].map((doc, i) => (
+              <div key={i} className="bg-white rounded-2xl overflow-hidden shadow-card hover:shadow-xl transition-all duration-300 group">
+                <div className="h-64 overflow-hidden relative">
+                  <img src={doc.img} alt={doc.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-4">
+                    <button 
+                      onClick={() => openAppointment({ doctorName: doc.name, department: 'Pediatrics' })}
+                      className="text-white bg-primary hover:bg-primary-dark px-4 py-2 rounded-full text-sm font-medium"
+                    >
+                      Book Appointment
+                    </button>
+                  </div>
+                </div>
+                <div className="p-6 text-center">
+                  <h3 className="text-xl font-bold text-slate-900">{doc.name}</h3>
+                  <p className="text-primary font-medium text-sm mb-3">{doc.role}</p>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -257,9 +285,12 @@ const Pediatrics: React.FC = () => {
             Give your child the gift of good health. Our easy online scheduling makes it convenient to find a time that works for your family.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <Link to="/contact" className="w-full sm:w-auto inline-flex items-center justify-center px-8 py-4 text-base font-bold text-primary bg-white rounded-lg hover:bg-blue-50 shadow-lg transition-colors">
+            <button 
+              onClick={() => openAppointment({ department: 'Pediatrics' })}
+              className="w-full sm:w-auto inline-flex items-center justify-center px-8 py-4 text-base font-bold text-primary bg-white rounded-lg hover:bg-blue-50 shadow-lg transition-colors"
+            >
               Book Appointment Now
-            </Link>
+            </button>
             <span className="text-blue-200 text-sm font-medium">or call us at <strong className="text-white text-lg ml-1">(555) 123-4567</strong></span>
           </div>
         </div>

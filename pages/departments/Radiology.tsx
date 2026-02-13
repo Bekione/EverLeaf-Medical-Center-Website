@@ -1,61 +1,62 @@
 
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useOutletContext } from 'react-router-dom';
+import { OpenAppointmentFunc } from '../../Layout';
 
 const Radiology: React.FC = () => {
+  const { openAppointment } = useOutletContext<{ openAppointment: OpenAppointmentFunc }>();
+
+  const scrollToSection = (e: React.MouseEvent, id: string) => {
+    e.preventDefault();
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <div className="animate-fade-in">
-      <header className="bg-white border-b border-slate-100 py-20 relative overflow-hidden">
-        <div className="absolute inset-0 opacity-20 pointer-events-none" style={{backgroundImage: "radial-gradient(#136dec 0.5px, transparent 0.5px), radial-gradient(#136dec 0.5px, #f6f7f8 0.5px)", backgroundSize: "20px 20px", backgroundPosition: "0 0, 10px 10px"}}></div>
+      <header className="bg-white border-b border-slate-100 py-12 lg:py-16 relative overflow-hidden">
+        <div className="absolute right-0 top-0 h-full w-1/3 bg-blue-50/50 skew-x-12 translate-x-12 pointer-events-none"></div>
         <div className="container mx-auto px-6 relative z-10">
-          <div className="flex flex-col md:flex-row items-center gap-12">
-            <div className="w-full md:w-1/2">
-              <span className="inline-block px-3 py-1 mb-4 text-xs font-semibold tracking-wider text-primary uppercase bg-blue-50 rounded-full">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div className="max-w-2xl">
+              <span className="inline-block px-3 py-1 mb-4 text-xs font-bold tracking-wider text-primary uppercase bg-blue-50 rounded-full">
                 Department of Radiology
               </span>
               <h1 className="text-4xl lg:text-5xl font-serif font-bold text-slate-900 mb-6 leading-tight">
                 State-of-the-Art <br/><span className="text-primary">Diagnostic Imaging</span>
               </h1>
-              <p className="text-lg text-slate-600 leading-relaxed mb-8">
-                Our Radiology Department utilizes advanced imaging technology to provide precise diagnoses and guide effective treatment plans. We prioritize patient comfort and safety while delivering high-quality visual data to your care team.
+              <p className="text-lg text-slate-600 leading-relaxed mb-8 max-w-lg">
+                Our Radiology Department utilizes advanced imaging technology to provide precise diagnoses. We prioritize patient comfort and safety while delivering high-quality visual data.
               </p>
               <div className="flex flex-wrap gap-4">
-                <Link to="/contact" className="inline-flex items-center justify-center px-6 py-3 text-sm font-semibold text-white transition-all duration-200 bg-primary rounded-lg hover:bg-primary-dark shadow-lg shadow-blue-500/30 hover:-translate-y-1">
+                <button 
+                  onClick={() => openAppointment({ department: 'Radiology' })}
+                  className="inline-flex items-center justify-center px-6 py-3.5 text-sm font-semibold text-white transition-all duration-200 bg-primary rounded-lg hover:bg-primary-dark shadow-lg shadow-blue-500/30 hover:-translate-y-1"
+                >
                   Book Imaging Appointment
-                </Link>
-                <a href="#specialists" className="inline-flex items-center justify-center px-6 py-3 text-sm font-semibold text-slate-700 bg-white border border-slate-200 rounded-lg hover:bg-slate-50 transition-all">
+                </button>
+                <button 
+                  onClick={(e) => scrollToSection(e, 'specialists')}
+                  className="inline-flex items-center justify-center px-6 py-3.5 text-sm font-semibold text-slate-700 bg-white border border-slate-200 rounded-lg hover:bg-slate-50 transition-all"
+                >
                   Meet Our Radiologists
-                </a>
+                </button>
               </div>
             </div>
-            <div className="w-full md:w-1/2 flex justify-center">
-              <div className="relative">
-                <div className="absolute -inset-4 bg-blue-100 rounded-full filter blur-3xl opacity-50 animate-pulse"></div>
-                <div className="relative bg-white p-8 rounded-3xl shadow-2xl border border-slate-100 max-w-sm mx-auto transform rotate-2 hover:rotate-0 transition-transform duration-500">
-                  <div className="flex items-center gap-4 mb-6 border-b border-slate-100 pb-4">
-                    <div className="bg-blue-50 p-3 rounded-xl text-primary">
-                      <span className="material-icons text-3xl">biotech</span>
-                    </div>
-                    <div>
-                      <h3 className="font-bold text-slate-900">Precision Diagnostics</h3>
-                      <p className="text-xs text-slate-500">Advanced AI Analysis</p>
-                    </div>
+            <div className="relative hidden lg:flex w-full justify-center">
+              <div className="relative z-10 rounded-2xl overflow-hidden shadow-2xl border-4 border-white transform rotate-2 hover:rotate-0 transition-transform duration-500 max-h-[450px] w-full max-w-lg">
+                <img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=800&q=80" alt="Advanced Radiology" className="w-full h-full object-cover" />
+              </div>
+              <div className="absolute -bottom-6 -left-6 z-20 bg-white p-4 rounded-xl shadow-xl border border-slate-100 max-w-xs animate-fade-in hidden lg:block">
+                <div className="flex items-center gap-4">
+                  <div className="bg-blue-50 p-3 rounded-full text-blue-600">
+                    <span className="material-icons text-2xl">biotech</span>
                   </div>
-                  <div className="space-y-4">
-                    <div className="flex items-center justify-between text-sm">
-                      <span className="text-slate-500">Scan Accuracy</span>
-                      <span className="font-bold text-green-500">99.8%</span>
-                    </div>
-                    <div className="w-full bg-slate-100 rounded-full h-2">
-                      <div className="bg-green-500 h-2 rounded-full" style={{width: '99%'}}></div>
-                    </div>
-                    <div className="flex items-center justify-between text-sm">
-                      <span className="text-slate-500">Processing Speed</span>
-                      <span className="font-bold text-primary">Real-time</span>
-                    </div>
-                    <div className="w-full bg-slate-100 rounded-full h-2">
-                      <div className="bg-primary h-2 rounded-full" style={{width: '85%'}}></div>
-                    </div>
+                  <div>
+                    <p className="text-xl font-bold text-slate-900">High-Res</p>
+                    <p className="text-xs text-slate-500 uppercase tracking-wide font-semibold">Imaging</p>
                   </div>
                 </div>
               </div>
@@ -73,7 +74,7 @@ const Radiology: React.FC = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             <div className="bg-white p-6 rounded-2xl shadow-sm hover:shadow-md transition-shadow border border-slate-100">
               <div className="w-12 h-12 bg-orange-50 rounded-xl flex items-center justify-center text-orange-500 mb-4">
-                <span className="material-symbols-outlined text-2xl">orthopedics</span>
+                <span className="material-icons text-2xl">accessibility</span>
               </div>
               <h3 className="text-lg font-bold text-slate-900 mb-2">Fracture Detection</h3>
               <p className="text-sm text-slate-500 leading-relaxed">
@@ -82,7 +83,7 @@ const Radiology: React.FC = () => {
             </div>
             <div className="bg-white p-6 rounded-2xl shadow-sm hover:shadow-md transition-shadow border border-slate-100">
               <div className="w-12 h-12 bg-purple-50 rounded-xl flex items-center justify-center text-purple-500 mb-4">
-                <span className="material-symbols-outlined text-2xl">oncology</span>
+                <span className="material-icons text-2xl">science</span>
               </div>
               <h3 className="text-lg font-bold text-slate-900 mb-2">Tumor Screening</h3>
               <p className="text-sm text-slate-500 leading-relaxed">
@@ -91,7 +92,7 @@ const Radiology: React.FC = () => {
             </div>
             <div className="bg-white p-6 rounded-2xl shadow-sm hover:shadow-md transition-shadow border border-slate-100">
               <div className="w-12 h-12 bg-red-50 rounded-xl flex items-center justify-center text-red-500 mb-4">
-                <span className="material-symbols-outlined text-2xl">cardiology</span>
+                <span className="material-icons text-2xl">favorite</span>
               </div>
               <h3 className="text-lg font-bold text-slate-900 mb-2">Cardiovascular Imaging</h3>
               <p className="text-sm text-slate-500 leading-relaxed">
@@ -100,7 +101,7 @@ const Radiology: React.FC = () => {
             </div>
             <div className="bg-white p-6 rounded-2xl shadow-sm hover:shadow-md transition-shadow border border-slate-100">
               <div className="w-12 h-12 bg-teal-50 rounded-xl flex items-center justify-center text-teal-500 mb-4">
-                <span className="material-symbols-outlined text-2xl">gastroenterology</span>
+                <span className="material-icons text-2xl">healing</span>
               </div>
               <h3 className="text-lg font-bold text-slate-900 mb-2">Organ Health</h3>
               <p className="text-sm text-slate-500 leading-relaxed">
@@ -120,7 +121,7 @@ const Radiology: React.FC = () => {
               <span className="text-primary font-semibold tracking-wider text-sm uppercase">Our Expertise</span>
               <h2 className="text-3xl lg:text-4xl font-serif font-bold text-slate-900 mt-2">Services & Procedures</h2>
             </div>
-            <Link to="#" className="hidden md:inline-flex items-center text-primary font-semibold hover:text-primary-dark transition-colors mt-4 md:mt-0">
+            <Link to="/services/imaging" className="hidden md:inline-flex items-center text-primary font-semibold hover:text-primary-dark transition-colors mt-4 md:mt-0">
               View Full Service List <span className="material-icons ml-2">arrow_forward</span>
             </Link>
           </div>
@@ -128,7 +129,7 @@ const Radiology: React.FC = () => {
             <div className="flex gap-6 p-6 rounded-2xl border border-slate-100 hover:border-primary/30 hover:shadow-soft transition-all duration-300 bg-white group">
               <div className="flex-shrink-0">
                 <div className="w-16 h-16 bg-white rounded-xl flex items-center justify-center shadow-sm text-primary group-hover:bg-primary group-hover:text-white transition-colors duration-300">
-                  <span className="material-symbols-outlined text-3xl">sensor_door</span>
+                  <span className="material-icons text-3xl">image</span>
                 </div>
               </div>
               <div>
@@ -145,7 +146,7 @@ const Radiology: React.FC = () => {
             <div className="flex gap-6 p-6 rounded-2xl border border-slate-100 hover:border-primary/30 hover:shadow-soft transition-all duration-300 bg-white group">
               <div className="flex-shrink-0">
                 <div className="w-16 h-16 bg-white rounded-xl flex items-center justify-center shadow-sm text-pink-500 group-hover:bg-pink-500 group-hover:text-white transition-colors duration-300">
-                  <span className="material-symbols-outlined text-3xl">woman</span>
+                  <span className="material-icons text-3xl">face</span>
                 </div>
               </div>
               <div>
@@ -162,7 +163,7 @@ const Radiology: React.FC = () => {
             <div className="flex gap-6 p-6 rounded-2xl border border-slate-100 hover:border-primary/30 hover:shadow-soft transition-all duration-300 bg-white group">
               <div className="flex-shrink-0">
                 <div className="w-16 h-16 bg-white rounded-xl flex items-center justify-center shadow-sm text-indigo-500 group-hover:bg-indigo-500 group-hover:text-white transition-colors duration-300">
-                  <span className="material-symbols-outlined text-3xl">all_inclusive</span>
+                  <span className="material-icons text-3xl">donut_large</span>
                 </div>
               </div>
               <div>
@@ -179,7 +180,7 @@ const Radiology: React.FC = () => {
             <div className="flex gap-6 p-6 rounded-2xl border border-slate-100 hover:border-primary/30 hover:shadow-soft transition-all duration-300 bg-white group">
               <div className="flex-shrink-0">
                 <div className="w-16 h-16 bg-white rounded-xl flex items-center justify-center shadow-sm text-blue-500 group-hover:bg-blue-500 group-hover:text-white transition-colors duration-300">
-                  <span className="material-symbols-outlined text-3xl">donut_large</span>
+                  <span className="material-icons text-3xl">data_usage</span>
                 </div>
               </div>
               <div>
@@ -199,59 +200,39 @@ const Radiology: React.FC = () => {
 
       <section className="py-20 bg-slate-50" id="specialists">
         <div className="container mx-auto px-6">
-          <div className="text-center mb-16">
-            <span className="text-primary font-semibold tracking-wider text-sm uppercase">Our Experts</span>
-            <h2 className="text-3xl lg:text-4xl font-serif font-bold text-slate-900 mt-2">Meet Our Radiologists</h2>
+          <div className="flex justify-between items-end mb-12">
+            <div>
+              <span className="text-primary font-semibold tracking-wider text-sm uppercase block mb-2">Our Team</span>
+              <h2 className="text-3xl lg:text-4xl font-serif font-bold text-slate-900">Meet Our Radiologists</h2>
+            </div>
+            <Link to="/doctors" className="hidden md:flex items-center gap-2 text-primary font-semibold hover:text-primary-dark transition-colors">
+              View All Doctors <span className="material-icons text-sm">arrow_forward</span>
+            </Link>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="bg-white rounded-2xl overflow-hidden shadow-card border border-slate-100 group hover:-translate-y-2 transition-transform duration-300">
-              <div className="h-48 bg-slate-200 relative overflow-hidden">
-                <div className="absolute inset-0 flex items-center justify-center text-slate-400">
-                  <span className="material-icons text-6xl opacity-20">person</span>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {[
+              { name: 'Dr. Sarah Jenkins', role: 'Chief Radiologist', img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuB9BZuqUAA5IOvQMgXBQ8ryTLzC7vKg69xiTlytVe-76cUVW84Bp8VWOapyKoqbwUVVWBuN_FfxCcsqFq1ao_QGijkga86eRCQeYgiaWkGi7WtZIQPN8Q2vpj9P49F7WLoa7Y9f-Oj_nR-hQM4ZVF-Hxf-HLyzlW5kk3Rk-ANh7DNvIi720KTGderseW5cc8dF6H7Wx6PDoI9ce9GfwndlXLLz4CsQbzfWS0_34TQzB04eBNYZK-S8nSZOkgY3aUVNpbGCAWq_I9vs' },
+              { name: 'Dr. Michael Chen', role: 'Interventional Radiologist', img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuADGr580ge61fkfsxwBrM7N1TZyAY9Z-GTpjBUo_xK5lWfakoEU_qOziiT-so6DMVRYMjRbu0nVW-k1DcZ572-UwSxJBbHFxL921KxZ6v5xbrKCJfSDGPfGIKJ2lnbzJo8rsumPzZ1VnlvNztje35dbZ8OjoskrJoJWMwL2xyEuWVfFxTxZWLkj3322_nwECoDQOhnBsfJT-uJdBuBYvHW7tZFnkW3TihhkEKyTi4ionW16tPVhP7_Msgmo2tYXI-H3mW5DhYbZYTk' },
+              { name: 'Dr. Emily Rodriguez', role: 'Pediatric Radiologist', img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAY7zDqNO2hoPrxpDGZpE92fSZkSGJgJi7hfuXKUusm09nz1u9rNHNBxuJ0N_t6HSXFbSkNan8ZuDt8AkK0PHqzsi4I6ipPzk2q3ALgTZVcC1uboMYQ6dZnjiBkO036p5ErpaA0vAjn6D8TivJDicjayQgEkLrG4PsZURfL7C-lOADFWh45AKVB0WfWyqvzWL5JcVEwzhhuOWO87RBPu2zcdEOcZJloL6qr9YD-oKjiSjrlq9KMwrQ9LL25SFVQnG3ZphZNrYFaNIs' }
+            ].map((doc, i) => (
+              <div key={i} className="bg-white rounded-2xl overflow-hidden shadow-card hover:shadow-xl transition-all duration-300 group">
+                <div className="h-64 overflow-hidden relative">
+                  <img src={doc.img} alt={doc.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-4">
+                    <button 
+                      onClick={() => openAppointment({ doctorName: doc.name, department: 'Radiology' })}
+                      className="text-white bg-primary hover:bg-primary-dark px-4 py-2 rounded-full text-sm font-medium"
+                    >
+                      Book Appointment
+                    </button>
+                  </div>
+                </div>
+                <div className="p-6 text-center">
+                  <h3 className="text-xl font-bold text-slate-900">{doc.name}</h3>
+                  <p className="text-primary font-medium text-sm mb-3">{doc.role}</p>
                 </div>
               </div>
-              <div className="p-6 text-center">
-                <h3 className="text-xl font-bold text-slate-900">Dr. Sarah Jenkins</h3>
-                <p className="text-primary font-medium text-sm mb-4">Chief Radiologist</p>
-                <p className="text-slate-500 text-sm mb-6">Specializes in neuroradiology and advanced MRI diagnostics with over 15 years of experience.</p>
-                <div className="flex justify-center gap-3">
-                  <button className="text-slate-400 hover:text-primary transition-colors"><span className="material-icons">email</span></button>
-                  <button className="text-slate-400 hover:text-primary transition-colors"><span className="material-icons">calendar_today</span></button>
-                </div>
-              </div>
-            </div>
-            <div className="bg-white rounded-2xl overflow-hidden shadow-card border border-slate-100 group hover:-translate-y-2 transition-transform duration-300">
-              <div className="h-48 bg-slate-200 relative overflow-hidden">
-                <div className="absolute inset-0 flex items-center justify-center text-slate-400">
-                  <span className="material-icons text-6xl opacity-20">person</span>
-                </div>
-              </div>
-              <div className="p-6 text-center">
-                <h3 className="text-xl font-bold text-slate-900">Dr. Michael Chen</h3>
-                <p className="text-primary font-medium text-sm mb-4">Interventional Radiologist</p>
-                <p className="text-slate-500 text-sm mb-6">Expert in minimally invasive image-guided procedures for vascular and oncologic conditions.</p>
-                <div className="flex justify-center gap-3">
-                  <button className="text-slate-400 hover:text-primary transition-colors"><span className="material-icons">email</span></button>
-                  <button className="text-slate-400 hover:text-primary transition-colors"><span className="material-icons">calendar_today</span></button>
-                </div>
-              </div>
-            </div>
-            <div className="bg-white rounded-2xl overflow-hidden shadow-card border border-slate-100 group hover:-translate-y-2 transition-transform duration-300">
-              <div className="h-48 bg-slate-200 relative overflow-hidden">
-                <div className="absolute inset-0 flex items-center justify-center text-slate-400">
-                  <span className="material-icons text-6xl opacity-20">person</span>
-                </div>
-              </div>
-              <div className="p-6 text-center">
-                <h3 className="text-xl font-bold text-slate-900">Dr. Emily Rodriguez</h3>
-                <p className="text-primary font-medium text-sm mb-4">Pediatric Radiologist</p>
-                <p className="text-slate-500 text-sm mb-6">Dedicated to providing safe and gentle imaging services specifically tailored for children.</p>
-                <div className="flex justify-center gap-3">
-                  <button className="text-slate-400 hover:text-primary transition-colors"><span className="material-icons">email</span></button>
-                  <button className="text-slate-400 hover:text-primary transition-colors"><span className="material-icons">calendar_today</span></button>
-                </div>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </section>
@@ -269,7 +250,7 @@ const Radiology: React.FC = () => {
                 <div className="space-y-6">
                   <div className="flex items-start gap-4">
                     <div className="bg-primary/20 p-3 rounded-lg text-primary-light">
-                      <span className="material-symbols-outlined text-2xl text-blue-400">psychology</span>
+                      <span className="material-icons text-2xl text-blue-400">psychology</span>
                     </div>
                     <div>
                       <h4 className="font-bold text-lg text-white mb-1">AI-Assisted Imaging Analysis</h4>
@@ -278,7 +259,7 @@ const Radiology: React.FC = () => {
                   </div>
                   <div className="flex items-start gap-4">
                     <div className="bg-secondary/20 p-3 rounded-lg">
-                      <span className="material-symbols-outlined text-2xl text-emerald-400">security</span>
+                      <span className="material-icons text-2xl text-emerald-400">security</span>
                     </div>
                     <div>
                       <h4 className="font-bold text-lg text-white mb-1">Low-Radiation Equipment</h4>
@@ -308,20 +289,41 @@ const Radiology: React.FC = () => {
         </div>
       </section>
 
-      <section className="py-20 bg-primary text-white relative overflow-hidden" id="appointment">
+      <section className="py-24 relative overflow-hidden" id="appointment">
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-950 to-slate-900"></div>
         <div className="absolute inset-0 opacity-10" style={{backgroundImage: "url('https://www.transparenttextures.com/patterns/cubes.png')"}}></div>
+        
+        {/* Decorative Elements */}
+        <div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/3 w-96 h-96 bg-white/10 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-0 left-0 translate-y-1/2 -translate-x-1/3 w-96 h-96 bg-blue-500/20 rounded-full blur-3xl"></div>
+        
+        {/* Giant Icon */}
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 opacity-[0.03] pointer-events-none">
+          <span className="material-icons text-[20rem] text-white">scanner</span>
+        </div>
+
         <div className="container mx-auto px-6 relative z-10 text-center">
-          <h2 className="text-3xl md:text-4xl font-serif font-bold mb-6">Ready for your scan?</h2>
-          <p className="text-blue-100 text-lg mb-8 max-w-2xl mx-auto leading-relaxed">
-            Whether you need a routine screening or a complex diagnostic procedure, our radiology team is here to provide exceptional care.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link to="/contact" className="inline-flex items-center justify-center px-8 py-3.5 text-base font-bold text-primary bg-white rounded-lg hover:bg-blue-50 shadow-lg transition-colors">
-              Request Your Imaging Appointment
-            </Link>
-            <Link to="/contact" className="inline-flex items-center justify-center px-8 py-3.5 text-base font-bold text-white bg-white/10 border border-white/20 rounded-lg hover:bg-white/20 transition-colors">
-              Doctor Referrals
-            </Link>
+          <div className="max-w-4xl mx-auto">
+            <span className="inline-block py-1 px-3 rounded-full bg-white/10 border border-white/20 text-white text-xs font-bold tracking-wider uppercase mb-6 backdrop-blur-md">
+              Precise Diagnostics
+            </span>
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-white mb-6 leading-tight">
+              Ready for Your <br/><span className="text-blue-300">Scan?</span>
+            </h2>
+            <p className="text-blue-100 text-lg md:text-xl mb-10 leading-relaxed max-w-2xl mx-auto">
+              Whether you need a routine screening or a complex diagnostic procedure, our radiology team is here to provide exceptional care.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <button 
+                onClick={() => openAppointment({ department: 'Radiology' })}
+                className="inline-flex items-center justify-center px-8 py-4 text-lg font-bold text-blue-950 bg-white rounded-full hover:bg-blue-50 shadow-xl shadow-blue-900/20 transition-all hover:scale-105"
+              >
+                Request Appointment
+              </button>
+              <Link to="/contact" className="inline-flex items-center justify-center px-8 py-4 text-lg font-bold text-white border border-white/30 rounded-full hover:bg-white/10 backdrop-blur-sm transition-all">
+                Doctor Referrals
+              </Link>
+            </div>
           </div>
         </div>
       </section>

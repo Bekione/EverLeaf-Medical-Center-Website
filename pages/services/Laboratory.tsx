@@ -204,24 +204,41 @@ const Laboratory: React.FC = () => {
         </div>
       </section>
 
-      <section className="py-20 bg-primary text-white relative overflow-hidden">
+      <section className="py-24 relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-900 to-slate-900"></div>
         <div className="absolute inset-0 opacity-10" style={{backgroundImage: "url('https://www.transparenttextures.com/patterns/cubes.png')"}}></div>
+        
+        {/* Decorative Elements */}
+        <div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/3 w-96 h-96 bg-white/10 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-0 left-0 translate-y-1/2 -translate-x-1/3 w-96 h-96 bg-blue-500/20 rounded-full blur-3xl"></div>
+        
+        {/* Giant Icon */}
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 opacity-[0.03] pointer-events-none">
+          <span className="material-icons text-[20rem] text-white">science</span>
+        </div>
+
         <div className="container mx-auto px-6 relative z-10 text-center">
-          <h2 className="text-3xl md:text-4xl font-serif font-bold mb-6">Ready to take charge of your health?</h2>
-          <p className="text-blue-100 text-lg mb-8 max-w-2xl mx-auto leading-relaxed">
-            Book your lab test today. Choose from our wide range of individual tests and health checkup packages.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button 
-              onClick={() => openAppointment({ department: 'Laboratory' })}
-              className="inline-flex items-center justify-center px-8 py-3.5 text-base font-bold text-primary bg-white rounded-lg hover:bg-blue-50 shadow-lg transition-colors group"
-            >
-              Request a Test
-              <span className="material-icons ml-2 group-hover:translate-x-1 transition-transform">arrow_forward</span>
-            </button>
-            <Link to="/contact" className="inline-flex items-center justify-center px-8 py-3.5 text-base font-bold text-white bg-white/10 border border-white/20 rounded-lg hover:bg-white/20 transition-colors">
-              Contact for Pricing
-            </Link>
+          <div className="max-w-4xl mx-auto">
+            <span className="inline-block py-1 px-3 rounded-full bg-white/10 border border-white/20 text-white text-xs font-bold tracking-wider uppercase mb-6 backdrop-blur-md">
+              Fast & Reliable
+            </span>
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-white mb-6 leading-tight">
+              Ready to Take Charge <br/><span className="text-blue-300">of Your Health?</span>
+            </h2>
+            <p className="text-blue-100 text-lg md:text-xl mb-10 leading-relaxed max-w-2xl mx-auto">
+              Book your lab test today. Choose from our wide range of individual tests and health checkup packages.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <button 
+                onClick={() => openAppointment({ department: 'Laboratory' })}
+                className="inline-flex items-center justify-center px-8 py-4 text-lg font-bold text-blue-900 bg-white rounded-full hover:bg-blue-50 shadow-xl shadow-blue-900/20 transition-all hover:scale-105"
+              >
+                Request a Test
+              </button>
+              <Link to="/contact" className="inline-flex items-center justify-center px-8 py-4 text-lg font-bold text-white border border-white/30 rounded-full hover:bg-white/10 backdrop-blur-sm transition-all">
+                Contact for Pricing
+              </Link>
+            </div>
           </div>
         </div>
       </section>

@@ -135,26 +135,42 @@ const Pharmacy: React.FC = () => {
         </div>
       </section>
 
-      <section className="py-20 bg-green-50/50 border-t border-slate-200">
-        <div className="container mx-auto px-6 text-center">
-          <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center mx-auto mb-6 shadow-md text-secondary">
-            <span className="material-icons text-3xl">call</span>
+      <section className="py-24 relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-green-900 to-slate-900"></div>
+        <div className="absolute inset-0 opacity-10" style={{backgroundImage: "url('https://www.transparenttextures.com/patterns/cubes.png')"}}></div>
+        
+        {/* Decorative Elements */}
+        <div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/3 w-96 h-96 bg-white/10 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-0 left-0 translate-y-1/2 -translate-x-1/3 w-96 h-96 bg-green-500/20 rounded-full blur-3xl"></div>
+        
+        {/* Giant Icon */}
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 opacity-[0.03] pointer-events-none">
+          <span className="material-icons text-[20rem] text-white">medication</span>
+        </div>
+
+        <div className="container mx-auto px-6 relative z-10 text-center">
+          <div className="max-w-4xl mx-auto">
+            <span className="inline-block py-1 px-3 rounded-full bg-white/10 border border-white/20 text-white text-xs font-bold tracking-wider uppercase mb-6 backdrop-blur-md">
+              Need Assistance?
+            </span>
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-white mb-6 leading-tight">
+              Have Questions About <br/><span className="text-green-300">Your Medication?</span>
+            </h2>
+            <p className="text-green-100 text-lg md:text-xl mb-10 leading-relaxed max-w-2xl mx-auto">
+              Our pharmacists are available 24/7 to answer your questions regarding drug interactions, dosages, or side effects.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <a href="tel:5551234567" className="inline-flex items-center justify-center px-8 py-4 text-lg font-bold text-green-900 bg-white rounded-full hover:bg-green-50 shadow-xl shadow-green-900/20 transition-all hover:scale-105">
+                Call Pharmacy
+              </a>
+              <Link to="/contact" className="inline-flex items-center justify-center px-8 py-4 text-lg font-bold text-white border border-white/30 rounded-full hover:bg-white/10 backdrop-blur-sm transition-all">
+                Visit Pharmacy
+              </Link>
+            </div>
+            <p className="mt-8 text-sm text-green-200">
+              For prescription refills, please use our <Link to="/contact" className="text-white font-semibold hover:underline">Refill Request Form</Link>.
+            </p>
           </div>
-          <h2 className="text-3xl font-serif font-bold text-slate-900 mb-4">Have Questions About Your Medication?</h2>
-          <p className="text-lg text-slate-600 mb-8 max-w-2xl mx-auto">
-            Our pharmacists are available 24/7 to answer your questions regarding drug interactions, dosages, or side effects.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="tel:5551234567" className="inline-flex items-center justify-center px-8 py-3.5 text-base font-bold text-white bg-secondary hover:bg-green-600 rounded-lg shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all duration-200">
-              <span className="material-icons mr-2">phone_in_talk</span> Call Pharmacy
-            </a>
-            <Link to="/contact" className="inline-flex items-center justify-center px-8 py-3.5 text-base font-bold text-secondary bg-white border border-secondary/20 rounded-lg hover:bg-green-50 shadow-sm transition-colors">
-              <span className="material-icons mr-2">storefront</span> Visit Pharmacy
-            </Link>
-          </div>
-          <p className="mt-6 text-sm text-slate-500">
-            For prescription refills, please use our <Link to="/contact" className="text-secondary font-semibold hover:underline">Refill Request Form</Link>.
-          </p>
         </div>
       </section>
     </div>
