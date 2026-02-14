@@ -2,6 +2,7 @@
 import React from 'react';
 import { Link, useOutletContext } from 'react-router-dom';
 import { OpenAppointmentFunc } from '../../Layout';
+import SEO from '../../components/SEO';
 
 const Laboratory: React.FC = () => {
   const { openAppointment } = useOutletContext<{ openAppointment: OpenAppointmentFunc }>();
@@ -16,6 +17,11 @@ const Laboratory: React.FC = () => {
 
   return (
     <div className="animate-fade-in">
+      <SEO
+        title="Clinical Laboratory"
+        description="24/7 automated pathology lab services. Accurate blood work, microbiology, and biochemistry results."
+        canonical="https://everleaf-medical.com/services/laboratory"
+      />
       <header className="relative bg-slate-900 text-white overflow-hidden">
         <div className="absolute inset-0">
           <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuB_pz0LkLId6ZtK8txAyerpvUQ732I3XINGlxdNS2skUDdAcJbuO2zDCmYG0KgOzEQea9eCBt2ZOMuvhQ8WXR-sIAkS3pSFFZO61729sWktvqksqsAWsh3Pf6uHyPOzwgdrbS_0pTEB14D0Vx17WY5FUUirSL9l4hMJP9hhAdCtWJccKk1-p9urwJQefmVEzwx_PlqVo0eSn33-QyfXkBUO8jVW5eCK0P-hkhis4DJ7IxQo9-kOewUkBR3yFCPyb4I_u7FFlol2Qjc" alt="Modern medical laboratory environment" className="w-full h-full object-cover opacity-30" />
@@ -27,18 +33,18 @@ const Laboratory: React.FC = () => {
               <span className="material-icons text-lg">biotech</span>
               <span>Advanced Diagnostics</span>
             </div>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold mb-6 leading-tight">Precision Laboratory <br/>Services You Can Trust</h1>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold mb-6 leading-tight">Precision Laboratory <br />Services You Can Trust</h1>
             <p className="text-lg md:text-xl text-slate-300 mb-8 max-w-2xl leading-relaxed">
               Our ISO-certified laboratory operates 24/7, delivering accurate diagnostic results with speed and precision. From routine blood work to complex genetic testing, your health is our priority.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
-              <button 
+              <button
                 onClick={() => openAppointment({ department: 'Laboratory' })}
                 className="inline-flex items-center justify-center px-8 py-3.5 text-base font-bold text-white bg-primary rounded-lg hover:bg-primary-dark shadow-lg shadow-primary/30 hover:shadow-primary/50 transition-all transform hover:-translate-y-0.5"
               >
                 Book a Test
               </button>
-              <button 
+              <button
                 onClick={(e) => scrollToSection(e, 'collection')}
                 className="inline-flex items-center justify-center px-8 py-3.5 text-base font-bold text-white bg-white/10 border border-white/20 backdrop-blur-sm rounded-lg hover:bg-white/20 transition-all"
               >
@@ -129,12 +135,12 @@ const Laboratory: React.FC = () => {
                   <div className="flex flex-col sm:flex-row gap-6">
                     <div className="flex items-center gap-3">
                       <span className="text-3xl font-bold text-primary">24/7</span>
-                      <span className="text-sm text-slate-500 leading-tight">Operation<br/>Hours</span>
+                      <span className="text-sm text-slate-500 leading-tight">Operation<br />Hours</span>
                     </div>
                     <div className="w-px h-10 bg-slate-200 hidden sm:block"></div>
                     <div className="flex items-center gap-3">
                       <span className="text-3xl font-bold text-primary">99.9%</span>
-                      <span className="text-sm text-slate-500 leading-tight">Accuracy<br/>Rate</span>
+                      <span className="text-sm text-slate-500 leading-tight">Accuracy<br />Rate</span>
                     </div>
                   </div>
                 </div>
@@ -163,11 +169,11 @@ const Laboratory: React.FC = () => {
                   </li>
                 ))}
               </ul>
-              <button 
+              <button
                 onClick={() => openAppointment({ department: 'Laboratory', doctorName: 'Home Collection Service' })}
                 className="text-primary font-bold hover:text-primary-dark inline-flex items-center gap-2 group text-left"
               >
-                Book Home Collection 
+                Book Home Collection
                 <span className="material-icons text-sm group-hover:translate-x-1 transition-transform">arrow_forward</span>
               </button>
             </div>
@@ -206,12 +212,12 @@ const Laboratory: React.FC = () => {
 
       <section className="py-24 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-blue-900 to-slate-900"></div>
-        <div className="absolute inset-0 opacity-10" style={{backgroundImage: "url('https://www.transparenttextures.com/patterns/cubes.png')"}}></div>
-        
+        <div className="absolute inset-0 opacity-10" style={{ backgroundImage: "url('https://www.transparenttextures.com/patterns/cubes.png')" }}></div>
+
         {/* Decorative Elements */}
         <div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/3 w-96 h-96 bg-white/10 rounded-full blur-3xl"></div>
         <div className="absolute bottom-0 left-0 translate-y-1/2 -translate-x-1/3 w-96 h-96 bg-blue-500/20 rounded-full blur-3xl"></div>
-        
+
         {/* Giant Icon */}
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 opacity-[0.03] pointer-events-none">
           <span className="material-icons text-[20rem] text-white">science</span>
@@ -223,13 +229,13 @@ const Laboratory: React.FC = () => {
               Fast & Reliable
             </span>
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-white mb-6 leading-tight">
-              Ready to Take Charge <br/><span className="text-blue-300">of Your Health?</span>
+              Ready to Take Charge <br /><span className="text-blue-300">of Your Health?</span>
             </h2>
             <p className="text-blue-100 text-lg md:text-xl mb-10 leading-relaxed max-w-2xl mx-auto">
               Book your lab test today. Choose from our wide range of individual tests and health checkup packages.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button 
+              <button
                 onClick={() => openAppointment({ department: 'Laboratory' })}
                 className="inline-flex items-center justify-center px-8 py-4 text-lg font-bold text-blue-900 bg-white rounded-full hover:bg-blue-50 shadow-xl shadow-blue-900/20 transition-all hover:scale-105"
               >

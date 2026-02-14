@@ -1,6 +1,7 @@
 
 import React, { useEffect, useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
+import SEO from '../components/SEO';
 
 // Counter Component for animation
 const CountUp = ({ end, duration = 2000, suffix = '', decimals = 0 }: { end: number, duration?: number, suffix?: string, decimals?: number }) => {
@@ -24,17 +25,17 @@ const CountUp = ({ end, duration = 2000, suffix = '', decimals = 0 }: { end: num
 
   useEffect(() => {
     if (!isVisible) return;
-    
+
     let startTimestamp: number | null = null;
     const step = (timestamp: number) => {
       if (!startTimestamp) startTimestamp = timestamp;
       const progress = Math.min((timestamp - startTimestamp) / duration, 1);
-      
+
       // Easing function for smooth animation
       const easeOutQuart = 1 - Math.pow(1 - progress, 4);
-      
+
       setCount(easeOutQuart * end);
-      
+
       if (progress < 1) {
         window.requestAnimationFrame(step);
       }
@@ -48,12 +49,17 @@ const CountUp = ({ end, duration = 2000, suffix = '', decimals = 0 }: { end: num
 const About: React.FC = () => {
   return (
     <div className="animate-fade-in bg-slate-50 min-h-screen">
+      <SEO
+        title="About Us"
+        description="Learn about Everleaf Medical Center's 35-year legacy of compassionate care, medical excellence, and our mission to improve community health."
+        canonical="https://everleaf-medical.com/about"
+      />
       {/* Hero Section - Distinct from Services Pages */}
       <header className="relative pt-12 pb-20 lg:pt-24 lg:pb-32 overflow-hidden bg-gradient-to-b from-blue-50 via-white to-white">
         {/* Abstract Background Elements */}
         <div className="absolute top-0 right-0 -translate-y-1/4 translate-x-1/4 w-[600px] h-[600px] bg-blue-100/40 rounded-full blur-[100px] pointer-events-none"></div>
         <div className="absolute bottom-0 left-0 translate-y-1/4 -translate-x-1/4 w-[500px] h-[500px] bg-teal-50/60 rounded-full blur-[80px] pointer-events-none"></div>
-        
+
         <div className="container mx-auto px-6 relative z-10">
           <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
             <div className="lg:w-1/2 text-center lg:text-left">
@@ -62,7 +68,7 @@ const About: React.FC = () => {
                 Since 1988
               </div>
               <h1 className="text-4xl lg:text-6xl font-serif font-bold text-slate-900 mb-6 leading-tight">
-                A Legacy of Caring, <br/>
+                A Legacy of Caring, <br />
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-blue-600">
                   A Future of Healing.
                 </span>
@@ -78,7 +84,7 @@ const About: React.FC = () => {
                   View Our Facilities
                 </Link>
               </div>
-              
+
               {/* Trust Indicators */}
               <div className="mt-12 flex items-center justify-center lg:justify-start gap-8 border-t border-slate-100 pt-8">
                 <div>
@@ -101,17 +107,17 @@ const About: React.FC = () => {
             <div className="lg:w-1/2 relative">
               <div className="relative z-10 w-full max-w-lg mx-auto lg:ml-auto group">
                 {/* Main Image */}
-                <img 
-                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuAQXOFccHeKdEh_AQZ9fws6JVXcLa6Iz8Tjq_V6mWq3W5cl694yBn5T103VW1-42ItCmCCLdeZPgrrgQgykZOoHDGHzlO74VNjsH8Y3PaQIFBF0UvYBOup-bvxdiig-Gki9OWOSmTEzWcG7httWSR6JQdnFiRXVmjK-jgylNUqdE7vVO0Fkd10Ic9-0ZP70XpBoPjP5UteM9M2FABRZ6XCixyHmUBi0wTaukSccpmN4nabsNo01IO4iEeiN3mmSzFrmYUoeDmDNeeg" 
-                  alt="Medical Team" 
+                <img
+                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuAQXOFccHeKdEh_AQZ9fws6JVXcLa6Iz8Tjq_V6mWq3W5cl694yBn5T103VW1-42ItCmCCLdeZPgrrgQgykZOoHDGHzlO74VNjsH8Y3PaQIFBF0UvYBOup-bvxdiig-Gki9OWOSmTEzWcG7httWSR6JQdnFiRXVmjK-jgylNUqdE7vVO0Fkd10Ic9-0ZP70XpBoPjP5UteM9M2FABRZ6XCixyHmUBi0wTaukSccpmN4nabsNo01IO4iEeiN3mmSzFrmYUoeDmDNeeg"
+                  alt="Medical Team"
                   className="rounded-2xl shadow-2xl w-full object-cover aspect-[4/3] border-4 border-white transition-transform duration-500 group-hover:scale-[1.01]"
                 />
-                
+
                 {/* Floating Secondary Image */}
                 <div className="absolute -bottom-12 -left-12 w-2/3 hidden md:block">
-                  <img 
-                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuDHdy-TQkrlWxbjfSK2Oiy0_ZEMVW-pJE0f4gboXr4qSy9BOeIWU0215DPTHix5i2VvnodWBnr3qfyNDrRh-kANv576LGzxpYn6JUdqnp1WkDfCvZNtBM891q3m-AKBFVwB7X8sSMvXnjTLfr9fJ6mD6ArEvY-2FZpxSXe58A-EhF9nFyof_0B4wn0eefDo0rtXdhtTB94_3VnPzoZVUr3OkpJI74Z33vo5UV_mV1ud16km-3V86j_KQsMw2N2WSorHb1sQ1GgQmVc" 
-                    alt="Hospital Building" 
+                  <img
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuDHdy-TQkrlWxbjfSK2Oiy0_ZEMVW-pJE0f4gboXr4qSy9BOeIWU0215DPTHix5i2VvnodWBnr3qfyNDrRh-kANv576LGzxpYn6JUdqnp1WkDfCvZNtBM891q3m-AKBFVwB7X8sSMvXnjTLfr9fJ6mD6ArEvY-2FZpxSXe58A-EhF9nFyof_0B4wn0eefDo0rtXdhtTB94_3VnPzoZVUr3OkpJI74Z33vo5UV_mV1ud16km-3V86j_KQsMw2N2WSorHb1sQ1GgQmVc"
+                    alt="Hospital Building"
                     className="rounded-xl shadow-xl border-4 border-white w-full object-cover aspect-[3/2] transition-transform duration-500 group-hover:-translate-y-2"
                   />
                 </div>
@@ -165,7 +171,7 @@ const About: React.FC = () => {
 
       {/* Quality Stats Section */}
       <section className="py-20 bg-primary text-white relative overflow-hidden">
-        <div className="absolute inset-0 opacity-10" style={{backgroundImage: "url('https://www.transparenttextures.com/patterns/cubes.png')"}}></div>
+        <div className="absolute inset-0 opacity-10" style={{ backgroundImage: "url('https://www.transparenttextures.com/patterns/cubes.png')" }}></div>
         <div className="container mx-auto px-6 relative z-10">
           <div className="flex flex-col lg:flex-row gap-16 items-center">
             <div className="lg:w-1/2">
@@ -319,31 +325,31 @@ const About: React.FC = () => {
       {/* Revamped CTA Section */}
       <section className="py-24 relative overflow-hidden" id="join">
         <div className="absolute inset-0 bg-gradient-to-br from-slate-900 to-blue-900"></div>
-        <div className="absolute inset-0 opacity-10" style={{backgroundImage: "url('https://www.transparenttextures.com/patterns/cubes.png')"}}></div>
-        
+        <div className="absolute inset-0 opacity-10" style={{ backgroundImage: "url('https://www.transparenttextures.com/patterns/cubes.png')" }}></div>
+
         <div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/3 w-96 h-96 bg-white/10 rounded-full blur-3xl"></div>
         <div className="absolute bottom-0 left-0 translate-y-1/2 -translate-x-1/3 w-96 h-96 bg-blue-500/20 rounded-full blur-3xl"></div>
-        
+
         <div className="container mx-auto px-6 relative z-10 text-center">
           <div className="max-w-4xl mx-auto">
             <span className="inline-block py-1 px-3 rounded-full bg-white/10 border border-white/20 text-white text-xs font-bold tracking-wider uppercase mb-6 backdrop-blur-md">
               Be Part of Our Journey
             </span>
             <h2 className="text-3xl md:text-5xl lg:text-6xl font-serif font-bold text-white mb-6 leading-tight">
-              Ready to Experience <br/><span className="text-blue-300">Better Healthcare?</span>
+              Ready to Experience <br /><span className="text-blue-300">Better Healthcare?</span>
             </h2>
             <p className="text-blue-100 text-lg md:text-xl mb-10 leading-relaxed max-w-2xl mx-auto">
               Whether you are looking for world-class treatment or want to join our team of dedicated professionals, Everleaf welcomes you.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <Link 
-                to="/contact" 
+              <Link
+                to="/contact"
                 className="px-8 py-4 bg-white text-primary font-bold rounded-full hover:bg-blue-50 transition-all shadow-xl shadow-blue-900/30 hover:scale-105 flex items-center gap-2"
               >
                 Visit Us Today <span className="material-icons">near_me</span>
               </Link>
-              <Link 
-                to="/contact" 
+              <Link
+                to="/contact"
                 className="px-8 py-4 bg-transparent border-2 border-white/30 text-white font-bold rounded-full hover:bg-white/10 transition-all backdrop-blur-sm"
               >
                 Contact Administration

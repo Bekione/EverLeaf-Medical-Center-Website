@@ -2,6 +2,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import NewsletterForm from '../../components/NewsletterForm';
+import SEO from '../../components/SEO';
 
 const ImmuneSystem: React.FC = () => {
   const handleShare = async () => {
@@ -23,6 +24,13 @@ const ImmuneSystem: React.FC = () => {
 
   return (
     <div className="animate-fade-in bg-white min-h-screen">
+      <SEO
+        title="5 Superfoods to Boost Immunity"
+        description="Prepare your body for winter with these nutrient-dense foods recommended by our senior dietitians."
+        type="article"
+        canonical="https://everleaf-medical.com/blog/immune-system"
+        image="https://lh3.googleusercontent.com/aida-public/AB6AXuAi8sckMzeel2TKzkxpRLW4h0bY-CXz8YGfQ6GuyWFmGquyjMWc3iFRrGiRN7tGo8fdwdLv7F4uziH2tIoFsoGvrzlG6vIMTDY8JhsgDSalL7mi4Mgy_CThF4_cle8rDWSs0h9fXSSEeetZF1LqNmqMDZQwKNk1wjIOWl_q8IrCHn_QBjuCxu3eSCZ0lt4igBw2lXB61R0GjiumAEtGmPuIV0x4URjQhs93ybFSL0bGRoc9Q2enHs_07MbtssuCOQ8qvjyg7MPDURA"
+      />
       <div className="bg-slate-50 border-b border-slate-200">
         <div className="container mx-auto px-6 py-4">
           <nav aria-label="Breadcrumb" className="flex text-sm text-slate-500">

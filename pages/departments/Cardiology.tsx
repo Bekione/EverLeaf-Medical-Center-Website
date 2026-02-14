@@ -2,6 +2,7 @@
 import React from 'react';
 import { Link, useOutletContext } from 'react-router-dom';
 import { OpenAppointmentFunc } from '../../Layout';
+import SEO from '../../components/SEO';
 
 const Cardiology: React.FC = () => {
   const { openAppointment } = useOutletContext<{ openAppointment: OpenAppointmentFunc }>();
@@ -16,6 +17,11 @@ const Cardiology: React.FC = () => {
 
   return (
     <div className="animate-fade-in">
+      <SEO
+        title="Cardiology Department"
+        description="World-class heart care and cardiology services. Expert diagnosis and treatment for cardiovascular conditions."
+        canonical="https://everleaf-medical.com/departments/cardiology"
+      />
       <header className="bg-white border-b border-slate-100 py-12 lg:py-16 relative overflow-hidden">
         <div className="absolute right-0 top-0 h-full w-1/3 bg-blue-50/50 skew-x-12 translate-x-12 pointer-events-none"></div>
         <div className="container mx-auto px-6 relative z-10">
@@ -31,13 +37,13 @@ const Cardiology: React.FC = () => {
                 Our Cardiology Department provides comprehensive care for heart and vascular conditions. From advanced diagnostics to surgical treatments, we are committed to your heart health.
               </p>
               <div className="flex flex-wrap gap-4">
-                <button 
+                <button
                   onClick={() => openAppointment({ department: 'Cardiology' })}
                   className="inline-flex items-center justify-center px-6 py-3.5 text-base font-semibold text-white transition-all duration-200 bg-primary rounded-lg hover:bg-primary-dark shadow-lg shadow-blue-500/20 hover:-translate-y-0.5"
                 >
                   Book Consultation
                 </button>
-                <button 
+                <button
                   onClick={(e) => scrollToSection(e, 'specialists')}
                   className="inline-flex items-center justify-center px-6 py-3.5 text-base font-semibold text-slate-700 bg-white border border-slate-200 rounded-lg hover:bg-slate-50 transition-colors"
                 >
@@ -113,7 +119,7 @@ const Cardiology: React.FC = () => {
                 <div className="h-64 overflow-hidden relative">
                   <img src={doc.img} alt={doc.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-4">
-                    <button 
+                    <button
                       onClick={() => openAppointment({ doctorName: doc.name, department: 'Cardiology' })}
                       className="text-white bg-primary hover:bg-primary-dark px-4 py-2 rounded-full text-sm font-medium"
                     >
@@ -133,12 +139,12 @@ const Cardiology: React.FC = () => {
 
       <section className="py-24 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-slate-900 to-blue-900"></div>
-        <div className="absolute inset-0 opacity-10" style={{backgroundImage: "url('https://www.transparenttextures.com/patterns/cubes.png')"}}></div>
-        
+        <div className="absolute inset-0 opacity-10" style={{ backgroundImage: "url('https://www.transparenttextures.com/patterns/cubes.png')" }}></div>
+
         {/* Decorative Elements */}
         <div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/3 w-96 h-96 bg-white/10 rounded-full blur-3xl"></div>
         <div className="absolute bottom-0 left-0 translate-y-1/2 -translate-x-1/3 w-96 h-96 bg-blue-500/20 rounded-full blur-3xl"></div>
-        
+
         {/* Giant Icon */}
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 opacity-[0.03] pointer-events-none">
           <span className="material-icons text-[20rem] text-white">favorite</span>
@@ -150,13 +156,13 @@ const Cardiology: React.FC = () => {
               Start Your Journey
             </span>
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-white mb-6 leading-tight">
-              Prioritize Your <br/><span className="text-blue-300">Heart Health</span> Today
+              Prioritize Your <br /><span className="text-blue-300">Heart Health</span> Today
             </h2>
             <p className="text-blue-100 text-lg md:text-xl mb-10 leading-relaxed max-w-2xl mx-auto">
               Don't wait for symptoms to worsen. Our expert cardiologists are here to provide the personalized care you deserve. Schedule your consultation now.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button 
+              <button
                 onClick={() => openAppointment({ department: 'Cardiology' })}
                 className="inline-flex items-center justify-center px-8 py-4 text-lg font-bold text-primary bg-white rounded-full hover:bg-blue-50 shadow-xl shadow-blue-900/20 transition-all hover:scale-105"
               >

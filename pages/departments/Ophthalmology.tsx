@@ -2,6 +2,7 @@
 import React from 'react';
 import { Link, useOutletContext } from 'react-router-dom';
 import { OpenAppointmentFunc } from '../../Layout';
+import SEO from '../../components/SEO';
 
 const Ophthalmology: React.FC = () => {
   const { openAppointment } = useOutletContext<{ openAppointment: OpenAppointmentFunc }>();
@@ -16,6 +17,11 @@ const Ophthalmology: React.FC = () => {
 
   return (
     <div className="animate-fade-in">
+      <SEO
+        title="Ophthalmology Department"
+        description="Advanced eye care and vision preservation. Treating cataracts, glaucoma, and offering LASIK surgery."
+        canonical="https://everleaf-medical.com/departments/ophthalmology"
+      />
       <header className="relative bg-white border-b border-slate-100 py-12 lg:py-16 overflow-hidden">
         <div className="absolute right-0 top-0 h-full w-1/3 bg-blue-50/50 skew-x-12 translate-x-12 pointer-events-none"></div>
         <div className="container mx-auto px-6 relative z-10">
@@ -31,13 +37,13 @@ const Ophthalmology: React.FC = () => {
                 Our world-class ophthalmology team combines expertise with cutting-edge technology to diagnose, treat, and manage all conditions of the eye.
               </p>
               <div className="flex flex-wrap gap-4">
-                <button 
+                <button
                   onClick={() => openAppointment({ department: 'Ophthalmology' })}
                   className="inline-flex items-center justify-center px-6 py-3.5 text-base font-semibold text-white bg-primary rounded-lg hover:bg-primary-dark shadow-lg shadow-primary/20 hover:-translate-y-0.5 transition-all"
                 >
                   Book Eye Exam
                 </button>
-                <button 
+                <button
                   onClick={(e) => scrollToSection(e, 'specialists')}
                   className="inline-flex items-center justify-center px-6 py-3.5 text-base font-semibold text-slate-700 bg-white border border-slate-200 rounded-lg hover:bg-slate-50 transition-all"
                 >
@@ -144,7 +150,7 @@ const Ophthalmology: React.FC = () => {
               <p className="text-slate-600 mb-8 leading-relaxed">
                 We utilize the latest surgical techniques and technology to ensure the best possible outcomes for our patients. Our facilities are equipped for both outpatient procedures and complex surgeries.
               </p>
-              <button 
+              <button
                 onClick={() => openAppointment({ department: 'Ophthalmology' })}
                 className="inline-flex items-center px-6 py-3 bg-primary text-white rounded-lg hover:bg-primary-dark transition-colors font-medium"
               >
@@ -174,7 +180,7 @@ const Ophthalmology: React.FC = () => {
       </section>
 
       <section className="py-20 bg-slate-900 text-white relative overflow-hidden">
-        <div className="absolute inset-0 opacity-10" style={{backgroundImage: "url('https://www.transparenttextures.com/patterns/carbon-fibre.png')"}}></div>
+        <div className="absolute inset-0 opacity-10" style={{ backgroundImage: "url('https://www.transparenttextures.com/patterns/carbon-fibre.png')" }}></div>
         <div className="container mx-auto px-6 relative z-10">
           <div className="flex flex-col lg:flex-row items-center gap-16">
             <div className="lg:w-1/2">
@@ -220,7 +226,7 @@ const Ophthalmology: React.FC = () => {
             Don't let vision problems limit your life. Schedule your comprehensive eye exam today and experience the difference expert care makes.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button 
+            <button
               onClick={() => openAppointment({ department: 'Ophthalmology' })}
               className="inline-flex items-center justify-center px-8 py-4 text-base font-bold text-white bg-primary rounded-lg hover:bg-primary-dark shadow-lg shadow-primary/30 transition-all hover:-translate-y-1"
             >

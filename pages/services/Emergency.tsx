@@ -1,12 +1,18 @@
 
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import SEO from '../../components/SEO';
 
 const Emergency: React.FC = () => {
   const [showGuidelineModal, setShowGuidelineModal] = useState(false);
 
   return (
     <div className="animate-fade-in">
+      <SEO
+        title="Emergency Department (ER)"
+        description="24/7 Level I Trauma Center providing immediate critical care. Call 911 for life-threatening emergencies."
+        canonical="https://everleaf-medical.com/services/emergency"
+      />
       <header className="relative bg-slate-900 text-white overflow-hidden">
         <div className="absolute inset-0">
           <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCCEXHj4w22ep_hWMarvG_GaeCc6rDznHa1Z-kIy3g9AT9mo84EZt3exyxFSbVu2brm9dCysNW9uWI4E90M7zrRFk8JnJdUNBX9aKPYF9lE2pKf0MfczXha6gAbRtSfuL1wb9U2UQvFx-ijmULU8HHbBOewZrGJ1CM56ZO9CU-lsPU3jEFDAEoYXktMBIUFFJ7-u929uGz8avKckbD7RVDTFloU4j6DZ1LblYkuZcS3_wlZwY9dyKYcdEJO6EBPNHtr-QhbfC9ipp4" alt="Emergency Room" className="w-full h-full object-cover opacity-40" />
@@ -23,7 +29,7 @@ const Emergency: React.FC = () => {
               </span>
             </div>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold mb-6 leading-tight">
-              Emergency Care <br/>
+              Emergency Care <br />
               <span className="text-white">When Seconds Count.</span>
             </h1>
             <p className="text-lg md:text-xl text-slate-300 mb-8 max-w-2xl leading-relaxed">
@@ -179,7 +185,7 @@ const Emergency: React.FC = () => {
       </section>
 
       <section className="py-20 bg-slate-900 text-white relative overflow-hidden" id="contact">
-        <div className="absolute inset-0 opacity-5" style={{backgroundImage: "url('https://www.transparenttextures.com/patterns/cubes.png')"}}></div>
+        <div className="absolute inset-0 opacity-5" style={{ backgroundImage: "url('https://www.transparenttextures.com/patterns/cubes.png')" }}></div>
         <div className="absolute top-0 right-0 w-96 h-96 bg-primary opacity-20 blur-[100px] rounded-full translate-x-1/2 -translate-y-1/2"></div>
         <div className="container mx-auto px-6 relative z-10">
           <div className="flex flex-col lg:flex-row items-center justify-between gap-12 bg-white/5 border border-white/10 rounded-3xl p-10 lg:p-16 backdrop-blur-sm">
@@ -224,7 +230,7 @@ const Emergency: React.FC = () => {
               <p className="text-slate-300 text-sm mb-6">
                 Chest pain, difficulty breathing, severe bleeding, head injury, loss of consciousness, or severe abdominal pain.
               </p>
-              <button 
+              <button
                 onClick={() => setShowGuidelineModal(true)}
                 className="w-full py-3 bg-white text-slate-900 font-bold rounded-lg hover:bg-slate-200 transition-colors"
               >
@@ -239,13 +245,13 @@ const Emergency: React.FC = () => {
       {showGuidelineModal && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/80 backdrop-blur-sm">
           <div className="bg-white rounded-2xl shadow-2xl max-w-lg w-full max-h-[90vh] overflow-y-auto animate-fade-in relative">
-            <button 
+            <button
               onClick={() => setShowGuidelineModal(false)}
               className="absolute top-4 right-4 p-2 text-slate-400 hover:text-slate-600 transition-colors"
             >
               <span className="material-icons text-2xl">close</span>
             </button>
-            
+
             <div className="p-8">
               <div className="flex items-center gap-3 mb-6">
                 <div className="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center text-red-600">
@@ -253,11 +259,11 @@ const Emergency: React.FC = () => {
                 </div>
                 <h3 className="text-2xl font-bold text-slate-900">ER Visitor Guidelines</h3>
               </div>
-              
+
               <div className="space-y-6">
                 <div>
                   <h4 className="font-bold text-slate-900 mb-2 flex items-center gap-2">
-                    <span className="material-icons text-primary text-sm">priority_high</span> 
+                    <span className="material-icons text-primary text-sm">priority_high</span>
                     When to call 911
                   </h4>
                   <ul className="list-disc pl-5 space-y-1 text-sm text-slate-600">
@@ -298,7 +304,7 @@ const Emergency: React.FC = () => {
               </div>
 
               <div className="mt-8 pt-6 border-t border-slate-100">
-                <button 
+                <button
                   onClick={() => setShowGuidelineModal(false)}
                   className="w-full py-3 bg-slate-900 text-white font-bold rounded-lg hover:bg-slate-800 transition-colors"
                 >

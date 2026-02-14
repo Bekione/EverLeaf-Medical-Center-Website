@@ -2,6 +2,7 @@
 import React from 'react';
 import { Link, useOutletContext } from 'react-router-dom';
 import { OpenAppointmentFunc } from '../../Layout';
+import SEO from '../../components/SEO';
 
 const Pediatrics: React.FC = () => {
   const { openAppointment } = useOutletContext<{ openAppointment: OpenAppointmentFunc }>();
@@ -16,10 +17,15 @@ const Pediatrics: React.FC = () => {
 
   return (
     <div className="animate-fade-in">
+      <SEO
+        title="Pediatrics Department"
+        description="Compassionate medical care for infants, children, and adolescents. Child-friendly environment and expert pediatricians."
+        canonical="https://everleaf-medical.com/departments/pediatrics"
+      />
       <header className="relative bg-white border-b border-slate-100 py-12 lg:py-16 overflow-hidden">
         <div className="absolute right-0 top-0 h-full w-1/3 bg-sky-50/50 skew-x-12 translate-x-12 pointer-events-none"></div>
         <div className="absolute top-0 right-0 -mr-20 -mt-20 w-80 h-80 rounded-full bg-blue-50 blur-3xl opacity-60"></div>
-        
+
         <div className="container mx-auto px-6 relative z-10">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
@@ -27,20 +33,20 @@ const Pediatrics: React.FC = () => {
                 Department of Pediatrics
               </span>
               <h1 className="text-4xl lg:text-5xl xl:text-6xl font-serif font-bold text-slate-900 mb-6 leading-tight">
-                Compassionate Care for <br className="hidden md:block" /> 
+                Compassionate Care for <br className="hidden md:block" />
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-sky-500 to-blue-600">Your Little Ones</span>
               </h1>
               <p className="text-lg text-slate-600 leading-relaxed mb-8 max-w-lg">
                 From newborns to adolescents, our dedicated team of pediatricians provides comprehensive medical care in a warm, child-friendly environment.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
-                <button 
+                <button
                   onClick={() => openAppointment({ department: 'Pediatrics' })}
                   className="inline-flex items-center justify-center px-8 py-3.5 text-base font-semibold text-white bg-primary rounded-lg hover:bg-primary-dark transition-all shadow-lg hover:shadow-primary/30"
                 >
                   Book a Visit
                 </button>
-                <button 
+                <button
                   onClick={(e) => scrollToSection(e, 'specialists')}
                   className="inline-flex items-center justify-center px-8 py-3.5 text-base font-semibold text-slate-700 bg-white border border-slate-200 rounded-lg hover:bg-slate-50 hover:border-slate-300 transition-all"
                 >
@@ -255,7 +261,7 @@ const Pediatrics: React.FC = () => {
                 <div className="h-64 overflow-hidden relative">
                   <img src={doc.img} alt={doc.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-4">
-                    <button 
+                    <button
                       onClick={() => openAppointment({ doctorName: doc.name, department: 'Pediatrics' })}
                       className="text-white bg-primary hover:bg-primary-dark px-4 py-2 rounded-full text-sm font-medium"
                     >
@@ -274,10 +280,10 @@ const Pediatrics: React.FC = () => {
       </section>
 
       <section className="py-20 bg-primary text-white relative overflow-hidden" id="schedule">
-        <div className="absolute inset-0 opacity-10" style={{backgroundImage: "url('https://www.transparenttextures.com/patterns/cubes.png')"}}></div>
+        <div className="absolute inset-0 opacity-10" style={{ backgroundImage: "url('https://www.transparenttextures.com/patterns/cubes.png')" }}></div>
         <div className="absolute -top-24 -right-24 w-96 h-96 bg-white opacity-5 rounded-full blur-3xl"></div>
         <div className="absolute -bottom-24 -left-24 w-96 h-96 bg-sky-300 opacity-10 rounded-full blur-3xl"></div>
-        
+
         <div className="container mx-auto px-6 relative z-10 text-center">
           <span className="inline-block px-3 py-1 mb-4 text-xs font-semibold tracking-wider bg-white/10 text-white rounded-full uppercase border border-white/20">Taking New Patients</span>
           <h2 className="text-3xl md:text-5xl font-bold mb-6 font-serif">Schedule Your Child's Visit</h2>
@@ -285,7 +291,7 @@ const Pediatrics: React.FC = () => {
             Give your child the gift of good health. Our easy online scheduling makes it convenient to find a time that works for your family.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <button 
+            <button
               onClick={() => openAppointment({ department: 'Pediatrics' })}
               className="w-full sm:w-auto inline-flex items-center justify-center px-8 py-4 text-base font-bold text-primary bg-white rounded-lg hover:bg-blue-50 shadow-lg transition-colors"
             >

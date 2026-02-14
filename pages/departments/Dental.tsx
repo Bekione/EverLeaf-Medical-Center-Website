@@ -2,6 +2,7 @@
 import React from 'react';
 import { Link, useOutletContext } from 'react-router-dom';
 import { OpenAppointmentFunc } from '../../Layout';
+import SEO from '../../components/SEO';
 
 const Dental: React.FC = () => {
   const { openAppointment } = useOutletContext<{ openAppointment: OpenAppointmentFunc }>();
@@ -16,6 +17,11 @@ const Dental: React.FC = () => {
 
   return (
     <div className="animate-fade-in">
+      <SEO
+        title="Dental Clinic"
+        description="Comprehensive dental and oral healthcare. From routine cleanings to complex oral surgeries and orthodontics."
+        canonical="https://everleaf-medical.com/departments/dental"
+      />
       <header className="bg-white border-b border-slate-100 py-12 lg:py-16 relative overflow-hidden">
         <div className="absolute right-0 top-0 h-full w-1/3 bg-cyan-50/50 skew-x-12 translate-x-12 pointer-events-none"></div>
         <div className="container mx-auto px-6 relative z-10">
@@ -25,7 +31,7 @@ const Dental: React.FC = () => {
                 Dental Clinic
               </span>
               <h1 className="text-4xl lg:text-5xl font-serif font-bold text-slate-900 mb-6 leading-tight">
-                Comprehensive Dental & <br/>
+                Comprehensive Dental & <br />
                 <span className="text-primary">Oral Healthcare</span>
               </h1>
               <p className="text-lg text-slate-600 leading-relaxed max-w-2xl mb-8">
@@ -208,11 +214,11 @@ const Dental: React.FC = () => {
       <section className="py-24 relative overflow-hidden" id="appointment">
         <div className="absolute inset-0 bg-gradient-to-br from-cyan-900 to-slate-900"></div>
         <div className="absolute inset-0 opacity-10" style={{ backgroundImage: "url('https://www.transparenttextures.com/patterns/cubes.png')" }}></div>
-        
+
         {/* Decorative Elements */}
         <div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/3 w-96 h-96 bg-white/10 rounded-full blur-3xl"></div>
         <div className="absolute bottom-0 left-0 translate-y-1/2 -translate-x-1/3 w-96 h-96 bg-cyan-500/20 rounded-full blur-3xl"></div>
-        
+
         {/* Giant Icon */}
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 opacity-[0.03] pointer-events-none">
           <span className="material-icons text-[20rem] text-white">sentiment_satisfied</span>
@@ -224,7 +230,7 @@ const Dental: React.FC = () => {
               Your Smile Matters
             </span>
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-white mb-6 leading-tight">
-              Ready for a <br/><span className="text-cyan-300">Brighter Smile?</span>
+              Ready for a <br /><span className="text-cyan-300">Brighter Smile?</span>
             </h2>
             <p className="text-cyan-100 text-lg md:text-xl mb-10 leading-relaxed max-w-2xl mx-auto">
               Your oral health is our priority. Schedule your visit with our expert dental team today and experience the difference.

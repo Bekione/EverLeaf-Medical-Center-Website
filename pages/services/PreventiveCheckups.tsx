@@ -2,6 +2,7 @@
 import React from 'react';
 import { Link, useOutletContext } from 'react-router-dom';
 import { OpenAppointmentFunc } from '../../Layout';
+import SEO from '../../components/SEO';
 
 const PreventiveCheckups: React.FC = () => {
   const { openAppointment } = useOutletContext<{ openAppointment: OpenAppointmentFunc }>();
@@ -16,6 +17,11 @@ const PreventiveCheckups: React.FC = () => {
 
   return (
     <div className="animate-fade-in">
+      <SEO
+        title="Preventive Health Checkups"
+        description="Comprehensive health screening packages for all ages. Detect health issues early with our executive checkups."
+        canonical="https://everleaf-medical.com/services/preventive-checkups"
+      />
       <header className="relative bg-slate-900 text-white overflow-hidden">
         <div className="absolute inset-0">
           <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCTxuFTPJwgaIproSGkw_NVSntv72zft_WG8tOAn4Ce2yzYAcC0xuvtbBanu709zUk7w9lAYWQaMbXU5Xu_pgT5lUmUnVeujKkEAQyHi6Ua42Fs9-KDAXefN9H1AfqcCx6XNQhARxPB7YtxES8Tn4SsqghLnqzwBPZClijrKCOVd9awJyP3TbFw2ZhugWATZg5R_fqfMiOkOWbZ50TQKWiYTdl6Zrm5FznchMEJhDdMAOr5X6i9XR8P14K3_yTUb-U0iCSrFjGTvps" alt="Preventive Health Checkup" className="w-full h-full object-cover opacity-40" />
@@ -28,13 +34,13 @@ const PreventiveCheckups: React.FC = () => {
               <span>Preventive Care</span>
             </div>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold mb-6 leading-tight">
-              Invest in Your Health with <br/>Comprehensive Checkups
+              Invest in Your Health with <br />Comprehensive Checkups
             </h1>
             <p className="text-lg md:text-xl text-slate-300 mb-8 max-w-2xl leading-relaxed">
               Early detection is key to a long, healthy life. Our personalized screening packages provide a complete picture of your health status in a comfortable environment.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
-              <button 
+              <button
                 onClick={(e) => scrollToSection(e, 'packages')}
                 className="inline-flex items-center justify-center px-8 py-3.5 text-base font-bold text-white bg-primary rounded-lg hover:bg-primary-dark shadow-lg shadow-primary/30 hover:shadow-primary/50 transition-all transform hover:-translate-y-0.5"
               >
@@ -77,7 +83,7 @@ const PreventiveCheckups: React.FC = () => {
       </section>
 
       <section className="py-20 bg-white relative" id="packages">
-        <div className="absolute top-0 left-0 w-full h-full opacity-5 pointer-events-none" style={{backgroundImage: "radial-gradient(#136dec 0.5px, transparent 0.5px), radial-gradient(#136dec 0.5px, #f6f7f8 0.5px)", backgroundSize: "20px 20px", backgroundPosition: "0 0, 10px 10px"}}></div>
+        <div className="absolute top-0 left-0 w-full h-full opacity-5 pointer-events-none" style={{ backgroundImage: "radial-gradient(#136dec 0.5px, transparent 0.5px), radial-gradient(#136dec 0.5px, #f6f7f8 0.5px)", backgroundSize: "20px 20px", backgroundPosition: "0 0, 10px 10px" }}></div>
         <div className="container mx-auto px-6 relative z-10">
           <div className="text-center mb-16">
             <span className="text-primary font-semibold tracking-wider text-sm uppercase">Tailored for You</span>
@@ -104,7 +110,7 @@ const PreventiveCheckups: React.FC = () => {
                 </ul>
               </div>
               <div className="p-8 pt-0 mt-auto">
-                <button 
+                <button
                   onClick={() => openAppointment({ department: 'Preventive Checkups', serviceName: 'Basic Wellness Package' })}
                   className="block w-full py-3 px-4 bg-white border-2 border-primary text-primary font-bold text-center rounded-lg hover:bg-blue-50 transition-colors"
                 >
@@ -137,7 +143,7 @@ const PreventiveCheckups: React.FC = () => {
                 </ul>
               </div>
               <div className="p-8 pt-0 mt-auto">
-                <button 
+                <button
                   onClick={() => openAppointment({ department: 'Preventive Checkups', serviceName: 'Executive Checkup Package' })}
                   className="block w-full py-3 px-4 bg-primary text-white font-bold text-center rounded-lg hover:bg-primary-dark transition-colors shadow-lg shadow-primary/30"
                 >
@@ -169,7 +175,7 @@ const PreventiveCheckups: React.FC = () => {
                 </ul>
               </div>
               <div className="p-8 pt-0 mt-auto">
-                <button 
+                <button
                   onClick={() => openAppointment({ department: 'Preventive Checkups', serviceName: 'Senior Health Package' })}
                   className="block w-full py-3 px-4 bg-white border-2 border-primary text-primary font-bold text-center rounded-lg hover:bg-blue-50 transition-colors"
                 >
@@ -257,12 +263,12 @@ const PreventiveCheckups: React.FC = () => {
 
       <section className="py-24 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-emerald-900 to-slate-900"></div>
-        <div className="absolute inset-0 opacity-10" style={{backgroundImage: "url('https://www.transparenttextures.com/patterns/cubes.png')"}}></div>
-        
+        <div className="absolute inset-0 opacity-10" style={{ backgroundImage: "url('https://www.transparenttextures.com/patterns/cubes.png')" }}></div>
+
         {/* Decorative Elements */}
         <div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/3 w-96 h-96 bg-white/10 rounded-full blur-3xl"></div>
         <div className="absolute bottom-0 left-0 translate-y-1/2 -translate-x-1/3 w-96 h-96 bg-emerald-500/20 rounded-full blur-3xl"></div>
-        
+
         {/* Giant Icon */}
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 opacity-[0.03] pointer-events-none">
           <span className="material-icons text-[20rem] text-white">health_and_safety</span>
@@ -274,13 +280,13 @@ const PreventiveCheckups: React.FC = () => {
               Proactive Healthcare
             </span>
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-white mb-6 leading-tight">
-              Ready to Prioritize <br/><span className="text-emerald-300">Your Health?</span>
+              Ready to Prioritize <br /><span className="text-emerald-300">Your Health?</span>
             </h2>
             <p className="text-emerald-100 text-lg md:text-xl mb-10 leading-relaxed max-w-2xl mx-auto">
               Take the first step towards a healthier future. Book your preventive checkup today with our simple online scheduling tool.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button 
+              <button
                 onClick={() => openAppointment({ department: 'Preventive Checkups' })}
                 className="inline-flex items-center justify-center px-8 py-4 text-lg font-bold text-emerald-900 bg-white rounded-full hover:bg-emerald-50 shadow-xl shadow-emerald-900/20 transition-all hover:scale-105"
               >

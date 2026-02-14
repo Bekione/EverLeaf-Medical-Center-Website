@@ -1,5 +1,6 @@
 
 import React from 'react';
+import SEO from '../components/SEO';
 
 const Privacy: React.FC = () => {
   const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
@@ -19,6 +20,12 @@ const Privacy: React.FC = () => {
 
   return (
     <div className="animate-fade-in bg-slate-50 min-h-screen">
+      <SEO
+        title="Privacy Policy & Terms"
+        description="Read about how Everleaf Medical Center protects your personal and medical data."
+        canonical="https://everleaf-medical.com/privacy"
+        type="article"
+      />
       <header className="bg-white border-b border-slate-100 py-12 relative overflow-hidden">
         <div className="container mx-auto px-6 relative z-10">
           <div className="max-w-4xl">

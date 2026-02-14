@@ -1,6 +1,7 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
+import SEO from '../../components/SEO';
 
 const Diagnostics: React.FC = () => {
   const scrollToSection = (e: React.MouseEvent, id: string) => {
@@ -13,6 +14,11 @@ const Diagnostics: React.FC = () => {
 
   return (
     <div className="animate-fade-in">
+      <SEO
+        title="Advanced Diagnostics"
+        description="Precision diagnostic services ensuring accurate medical assessments for effective treatment plans."
+        canonical="https://everleaf-medical.com/services/diagnostics"
+      />
       {/* Hero Section */}
       <header className="relative bg-slate-900 text-white overflow-hidden">
         <div className="absolute inset-0">
@@ -25,7 +31,7 @@ const Diagnostics: React.FC = () => {
               <span className="material-icons text-lg">medical_services</span>
               <span>Center of Excellence</span>
             </div>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold mb-6 leading-tight">Advanced Diagnostic <br/>Services for Precise Care</h1>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold mb-6 leading-tight">Advanced Diagnostic <br />Services for Precise Care</h1>
             <p className="text-lg md:text-xl text-slate-300 mb-8 max-w-2xl leading-relaxed">
               Accurate diagnosis is the cornerstone of effective treatment. At Everleaf, we combine world-class expertise with cutting-edge technology to provide rapid, reliable results you can trust.
             </p>
@@ -34,7 +40,7 @@ const Diagnostics: React.FC = () => {
                 Schedule a Test
                 <span className="material-icons text-sm ml-2">calendar_today</span>
               </Link>
-              <button 
+              <button
                 onClick={(e) => scrollToSection(e, 'capabilities')}
                 className="inline-flex items-center justify-center px-8 py-3.5 text-base font-bold text-white bg-white/10 border border-white/20 backdrop-blur-sm rounded-lg hover:bg-white/20 transition-all"
               >
@@ -57,7 +63,7 @@ const Diagnostics: React.FC = () => {
         </div>
       </section>
 
-       {/* Capabilities Section */}
+      {/* Capabilities Section */}
       <section className="py-20 bg-white" id="capabilities">
         <div className="container mx-auto px-6">
           <div className="text-center max-w-3xl mx-auto mb-16">
@@ -126,7 +132,7 @@ const Diagnostics: React.FC = () => {
           <div className="flex flex-col lg:flex-row items-center gap-16">
             <div className="lg:w-1/2 relative order-2 lg:order-1">
               <div className="absolute -top-10 -left-10 w-40 h-40 bg-primary/10 rounded-full blur-3xl"></div>
-              <img alt="Advanced CT Scanner" className="relative rounded-2xl shadow-2xl z-10 w-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAmQ_tYyVIK-pTHSIcCt0t03QVQpk4OOTroaxWIdvNepXZXGwDXesjJyrZ1eVwD33QUuTgcs5KKtRhlzOqp78bjgwTpnlQAZr9F0NYURAZU6RFefcryEe2n_jd0cz1YNz8B74g4NBSBpc8TgXiw2qa53e0aiIzzsvVZJaWJ8lIG6dVg65HfDJ0PCIU91YHQ6a-sT6jCYFEkA5SYd6lQ1j2pUbj0N7mFYZ8LgzTcDkxq-xAXiMgzeSn2C2Ygg0FdrqpodSrmGHEO468"/>
+              <img alt="Advanced CT Scanner" className="relative rounded-2xl shadow-2xl z-10 w-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAmQ_tYyVIK-pTHSIcCt0t03QVQpk4OOTroaxWIdvNepXZXGwDXesjJyrZ1eVwD33QUuTgcs5KKtRhlzOqp78bjgwTpnlQAZr9F0NYURAZU6RFefcryEe2n_jd0cz1YNz8B74g4NBSBpc8TgXiw2qa53e0aiIzzsvVZJaWJ8lIG6dVg65HfDJ0PCIU91YHQ6a-sT6jCYFEkA5SYd6lQ1j2pUbj0N7mFYZ8LgzTcDkxq-xAXiMgzeSn2C2Ygg0FdrqpodSrmGHEO468" />
               <div className="absolute bottom-6 right-6 z-20 bg-white p-4 rounded-lg shadow-xl border-l-4 border-primary max-w-xs">
                 <p className="text-sm font-semibold text-slate-900">Newest Addition</p>
                 <p className="text-xs text-slate-500">Siemens Somatom Definition Edge CT Scanner installed in 2023.</p>
@@ -244,7 +250,7 @@ const Diagnostics: React.FC = () => {
               </div>
             </div>
             <div className="relative h-96 rounded-2xl overflow-hidden shadow-2xl">
-              <img alt="Medical staff reviewing diagnostic results" className="absolute inset-0 w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC8Bu241H6jOGdI9pbiFvrnPk2T57c0yQRbpDebCKb7wniv06Xe9gqF5IMhZ0vgyjI6jhSqjQ4tk22fEA2CiFv5BAb9Dyzh6I16BqqsidHnh5Nj7zQSyWAtXveQgGTocfc1BhwYqWuvPIr7QDOIep5q-JTuzLjPj-ShPzjIWyba6U98TC3oJ66nYCX58zHpNMIgdwDk-ldAeb8pxk9VXEVYXP8m0LZzyNP-A27QA1nJq5NImKFc3kSUYthhjbnMDlgIZoCMEJtCMVo"/>
+              <img alt="Medical staff reviewing diagnostic results" className="absolute inset-0 w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC8Bu241H6jOGdI9pbiFvrnPk2T57c0yQRbpDebCKb7wniv06Xe9gqF5IMhZ0vgyjI6jhSqjQ4tk22fEA2CiFv5BAb9Dyzh6I16BqqsidHnh5Nj7zQSyWAtXveQgGTocfc1BhwYqWuvPIr7QDOIep5q-JTuzLjPj-ShPzjIWyba6U98TC3oJ66nYCX58zHpNMIgdwDk-ldAeb8pxk9VXEVYXP8m0LZzyNP-A27QA1nJq5NImKFc3kSUYthhjbnMDlgIZoCMEJtCMVo" />
             </div>
           </div>
         </div>
@@ -252,12 +258,12 @@ const Diagnostics: React.FC = () => {
 
       <section className="py-24 relative overflow-hidden" id="appointment">
         <div className="absolute inset-0 bg-gradient-to-br from-indigo-900 to-slate-900"></div>
-        <div className="absolute inset-0 opacity-10" style={{backgroundImage: "url('https://www.transparenttextures.com/patterns/cubes.png')"}}></div>
-        
+        <div className="absolute inset-0 opacity-10" style={{ backgroundImage: "url('https://www.transparenttextures.com/patterns/cubes.png')" }}></div>
+
         {/* Decorative Elements */}
         <div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/3 w-96 h-96 bg-white/10 rounded-full blur-3xl"></div>
         <div className="absolute bottom-0 left-0 translate-y-1/2 -translate-x-1/3 w-96 h-96 bg-indigo-500/20 rounded-full blur-3xl"></div>
-        
+
         {/* Giant Icon */}
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 opacity-[0.03] pointer-events-none">
           <span className="material-icons text-[20rem] text-white">fact_check</span>
@@ -269,7 +275,7 @@ const Diagnostics: React.FC = () => {
               Start Your Diagnosis
             </span>
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-white mb-6 leading-tight">
-              Ready to schedule <br/><span className="text-indigo-300">your test?</span>
+              Ready to schedule <br /><span className="text-indigo-300">your test?</span>
             </h2>
             <p className="text-indigo-100 text-lg md:text-xl mb-10 leading-relaxed max-w-2xl mx-auto">
               Call us directly or use our online portal to book your appointment. Ensure you have your doctor's referral ready.

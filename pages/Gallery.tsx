@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import GalleryModal from '../components/GalleryModal';
 import ImageSkeleton from '../components/ImageSkeleton';
+import SEO from '../components/SEO';
 
 // Enhanced image list with reliable high-quality URLs
 const allImages = [
@@ -28,8 +29,8 @@ const Gallery: React.FC = () => {
   const [visibleCount, setVisibleCount] = useState(ITEMS_PER_PAGE);
 
   // Filter images based on category
-  const filteredImages = filter === 'All' 
-    ? allImages 
+  const filteredImages = filter === 'All'
+    ? allImages
     : allImages.filter(img => img.category === filter);
 
   // Reset visible count when filter changes
@@ -59,6 +60,11 @@ const Gallery: React.FC = () => {
 
   return (
     <div className="animate-fade-in bg-slate-50 min-h-screen">
+      <SEO
+        title="Hospital Gallery"
+        description="View photos of our state-of-the-art medical facilities, patient rooms, and advanced equipment."
+        canonical="https://everleaf-medical.com/gallery"
+      />
       <header className="bg-white border-b border-slate-100 py-16">
         <div className="container mx-auto px-6 text-center">
           <span className="inline-block px-3 py-1 mb-4 text-xs font-semibold tracking-wider text-primary uppercase bg-blue-50 rounded-full">
@@ -74,7 +80,7 @@ const Gallery: React.FC = () => {
       <section className="py-12 container mx-auto px-6">
         <div className="flex flex-wrap justify-center gap-4 mb-12">
           {['All', 'Facilities', 'Rooms', 'Equipment', 'Staff'].map((cat) => (
-            <button 
+            <button
               key={cat}
               onClick={() => setFilter(cat)}
               className={`px-6 py-2.5 rounded-full text-sm font-semibold transition-all shadow-sm ${filter === cat ? 'bg-primary text-white shadow-md ring-2 ring-primary ring-offset-2' : 'bg-white text-slate-600 hover:bg-slate-50 border border-slate-200'}`}
@@ -87,13 +93,13 @@ const Gallery: React.FC = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {visibleImages.map((img, idx) => (
             <div key={idx} className="group relative overflow-hidden rounded-2xl shadow-card bg-white border border-slate-100 cursor-pointer h-72 animate-fade-in" onClick={() => openModal(idx)}>
-              <ImageSkeleton 
-                src={img.src} 
-                alt={img.title} 
-                className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700 ease-out" 
+              <ImageSkeleton
+                src={img.src}
+                alt={img.title}
+                className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700 ease-out"
                 containerClassName="w-full h-full"
               />
-              
+
               {/* Slide-up Overlay with fixed Gradient */}
               <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-primary/80 to-transparent backdrop-blur-[2px] translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-in-out p-6 flex flex-col justify-end text-white text-left">
                 <span className="text-xs font-bold tracking-wider uppercase text-blue-200 mb-2">{img.category}</span>
@@ -109,7 +115,7 @@ const Gallery: React.FC = () => {
 
         {visibleCount < filteredImages.length && (
           <div className="mt-12 text-center">
-            <button 
+            <button
               onClick={loadMore}
               className="inline-flex items-center justify-center px-8 py-3 text-sm font-bold text-primary bg-white border border-slate-200 rounded-full hover:bg-slate-50 hover:shadow-md transition-all"
             >
@@ -120,7 +126,7 @@ const Gallery: React.FC = () => {
         )}
       </section>
 
-      <GalleryModal 
+      <GalleryModal
         isOpen={modalOpen}
         imageSrc={filteredImages[currentIndex]?.src}
         title={filteredImages[currentIndex]?.title}

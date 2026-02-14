@@ -2,12 +2,18 @@
 import React from 'react';
 import { Link, useOutletContext } from 'react-router-dom';
 import { OpenAppointmentFunc } from '../Layout';
+import SEO from '../components/SEO';
 
 const Services: React.FC = () => {
   const { openAppointment } = useOutletContext<{ openAppointment: OpenAppointmentFunc }>();
 
   return (
     <div className="animate-fade-in">
+      <SEO
+        title="Medical Services"
+        description="Comprehensive healthcare services including diagnostics, pharmacy, emergency care, and more at Everleaf Medical Center."
+        canonical="https://everleaf-medical.com/services"
+      />
       <header className="bg-white border-b border-slate-100 py-16">
         <div className="container mx-auto px-6 text-center max-w-4xl">
           <span className="inline-block px-3 py-1 mb-4 text-xs font-semibold tracking-wider text-primary uppercase bg-blue-50 rounded-full">
@@ -51,30 +57,30 @@ const Services: React.FC = () => {
       {/* New CTA Section */}
       <section className="py-24 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-slate-900 to-blue-900"></div>
-        <div className="absolute inset-0 opacity-10" style={{backgroundImage: "url('https://www.transparenttextures.com/patterns/cubes.png')"}}></div>
+        <div className="absolute inset-0 opacity-10" style={{ backgroundImage: "url('https://www.transparenttextures.com/patterns/cubes.png')" }}></div>
         <div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/3 w-96 h-96 bg-white/10 rounded-full blur-3xl"></div>
         <div className="absolute bottom-0 left-0 translate-y-1/2 -translate-x-1/3 w-96 h-96 bg-blue-500/20 rounded-full blur-3xl"></div>
-        
+
         <div className="container mx-auto px-6 relative z-10 text-center">
           <div className="max-w-4xl mx-auto">
             <span className="inline-block py-1 px-3 rounded-full bg-white/10 border border-white/20 text-white text-xs font-bold tracking-wider uppercase mb-6 backdrop-blur-md">
               Here For You
             </span>
             <h2 className="text-3xl md:text-5xl lg:text-6xl font-serif font-bold text-white mb-6 leading-tight">
-              Compassionate Care, <br/><span className="text-blue-300">Advanced Medicine</span>
+              Compassionate Care, <br /><span className="text-blue-300">Advanced Medicine</span>
             </h2>
             <p className="text-blue-100 text-lg md:text-xl mb-10 leading-relaxed max-w-2xl mx-auto">
               Whether you need a routine check-up or specialized treatment, our team is ready to provide the highest quality care tailored to your needs.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <button 
-                onClick={() => openAppointment()} 
+              <button
+                onClick={() => openAppointment()}
                 className="px-8 py-4 bg-white text-primary font-bold rounded-full hover:bg-blue-50 transition-all shadow-xl shadow-blue-900/30 hover:scale-105 flex items-center gap-2"
               >
                 Book Appointment <span className="material-icons">calendar_today</span>
               </button>
-              <Link 
-                to="/contact" 
+              <Link
+                to="/contact"
                 className="px-8 py-4 bg-transparent border-2 border-white/30 text-white font-bold rounded-full hover:bg-white/10 transition-all backdrop-blur-sm"
               >
                 Contact Us

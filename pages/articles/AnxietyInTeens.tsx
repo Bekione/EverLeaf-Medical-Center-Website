@@ -2,6 +2,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import NewsletterForm from '../../components/NewsletterForm';
+import SEO from '../../components/SEO';
 
 const AnxietyInTeens: React.FC = () => {
   const handleShare = async () => {
@@ -21,6 +22,13 @@ const AnxietyInTeens: React.FC = () => {
 
   return (
     <div className="animate-fade-in bg-white min-h-screen">
+      <SEO
+        title="Recognizing Anxiety in Teenagers"
+        description="A guide for parents on spotting the physical and emotional signs of anxiety disorders in adolescents."
+        type="article"
+        canonical="https://everleaf-medical.com/blog/anxiety-in-teens"
+        image="https://images.unsplash.com/photo-1527137342181-19aab11a8ee8?w=1200&q=80"
+      />
       <div className="bg-slate-50 border-b border-slate-200">
         <div className="container mx-auto px-6 py-4">
           <nav aria-label="Breadcrumb" className="flex text-sm text-slate-500">
@@ -54,7 +62,7 @@ const AnxietyInTeens: React.FC = () => {
 
             <article className="prose prose-lg prose-slate max-w-none">
               <p>Adolescence is a time of significant change, and some moodiness is normal. However, anxiety disorders are becoming increasingly common among teenagers. Identifying the symptoms early can lead to better outcomes and prevent long-term struggles.</p>
-              
+
               <h2 className="text-2xl font-bold text-slate-900 mt-10 mb-6">Physical vs. Emotional Symptoms</h2>
               <p>Anxiety doesn't just manifest as worry. In teens, it often presents physically. Parents should look out for unexplained complaints such as:</p>
               <ul className="space-y-4 list-none pl-0 my-6">
@@ -62,7 +70,7 @@ const AnxietyInTeens: React.FC = () => {
                 <li className="flex items-start gap-3"><span className="material-icons text-purple-500 mt-1">lens</span> <span>Changes in sleep patterns (insomnia or oversleeping).</span></li>
                 <li className="flex items-start gap-3"><span className="material-icons text-purple-500 mt-1">lens</span> <span>Sudden drop in grades or avoidance of social situations.</span></li>
               </ul>
-              
+
               <p>Emotional signs might include irritability, restlessness, or an intense fear of making mistakes.</p>
 
               <div className="bg-purple-50 p-6 rounded-xl border-l-4 border-purple-400 my-8">

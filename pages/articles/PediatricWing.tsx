@@ -2,6 +2,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import NewsletterForm from '../../components/NewsletterForm';
+import SEO from '../../components/SEO';
 
 const PediatricWing: React.FC = () => {
   const handleShare = async () => {
@@ -21,6 +22,13 @@ const PediatricWing: React.FC = () => {
 
   return (
     <div className="animate-fade-in bg-white min-h-screen">
+      <SEO
+        title="New Pediatric Wing Opening"
+        description="Announcing the opening of our new West Wing facility dedicated to family-centered pediatric care."
+        type="article"
+        canonical="https://everleaf-medical.com/blog/pediatric-wing"
+        image="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=1200&q=80"
+      />
       <div className="bg-slate-50 border-b border-slate-200">
         <div className="container mx-auto px-6 py-4">
           <nav aria-label="Breadcrumb" className="flex text-sm text-slate-500">
@@ -55,14 +63,14 @@ const PediatricWing: React.FC = () => {
             <article className="prose prose-lg prose-slate max-w-none">
               <p>We are thrilled to announce the official opening of the new Pediatric Wing located in the hospital's West Wing. This expansion represents a significant investment in the health and well-being of the children in our community.</p>
               <p>The new facility includes 50 private patient rooms, a dedicated pediatric emergency department, and specialized play therapy zones designed to reduce anxiety during hospital stays. Every room allows for parent overnight stays, recognizing that family presence is key to a child's recovery.</p>
-              
+
               <h2 className="text-2xl font-bold text-slate-900 mt-10 mb-6">Features of the New Wing</h2>
               <ul className="space-y-4 list-none pl-0 my-6">
                 <li className="flex items-start gap-3"><span className="material-icons text-red-500 mt-1">check_circle</span> <span><strong>Family-Centered Rooms:</strong> Spacious suites with sleeping accommodations for parents.</span></li>
                 <li className="flex items-start gap-3"><span className="material-icons text-red-500 mt-1">check_circle</span> <span><strong>Interactive Play Areas:</strong> Technology-free zones to encourage imaginative play.</span></li>
                 <li className="flex items-start gap-3"><span className="material-icons text-red-500 mt-1">check_circle</span> <span><strong>Advanced Monitoring:</strong> The latest in non-invasive pediatric monitoring systems.</span></li>
               </ul>
-              
+
               <p>"This new wing allows us to provide the highest level of medical care while acknowledging that children need a different kind of environment to heal effectively. Every detail, from the art on the walls to the lighting, was chosen to comfort our patients," says Dr. Emily Chen.</p>
             </article>
 

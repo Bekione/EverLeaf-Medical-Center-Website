@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import NewsletterForm from '../components/NewsletterForm';
+import SEO from '../components/SEO';
 
 const ArticleDetail: React.FC = () => {
   const handleShare = async () => {
@@ -22,6 +23,13 @@ const ArticleDetail: React.FC = () => {
 
   return (
     <div className="animate-fade-in bg-white min-h-screen">
+      <SEO
+        title="5 Tips for Heart Health"
+        description="A comprehensive guide to cardiovascular wellness. Learn how diet, exercise, and stress management impact your heart."
+        type="article"
+        canonical="https://everleaf-medical.com/blog/preventive-cardiology"
+        image="https://images.unsplash.com/photo-1505751172876-fa1923c5c528?w=1200&q=80"
+      />
       {/* Breadcrumb */}
       <div className="bg-slate-50 border-b border-slate-200">
         <div className="container mx-auto px-6 py-4">
@@ -70,7 +78,7 @@ const ArticleDetail: React.FC = () => {
               <p className="mb-6">
                 Heart disease remains the leading cause of death worldwide, but the good news is that it is largely preventable. By understanding the risk factors and making conscious choices about your diet, activity, and stress levels, you can significantly improve your heart's longevity.
               </p>
-              
+
               <h2 className="text-2xl font-bold text-slate-900 mt-10 mb-6">1. Prioritize a Heart-Healthy Diet</h2>
               <p className="mb-6">
                 What you eat directly impacts your blood pressure, cholesterol, and blood sugar levels. A heart-healthy diet focuses on nutrient-dense foods and limits processed items high in saturated fats and added sugars.
@@ -103,7 +111,7 @@ const ArticleDetail: React.FC = () => {
               <p className="mb-6">
                 Chronic stress can contribute to high blood pressure and other heart disease risk factors. Finding healthy ways to manage stress is crucial for cardiovascular health. Techniques such as mindfulness meditation, deep breathing exercises, and yoga have been shown to reduce stress hormones.
               </p>
-              
+
               <div className="my-10 grid grid-cols-1 md:grid-cols-2 gap-6">
                 <img src="https://images.unsplash.com/photo-1544367563-121985aa425b?w=600&q=80" alt="Yoga" className="rounded-xl shadow-md object-cover h-48 w-full" />
                 <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=600&q=80" alt="Healthy Food" className="rounded-xl shadow-md object-cover h-48 w-full" />

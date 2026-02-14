@@ -2,6 +2,7 @@
 import React from 'react';
 import { Link, useOutletContext } from 'react-router-dom';
 import { OpenAppointmentFunc } from '../../Layout';
+import SEO from '../../components/SEO';
 
 const Surgery: React.FC = () => {
   const { openAppointment } = useOutletContext<{ openAppointment: OpenAppointmentFunc }>();
@@ -16,6 +17,11 @@ const Surgery: React.FC = () => {
 
   return (
     <div className="animate-fade-in">
+      <SEO
+        title="Surgery Department"
+        description="State-of-the-art surgical care utilizing minimally invasive techniques and robotic technology for faster recovery."
+        canonical="https://everleaf-medical.com/departments/surgery"
+      />
       <header className="bg-white border-b border-slate-100 py-12 relative overflow-hidden">
         <div className="absolute right-0 top-0 h-full w-1/3 bg-blue-50/50 skew-x-12 translate-x-12"></div>
         <div className="container mx-auto px-6 relative z-10">
@@ -31,13 +37,13 @@ const Surgery: React.FC = () => {
                 Our Surgery Department combines world-class surgeons with cutting-edge technology to deliver precise, minimally invasive, and effective surgical care tailored to your needs.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
-                <button 
+                <button
                   onClick={() => openAppointment({ department: 'Surgery' })}
                   className="inline-flex items-center justify-center px-6 py-3 text-sm font-semibold text-white transition-all duration-200 bg-primary rounded-lg hover:bg-primary-dark shadow-soft hover:shadow-lg hover:-translate-y-0.5"
                 >
                   Book Consultation
                 </button>
-                <button 
+                <button
                   onClick={(e) => scrollToSection(e, 'specialists')}
                   className="inline-flex items-center justify-center px-6 py-3 text-sm font-semibold text-slate-700 transition-all duration-200 bg-white border border-slate-200 rounded-lg hover:bg-slate-50"
                 >
@@ -125,7 +131,7 @@ const Surgery: React.FC = () => {
       </section>
 
       <section className="py-20 bg-slate-900 text-white relative overflow-hidden">
-        <div className="absolute inset-0 opacity-5" style={{backgroundImage: "url('https://www.transparenttextures.com/patterns/cubes.png')"}}></div>
+        <div className="absolute inset-0 opacity-5" style={{ backgroundImage: "url('https://www.transparenttextures.com/patterns/cubes.png')" }}></div>
         <div className="container mx-auto px-6 relative z-10">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div className="order-2 md:order-1">
@@ -183,7 +189,7 @@ const Surgery: React.FC = () => {
                 <div className="h-64 overflow-hidden relative">
                   <img src={doc.img} alt={doc.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-4">
-                    <button 
+                    <button
                       onClick={() => openAppointment({ doctorName: doc.name, department: 'Surgery' })}
                       className="text-white bg-primary hover:bg-primary-dark px-4 py-2 rounded-full text-sm font-medium"
                     >
@@ -203,12 +209,12 @@ const Surgery: React.FC = () => {
 
       <section className="py-24 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-slate-800 to-slate-900"></div>
-        <div className="absolute inset-0 opacity-10" style={{backgroundImage: "url('https://www.transparenttextures.com/patterns/cubes.png')"}}></div>
-        
+        <div className="absolute inset-0 opacity-10" style={{ backgroundImage: "url('https://www.transparenttextures.com/patterns/cubes.png')" }}></div>
+
         {/* Decorative Elements */}
         <div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/3 w-96 h-96 bg-white/5 rounded-full blur-3xl"></div>
         <div className="absolute bottom-0 left-0 translate-y-1/2 -translate-x-1/3 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl"></div>
-        
+
         {/* Giant Icon */}
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 opacity-[0.03] pointer-events-none">
           <span className="material-icons text-[20rem] text-white">medical_services</span>
@@ -220,13 +226,13 @@ const Surgery: React.FC = () => {
               Expert Surgical Care
             </span>
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-white mb-6 leading-tight">
-              Ready for Your <br/><span className="text-blue-300">Consultation?</span>
+              Ready for Your <br /><span className="text-blue-300">Consultation?</span>
             </h2>
             <p className="text-blue-100 text-lg md:text-xl mb-10 leading-relaxed max-w-2xl mx-auto">
               Take the first step towards better health. Our surgical team is ready to provide you with a personalized treatment plan.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button 
+              <button
                 onClick={() => openAppointment({ department: 'Surgery' })}
                 className="inline-flex items-center justify-center px-8 py-4 text-lg font-bold text-slate-900 bg-white rounded-full hover:bg-blue-50 shadow-xl shadow-blue-900/20 transition-all hover:scale-105"
               >

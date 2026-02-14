@@ -2,6 +2,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import NewsletterForm from '../../components/NewsletterForm';
+import SEO from '../../components/SEO';
 
 const SeniorMobility: React.FC = () => {
   const handleShare = async () => {
@@ -21,6 +22,13 @@ const SeniorMobility: React.FC = () => {
 
   return (
     <div className="animate-fade-in bg-white min-h-screen">
+      <SEO
+        title="Mobility & Cognitive Health in Seniors"
+        description="New research highlights the vital link between walking speed, physical activity, and brain health in older adults."
+        type="article"
+        canonical="https://everleaf-medical.com/blog/senior-mobility"
+        image="https://images.unsplash.com/photo-1555814965-74d430d12197?w=1200&q=80"
+      />
       <div className="bg-slate-50 border-b border-slate-200">
         <div className="container mx-auto px-6 py-4">
           <nav aria-label="Breadcrumb" className="flex text-sm text-slate-500">
@@ -55,10 +63,10 @@ const SeniorMobility: React.FC = () => {
             <article className="prose prose-lg prose-slate max-w-none">
               <p>For years, doctors have known that exercise is good for the brain. However, recent research specifically highlights the connection between gait speed (how fast you walk) and the onset of dementia.</p>
               <p>The study, published in the Journal of Geriatric Medicine, followed 1,000 seniors over five years. It found that those who maintained a brisk walking pace were 40% less likely to develop cognitive impairment compared to those whose gait slowed significantly.</p>
-              
+
               <h2 className="text-2xl font-bold text-slate-900 mt-10 mb-6">Why Movement Matters</h2>
               <p>Walking requires complex coordination between the brain, nervous system, and muscles. A decline in this ability often signals underlying neurological changes before memory loss becomes apparent.</p>
-              
+
               <div className="bg-blue-50 p-6 rounded-xl border-l-4 border-blue-400 my-8">
                 <h4 className="text-lg font-bold text-slate-900 mb-2">Doctor's Advice</h4>
                 <p className="mb-0 text-sm">"Don't stop moving. Even a 20-minute daily walk can stimulate neurogenesis—the creation of new brain cells," says Dr. Robert Turner.</p>

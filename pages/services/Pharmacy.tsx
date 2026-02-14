@@ -2,6 +2,7 @@
 import React from 'react';
 import { Link, useOutletContext } from 'react-router-dom';
 import { OpenAppointmentFunc } from '../../Layout';
+import SEO from '../../components/SEO';
 
 const Pharmacy: React.FC = () => {
   const { openAppointment } = useOutletContext<{ openAppointment: OpenAppointmentFunc }>();
@@ -16,6 +17,11 @@ const Pharmacy: React.FC = () => {
 
   return (
     <div className="animate-fade-in">
+      <SEO
+        title="Pharmacy Services"
+        description="Full-service hospital pharmacy providing prescription management, counseling, and home delivery services."
+        canonical="https://everleaf-medical.com/services/pharmacy"
+      />
       <header className="relative bg-slate-900 text-white overflow-hidden">
         <div className="absolute inset-0">
           <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDD46R_B_4eaRz5tgFKk17XXFe86nTmW-cDb6UUwCe2K0SDPJ33Kxl8m27aCd3RSuuDjYBgIx7GXkTltYqkBf78iyChuazBZ9x2b_a0WflM5mn24-gBdlhYHS3FEExfpOzJ4f8NeHDE_8pt940Tu-x11xZfsbqWk6MWrU2Za3-9eYMl0JTe6_smpxeIMLhS5j2hfLR4klACyY1tegsWMOqWaS7pgYVcADx9ZNH2IOELr2xO7b-MrcRVXXc2aF8te5sa0C-zJ1qjl5E" alt="Modern Pharmacy" className="w-full h-full object-cover opacity-40" />
@@ -27,18 +33,18 @@ const Pharmacy: React.FC = () => {
               <span className="material-icons text-lg">local_pharmacy</span>
               <span>Accredited Pharmacy Services</span>
             </div>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold mb-6 leading-tight">Expert Care for Your <br/>Medication Needs</h1>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold mb-6 leading-tight">Expert Care for Your <br />Medication Needs</h1>
             <p className="text-lg md:text-xl text-slate-300 mb-8 max-w-2xl leading-relaxed">
               Our full-service hospital pharmacy ensures accurate, safe, and timely medication management. From inpatient prescriptions to over-the-counter advice, our clinical pharmacists are here to support your recovery.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
-              <button 
+              <button
                 onClick={(e) => scrollToSection(e, 'services')}
                 className="inline-flex items-center justify-center px-8 py-3.5 text-base font-semibold text-white bg-secondary hover:bg-green-600 rounded-lg shadow-lg hover:shadow-xl transition-all hover:-translate-y-0.5"
               >
                 View Pharmacy Services
               </button>
-              <button 
+              <button
                 onClick={() => openAppointment({ department: 'Pharmacy' })}
                 className="inline-flex items-center justify-center px-8 py-3.5 text-base font-semibold text-white bg-white/10 border border-white/20 backdrop-blur-sm rounded-lg hover:bg-white/20 transition-all"
               >
@@ -84,7 +90,7 @@ const Pharmacy: React.FC = () => {
             ))}
           </div>
 
-          <div className="bg-white rounded-3xl p-8 md:p-12 border border-green-100 overflow-hidden relative" style={{background: 'linear-gradient(to right, #ecfdf5, #ffffff)'}}>
+          <div className="bg-white rounded-3xl p-8 md:p-12 border border-green-100 overflow-hidden relative" style={{ background: 'linear-gradient(to right, #ecfdf5, #ffffff)' }}>
             <div className="absolute top-0 right-0 -mt-10 -mr-10 w-64 h-64 bg-green-100 rounded-full blur-3xl opacity-50 pointer-events-none"></div>
             <div className="grid md:grid-cols-2 gap-12 items-center relative z-10">
               <div>
@@ -137,12 +143,12 @@ const Pharmacy: React.FC = () => {
 
       <section className="py-24 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-green-900 to-slate-900"></div>
-        <div className="absolute inset-0 opacity-10" style={{backgroundImage: "url('https://www.transparenttextures.com/patterns/cubes.png')"}}></div>
-        
+        <div className="absolute inset-0 opacity-10" style={{ backgroundImage: "url('https://www.transparenttextures.com/patterns/cubes.png')" }}></div>
+
         {/* Decorative Elements */}
         <div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/3 w-96 h-96 bg-white/10 rounded-full blur-3xl"></div>
         <div className="absolute bottom-0 left-0 translate-y-1/2 -translate-x-1/3 w-96 h-96 bg-green-500/20 rounded-full blur-3xl"></div>
-        
+
         {/* Giant Icon */}
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 opacity-[0.03] pointer-events-none">
           <span className="material-icons text-[20rem] text-white">medication</span>
@@ -154,7 +160,7 @@ const Pharmacy: React.FC = () => {
               Need Assistance?
             </span>
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-white mb-6 leading-tight">
-              Have Questions About <br/><span className="text-green-300">Your Medication?</span>
+              Have Questions About <br /><span className="text-green-300">Your Medication?</span>
             </h2>
             <p className="text-green-100 text-lg md:text-xl mb-10 leading-relaxed max-w-2xl mx-auto">
               Our pharmacists are available 24/7 to answer your questions regarding drug interactions, dosages, or side effects.

@@ -1,62 +1,63 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import NewsletterForm from '../components/NewsletterForm';
+import SEO from '../components/SEO';
 
 // Article Data Configuration
 const articlesData = [
-  { 
-    id: 'diabetes-management', 
-    title: 'New Breakthrough in Diabetes Management Using AI Technology', 
-    category: 'Research', 
-    date: 'Nov 12, 2023', 
-    read: '7 min read', 
-    img: 'https://images.unsplash.com/photo-1579154204601-01588f351e67?w=800&q=80', 
-    author: 'Dr. Mark Johnson' 
+  {
+    id: 'diabetes-management',
+    title: 'New Breakthrough in Diabetes Management Using AI Technology',
+    category: 'Research',
+    date: 'Nov 12, 2023',
+    read: '7 min read',
+    img: 'https://images.unsplash.com/photo-1579154204601-01588f351e67?w=800&q=80',
+    author: 'Dr. Mark Johnson'
   },
-  { 
-    id: 'immune-system', 
-    title: '5 Superfoods to Boost Your Immune System This Winter', 
-    category: 'Health Tips', 
-    date: 'Nov 08, 2023', 
-    read: '4 min read', 
-    img: 'https://images.unsplash.com/photo-1498837167922-ddd27525d352?w=800&q=80', 
-    author: 'Emily Lewis, RD' 
+  {
+    id: 'immune-system',
+    title: '5 Superfoods to Boost Your Immune System This Winter',
+    category: 'Health Tips',
+    date: 'Nov 08, 2023',
+    read: '4 min read',
+    img: 'https://images.unsplash.com/photo-1498837167922-ddd27525d352?w=800&q=80',
+    author: 'Emily Lewis, RD'
   },
-  { 
-    id: 'pediatric-wing', 
-    title: 'MediCare Opens New Pediatric Wing in West Wing', 
-    category: 'Announcements', 
-    date: 'Nov 01, 2023', 
-    read: '2 min read', 
-    img: 'https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=800&q=80', 
-    author: 'Admin Team' 
+  {
+    id: 'pediatric-wing',
+    title: 'MediCare Opens New Pediatric Wing in West Wing',
+    category: 'Announcements',
+    date: 'Nov 01, 2023',
+    read: '2 min read',
+    img: 'https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=800&q=80',
+    author: 'Admin Team'
   },
-  { 
-    id: 'anxiety-in-teens', 
-    title: 'Recognizing the Early Signs of Anxiety in Teenagers', 
-    category: 'Medical Awareness', 
-    date: 'Oct 28, 2023', 
-    read: '6 min read', 
-    img: 'https://images.unsplash.com/photo-1527137342181-19aab11a8ee8?w=800&q=80', 
-    author: 'Dr. James Wilson' 
+  {
+    id: 'anxiety-in-teens',
+    title: 'Recognizing the Early Signs of Anxiety in Teenagers',
+    category: 'Medical Awareness',
+    date: 'Oct 28, 2023',
+    read: '6 min read',
+    img: 'https://images.unsplash.com/photo-1527137342181-19aab11a8ee8?w=800&q=80',
+    author: 'Dr. James Wilson'
   },
-  { 
-    id: 'flu-season', 
-    title: 'Flu Season 2023: Why the Vaccine is More Important Than Ever', 
-    category: 'Health Tips', 
-    date: 'Oct 15, 2023', 
-    read: '3 min read', 
-    img: 'https://images.unsplash.com/photo-1633613286991-611fe299c4be?w=800&q=80', 
-    author: 'Karen Lee, RN' 
+  {
+    id: 'flu-season',
+    title: 'Flu Season 2023: Why the Vaccine is More Important Than Ever',
+    category: 'Health Tips',
+    date: 'Oct 15, 2023',
+    read: '3 min read',
+    img: 'https://images.unsplash.com/photo-1633613286991-611fe299c4be?w=800&q=80',
+    author: 'Karen Lee, RN'
   },
-  { 
-    id: 'senior-mobility', 
-    title: 'Mobility in Seniors: The Link Between Walking and Cognitive Health', 
-    category: 'Research', 
-    date: 'Oct 10, 2023', 
-    read: '7 min read', 
-    img: 'https://images.unsplash.com/photo-1555814965-74d430d12197?w=800&q=80', 
-    author: 'Dr. Robert Turner' 
+  {
+    id: 'senior-mobility',
+    title: 'Mobility in Seniors: The Link Between Walking and Cognitive Health',
+    category: 'Research',
+    date: 'Oct 10, 2023',
+    read: '7 min read',
+    img: 'https://images.unsplash.com/photo-1555814965-74d430d12197?w=800&q=80',
+    author: 'Dr. Robert Turner'
   },
 ];
 
@@ -67,8 +68,8 @@ const Blog: React.FC = () => {
   const [currentPage, setCurrentPage] = useState(1);
 
   // Filter Logic
-  const filteredArticles = filter === 'All' 
-    ? articlesData 
+  const filteredArticles = filter === 'All'
+    ? articlesData
     : articlesData.filter(article => article.category === filter);
 
   // Pagination Logic
@@ -91,7 +92,7 @@ const Blog: React.FC = () => {
   };
 
   const getCategoryColor = (category: string) => {
-    switch(category) {
+    switch (category) {
       case 'Research': return 'text-primary bg-blue-50';
       case 'Health Tips': return 'text-secondary bg-green-50';
       case 'Announcements': return 'text-red-500 bg-red-50';
@@ -102,6 +103,11 @@ const Blog: React.FC = () => {
 
   return (
     <div className="animate-fade-in bg-slate-50 min-h-screen">
+      <SEO
+        title="Health Blog & News"
+        description="Read the latest medical insights, health tips, and hospital announcements from the experts at Everleaf Medical Center."
+        canonical="https://everleaf-medical.com/blog"
+      />
       {/* Featured Article Hero */}
       <section className="relative bg-slate-900 text-white overflow-hidden">
         <div className="absolute inset-0">
@@ -114,7 +120,7 @@ const Blog: React.FC = () => {
               <span className="w-2 h-2 rounded-full bg-blue-400 animate-pulse"></span> Featured Article
             </span>
             <h1 className="text-4xl lg:text-5xl font-serif font-bold mb-6 leading-tight">
-              Understanding Preventive Cardiology: <br/> <span className="text-primary">A Guide to Heart Health</span>
+              Understanding Preventive Cardiology: <br /> <span className="text-primary">A Guide to Heart Health</span>
             </h1>
             <p className="text-lg text-slate-300 mb-8 leading-relaxed max-w-2xl">
               Heart disease remains the leading cause of death globally. Learn about the latest preventive measures, dietary changes, and screening protocols recommended by our top cardiologists.
@@ -151,11 +157,10 @@ const Blog: React.FC = () => {
               <button
                 key={cat}
                 onClick={() => setFilter(cat)}
-                className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
-                  filter === cat 
-                    ? 'bg-primary text-white shadow-md' 
+                className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${filter === cat
+                    ? 'bg-primary text-white shadow-md'
                     : 'bg-white text-slate-600 hover:bg-slate-100 hover:text-primary border border-slate-200'
-                }`}
+                  }`}
               >
                 {cat === 'All' ? 'All Articles' : cat}
               </button>
@@ -186,7 +191,7 @@ const Blog: React.FC = () => {
                 <div className="pt-4 mt-auto border-t border-slate-100 flex items-center justify-between">
                   <div className="flex items-center gap-2">
                     <div className="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center text-slate-500 text-xs font-bold">
-                      {article.author.split(' ').map(n => n[0]).join('').slice(0,2)}
+                      {article.author.split(' ').map(n => n[0]).join('').slice(0, 2)}
                     </div>
                     <span className="text-xs font-medium text-slate-700">{article.author}</span>
                   </div>
@@ -202,8 +207,8 @@ const Blog: React.FC = () => {
         {paginatedArticles.length === 0 && (
           <div className="text-center py-20">
             <p className="text-slate-500 text-lg">No articles found in this category.</p>
-            <button 
-              onClick={() => setFilter('All')} 
+            <button
+              onClick={() => setFilter('All')}
               className="mt-4 px-6 py-2 bg-primary text-white rounded-lg hover:bg-primary-dark transition-colors"
             >
               View All
@@ -215,29 +220,28 @@ const Blog: React.FC = () => {
         {filteredArticles.length > ITEMS_PER_PAGE && (
           <div className="mt-16 flex justify-center">
             <nav className="flex items-center gap-2">
-              <button 
+              <button
                 onClick={() => handlePageChange(currentPage - 1)}
                 disabled={currentPage === 1}
                 className="w-10 h-10 flex items-center justify-center rounded-lg border border-slate-200 text-slate-500 hover:bg-slate-50 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
               >
                 <span className="material-icons text-sm">chevron_left</span>
               </button>
-              
+
               {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
                 <button
                   key={page}
                   onClick={() => handlePageChange(page)}
-                  className={`w-10 h-10 flex items-center justify-center rounded-lg font-medium transition-colors ${
-                    currentPage === page 
-                      ? 'bg-primary text-white shadow-md' 
+                  className={`w-10 h-10 flex items-center justify-center rounded-lg font-medium transition-colors ${currentPage === page
+                      ? 'bg-primary text-white shadow-md'
                       : 'border border-slate-200 text-slate-600 hover:bg-slate-50 hover:text-primary'
-                  }`}
+                    }`}
                 >
                   {page}
                 </button>
               ))}
 
-              <button 
+              <button
                 onClick={() => handlePageChange(currentPage + 1)}
                 disabled={currentPage === totalPages}
                 className="w-10 h-10 flex items-center justify-center rounded-lg border border-slate-200 text-slate-500 hover:bg-slate-50 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
@@ -252,19 +256,19 @@ const Blog: React.FC = () => {
       {/* Revamped Newsletter Section */}
       <section className="py-24 relative overflow-hidden" id="newsletter">
         <div className="absolute inset-0 bg-gradient-to-br from-slate-900 to-blue-900"></div>
-        <div className="absolute inset-0 opacity-10" style={{backgroundImage: "url('https://www.transparenttextures.com/patterns/cubes.png')"}}></div>
-        
+        <div className="absolute inset-0 opacity-10" style={{ backgroundImage: "url('https://www.transparenttextures.com/patterns/cubes.png')" }}></div>
+
         {/* Decorative Elements */}
         <div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/3 w-96 h-96 bg-white/10 rounded-full blur-3xl"></div>
         <div className="absolute bottom-0 left-0 translate-y-1/2 -translate-x-1/3 w-96 h-96 bg-blue-500/20 rounded-full blur-3xl"></div>
-        
+
         <div className="container mx-auto px-6 relative z-10 text-center">
           <div className="max-w-4xl mx-auto">
             <span className="inline-block py-1 px-3 rounded-full bg-white/10 border border-white/20 text-white text-xs font-bold tracking-wider uppercase mb-6 backdrop-blur-md">
               Stay Connected
             </span>
             <h2 className="text-3xl md:text-5xl lg:text-6xl font-serif font-bold text-white mb-6 leading-tight">
-              Health Insights <br/><span className="text-blue-300">Delivered to You</span>
+              Health Insights <br /><span className="text-blue-300">Delivered to You</span>
             </h2>
             <p className="text-blue-100 text-lg md:text-xl mb-10 leading-relaxed max-w-2xl mx-auto">
               Join over 50,000 subscribers who receive our latest medical news, health tips, and exclusive event invitations directly in their inbox.

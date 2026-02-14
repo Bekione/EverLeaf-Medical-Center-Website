@@ -2,6 +2,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import NewsletterForm from '../../components/NewsletterForm';
+import SEO from '../../components/SEO';
 
 const FluSeason: React.FC = () => {
   const handleShare = async () => {
@@ -21,6 +22,13 @@ const FluSeason: React.FC = () => {
 
   return (
     <div className="animate-fade-in bg-white min-h-screen">
+      <SEO
+        title="Flu Season 2023 Guide"
+        description="Everything you need to know about this year's flu strain and why vaccination is critical for community health."
+        type="article"
+        canonical="https://everleaf-medical.com/blog/flu-season"
+        image="https://images.unsplash.com/photo-1633613286991-611fe299c4be?w=1200&q=80"
+      />
       <div className="bg-slate-50 border-b border-slate-200">
         <div className="container mx-auto px-6 py-4">
           <nav aria-label="Breadcrumb" className="flex text-sm text-slate-500">
@@ -54,7 +62,7 @@ const FluSeason: React.FC = () => {
 
             <article className="prose prose-lg prose-slate max-w-none">
               <p>With winter fast approaching, health experts are predicting a potentially severe flu season. The relaxation of pandemic-era precautions means viruses are circulating more freely than in previous years.</p>
-              
+
               <h2 className="text-2xl font-bold text-slate-900 mt-10 mb-6">Who Should Get Vaccinated?</h2>
               <p>The CDC recommends that everyone 6 months of age and older get a flu vaccine every season. It is particularly crucial for:</p>
               <ul className="list-disc pl-5 my-4 space-y-2">

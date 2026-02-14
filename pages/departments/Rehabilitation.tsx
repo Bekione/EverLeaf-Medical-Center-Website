@@ -2,6 +2,7 @@
 import React from 'react';
 import { Link, useOutletContext } from 'react-router-dom';
 import { OpenAppointmentFunc } from '../../Layout';
+import SEO from '../../components/SEO';
 
 const Rehabilitation: React.FC = () => {
   const { openAppointment } = useOutletContext<{ openAppointment: OpenAppointmentFunc }>();
@@ -16,6 +17,11 @@ const Rehabilitation: React.FC = () => {
 
   return (
     <div className="animate-fade-in">
+      <SEO
+        title="Rehabilitation & Physical Therapy"
+        description="Helping patients regain mobility and independence through personalized physical and occupational therapy."
+        canonical="https://everleaf-medical.com/departments/rehabilitation"
+      />
       <header className="relative bg-white border-b border-slate-100 overflow-hidden py-12 lg:py-16">
         <div className="absolute right-0 top-0 h-full w-1/3 bg-blue-50/50 skew-x-12 translate-x-12 pointer-events-none"></div>
         <div className="container mx-auto px-6 relative z-10">
@@ -24,19 +30,19 @@ const Rehabilitation: React.FC = () => {
               <span className="inline-block px-3 py-1 mb-6 text-xs font-bold tracking-wider text-primary uppercase bg-blue-50 rounded-full">
                 Department of Rehabilitation
               </span>
-              <h1 className="text-4xl lg:text-5xl font-serif font-bold text-slate-900 mb-6 leading-tight">Expert Rehabilitation & <br/>Physical Therapy</h1>
+              <h1 className="text-4xl lg:text-5xl font-serif font-bold text-slate-900 mb-6 leading-tight">Expert Rehabilitation & <br />Physical Therapy</h1>
               <p className="text-lg text-slate-600 leading-relaxed max-w-xl mb-8">
                 Our dedicated team of therapists and specialists help you regain strength, mobility, and independence. We create personalized recovery plans tailored to your specific needs.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
-                <button 
-                  onClick={(e) => scrollToSection(e, 'specialists')} 
+                <button
+                  onClick={(e) => scrollToSection(e, 'specialists')}
                   className="inline-flex items-center justify-center px-6 py-3 text-sm font-semibold text-white transition-all duration-200 bg-primary rounded-lg hover:bg-primary-dark shadow-soft hover:shadow-lg hover:-translate-y-0.5"
                 >
                   Meet Our Specialists
                 </button>
-                <button 
-                  onClick={(e) => scrollToSection(e, 'services')} 
+                <button
+                  onClick={(e) => scrollToSection(e, 'services')}
                   className="inline-flex items-center justify-center px-6 py-3 text-sm font-semibold text-primary transition-all duration-200 bg-white border border-primary/20 rounded-lg hover:bg-primary/5"
                 >
                   View Services
@@ -176,7 +182,7 @@ const Rehabilitation: React.FC = () => {
                 <div className="h-64 overflow-hidden relative">
                   <img src={doc.img} alt={doc.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-4">
-                    <button 
+                    <button
                       onClick={() => openAppointment({ doctorName: doc.name, department: 'Rehabilitation' })}
                       className="text-white bg-primary hover:bg-primary-dark px-4 py-2 rounded-full text-sm font-medium"
                     >
@@ -196,12 +202,12 @@ const Rehabilitation: React.FC = () => {
 
       <section className="py-24 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-teal-900 to-slate-900"></div>
-        <div className="absolute inset-0 opacity-10" style={{backgroundImage: "url('https://www.transparenttextures.com/patterns/cubes.png')"}}></div>
-        
+        <div className="absolute inset-0 opacity-10" style={{ backgroundImage: "url('https://www.transparenttextures.com/patterns/cubes.png')" }}></div>
+
         {/* Decorative Elements */}
         <div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/3 w-96 h-96 bg-white/10 rounded-full blur-3xl"></div>
         <div className="absolute bottom-0 left-0 translate-y-1/2 -translate-x-1/3 w-96 h-96 bg-teal-500/20 rounded-full blur-3xl"></div>
-        
+
         {/* Giant Icon */}
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 opacity-[0.03] pointer-events-none">
           <span className="material-icons text-[20rem] text-white">accessibility_new</span>
@@ -213,13 +219,13 @@ const Rehabilitation: React.FC = () => {
               Regain Your Independence
             </span>
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-white mb-6 leading-tight">
-              Start Your <br/><span className="text-teal-300">Recovery Journey</span> Today
+              Start Your <br /><span className="text-teal-300">Recovery Journey</span> Today
             </h2>
             <p className="text-teal-100 text-lg md:text-xl mb-10 leading-relaxed max-w-2xl mx-auto">
               Take the first step towards a pain-free life. Schedule a consultation with our rehabilitation experts and get back to doing what you love.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button 
+              <button
                 onClick={() => openAppointment({ department: 'Rehabilitation' })}
                 className="inline-flex items-center justify-center px-8 py-4 text-lg font-bold text-teal-900 bg-white rounded-full hover:bg-teal-50 shadow-xl shadow-teal-900/20 transition-all hover:scale-105"
               >

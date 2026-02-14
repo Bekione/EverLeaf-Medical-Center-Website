@@ -2,6 +2,7 @@
 import React from 'react';
 import { Link, useOutletContext } from 'react-router-dom';
 import { OpenAppointmentFunc } from '../../Layout';
+import SEO from '../../components/SEO';
 
 const Radiology: React.FC = () => {
   const { openAppointment } = useOutletContext<{ openAppointment: OpenAppointmentFunc }>();
@@ -16,6 +17,11 @@ const Radiology: React.FC = () => {
 
   return (
     <div className="animate-fade-in">
+      <SEO
+        title="Radiology Department"
+        description="Diagnostic imaging excellence including MRI, CT Scans, Ultrasound, and X-Rays with low-dose radiation protocols."
+        canonical="https://everleaf-medical.com/departments/radiology"
+      />
       <header className="bg-white border-b border-slate-100 py-12 lg:py-16 relative overflow-hidden">
         <div className="absolute right-0 top-0 h-full w-1/3 bg-blue-50/50 skew-x-12 translate-x-12 pointer-events-none"></div>
         <div className="container mx-auto px-6 relative z-10">
@@ -25,19 +31,19 @@ const Radiology: React.FC = () => {
                 Department of Radiology
               </span>
               <h1 className="text-4xl lg:text-5xl font-serif font-bold text-slate-900 mb-6 leading-tight">
-                State-of-the-Art <br/><span className="text-primary">Diagnostic Imaging</span>
+                State-of-the-Art <br /><span className="text-primary">Diagnostic Imaging</span>
               </h1>
               <p className="text-lg text-slate-600 leading-relaxed mb-8 max-w-lg">
                 Our Radiology Department utilizes advanced imaging technology to provide precise diagnoses. We prioritize patient comfort and safety while delivering high-quality visual data.
               </p>
               <div className="flex flex-wrap gap-4">
-                <button 
+                <button
                   onClick={() => openAppointment({ department: 'Radiology' })}
                   className="inline-flex items-center justify-center px-6 py-3.5 text-sm font-semibold text-white transition-all duration-200 bg-primary rounded-lg hover:bg-primary-dark shadow-lg shadow-blue-500/30 hover:-translate-y-1"
                 >
                   Book Imaging Appointment
                 </button>
-                <button 
+                <button
                   onClick={(e) => scrollToSection(e, 'specialists')}
                   className="inline-flex items-center justify-center px-6 py-3.5 text-sm font-semibold text-slate-700 bg-white border border-slate-200 rounded-lg hover:bg-slate-50 transition-all"
                 >
@@ -219,7 +225,7 @@ const Radiology: React.FC = () => {
                 <div className="h-64 overflow-hidden relative">
                   <img src={doc.img} alt={doc.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-4">
-                    <button 
+                    <button
                       onClick={() => openAppointment({ doctorName: doc.name, department: 'Radiology' })}
                       className="text-white bg-primary hover:bg-primary-dark px-4 py-2 rounded-full text-sm font-medium"
                     >
@@ -240,7 +246,7 @@ const Radiology: React.FC = () => {
       <section className="py-20 bg-slate-900 text-white">
         <div className="container mx-auto px-6">
           <div className="bg-gradient-to-br from-slate-900 to-slate-800 rounded-3xl p-8 md:p-12 text-white overflow-hidden relative shadow-2xl border border-slate-700">
-            <div className="absolute inset-0 opacity-10" style={{backgroundImage: "radial-gradient(#ffffff 1px, transparent 1px)", backgroundSize: "24px 24px"}}></div>
+            <div className="absolute inset-0 opacity-10" style={{ backgroundImage: "radial-gradient(#ffffff 1px, transparent 1px)", backgroundSize: "24px 24px" }}></div>
             <div className="relative z-10 flex flex-col lg:flex-row items-center gap-12">
               <div className="lg:w-1/2">
                 <h2 className="text-3xl font-bold mb-6">Advanced Technology</h2>
@@ -291,12 +297,12 @@ const Radiology: React.FC = () => {
 
       <section className="py-24 relative overflow-hidden" id="appointment">
         <div className="absolute inset-0 bg-gradient-to-br from-blue-950 to-slate-900"></div>
-        <div className="absolute inset-0 opacity-10" style={{backgroundImage: "url('https://www.transparenttextures.com/patterns/cubes.png')"}}></div>
-        
+        <div className="absolute inset-0 opacity-10" style={{ backgroundImage: "url('https://www.transparenttextures.com/patterns/cubes.png')" }}></div>
+
         {/* Decorative Elements */}
         <div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/3 w-96 h-96 bg-white/10 rounded-full blur-3xl"></div>
         <div className="absolute bottom-0 left-0 translate-y-1/2 -translate-x-1/3 w-96 h-96 bg-blue-500/20 rounded-full blur-3xl"></div>
-        
+
         {/* Giant Icon */}
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 opacity-[0.03] pointer-events-none">
           <span className="material-icons text-[20rem] text-white">scanner</span>
@@ -308,13 +314,13 @@ const Radiology: React.FC = () => {
               Precise Diagnostics
             </span>
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-white mb-6 leading-tight">
-              Ready for Your <br/><span className="text-blue-300">Scan?</span>
+              Ready for Your <br /><span className="text-blue-300">Scan?</span>
             </h2>
             <p className="text-blue-100 text-lg md:text-xl mb-10 leading-relaxed max-w-2xl mx-auto">
               Whether you need a routine screening or a complex diagnostic procedure, our radiology team is here to provide exceptional care.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button 
+              <button
                 onClick={() => openAppointment({ department: 'Radiology' })}
                 className="inline-flex items-center justify-center px-8 py-4 text-lg font-bold text-blue-950 bg-white rounded-full hover:bg-blue-50 shadow-xl shadow-blue-900/20 transition-all hover:scale-105"
               >

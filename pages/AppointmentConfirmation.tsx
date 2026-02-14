@@ -1,10 +1,17 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
+import SEO from '../components/SEO';
 
 const AppointmentConfirmation: React.FC = () => {
   return (
     <div className="flex-grow flex items-center justify-center py-20 relative overflow-hidden min-h-[70vh] bg-slate-50">
+      <SEO
+        title="Appointment Request Received"
+        description="Thank you for requesting an appointment. Our team will contact you shortly."
+        // Usually, we don't want search engines indexing confirmation pages
+        structuredData={{ "@context": "https://schema.org", "@type": "WebPage", "robots": "noindex" }}
+      />
       <div className="absolute inset-0 pointer-events-none opacity-30">
         <div className="absolute top-0 right-0 w-96 h-96 bg-primary/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
         <div className="absolute bottom-0 left-0 w-96 h-96 bg-secondary/10 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2"></div>

@@ -2,6 +2,7 @@
 import React from 'react';
 import { Link, useOutletContext } from 'react-router-dom';
 import { OpenAppointmentFunc } from '../Layout';
+import SEO from '../components/SEO';
 
 const departments = [
   { id: 'cardiology', name: 'Cardiology', icon: 'monitor_heart', color: 'red', desc: 'Comprehensive care for heart and vascular conditions including diagnostic testing and surgery.' },
@@ -20,6 +21,11 @@ const Departments: React.FC = () => {
 
   return (
     <div className="animate-fade-in">
+      <SEO
+        title="Departments"
+        description="Explore our specialized medical departments including Cardiology, Neurology, Pediatrics, Surgery, and more."
+        canonical="https://everleaf-medical.com/departments"
+      />
       <header className="bg-white border-b border-slate-100 py-16">
         <div className="container mx-auto px-6 text-center">
           <span className="inline-block px-3 py-1 mb-4 text-xs font-semibold tracking-wider text-primary uppercase bg-blue-50 rounded-full">
@@ -33,7 +39,7 @@ const Departments: React.FC = () => {
       </header>
 
       <section className="py-20 bg-slate-50 relative overflow-hidden">
-        <div className="absolute inset-0 opacity-5" style={{backgroundImage: "radial-gradient(#136dec 0.5px, transparent 0.5px), radial-gradient(#136dec 0.5px, #f6f7f8 0.5px)", backgroundSize: "20px 20px", backgroundPosition: "0 0, 10px 10px"}}></div>
+        <div className="absolute inset-0 opacity-5" style={{ backgroundImage: "radial-gradient(#136dec 0.5px, transparent 0.5px), radial-gradient(#136dec 0.5px, #f6f7f8 0.5px)", backgroundSize: "20px 20px", backgroundPosition: "0 0, 10px 10px" }}></div>
         <div className="container mx-auto px-6 relative z-10">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {departments.map((dept) => (
@@ -57,7 +63,7 @@ const Departments: React.FC = () => {
       {/* Revamped CTA Section */}
       <section className="py-24 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-slate-800 to-slate-900"></div>
-        <div className="absolute inset-0 opacity-10" style={{backgroundImage: "url('https://www.transparenttextures.com/patterns/cubes.png')"}}></div>
+        <div className="absolute inset-0 opacity-10" style={{ backgroundImage: "url('https://www.transparenttextures.com/patterns/cubes.png')" }}></div>
         <div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/3 w-96 h-96 bg-primary/20 rounded-full blur-3xl"></div>
         <div className="absolute bottom-0 left-0 translate-y-1/2 -translate-x-1/3 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl"></div>
 
@@ -67,13 +73,13 @@ const Departments: React.FC = () => {
               Expert Consultation
             </span>
             <h2 className="text-3xl md:text-5xl lg:text-6xl font-serif font-bold text-white mb-6 leading-tight">
-              Need Expert <br/><span className="text-blue-300">Medical Advice?</span>
+              Need Expert <br /><span className="text-blue-300">Medical Advice?</span>
             </h2>
             <p className="text-slate-300 text-lg md:text-xl mb-10 leading-relaxed max-w-2xl mx-auto">
               Our specialists are ready to help you with personalized care plans. Schedule an appointment with one of our departments today.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <button 
+              <button
                 onClick={() => openAppointment()}
                 className="px-8 py-4 bg-primary text-white font-bold rounded-full hover:bg-primary-dark transition-all shadow-xl shadow-primary/30 hover:scale-105 flex items-center gap-2"
               >

@@ -2,6 +2,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import NewsletterForm from '../../components/NewsletterForm';
+import SEO from '../../components/SEO';
 
 const DiabetesManagement: React.FC = () => {
   const handleShare = async () => {
@@ -23,6 +24,13 @@ const DiabetesManagement: React.FC = () => {
 
   return (
     <div className="animate-fade-in bg-white min-h-screen">
+      <SEO
+        title="Breakthrough in Diabetes Management"
+        description="MediCare Research Center announces new AI-driven technology for proactive Type 2 diabetes management."
+        type="article"
+        canonical="https://everleaf-medical.com/blog/diabetes-management"
+        image="https://lh3.googleusercontent.com/aida-public/AB6AXuDHD5LjxZo6DK-gc1m-XNR3K5I9AvGznl1MN578ewmgDH3bYN9qIdnk8hKi_N_sH9E5VhqkFyzZr0V5CpofOcjJtfRiK3xRPjpLTwhsVFA-2i-0NLgTNrRdYb8U4FsWKzFnvwTJNIWBhac-ad4nj65nAkxNhZJ2IIPOFOF1yH4N4mcJb18Cgkmpthdam7-eXt-NNKXiiw0VoMBpRuzEjdqnv_9mwRoxEDguAQzEIiHVq7du3HO5-cnq3NQKano-mABGpDd6SfuAvNw"
+      />
       <div className="bg-slate-50 border-b border-slate-200">
         <div className="container mx-auto px-6 py-4">
           <nav aria-label="Breadcrumb" className="flex text-sm text-slate-500">
