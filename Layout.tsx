@@ -4,6 +4,7 @@ import { Outlet, useLocation } from 'react-router-dom';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import AppointmentModal from './components/AppointmentModal';
+import ScrollToTopButton from './components/ScrollToTopButton';
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -41,6 +42,7 @@ const Layout: React.FC = () => {
         onClose={closeAppointment} 
         initialData={appointmentData}
       />
+      <ScrollToTopButton />
     </div>
   );
 };
