@@ -1,6 +1,7 @@
 
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useOutletContext } from 'react-router-dom';
+import { OpenAppointmentFunc } from '../Layout';
 
 const departments = [
   { id: 'cardiology', name: 'Cardiology', icon: 'monitor_heart', color: 'red', desc: 'Comprehensive care for heart and vascular conditions including diagnostic testing and surgery.' },
@@ -15,6 +16,8 @@ const departments = [
 ];
 
 const Departments: React.FC = () => {
+  const { openAppointment } = useOutletContext<{ openAppointment: OpenAppointmentFunc }>();
+
   return (
     <div className="animate-fade-in">
       <header className="bg-white border-b border-slate-100 py-16">
@@ -51,20 +54,35 @@ const Departments: React.FC = () => {
         </div>
       </section>
 
-      <section className="py-20 bg-primary text-white relative overflow-hidden">
+      {/* Revamped CTA Section */}
+      <section className="py-24 relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-slate-800 to-slate-900"></div>
         <div className="absolute inset-0 opacity-10" style={{backgroundImage: "url('https://www.transparenttextures.com/patterns/cubes.png')"}}></div>
+        <div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/3 w-96 h-96 bg-primary/20 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-0 left-0 translate-y-1/2 -translate-x-1/3 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl"></div>
+
         <div className="container mx-auto px-6 relative z-10 text-center">
-          <h2 className="text-3xl md:text-4xl font-serif font-bold mb-6">Need expert medical advice?</h2>
-          <p className="text-blue-100 text-lg mb-8 max-w-2xl mx-auto leading-relaxed">
-            Our specialists are ready to help you with personalized care plans. Schedule an appointment with one of our departments today.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link to="/doctors" className="inline-flex items-center justify-center px-8 py-3.5 text-base font-bold text-primary bg-white rounded-lg hover:bg-blue-50 shadow-lg transition-colors">
-              Find a Doctor
-            </Link>
-            <button className="inline-flex items-center justify-center px-8 py-3.5 text-base font-bold text-white bg-white/10 border border-white/20 rounded-lg hover:bg-white/20 transition-colors">
-              Book Appointment
-            </button>
+          <div className="max-w-4xl mx-auto">
+            <span className="inline-block py-1 px-3 rounded-full bg-white/10 border border-white/20 text-white text-xs font-bold tracking-wider uppercase mb-6 backdrop-blur-md">
+              Expert Consultation
+            </span>
+            <h2 className="text-3xl md:text-5xl lg:text-6xl font-serif font-bold text-white mb-6 leading-tight">
+              Need Expert <br/><span className="text-blue-300">Medical Advice?</span>
+            </h2>
+            <p className="text-slate-300 text-lg md:text-xl mb-10 leading-relaxed max-w-2xl mx-auto">
+              Our specialists are ready to help you with personalized care plans. Schedule an appointment with one of our departments today.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+              <button 
+                onClick={() => openAppointment()}
+                className="px-8 py-4 bg-primary text-white font-bold rounded-full hover:bg-primary-dark transition-all shadow-xl shadow-primary/30 hover:scale-105 flex items-center gap-2"
+              >
+                Book Appointment <span className="material-icons">event</span>
+              </button>
+              <Link to="/doctors" className="px-8 py-4 bg-transparent border-2 border-white/30 text-white font-bold rounded-full hover:bg-white/10 transition-all backdrop-blur-sm">
+                Find a Doctor
+              </Link>
+            </div>
           </div>
         </div>
       </section>

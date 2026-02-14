@@ -48,21 +48,21 @@ const Header: React.FC<HeaderProps> = ({ onBookAppointment }) => {
         <div className="container mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
             <Link to="/" className="flex items-center gap-3 group">
-              <EverleafLogo className="w-10 h-10 group-hover:scale-105 transition-transform duration-300" />
+              <EverleafLogo className="w-8 h-8 lg:w-10 lg:h-10 group-hover:scale-105 transition-transform duration-300" />
               <div className="flex flex-col">
-                <span className="text-2xl font-brand font-semibold text-slate-900 leading-none tracking-tight">Everleaf</span>
-                <span className="text-xs font-brand text-slate-500 tracking-[0.2em] uppercase mt-0.5">Medical Center</span>
+                <span className="text-xl lg:text-2xl font-brand font-semibold text-slate-900 leading-none tracking-tight">Everleaf</span>
+                <span className="text-[10px] lg:text-xs font-brand text-slate-500 tracking-[0.2em] uppercase mt-0.5">Medical Center</span>
               </div>
             </Link>
 
             {/* Desktop Menu */}
-            <div className="hidden lg:flex items-center space-x-8">
-              <Link className={`${isActive('/')} font-medium transition-colors`} to="/">Home</Link>
-              <Link className={`${isActive('/about')} font-medium transition-colors`} to="/about">About</Link>
+            <div className="hidden lg:flex items-center space-x-4 xl:space-x-8">
+              <Link className={`${isActive('/')} text-sm xl:text-base font-medium transition-colors`} to="/">Home</Link>
+              <Link className={`${isActive('/about')} text-sm xl:text-base font-medium transition-colors`} to="/about">About</Link>
               
               {/* Services Dropdown */}
               <div className="relative group">
-                <Link to="/services" className={`flex items-center gap-1 cursor-pointer font-medium transition-colors ${location.pathname.includes('services') ? 'text-primary' : 'text-slate-600 hover:text-primary'}`}>
+                <Link to="/services" className={`flex items-center gap-1 cursor-pointer text-sm xl:text-base font-medium transition-colors ${location.pathname.includes('services') ? 'text-primary' : 'text-slate-600 hover:text-primary'}`}>
                   Services <span className="material-icons text-sm">expand_more</span>
                 </Link>
                 <div className="absolute top-full left-0 mt-2 w-56 bg-white rounded-lg shadow-xl border border-slate-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform translate-y-2 group-hover:translate-y-0 z-[9999] py-2">
@@ -77,7 +77,7 @@ const Header: React.FC<HeaderProps> = ({ onBookAppointment }) => {
 
               {/* Departments Dropdown */}
               <div className="relative group">
-                <Link to="/departments" className={`flex items-center gap-1 cursor-pointer font-medium transition-colors ${location.pathname.includes('departments') ? 'text-primary' : 'text-slate-600 hover:text-primary'}`}>
+                <Link to="/departments" className={`flex items-center gap-1 cursor-pointer text-sm xl:text-base font-medium transition-colors ${location.pathname.includes('departments') ? 'text-primary' : 'text-slate-600 hover:text-primary'}`}>
                   Departments <span className="material-icons text-sm">expand_more</span>
                 </Link>
                 <div className="absolute top-full left-0 mt-2 w-56 bg-white rounded-lg shadow-xl border border-slate-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform translate-y-2 group-hover:translate-y-0 z-[9999] py-2">
@@ -92,15 +92,16 @@ const Header: React.FC<HeaderProps> = ({ onBookAppointment }) => {
                   <Link to="/departments/rehabilitation" className="block px-4 py-2 text-sm text-slate-600 hover:bg-slate-50 hover:text-primary">Rehabilitation</Link>
                 </div>
               </div>
-              <Link className={`${isActive('/doctors')} font-medium transition-colors`} to="/doctors">Doctors</Link>
-              <Link className={`${isActive('/blog')} font-medium transition-colors`} to="/blog">Articles</Link>
-              <Link className={`${isActive('/gallery')} font-medium transition-colors`} to="/gallery">Gallery</Link>
-              <Link className={`${isActive('/contact')} font-medium transition-colors`} to="/contact">Contact</Link>
+              <Link className={`${isActive('/doctors')} text-sm xl:text-base font-medium transition-colors`} to="/doctors">Doctors</Link>
+              <Link className={`${isActive('/blog')} text-sm xl:text-base font-medium transition-colors`} to="/blog">Articles</Link>
+              <Link className={`${isActive('/gallery')} text-sm xl:text-base font-medium transition-colors`} to="/gallery">Gallery</Link>
+              <Link className={`${isActive('/contact')} text-sm xl:text-base font-medium transition-colors`} to="/contact">Contact</Link>
             </div>
 
             <div className="hidden lg:block">
-              <button onClick={onBookAppointment} className="inline-flex items-center justify-center px-6 py-2.5 text-sm font-semibold text-white transition-all duration-200 bg-primary rounded-lg hover:bg-primary-dark shadow-lg hover:-translate-y-0.5">
-                Book Appointment
+              <button onClick={onBookAppointment} className="inline-flex items-center justify-center px-4 py-2 xl:px-6 xl:py-2.5 text-sm font-semibold text-white transition-all duration-200 bg-primary rounded-lg hover:bg-primary-dark shadow-lg hover:-translate-y-0.5">
+                <span className="hidden xl:inline">Book Appointment</span>
+                <span className="xl:hidden">Book</span>
                 <span className="material-icons text-sm ml-2">arrow_forward</span>
               </button>
             </div>
@@ -162,10 +163,10 @@ const Header: React.FC<HeaderProps> = ({ onBookAppointment }) => {
                     <Link onClick={() => setIsMenuOpen(false)} className="block text-slate-600 text-sm hover:text-primary" to="/departments/pediatrics">Pediatrics</Link>
                     <Link onClick={() => setIsMenuOpen(false)} className="block text-slate-600 text-sm hover:text-primary" to="/departments/surgery">Surgery</Link>
                     <Link onClick={() => setIsMenuOpen(false)} className="block text-slate-600 text-sm hover:text-primary" to="/departments/dental">Dental</Link>
-                    <Link onClick={() => setIsMenuOpen(false)} className="block text-slate-600 text-sm hover:text-primary" to="/departments/ophthalmology">Dental</Link>
-                    <Link onClick={() => setIsMenuOpen(false)} className="block text-slate-600 text-sm hover:text-primary" to="/services/laboratory">Dental</Link>
-                    <Link onClick={() => setIsMenuOpen(false)} className="block text-slate-600 text-sm hover:text-primary" to="/departments/radiology">Dental</Link>
-                    <Link onClick={() => setIsMenuOpen(false)} className="block text-slate-600 text-sm hover:text-primary" to="/departments/rehabilitation">Dental</Link>
+                    <Link onClick={() => setIsMenuOpen(false)} className="block text-slate-600 text-sm hover:text-primary" to="/departments/ophthalmology">Ophthalmology</Link>
+                    <Link onClick={() => setIsMenuOpen(false)} className="block text-slate-600 text-sm hover:text-primary" to="/services/laboratory">Laboratory</Link>
+                    <Link onClick={() => setIsMenuOpen(false)} className="block text-slate-600 text-sm hover:text-primary" to="/departments/radiology">Radiology</Link>
+                    <Link onClick={() => setIsMenuOpen(false)} className="block text-slate-600 text-sm hover:text-primary" to="/departments/rehabilitation">Rehabilitation</Link>
                   </div>
                 </div>
               </div>

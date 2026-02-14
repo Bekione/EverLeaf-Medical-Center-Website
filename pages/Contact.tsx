@@ -1,7 +1,34 @@
 
-import React from 'react';
+import React, { useState } from 'react';
+import { submitForm } from '../utils/formService';
 
 const Contact: React.FC = () => {
+  const [formData, setFormData] = useState({
+    fullName: '',
+    email: '',
+    subject: 'General Inquiry',
+    message: ''
+  });
+  
+  const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
+    setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setStatus('submitting');
+    
+    try {
+      await submitForm(formData, 'contact');
+      setStatus('success');
+      setFormData({ fullName: '', email: '', subject: 'General Inquiry', message: '' });
+    } catch (error) {
+      setStatus('error');
+    }
+  };
+
   return (
     <div className="animate-fade-in">
       <header className="relative bg-white border-b border-slate-100 min-h-[500px] flex items-center overflow-hidden">
@@ -49,37 +76,98 @@ const Contact: React.FC = () => {
                 </div>
               </div>
             </div>
+            
             <div className="bg-white p-8 rounded-2xl shadow-xl border border-slate-100">
-              <h3 className="text-2xl font-bold text-slate-900 mb-6">Send us a Message</h3>
-              <form className="space-y-5">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-                  <div>
-                    <label className="block text-sm font-medium text-slate-700 mb-1">Full Name</label>
-                    <input type="text" className="w-full px-4 py-3 rounded-lg border border-slate-200 bg-slate-50 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all text-slate-800 placeholder-slate-400" placeholder="John Doe" />
+              {status === 'success' ? (
+                <div className="h-full flex flex-col items-center justify-center text-center py-12 animate-fade-in">
+                  <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center text-green-500 mb-6">
+                    <span className="material-icons text-4xl">check_circle</span>
+                  </div>
+                  <h3 className="text-2xl font-bold text-slate-900 mb-2">Message Sent!</h3>
+                  <p className="text-slate-600 mb-8 max-w-xs">
+                    Thank you for reaching out. Our support team will get back to you within 24 hours.
+                  </p>
+                  <button 
+                    onClick={() => setStatus('idle')}
+                    className="px-6 py-2 bg-slate-100 text-slate-700 font-semibold rounded-lg hover:bg-slate-200 transition-colors"
+                  >
+                    Send Another Message
+                  </button>
+                </div>
+              ) : (
+                <form onSubmit={handleSubmit} className="space-y-5 animate-fade-in">
+                  <h3 className="text-2xl font-bold text-slate-900 mb-6">Send us a Message</h3>
+                  {status === 'error' && (
+                    <div className="bg-red-50 text-red-600 p-3 rounded-lg text-sm mb-4">
+                      Failed to send message. Please try again later.
+                    </div>
+                  )}
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                    <div>
+                      <label className="block text-sm font-medium text-slate-700 mb-1">Full Name</label>
+                      <input 
+                        type="text" 
+                        name="fullName"
+                        value={formData.fullName}
+                        onChange={handleChange}
+                        required
+                        disabled={status === 'submitting'}
+                        className="w-full px-4 py-3 rounded-lg border border-slate-200 bg-slate-50 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all text-slate-800 placeholder-slate-400 disabled:opacity-60" 
+                        placeholder="John Doe" 
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-sm font-medium text-slate-700 mb-1">Email Address</label>
+                      <input 
+                        type="email" 
+                        name="email"
+                        value={formData.email}
+                        onChange={handleChange}
+                        required
+                        disabled={status === 'submitting'}
+                        className="w-full px-4 py-3 rounded-lg border border-slate-200 bg-slate-50 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all text-slate-800 placeholder-slate-400 disabled:opacity-60" 
+                        placeholder="john@example.com" 
+                      />
+                    </div>
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-slate-700 mb-1">Email Address</label>
-                    <input type="email" className="w-full px-4 py-3 rounded-lg border border-slate-200 bg-slate-50 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all text-slate-800 placeholder-slate-400" placeholder="john@example.com" />
+                    <label className="block text-sm font-medium text-slate-700 mb-1">Subject</label>
+                    <select 
+                      name="subject"
+                      value={formData.subject}
+                      onChange={handleChange}
+                      disabled={status === 'submitting'}
+                      className="w-full px-4 py-3 rounded-lg border border-slate-200 bg-slate-50 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all text-slate-600 disabled:opacity-60"
+                    >
+                      <option>General Inquiry</option>
+                      <option>Appointment Request</option>
+                      <option>Feedback</option>
+                      <option>Billing Question</option>
+                      <option>Other</option>
+                    </select>
                   </div>
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-slate-700 mb-1">Subject</label>
-                  <select className="w-full px-4 py-3 rounded-lg border border-slate-200 bg-slate-50 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all text-slate-600">
-                    <option>General Inquiry</option>
-                    <option>Appointment Request</option>
-                    <option>Feedback</option>
-                    <option>Other</option>
-                  </select>
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-slate-700 mb-1">Message</label>
-                  <textarea className="w-full px-4 py-3 rounded-lg border border-slate-200 bg-slate-50 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all text-slate-800 placeholder-slate-400 min-h-[120px] max-h-60" placeholder="How can we help you?"></textarea>
-                </div>
-                <button type="button" className="w-full py-3.5 px-6 text-white font-bold bg-primary hover:bg-primary-dark rounded-lg shadow-lg hover:shadow-xl transition-all duration-200 flex items-center justify-center gap-2 group transform hover:-translate-y-0.5">
-                  Send Message
-                  <span className="material-icons text-sm group-hover:translate-x-1 transition-transform">near_me</span>
-                </button>
-              </form>
+                  <div>
+                    <label className="block text-sm font-medium text-slate-700 mb-1">Message</label>
+                    <textarea 
+                      name="message"
+                      value={formData.message}
+                      onChange={handleChange}
+                      required
+                      disabled={status === 'submitting'}
+                      className="w-full px-4 py-3 rounded-lg border border-slate-200 bg-slate-50 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all text-slate-800 placeholder-slate-400 min-h-[120px] max-h-60 disabled:opacity-60" 
+                      placeholder="How can we help you?"
+                    ></textarea>
+                  </div>
+                  <button 
+                    type="submit" 
+                    disabled={status === 'submitting'}
+                    className="w-full py-3.5 px-6 text-white font-bold bg-primary hover:bg-primary-dark rounded-lg shadow-lg hover:shadow-xl transition-all duration-200 flex items-center justify-center gap-2 group transform hover:-translate-y-0.5 disabled:opacity-70 disabled:cursor-wait"
+                  >
+                    {status === 'submitting' ? 'Sending Message...' : 'Send Message'}
+                    {!status.startsWith('sub') && <span className="material-icons text-sm group-hover:translate-x-1 transition-transform">near_me</span>}
+                  </button>
+                </form>
+              )}
             </div>
           </div>
         </div>

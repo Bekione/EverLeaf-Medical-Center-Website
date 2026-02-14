@@ -1,6 +1,6 @@
-
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import NewsletterForm from '../components/NewsletterForm';
 
 // Article Data Configuration
 const articlesData = [
@@ -269,19 +269,7 @@ const Blog: React.FC = () => {
             <p className="text-blue-100 text-lg md:text-xl mb-10 leading-relaxed max-w-2xl mx-auto">
               Join over 50,000 subscribers who receive our latest medical news, health tips, and exclusive event invitations directly in their inbox.
             </p>
-            <form className="max-w-lg mx-auto flex flex-col sm:flex-row gap-4">
-              <input 
-                type="email" 
-                placeholder="Enter your email address" 
-                className="w-full px-6 py-4 rounded-full text-slate-900 focus:outline-none focus:ring-4 focus:ring-blue-500/30 border-none shadow-xl placeholder:text-slate-400 bg-white/95 backdrop-blur-sm"
-              />
-              <button 
-                type="button" 
-                className="px-8 py-4 bg-primary text-white font-bold rounded-full hover:bg-blue-600 transition-all shadow-xl shadow-blue-900/30 whitespace-nowrap hover:scale-105"
-              >
-                Subscribe Now
-              </button>
-            </form>
+            <NewsletterForm variant="section" />
             <p className="text-blue-300 text-xs mt-6">
               We respect your privacy. Unsubscribe at any time.
             </p>

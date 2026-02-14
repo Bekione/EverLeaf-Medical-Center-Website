@@ -1,6 +1,7 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
+import NewsletterForm from '../../components/NewsletterForm';
 
 const ImmuneSystem: React.FC = () => {
   const handleShare = async () => {
@@ -203,10 +204,7 @@ const ImmuneSystem: React.FC = () => {
               <div className="absolute top-0 right-0 w-32 h-32 bg-white opacity-10 rounded-full blur-2xl translate-x-1/2 -translate-y-1/2 pointer-events-none"></div>
               <h3 className="text-xl font-bold mb-3 relative z-10">Subscribe to our Newsletter</h3>
               <p className="text-blue-100 text-sm mb-6 relative z-10">Get the latest nutrition tips and recipes delivered to your inbox weekly.</p>
-              <div className="relative z-10">
-                <input type="email" placeholder="Your email address" className="w-full rounded-lg border-0 bg-white/10 backdrop-blur-sm text-white placeholder-blue-200 focus:ring-2 focus:ring-white mb-3 px-4 py-2" />
-                <button className="w-full bg-white text-primary font-bold py-2 rounded-lg hover:bg-blue-50 transition-colors">Subscribe</button>
-              </div>
+              <NewsletterForm variant="sidebar" />
             </div>
           </aside>
         </div>

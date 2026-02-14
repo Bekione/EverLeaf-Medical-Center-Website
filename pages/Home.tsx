@@ -1,11 +1,27 @@
 
-import React, { useRef } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import { Link, useOutletContext } from 'react-router-dom';
 import { OpenAppointmentFunc } from '../Layout';
 
 const Home: React.FC = () => {
   const { openAppointment } = useOutletContext<{ openAppointment: OpenAppointmentFunc }>();
   const scrollContainerRef = useRef<HTMLDivElement>(null);
+  
+  // Hero Image Carousel Logic
+  const heroImages = [
+    "https://lh3.googleusercontent.com/aida-public/AB6AXuDHdy-TQkrlWxbjfSK2Oiy0_ZEMVW-pJE0f4gboXr4qSy9BOeIWU0215DPTHix5i2VvnodWBnr3qfyNDrRh-kANv576LGzxpYn6JUdqnp1WkDfCvZNtBM891q3m-AKBFVwB7X8sSMvXnjTLfr9fJ6mD6ArEvY-2FZpxSXe58A-EhF9nFyof_0B4wn0eefDo0rtXdhtTB94_3VnPzoZVUr3OkpJI74Z33vo5UV_mV1ud16km-3V86j_KQsMw2N2WSorHb1sQ1GgQmVc", // Building
+    "https://lh3.googleusercontent.com/aida-public/AB6AXuBAZ72MvKfsAV5eXP0UflP2GrTVhI8MHJWW3Nq1zzKA5556zQOOjLXYQJ-gq0yFKxbDmNV0HhuyBNxpiMBdUiJzr_DTdS6GQPCfAK29_IDLWZUjz3_XAOkeFZDCY4WILVjYqBa4EqekhXnmMw6Rgg_PHaFS6uVdyLRDfFQIFJunA2vLPn4mdo9r6CJYuY8DvTkeKA_93bc76_XBcKU6xBATaw_outxCae_ArnfZNIcHBtr5RF5o6uYwaGVs1cBaBlkrEGnINqSI-Ic", // Eye Exam
+    "https://lh3.googleusercontent.com/aida-public/AB6AXuASpB4zEhU2d312bE6DML0nD_09L6xUkwbVl-4SSiHECRYzO9M687bP9Y0-aeNxD3KFcW5iw5pw3_r1_WM1FYmEr2VkBxf1BNrUXJirb-BDiuU2Z1p8OGO13dWa1TKogXhVnX3PdIrcL7W3mQE7Vu1Lh2Qp_85Ks3cEJ4e0FtiH4Oc3Mm6MJ_-mXEt-i7MLgdkI0MTch5GRoxToq4J9yXSWxCIVCDbd-5UM0Ey-lnxb2fYExx4AS5wtWdA4KBjKhAE1czMdyorFTxc", // Surgery
+    "https://lh3.googleusercontent.com/aida-public/AB6AXuBcjQvLZLM7D8XM6G-ltI3zOfMe_16SIFhpMOp1bLHVdEjtdYZjpUsBAzQs44cnm4kfRY_CVK8NbXWUDDa4412BSTYonv0G_5AGW8FG8LGQ5z9Q8iNNj1bYp3qx0LnzidCBJ75-kWs_GKuSRxWn3GwuufvYRrgSZsucRIjRvWRRp9uFGGhtcPw20Co03HEIOSv7OnPKZtgv_JaExWODULC0-Zb9HFrFUwFo1v3JpiwWrOf-bEgQn2a6vB2n6-OJV-5Zpy2xjm7jgRo"  // Pediatrics
+  ];
+  const [currentHeroImage, setCurrentHeroImage] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentHeroImage((prev) => (prev + 1) % heroImages.length);
+    }, 5000);
+    return () => clearInterval(timer);
+  }, [heroImages.length]);
 
   const scrollTestimonials = (direction: 'left' | 'right') => {
     if (scrollContainerRef.current) {
@@ -69,9 +85,20 @@ const Home: React.FC = () => {
                 <p>Happy patients recovered this year.</p>
               </div>
             </div>
-            <div className="relative hidden lg:block">
+            <div className="relative hidden lg:block h-[480px] w-full">
               <div className="absolute -inset-4 bg-primary/20 rounded-full blur-3xl opacity-30 animate-pulse"></div>
-              <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDHdy-TQkrlWxbjfSK2Oiy0_ZEMVW-pJE0f4gboXr4qSy9BOeIWU0215DPTHix5i2VvnodWBnr3qfyNDrRh-kANv576LGzxpYn6JUdqnp1WkDfCvZNtBM891q3m-AKBFVwB7X8sSMvXnjTLfr9fJ6mD6ArEvY-2FZpxSXe58A-EhF9nFyof_0B4wn0eefDo0rtXdhtTB94_3VnPzoZVUr3OkpJI74Z33vo5UV_mV1ud16km-3V86j_KQsMw2N2WSorHb1sQ1GgQmVc" alt="Hospital Environment" className="relative rounded-2xl shadow-2xl object-cover z-10 w-full h-[480px]" />
+              {heroImages.map((src, index) => (
+                <div 
+                  key={index}
+                  className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${index === currentHeroImage ? 'opacity-100 z-10' : 'opacity-0 z-0'}`}
+                >
+                  <img 
+                    src={src} 
+                    alt={`Hospital Highlight ${index + 1}`} 
+                    className="rounded-2xl shadow-2xl object-cover w-full h-full" 
+                  />
+                </div>
+              ))}
               <div className="absolute -bottom-6 -left-6 bg-white p-4 rounded-xl shadow-xl z-20 flex items-center gap-4 max-w-xs animate-[bounce_3s_infinite]">
                 <div className="bg-green-100 p-3 rounded-lg text-green-600">
                   <span className="material-icons text-2xl">verified_user</span>
@@ -96,7 +123,7 @@ const Home: React.FC = () => {
             <div>
               <h3 className="text-lg font-bold text-slate-900 mb-1">Emergency</h3>
               <p className="text-sm text-slate-500 mb-2">Immediate care for critical situations.</p>
-              <Link to="/emergency" className="text-red-500 font-semibold text-sm flex items-center gap-1 group-hover:underline">
+              <Link to="/services/emergency" className="text-red-500 font-semibold text-sm flex items-center gap-1 group-hover:underline">
                 Call 911 <span className="material-icons text-sm">arrow_forward</span>
               </Link>
             </div>
@@ -138,10 +165,10 @@ const Home: React.FC = () => {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
             {[
-              { icon: 'favorite', title: 'Cardiology', desc: 'Expert heart care including diagnostics, treatment, and preventive cardiology services.', link: '/cardiology' },
-              { icon: 'psychology', title: 'Neurology', desc: 'Advanced diagnosis and treatment for disorders affecting the brain, spine, and nerves.', link: '/neurology' },
-              { icon: 'child_care', title: 'Pediatrics', desc: 'Compassionate care for infants, children, and adolescents in a kid-friendly environment.', link: '/pediatrics' },
-              { icon: 'science', title: 'Laboratory', desc: 'State-of-the-art laboratory services providing accurate and timely diagnostic results.', link: '/laboratory' }
+              { icon: 'favorite', title: 'Cardiology', desc: 'Expert heart care including diagnostics, treatment, and preventive cardiology services.', link: '/departments/cardiology' },
+              { icon: 'psychology', title: 'Neurology', desc: 'Advanced diagnosis and treatment for disorders affecting the brain, spine, and nerves.', link: '/departments/neurology' },
+              { icon: 'child_care', title: 'Pediatrics', desc: 'Compassionate care for infants, children, and adolescents in a kid-friendly environment.', link: '/departments/pediatrics' },
+              { icon: 'science', title: 'Laboratory', desc: 'State-of-the-art laboratory services providing accurate and timely diagnostic results.', link: '/services/laboratory' }
             ].map((service, idx) => (
               <div key={idx} className="bg-white p-8 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-100 group hover:-translate-y-1">
                 <div className="w-14 h-14 bg-blue-50 rounded-xl flex items-center justify-center text-primary mb-6 group-hover:bg-primary group-hover:text-white transition-colors">
@@ -180,62 +207,40 @@ const Home: React.FC = () => {
             </div>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div className="group relative overflow-hidden rounded-2xl bg-slate-50 border border-slate-100 hover:shadow-card transition-all duration-300">
-              <div className="relative h-80 overflow-hidden bg-slate-200">
-                <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuB9BZuqUAA5IOvQMgXBQ8ryTLzC7vKg69xiTlytVe-76cUVW84Bp8VWOapyKoqbwUVVWBuN_FfxCcsqFq1ao_QGijkga86eRCQeYgiaWkGi7WtZIQPN8Q2vpj9P49F7WLoa7Y9f-Oj_nR-hQM4ZVF-Hxf-HLyzlW5kk3Rk-ANh7DNvIi720KTGderseW5cc8dF6H7Wx6PDoI9ce9GfwndlXLLz4CsQbzfWS0_34TQzB04eBNYZK-S8nSZOkgY3aUVNpbGCAWq_I9vs" alt="Dr. Sarah Johnson" className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105" />
-                <div className="absolute inset-0 bg-primary/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-4">
-                  <a href="#" className="w-10 h-10 bg-white rounded-full flex items-center justify-center text-primary hover:bg-slate-100 transition-colors"><span className="material-icons text-sm">share</span></a>
-                  <a href="#" className="w-10 h-10 bg-white rounded-full flex items-center justify-center text-primary hover:bg-slate-100 transition-colors"><span className="material-icons text-sm">email</span></a>
+            {[
+              { name: 'Dr. Sarah Johnson', role: 'Neurologist', img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuB9BZuqUAA5IOvQMgXBQ8ryTLzC7vKg69xiTlytVe-76cUVW84Bp8VWOapyKoqbwUVVWBuN_FfxCcsqFq1ao_QGijkga86eRCQeYgiaWkGi7WtZIQPN8Q2vpj9P49F7WLoa7Y9f-Oj_nR-hQM4ZVF-Hxf-HLyzlW5kk3Rk-ANh7DNvIi720KTGderseW5cc8dF6H7Wx6PDoI9ce9GfwndlXLLz4CsQbzfWS0_34TQzB04eBNYZK-S8nSZOkgY3aUVNpbGCAWq_I9vs', exp: '15 Years', deg: 'MBBS, MD' },
+              { name: 'Dr. Mark Williams', role: 'Cardiologist', img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuADGr580ge61fkfsxwBrM7N1TZyAY9Z-GTpjBUo_xK5lWfakoEU_qOziiT-so6DMVRYMjRbu0nVW-k1DcZ572-UwSxJBbHFxL921KxZ6v5xbrKCJfSDGPfGIKJ2lnbzJo8rsumPzZ1VnlvNztje35dbZ8OjoskrJoJWMwL2xyEuWVfFxTxZWLkj3322_nwECoDQOhnBsfJT-uJdBuBYvHW7tZFnkW3TihhkEKyTi4ionW16tPVhP7_Msgmo2tYXI-H3mW5DhYbZYTk', exp: '12 Years', deg: 'MBBS, MD' },
+              { name: 'Dr. Emily Chen', role: 'Pediatrician', img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAY7zDqNO2hoPrxpDGZpE92fSZkSGJgJi7hfuXKUusm09nz1u9rNHNBxuJ0N_t6HSXFbSkNan8ZuDt8AkK0PHqzsi4I6ipPzk2q3ALgTZVcC1uboMYQ6dZnjiBkO036p5ErpaA0vAjn6D8TivJDicjayQgEkLrG4PsZURfL7C-lOADFWh45AKVB0WfWyqvzWL5JcVEwzhhuOWO87RBPu2zcdEOcZJloL6qr9YD-oKjiSjrlq9KMwrQ9LL25SFVQnG3ZphZNrYFaNIs', exp: '18 Years', deg: 'MBBS, PhD' }
+            ].map((doc, idx) => (
+              <div key={idx} className="group relative bg-white rounded-2xl overflow-hidden shadow-card hover:shadow-xl transition-all duration-300 border border-slate-100 flex flex-col h-full">
+                <div className="relative h-80 overflow-hidden bg-slate-100">
+                  <img src={doc.img} alt={doc.name} className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105" />
+                  
+                  {/* Slide-up Overlay */}
+                  <div className="absolute inset-0 bg-slate-900/90 backdrop-blur-sm translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-in-out p-6 flex flex-col justify-center text-white text-center z-20">
+                    <h4 className="font-bold text-lg mb-2 text-blue-300 font-serif">Expert Care</h4>
+                    <p className="text-sm text-slate-300 mb-6 leading-relaxed">
+                      Committed to providing the highest standard of medical excellence and compassionate patient care.
+                    </p>
+                    <div className="pt-2 border-t border-slate-700 flex gap-4 justify-center">
+                      <button onClick={() => openAppointment({ doctorName: doc.name })} className="px-4 py-2 bg-primary rounded-full text-sm font-bold hover:bg-primary-dark transition-colors">
+                        Book Now
+                      </button>
+                    </div>
+                  </div>
                 </div>
-              </div>
-              <div className="p-6 text-center">
-                <h3 className="text-xl font-bold text-slate-900 font-serif">Dr. Sarah Johnson</h3>
-                <p className="text-primary font-medium text-sm mb-4">Neurologist</p>
-                <div className="flex items-center justify-center gap-4 text-sm text-slate-500 border-t border-slate-200 pt-4">
-                  <span>15 Years Exp.</span>
-                  <span className="w-1 h-1 rounded-full bg-slate-300"></span>
-                  <span>MBBS, MD</span>
-                </div>
-              </div>
-            </div>
 
-            <div className="group relative overflow-hidden rounded-2xl bg-slate-50 border border-slate-100 hover:shadow-card transition-all duration-300">
-              <div className="relative h-80 overflow-hidden bg-slate-200">
-                <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuADGr580ge61fkfsxwBrM7N1TZyAY9Z-GTpjBUo_xK5lWfakoEU_qOziiT-so6DMVRYMjRbu0nVW-k1DcZ572-UwSxJBbHFxL921KxZ6v5xbrKCJfSDGPfGIKJ2lnbzJo8rsumPzZ1VnlvNztje35dbZ8OjoskrJoJWMwL2xyEuWVfFxTxZWLkj3322_nwECoDQOhnBsfJT-uJdBuBYvHW7tZFnkW3TihhkEKyTi4ionW16tPVhP7_Msgmo2tYXI-H3mW5DhYbZYTk" alt="Dr. Mark Williams" className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105" />
-                <div className="absolute inset-0 bg-primary/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-4">
-                  <a href="#" className="w-10 h-10 bg-white rounded-full flex items-center justify-center text-primary hover:bg-slate-100 transition-colors"><span className="material-icons text-sm">share</span></a>
-                  <a href="#" className="w-10 h-10 bg-white rounded-full flex items-center justify-center text-primary hover:bg-slate-100 transition-colors"><span className="material-icons text-sm">email</span></a>
+                <div className="p-6 text-center">
+                  <h3 className="text-xl font-bold text-slate-900 font-serif">{doc.name}</h3>
+                  <p className="text-primary font-medium text-sm mb-4">{doc.role}</p>
+                  <div className="flex items-center justify-center gap-4 text-sm text-slate-500 border-t border-slate-200 pt-4">
+                    <span>{doc.exp} Exp.</span>
+                    <span className="w-1 h-1 rounded-full bg-slate-300"></span>
+                    <span>{doc.deg}</span>
+                  </div>
                 </div>
               </div>
-              <div className="p-6 text-center">
-                <h3 className="text-xl font-bold text-slate-900 font-serif">Dr. Mark Williams</h3>
-                <p className="text-primary font-medium text-sm mb-4">Cardiologist</p>
-                <div className="flex items-center justify-center gap-4 text-sm text-slate-500 border-t border-slate-200 pt-4">
-                  <span>12 Years Exp.</span>
-                  <span className="w-1 h-1 rounded-full bg-slate-300"></span>
-                  <span>MBBS, MD</span>
-                </div>
-              </div>
-            </div>
-
-            <div className="group relative overflow-hidden rounded-2xl bg-slate-50 border border-slate-100 hover:shadow-card transition-all duration-300">
-              <div className="relative h-80 overflow-hidden bg-slate-200">
-                <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAY7zDqNO2hoPrxpDGZpE92fSZkSGJgJi7hfuXKUusm09nz1u9rNHNBxuJ0N_t6HSXFbSkNan8ZuDt8AkK0PHqzsi4I6ipPzk2q3ALgTZVcC1uboMYQ6dZnjiBkO036p5ErpaA0vAjn6D8TivJDicjayQgEkLrG4PsZURfL7C-lOADFWh45AKVB0WfWyqvzWL5JcVEwzhhuOWO87RBPu2zcdEOcZJloL6qr9YD-oKjiSjrlq9KMwrQ9LL25SFVQnG3ZphZNrYFaNIs" alt="Dr. Emily Chen" className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105" />
-                <div className="absolute inset-0 bg-primary/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-4">
-                  <a href="#" className="w-10 h-10 bg-white rounded-full flex items-center justify-center text-primary hover:bg-slate-100 transition-colors"><span className="material-icons text-sm">share</span></a>
-                  <a href="#" className="w-10 h-10 bg-white rounded-full flex items-center justify-center text-primary hover:bg-slate-100 transition-colors"><span className="material-icons text-sm">email</span></a>
-                </div>
-              </div>
-              <div className="p-6 text-center">
-                <h3 className="text-xl font-bold text-slate-900 font-serif">Dr. Emily Chen</h3>
-                <p className="text-primary font-medium text-sm mb-4">Pediatrician</p>
-                <div className="flex items-center justify-center gap-4 text-sm text-slate-500 border-t border-slate-200 pt-4">
-                  <span>18 Years Exp.</span>
-                  <span className="w-1 h-1 rounded-full bg-slate-300"></span>
-                  <span>MBBS, PhD</span>
-                </div>
-              </div>
-            </div>
+            ))}
           </div>
           <div className="mt-8 md:hidden text-center">
             <Link to="/doctors" className="inline-flex items-center justify-center px-6 py-2.5 text-sm font-semibold text-primary bg-blue-50 border border-blue-100 rounded-lg hover:bg-blue-100 transition-all">
@@ -246,20 +251,40 @@ const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-20 bg-primary relative overflow-hidden">
-        <div className="absolute inset-0 opacity-10" style={{ backgroundImage: "url('https://lh3.googleusercontent.com/aida-public/AB6AXuAHt914qOU_iGyrkWF1DR1L_RCU6_CHbMNc5iiIVZzScOsU4h2i902S5H4r-4jdkrJXh_6AbGABEOVo93dvN66qGX0QMIQD5Stax-w6Ep6h_SQBpxLkjnF2BdPLxQEtQksxScRnzSYCj78ESAE4nAjzJbAEdCYUDGHS_EYJU4YQODmsuZG6oRhzC9TiexI31nCFq_GQhl_qKXL3uZtqbl7jfx2BX5FC0Lw5g7IohcKCawi0YiH14WDD2Zciz5HDaGLk7nVeqBsaZCI')" }}></div>
+      {/* Revamped CTA Section */}
+      <section className="py-24 relative overflow-hidden" id="newsletter">
+        <div className="absolute inset-0 bg-gradient-to-br from-slate-900 to-blue-900"></div>
+        <div className="absolute inset-0 opacity-10" style={{backgroundImage: "url('https://www.transparenttextures.com/patterns/cubes.png')"}}></div>
+        
+        {/* Decorative Elements */}
+        <div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/3 w-96 h-96 bg-white/10 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-0 left-0 translate-y-1/2 -translate-x-1/3 w-96 h-96 bg-blue-500/20 rounded-full blur-3xl"></div>
+        
         <div className="container mx-auto px-6 relative z-10 text-center">
-          <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 font-serif">Ready to Prioritize Your Health?</h2>
-          <p className="text-blue-100 text-lg md:text-xl max-w-2xl mx-auto mb-10">Schedule an appointment today to consult with our experts. We are committed to helping you lead a healthier life.</p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <button onClick={() => openAppointment()} className="inline-flex items-center justify-center px-8 py-4 text-base font-bold text-primary bg-white rounded-lg hover:bg-blue-50 shadow-lg transition-all duration-300 transform hover:-translate-y-1">
-              Book Appointment Now
-              <span className="material-icons ml-2">calendar_today</span>
-            </button>
-            <Link to="/contact" className="inline-flex items-center justify-center px-8 py-4 text-base font-bold text-white border-2 border-white/30 rounded-lg hover:bg-white/10 transition-all duration-300">
-              Contact Us
-            </Link>
+          <div className="max-w-4xl mx-auto">
+            <span className="inline-block py-1 px-3 rounded-full bg-white/10 border border-white/20 text-white text-xs font-bold tracking-wider uppercase mb-6 backdrop-blur-md">
+              Start Your Journey
+            </span>
+            <h2 className="text-3xl md:text-5xl lg:text-6xl font-serif font-bold text-white mb-6 leading-tight">
+              Ready to Prioritize <br/><span className="text-blue-300">Your Health?</span>
+            </h2>
+            <p className="text-blue-100 text-lg md:text-xl mb-10 leading-relaxed max-w-2xl mx-auto">
+              Schedule an appointment today to consult with our experts. We are committed to helping you lead a healthier, happier life.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+              <button 
+                onClick={() => openAppointment()}
+                className="px-8 py-4 bg-white text-primary font-bold rounded-full hover:bg-blue-50 transition-all shadow-xl shadow-blue-900/30 hover:scale-105 flex items-center gap-2"
+              >
+                Book Appointment Now <span className="material-icons">calendar_today</span>
+              </button>
+              <Link 
+                to="/contact" 
+                className="px-8 py-4 bg-transparent border-2 border-white/30 text-white font-bold rounded-full hover:bg-white/10 transition-all backdrop-blur-sm"
+              >
+                Contact Us
+              </Link>
+            </div>
           </div>
         </div>
       </section>
@@ -295,7 +320,9 @@ const Home: React.FC = () => {
             {testimonials.map((testimonial, i) => (
               <div key={i} className="min-w-[100%] md:min-w-[50%] lg:min-w-[33.33%] snap-center">
                 <div className="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 h-full relative flex flex-col hover:shadow-md transition-all duration-300">
-                  <span className="material-icons absolute top-8 right-8 text-slate-200 text-6xl select-none">format_quote</span>
+                  <a href="#" className="absolute top-6 right-6 text-slate-300 hover:text-primary transition-colors" title="Read on Google">
+                    <span className="material-icons text-2xl">open_in_new</span>
+                  </a>
                   <div className="flex items-center gap-1 text-yellow-400 mb-6">
                     <span className="material-icons">star</span><span className="material-icons">star</span><span className="material-icons">star</span><span className="material-icons">star</span><span className="material-icons">star</span>
                   </div>
@@ -322,22 +349,18 @@ const Home: React.FC = () => {
           </p>
 
           <div className="overflow-x-auto scrollbar-hide">
-            <div className="flex w-max items-center gap-12 opacity-50 grayscale hover:grayscale-0 transition-all duration-500 mx-auto">
-              <div className="flex-shrink-0 flex items-center gap-2 text-2xl font-bold text-slate-600">
-                <span className="material-icons text-3xl">health_and_safety</span> MediGuard
-              </div>
-              <div className="flex-shrink-0 flex items-center gap-2 text-2xl font-bold text-slate-600">
-                <span className="material-icons text-3xl">shield</span> LifeCare
-              </div>
-              <div className="flex-shrink-0 flex items-center gap-2 text-2xl font-bold text-slate-600">
-                <span className="material-icons text-3xl">add_moderator</span> HealthPlus
-              </div>
-              <div className="flex-shrink-0 flex items-center gap-2 text-2xl font-bold text-slate-600">
-                <span className="material-icons text-3xl">verified</span> GlobalAssure
-              </div>
-              <div className="flex-shrink-0 flex items-center gap-2 text-2xl font-bold text-slate-600">
-                <span className="material-icons text-3xl">favorite</span> CareFirst
-              </div>
+            <div className="flex w-max items-center gap-12 mx-auto">
+              {[
+                { name: 'MediGuard', icon: 'health_and_safety' },
+                { name: 'LifeCare', icon: 'shield' },
+                { name: 'HealthPlus', icon: 'add_moderator' },
+                { name: 'GlobalAssure', icon: 'verified' },
+                { name: 'CareFirst', icon: 'favorite' }
+              ].map((partner, idx) => (
+                <div key={idx} className="flex-shrink-0 flex items-center gap-2 text-2xl font-bold text-slate-600 opacity-60 grayscale hover:grayscale-0 hover:opacity-100 hover:text-primary transition-all duration-300 cursor-pointer hover:scale-105">
+                  <span className="material-icons text-3xl">{partner.icon}</span> {partner.name}
+                </div>
+              ))}
             </div>
           </div>
         </div>

@@ -1,6 +1,7 @@
 
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { submitForm } from '../utils/formService';
 
 interface AppointmentModalProps {
   isOpen: boolean;
@@ -17,21 +18,35 @@ const AppointmentModal: React.FC<AppointmentModalProps> = ({ isOpen, onClose, in
     department: '',
     message: ''
   });
+  
+  const [status, setStatus] = useState<'idle' | 'submitting' | 'error'>('idle');
+  const [errorMessage, setErrorMessage] = useState('');
 
   // Reset or pre-fill form when modal opens with data
   useEffect(() => {
-    if (isOpen && initialData) {
+    if (isOpen) {
+      // Reset state on open
+      setStatus('idle');
+      setErrorMessage('');
+      
       let defaultMessage = '';
-      if (initialData.serviceName) {
-        defaultMessage = `I am interested in booking the ${initialData.serviceName}.`;
-      } else if (initialData.doctorName) {
-        defaultMessage = `I would like to book an appointment with ${initialData.doctorName}.`;
+      let defaultDept = '';
+
+      if (initialData) {
+        if (initialData.serviceName) {
+          defaultMessage = `I am interested in booking the ${initialData.serviceName}.`;
+        } else if (initialData.doctorName) {
+          defaultMessage = `I would like to book an appointment with ${initialData.doctorName}.`;
+        }
+        if (initialData.department) {
+          defaultDept = initialData.department;
+        }
       }
 
       setFormData(prev => ({
         ...prev,
-        message: defaultMessage,
-        department: initialData.department || ''
+        message: defaultMessage || prev.message,
+        department: defaultDept || prev.department
       }));
     }
   }, [isOpen, initialData]);
@@ -43,26 +58,42 @@ const AppointmentModal: React.FC<AppointmentModalProps> = ({ isOpen, onClose, in
     setFormData(prev => ({ ...prev, [id]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    onClose();
-    // Reset form for next time
-    setFormData({ fullName: '', email: '', phone: '', department: '', message: '' });
-    navigate('/appointment-confirmation');
+    setStatus('submitting');
+    setErrorMessage('');
+
+    try {
+      // Best Practice: Simulate API call here
+      await submitForm(formData, 'appointment');
+      
+      // Success Handling
+      onClose();
+      setFormData({ fullName: '', email: '', phone: '', department: '', message: '' });
+      navigate('/appointment-confirmation');
+    } catch (error) {
+      setStatus('error');
+      setErrorMessage('Failed to submit appointment request. Please try again.');
+    } finally {
+      if (status !== 'error') {
+        setStatus('idle');
+      }
+    }
   };
 
   return (
     <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6" role="dialog" aria-modal="true">
       <div className="fixed inset-0 bg-slate-900/60 backdrop-blur-sm transition-opacity" onClick={onClose}></div>
-      <div className="relative w-full max-w-lg transform overflow-hidden rounded-2xl bg-white p-8 shadow-2xl transition-all animate-fade-in">
+      {/* Added max-h and overflow-y-auto for better scroll handling on small screens */}
+      <div className="relative w-full max-w-lg max-h-[90vh] overflow-y-auto transform rounded-2xl bg-white p-8 shadow-2xl transition-all animate-fade-in flex flex-col">
         <button 
           onClick={onClose}
-          className="absolute top-5 right-5 text-slate-400 hover:text-slate-600 transition-colors focus:outline-none"
+          className="absolute top-5 right-5 text-slate-400 hover:text-slate-600 transition-colors focus:outline-none z-10"
         >
           <span className="material-icons text-2xl">close</span>
         </button>
         
-        <div className="mb-8 text-center sm:text-left">
+        <div className="mb-8 text-center sm:text-left flex-shrink-0">
           <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-blue-50 text-primary mb-4">
             <span className="material-icons text-2xl">calendar_today</span>
           </div>
@@ -70,7 +101,14 @@ const AppointmentModal: React.FC<AppointmentModalProps> = ({ isOpen, onClose, in
           <p className="mt-2 text-sm text-slate-500">Fill out the form below and our team will contact you to confirm your slot.</p>
         </div>
 
-        <form onSubmit={handleSubmit} className="space-y-5">
+        {status === 'error' && (
+          <div className="mb-6 bg-red-50 border border-red-200 text-red-600 px-4 py-3 rounded-lg text-sm flex items-start gap-2">
+            <span className="material-icons text-lg mt-0.5">error_outline</span>
+            <span>{errorMessage}</span>
+          </div>
+        )}
+
+        <form onSubmit={handleSubmit} className="space-y-5 flex-grow">
           <div>
             <label htmlFor="fullName" className="block text-sm font-medium text-slate-700 mb-1">Full Name</label>
             <div className="relative">
@@ -83,7 +121,8 @@ const AppointmentModal: React.FC<AppointmentModalProps> = ({ isOpen, onClose, in
                 value={formData.fullName}
                 onChange={handleChange}
                 required 
-                className="block w-full pl-10 rounded-lg border-slate-200 bg-slate-50 focus:border-primary focus:ring-primary sm:text-sm py-2.5 placeholder-slate-400 text-slate-900" 
+                disabled={status === 'submitting'}
+                className="block w-full pl-10 rounded-lg border-slate-200 bg-slate-50 focus:border-primary focus:ring-primary sm:text-sm py-2.5 placeholder-slate-400 text-slate-900 disabled:opacity-70 disabled:cursor-not-allowed" 
                 placeholder="John Doe" 
               />
             </div>
@@ -102,7 +141,8 @@ const AppointmentModal: React.FC<AppointmentModalProps> = ({ isOpen, onClose, in
                   value={formData.email}
                   onChange={handleChange}
                   required 
-                  className="block w-full pl-10 rounded-lg border-slate-200 bg-slate-50 focus:border-primary focus:ring-primary sm:text-sm py-2.5 placeholder-slate-400 text-slate-900" 
+                  disabled={status === 'submitting'}
+                  className="block w-full pl-10 rounded-lg border-slate-200 bg-slate-50 focus:border-primary focus:ring-primary sm:text-sm py-2.5 placeholder-slate-400 text-slate-900 disabled:opacity-70 disabled:cursor-not-allowed" 
                   placeholder="you@example.com" 
                 />
               </div>
@@ -119,7 +159,8 @@ const AppointmentModal: React.FC<AppointmentModalProps> = ({ isOpen, onClose, in
                   value={formData.phone}
                   onChange={handleChange}
                   required 
-                  className="block w-full pl-10 rounded-lg border-slate-200 bg-slate-50 focus:border-primary focus:ring-primary sm:text-sm py-2.5 placeholder-slate-400 text-slate-900" 
+                  disabled={status === 'submitting'}
+                  className="block w-full pl-10 rounded-lg border-slate-200 bg-slate-50 focus:border-primary focus:ring-primary sm:text-sm py-2.5 placeholder-slate-400 text-slate-900 disabled:opacity-70 disabled:cursor-not-allowed" 
                   placeholder="(555) 000-0000" 
                 />
               </div>
@@ -136,7 +177,8 @@ const AppointmentModal: React.FC<AppointmentModalProps> = ({ isOpen, onClose, in
                 id="department" 
                 value={formData.department}
                 onChange={handleChange}
-                className="block w-full pl-10 rounded-lg border-slate-200 bg-slate-50 focus:border-primary focus:ring-primary sm:text-sm py-2.5 text-slate-700"
+                disabled={status === 'submitting'}
+                className="block w-full pl-10 rounded-lg border-slate-200 bg-slate-50 focus:border-primary focus:ring-primary sm:text-sm py-2.5 text-slate-700 disabled:opacity-70 disabled:cursor-not-allowed"
               >
                 <option value="">Choose a department...</option>
                 <option value="Cardiology">Cardiology</option>
@@ -162,14 +204,26 @@ const AppointmentModal: React.FC<AppointmentModalProps> = ({ isOpen, onClose, in
               rows={3} 
               value={formData.message}
               onChange={handleChange}
-              className="block w-full rounded-lg border-slate-200 bg-slate-50 focus:border-primary focus:ring-primary sm:text-sm p-3 placeholder-slate-400 text-slate-900" 
+              disabled={status === 'submitting'}
+              className="block w-full max-h-[170px] rounded-lg border-slate-200 bg-slate-50 focus:border-primary focus:ring-primary sm:text-sm p-3 placeholder-slate-400 text-slate-900 disabled:opacity-70 disabled:cursor-not-allowed" 
               placeholder="Briefly describe your symptoms or reason for visit..."
             ></textarea>
           </div>
 
           <div className="pt-2">
-            <button type="submit" className="w-full flex justify-center py-3 px-4 border border-transparent rounded-lg shadow-sm text-sm font-bold text-white bg-primary hover:bg-primary-dark focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary transition-colors">
-              Submit Request
+            <button 
+              type="submit" 
+              disabled={status === 'submitting'}
+              className="w-full flex justify-center items-center py-3 px-4 border border-transparent rounded-lg shadow-sm text-sm font-bold text-white bg-primary hover:bg-primary-dark focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary transition-all disabled:opacity-80 disabled:cursor-wait"
+            >
+              {status === 'submitting' ? (
+                <>
+                  <span className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin mr-2"></span>
+                  Processing...
+                </>
+              ) : (
+                'Submit Request'
+              )}
             </button>
             <p className="mt-3 text-center text-xs text-slate-400">
               By submitting, you agree to our Terms and Privacy Policy.

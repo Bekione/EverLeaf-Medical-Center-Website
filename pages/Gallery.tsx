@@ -1,6 +1,7 @@
 
 import React, { useState, useEffect } from 'react';
 import GalleryModal from '../components/GalleryModal';
+import ImageSkeleton from '../components/ImageSkeleton';
 
 // Enhanced image list with reliable high-quality URLs
 const allImages = [
@@ -86,7 +87,12 @@ const Gallery: React.FC = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {visibleImages.map((img, idx) => (
             <div key={idx} className="group relative overflow-hidden rounded-2xl shadow-card bg-white border border-slate-100 cursor-pointer h-72 animate-fade-in" onClick={() => openModal(idx)}>
-              <img src={img.src} alt={img.title} className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700 ease-out" />
+              <ImageSkeleton 
+                src={img.src} 
+                alt={img.title} 
+                className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700 ease-out" 
+                containerClassName="w-full h-full"
+              />
               
               {/* Slide-up Overlay with fixed Gradient */}
               <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-primary/80 to-transparent backdrop-blur-[2px] translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-in-out p-6 flex flex-col justify-end text-white text-left">

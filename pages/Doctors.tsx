@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { useOutletContext } from 'react-router-dom';
 import { OpenAppointmentFunc } from '../Layout';
+import ImageSkeleton from '../components/ImageSkeleton';
 
 interface Doctor {
   id: number;
@@ -301,7 +302,12 @@ const Doctors: React.FC = () => {
           {paginatedDoctors.map((doc) => (
             <div key={doc.id} className="group relative bg-white rounded-2xl overflow-hidden shadow-card hover:shadow-xl transition-all duration-300 border border-slate-100 flex flex-col h-full animate-fade-in">
               <div className="relative h-80 overflow-hidden bg-slate-100">
-                <img src={doc.img} alt={doc.name} className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105" />
+                <ImageSkeleton 
+                  src={doc.img} 
+                  alt={doc.name} 
+                  className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105" 
+                  containerClassName="w-full h-full"
+                />
                 
                 {/* Slide-up Overlay */}
                 <div className="absolute inset-0 bg-slate-900/90 backdrop-blur-sm translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-in-out p-6 flex flex-col justify-center text-white text-center z-20">
