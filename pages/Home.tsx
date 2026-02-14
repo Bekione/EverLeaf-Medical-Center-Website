@@ -2,6 +2,7 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { Link, useOutletContext } from 'react-router-dom';
 import { OpenAppointmentFunc } from '../Layout';
+import SEO from '../components/SEO';
 
 const Home: React.FC = () => {
   const { openAppointment } = useOutletContext<{ openAppointment: OpenAppointmentFunc }>();
@@ -9,10 +10,10 @@ const Home: React.FC = () => {
   
   // Hero Image Carousel Logic
   const heroImages = [
-    "https://lh3.googleusercontent.com/aida-public/AB6AXuDHdy-TQkrlWxbjfSK2Oiy0_ZEMVW-pJE0f4gboXr4qSy9BOeIWU0215DPTHix5i2VvnodWBnr3qfyNDrRh-kANv576LGzxpYn6JUdqnp1WkDfCvZNtBM891q3m-AKBFVwB7X8sSMvXnjTLfr9fJ6mD6ArEvY-2FZpxSXe58A-EhF9nFyof_0B4wn0eefDo0rtXdhtTB94_3VnPzoZVUr3OkpJI74Z33vo5UV_mV1ud16km-3V86j_KQsMw2N2WSorHb1sQ1GgQmVc", // Building
-    "https://lh3.googleusercontent.com/aida-public/AB6AXuBAZ72MvKfsAV5eXP0UflP2GrTVhI8MHJWW3Nq1zzKA5556zQOOjLXYQJ-gq0yFKxbDmNV0HhuyBNxpiMBdUiJzr_DTdS6GQPCfAK29_IDLWZUjz3_XAOkeFZDCY4WILVjYqBa4EqekhXnmMw6Rgg_PHaFS6uVdyLRDfFQIFJunA2vLPn4mdo9r6CJYuY8DvTkeKA_93bc76_XBcKU6xBATaw_outxCae_ArnfZNIcHBtr5RF5o6uYwaGVs1cBaBlkrEGnINqSI-Ic", // Eye Exam
-    "https://lh3.googleusercontent.com/aida-public/AB6AXuASpB4zEhU2d312bE6DML0nD_09L6xUkwbVl-4SSiHECRYzO9M687bP9Y0-aeNxD3KFcW5iw5pw3_r1_WM1FYmEr2VkBxf1BNrUXJirb-BDiuU2Z1p8OGO13dWa1TKogXhVnX3PdIrcL7W3mQE7Vu1Lh2Qp_85Ks3cEJ4e0FtiH4Oc3Mm6MJ_-mXEt-i7MLgdkI0MTch5GRoxToq4J9yXSWxCIVCDbd-5UM0Ey-lnxb2fYExx4AS5wtWdA4KBjKhAE1czMdyorFTxc", // Surgery
-    "https://lh3.googleusercontent.com/aida-public/AB6AXuBcjQvLZLM7D8XM6G-ltI3zOfMe_16SIFhpMOp1bLHVdEjtdYZjpUsBAzQs44cnm4kfRY_CVK8NbXWUDDa4412BSTYonv0G_5AGW8FG8LGQ5z9Q8iNNj1bYp3qx0LnzidCBJ75-kWs_GKuSRxWn3GwuufvYRrgSZsucRIjRvWRRp9uFGGhtcPw20Co03HEIOSv7OnPKZtgv_JaExWODULC0-Zb9HFrFUwFo1v3JpiwWrOf-bEgQn2a6vB2n6-OJV-5Zpy2xjm7jgRo"  // Pediatrics
+    "https://lh3.googleusercontent.com/aida-public/AB6AXuDHdy-TQkrlWxbjfSK2Oiy0_ZEMVW-pJE0f4gboXr4qSy9BOeIWU0215DPTHix5i2VvnodWBnr3qfyNDrRh-kANv576LGzxpYn6JUdqnp1WkDfCvZNtBM891q3m-AKBFVwB7X8sSMvXnjTLfr9fJ6mD6ArEvY-2FZpxSXe58A-EhF9nFyof_0B4wn0eefDo0rtXdhtTB94_3VnPzoZVUr3OkpJI74Z33vo5UV_mV1ud16km-3V86j_KQsMw2N2WSorHb1sQ1GgQmVc", 
+    "https://lh3.googleusercontent.com/aida-public/AB6AXuBAZ72MvKfsAV5eXP0UflP2GrTVhI8MHJWW3Nq1zzKA5556zQOOjLXYQJ-gq0yFKxbDmNV0HhuyBNxpiMBdUiJzr_DTdS6GQPCfAK29_IDLWZUjz3_XAOkeFZDCY4WILVjYqBa4EqekhXnmMw6Rgg_PHaFS6uVdyLRDfFQIFJunA2vLPn4mdo9r6CJYuY8DvTkeKA_93bc76_XBcKU6xBATaw_outxCae_ArnfZNIcHBtr5RF5o6uYwaGVs1cBaBlkrEGnINqSI-Ic",
+    "https://lh3.googleusercontent.com/aida-public/AB6AXuASpB4zEhU2d312bE6DML0nD_09L6xUkwbVl-4SSiHECRYzO9M687bP9Y0-aeNxD3KFcW5iw5pw3_r1_WM1FYmEr2VkBxf1BNrUXJirb-BDiuU2Z1p8OGO13dWa1TKogXhVnX3PdIrcL7W3mQE7Vu1Lh2Qp_85Ks3cEJ4e0FtiH4Oc3Mm6MJ_-mXEt-i7MLgdkI0MTch5GRoxToq4J9yXSWxCIVCDbd-5UM0Ey-lnxb2fYExx4AS5wtWdA4KBjKhAE1czMdyorFTxc",
+    "https://lh3.googleusercontent.com/aida-public/AB6AXuBcjQvLZLM7D8XM6G-ltI3zOfMe_16SIFhpMOp1bLHVdEjtdYZjpUsBAzQs44cnm4kfRY_CVK8NbXWUDDa4412BSTYonv0G_5AGW8FG8LGQ5z9Q8iNNj1bYp3qx0LnzidCBJ75-kWs_GKuSRxWn3GwuufvYRrgSZsucRIjRvWRRp9uFGGhtcPw20Co03HEIOSv7OnPKZtgv_JaExWODULC0-Zb9HFrFUwFo1v3JpiwWrOf-bEgQn2a6vB2n6-OJV-5Zpy2xjm7jgRo" 
   ];
   const [currentHeroImage, setCurrentHeroImage] = useState(0);
 
@@ -49,6 +50,42 @@ const Home: React.FC = () => {
 
   return (
     <div className="animate-fade-in">
+      <SEO 
+        title="Home"
+        description="Care That Grows With You. Everleaf Medical Center offers world-class healthcare, specialized departments, and expert doctors in Addis Abeba."
+        structuredData={{
+          "@context": "https://schema.org",
+          "@type": "Hospital",
+          "name": "Everleaf Medical Center",
+          "image": heroImages,
+          "telephone": "+251 954 123-456",
+          "email": "info@everleaf.com",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "123 Health Avenue",
+            "addressLocality": "Addis Abeba",
+            "addressRegion": "AA",
+            "postalCode": "10012",
+            "addressCountry": "ET"
+          },
+          "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": 40.713129,
+            "longitude": -74.003693
+          },
+          "openingHoursSpecification": {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+            "opens": "00:00",
+            "closes": "23:59"
+          },
+          "department": [
+            { "@type": "MedicalSpecialty", "name": "Cardiology" },
+            { "@type": "MedicalSpecialty", "name": "Pediatrics" },
+            { "@type": "EmergencyService", "name": "Emergency Department" }
+          ]
+        }}
+      />
       {/* Hero Section */}
       <header className="relative overflow-hidden bg-slate-50 pt-12 pb-32 lg:pt-16 lg:pb-48">
         <div className="absolute inset-0 pointer-events-none opacity-50" style={{ backgroundImage: "radial-gradient(#136dec 0.5px, transparent 0.5px), radial-gradient(#136dec 0.5px, #f8fafc 0.5px)", backgroundSize: "20px 20px", backgroundPosition: "0 0, 10px 10px" }}></div>

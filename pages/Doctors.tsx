@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { useOutletContext } from 'react-router-dom';
 import { OpenAppointmentFunc } from '../Layout';
 import ImageSkeleton from '../components/ImageSkeleton';
+import SEO from '../components/SEO';
 
 interface Doctor {
   id: number;
@@ -219,6 +220,24 @@ const Doctors: React.FC = () => {
 
   return (
     <div className="animate-fade-in bg-slate-50 min-h-screen">
+      <SEO 
+        title="Find a Doctor" 
+        description="Search our directory of distinguished medical professionals and specialists at Everleaf Medical Center."
+        structuredData={{
+          "@context": "https://schema.org",
+          "@type": "MedicalOrganization",
+          "name": "Everleaf Medical Center",
+          "department": filteredDoctors.map(doc => ({
+            "@type": "Physician",
+            "name": doc.name,
+            "medicalSpecialty": doc.specialty,
+            "employee": {
+              "@type": "Person",
+              "name": doc.name
+            }
+          }))
+        }}
+      />
       {/* Page Header */}
       <div className="bg-white border-b border-slate-200 py-12 md:py-16">
         <div className="container mx-auto px-6">

@@ -1,0 +1,7 @@
+
+User-agent: *
+Allow: /
+Disallow: /appointment-confirmation
+Disallow: /admin
+
+Sitemap: https://everleaf-medical.com/sitemap.xml
