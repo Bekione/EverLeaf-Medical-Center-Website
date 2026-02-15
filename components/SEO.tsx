@@ -1,6 +1,5 @@
-
-import React from 'react';
-import { Helmet } from 'react-helmet-async';
+import React from "react";
+import { Helmet } from "react-helmet-async";
 
 interface SEOProps {
   title: string;
@@ -11,14 +10,28 @@ interface SEOProps {
   structuredData?: object;
 }
 
-const SEO: React.FC<SEOProps> = ({ title, description, canonical, type = 'website', image, structuredData }) => {
-  // In production will change this to actual domain
-  const siteUrl = 'https://everleaf-medical.com'; 
-  const currentPath = window.location.hash ? window.location.hash.replace('#', '') : window.location.pathname;
-  const fullUrl = canonical ? canonical : `${siteUrl}${currentPath}`;
-  const metaImage = image 
-    ? (image.startsWith('http') ? image : `${siteUrl}${image}`) 
-    : 'https://lh3.googleusercontent.com/aida-public/AB6AXuDHdy-TQkrlWxbjfSK2Oiy0_ZEMVW-pJE0f4gboXr4qSy9BOeIWU0215DPTHix5i2VvnodWBnr3qfyNDrRh-kANv576LGzxpYn6JUdqnp1WkDfCvZNtBM891q3m-AKBFVwB7X8sSMvXnjTLfr9fJ6mD6ArEvY-2FZpxSXe58A-EhF9nFyof_0B4wn0eefDo0rtXdhtTB94_3VnPzoZVUr3OkpJI74Z33vo5UV_mV1ud16km-3V86j_KQsMw2N2WSorHb1sQ1GgQmVc';
+const SEO: React.FC<SEOProps> = ({
+  title,
+  description,
+  canonical,
+  type = "website",
+  image,
+  structuredData,
+}) => {
+  // Use environment variable for production domain, fallback to everleaf-medical.com
+  const siteUrl =
+    import.meta.env.VITE_SITE_URL || "https://everleaf-medical.com";
+  const currentPath = window.location.hash
+    ? window.location.hash.replace("#", "")
+    : window.location.pathname;
+  const fullUrl = canonical || `${siteUrl}${currentPath}`;
+
+  // Use new OG image placeholder, or external image if provided
+  const metaImage = image
+    ? image.startsWith("http")
+      ? image
+      : `${siteUrl}${image}`
+    : `${siteUrl}/og-image.jpg`;
 
   return (
     <Helmet>
