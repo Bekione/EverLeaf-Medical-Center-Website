@@ -104,7 +104,108 @@ Run the development server:
 npm run dev
 ```
 
-The site will be available at `http://localhost:5173` (or another port if 5173 is busy).
+The site will be available at `http://localhost:3000`.
+
+## 📧 Form Integration
+
+The website includes three types of forms that need email service configuration:
+
+- **Contact Form** - General inquiries
+- **Appointment Booking** - Patient appointment requests
+- **Newsletter Subscription** - Email list signup
+
+### Service Comparison
+
+| Service        | Type             | Free Tier             | Setup Difficulty | Best For                     |
+| -------------- | ---------------- | --------------------- | ---------------- | ---------------------------- |
+| **EmailJS**    | Client-side      | 200 emails/month      | Easy             | Quick setup, no backend      |
+| **Formspree**  | Client-side      | 50 submissions/month  | Easy             | Simple forms, no backend     |
+| **Resend**     | Backend required | 100 emails/day        | Medium           | Production apps with backend |
+| **Custom API** | Backend required | Depends on your setup | Advanced         | Full control                 |
+
+### Quick Setup (EmailJS - Recommended)
+
+1. **Create EmailJS Account**
+   - Sign up at [https://www.emailjs.com/](https://www.emailjs.com/)
+   - Create a new email service (Gmail, Outlook, etc.)
+   - Create an email template
+
+2. **Install EmailJS Package**
+
+   ```bash
+   npm install @emailjs/browser
+   ```
+
+3. **Configure Environment Variables**
+
+   ```bash
+   cp .env.example .env
+   ```
+
+   Edit `.env` and set:
+
+   ```env
+   VITE_FORM_SERVICE=emailjs
+   VITE_EMAILJS_SERVICE_ID=your_service_id
+   VITE_EMAILJS_TEMPLATE_ID=your_template_id
+   VITE_EMAILJS_PUBLIC_KEY=your_public_key
+   ```
+
+4. **Restart Development Server**
+   ```bash
+   npm run dev
+   ```
+
+### Alternative: Formspree
+
+1. Sign up at [https://formspree.io/](https://formspree.io/)
+2. Create a new form and get your Form ID
+3. Update `.env`:
+   ```env
+   VITE_FORM_SERVICE=formspree
+   VITE_FORMSPREE_FORM_ID=your_form_id
+   ```
+
+### Production Setup: Resend (Backend Required)
+
+Resend is recommended for production with a backend. It provides better security and reliability.
+
+1. **Sign up at [https://resend.com/](https://resend.com/)**
+
+2. **Install Resend SDK**
+
+   ```bash
+   npm install resend
+   ```
+
+3. **Deploy Serverless Function**
+
+   The project includes an example serverless function at `api/send-email.ts`.
+
+   For **Vercel**:
+   - Push to GitHub and connect to Vercel
+   - Add `RESEND_API_KEY` to environment variables
+   - Function will deploy automatically
+
+   For **Netlify**:
+   - Move `api/send-email.ts` to `netlify/functions/`
+   - Add `RESEND_API_KEY` to environment variables
+
+4. **Update Frontend Configuration**
+   ```env
+   VITE_FORM_SERVICE=resend
+   VITE_RESEND_ENDPOINT=https://your-app.vercel.app/api/send-email
+   ```
+
+### Development Mode (Simulation)
+
+By default, forms use simulation mode for development:
+
+```env
+VITE_FORM_SERVICE=simulation
+```
+
+This logs form data to the console without sending real emails. Perfect for testing!
 
 ### Build for Production
 
