@@ -1,36 +1,43 @@
-
-import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { submitForm } from '../utils/formService';
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { submitForm } from "../utils/formService";
 
 interface AppointmentModalProps {
   isOpen: boolean;
   onClose: () => void;
-  initialData?: { doctorName?: string; department?: string; serviceName?: string } | null;
+  initialData?: {
+    doctorName?: string;
+    department?: string;
+    serviceName?: string;
+  } | null;
 }
 
-const AppointmentModal: React.FC<AppointmentModalProps> = ({ isOpen, onClose, initialData }) => {
+const AppointmentModal: React.FC<AppointmentModalProps> = ({
+  isOpen,
+  onClose,
+  initialData,
+}) => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
-    fullName: '',
-    email: '',
-    phone: '',
-    department: '',
-    message: ''
+    fullName: "",
+    email: "",
+    phone: "",
+    department: "",
+    message: "",
   });
-  
-  const [status, setStatus] = useState<'idle' | 'submitting' | 'error'>('idle');
-  const [errorMessage, setErrorMessage] = useState('');
+
+  const [status, setStatus] = useState<"idle" | "submitting" | "error">("idle");
+  const [errorMessage, setErrorMessage] = useState("");
 
   // Reset or pre-fill form when modal opens with data
   useEffect(() => {
     if (isOpen) {
       // Reset state on open
-      setStatus('idle');
-      setErrorMessage('');
-      
-      let defaultMessage = '';
-      let defaultDept = '';
+      setStatus("idle");
+      setErrorMessage("");
+
+      let defaultMessage = "";
+      let defaultDept = "";
 
       if (initialData) {
         if (initialData.serviceName) {
@@ -43,65 +50,108 @@ const AppointmentModal: React.FC<AppointmentModalProps> = ({ isOpen, onClose, in
         }
       }
 
-      setFormData(prev => ({
+      setFormData((prev) => ({
         ...prev,
         message: defaultMessage || prev.message,
-        department: defaultDept || prev.department
+        department: defaultDept || prev.department,
       }));
     }
   }, [isOpen, initialData]);
 
   if (!isOpen) return null;
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
+    >,
+  ) => {
     const { id, value } = e.target;
-    setFormData(prev => ({ ...prev, [id]: value }));
+    setFormData((prev) => ({ ...prev, [id]: value }));
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setStatus('submitting');
-    setErrorMessage('');
+    setStatus("submitting");
+    setErrorMessage("");
 
     try {
       // Best Practice: Simulate API call here
-      await submitForm(formData, 'appointment');
-      
+      await submitForm(formData, "appointment");
+
       // Success Handling
+      // Generate a reference ID
+      const referenceId = `REQ-${Date.now().toString().slice(-6)}`;
+
+      // Navigate with state data
+      navigate("/appointment-confirmation", {
+        state: {
+          appointmentData: {
+            fullName: formData.fullName,
+            email: formData.email,
+            phone: formData.phone,
+            department:
+              formData.department || initialData?.department || "General",
+            doctorName: initialData?.doctorName,
+            message: formData.message,
+            referenceId,
+            submittedAt: new Date().toISOString(),
+          },
+        },
+      });
+
       onClose();
-      setFormData({ fullName: '', email: '', phone: '', department: '', message: '' });
-      navigate('/appointment-confirmation');
+      setFormData({
+        fullName: "",
+        email: "",
+        phone: "",
+        department: "",
+        message: "",
+      });
     } catch (error) {
-      setStatus('error');
-      setErrorMessage('Failed to submit appointment request. Please try again.');
+      setStatus("error");
+      setErrorMessage(
+        "Failed to submit appointment request. Please try again.",
+      );
     } finally {
-      if (status !== 'error') {
-        setStatus('idle');
+      if (status !== "error") {
+        setStatus("idle");
       }
     }
   };
 
   return (
-    <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6" role="dialog" aria-modal="true">
-      <div className="fixed inset-0 bg-slate-900/60 backdrop-blur-sm transition-opacity" onClick={onClose}></div>
+    <div
+      className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6"
+      role="dialog"
+      aria-modal="true"
+    >
+      <div
+        className="fixed inset-0 bg-slate-900/60 backdrop-blur-sm transition-opacity"
+        onClick={onClose}
+      ></div>
       {/* Added max-h and overflow-y-auto for better scroll handling on small screens */}
       <div className="relative w-full max-w-lg max-h-[90vh] overflow-y-auto transform rounded-2xl bg-white p-8 shadow-2xl transition-all animate-fade-in flex flex-col">
-        <button 
+        <button
           onClick={onClose}
           className="absolute top-5 right-5 text-slate-400 hover:text-slate-600 transition-colors focus:outline-none z-10"
         >
           <span className="material-icons text-2xl">close</span>
         </button>
-        
+
         <div className="mb-8 text-center sm:text-left flex-shrink-0">
           <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-blue-50 text-primary mb-4">
             <span className="material-icons text-2xl">calendar_today</span>
           </div>
-          <h3 className="text-2xl font-bold leading-6 text-slate-900">Request an Appointment</h3>
-          <p className="mt-2 text-sm text-slate-500">Fill out the form below and our team will contact you to confirm your slot.</p>
+          <h3 className="text-2xl font-bold leading-6 text-slate-900">
+            Request an Appointment
+          </h3>
+          <p className="mt-2 text-sm text-slate-500">
+            Fill out the form below and our team will contact you to confirm
+            your slot.
+          </p>
         </div>
 
-        {status === 'error' && (
+        {status === "error" && (
           <div className="mb-6 bg-red-50 border border-red-200 text-red-600 px-4 py-3 rounded-lg text-sm flex items-start gap-2">
             <span className="material-icons text-lg mt-0.5">error_outline</span>
             <span>{errorMessage}</span>
@@ -110,74 +160,94 @@ const AppointmentModal: React.FC<AppointmentModalProps> = ({ isOpen, onClose, in
 
         <form onSubmit={handleSubmit} className="space-y-5 flex-grow">
           <div>
-            <label htmlFor="fullName" className="block text-sm font-medium text-slate-700 mb-1">Full Name</label>
+            <label
+              htmlFor="fullName"
+              className="block text-sm font-medium text-slate-700 mb-1"
+            >
+              Full Name
+            </label>
             <div className="relative">
               <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400">
                 <span className="material-icons text-lg">person</span>
               </div>
-              <input 
-                type="text" 
-                id="fullName" 
+              <input
+                type="text"
+                id="fullName"
                 value={formData.fullName}
                 onChange={handleChange}
-                required 
-                disabled={status === 'submitting'}
-                className="block w-full pl-10 rounded-lg border-slate-200 bg-slate-50 focus:border-primary focus:ring-primary sm:text-sm py-2.5 placeholder-slate-400 text-slate-900 disabled:opacity-70 disabled:cursor-not-allowed" 
-                placeholder="John Doe" 
+                required
+                disabled={status === "submitting"}
+                className="block w-full pl-10 rounded-lg border-slate-200 bg-slate-50 focus:border-primary focus:ring-primary sm:text-sm py-2.5 placeholder-slate-400 text-slate-900 disabled:opacity-70 disabled:cursor-not-allowed"
+                placeholder="John Doe"
               />
             </div>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
             <div>
-              <label htmlFor="email" className="block text-sm font-medium text-slate-700 mb-1">Email Address</label>
+              <label
+                htmlFor="email"
+                className="block text-sm font-medium text-slate-700 mb-1"
+              >
+                Email Address
+              </label>
               <div className="relative">
                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400">
                   <span className="material-icons text-lg">email</span>
                 </div>
-                <input 
-                  type="email" 
-                  id="email" 
+                <input
+                  type="email"
+                  id="email"
                   value={formData.email}
                   onChange={handleChange}
-                  required 
-                  disabled={status === 'submitting'}
-                  className="block w-full pl-10 rounded-lg border-slate-200 bg-slate-50 focus:border-primary focus:ring-primary sm:text-sm py-2.5 placeholder-slate-400 text-slate-900 disabled:opacity-70 disabled:cursor-not-allowed" 
-                  placeholder="you@example.com" 
+                  required
+                  disabled={status === "submitting"}
+                  className="block w-full pl-10 rounded-lg border-slate-200 bg-slate-50 focus:border-primary focus:ring-primary sm:text-sm py-2.5 placeholder-slate-400 text-slate-900 disabled:opacity-70 disabled:cursor-not-allowed"
+                  placeholder="you@example.com"
                 />
               </div>
             </div>
             <div>
-              <label htmlFor="phone" className="block text-sm font-medium text-slate-700 mb-1">Phone Number</label>
+              <label
+                htmlFor="phone"
+                className="block text-sm font-medium text-slate-700 mb-1"
+              >
+                Phone Number
+              </label>
               <div className="relative">
                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400">
                   <span className="material-icons text-lg">phone</span>
                 </div>
-                <input 
-                  type="tel" 
-                  id="phone" 
+                <input
+                  type="tel"
+                  id="phone"
                   value={formData.phone}
                   onChange={handleChange}
-                  required 
-                  disabled={status === 'submitting'}
-                  className="block w-full pl-10 rounded-lg border-slate-200 bg-slate-50 focus:border-primary focus:ring-primary sm:text-sm py-2.5 placeholder-slate-400 text-slate-900 disabled:opacity-70 disabled:cursor-not-allowed" 
-                  placeholder="(555) 000-0000" 
+                  required
+                  disabled={status === "submitting"}
+                  className="block w-full pl-10 rounded-lg border-slate-200 bg-slate-50 focus:border-primary focus:ring-primary sm:text-sm py-2.5 placeholder-slate-400 text-slate-900 disabled:opacity-70 disabled:cursor-not-allowed"
+                  placeholder="(555) 000-0000"
                 />
               </div>
             </div>
           </div>
 
           <div>
-            <label htmlFor="department" className="block text-sm font-medium text-slate-700 mb-1">Preferred Department</label>
+            <label
+              htmlFor="department"
+              className="block text-sm font-medium text-slate-700 mb-1"
+            >
+              Preferred Department
+            </label>
             <div className="relative">
               <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400">
                 <span className="material-icons text-lg">local_hospital</span>
               </div>
-              <select 
-                id="department" 
+              <select
+                id="department"
                 value={formData.department}
                 onChange={handleChange}
-                disabled={status === 'submitting'}
+                disabled={status === "submitting"}
                 className="block w-full pl-10 rounded-lg border-slate-200 bg-slate-50 focus:border-primary focus:ring-primary sm:text-sm py-2.5 text-slate-700 disabled:opacity-70 disabled:cursor-not-allowed"
               >
                 <option value="">Choose a department...</option>
@@ -198,31 +268,36 @@ const AppointmentModal: React.FC<AppointmentModalProps> = ({ isOpen, onClose, in
           </div>
 
           <div>
-            <label htmlFor="message" className="block text-sm font-medium text-slate-700 mb-1">Message (Optional)</label>
-            <textarea 
-              id="message" 
-              rows={3} 
+            <label
+              htmlFor="message"
+              className="block text-sm font-medium text-slate-700 mb-1"
+            >
+              Message (Optional)
+            </label>
+            <textarea
+              id="message"
+              rows={3}
               value={formData.message}
               onChange={handleChange}
-              disabled={status === 'submitting'}
-              className="block w-full max-h-[170px] rounded-lg border-slate-200 bg-slate-50 focus:border-primary focus:ring-primary sm:text-sm p-3 placeholder-slate-400 text-slate-900 disabled:opacity-70 disabled:cursor-not-allowed" 
+              disabled={status === "submitting"}
+              className="block w-full max-h-[170px] rounded-lg border-slate-200 bg-slate-50 focus:border-primary focus:ring-primary sm:text-sm p-3 placeholder-slate-400 text-slate-900 disabled:opacity-70 disabled:cursor-not-allowed"
               placeholder="Briefly describe your symptoms or reason for visit..."
             ></textarea>
           </div>
 
           <div className="pt-2">
-            <button 
-              type="submit" 
-              disabled={status === 'submitting'}
+            <button
+              type="submit"
+              disabled={status === "submitting"}
               className="w-full flex justify-center items-center py-3 px-4 border border-transparent rounded-lg shadow-sm text-sm font-bold text-white bg-primary hover:bg-primary-dark focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary transition-all disabled:opacity-80 disabled:cursor-wait"
             >
-              {status === 'submitting' ? (
+              {status === "submitting" ? (
                 <>
                   <span className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin mr-2"></span>
                   Processing...
                 </>
               ) : (
-                'Submit Request'
+                "Submit Request"
               )}
             </button>
             <p className="mt-3 text-center text-xs text-slate-400">
