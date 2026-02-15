@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { submitForm } from "../utils/formService";
+import { appointmentFormSchema, validateField } from "../utils/validation";
 
 interface AppointmentModalProps {
   isOpen: boolean;
@@ -28,6 +29,9 @@ const AppointmentModal: React.FC<AppointmentModalProps> = ({
 
   const [status, setStatus] = useState<"idle" | "submitting" | "error">("idle");
   const [errorMessage, setErrorMessage] = useState("");
+  const [errors, setErrors] = useState<Record<string, string>>({});
+  const [touched, setTouched] = useState<Record<string, boolean>>({});
+  const [hasSubmitted, setHasSubmitted] = useState(false);
 
   // Reset or pre-fill form when modal opens with data
   useEffect(() => {
@@ -129,32 +133,70 @@ const AppointmentModal: React.FC<AppointmentModalProps> = ({
   ) => {
     const { id, value } = e.target;
     setFormData((prev) => ({ ...prev, [id]: value }));
+
+    // Clear error when user starts typing
+    if (errors[id]) {
+      setErrors((prev) => ({ ...prev, [id]: "" }));
+    }
+  };
+
+  const handleBlur = (
+    e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) => {
+    const { id, value } = e.target;
+    setTouched((prev) => ({ ...prev, [id]: true }));
+
+    // Only validate on blur if field has value OR form was submitted
+    if (value.trim() || hasSubmitted) {
+      const error = validateField(appointmentFormSchema, id, value);
+      if (error) {
+        setErrors((prev) => ({ ...prev, [id]: error }));
+      }
+    }
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setStatus("submitting");
     setErrorMessage("");
+    setErrors({});
+    setHasSubmitted(true);
+
+    // Validate all fields with Zod
+    const validation = appointmentFormSchema.safeParse(formData);
+
+    if (!validation.success) {
+      const fieldErrors: Record<string, string> = {};
+      validation.error.issues.forEach((issue) => {
+        if (issue.path[0]) {
+          fieldErrors[issue.path[0].toString()] = issue.message;
+        }
+      });
+      setErrors(fieldErrors);
+      setStatus("error");
+      setErrorMessage("Please correct the errors highlighted below.");
+      return; // STOP submission if validation fails
+    }
 
     try {
-      // Best Practice: Simulate API call here
-      await submitForm(formData, "appointment");
+      // Submit validated data
+      await submitForm(validation.data, "appointment");
 
       // Success Handling
-      // Generate a reference ID
       const referenceId = `REQ-${Date.now().toString().slice(-6)}`;
 
-      // Navigate with state data
       navigate("/appointment-confirmation", {
         state: {
           appointmentData: {
-            fullName: formData.fullName,
-            email: formData.email,
-            phone: formData.phone,
+            fullName: validation.data.fullName,
+            email: validation.data.email,
+            phone: validation.data.phone,
             department:
-              formData.department || initialData?.department || "General",
+              validation.data.department ||
+              initialData?.department ||
+              "General",
             doctorName: initialData?.doctorName,
-            message: formData.message,
+            message: validation.data.message,
             referenceId,
             submittedAt: new Date().toISOString(),
           },
@@ -169,6 +211,9 @@ const AppointmentModal: React.FC<AppointmentModalProps> = ({
         department: "",
         message: "",
       });
+      setErrors({});
+      setTouched({});
+      setHasSubmitted(false);
     } catch (error) {
       setStatus("error");
       setErrorMessage(
@@ -237,12 +282,18 @@ const AppointmentModal: React.FC<AppointmentModalProps> = ({
                 id="fullName"
                 value={formData.fullName}
                 onChange={handleChange}
-                required
+                onBlur={handleBlur}
                 disabled={status === "submitting"}
-                className="block w-full pl-10 rounded-lg border-slate-200 bg-slate-50 focus:border-primary focus:ring-primary sm:text-sm py-2.5 placeholder-slate-400 text-slate-900 disabled:opacity-70 disabled:cursor-not-allowed"
+                className={`block w-full pl-10 rounded-lg ${errors.fullName ? "border-red-300 bg-red-50" : "border-slate-200 bg-slate-50"} focus:outline-none focus:ring-2 ${errors.fullName ? "focus:ring-red-500/50" : "focus:ring-primary/50"} focus:border-primary sm:text-sm py-2.5 placeholder-slate-400 text-slate-900 disabled:opacity-70 disabled:cursor-not-allowed transition-all`}
                 placeholder="John Doe"
               />
             </div>
+            {errors.fullName && (touched.fullName || hasSubmitted) && (
+              <p className="mt-1 text-xs text-red-600 flex items-center gap-1">
+                <span className="material-icons text-xs">error</span>
+                {errors.fullName}
+              </p>
+            )}
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
@@ -262,12 +313,18 @@ const AppointmentModal: React.FC<AppointmentModalProps> = ({
                   id="email"
                   value={formData.email}
                   onChange={handleChange}
-                  required
+                  onBlur={handleBlur}
                   disabled={status === "submitting"}
-                  className="block w-full pl-10 rounded-lg border-slate-200 bg-slate-50 focus:border-primary focus:ring-primary sm:text-sm py-2.5 placeholder-slate-400 text-slate-900 disabled:opacity-70 disabled:cursor-not-allowed"
+                  className={`block w-full pl-10 rounded-lg ${errors.email ? "border-red-300 bg-red-50" : "border-slate-200 bg-slate-50"} focus:outline-none focus:ring-2 ${errors.email ? "focus:ring-red-500/50" : "focus:ring-primary/50"} focus:border-primary sm:text-sm py-2.5 placeholder-slate-400 text-slate-900 disabled:opacity-70 disabled:cursor-not-allowed transition-all`}
                   placeholder="you@example.com"
                 />
               </div>
+              {errors.email && (touched.email || hasSubmitted) && (
+                <p className="mt-1 text-xs text-red-600 flex items-center gap-1">
+                  <span className="material-icons text-xs">error</span>
+                  {errors.email}
+                </p>
+              )}
             </div>
             <div>
               <label
@@ -285,12 +342,18 @@ const AppointmentModal: React.FC<AppointmentModalProps> = ({
                   id="phone"
                   value={formData.phone}
                   onChange={handleChange}
-                  required
+                  onBlur={handleBlur}
                   disabled={status === "submitting"}
-                  className="block w-full pl-10 rounded-lg border-slate-200 bg-slate-50 focus:border-primary focus:ring-primary sm:text-sm py-2.5 placeholder-slate-400 text-slate-900 disabled:opacity-70 disabled:cursor-not-allowed"
+                  className={`block w-full pl-10 rounded-lg ${errors.phone ? "border-red-300 bg-red-50" : "border-slate-200 bg-slate-50"} focus:outline-none focus:ring-2 ${errors.phone ? "focus:ring-red-500/50" : "focus:ring-primary/50"} focus:border-primary sm:text-sm py-2.5 placeholder-slate-400 text-slate-900 disabled:opacity-70 disabled:cursor-not-allowed transition-all`}
                   placeholder="(555) 000-0000"
                 />
               </div>
+              {errors.phone && (touched.phone || hasSubmitted) && (
+                <p className="mt-1 text-xs text-red-600 flex items-center gap-1">
+                  <span className="material-icons text-xs">error</span>
+                  {errors.phone}
+                </p>
+              )}
             </div>
           </div>
 
@@ -310,7 +373,7 @@ const AppointmentModal: React.FC<AppointmentModalProps> = ({
                 value={formData.department}
                 onChange={handleChange}
                 disabled={status === "submitting"}
-                className="block w-full pl-10 rounded-lg border-slate-200 bg-slate-50 focus:border-primary focus:ring-primary sm:text-sm py-2.5 text-slate-700 disabled:opacity-70 disabled:cursor-not-allowed"
+                className={`block w-full pl-10 rounded-lg ${errors.department ? "border-red-300 bg-red-50" : "border-slate-200 bg-slate-50"} focus:outline-none focus:ring-2 ${errors.department ? "focus:ring-red-500/50" : "focus:ring-primary/50"} focus:border-primary sm:text-sm py-2.5 text-slate-700 disabled:opacity-70 disabled:cursor-not-allowed transition-all`}
               >
                 <option value="">Choose a department...</option>
                 <option value="Cardiology">Cardiology</option>
@@ -327,6 +390,12 @@ const AppointmentModal: React.FC<AppointmentModalProps> = ({
                 <option value="Preventive Checkups">Preventive Checkups</option>
               </select>
             </div>
+            {errors.department && (touched.department || hasSubmitted) && (
+              <p className="mt-1 text-xs text-red-600 flex items-center gap-1">
+                <span className="material-icons text-xs">error</span>
+                {errors.department}
+              </p>
+            )}
           </div>
 
           <div>
@@ -341,10 +410,17 @@ const AppointmentModal: React.FC<AppointmentModalProps> = ({
               rows={3}
               value={formData.message}
               onChange={handleChange}
+              onBlur={handleBlur}
               disabled={status === "submitting"}
-              className="block w-full max-h-[170px] rounded-lg border-slate-200 bg-slate-50 focus:border-primary focus:ring-primary sm:text-sm p-3 placeholder-slate-400 text-slate-900 disabled:opacity-70 disabled:cursor-not-allowed"
+              className={`block w-full max-h-[170px] rounded-lg ${errors.message ? "border-red-300 bg-red-50" : "border-slate-200 bg-slate-50"} focus:outline-none focus:ring-2 focus:border-primary ${errors.message ? "focus:ring-red-500/50" : "focus:ring-primary/50"} sm:text-sm p-3 placeholder-slate-400 text-slate-900 disabled:opacity-70 disabled:cursor-not-allowed transition-all`}
               placeholder="Briefly describe your symptoms or reason for visit..."
             ></textarea>
+            {errors.message && (touched.message || hasSubmitted) && (
+              <p className="mt-1 text-xs text-red-600 flex items-center gap-1">
+                <span className="material-icons text-xs">error</span>
+                {errors.message}
+              </p>
+            )}
           </div>
 
           <div className="pt-2">
