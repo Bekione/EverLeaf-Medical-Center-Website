@@ -16,33 +16,51 @@ import AppointmentConfirmation from "./pages/AppointmentConfirmation";
 import Privacy from "./pages/Privacy";
 import { EverleafLogo } from "./components/Logo";
 
-// Department Pages
-import Cardiology from "./pages/departments/Cardiology";
-import Neurology from "./pages/departments/Neurology";
-import Surgery from "./pages/departments/Surgery";
-import Dental from "./pages/departments/Dental";
-import Rehabilitation from "./pages/departments/Rehabilitation";
-import Pediatrics from "./pages/departments/Pediatrics";
-import Ophthalmology from "./pages/departments/Ophthalmology";
-import Radiology from "./pages/departments/Radiology";
-import DepartmentLaboratory from "./pages/departments/Laboratory";
-import Emergency from "./pages/services/Emergency";
+// Lazy load department pages for code splitting
+const Cardiology = React.lazy(() => import("./pages/departments/Cardiology"));
+const Neurology = React.lazy(() => import("./pages/departments/Neurology"));
+const Surgery = React.lazy(() => import("./pages/departments/Surgery"));
+const Dental = React.lazy(() => import("./pages/departments/Dental"));
+const Rehabilitation = React.lazy(
+  () => import("./pages/departments/Rehabilitation"),
+);
+const Pediatrics = React.lazy(() => import("./pages/departments/Pediatrics"));
+const Ophthalmology = React.lazy(
+  () => import("./pages/departments/Ophthalmology"),
+);
+const Radiology = React.lazy(() => import("./pages/departments/Radiology"));
+const DepartmentLaboratory = React.lazy(
+  () => import("./pages/departments/Laboratory"),
+);
 
-// Service Pages
-import Laboratory from "./pages/services/Laboratory";
-import Pharmacy from "./pages/services/Pharmacy";
-import Imaging from "./pages/services/Imaging";
-import PreventiveCheckups from "./pages/services/PreventiveCheckups";
-import Diagnostics from "./pages/services/Diagnostics";
+// Lazy load service pages
+const Emergency = React.lazy(() => import("./pages/services/Emergency"));
+const Laboratory = React.lazy(() => import("./pages/services/Laboratory"));
+const Pharmacy = React.lazy(() => import("./pages/services/Pharmacy"));
+const Imaging = React.lazy(() => import("./pages/services/Imaging"));
+const PreventiveCheckups = React.lazy(
+  () => import("./pages/services/PreventiveCheckups"),
+);
+const Diagnostics = React.lazy(() => import("./pages/services/Diagnostics"));
 
-// Article Pages
-import DiabetesManagement from "./pages/articles/DiabetesManagement";
-import ImmuneSystem from "./pages/articles/ImmuneSystem";
-import PediatricWing from "./pages/articles/PediatricWing";
-import AnxietyInTeens from "./pages/articles/AnxietyInTeens";
-import FluSeason from "./pages/articles/FluSeason";
-import SeniorMobility from "./pages/articles/SeniorMobility";
-import PreventiveCardiology from "./pages/articles/PreventiveCardiology";
+// Lazy load article pages
+const DiabetesManagement = React.lazy(
+  () => import("./pages/articles/DiabetesManagement"),
+);
+const ImmuneSystem = React.lazy(() => import("./pages/articles/ImmuneSystem"));
+const PediatricWing = React.lazy(
+  () => import("./pages/articles/PediatricWing"),
+);
+const AnxietyInTeens = React.lazy(
+  () => import("./pages/articles/AnxietyInTeens"),
+);
+const FluSeason = React.lazy(() => import("./pages/articles/FluSeason"));
+const SeniorMobility = React.lazy(
+  () => import("./pages/articles/SeniorMobility"),
+);
+const PreventiveCardiology = React.lazy(
+  () => import("./pages/articles/PreventiveCardiology"),
+);
 
 const Loading = () => (
   <div className="fixed inset-0 z-[100] bg-white flex flex-col justify-center items-center p-4">
