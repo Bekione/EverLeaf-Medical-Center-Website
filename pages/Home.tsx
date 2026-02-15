@@ -381,7 +381,7 @@ const Home: React.FC = () => {
       {/* Partners */}
       <section className="py-12 bg-white border-t border-slate-100">
         <div className="container mx-auto px-6">
-          <p className="text-center text-slate-400 text-sm font-semibold uppercase tracking-wider mb-8">
+          <p className="text-center text-slate-500 text-sm font-semibold uppercase tracking-wider mb-8">
             Trusted by Insurance Partners
           </p>
 
