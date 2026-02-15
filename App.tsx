@@ -42,6 +42,7 @@ import PediatricWing from "./pages/articles/PediatricWing";
 import AnxietyInTeens from "./pages/articles/AnxietyInTeens";
 import FluSeason from "./pages/articles/FluSeason";
 import SeniorMobility from "./pages/articles/SeniorMobility";
+import PreventiveCardiology from "./pages/articles/PreventiveCardiology";
 
 const Loading = () => (
   <div className="fixed inset-0 z-[100] bg-white flex flex-col justify-center items-center p-4">
@@ -141,6 +142,10 @@ const App: React.FC = () => {
               />
               <Route path="blog/flu-season" element={<FluSeason />} />
               <Route path="blog/senior-mobility" element={<SeniorMobility />} />
+              <Route
+                path="blog/preventive-cardiology"
+                element={<PreventiveCardiology />}
+              />
 
               {/* Catch all */}
               <Route path="*" element={<NotFound />} />
