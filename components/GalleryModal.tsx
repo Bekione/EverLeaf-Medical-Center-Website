@@ -47,10 +47,86 @@ const GalleryModal: React.FC<GalleryModalProps> = ({
     }
   }, [currentImageIndex, isOpen]);
 
+  // Keyboard navigation: Escape, Arrow keys, and focus trap
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (!isOpen) return;
+
+      switch (e.key) {
+        case "Escape":
+          onClose();
+          break;
+        case "ArrowLeft":
+          onPrev();
+          e.preventDefault();
+          break;
+        case "ArrowRight":
+          onNext();
+          e.preventDefault();
+          break;
+      }
+    };
+
+    if (isOpen) {
+      document.addEventListener("keydown", handleKeyDown);
+      document.body.style.overflow = "hidden";
+    }
+
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+      document.body.style.overflow = "unset";
+    };
+  }, [isOpen, onClose, onNext, onPrev]);
+
+  // Focus trap for gallery modal
+  useEffect(() => {
+    if (!isOpen) return;
+
+    const modal = document.querySelector('[data-gallery-modal="true"]');
+    if (!modal) return;
+
+    const focusableElements = modal.querySelectorAll(
+      'button, [href], [tabindex]:not([tabindex="-1"])',
+    );
+    const firstElement = focusableElements[0] as HTMLElement;
+    const lastElement = focusableElements[
+      focusableElements.length - 1
+    ] as HTMLElement;
+
+    const handleTabKey = (e: KeyboardEvent) => {
+      if (e.key !== "Tab") return;
+
+      if (e.shiftKey) {
+        if (document.activeElement === firstElement) {
+          lastElement?.focus();
+          e.preventDefault();
+        }
+      } else {
+        if (document.activeElement === lastElement) {
+          firstElement?.focus();
+          e.preventDefault();
+        }
+      }
+    };
+
+    document.addEventListener("keydown", handleTabKey);
+    firstElement?.focus();
+
+    return () => {
+      document.removeEventListener("keydown", handleTabKey);
+    };
+  }, [isOpen]);
+
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-[100] bg-slate-900/95 backdrop-blur-sm flex flex-col justify-center items-center p-4 sm:p-8 animate-fade-in">
+    <div
+      className="fixed inset-0 z-[100] bg-slate-900/95 backdrop-blur-sm flex flex-col justify-center items-center p-4 sm:p-8 animate-fade-in"
+      data-gallery-modal="true"
+      role="dialog"
+      aria-label="Image gallery viewer"
+      aria-modal="true"
+    >
       <button
         onClick={onClose}
         className="absolute top-6 right-6 w-16 h-16 flex items-center justify-center text-white/70 hover:text-white transition-colors focus:outline-none p-2 rounded-full hover:bg-white/10"

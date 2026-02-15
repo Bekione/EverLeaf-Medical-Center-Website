@@ -58,6 +58,68 @@ const AppointmentModal: React.FC<AppointmentModalProps> = ({
     }
   }, [isOpen, initialData]);
 
+  // Keyboard navigation: Close on Escape
+  useEffect(() => {
+    const handleEscape = (e: KeyboardEvent) => {
+      if (e.key === "Escape" && isOpen) {
+        onClose();
+      }
+    };
+
+    if (isOpen) {
+      document.addEventListener("keydown", handleEscape);
+      // Prevent body scroll when modal is open
+      document.body.style.overflow = "hidden";
+    }
+
+    return () => {
+      document.removeEventListener("keydown", handleEscape);
+      document.body.style.overflow = "unset";
+    };
+  }, [isOpen, onClose]);
+
+  // Focus trap: Keep tab navigation within modal
+  useEffect(() => {
+    if (!isOpen) return;
+
+    const modal = document.querySelector('[role="dialog"]');
+    if (!modal) return;
+
+    const focusableElements = modal.querySelectorAll(
+      'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])',
+    );
+    const firstElement = focusableElements[0] as HTMLElement;
+    const lastElement = focusableElements[
+      focusableElements.length - 1
+    ] as HTMLElement;
+
+    const handleTabKey = (e: KeyboardEvent) => {
+      if (e.key !== "Tab") return;
+
+      if (e.shiftKey) {
+        // Shift + Tab
+        if (document.activeElement === firstElement) {
+          lastElement?.focus();
+          e.preventDefault();
+        }
+      } else {
+        // Tab
+        if (document.activeElement === lastElement) {
+          firstElement?.focus();
+          e.preventDefault();
+        }
+      }
+    };
+
+    document.addEventListener("keydown", handleTabKey);
+    // Auto-focus first element when modal opens
+    firstElement?.focus();
+
+    return () => {
+      document.removeEventListener("keydown", handleTabKey);
+    };
+  }, [isOpen]);
+
   if (!isOpen) return null;
 
   const handleChange = (
