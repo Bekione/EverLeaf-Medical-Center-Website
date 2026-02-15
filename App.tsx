@@ -1,6 +1,6 @@
 
 import React, { Suspense } from 'react';
-import { HashRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 import Layout from './Layout';
 import Home from './pages/Home';
@@ -68,7 +68,7 @@ const App: React.FC = () => {
   return (
     <HelmetProvider>
       <Suspense fallback={<Loading />}>
-        <HashRouter>
+        <BrowserRouter>
           <Routes>
             <Route path="/" element={<Layout />}>
               <Route index element={<Home />} />
@@ -120,7 +120,7 @@ const App: React.FC = () => {
               <Route path="*" element={<NotFound />} />
             </Route>
           </Routes>
-        </HashRouter>
+        </BrowserRouter>
       </Suspense>
     </HelmetProvider>
   );
