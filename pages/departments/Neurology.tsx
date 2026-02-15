@@ -94,10 +94,9 @@ const Neurology: React.FC = () => {
                   <span className="material-icons text-3xl">{item.icon}</span>
                 </div>
                 <h3 className="text-xl font-bold text-slate-900 mb-3">{item.title}</h3>
-                <p className="text-slate-500 text-sm leading-relaxed mb-4">
+                <p className="text-slate-500 text-sm leading-relaxed">
                   {item.desc}
                 </p>
-                <Link to="#" className="text-primary font-medium text-sm hover:underline">Learn more</Link>
               </div>
             ))}
           </div>
