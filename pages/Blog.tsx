@@ -1,82 +1,92 @@
-import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import NewsletterForm from '../components/NewsletterForm';
-import SEO from '../components/SEO';
+import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import NewsletterForm from "../components/NewsletterForm";
+import SEO from "../components/SEO";
 
 // Article Data Configuration
 const articlesData = [
   {
-    id: 'diabetes-management',
-    title: 'New Breakthrough in Diabetes Management Using AI Technology',
-    category: 'Research',
-    date: 'Nov 12, 2023',
-    read: '7 min read',
-    img: 'https://images.unsplash.com/photo-1579154204601-01588f351e67?w=800&q=80',
-    author: 'Dr. Mark Johnson'
+    id: "preventive-cardiology",
+    title: "5 Essential Tips for Preventive Heart Health",
+    category: "Health Tips",
+    date: "Feb 14, 2026",
+    read: "6 min read",
+    img: "https://images.unsplash.com/photo-1505751172876-fa1923c5c528?w=800&q=80",
+    author: "Dr. Rebecca Martinez",
   },
   {
-    id: 'immune-system',
-    title: '5 Superfoods to Boost Your Immune System This Winter',
-    category: 'Health Tips',
-    date: 'Nov 08, 2023',
-    read: '4 min read',
-    img: 'https://images.unsplash.com/photo-1498837167922-ddd27525d352?w=800&q=80',
-    author: 'Emily Lewis, RD'
+    id: "diabetes-management",
+    title: "New Breakthrough in Diabetes Management Using AI Technology",
+    category: "Research",
+    date: "Jan 12, 2026",
+    read: "7 min read",
+    img: "https://images.unsplash.com/photo-1579154204601-01588f351e67?w=800&q=80",
+    author: "Dr. Mark Johnson",
   },
   {
-    id: 'pediatric-wing',
-    title: 'MediCare Opens New Pediatric Wing in West Wing',
-    category: 'Announcements',
-    date: 'Nov 01, 2023',
-    read: '2 min read',
-    img: 'https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=800&q=80',
-    author: 'Admin Team'
+    id: "immune-system",
+    title: "5 Superfoods to Boost Your Immune System This Winter",
+    category: "Health Tips",
+    date: "Nov 08, 2025",
+    read: "4 min read",
+    img: "https://images.unsplash.com/photo-1498837167922-ddd27525d352?w=800&q=80",
+    author: "Emily Lewis, RD",
   },
   {
-    id: 'anxiety-in-teens',
-    title: 'Recognizing the Early Signs of Anxiety in Teenagers',
-    category: 'Medical Awareness',
-    date: 'Oct 28, 2023',
-    read: '6 min read',
-    img: 'https://images.unsplash.com/photo-1527137342181-19aab11a8ee8?w=800&q=80',
-    author: 'Dr. James Wilson'
+    id: "pediatric-wing",
+    title: "MediCare Opens New Pediatric Wing in West Wing",
+    category: "Announcements",
+    date: "Nov 01, 2025",
+    read: "2 min read",
+    img: "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=800&q=80",
+    author: "Admin Team",
   },
   {
-    id: 'flu-season',
-    title: 'Flu Season 2023: Why the Vaccine is More Important Than Ever',
-    category: 'Health Tips',
-    date: 'Oct 15, 2023',
-    read: '3 min read',
-    img: 'https://images.unsplash.com/photo-1633613286991-611fe299c4be?w=800&q=80',
-    author: 'Karen Lee, RN'
+    id: "anxiety-in-teens",
+    title: "Recognizing the Early Signs of Anxiety in Teenagers",
+    category: "Medical Awareness",
+    date: "Oct 28, 2025",
+    read: "6 min read",
+    img: "https://images.unsplash.com/photo-1527137342181-19aab11a8ee8?w=800&q=80",
+    author: "Dr. James Wilson",
   },
   {
-    id: 'senior-mobility',
-    title: 'Mobility in Seniors: The Link Between Walking and Cognitive Health',
-    category: 'Research',
-    date: 'Oct 10, 2023',
-    read: '7 min read',
-    img: 'https://images.unsplash.com/photo-1555814965-74d430d12197?w=800&q=80',
-    author: 'Dr. Robert Turner'
+    id: "flu-season",
+    title: "Flu Season 2023: Why the Vaccine is More Important Than Ever",
+    category: "Health Tips",
+    date: "Oct 15, 2025",
+    read: "3 min read",
+    img: "https://images.unsplash.com/photo-1633613286991-611fe299c4be?w=800&q=80",
+    author: "Karen Lee, RN",
+  },
+  {
+    id: "senior-mobility",
+    title: "Mobility in Seniors: The Link Between Walking and Cognitive Health",
+    category: "Research",
+    date: "Oct 10, 2025",
+    read: "7 min read",
+    img: "https://images.unsplash.com/photo-1555814965-74d430d12197?w=800&q=80",
+    author: "Dr. Robert Turner",
   },
 ];
 
 const ITEMS_PER_PAGE = 3;
 
 const Blog: React.FC = () => {
-  const [filter, setFilter] = useState('All');
+  const [filter, setFilter] = useState("All");
   const [currentPage, setCurrentPage] = useState(1);
 
   // Filter Logic
-  const filteredArticles = filter === 'All'
-    ? articlesData
-    : articlesData.filter(article => article.category === filter);
+  const filteredArticles =
+    filter === "All"
+      ? articlesData
+      : articlesData.filter((article) => article.category === filter);
 
   // Pagination Logic
   const totalPages = Math.ceil(filteredArticles.length / ITEMS_PER_PAGE);
   const paginatedArticles = filteredArticles.slice(
     (currentPage - 1) * ITEMS_PER_PAGE,
-    currentPage * ITEMS_PER_PAGE
+    currentPage * ITEMS_PER_PAGE,
   );
 
   // Reset page when filter changes
@@ -87,17 +97,22 @@ const Blog: React.FC = () => {
   const handlePageChange = (page: number) => {
     if (page >= 1 && page <= totalPages) {
       setCurrentPage(page);
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      window.scrollTo({ top: 0, behavior: "smooth" });
     }
   };
 
   const getCategoryColor = (category: string) => {
     switch (category) {
-      case 'Research': return 'text-primary bg-blue-50';
-      case 'Health Tips': return 'text-secondary bg-green-50';
-      case 'Announcements': return 'text-red-500 bg-red-50';
-      case 'Medical Awareness': return 'text-purple-600 bg-purple-50';
-      default: return 'text-slate-600 bg-slate-100';
+      case "Research":
+        return "text-primary bg-blue-50";
+      case "Health Tips":
+        return "text-secondary bg-green-50";
+      case "Announcements":
+        return "text-red-500 bg-red-50";
+      case "Medical Awareness":
+        return "text-purple-600 bg-purple-50";
+      default:
+        return "text-slate-600 bg-slate-100";
     }
   };
 
@@ -111,38 +126,56 @@ const Blog: React.FC = () => {
       {/* Featured Article Hero */}
       <section className="relative bg-slate-900 text-white overflow-hidden">
         <div className="absolute inset-0">
-          <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=1600&q=80" alt="Featured Article" className="w-full h-full object-cover opacity-30" />
+          <img
+            src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=1600&q=80"
+            alt="Featured Article"
+            className="w-full h-full object-cover opacity-30"
+          />
           <div className="absolute inset-0 bg-gradient-to-r from-slate-900 via-slate-900/90 to-transparent"></div>
         </div>
         <div className="container mx-auto px-6 py-20 lg:py-28 relative z-10">
           <div className="max-w-3xl">
             <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/20 text-blue-300 border border-blue-500/30 text-xs font-semibold tracking-wider uppercase mb-6">
-              <span className="w-2 h-2 rounded-full bg-blue-400 animate-pulse"></span> Featured Article
+              <span className="w-2 h-2 rounded-full bg-blue-400 animate-pulse"></span>{" "}
+              Featured Article
             </span>
             <h1 className="text-4xl lg:text-5xl font-serif font-bold mb-6 leading-tight">
-              Understanding Preventive Cardiology: <br /> <span className="text-primary">A Guide to Heart Health</span>
+              Understanding Preventive Cardiology: <br />{" "}
+              <span className="text-primary">A Guide to Heart Health</span>
             </h1>
             <p className="text-lg text-slate-300 mb-8 leading-relaxed max-w-2xl">
-              Heart disease remains the leading cause of death globally. Learn about the latest preventive measures, dietary changes, and screening protocols recommended by our top cardiologists.
+              Heart disease remains the leading cause of death globally. Learn
+              about the latest preventive measures, dietary changes, and
+              screening protocols recommended by our top cardiologists.
             </p>
             <div className="flex items-center gap-6 mb-8">
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-white font-bold text-sm">DR</div>
+                <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-white font-bold text-sm">
+                  DR
+                </div>
                 <div>
-                  <p className="text-sm font-semibold text-white">Dr. Sarah Reynolds</p>
+                  <p className="text-sm font-semibold text-white">
+                    Dr. Sarah Reynolds
+                  </p>
                   <p className="text-xs text-slate-400">Chief of Cardiology</p>
                 </div>
               </div>
               <div className="h-8 w-px bg-slate-700"></div>
               <div className="text-sm text-slate-400 flex items-center gap-2">
-                <span className="material-icons text-base">calendar_today</span> October 24, 2023
+                <span className="material-icons text-base">calendar_today</span>{" "}
+                October 24, 2023
               </div>
               <div className="text-sm text-slate-400 flex items-center gap-2">
-                <span className="material-icons text-base">schedule</span> 8 min read
+                <span className="material-icons text-base">schedule</span> 8 min
+                read
               </div>
             </div>
-            <Link to="/blog/preventive-cardiology" className="inline-flex items-center gap-2 text-white font-semibold hover:text-primary transition-colors border-b-2 border-primary pb-0.5">
-              Read Full Article <span className="material-icons text-sm">arrow_forward</span>
+            <Link
+              to="/blog/preventive-cardiology"
+              className="inline-flex items-center gap-2 text-white font-semibold hover:text-primary transition-colors border-b-2 border-primary pb-0.5"
+            >
+              Read Full Article{" "}
+              <span className="material-icons text-sm">arrow_forward</span>
             </Link>
           </div>
         </div>
@@ -151,18 +184,27 @@ const Blog: React.FC = () => {
       {/* Articles Grid */}
       <section className="py-16 container mx-auto px-6 relative z-10">
         <div className="flex flex-col md:flex-row justify-between items-center mb-12 border-b border-slate-200 pb-4">
-          <h2 className="text-2xl font-bold text-slate-900 mb-6 md:mb-0">Latest Health Insights</h2>
+          <h2 className="text-2xl font-bold text-slate-900 mb-6 md:mb-0">
+            Latest Health Insights
+          </h2>
           <div className="flex flex-wrap justify-center gap-2">
-            {['All', 'Health Tips', 'Announcements', 'Research', 'Medical Awareness'].map((cat) => (
+            {[
+              "All",
+              "Health Tips",
+              "Announcements",
+              "Research",
+              "Medical Awareness",
+            ].map((cat) => (
               <button
                 key={cat}
                 onClick={() => setFilter(cat)}
-                className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${filter === cat
-                    ? 'bg-primary text-white shadow-md'
-                    : 'bg-white text-slate-600 hover:bg-slate-100 hover:text-primary border border-slate-200'
-                  }`}
+                className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
+                  filter === cat
+                    ? "bg-primary text-white shadow-md"
+                    : "bg-white text-slate-600 hover:bg-slate-100 hover:text-primary border border-slate-200"
+                }`}
               >
-                {cat === 'All' ? 'All Articles' : cat}
+                {cat === "All" ? "All Articles" : cat}
               </button>
             ))}
           </div>
@@ -170,11 +212,20 @@ const Blog: React.FC = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {paginatedArticles.map((article) => (
-            <article key={article.id} className="bg-white rounded-2xl overflow-hidden shadow-card hover:shadow-xl transition-all duration-300 group border border-slate-100 flex flex-col h-full animate-fade-in">
+            <article
+              key={article.id}
+              className="bg-white rounded-2xl overflow-hidden shadow-card hover:shadow-xl transition-all duration-300 group border border-slate-100 flex flex-col h-full animate-fade-in"
+            >
               <div className="relative h-56 overflow-hidden">
-                <img src={article.img} alt={article.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                <img
+                  src={article.img}
+                  alt={article.title}
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                />
                 <div className="absolute top-4 left-4">
-                  <span className={`px-3 py-1 backdrop-blur-md text-xs font-bold uppercase tracking-wider rounded-md shadow-sm ${getCategoryColor(article.category)} bg-white/90`}>
+                  <span
+                    className={`px-3 py-1 backdrop-blur-md text-xs font-bold uppercase tracking-wider rounded-md shadow-sm ${getCategoryColor(article.category)} bg-white/90`}
+                  >
                     {article.category}
                   </span>
                 </div>
@@ -191,12 +242,23 @@ const Blog: React.FC = () => {
                 <div className="pt-4 mt-auto border-t border-slate-100 flex items-center justify-between">
                   <div className="flex items-center gap-2">
                     <div className="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center text-slate-500 text-xs font-bold">
-                      {article.author.split(' ').map(n => n[0]).join('').slice(0, 2)}
+                      {article.author
+                        .split(" ")
+                        .map((n) => n[0])
+                        .join("")
+                        .slice(0, 2)}
                     </div>
-                    <span className="text-xs font-medium text-slate-700">{article.author}</span>
+                    <span className="text-xs font-medium text-slate-700">
+                      {article.author}
+                    </span>
                   </div>
-                  <Link to={`/blog/${article.id}`} className="text-primary hover:text-primary-dark p-2 rounded-full hover:bg-blue-50 transition-colors">
-                    <span className="material-icons text-xl">arrow_forward</span>
+                  <Link
+                    to={`/blog/${article.id}`}
+                    className="text-primary hover:text-primary-dark p-2 rounded-full hover:bg-blue-50 transition-colors"
+                  >
+                    <span className="material-icons text-xl">
+                      arrow_forward
+                    </span>
                   </Link>
                 </div>
               </div>
@@ -206,9 +268,11 @@ const Blog: React.FC = () => {
 
         {paginatedArticles.length === 0 && (
           <div className="text-center py-20">
-            <p className="text-slate-500 text-lg">No articles found in this category.</p>
+            <p className="text-slate-500 text-lg">
+              No articles found in this category.
+            </p>
             <button
-              onClick={() => setFilter('All')}
+              onClick={() => setFilter("All")}
               className="mt-4 px-6 py-2 bg-primary text-white rounded-lg hover:bg-primary-dark transition-colors"
             >
               View All
@@ -228,18 +292,21 @@ const Blog: React.FC = () => {
                 <span className="material-icons text-sm">chevron_left</span>
               </button>
 
-              {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
-                <button
-                  key={page}
-                  onClick={() => handlePageChange(page)}
-                  className={`w-10 h-10 flex items-center justify-center rounded-lg font-medium transition-colors ${currentPage === page
-                      ? 'bg-primary text-white shadow-md'
-                      : 'border border-slate-200 text-slate-600 hover:bg-slate-50 hover:text-primary'
+              {Array.from({ length: totalPages }, (_, i) => i + 1).map(
+                (page) => (
+                  <button
+                    key={page}
+                    onClick={() => handlePageChange(page)}
+                    className={`w-10 h-10 flex items-center justify-center rounded-lg font-medium transition-colors ${
+                      currentPage === page
+                        ? "bg-primary text-white shadow-md"
+                        : "border border-slate-200 text-slate-600 hover:bg-slate-50 hover:text-primary"
                     }`}
-                >
-                  {page}
-                </button>
-              ))}
+                  >
+                    {page}
+                  </button>
+                ),
+              )}
 
               <button
                 onClick={() => handlePageChange(currentPage + 1)}
@@ -256,7 +323,13 @@ const Blog: React.FC = () => {
       {/* Revamped Newsletter Section */}
       <section className="py-24 relative overflow-hidden" id="newsletter">
         <div className="absolute inset-0 bg-gradient-to-br from-slate-900 to-blue-900"></div>
-        <div className="absolute inset-0 opacity-10" style={{ backgroundImage: "url('https://www.transparenttextures.com/patterns/cubes.png')" }}></div>
+        <div
+          className="absolute inset-0 opacity-10"
+          style={{
+            backgroundImage:
+              "url('https://www.transparenttextures.com/patterns/cubes.png')",
+          }}
+        ></div>
 
         {/* Decorative Elements */}
         <div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/3 w-96 h-96 bg-white/10 rounded-full blur-3xl"></div>
@@ -268,10 +341,13 @@ const Blog: React.FC = () => {
               Stay Connected
             </span>
             <h2 className="text-3xl md:text-5xl lg:text-6xl font-serif font-bold text-white mb-6 leading-tight">
-              Health Insights <br /><span className="text-blue-300">Delivered to You</span>
+              Health Insights <br />
+              <span className="text-blue-300">Delivered to You</span>
             </h2>
             <p className="text-blue-100 text-lg md:text-xl mb-10 leading-relaxed max-w-2xl mx-auto">
-              Join over 50,000 subscribers who receive our latest medical news, health tips, and exclusive event invitations directly in their inbox.
+              Join over 50,000 subscribers who receive our latest medical news,
+              health tips, and exclusive event invitations directly in their
+              inbox.
             </p>
             <NewsletterForm variant="section" />
             <p className="text-blue-300 text-xs mt-6">
