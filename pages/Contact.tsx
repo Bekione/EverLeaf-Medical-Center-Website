@@ -99,7 +99,7 @@ const Contact: React.FC = () => {
       <header className="relative bg-white border-b border-slate-100 min-h-[500px] flex items-center overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img
-            src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=1600&q=80"
+            src="/images/gallery-1-atrium.jpg"
             alt="Hospital Building"
             className="w-full h-full object-cover opacity-20"
           />
