@@ -65,7 +65,7 @@ const Dental: React.FC = () => {
               </div>
               <div className="absolute -bottom-6 -left-6 z-20 bg-white p-4 rounded-xl shadow-xl border border-slate-100 max-w-xs animate-fade-in hidden lg:block">
                 <div className="flex items-center gap-4">
-                  <div className="bg-cyan-50 p-3 rounded-full text-cyan-600">
+                  <div className="bg-cyan-50 w-12 h-12 flex items-center justify-center rounded-full text-cyan-600">
                     <span className="material-icons text-2xl">
                       sentiment_satisfied
                     </span>
