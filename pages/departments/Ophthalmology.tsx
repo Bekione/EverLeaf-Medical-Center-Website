@@ -1,5 +1,6 @@
 import React from "react";
-import { Link, useOutletContext } from "react-router-dom";
+import { useOutletContext } from "react-router-dom";
+
 import { OpenAppointmentFunc } from "../../Layout";
 import SEO from "../../components/SEO";
 
@@ -67,7 +68,7 @@ const Ophthalmology: React.FC = () => {
               </div>
               <div className="absolute -bottom-6 -left-6 z-20 bg-white p-4 rounded-xl shadow-xl border border-slate-100 max-w-xs animate-fade-in hidden lg:block">
                 <div className="flex items-center gap-4">
-                  <div className="bg-green-100 p-3 rounded-full text-green-600">
+                  <div className="bg-green-100 w-12 h-12 flex items-center justify-center rounded-full text-green-600">
                     <span className="material-icons text-2xl">visibility</span>
                   </div>
                   <div>
@@ -313,32 +314,55 @@ const Ophthalmology: React.FC = () => {
         </div>
       </section>
 
-      <section
-        className="py-20 bg-white relative overflow-hidden"
-        id="appointment"
-      >
+      <section className="py-24 relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-slate-900 to-blue-900"></div>
+        <div
+          className="absolute inset-0 opacity-10"
+          style={{
+            backgroundImage:
+              "url('https://www.transparenttextures.com/patterns/cubes.png')",
+          }}
+        ></div>
+
+        {/* Decorative Elements */}
+        <div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/3 w-96 h-96 bg-white/10 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-0 left-0 translate-y-1/2 -translate-x-1/3 w-96 h-96 bg-blue-500/20 rounded-full blur-3xl"></div>
+
+        {/* Giant Icon */}
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 opacity-[0.03] pointer-events-none">
+          <span className="material-icons text-[20rem] text-white">
+            visibility
+          </span>
+        </div>
+
         <div className="container mx-auto px-6 relative z-10 text-center">
-          <h2 className="text-3xl md:text-5xl font-serif font-bold text-slate-900 mb-6">
-            See the World Clearly
-          </h2>
-          <p className="text-slate-600 text-lg mb-10 max-w-2xl mx-auto leading-relaxed">
-            Don't let vision problems limit your life. Schedule your
-            comprehensive eye exam today and experience the difference expert
-            care makes.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button
-              onClick={() => openAppointment({ department: "Ophthalmology" })}
-              className="inline-flex items-center justify-center px-8 py-4 text-base font-bold text-white bg-primary rounded-lg hover:bg-primary-dark shadow-lg shadow-primary/30 transition-all hover:-translate-y-1"
-            >
-              Schedule Appointment
-            </button>
-            <Link
-              to="/contact"
-              className="inline-flex items-center justify-center px-8 py-4 text-base font-bold text-slate-700 bg-white border border-slate-200 rounded-lg hover:bg-slate-50 transition-all"
-            >
-              Contact Department
-            </Link>
+          <div className="max-w-4xl mx-auto">
+            <span className="inline-block py-1 px-3 rounded-full bg-white/10 border border-white/20 text-white text-xs font-bold tracking-wider uppercase mb-6 backdrop-blur-md">
+              Book Your Eye Exam
+            </span>
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-white mb-6 leading-tight">
+              See the World <br />
+              <span className="text-blue-300">Clearly Again</span>
+            </h2>
+            <p className="text-blue-100 text-lg md:text-xl mb-10 leading-relaxed max-w-2xl mx-auto">
+              Don't let vision problems limit your life. Our expert
+              ophthalmologists are here to provide the personalized care you
+              deserve. Schedule your consultation now.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <button
+                onClick={() => openAppointment({ department: "Ophthalmology" })}
+                className="inline-flex items-center justify-center px-8 py-4 text-lg font-bold text-primary bg-white rounded-full hover:bg-blue-50 shadow-xl shadow-blue-900/20 transition-all hover:scale-105"
+              >
+                Schedule Eye Exam
+              </button>
+              <a
+                href="tel:+15551234567"
+                className="inline-flex items-center justify-center px-8 py-4 text-lg font-bold text-white border border-white/30 rounded-full hover:bg-white/10 backdrop-blur-sm transition-all"
+              >
+                Call (555) 123-4567
+              </a>
+            </div>
           </div>
         </div>
       </section>
