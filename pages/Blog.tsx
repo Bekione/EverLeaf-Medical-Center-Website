@@ -2,73 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import NewsletterForm from "../components/NewsletterForm";
 import SEO from "../components/SEO";
-
-// Article Data Configuration
-const articlesData = [
-  {
-    id: "preventive-cardiology",
-    title: "5 Essential Tips for Preventive Heart Health",
-    category: "Health Tips",
-    date: "Feb 14, 2026",
-    read: "6 min read",
-    img: "https://images.unsplash.com/photo-1505751172876-fa1923c5c528?w=800&q=80",
-    author: "Dr. Rebecca Martinez",
-  },
-  {
-    id: "diabetes-management",
-    title: "New Breakthrough in Diabetes Management Using AI Technology",
-    category: "Research",
-    date: "Jan 12, 2026",
-    read: "7 min read",
-    img: "https://images.unsplash.com/photo-1579154204601-01588f351e67?w=800&q=80",
-    author: "Dr. Mark Johnson",
-  },
-  {
-    id: "immune-system",
-    title: "5 Superfoods to Boost Your Immune System This Winter",
-    category: "Health Tips",
-    date: "Nov 08, 2025",
-    read: "4 min read",
-    img: "https://images.unsplash.com/photo-1498837167922-ddd27525d352?w=800&q=80",
-    author: "Emily Lewis, RD",
-  },
-  {
-    id: "pediatric-wing",
-    title: "MediCare Opens New Pediatric Wing in West Wing",
-    category: "Announcements",
-    date: "Nov 01, 2025",
-    read: "2 min read",
-    img: "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=800&q=80",
-    author: "Admin Team",
-  },
-  {
-    id: "anxiety-in-teens",
-    title: "Recognizing the Early Signs of Anxiety in Teenagers",
-    category: "Medical Awareness",
-    date: "Oct 28, 2025",
-    read: "6 min read",
-    img: "https://images.unsplash.com/photo-1527137342181-19aab11a8ee8?w=800&q=80",
-    author: "Dr. James Wilson",
-  },
-  {
-    id: "flu-season",
-    title: "Flu Season 2023: Why the Vaccine is More Important Than Ever",
-    category: "Health Tips",
-    date: "Oct 15, 2025",
-    read: "3 min read",
-    img: "https://images.unsplash.com/photo-1633613286991-611fe299c4be?w=800&q=80",
-    author: "Karen Lee, RN",
-  },
-  {
-    id: "senior-mobility",
-    title: "Mobility in Seniors: The Link Between Walking and Cognitive Health",
-    category: "Research",
-    date: "Oct 10, 2025",
-    read: "7 min read",
-    img: "https://images.unsplash.com/photo-1555814965-74d430d12197?w=800&q=80",
-    author: "Dr. Robert Turner",
-  },
-];
+import { articles as articlesData } from "../data/articles";
 
 const ITEMS_PER_PAGE = 3;
 
@@ -127,7 +61,7 @@ const Blog: React.FC = () => {
       <section className="relative bg-slate-900 text-white overflow-hidden">
         <div className="absolute inset-0">
           <img
-            src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=1600&q=80"
+            src="/images/hero/blog-hero.jpg"
             alt="Featured Article"
             className="w-full h-full object-cover opacity-30"
           />
