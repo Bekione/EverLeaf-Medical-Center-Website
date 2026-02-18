@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import NewsletterForm from "../../components/NewsletterForm";
 import SEO from "../../components/SEO";
+import RelatedArticles from "../../components/RelatedArticles";
 
 const PreventiveCardiology: React.FC = () => {
   const handleShare = async () => {
@@ -28,7 +29,7 @@ const PreventiveCardiology: React.FC = () => {
         description="Expert cardiologist advice on preventing heart disease through lifestyle changes, regular screenings, and proactive care."
         type="article"
         canonical="https://everleaf-medical.com/blog/preventive-cardiology"
-        image="https://images.unsplash.com/photo-1505751172876-fa1923c5c528?w=1200&q=80"
+        image="/images/articles/article-1-hero.jpg"
       />
       <div className="bg-slate-50 border-b border-slate-200">
         <div className="container mx-auto px-6 py-4">
@@ -78,7 +79,7 @@ const PreventiveCardiology: React.FC = () => {
               <div className="flex items-center justify-between mb-6">
                 <div className="flex items-center gap-4">
                   <span className="inline-block px-3 py-1 text-xs font-bold tracking-wider text-red-600 uppercase bg-red-50 rounded-full border border-red-100">
-                    Cardiology
+                    Health Tips
                   </span>
                   <span className="text-sm text-slate-500 flex items-center gap-1">
                     <span className="material-icons text-sm">schedule</span> 6
@@ -108,7 +109,7 @@ const PreventiveCardiology: React.FC = () => {
 
             <div className="rounded-2xl overflow-hidden mb-12 shadow-card">
               <img
-                src="https://images.unsplash.com/photo-1505751172876-fa1923c5c528?w=800&q=80"
+                src="/images/articles/article-1-hero.jpg"
                 alt="Heart Health Concept"
                 className="w-full h-[400px] object-cover hover:scale-105 transition-transform duration-700"
               />
@@ -187,7 +188,7 @@ const PreventiveCardiology: React.FC = () => {
               </p>
               <div className="my-10 grid grid-cols-1 md:grid-cols-2 gap-6">
                 <img
-                  src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=600&q=80"
+                  src="/images/article-body-1.jpg"
                   alt="Healthy Mediterranean Diet"
                   className="rounded-xl shadow-md object-cover h-64 w-full"
                 />
@@ -296,26 +297,26 @@ const PreventiveCardiology: React.FC = () => {
 
             <div className="bg-slate-50 rounded-2xl p-8 flex flex-col sm:flex-row gap-6 items-center sm:items-start text-center sm:text-left">
               <img
-                src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=100&h=100&fit=crop"
-                alt="Dr. Rebecca Martinez"
+                src="/images/doctors/team-dr-mark-williams.jpg"
+                alt="Dr. Mark Williams"
                 className="w-24 h-24 rounded-full object-cover shadow-lg border-2 border-white"
               />
               <div>
                 <h3 className="text-xl font-bold text-slate-900 mb-2">
-                  Dr. Rebecca Martinez
+                  Dr. Mark Williams
                 </h3>
                 <p className="text-primary font-medium text-sm mb-3">
                   Chief of Cardiology
                 </p>
                 <p className="text-slate-600 text-sm leading-relaxed mb-4">
-                  Dr. Martinez is a board-certified cardiologist with over 15
-                  years of experience in preventive cardiology and
-                  interventional procedures. She leads our comprehensive heart
-                  health program.
+                  Dr. Williams is a dedicated cardiologist focusing on
+                  preventive heart care and minimally invasive surgical
+                  procedures. He leads our comprehensive cardiovascular wellness
+                  program.
                 </p>
                 <div className="flex gap-3 justify-center sm:justify-start">
                   <a
-                    href="mailto:r.martinez@everleaf.com"
+                    href="mailto:m.williams@everleaf.com"
                     className="text-slate-400 hover:text-primary transition-colors"
                   >
                     <span className="material-icons text-sm">email</span>
@@ -332,73 +333,10 @@ const PreventiveCardiology: React.FC = () => {
           </div>
 
           <aside className="lg:col-span-4 space-y-8">
-            <div className="bg-white rounded-2xl shadow-card p-6 border border-slate-100 sticky top-28">
-              <h3 className="text-lg font-bold text-slate-900 mb-6 border-b border-slate-200 pb-2">
-                Related Articles
-              </h3>
-              <div className="space-y-6">
-                <Link
-                  to="/blog/diabetes-management"
-                  className="group flex gap-4 items-start"
-                >
-                  <div className="w-20 h-20 flex-shrink-0 rounded-lg overflow-hidden">
-                    <img
-                      src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=150&h=150&fit=crop"
-                      alt="Diabetes Management"
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                    />
-                  </div>
-                  <div>
-                    <span className="text-xs text-blue-600 font-semibold uppercase tracking-wider mb-1 block">
-                      Research
-                    </span>
-                    <h4 className="font-bold text-slate-800 leading-snug group-hover:text-primary transition-colors text-sm font-serif">
-                      AI in Diabetes Management
-                    </h4>
-                  </div>
-                </Link>
-                <Link
-                  to="/blog/immune-system"
-                  className="group flex gap-4 items-start"
-                >
-                  <div className="w-20 h-20 flex-shrink-0 rounded-lg overflow-hidden">
-                    <img
-                      src="https://images.unsplash.com/photo-1498837167922-ddd27525d352?w=150&h=150&fit=crop"
-                      alt="Immune System"
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                    />
-                  </div>
-                  <div>
-                    <span className="text-xs text-green-600 font-semibold uppercase tracking-wider mb-1 block">
-                      Health Tips
-                    </span>
-                    <h4 className="font-bold text-slate-800 leading-snug group-hover:text-primary transition-colors text-sm font-serif">
-                      5 Superfoods for Immunity
-                    </h4>
-                  </div>
-                </Link>
-                <Link
-                  to="/blog/senior-mobility"
-                  className="group flex gap-4 items-start"
-                >
-                  <div className="w-20 h-20 flex-shrink-0 rounded-lg overflow-hidden">
-                    <img
-                      src="https://images.unsplash.com/photo-1555814965-74d430d12197?w=150&h=150&fit=crop"
-                      alt="Senior Mobility"
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                    />
-                  </div>
-                  <div>
-                    <span className="text-xs text-purple-600 font-semibold uppercase tracking-wider mb-1 block">
-                      Wellness
-                    </span>
-                    <h4 className="font-bold text-slate-800 leading-snug group-hover:text-primary transition-colors text-sm font-serif">
-                      Mobility and Cognitive Health
-                    </h4>
-                  </div>
-                </Link>
-              </div>
-            </div>
+            <RelatedArticles
+              currentId="preventive-cardiology"
+              currentCategory="Health Tips"
+            />
 
             <div className="bg-gradient-to-br from-red-900 to-pink-900 rounded-2xl p-8 text-white shadow-lg relative overflow-hidden">
               <div className="absolute top-0 right-0 w-32 h-32 bg-white opacity-10 rounded-full blur-2xl translate-x-1/2 -translate-y-1/2 pointer-events-none"></div>
