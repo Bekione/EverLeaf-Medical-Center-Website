@@ -31,7 +31,7 @@ const Footer: React.FC = () => {
           <div>
             <Link to="/" className="flex items-center gap-3 mb-6 group">
               <div className="bg-white/10 p-2 rounded-lg group-hover:bg-white/20 transition-colors">
-                <EverleafLogo className="w-8 h-8" />
+                <EverleafLogo className="w-8 h-8 " />
               </div>
               <div className="flex flex-col">
                 <span className="text-xl font-brand font-semibold text-white leading-none">
@@ -42,7 +42,7 @@ const Footer: React.FC = () => {
                 </span>
               </div>
             </Link>
-            <p className="text-slate-600 mb-6 leading-relaxed">
+            <p className="text-slate-400 mb-6 leading-relaxed">
               Care That Grows With You. Committed to lifelong wellness through
               compassionate care, innovation, and trust.
             </p>
@@ -190,7 +190,7 @@ const Footer: React.FC = () => {
           </div>
           <div>
             <h4 className="text-white font-bold text-lg mb-6">Newsletter</h4>
-            <p className="text-slate-600 mb-4">
+            <p className="text-slate-400 mb-4">
               Subscribe to our newsletter to get the latest news and updates.
             </p>
             {status === "success" ? (
