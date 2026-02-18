@@ -153,3 +153,27 @@ export const CloudinaryPresets = {
       crop: "fit",
     }),
 };
+
+/**
+ * Convenience helper — accepts the full local public path used in data files
+ * (e.g. "/images/hero/home-hero.jpg") and returns an optimized Cloudinary URL.
+ *
+ * The VITE_CLOUDINARY_FOLDER is set to "everleaf" so the full path becomes:
+ *   everleaf/images/hero/home-hero → correct Cloudinary asset path.
+ *
+ * Falls back to the original path in local dev (no cloud name configured).
+ *
+ * @example
+ * cld("/images/hero/home-hero.jpg")
+ * // → https://res.cloudinary.com/dzhobawko/image/upload/q_auto,f_auto/everleaf/images/hero/home-hero
+ */
+export function cld(path: string): string {
+  if (
+    !import.meta.env.VITE_CLOUDINARY_CLOUD_NAME ||
+    import.meta.env.VITE_CLOUDINARY_CLOUD_NAME === "demo"
+  ) {
+    return path;
+  }
+  const clean = path.startsWith("/") ? path.slice(1) : path;
+  return getCloudinaryUrl(clean, { quality: "auto", format: "auto" });
+}
