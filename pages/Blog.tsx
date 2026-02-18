@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import NewsletterForm from "../components/NewsletterForm";
 import SEO from "../components/SEO";
+import { CldImg } from "../components/CldImg";
 import { articles as articlesData } from "../data/articles";
 
 const featuredArticle = articlesData.find((a) => a.featured) ?? articlesData[0];
@@ -91,9 +92,10 @@ const Blog: React.FC = () => {
             </p>
             <div className="flex flex-wrap items-center gap-4 sm:gap-6 mb-8">
               <div className="flex items-center gap-3">
-                <img
+                <CldImg
                   src={featuredArticle.authorImg}
                   alt={featuredArticle.author}
+                  transform="w_80,q_auto,f_auto,c_fill,g_face"
                   className="w-10 h-10 rounded-full object-cover border-2 border-white/30"
                 />
                 <div>
@@ -162,9 +164,10 @@ const Blog: React.FC = () => {
               className="bg-white rounded-2xl overflow-hidden shadow-card hover:shadow-xl transition-all duration-300 group border border-slate-100 flex flex-col h-full animate-fade-in"
             >
               <div className="relative h-56 overflow-hidden">
-                <img
+                <CldImg
                   src={article.img}
                   alt={article.title}
+                  transform="w_600,q_auto,f_auto,c_fill"
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />
                 <div className="absolute top-4 left-4">

@@ -3,6 +3,7 @@ import { Link, useParams, Navigate } from "react-router-dom";
 import NewsletterForm from "../components/NewsletterForm";
 import SEO from "../components/SEO";
 import RelatedArticles from "../components/RelatedArticles";
+import { CldImg } from "../components/CldImg";
 import { articles, ContentBlock } from "../data/articles";
 
 // ─── Category Styling ────────────────────────────────────────────────────────
@@ -254,9 +255,10 @@ const ArticleDetail: React.FC = () => {
 
               {/* Author + Date meta */}
               <div className="flex items-center gap-4 mt-6 pt-6 border-t border-slate-100">
-                <img
+                <CldImg
                   src={article.authorImg}
                   alt={article.author}
+                  transform="w_80,q_auto,f_auto,c_fill,g_face"
                   className="w-10 h-10 rounded-full object-cover border-2 border-white shadow"
                 />
                 <div>
@@ -286,9 +288,10 @@ const ArticleDetail: React.FC = () => {
 
             {/* Author Card */}
             <div className="bg-slate-50 rounded-2xl p-8 flex flex-col sm:flex-row gap-6 items-center sm:items-start text-center sm:text-left">
-              <img
+              <CldImg
                 src={article.authorImg}
                 alt={article.author}
+                transform="w_200,q_auto,f_auto,c_fill,g_face"
                 className="w-24 h-24 rounded-full object-cover shadow-lg border-2 border-white flex-shrink-0"
               />
               <div>

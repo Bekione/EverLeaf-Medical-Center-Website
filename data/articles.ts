@@ -1,3 +1,4 @@
+import { rawSrc } from "../components/CldImg";
 // ─── Content Block Types ────────────────────────────────────────────────────
 
 export type ContentBlock =
@@ -59,7 +60,7 @@ export const articles: Article[] = [
     read: "6 min read",
     img: "/images/articles/article-1-hero.jpg",
     author: "Dr. Mark Williams",
-    authorImg: "/images/doctors/team-dr-mark-williams.jpg",
+    authorImg: rawSrc("/images/doctors/team-dr-mark-williams.jpg"),
     authorTitle: "Chief of Cardiology",
     authorBio:
       "Dr. Williams is a dedicated cardiologist focusing on preventive heart care and minimally invasive surgical procedures. He leads our comprehensive cardiovascular wellness program.",
@@ -187,7 +188,7 @@ export const articles: Article[] = [
     read: "7 min read",
     img: "/images/articles/article-2-hero.jpg",
     author: "Dr. Mark Williams",
-    authorImg: "/images/doctors/team-dr-mark-williams.jpg",
+    authorImg: rawSrc("/images/doctors/team-dr-mark-williams.jpg"),
     authorTitle: "Chief of Cardiology",
     authorBio:
       "Dr. Williams is also a leading researcher in the field of endocrinology, exploring the intersections between heart health and metabolic disorders like diabetes.",
@@ -279,7 +280,7 @@ export const articles: Article[] = [
     read: "4 min read",
     img: "/images/articles/article-3-hero.jpg",
     author: "Dr. Emily Rodriguez",
-    authorImg: "/images/doctors/team-dr-emily-rodriguez.jpg",
+    authorImg: rawSrc("/images/doctors/team-dr-emily-rodriguez.jpg"),
     authorTitle: "Endocrinologist",
     authorBio:
       "Dr. Rodriguez treats hormonal disorders including diabetes, thyroid conditions, and metabolic syndrome. She is passionate about functional nutrition and its role in immune health.",
@@ -391,7 +392,7 @@ export const articles: Article[] = [
     read: "2 min read",
     img: "/images/articles/article-4-hero.jpg",
     author: "Dr. Emily Chen",
-    authorImg: "/images/doctors/team-dr-emily-chen.jpg",
+    authorImg: rawSrc("/images/doctors/team-dr-emily-chen.jpg"),
     authorTitle: "Senior Pediatrician",
     authorBio:
       "Dr. Chen is a passionate pediatrician known for her gentle approach and expertise in early childhood development. She oversaw the design and implementation of the new pediatric wing.",
@@ -457,7 +458,7 @@ export const articles: Article[] = [
     read: "6 min read",
     img: "/images/articles/article-5-hero.jpg",
     author: "Dr. Rachel Green",
-    authorImg: "/images/doctors/team-dr-rachel-green.jpg",
+    authorImg: rawSrc("/images/doctors/team-dr-rachel-green.jpg"),
     authorTitle: "Clinical Psychologist",
     authorBio:
       "Dr. Green specializes in cognitive behavioral therapy and mental health support for chronic illness patients. She works closely with families to create supportive environments for teens facing anxiety and depression.",
@@ -542,7 +543,7 @@ export const articles: Article[] = [
     read: "3 min read",
     img: "/images/articles/article-6-hero.jpg",
     author: "Dr. Bereket Kinfe",
-    authorImg: "/images/doctors/team-dr-bereket-kinfe.jpg",
+    authorImg: rawSrc("/images/doctors/team-dr-bereket-kinfe.jpg"),
     authorTitle: "Infectious Disease Specialist",
     authorBio:
       "Dr. Kinfe is an expert in diagnosing and treating complex infectious diseases. He leads EverLeaf's annual community vaccination program and advises on seasonal flu prevention strategies.",
@@ -601,7 +602,7 @@ export const articles: Article[] = [
     read: "7 min read",
     img: "/images/articles/article-7-hero.jpg",
     author: "Dr. Sarah Johnson",
-    authorImg: "/images/doctors/team-dr-sarah-johnson.jpg",
+    authorImg: rawSrc("/images/doctors/team-dr-sarah-johnson.jpg"),
     authorTitle: "Senior Neurologist",
     authorBio:
       "Dr. Johnson specializes in complex neurological disorders with over 15 years of experience. Her research focuses on the connection between physical mobility and cognitive health in aging adults.",

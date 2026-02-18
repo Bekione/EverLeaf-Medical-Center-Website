@@ -2,18 +2,44 @@ import type { Plugin } from "vite";
 
 /**
  * Vite plugin that rewrites all "/images/..." src paths to Cloudinary CDN URLs
- * at build time — exactly like Next.js image loader, but for Vite.
+ * at build time.
  *
- * Works by post-processing the bundled JS/HTML output and replacing every
- * occurrence of "/images/" with the full Cloudinary base URL.
+ * Skips paths that are already Cloudinary URLs (those come from <CldImg>
+ * which builds its own URL at runtime with a custom transform).
  *
  * Set in .env:
  *   VITE_CLOUDINARY_CLOUD_NAME=dzhobawko
  *   VITE_CLOUDINARY_FOLDER=everleaf
- *
- * In dev mode (npm run dev), images are served from /public as normal.
- * In production build (npm run build), all /images/ paths become Cloudinary URLs.
  */
+
+/** Returns the default Cloudinary transformation for a given image path */
+function getTransform(path: string): string {
+  if (path.includes("/hero/")) return "w_1920,q_auto,f_auto,c_fill";
+  if (path.includes("/gallery/")) return "w_1200,q_auto,f_auto,c_fill";
+  if (path.includes("/articles/")) return "w_1000,q_auto,f_auto,c_fit";
+  if (path.includes("/doctors/")) return "w_400,q_auto,f_auto,c_fill,g_face";
+  if (path.includes("/testimonials/"))
+    return "w_160,q_auto,f_auto,c_fill,g_face";
+  if (path.includes("article-body")) return "w_1000,q_auto,f_auto,c_fit";
+  return "w_800,q_auto,f_auto";
+}
+
+function rewriteCode(code: string, cloudName: string, folder: string): string {
+  // Rewrite plain /images/ string literals to Cloudinary URLs.
+  // The negative lookbehind (?<!cloudinary\.com[^"']{0,200}) ensures we skip
+  // any /images/ that's already inside a Cloudinary URL (produced by CldImg at runtime).
+  return code.replace(
+    /(?<![a-z])["']\/images\/([^"']+)["']/g,
+    (match, imgPath) => {
+      // Extra safety: skip if the matched path looks like it's already a CDN URL fragment
+      if (imgPath.includes("cloudinary.com")) return match;
+      const quote = match[0];
+      const transform = getTransform(`/images/${imgPath}`);
+      return `${quote}https://res.cloudinary.com/${cloudName}/image/upload/${transform}/${folder}/images/${imgPath}${quote}`;
+    },
+  );
+}
+
 export function cloudinaryPlugin(): Plugin {
   let cloudName: string | undefined;
   let folder: string | undefined;
@@ -21,7 +47,7 @@ export function cloudinaryPlugin(): Plugin {
 
   return {
     name: "vite-plugin-cloudinary",
-    apply: "build", // only runs during `vite build`, not `vite dev`
+    apply: "build",
 
     configResolved(config) {
       cloudName = config.env.VITE_CLOUDINARY_CLOUD_NAME;
@@ -30,36 +56,28 @@ export function cloudinaryPlugin(): Plugin {
 
       if (enabled) {
         console.log(
-          `\n☁  Cloudinary plugin active → https://res.cloudinary.com/${cloudName}/image/upload/q_auto,f_auto/${folder}/\n`,
+          `\n☁  Cloudinary plugin active → https://res.cloudinary.com/${cloudName}/image/upload/<transform>/${folder}/\n`,
         );
       }
     },
 
-    // Rewrite image paths in all JS/HTML chunks at the end of the build
     generateBundle(_options, bundle) {
       if (!enabled) return;
 
-      const base = `https://res.cloudinary.com/${cloudName}/image/upload/q_auto,f_auto/${folder}`;
-
       for (const chunk of Object.values(bundle)) {
         if (chunk.type === "chunk" && chunk.code) {
-          // Replace "/images/..." string literals in JS bundles
-          chunk.code = chunk.code.replaceAll('"/images/', `"${base}/images/`);
-          chunk.code = chunk.code.replaceAll("'/images/", `'${base}/images/`);
+          chunk.code = rewriteCode(chunk.code, cloudName!, folder!);
         }
         if (chunk.type === "asset" && typeof chunk.source === "string") {
-          // Replace in HTML and CSS assets
-          chunk.source = chunk.source.replaceAll(
-            '"/images/',
-            `"${base}/images/`,
-          );
-          chunk.source = chunk.source.replaceAll(
-            "'/images/",
-            `'${base}/images/`,
-          );
-          chunk.source = chunk.source.replaceAll(
-            "url(/images/",
-            `url(${base}/images/`,
+          chunk.source = rewriteCode(chunk.source, cloudName!, folder!);
+
+          // Also handle CSS url() references
+          chunk.source = chunk.source.replace(
+            /url\(\/images\/([^)?]+)\)/g,
+            (_match, imgPath) => {
+              const transform = getTransform(`/images/${imgPath}`);
+              return `url(https://res.cloudinary.com/${cloudName}/image/upload/${transform}/${folder}/images/${imgPath})`;
+            },
           );
         }
       }

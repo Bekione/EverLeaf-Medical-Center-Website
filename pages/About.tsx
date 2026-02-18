@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useRef } from "react";
 import { Link } from "react-router-dom";
 import SEO from "../components/SEO";
+import { CldImg, rawSrc } from "@/components/CldImg";
 
 // Counter Component for animation
 const CountUp = ({
@@ -135,17 +136,18 @@ const About: React.FC = () => {
             <div className="lg:w-1/2 relative">
               <div className="relative z-10 w-full max-w-lg mx-auto lg:ml-auto group">
                 {/* Main Image */}
-                <img
-                  src="/images/hero/about-hero-1.jpg"
+                <CldImg
+                  src={rawSrc("/images/hero/about-hero-1.jpg")}
                   alt="Medical Team"
                   className="rounded-2xl shadow-2xl w-full object-cover aspect-[4/3] border-4 border-white transition-transform duration-500 group-hover:scale-[1.01]"
                 />
 
                 {/* Floating Secondary Image */}
                 <div className="absolute -bottom-12 -left-12 w-2/3 hidden md:block">
-                  <img
-                    src="/images/hero/home-hero-1.jpg"
+                  <CldImg
+                    src={rawSrc("/images/hero/home-hero-1.jpg")}
                     alt="Hospital Building"
+                    transform="w_800,q_auto,f_auto,c_fill"
                     className="rounded-xl shadow-xl border-4 border-white w-full object-cover aspect-[3/2] transition-transform duration-500 group-hover:-translate-y-2"
                   />
                 </div>

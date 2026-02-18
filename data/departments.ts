@@ -6,7 +6,7 @@ export interface Department {
   desc: string;
 }
 
-export const departments: Department[] = [
+export const  departments: Department[] = [
   {
     id: "cardiology",
     name: "Cardiology",

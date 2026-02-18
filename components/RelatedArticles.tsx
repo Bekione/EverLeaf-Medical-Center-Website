@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { articles } from "../data/articles";
+import { CldImg } from "./CldImg";
 
 interface RelatedArticlesProps {
   currentId: string;
@@ -44,9 +45,10 @@ const RelatedArticles: React.FC<RelatedArticlesProps> = ({
               className="group flex gap-4 items-start"
             >
               <div className="w-20 h-20 flex-shrink-0 rounded-lg overflow-hidden bg-slate-100">
-                <img
+                <CldImg
                   src={article.img}
                   alt={article.title}
+                  transform="w_160,q_auto,f_auto,c_fill"
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                 />
               </div>

@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from "react";
+import { CldImg } from "./CldImg";
 
 interface GalleryModalProps {
   isOpen: boolean;
@@ -144,9 +145,10 @@ const GalleryModal: React.FC<GalleryModalProps> = ({
 
         <div className="relative group w-full h-full flex flex-col items-center justify-center">
           <div className="relative max-h-[70vh] w-auto overflow-hidden rounded-lg shadow-2xl ring-1 ring-white/10 bg-black">
-            <img
+            <CldImg
               src={imageSrc}
               alt={title}
+              transform="w_1920,q_auto,f_auto,c_fit"
               className="max-h-[70vh] w-auto object-contain"
             />
           </div>
@@ -194,8 +196,9 @@ const GalleryModal: React.FC<GalleryModalProps> = ({
             onClick={() => onSelect(idx)}
             className={`flex-shrink-0 w-24 h-16 rounded overflow-hidden cursor-pointer transition-all border ${currentImageIndex === idx ? "ring-2 ring-primary border-transparent opacity-100" : "border-white/20 opacity-50 hover:opacity-100"}`}
           >
-            <img
+            <CldImg
               src={thumb}
+              transform="w_200,q_auto,f_auto,c_fill"
               className="w-full h-full object-cover"
               alt="thumbnail"
             />
