@@ -24,7 +24,7 @@ const PreventiveCheckups: React.FC = () => {
       />
       <header className="relative bg-slate-900 text-white overflow-hidden">
         <div className="absolute inset-0">
-          <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCTxuFTPJwgaIproSGkw_NVSntv72zft_WG8tOAn4Ce2yzYAcC0xuvtbBanu709zUk7w9lAYWQaMbXU5Xu_pgT5lUmUnVeujKkEAQyHi6Ua42Fs9-KDAXefN9H1AfqcCx6XNQhARxPB7YtxES8Tn4SsqghLnqzwBPZClijrKCOVd9awJyP3TbFw2ZhugWATZg5R_fqfMiOkOWbZ50TQKWiYTdl6Zrm5FznchMEJhDdMAOr5X6i9XR8P14K3_yTUb-U0iCSrFjGTvps" alt="Preventive Health Checkup" className="w-full h-full object-cover opacity-40" />
+          <img src="/images/hero/preventive-checkup-body-1.jpg" alt="Preventive Health Checkup" className="w-full h-full object-cover opacity-40" />
           <div className="absolute inset-0 bg-gradient-to-r from-slate-900 via-slate-900/80 to-transparent"></div>
         </div>
         <div className="container mx-auto px-6 py-24 md:py-32 relative z-10">
@@ -226,7 +226,7 @@ const PreventiveCheckups: React.FC = () => {
         <div className="container mx-auto px-6">
           <div className="flex flex-col lg:flex-row gap-12 items-center">
             <div className="lg:w-1/2">
-              <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuC7x5mjAatY9aLrqycJ6GPFLs2r8Wfvfm1UUsGk0ZkHcqv_j3nAqU1RzfQvqd73NgLCeeCy9DW5hdDobBKg2c58_2Gf1aCsFMfSSH2YlqX18rtNbylG1fGEEP3b1Njo7Hfo1cJ_qVQY2DmsPM8VFyP0Go9iFfbctSw2UMru-Lau0vbCDml0aOj4oNn79AwLaNJN8PdnH_HZXWlA8m4oy6v71LM48ykSvHATBAw_2uJaYt3gfN7ZqwSF2ZOTGhsDmz4vE-2wAC8CCjI" alt="Wellness Planning" className="rounded-2xl shadow-xl w-full h-auto object-cover border border-slate-100" />
+              <img src="/images/preventive-checkup-body-2.jpg" alt="Wellness Planning" className="rounded-2xl shadow-xl w-full h-auto object-cover border border-slate-100" />
             </div>
             <div className="lg:w-1/2">
               <h2 className="text-3xl font-serif font-bold text-slate-900 mb-6">Customized Wellness Plans</h2>

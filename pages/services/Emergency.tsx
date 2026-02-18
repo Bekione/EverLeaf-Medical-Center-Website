@@ -15,7 +15,7 @@ const Emergency: React.FC = () => {
       />
       <header className="relative bg-slate-900 text-white overflow-hidden">
         <div className="absolute inset-0">
-          <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCCEXHj4w22ep_hWMarvG_GaeCc6rDznHa1Z-kIy3g9AT9mo84EZt3exyxFSbVu2brm9dCysNW9uWI4E90M7zrRFk8JnJdUNBX9aKPYF9lE2pKf0MfczXha6gAbRtSfuL1wb9U2UQvFx-ijmULU8HHbBOewZrGJ1CM56ZO9CU-lsPU3jEFDAEoYXktMBIUFFJ7-u929uGz8avKckbD7RVDTFloU4j6DZ1LblYkuZcS3_wlZwY9dyKYcdEJO6EBPNHtr-QhbfC9ipp4" alt="Emergency Room" className="w-full h-full object-cover opacity-40" />
+          <img src="/images/hero/emergency-hero.jpg" alt="Emergency Room" className="w-full h-full object-cover opacity-40" />
           <div className="absolute inset-0 bg-gradient-to-r from-slate-900 via-slate-900/80 to-transparent"></div>
         </div>
         <div className="container mx-auto px-6 py-24 md:py-32 relative z-10">
@@ -79,7 +79,7 @@ const Emergency: React.FC = () => {
             </div>
             <div className="relative">
               <div className="absolute -inset-4 bg-blue-100 rounded-full blur-3xl opacity-50 pointer-events-none"></div>
-              <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuA7AFGCkyZNLthqWWYsUxMg17b0HsoLU2BUsLyQDmBVNczXR9ujZtnK_lxxBO_pK9YsScqMSkH2xpYJzPk7s_uZKbEOnLL8FHC759hX_R-_1uFCZeY-lbIDO5e8aLapPC-ueGSQ0MMRsuV_U1s9_29QeSr3g8apIW-4LwLNy25D4_YrZ3VVZ4BvQfFqSXxgovPA8iOm5j1LDZT8dkt30LTv1FJABI8VvvaAyr4JOAw8kirgh0yABJtwiTxJJH07mXzrqJ_hIM-Nf0A" alt="Emergency Medical Team" className="relative rounded-2xl shadow-2xl border-4 border-white z-10 w-full object-cover h-[600px]" />
+              <img src="/images/emergency-body-1.jpg" alt="Emergency Medical Team" className="relative rounded-2xl shadow-2xl border-4 border-white z-10 w-full object-cover h-[600px]" />
               <div className="absolute bottom-8 left-8 right-8 bg-white/95 backdrop-blur p-6 rounded-xl shadow-lg z-20 border border-slate-100">
                 <div className="flex items-start gap-4">
                   <div className="w-12 h-12 rounded-full bg-red-50 flex items-center justify-center text-red-600 flex-shrink-0">

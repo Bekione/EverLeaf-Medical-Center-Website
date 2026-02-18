@@ -58,7 +58,7 @@ const Dental: React.FC = () => {
             <div className="relative hidden lg:flex w-full justify-center">
               <div className="relative z-10 rounded-2xl overflow-hidden shadow-2xl border-4 border-white transform rotate-2 hover:rotate-0 transition-transform duration-500 max-h-[450px] w-full max-w-lg">
                 <img
-                  src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=1000&q=80"
+                  src="/images/hero/dental-hero.jpg"
                   alt="Modern Dental Clinic"
                   className="w-full h-full object-cover"
                 />
@@ -228,27 +228,29 @@ const Dental: React.FC = () => {
               {
                 name: "Dr. Sarah Johnson",
                 role: "Senior Orthodontist",
-                icon: "person",
+                img: "/images/doctors/team-dr-sarah-johnson.jpg",
               },
               {
-                name: "Dr. Michael Chen",
+                name: "Dr. Mark Williams",
                 role: "Oral Surgeon",
-                icon: "person_2",
+                img: "/images/doctors/team-dr-mark-williams.jpg",
               },
               {
-                name: "Dr. Emily Davis",
+                name: "Dr. Emily Chen",
                 role: "Pediatric Dentist",
-                icon: "person_3",
+                img: "/images/doctors/team-dr-emily-chen.jpg",
               },
             ].map((doc, i) => (
               <div
                 key={i}
                 className="bg-white rounded-2xl overflow-hidden shadow-card hover:shadow-xl transition-all duration-300 group"
               >
-                <div className="h-64 overflow-hidden relative bg-slate-200">
-                  <div className="absolute inset-0 flex items-center justify-center text-slate-400">
-                    <span className="material-icons text-6xl">{doc.icon}</span>
-                  </div>
+                <div className="h-64 overflow-hidden relative">
+                  <img
+                    src={doc.img}
+                    alt={doc.name}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-4">
                     <button
                       onClick={() =>

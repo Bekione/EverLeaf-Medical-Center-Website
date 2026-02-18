@@ -22,7 +22,7 @@ const Diagnostics: React.FC = () => {
       {/* Hero Section */}
       <header className="relative bg-slate-900 text-white overflow-hidden">
         <div className="absolute inset-0">
-          <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDmJ6m3X1-OCP_Qpavn3ySLxI7NyUiLSrCFFSEtSPmVB37uDa9thFM9x-xpGDb3dlcT9IBPlTe2371QdSX0fa5ijh6nOKkZJ39QqZDdEEbU6uhMlA7ORHfkan1J0YRHTUXmaneNb4JApA-YvqhFKBZ7VQmpsXWs4-7aTkheXF0vJYjFOTFaIxh54Ucc6izYoD0Q6FWnv_xvgj7XkDMEmATy4hzRMRp24E-lLQ23QOR4154KGMAjM34IJm5zu1vt2bcr30cxiDivIuU" alt="Advanced Diagnostics Center" className="w-full h-full object-cover opacity-40" />
+          <img src="/images/hero/diagnostics-hero.jpg" alt="Advanced Diagnostics Center" className="w-full h-full object-cover opacity-40" />
           <div className="absolute inset-0 bg-gradient-to-r from-slate-900 via-slate-900/80 to-transparent"></div>
         </div>
         <div className="container mx-auto px-6 py-24 md:py-32 relative z-10">
@@ -132,7 +132,7 @@ const Diagnostics: React.FC = () => {
           <div className="flex flex-col lg:flex-row items-center gap-16">
             <div className="lg:w-1/2 relative order-2 lg:order-1">
               <div className="absolute -top-10 -left-10 w-40 h-40 bg-primary/10 rounded-full blur-3xl"></div>
-              <img alt="Advanced CT Scanner" className="relative rounded-2xl shadow-2xl z-10 w-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAmQ_tYyVIK-pTHSIcCt0t03QVQpk4OOTroaxWIdvNepXZXGwDXesjJyrZ1eVwD33QUuTgcs5KKtRhlzOqp78bjgwTpnlQAZr9F0NYURAZU6RFefcryEe2n_jd0cz1YNz8B74g4NBSBpc8TgXiw2qa53e0aiIzzsvVZJaWJ8lIG6dVg65HfDJ0PCIU91YHQ6a-sT6jCYFEkA5SYd6lQ1j2pUbj0N7mFYZ8LgzTcDkxq-xAXiMgzeSn2C2Ygg0FdrqpodSrmGHEO468" />
+              <img alt="Advanced CT Scanner" className="relative rounded-2xl shadow-2xl z-10 w-full object-cover" src="/images/diagnostics-body-image-1.jpg" />
               <div className="absolute bottom-6 right-6 z-20 bg-white p-4 rounded-lg shadow-xl border-l-4 border-primary max-w-xs">
                 <p className="text-sm font-semibold text-slate-900">Newest Addition</p>
                 <p className="text-xs text-slate-500">Siemens Somatom Definition Edge CT Scanner installed in 2023.</p>
@@ -250,7 +250,7 @@ const Diagnostics: React.FC = () => {
               </div>
             </div>
             <div className="relative h-96 rounded-2xl overflow-hidden shadow-2xl">
-              <img alt="Medical staff reviewing diagnostic results" className="absolute inset-0 w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC8Bu241H6jOGdI9pbiFvrnPk2T57c0yQRbpDebCKb7wniv06Xe9gqF5IMhZ0vgyjI6jhSqjQ4tk22fEA2CiFv5BAb9Dyzh6I16BqqsidHnh5Nj7zQSyWAtXveQgGTocfc1BhwYqWuvPIr7QDOIep5q-JTuzLjPj-ShPzjIWyba6U98TC3oJ66nYCX58zHpNMIgdwDk-ldAeb8pxk9VXEVYXP8m0LZzyNP-A27QA1nJq5NImKFc3kSUYthhjbnMDlgIZoCMEJtCMVo" />
+              <img alt="Medical staff reviewing diagnostic results" className="absolute inset-0 w-full h-full object-cover" src="/images/diagnostics-body-image-2.jpg" />
             </div>
           </div>
         </div>

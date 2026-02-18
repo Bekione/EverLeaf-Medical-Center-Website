@@ -24,7 +24,7 @@ const Laboratory: React.FC = () => {
       />
       <header className="relative bg-slate-900 text-white overflow-hidden">
         <div className="absolute inset-0">
-          <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuB_pz0LkLId6ZtK8txAyerpvUQ732I3XINGlxdNS2skUDdAcJbuO2zDCmYG0KgOzEQea9eCBt2ZOMuvhQ8WXR-sIAkS3pSFFZO61729sWktvqksqsAWsh3Pf6uHyPOzwgdrbS_0pTEB14D0Vx17WY5FUUirSL9l4hMJP9hhAdCtWJccKk1-p9urwJQefmVEzwx_PlqVo0eSn33-QyfXkBUO8jVW5eCK0P-hkhis4DJ7IxQo9-kOewUkBR3yFCPyb4I_u7FFlol2Qjc" alt="Modern medical laboratory environment" className="w-full h-full object-cover opacity-30" />
+          <img src="/images/hero/laboratory-hero-1.jpg" alt="Modern medical laboratory environment" className="w-full h-full object-cover opacity-30" />
           <div className="absolute inset-0 bg-gradient-to-r from-slate-900 via-slate-900/80 to-transparent"></div>
         </div>
         <div className="container mx-auto px-6 py-24 md:py-32 relative z-10">
@@ -185,7 +185,7 @@ const Laboratory: React.FC = () => {
         <div className="container mx-auto px-6">
           <div className="flex flex-col lg:flex-row gap-12 items-center">
             <div className="lg:w-1/2 order-2 lg:order-1">
-              <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCFaOwNC4YW7AzoDJywjgxJU9ucnUaL2HbVWSj644j17mvHBSRZP5GBK-z82bqZuV_56jCHXzaw-FCnyhdHZJpuYP_iANTTE8cot78SgO1NKN-6nwIswxOM7N9Q3QGa-icoNIFq8_WKwrvzjiDotzXhblHsH4rjy0y0_Lrb6-jc6rYqBroWWhkXV7XK3tcghLht4bAesBaMtih5Fm3GCc9pUnNDTRANgDGs3-YDOQlBzkUfzmmecpfbyyG1Qeuonj2Yklc5dHWAKaA" alt="Advanced laboratory equipment microscope" className="rounded-2xl shadow-xl w-full object-cover h-[400px]" />
+              <img src="/images/laboratory-body-image-1.jpg" alt="Advanced laboratory equipment microscope" className="rounded-2xl shadow-xl w-full object-cover h-[400px]" />
             </div>
             <div className="lg:w-1/2 order-1 lg:order-2">
               <h2 className="text-3xl font-serif font-bold text-slate-900 mb-6">State-of-the-art Equipment</h2>

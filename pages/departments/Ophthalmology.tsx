@@ -62,7 +62,7 @@ const Ophthalmology: React.FC = () => {
                 <img
                   alt="Ophthalmologist examining patient"
                   className="w-full h-full object-cover"
-                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuBAZ72MvKfsAV5eXP0UflP2GrTVhI8MHJWW3Nq1zzKA5556zQOOjLXYQJ-gq0yFKxbDmNV0HhuyBNxpiMBdUiJzr_DTdS6GQPCfAK29_IDLWZUjz3_XAOkeFZDCY4WILVjYqBa4EqekhXnmMw6Rgg_PHaFS6uVdyLRDfFQIFJunA2vLPn4mdo9r6CJYuY8DvTkeKA_93bc76_XBcKU6xBATaw_outxCae_ArnfZNIcHBtr5RF5o6uYwaGVs1cBaBlkrEGnINqSI-Ic"
+                  src="/images/hero/home-hero-2.jpg"
                 />
               </div>
               <div className="absolute -bottom-6 -left-6 z-20 bg-white p-4 rounded-xl shadow-xl border border-slate-100 max-w-xs animate-fade-in hidden lg:block">
@@ -305,7 +305,7 @@ const Ophthalmology: React.FC = () => {
                 <img
                   alt="Advanced Eye Scanning Technology"
                   className="w-full h-auto"
-                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuBiPrnvFdUjLNXpciYqxHqHa81iZUl7_kY2qlDKCy3xVZeXN9QuEzIDlkuwWYdnVaRKQr0L3ZwVh_ox-w03vDt0FFlpm43uRVENKBy6UYzysXkPc8O9Hy6rgVZDhUTH8bUVATOVYBg_jK0YLYUFpgsqHpDJPRgCZAbFUeMRGMwGFsjD9DI-ILX8YrPUGtfkZ5XLcq-qUWe5mnawQiaKYokzMIdm9GewUgsg2c5zWVw4Io3-OtA6kSfBpZbUeRzKnU1fzqzwt6PMrqI"
+                  src="/images/ophthalmology-body-1.jpg"
                 />
               </div>
             </div>

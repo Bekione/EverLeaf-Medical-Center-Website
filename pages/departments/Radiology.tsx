@@ -58,7 +58,7 @@ const Radiology: React.FC = () => {
             <div className="relative hidden lg:flex w-full justify-center">
               <div className="relative z-10 rounded-2xl overflow-hidden shadow-2xl border-4 border-white transform rotate-2 hover:rotate-0 transition-transform duration-500 max-h-[450px] w-full max-w-lg">
                 <img
-                  src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=800&q=80"
+                  src="/images/hero/radiology-hero.jpg"
                   alt="Advanced Radiology"
                   className="w-full h-full object-cover"
                 />
@@ -317,17 +317,17 @@ const Radiology: React.FC = () => {
               {
                 name: "Dr. Sarah Jenkins",
                 role: "Chief Radiologist",
-                img: "https://lh3.googleusercontent.com/aida-public/AB6AXuB9BZuqUAA5IOvQMgXBQ8ryTLzC7vKg69xiTlytVe-76cUVW84Bp8VWOapyKoqbwUVVWBuN_FfxCcsqFq1ao_QGijkga86eRCQeYgiaWkGi7WtZIQPN8Q2vpj9P49F7WLoa7Y9f-Oj_nR-hQM4ZVF-Hxf-HLyzlW5kk3Rk-ANh7DNvIi720KTGderseW5cc8dF6H7Wx6PDoI9ce9GfwndlXLLz4CsQbzfWS0_34TQzB04eBNYZK-S8nSZOkgY3aUVNpbGCAWq_I9vs",
+                img: "/images/doctors/team-dr-sarah-jenkins.jpg",
               },
               {
                 name: "Dr. Michael Chen",
                 role: "Interventional Radiologist",
-                img: "https://lh3.googleusercontent.com/aida-public/AB6AXuADGr580ge61fkfsxwBrM7N1TZyAY9Z-GTpjBUo_xK5lWfakoEU_qOziiT-so6DMVRYMjRbu0nVW-k1DcZ572-UwSxJBbHFxL921KxZ6v5xbrKCJfSDGPfGIKJ2lnbzJo8rsumPzZ1VnlvNztje35dbZ8OjoskrJoJWMwL2xyEuWVfFxTxZWLkj3322_nwECoDQOhnBsfJT-uJdBuBYvHW7tZFnkW3TihhkEKyTi4ionW16tPVhP7_Msgmo2tYXI-H3mW5DhYbZYTk",
+                img: "/images/doctors/team-dr-mark-williams.jpg",
               },
               {
                 name: "Dr. Emily Rodriguez",
                 role: "Pediatric Radiologist",
-                img: "https://lh3.googleusercontent.com/aida-public/AB6AXuAY7zDqNO2hoPrxpDGZpE92fSZkSGJgJi7hfuXKUusm09nz1u9rNHNBxuJ0N_t6HSXFbSkNan8ZuDt8AkK0PHqzsi4I6ipPzk2q3ALgTZVcC1uboMYQ6dZnjiBkO036p5ErpaA0vAjn6D8TivJDicjayQgEkLrG4PsZURfL7C-lOADFWh45AKVB0WfWyqvzWL5JcVEwzhhuOWO87RBPu2zcdEOcZJloL6qr9YD-oKjiSjrlq9KMwrQ9LL25SFVQnG3ZphZNrYFaNIs",
+                img: "/images/doctors/team-dr-emily-chen.jpg",
               },
             ].map((doc, i) => (
               <div
@@ -399,7 +399,7 @@ const Radiology: React.FC = () => {
                       <h4 className="font-bold text-lg text-white mb-1">
                         AI-Assisted Imaging Analysis
                       </h4>
-                      <p className="text-sm text-slate-600">
+                      <p className="text-sm text-slate-400">
                         Utilizing artificial intelligence to assist radiologists
                         in detecting subtle abnormalities earlier and more
                         accurately.
@@ -416,7 +416,7 @@ const Radiology: React.FC = () => {
                       <h4 className="font-bold text-lg text-white mb-1">
                         Low-Radiation Equipment
                       </h4>
-                      <p className="text-sm text-slate-600">
+                      <p className="text-sm text-slate-400">
                         Our CT and X-ray systems are optimized to reduce
                         radiation dose by up to 60% without compromising image
                         quality.

@@ -24,7 +24,7 @@ const Pharmacy: React.FC = () => {
       />
       <header className="relative bg-slate-900 text-white overflow-hidden">
         <div className="absolute inset-0">
-          <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDD46R_B_4eaRz5tgFKk17XXFe86nTmW-cDb6UUwCe2K0SDPJ33Kxl8m27aCd3RSuuDjYBgIx7GXkTltYqkBf78iyChuazBZ9x2b_a0WflM5mn24-gBdlhYHS3FEExfpOzJ4f8NeHDE_8pt940Tu-x11xZfsbqWk6MWrU2Za3-9eYMl0JTe6_smpxeIMLhS5j2hfLR4klACyY1tegsWMOqWaS7pgYVcADx9ZNH2IOELr2xO7b-MrcRVXXc2aF8te5sa0C-zJ1qjl5E" alt="Modern Pharmacy" className="w-full h-full object-cover opacity-40" />
+          <img src="/images/hero/pharmacy-hero.jpg" alt="Modern Pharmacy" className="w-full h-full object-cover opacity-40" />
           <div className="absolute inset-0 bg-gradient-to-r from-slate-900 via-slate-900/80 to-transparent"></div>
         </div>
         <div className="container mx-auto px-6 py-24 md:py-32 relative z-10">
@@ -123,7 +123,7 @@ const Pharmacy: React.FC = () => {
                 </div>
               </div>
               <div className="relative">
-                <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuA---fu-9JSlKsilewMtuFSO3VLSu3FF6ixKTfchbJEgoKL-KmPHTewQZYgh0cz0Ed_CE8MXhwG4aY_kPunT5IQOpDs95_2_s78i_-11vn9rkpxmD9LStkAT2WcHZeFR7dqdDvYbw13dx2LTW2iZQaShoBIrXzHoEi9Uqv97iKvoM8B6z-mQ0Iif6C7DeW0eokhiP3sJljjcfYO_eFONXPd1mq4Iv7cX7BXIEuYexwBb_Epvsc9WO75SX6b_spZc__IrfTwRLgdFQk" alt="Pharmacist checking quality" className="rounded-2xl shadow-xl w-full object-cover h-80" />
+                <img src="/images/pharmacy-body-1.jpg" alt="Pharmacist checking quality" className="rounded-2xl shadow-xl w-full object-cover h-80" />
                 <div className="absolute -bottom-6 -left-6 bg-white p-4 rounded-xl shadow-lg border border-slate-100 max-w-xs hidden md:block">
                   <div className="flex items-center gap-3">
                     <div className="bg-green-100 p-2 rounded-full">

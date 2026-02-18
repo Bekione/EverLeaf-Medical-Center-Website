@@ -59,7 +59,7 @@ const Laboratory: React.FC = () => {
             <div className="relative hidden lg:flex w-full justify-center">
               <div className="relative z-10 rounded-2xl overflow-hidden shadow-2xl border-4 border-white transform rotate-2 hover:rotate-0 transition-transform duration-500 max-h-[450px] w-full max-w-lg">
                 <img
-                  src="https://images.unsplash.com/photo-1581594693702-fbdc51b2763b?w=800&q=80"
+                  src="/images/hero/laboratory-dept-hero.jpg"
                   alt="Modern Laboratory"
                   className="w-full h-full object-cover"
                 />
@@ -255,17 +255,17 @@ const Laboratory: React.FC = () => {
               {
                 name: "Dr. Rachel Anderson",
                 role: "Chief Pathologist",
-                img: "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=400&q=80",
+                img: "/images/doctors/team-dr-rachel-anderson.jpg",
               },
               {
                 name: "Dr. Michael Torres",
                 role: "Clinical Biochemist",
-                img: "https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=400&q=80",
+                img: "/images/doctors/team-dr-michael-torres.jpg",
               },
               {
                 name: "Dr. Lisa Chen",
                 role: "Microbiologist",
-                img: "https://images.unsplash.com/photo-1594824476967-48c8b964273f?w=400&q=80",
+                img: "/images/doctors/team-dr-lisa-chen.jpg",
               },
             ].map((doc, i) => (
               <div

@@ -58,7 +58,7 @@ const Surgery: React.FC = () => {
             <div className="relative hidden lg:flex w-full justify-center">
               <div className="relative z-10 rounded-2xl overflow-hidden shadow-2xl border-4 border-white transform rotate-2 hover:rotate-0 transition-transform duration-500 max-h-[450px] w-full max-w-lg">
                 <img
-                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuASpB4zEhU2d312bE6DML0nD_09L6xUkwbVl-4SSiHECRYzO9M687bP9Y0-aeNxD3KFcW5iw5pw3_r1_WM1FYmEr2VkBxf1BNrUXJirb-BDiuU2Z1p8OGO13dWa1TKogXhVnX3PdIrcL7W3mQE7Vu1Lh2Qp_85Ks3cEJ4e0FtiH4Oc3Mm6MJ_-mXEt-i7MLgdkI0MTch5GRoxToq4J9yXSWxCIVCDbd-5UM0Ey-lnxb2fYExx4AS5wtWdA4KBjKhAE1czMdyorFTxc"
+                  src="/images/hero/home-hero-3.jpg"
                   alt="Advanced Surgery Room"
                   className="w-full h-full object-cover"
                 />
@@ -212,7 +212,7 @@ const Surgery: React.FC = () => {
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div className="order-2 md:order-1">
               <img
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuChyPB_2UQHHnDtq1vVV9W34Ge7GGjcMoJyZsVwBs903xwp2IiZ4sIWcxC8NUOV6yXBQ0ubp6WDTC6vNgdukJgazVwbMbLoWdTYRN5ai2kdlI91LrRN982zR42Na5g4mCF77bkUlxgdV_pzFCpt7GYvOiwYe4_MNulR9XoPW1KAb4ohUU4O8gyCZBokScO3TRHZfSeXdEqf3NBK0xLmzT41RWkJ6JfxwVUNZfQ2U5mDOssWJxELkX5ZvTynyEI4rE8CoAb3dRYtCT8"
+                src="/images/surgery-body-1.jpg"
                 alt="Robotic Surgery"
                 className="rounded-2xl shadow-2xl border border-slate-700"
               />
@@ -287,19 +287,19 @@ const Surgery: React.FC = () => {
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
               {
-                name: "Dr. Sarah Johnson",
+                name: "Dr. Samantha Johnson",
                 role: "General Surgery Specialist",
-                img: "https://lh3.googleusercontent.com/aida-public/AB6AXuC0QueLjCwWgxaddETOK-shQR73kouJo9t9W6zRv5ay5BTRojZm02Kl8Y8NCm9UhC4ADZe1_mh9xU1uSWUeRiNNgJsLhiQmUnp_nL6ufkGUidb_C-Nd00lZMTohXecbY9N3Wr9iDIwu__hKWOT0gjEjUd_6Z8WwSsCvTJhEMqmBThQqkC-p8csG8NSEDNyiZ1AmLCrLxaRc53sevYLriIyy4J8otaXve0J5m-7BAMr25ZLviCb0qg2jAu-G0cZAM7lEsRBbb5Ut0Ok",
+                img: "/images/doctors/team-dr-samantha-johnson.jpg",
               },
               {
-                name: "Dr. Michael Chen",
+                name: "Dr. Mathew Chen",
                 role: "Trauma & Acute Care",
-                img: "https://lh3.googleusercontent.com/aida-public/AB6AXuCVF7Vx5w8Ryb7hOWCqr7p6VYGmnbENuYJMI9koJjgakAo0tT6HwecQekM0p8cAJkfJtCEuEG5kxkOSqKsfwt1QpWfBnQ-romAZ_MC3EP_Mj7MrCf2bADuUqcuFshVJyzmuHqagWepcyR4bXdNh4HtLAnNonmtq_vTGPMaFnFCbmbPNjN1kyjMwmkWv4wEwOZKgRSy4q9Qu52UWPFQT1lw8kgEvd4lNZ9D0TXMPsjLDCX7l8dkflKYA6d8detnoMguojFlIoEi5XCg",
+                img: "/images/doctors/team-dr-mathew-chen.jpg",
               },
               {
-                name: "Dr. Emily Davis",
+                name: "Dr. Nikita Davis",
                 role: "Minimally Invasive Surgery",
-                img: "https://lh3.googleusercontent.com/aida-public/AB6AXuA6bhrrr0ZMVSYV0P5TqAweoZBjRflxtODiC0EhihtWXr27w5ittH1j1s8RikyFj00pBHaRDXU7Ao-A8a8UhSsh_FzMd5qgStPG9Xweslh2AdxW3dWg3pYuXAfxjP05dzbO8WgOTPyWVslotYafxf98HNdY0EdNxNPWwC7_cOKt2EIOnU_-jtevOf6TeL6UaONMToNe9edLxC5D6uAKY1F3xauI0fGJCDK_FLAoq7TKtP1R6cmH1f39mPae9FWxiUgZMSTiDg2BAfg",
+                img: "/images/doctors/team-dr-nikita-davis.jpg",
               },
             ].map((doc, i) => (
               <div
