@@ -4,6 +4,8 @@ import NewsletterForm from "../components/NewsletterForm";
 import SEO from "../components/SEO";
 import { articles as articlesData } from "../data/articles";
 
+const featuredArticle = articlesData.find((a) => a.featured) ?? articlesData[0];
+
 const ITEMS_PER_PAGE = 3;
 
 const Blog: React.FC = () => {
@@ -57,58 +59,67 @@ const Blog: React.FC = () => {
         description="Read the latest medical insights, health tips, and hospital announcements from the experts at Everleaf Medical Center."
         canonical="https://everleaf-medical.com/blog"
       />
-      {/* Featured Article Hero */}
+      {/* Featured Article Hero — driven by featured:true in data/articles.ts */}
       <section className="relative bg-slate-900 text-white overflow-hidden">
         <div className="absolute inset-0">
           <img
-            src="/images/hero/blog-hero.jpg"
-            alt="Featured Article"
+            src={featuredArticle.img}
+            alt={featuredArticle.title}
             className="w-full h-full object-cover opacity-30"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-slate-900 via-slate-900/90 to-transparent"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-slate-900 via-slate-900/90 to-transparent" />
         </div>
         <div className="container mx-auto px-6 py-20 lg:py-28 relative z-10">
           <div className="max-w-3xl">
             <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/20 text-blue-300 border border-blue-500/30 text-xs font-semibold tracking-wider uppercase mb-6">
-              <span className="w-2 h-2 rounded-full bg-blue-400 animate-pulse"></span>{" "}
+              <span className="w-2 h-2 rounded-full bg-blue-400 animate-pulse" />
               Featured Article
             </span>
             <h1 className="text-4xl lg:text-5xl font-serif font-bold mb-6 leading-tight">
-              Understanding Preventive Cardiology: <br />{" "}
-              <span className="text-primary">A Guide to Heart Health</span>
+              {featuredArticle.title.split(":")[0]}
+              {featuredArticle.title.includes(":") && (
+                <>
+                  :<br />
+                  <span className="text-primary">
+                    {featuredArticle.title.split(":")[1].trim()}
+                  </span>
+                </>
+              )}
             </h1>
             <p className="text-lg text-slate-300 mb-8 leading-relaxed max-w-2xl">
-              Heart disease remains the leading cause of death globally. Learn
-              about the latest preventive measures, dietary changes, and
-              screening protocols recommended by our top cardiologists.
+              {featuredArticle.excerpt ?? featuredArticle.subtitle}
             </p>
-            <div className="flex items-center gap-6 mb-8">
+            <div className="flex flex-wrap items-center gap-4 sm:gap-6 mb-8">
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-white font-bold text-sm">
-                  DR
-                </div>
+                <img
+                  src={featuredArticle.authorImg}
+                  alt={featuredArticle.author}
+                  className="w-10 h-10 rounded-full object-cover border-2 border-white/30"
+                />
                 <div>
                   <p className="text-sm font-semibold text-white">
-                    Dr. Sarah Reynolds
+                    {featuredArticle.author}
                   </p>
-                  <p className="text-xs text-slate-400">Chief of Cardiology</p>
+                  <p className="text-xs text-slate-400">
+                    {featuredArticle.authorTitle}
+                  </p>
                 </div>
               </div>
-              <div className="h-8 w-px bg-slate-700"></div>
+              <div className="h-8 w-px bg-slate-700 hidden sm:block" />
               <div className="text-sm text-slate-400 flex items-center gap-2">
-                <span className="material-icons text-base">calendar_today</span>{" "}
-                October 24, 2023
+                <span className="material-icons text-base">calendar_today</span>
+                {featuredArticle.date}
               </div>
               <div className="text-sm text-slate-400 flex items-center gap-2">
-                <span className="material-icons text-base">schedule</span> 8 min
-                read
+                <span className="material-icons text-base">schedule</span>
+                {featuredArticle.read}
               </div>
             </div>
             <Link
-              to="/blog/preventive-cardiology"
+              to={`/blog/${featuredArticle.id}`}
               className="inline-flex items-center gap-2 text-white font-semibold hover:text-primary transition-colors border-b-2 border-primary pb-0.5"
             >
-              Read Full Article{" "}
+              Read Full Article
               <span className="material-icons text-sm">arrow_forward</span>
             </Link>
           </div>

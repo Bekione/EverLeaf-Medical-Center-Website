@@ -1,16 +1,156 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams, Navigate } from "react-router-dom";
 import NewsletterForm from "../components/NewsletterForm";
 import SEO from "../components/SEO";
 import RelatedArticles from "../components/RelatedArticles";
+import { articles, ContentBlock } from "../data/articles";
+
+// ─── Category Styling ────────────────────────────────────────────────────────
+
+const getCategoryStyle = (category: string) => {
+  switch (category) {
+    case "Research":
+      return "text-primary bg-blue-50 border-blue-100";
+    case "Health Tips":
+      return "text-secondary bg-green-50 border-green-100";
+    case "Announcements":
+      return "text-red-600 bg-red-50 border-red-100";
+    case "Medical Awareness":
+      return "text-purple-600 bg-purple-50 border-purple-100";
+    default:
+      return "text-slate-600 bg-slate-100 border-slate-200";
+  }
+};
+
+const getCalloutStyle = (color?: string) => {
+  switch (color) {
+    case "red":
+      return "bg-red-50 border-red-500";
+    case "green":
+      return "bg-green-50 border-green-500";
+    case "orange":
+      return "bg-orange-50 border-orange-500";
+    case "purple":
+      return "bg-purple-50 border-purple-500";
+    case "blue":
+    default:
+      return "bg-blue-50 border-primary";
+  }
+};
+
+// ─── Block Renderer ──────────────────────────────────────────────────────────
+
+const renderBlock = (block: ContentBlock, index: number): React.ReactNode => {
+  switch (block.type) {
+    case "paragraph":
+      return <p key={index}>{block.text}</p>;
+
+    case "heading":
+      return (
+        <h2
+          key={index}
+          className="text-2xl font-bold text-slate-900 mt-10 mb-6"
+        >
+          {block.text}
+        </h2>
+      );
+
+    case "list":
+      return (
+        <ul key={index} className="space-y-4 list-none pl-0 my-6">
+          {block.items.map((item, i) => (
+            <li key={i} className="flex items-start gap-3">
+              {item.icon && (
+                <span
+                  className={`material-icons mt-1 text-base flex-shrink-0 ${item.iconColor ?? "text-primary"}`}
+                >
+                  {item.icon}
+                </span>
+              )}
+              <span>
+                {item.title && <strong>{item.title}: </strong>}
+                {item.text}
+              </span>
+            </li>
+          ))}
+        </ul>
+      );
+
+    case "callout":
+      return (
+        <div
+          key={index}
+          className={`p-6 rounded-xl border-l-4 my-8 ${getCalloutStyle(block.color)}`}
+        >
+          <h4 className="text-lg font-bold text-slate-900 mb-2">
+            {block.title}
+          </h4>
+          <p className="text-sm mb-0">{block.text}</p>
+        </div>
+      );
+
+    case "image-grid":
+      return (
+        <div
+          key={index}
+          className="my-10 grid grid-cols-1 md:grid-cols-2 gap-6"
+        >
+          {block.images.map((img, i) => (
+            <img
+              key={i}
+              src={img.src}
+              alt={img.alt}
+              className="rounded-xl shadow-md object-cover h-64 w-full"
+            />
+          ))}
+        </div>
+      );
+
+    case "metric-list":
+      return (
+        <div
+          key={index}
+          className="bg-blue-50 p-6 rounded-xl border-l-4 border-primary my-8"
+        >
+          <h4 className="text-lg font-bold text-slate-900 mb-3">
+            Essential Metrics to Monitor:
+          </h4>
+          <ul className="space-y-2 list-none pl-0 mb-0">
+            {block.items.map((item, i) => (
+              <li key={i} className="flex items-start gap-3">
+                <span className="material-icons text-red-500 mt-0.5 text-sm">
+                  {item.icon}
+                </span>
+                <span className="text-sm">
+                  <strong>{item.metric}:</strong> Target {item.target}
+                </span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      );
+
+    default:
+      return null;
+  }
+};
+
+// ─── Main Component ──────────────────────────────────────────────────────────
 
 const ArticleDetail: React.FC = () => {
+  const { id } = useParams<{ id: string }>();
+  const article = articles.find((a) => a.id === id);
+
+  if (!article) {
+    return <Navigate to="/blog" replace />;
+  }
+
   const handleShare = async () => {
     if (navigator.share) {
       try {
         await navigator.share({
-          title: "5 Tips for Heart Health",
-          text: "Check out this guide to cardiovascular wellness!",
+          title: article.title,
+          text: article.subtitle,
           url: window.location.href,
         });
       } catch (err) {
@@ -25,47 +165,73 @@ const ArticleDetail: React.FC = () => {
   return (
     <div className="animate-fade-in bg-white min-h-screen">
       <SEO
-        title="5 Tips for Heart Health"
-        description="A comprehensive guide to cardiovascular wellness. Learn how diet, exercise, and stress management impact your heart."
+        title={article.seoTitle}
+        description={article.seoDescription}
         type="article"
-        canonical="https://everleaf-medical.com/blog/preventive-cardiology"
-        image="/images/articles/article-1-hero.jpg"
+        canonical={`https://everleaf-medical.com/blog/${article.id}`}
+        image={article.img}
       />
+
       {/* Breadcrumb */}
       <div className="bg-slate-50 border-b border-slate-200">
         <div className="container mx-auto px-6 py-4">
-          <nav className="flex text-sm text-slate-500">
-            <Link
-              to="/"
-              className="hover:text-primary transition-colors flex items-center"
-            >
-              <span className="material-icons text-sm mr-1">home</span> Home
-            </Link>
-            <span className="mx-2">/</span>
-            <Link to="/blog" className="hover:text-primary transition-colors">
-              Articles
-            </Link>
-            <span className="mx-2">/</span>
-            <span className="text-slate-700 font-medium">
-              5 Tips for Heart Health
-            </span>
+          <nav aria-label="Breadcrumb" className="flex text-sm text-slate-500">
+            <ol className="inline-flex items-center space-x-1 md:space-x-3">
+              <li className="inline-flex items-center">
+                <Link
+                  to="/"
+                  className="inline-flex items-center hover:text-primary transition-colors"
+                >
+                  <span className="material-icons text-sm mr-1">home</span>
+                  Home
+                </Link>
+              </li>
+              <li>
+                <div className="flex items-center">
+                  <span className="material-icons text-slate-400 text-sm">
+                    chevron_right
+                  </span>
+                  <Link
+                    to="/blog"
+                    className="ml-1 md:ml-2 hover:text-primary transition-colors"
+                  >
+                    Articles
+                  </Link>
+                </div>
+              </li>
+              <li aria-current="page">
+                <div className="flex items-center">
+                  <span className="material-icons text-slate-400 text-sm">
+                    chevron_right
+                  </span>
+                  <span className="ml-1 md:ml-2 text-slate-700 font-medium truncate max-w-[200px]">
+                    {article.title.length > 30
+                      ? article.title.slice(0, 30) + "…"
+                      : article.title}
+                  </span>
+                </div>
+              </li>
+            </ol>
           </nav>
         </div>
       </div>
 
+      {/* Main Content */}
       <div className="container mx-auto px-6 py-12">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
-          {/* Main Content */}
-          <main className="lg:col-span-8">
+          {/* Article Body */}
+          <div className="lg:col-span-8">
             <header className="mb-10">
               <div className="flex items-center justify-between mb-6">
                 <div className="flex items-center gap-4">
-                  <span className="inline-block px-3 py-1 text-xs font-bold tracking-wider text-primary uppercase bg-blue-50 rounded-full border border-blue-100">
-                    Cardiology
+                  <span
+                    className={`inline-block px-3 py-1 text-xs font-bold tracking-wider uppercase rounded-full border ${getCategoryStyle(article.category)}`}
+                  >
+                    {article.category}
                   </span>
                   <span className="text-sm text-slate-500 flex items-center gap-1">
-                    <span className="material-icons text-sm">schedule</span> 5
-                    min read
+                    <span className="material-icons text-sm">schedule</span>
+                    {article.read}
                   </span>
                 </div>
                 <button
@@ -78,147 +244,62 @@ const ArticleDetail: React.FC = () => {
                   </span>
                 </button>
               </div>
+
               <h1 className="text-4xl md:text-5xl font-serif font-bold text-slate-900 mb-6 leading-tight">
-                5 Tips for Heart Health: A Guide to Cardiovascular Wellness
+                {article.title}
               </h1>
-              <p className="text-xl text-slate-600 leading-relaxed font-serif italic border-l-4 border-primary pl-4">
-                Small lifestyle changes can make a big difference in maintaining
-                a healthy heart and preventing cardiovascular disease.
+              <p className="text-xl text-slate-600 leading-relaxed font-serif italic">
+                {article.subtitle}
               </p>
+
+              {/* Author + Date meta */}
+              <div className="flex items-center gap-4 mt-6 pt-6 border-t border-slate-100">
+                <img
+                  src={article.authorImg}
+                  alt={article.author}
+                  className="w-10 h-10 rounded-full object-cover border-2 border-white shadow"
+                />
+                <div>
+                  <p className="text-sm font-semibold text-slate-800">
+                    {article.author}
+                  </p>
+                  <p className="text-xs text-slate-500">{article.date}</p>
+                </div>
+              </div>
             </header>
 
+            {/* Hero Image */}
             <div className="rounded-2xl overflow-hidden mb-12 shadow-card">
               <img
-                src="/images/articles/article-1-hero.jpg"
-                alt="Healthy Heart"
+                src={article.img}
+                alt={article.title}
                 className="w-full h-[400px] object-cover hover:scale-105 transition-transform duration-700"
               />
             </div>
 
-            <article className="prose prose-lg prose-slate max-w-none mb-12">
-              <p className="mb-6">
-                Heart disease remains the leading cause of death worldwide, but
-                the good news is that it is largely preventable. By
-                understanding the risk factors and making conscious choices
-                about your diet, activity, and stress levels, you can
-                significantly improve your heart's longevity.
-              </p>
-
-              <h2 className="text-2xl font-bold text-slate-900 mt-10 mb-6">
-                1. Prioritize a Heart-Healthy Diet
-              </h2>
-              <p className="mb-6">
-                What you eat directly impacts your blood pressure, cholesterol,
-                and blood sugar levels. A heart-healthy diet focuses on
-                nutrient-dense foods and limits processed items high in
-                saturated fats and added sugars.
-              </p>
-              <ul className="space-y-4 mb-8 list-none pl-0">
-                <li className="flex items-start gap-3">
-                  <span className="material-icons text-green-500 mt-1">
-                    check_circle
-                  </span>
-                  <span>
-                    <strong>Eat more fruits and vegetables:</strong> Aim for
-                    variety to get a wide range of vitamins and minerals.
-                  </span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="material-icons text-green-500 mt-1">
-                    check_circle
-                  </span>
-                  <span>
-                    <strong>Choose whole grains:</strong> Swap refined carbs
-                    like white bread for brown rice, quinoa, and oats.
-                  </span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="material-icons text-green-500 mt-1">
-                    check_circle
-                  </span>
-                  <span>
-                    <strong>Limit sodium intake:</strong> Reducing salt can help
-                    lower blood pressure.
-                  </span>
-                </li>
-              </ul>
-
-              <h2 className="text-2xl font-bold text-slate-900 mt-10 mb-6">
-                2. Get Moving with Regular Exercise
-              </h2>
-              <p className="mb-6">
-                Your heart is a muscle, and like any muscle, it gets stronger
-                when you use it. Regular physical activity improves your heart's
-                ability to pump blood throughout your body.
-              </p>
-              <div className="bg-blue-50 p-6 rounded-xl border-l-4 border-primary my-8">
-                <h4 className="text-lg font-bold text-slate-900 mb-2">
-                  Recommended Activity Levels
-                </h4>
-                <p className="mb-0 text-sm">
-                  The American Heart Association recommends at least{" "}
-                  <strong>150 minutes</strong> of moderate-intensity aerobic
-                  activity or <strong>75 minutes</strong> of vigorous activity
-                  per week.
-                </p>
-              </div>
-
-              <h2 className="text-2xl font-bold text-slate-900 mt-10 mb-6">
-                3. Manage Stress Effectively
-              </h2>
-              <p className="mb-6">
-                Chronic stress can contribute to high blood pressure and other
-                heart disease risk factors. Finding healthy ways to manage
-                stress is crucial for cardiovascular health. Techniques such as
-                mindfulness meditation, deep breathing exercises, and yoga have
-                been shown to reduce stress hormones.
-              </p>
-
-              <div className="my-10 grid grid-cols-1 md:grid-cols-2 gap-6">
-                <img
-                  src="/images/article-body-4.jpg"
-                  alt="Yoga and Wellness"
-                  className="rounded-xl shadow-md object-cover h-48 w-full"
-                />
-                <img
-                  src="/images/article-body-5.jpg"
-                  alt="Healthy Food"
-                  className="rounded-xl shadow-md object-cover h-48 w-full"
-                />
-              </div>
-
-              <h2 className="text-2xl font-bold text-slate-900 mt-10 mb-6">
-                4. Quit Smoking and Limit Alcohol
-              </h2>
-              <p className="mb-6">
-                Smoking is one of the most significant risk factors for
-                developing heart disease. Chemicals in tobacco can damage your
-                heart and blood vessels. Similarly, excessive alcohol
-                consumption can raise blood pressure and increase the risk of
-                cardiomyopathy.
-              </p>
+            {/* Article Content Blocks */}
+            <article className="prose prose-lg prose-slate max-w-none">
+              {article.content.map((block, i) => renderBlock(block, i))}
             </article>
 
             <hr className="border-slate-200 my-12" />
 
+            {/* Author Card */}
             <div className="bg-slate-50 rounded-2xl p-8 flex flex-col sm:flex-row gap-6 items-center sm:items-start text-center sm:text-left">
               <img
-                src="/images/doctors/team-dr-mark-williams.jpg"
-                alt="Dr. Mark Williams"
-                className="w-24 h-24 rounded-full object-cover shadow-lg border-2 border-white"
+                src={article.authorImg}
+                alt={article.author}
+                className="w-24 h-24 rounded-full object-cover shadow-lg border-2 border-white flex-shrink-0"
               />
               <div>
                 <h3 className="text-xl font-bold text-slate-900 mb-2">
-                  Dr. Mark Williams
+                  {article.author}
                 </h3>
                 <p className="text-primary font-medium text-sm mb-3">
-                  Chief of Cardiology
+                  {article.authorTitle}
                 </p>
                 <p className="text-slate-600 text-sm leading-relaxed mb-4">
-                  Dr. Williams has over 15 years of experience in preventative
-                  cardiology and heart failure management. He is dedicated to
-                  helping patients live longer, healthier lives through
-                  education and advanced care.
+                  {article.authorBio}
                 </p>
                 <div className="flex gap-3 justify-center sm:justify-start">
                   <a
@@ -236,24 +317,23 @@ const ArticleDetail: React.FC = () => {
                 </div>
               </div>
             </div>
-          </main>
+          </div>
 
           {/* Sidebar */}
           <aside className="lg:col-span-4 space-y-8">
             <RelatedArticles
-              currentId="preventive-cardiology"
-              currentCategory="Health Tips"
+              currentId={article.id}
+              currentCategory={article.category}
             />
 
-            {/* Newsletter */}
             <div className="bg-gradient-to-br from-slate-900 to-blue-900 rounded-2xl p-8 text-white shadow-lg relative overflow-hidden">
-              <div className="absolute top-0 right-0 w-32 h-32 bg-white opacity-10 rounded-full blur-2xl translate-x-1/2 -translate-y-1/2 pointer-events-none"></div>
+              <div className="absolute top-0 right-0 w-32 h-32 bg-white opacity-10 rounded-full blur-2xl translate-x-1/2 -translate-y-1/2 pointer-events-none" />
               <h3 className="text-xl font-bold mb-3 relative z-10">
                 Subscribe to Updates
               </h3>
               <p className="text-blue-100 text-sm mb-6 relative z-10">
-                Get the latest heart health tips and research delivered to your
-                inbox.
+                Get the latest health insights and medical news delivered to
+                your inbox.
               </p>
               <NewsletterForm variant="sidebar" />
             </div>

@@ -1,5 +1,5 @@
 import React, { Suspense } from "react";
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { HelmetProvider } from "react-helmet-async";
 import Layout from "./Layout";
 import Home from "./pages/Home";
@@ -43,25 +43,6 @@ const PreventiveCheckups = React.lazy(
 );
 const Diagnostics = React.lazy(() => import("./pages/services/Diagnostics"));
 
-// Lazy load article pages
-const DiabetesManagement = React.lazy(
-  () => import("./pages/articles/DiabetesManagement"),
-);
-const ImmuneSystem = React.lazy(() => import("./pages/articles/ImmuneSystem"));
-const PediatricWing = React.lazy(
-  () => import("./pages/articles/PediatricWing"),
-);
-const AnxietyInTeens = React.lazy(
-  () => import("./pages/articles/AnxietyInTeens"),
-);
-const FluSeason = React.lazy(() => import("./pages/articles/FluSeason"));
-const SeniorMobility = React.lazy(
-  () => import("./pages/articles/SeniorMobility"),
-);
-const PreventiveCardiology = React.lazy(
-  () => import("./pages/articles/PreventiveCardiology"),
-);
-
 const Loading = () => (
   <div className="fixed inset-0 z-[100] bg-white flex flex-col justify-center items-center p-4">
     <div className="flex flex-col items-center mb-12 animate-fade-in">
@@ -104,10 +85,8 @@ const App: React.FC = () => {
               <Route path="gallery" element={<Gallery />} />
               <Route path="contact" element={<Contact />} />
               <Route path="blog" element={<Blog />} />
-              <Route
-                path="blog/preventive-cardiology"
-                element={<ArticleDetail />}
-              />
+              {/* Single dynamic article route — replaces 7 individual routes */}
+              <Route path="blog/:id" element={<ArticleDetail />} />
               <Route path="privacy" element={<Privacy />} />
               <Route
                 path="appointment-confirmation"
@@ -146,24 +125,6 @@ const App: React.FC = () => {
               <Route path="services/laboratory" element={<Laboratory />} />
               <Route path="services/pharmacy" element={<Pharmacy />} />
               <Route path="services/emergency" element={<Emergency />} />
-
-              {/* Article Routes */}
-              <Route
-                path="blog/diabetes-management"
-                element={<DiabetesManagement />}
-              />
-              <Route path="blog/immune-system" element={<ImmuneSystem />} />
-              <Route path="blog/pediatric-wing" element={<PediatricWing />} />
-              <Route
-                path="blog/anxiety-in-teens"
-                element={<AnxietyInTeens />}
-              />
-              <Route path="blog/flu-season" element={<FluSeason />} />
-              <Route path="blog/senior-mobility" element={<SeniorMobility />} />
-              <Route
-                path="blog/preventive-cardiology"
-                element={<PreventiveCardiology />}
-              />
 
               {/* Catch all */}
               <Route path="*" element={<NotFound />} />
