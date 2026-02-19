@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { submitForm } from "../utils/formService";
 import { appointmentFormSchema, validateField } from "../utils/validation";
+import { CustomSelect } from "./CustomSelect";
 
 interface AppointmentModalProps {
   isOpen: boolean;
@@ -137,6 +138,13 @@ const AppointmentModal: React.FC<AppointmentModalProps> = ({
     // Clear error when user starts typing
     if (errors[id]) {
       setErrors((prev) => ({ ...prev, [id]: "" }));
+    }
+  };
+
+  const handleDepartmentChange = (value: string) => {
+    setFormData((prev) => ({ ...prev, department: value }));
+    if (errors.department) {
+      setErrors((prev) => ({ ...prev, department: "" }));
     }
   };
 
@@ -404,48 +412,31 @@ const AppointmentModal: React.FC<AppointmentModalProps> = ({
           </div>
 
           <div>
-            <label
-              htmlFor="department"
-              className="block text-sm font-medium mb-1"
-              style={{ color: "var(--color-text)" }}
-            >
-              Preferred Department
-            </label>
-            <div className="relative">
-              <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400">
-                <span className="material-icons text-lg">local_hospital</span>
-              </div>
-              <select
-                id="department"
-                value={formData.department}
-                onChange={handleChange}
-                disabled={status === "submitting"}
-                className={`block w-full pl-10 rounded-lg border focus:outline-none focus:ring-2 focus:border-primary sm:text-sm py-2.5 disabled:opacity-70 disabled:cursor-not-allowed transition-all ${errors.department ? "border-red-300 bg-red-50 focus:ring-red-500/50 text-red-900" : "focus:ring-primary/50"}`}
-                style={
-                  errors.department
-                    ? {}
-                    : {
-                        backgroundColor: "var(--color-bg-alt)",
-                        borderColor: "var(--color-border)",
-                        color: "var(--color-text)",
-                      }
-                }
-              >
-                <option value="">Choose a department...</option>
-                <option value="Cardiology">Cardiology</option>
-                <option value="Neurology">Neurology</option>
-                <option value="Pediatrics">Pediatrics</option>
-                <option value="Surgery">General Surgery</option>
-                <option value="Dental">Dental</option>
-                <option value="Orthopedics">Orthopedics</option>
-                <option value="Dermatology">Dermatology</option>
-                <option value="Oncology">Oncology</option>
-                <option value="Laboratory">Laboratory</option>
-                <option value="Radiology">Radiology</option>
-                <option value="Pharmacy">Pharmacy</option>
-                <option value="Preventive Checkups">Preventive Checkups</option>
-              </select>
-            </div>
+            <CustomSelect
+              options={[
+                { value: "Cardiology", label: "Cardiology" },
+                { value: "Neurology", label: "Neurology" },
+                { value: "Pediatrics", label: "Pediatrics" },
+                { value: "Surgery", label: "General Surgery" },
+                { value: "Dental", label: "Dental" },
+                { value: "Orthopedics", label: "Orthopedics" },
+                { value: "Dermatology", label: "Dermatology" },
+                { value: "Oncology", label: "Oncology" },
+                { value: "Laboratory", label: "Laboratory" },
+                { value: "Radiology", label: "Radiology" },
+                { value: "Pharmacy", label: "Pharmacy" },
+                { value: "Preventive Checkups", label: "Preventive Checkups" },
+              ]}
+              value={formData.department}
+              onChange={handleDepartmentChange}
+              placeholder="Choose a department..."
+              icon="local_hospital"
+              error={
+                errors.department && (touched.department || hasSubmitted)
+                  ? errors.department
+                  : undefined
+              }
+            />
             {errors.department && (touched.department || hasSubmitted) && (
               <p className="mt-1 text-xs text-red-600 flex items-center gap-1">
                 <span className="material-icons text-xs">error</span>

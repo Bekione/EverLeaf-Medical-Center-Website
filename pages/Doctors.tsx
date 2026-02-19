@@ -4,6 +4,7 @@ import { OpenAppointmentFunc } from "../Layout";
 import ImageSkeleton from "../components/ImageSkeleton";
 import SEO from "../components/SEO";
 import { doctors } from "../data/doctors";
+import { CustomSelect } from "../components/CustomSelect";
 
 const ITEMS_PER_PAGE = 12;
 
@@ -114,7 +115,7 @@ const Doctors: React.FC = () => {
             <input
               type="text"
               placeholder="Search by doctor name or keyword..."
-              className="w-full pl-12 pr-4 py-3 rounded-lg border focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all shadow-sm placeholder-slate-400"
+              className="w-full pl-12 pr-10 py-3 rounded-lg border focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all shadow-sm placeholder-slate-400"
               style={{
                 backgroundColor: "var(--color-surface)",
                 borderColor: "var(--color-border)",
@@ -123,61 +124,67 @@ const Doctors: React.FC = () => {
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
             />
+            {searchTerm && (
+              <button
+                onClick={() => setSearchTerm("")}
+                className="absolute right-3 top-1/2 -translate-y-1/2 p-0.5 rounded-full transition-all duration-200 hover:bg-primary/10 hover:text-primary"
+                style={{ color: "var(--color-text-muted)" }}
+                aria-label="Clear search"
+              >
+                <span className="material-icons text-base leading-none">
+                  close
+                </span>
+              </button>
+            )}
           </div>
           <div className="flex flex-col sm:flex-row gap-4 w-full lg:w-auto">
-            <div className="relative min-w-[180px]">
-              <select
-                className="w-full px-4 py-3 rounded-lg border border-slate-200 bg-white focus:outline-none focus:ring-2 focus:ring-primary text-slate-600 cursor-pointer appearance-none shadow-sm"
-                value={deptFilter}
-                onChange={(e) => setDeptFilter(e.target.value)}
-              >
-                <option value="">All Departments</option>
-                <option value="Cardiology">Cardiology</option>
-                <option value="Neurology">Neurology</option>
-                <option value="Pediatrics">Pediatrics</option>
-                <option value="Orthopedics">Orthopedics</option>
-                <option value="Oncology">Oncology</option>
-                <option value="Dermatology">Dermatology</option>
-                <option value="Surgery">Surgery</option>
-                <option value="Ophthalmology">Ophthalmology</option>
-              </select>
-              <span className="material-icons absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none">
-                expand_more
-              </span>
-            </div>
+            <CustomSelect
+              className="min-w-[220px]"
+              options={[
+                { value: "", label: "All Departments" },
+                { value: "Cardiology", label: "Cardiology" },
+                { value: "Neurology", label: "Neurology" },
+                { value: "Pediatrics", label: "Pediatrics" },
+                { value: "Orthopedics", label: "Orthopedics" },
+                { value: "Oncology", label: "Oncology" },
+                { value: "Dermatology", label: "Dermatology" },
+                { value: "Surgery", label: "Surgery" },
+                { value: "Ophthalmology", label: "Ophthalmology" },
+              ]}
+              value={deptFilter}
+              onChange={setDeptFilter}
+              placeholder="All Departments"
+              icon="domain"
+            />
 
             <div className="flex gap-4 w-full">
-              <div className="relative min-w-[160px]">
-                <select
-                  className="w-full px-4 py-3 rounded-lg border border-slate-200 bg-white focus:outline-none focus:ring-2 focus:ring-primary text-slate-600 cursor-pointer appearance-none shadow-sm"
-                  value={specialtyFilter}
-                  onChange={(e) => setSpecialtyFilter(e.target.value)}
-                >
-                  <option value="">All Specialties</option>
-                  <option value="surgeon">Surgeon</option>
-                  <option value="senior">Senior Consultant</option>
-                  <option value="chief">Department Chief</option>
-                  <option value="specialist">Specialist</option>
-                </select>
-                <span className="material-icons absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none">
-                  expand_more
-                </span>
-              </div>
+              <CustomSelect
+                className="min-w-[180px] flex-grow"
+                options={[
+                  { value: "", label: "All Specialties" },
+                  { value: "surgeon", label: "Surgeon" },
+                  { value: "senior", label: "Senior Consultant" },
+                  { value: "chief", label: "Department Chief" },
+                  { value: "specialist", label: "Specialist" },
+                ]}
+                value={specialtyFilter}
+                onChange={setSpecialtyFilter}
+                placeholder="All Specialties"
+                icon="badge"
+              />
 
-              <div className="relative min-w-[140px]">
-                <select
-                  className="w-full px-4 py-3 rounded-lg border border-slate-200 bg-white focus:outline-none focus:ring-2 focus:ring-primary text-slate-600 cursor-pointer appearance-none shadow-sm"
-                  value={genderFilter}
-                  onChange={(e) => setGenderFilter(e.target.value)}
-                >
-                  <option value="">All Genders</option>
-                  <option value="female">Female</option>
-                  <option value="male">Male</option>
-                </select>
-                <span className="material-icons absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none">
-                  expand_more
-                </span>
-              </div>
+              <CustomSelect
+                className="min-w-[160px] flex-grow"
+                options={[
+                  { value: "", label: "All Genders" },
+                  { value: "female", label: "Female" },
+                  { value: "male", label: "Male" },
+                ]}
+                value={genderFilter}
+                onChange={setGenderFilter}
+                placeholder="All Genders"
+                icon="wc"
+              />
             </div>
           </div>
         </div>

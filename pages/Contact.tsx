@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { submitForm } from "../utils/formService";
 import SEO from "../components/SEO";
 import { contactFormSchema, validateField } from "../utils/validation";
+import { CustomSelect } from "../components/CustomSelect";
 
 const Contact: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -30,6 +31,13 @@ const Contact: React.FC = () => {
     // Clear error when user starts typing
     if (errors[name]) {
       setErrors((prev) => ({ ...prev, [name]: "" }));
+    }
+  };
+
+  const handleSubjectChange = (value: string) => {
+    setFormData((prev) => ({ ...prev, subject: value }));
+    if (errors.subject) {
+      setErrors((prev) => ({ ...prev, subject: "" }));
     }
   };
 
@@ -326,19 +334,25 @@ const Contact: React.FC = () => {
                     >
                       Subject
                     </label>
-                    <select
-                      name="subject"
+                    <CustomSelect
+                      options={[
+                        { value: "General Inquiry", label: "General Inquiry" },
+                        {
+                          value: "Appointment Request",
+                          label: "Appointment Request",
+                        },
+                        { value: "Feedback", label: "Feedback" },
+                        {
+                          value: "Billing Question",
+                          label: "Billing Question",
+                        },
+                        { value: "Other", label: "Other" },
+                      ]}
                       value={formData.subject}
-                      onChange={handleChange}
-                      disabled={status === "submitting"}
-                      className="w-full px-4 py-3 rounded-lg border border-slate-200 bg-slate-50 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all text-slate-600 disabled:opacity-60"
-                    >
-                      <option>General Inquiry</option>
-                      <option>Appointment Request</option>
-                      <option>Feedback</option>
-                      <option>Billing Question</option>
-                      <option>Other</option>
-                    </select>
+                      onChange={handleSubjectChange}
+                      icon="help_outline"
+                      placeholder="Select a subject"
+                    />
                   </div>
                   <div>
                     <label
