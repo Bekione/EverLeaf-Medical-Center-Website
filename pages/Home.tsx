@@ -100,8 +100,11 @@ const Home: React.FC = () => {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="max-w-2xl">
               <div
-                className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-primary text-xs font-bold uppercase tracking-wide mb-6"
-                style={{ backgroundColor: "var(--color-primary-light)" }}
+                className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide mb-6"
+                style={{
+                  backgroundColor: "var(--color-primary-light)",
+                  color: "var(--color-primary-dark)",
+                }}
               >
                 <span className="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
                 Everleaf Medical Center
@@ -171,7 +174,7 @@ const Home: React.FC = () => {
                     style={{
                       borderColor: "var(--color-border)",
                       backgroundColor: "var(--color-bg-alt)",
-                      color: "var(--color-text-muted)",
+                      color: "var(--color-text)",
                     }}
                   >
                     12k+
@@ -307,7 +310,7 @@ const Home: React.FC = () => {
               </p>
               <Link
                 to="/departments"
-                className="text-secondary font-semibold text-sm flex items-center gap-1 group-hover:underline"
+                className="text-primary font-semibold text-sm flex items-center gap-1 group-hover:underline"
               >
                 View Departments{" "}
                 <span className="material-icons text-sm">arrow_forward</span>
@@ -395,6 +398,7 @@ const Home: React.FC = () => {
                 </p>
                 <Link
                   to={service.link}
+                  aria-label={`Learn more about ${service.title}`}
                   className="text-primary font-semibold text-sm flex items-center gap-1 group-hover:gap-2 transition-all"
                 >
                   Learn More{" "}

@@ -47,7 +47,7 @@ const Footer: React.FC = () => {
                 </span>
                 <span
                   className="text-[10px] font-brand tracking-[0.2em] uppercase mt-1"
-                  style={{ color: "rgba(255,255,255,0.4)" }}
+                  style={{ color: "rgba(255,255,255,0.7)" }}
                 >
                   Medical Center
                 </span>
@@ -55,7 +55,7 @@ const Footer: React.FC = () => {
             </Link>
             <p
               className="mb-6 leading-relaxed"
-              style={{ color: "rgba(255,255,255,0.55)" }}
+              style={{ color: "rgba(255,255,255,0.75)" }}
             >
               Care That Grows With You. Committed to lifelong wellness through
               compassionate care, innovation, and trust.
@@ -186,7 +186,7 @@ const Footer: React.FC = () => {
           </div>
           <div>
             <h4 className="text-white font-bold text-lg mb-6">Newsletter</h4>
-            <p className="mb-4" style={{ color: "rgba(255,255,255,0.55)" }}>
+            <p className="mb-4" style={{ color: "rgba(255,255,255,0.75)" }}>
               Subscribe to our newsletter to get the latest news and updates.
             </p>
             {status === "success" ? (
@@ -233,7 +233,7 @@ const Footer: React.FC = () => {
           className="border-t pt-8 flex flex-col md:flex-row justify-between items-center text-sm"
           style={{
             borderColor: "rgba(255,255,255,0.08)",
-            color: "rgba(255,255,255,0.35)",
+            color: "rgba(255,255,255,0.6)",
           }}
         >
           <p>

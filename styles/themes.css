@@ -110,8 +110,8 @@
 
 /* ── Default — Clean Clinical Blue ─────────────────────────────────── */
 [data-theme="default"] {
-  --color-primary: #136dec;
-  --color-primary-dark: #0e5bc4;
+  --color-primary: #0c5bcd;
+  --color-primary-dark: #0948a8;
   --color-primary-light: #e0f2fe;
   --color-secondary: #10b981;
   --color-bg: #ffffff;
@@ -120,7 +120,7 @@
   --color-surface-rgb: 255, 255, 255;
   --color-border: #e2e8f0;
   --color-text: #0f172a;
-  --color-text-muted: #64748b;
+  --color-text-muted: #4b5568;
   --color-dark: #101822;
   --color-footer-bg: #0d1520;
   --color-cta-from: #0f172a;
@@ -170,7 +170,7 @@
   --color-surface-rgb: 255, 255, 255;
   --color-border: #bbf7d0;
   --color-text: #064e3b;
-  --color-text-muted: #6b7280;
+  --color-text-muted: #4b5563;
   --color-dark: #064e3b;
   --color-footer-bg: #022c22;
   --color-cta-from: #064e3b;
@@ -195,7 +195,7 @@
   --color-surface-rgb: 255, 255, 255;
   --color-border: #fde68a;
   --color-text: #1c1917;
-  --color-text-muted: #78716c;
+  --color-text-muted: #57534e;
   --color-dark: #1c1917;
   --color-footer-bg: #1c0a00;
   --color-cta-from: #78350f;
