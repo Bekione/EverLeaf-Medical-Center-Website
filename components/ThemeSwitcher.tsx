@@ -1,7 +1,9 @@
 import React, { useState, useRef, useEffect } from "react";
 import { THEMES, useTheme, type ThemeId } from "../contexts/ThemeContext";
 
-export const ThemeSwitcher: React.FC = () => {
+export const ThemeSwitcher: React.FC<{ inline?: boolean }> = ({
+  inline = false,
+}) => {
   const { theme, setTheme } = useTheme();
   const [open, setOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
@@ -18,15 +20,20 @@ export const ThemeSwitcher: React.FC = () => {
   }, []);
 
   return (
-    // Positioned bottom-LEFT, above any other fixed elements
     <div
       ref={ref}
-      className="fixed bottom-6 left-6 z-50 flex flex-col items-start gap-3"
+      className={
+        inline
+          ? "relative"
+          : "fixed bottom-6 left-6 z-50 flex flex-col items-start gap-3"
+      }
     >
-      {/* Theme Menu — opens upward */}
+      {/* Theme Menu */}
       {open && (
         <div
-          className="rounded-2xl shadow-2xl overflow-hidden w-64 animate-fade-in border"
+          className={`rounded-2xl shadow-2xl overflow-hidden w-64 animate-fade-in border z-50 ${
+            inline ? "absolute bottom-full right-0 mb-2" : ""
+          }`}
           style={{
             backgroundColor: "var(--color-surface)",
             borderColor: "var(--color-border)",
@@ -140,11 +147,13 @@ export const ThemeSwitcher: React.FC = () => {
         onClick={() => setOpen((v) => !v)}
         aria-label={open ? "Close theme switcher" : "Open theme switcher"}
         aria-expanded={open}
-        className="flex items-center gap-2 px-4 py-2.5 rounded-full shadow-lg text-white font-semibold text-sm transition-all hover:scale-105 active:scale-95"
+        className={`flex items-center gap-2 rounded-full text-white font-semibold text-sm transition-all hover:scale-105 active:scale-95 shadow-lg ${
+          inline ? "px-3 py-2" : "px-4 py-2.5"
+        }`}
         style={{ backgroundColor: theme.swatch }}
       >
         <span className="material-icons text-base">palette</span>
-        <span className="hidden sm:inline">{theme.label}</span>
+        {!inline && <span className="hidden sm:inline">{theme.label}</span>}
         <span
           className="material-icons text-base transition-transform duration-200"
           style={{ transform: open ? "rotate(180deg)" : "rotate(0deg)" }}

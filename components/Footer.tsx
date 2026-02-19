@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { submitForm } from "../utils/formService";
 import { EverleafLogo } from "./Logo";
+import { ThemeSwitcher } from "./ThemeSwitcher";
 
 const Footer: React.FC = () => {
   const [email, setEmail] = useState("");
@@ -236,7 +237,8 @@ const Footer: React.FC = () => {
             © {new Date().getFullYear()} Everleaf Medical Center. All rights
             reserved.
           </p>
-          <div className="flex gap-6 mt-4 md:mt-0">
+          <div className="flex items-center gap-6 mt-4 md:mt-0">
+            <ThemeSwitcher inline />
             <Link to="/privacy" className="hover:text-white transition-colors">
               Privacy Policy
             </Link>

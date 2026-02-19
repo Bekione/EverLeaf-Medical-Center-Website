@@ -4,7 +4,6 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import AppointmentModal from "./components/AppointmentModal";
 import ScrollToTopButton from "./components/ScrollToTopButton";
-import { ThemeSwitcher } from "./components/ThemeSwitcher";
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -54,7 +53,6 @@ const Layout: React.FC = () => {
         initialData={appointmentData}
       />
       <ScrollToTopButton />
-      <ThemeSwitcher />
     </div>
   );
 };
