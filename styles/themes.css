@@ -1,3 +1,107 @@
+/* Tailwind v4 — the @tailwindcss/vite plugin processes this import at build time.
+   Tree-shakes all unused utilities → production CSS is typically < 10 KB. */
+@import "tailwindcss";
+
+/* ─── Tailwind Theme Config (replaces tailwind.config.js in v4) ─────────
+   @theme inline = values are CSS-variable references resolved at *runtime*,
+   not build time. Required here because our per-theme vars are set by
+   [data-theme] attribute selectors — they're dynamic, not static literals.
+──────────────────────────────────────────────────────────────────────────── */
+@theme inline {
+  /* Colors — reference the per-theme CSS vars so utilities like
+     bg-primary / text-primary follow the active [data-theme] at runtime */
+  --color-primary: var(--color-primary);
+  --color-primary-dark: var(--color-primary-dark);
+  --color-primary-light: var(--color-primary-light);
+  --color-secondary: var(--color-secondary);
+  --color-dark: var(--color-dark);
+  --color-light: var(--color-bg-alt);
+
+  /* Typography */
+  --font-sans: var(--font-sans);
+  --font-serif: var(--font-serif);
+  --font-brand: var(--font-brand);
+  --font-brandalt: "Poppins", sans-serif;
+
+  /* Shadows */
+  --shadow-card: var(--shadow-card);
+
+  /* Animations */
+  --animate-fade-in: fadeIn 0.5s ease-out;
+
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+/* ─── Material Icons — Tailwind v4 cascade fix ───────────────────────────
+   Problem: the Google Fonts Material Icons stylesheet sets
+     .material-icons { font-size: 24px }
+   outside any CSS layer, which in Tailwind v4 beats @layer utilities,
+   so text-xs / text-sm classes on icon <span>s had no effect.
+   Fix: re-declare the default inside @layer base. Now the cascade is:
+     @layer base (24px default) < @layer utilities (text-xs/sm override) ✅
+──────────────────────────────────────────────────────────────────────────── */
+/* ─── Material Icons — Tailwind v4 specificity fix ───────────────────────
+   Problem: Google Fonts Material Icons CSS is unlayered → it always beats
+   any @layer rule (CSS Cascade Layers spec), so text-xs/sm/etc. classes
+   on icon <span>s had no effect in Tailwind v4.
+   Fix: compound selectors (.material-icons.text-xs) have specificity (0,2,0)
+   which beats Material Icons' own single-class rule (0,1,0). Both are
+   unlayered so source order doesn't matter — specificity wins.
+   These live OUTSIDE any @layer so they also beat @layer utilities.
+──────────────────────────────────────────────────────────────────────────── */
+.material-icons,
+.material-icons-outlined {
+  display: inline-block; /* Isolates transforms (rotate) from parent line box */
+  line-height: 1;
+}
+
+/* Each size variant: specificity (0,2,0) beats Material Icons (0,1,0) */
+.material-icons.text-xs,
+.material-icons-outlined.text-xs {
+  font-size: 0.75rem !important;
+} /* 12px */
+.material-icons.text-sm,
+.material-icons-outlined.text-sm {
+  font-size: 0.875rem !important;
+} /* 14px */
+.material-icons.text-base,
+.material-icons-outlined.text-base {
+  font-size: 1rem !important;
+} /* 16px */
+.material-icons.text-lg,
+.material-icons-outlined.text-lg {
+  font-size: 1.125rem !important;
+} /* 18px */
+.material-icons.text-xl,
+.material-icons-outlined.text-xl {
+  font-size: 1.25rem !important;
+} /* 20px */
+.material-icons.text-2xl,
+.material-icons-outlined.text-2xl {
+  font-size: 1.5rem !important;
+} /* 24px */
+.material-icons.text-3xl,
+.material-icons-outlined.text-3xl {
+  font-size: 1.875rem !important;
+} /* 30px */
+.material-icons.text-4xl,
+.material-icons-outlined.text-4xl {
+  font-size: 2.25rem !important;
+} /* 36px */
+.material-icons.text-5xl,
+.material-icons-outlined.text-5xl {
+  font-size: 3rem !important;
+} /* 48px */
+
 /* ═══════════════════════════════════════════════════════════════════════
     THEME TOKENS
     Each [data-theme] block defines all design tokens.
@@ -138,12 +242,18 @@ body {
   font-family: var(--font-sans);
 }
 
-/* Smooth theme transitions — color properties only, not layout */
+/* Smooth theme transitions — color + motion properties.
+   NOTE: This rule is intentionally OUTSIDE any @layer because Tailwind v4
+   places utilities in @layer utilities. Unlayered CSS beats layered CSS per
+   the CSS Cascade Layers spec, so properties listed here are the ONLY ones
+   that can animate. We include all commonly-transitioned properties so that
+   Tailwind transition-* and duration-* utilities work as expected. */
 *,
 *::before,
 *::after {
   transition-property:
-    background-color, border-color, color, box-shadow, fill, stroke;
+    background-color, border-color, color, box-shadow, fill, stroke, opacity,
+    transform, translate, scale, rotate;
   transition-duration: 0.25s;
   transition-timing-function: ease;
 }

@@ -1,6 +1,7 @@
 import path from "path";
 import { defineConfig, loadEnv } from "vite";
 import react from "@vitejs/plugin-react";
+import tailwindcss from "@tailwindcss/vite";
 import { cloudinaryPlugin } from "./plugins/cloudinary";
 
 export default defineConfig(({ mode }) => {
@@ -10,7 +11,7 @@ export default defineConfig(({ mode }) => {
       port: 3000,
       host: "0.0.0.0",
     },
-    plugins: [react(), cloudinaryPlugin()],
+    plugins: [tailwindcss(), react(), cloudinaryPlugin()],
     define: {
       // Form service environment variables are automatically available via import.meta.env
       // No need to explicitly define them here
