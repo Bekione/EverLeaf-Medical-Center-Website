@@ -1,0 +1,157 @@
+import React, { useState, useRef, useEffect } from "react";
+import { THEMES, useTheme, type ThemeId } from "../contexts/ThemeContext";
+
+export const ThemeSwitcher: React.FC = () => {
+  const { theme, setTheme } = useTheme();
+  const [open, setOpen] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
+
+  // Close on outside click
+  useEffect(() => {
+    const handler = (e: MouseEvent) => {
+      if (ref.current && !ref.current.contains(e.target as Node)) {
+        setOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handler);
+    return () => document.removeEventListener("mousedown", handler);
+  }, []);
+
+  return (
+    // Positioned bottom-LEFT, above any other fixed elements
+    <div
+      ref={ref}
+      className="fixed bottom-6 left-6 z-50 flex flex-col items-start gap-3"
+    >
+      {/* Theme Menu — opens upward */}
+      {open && (
+        <div
+          className="rounded-2xl shadow-2xl overflow-hidden w-64 animate-fade-in border"
+          style={{
+            backgroundColor: "var(--color-surface)",
+            borderColor: "var(--color-border)",
+          }}
+          role="dialog"
+          aria-label="Theme selector"
+        >
+          {/* Header */}
+          <div
+            className="px-4 py-3 flex items-center gap-2 border-b"
+            style={{ borderColor: "var(--color-border)" }}
+          >
+            <span
+              className="material-icons text-lg"
+              style={{ color: "var(--color-primary)" }}
+            >
+              palette
+            </span>
+            <span
+              className="text-sm font-bold"
+              style={{ color: "var(--color-text)" }}
+            >
+              Choose Theme
+            </span>
+          </div>
+
+          {/* Theme Options */}
+          <ul className="py-2" role="listbox" aria-label="Available themes">
+            {THEMES.map((t) => {
+              const isActive = t.id === theme.id;
+              return (
+                <li key={t.id} role="option" aria-selected={isActive}>
+                  <button
+                    onClick={() => {
+                      setTheme(t.id as ThemeId);
+                      setOpen(false);
+                    }}
+                    className="w-full flex items-center gap-3 px-4 py-2.5 text-left transition-colors"
+                    style={{
+                      backgroundColor: isActive
+                        ? "var(--color-primary-light)"
+                        : "transparent",
+                    }}
+                    onMouseEnter={(e) => {
+                      if (!isActive)
+                        (
+                          e.currentTarget as HTMLButtonElement
+                        ).style.backgroundColor = "var(--color-bg-alt)";
+                    }}
+                    onMouseLeave={(e) => {
+                      if (!isActive)
+                        (
+                          e.currentTarget as HTMLButtonElement
+                        ).style.backgroundColor = "transparent";
+                    }}
+                  >
+                    {/* Color swatch */}
+                    <span
+                      className="w-8 h-8 rounded-full flex-shrink-0 flex items-center justify-center shadow-sm"
+                      style={{ backgroundColor: t.swatch }}
+                      aria-hidden="true"
+                    >
+                      {isActive && (
+                        <span className="material-icons text-white text-sm">
+                          check
+                        </span>
+                      )}
+                    </span>
+
+                    {/* Label */}
+                    <div className="flex-1 min-w-0">
+                      <p
+                        className="text-sm font-semibold truncate"
+                        style={{
+                          color: isActive
+                            ? "var(--color-primary)"
+                            : "var(--color-text)",
+                        }}
+                      >
+                        {t.label}
+                      </p>
+                      <p
+                        className="text-xs truncate"
+                        style={{ color: "var(--color-text-muted)" }}
+                      >
+                        {t.description}
+                      </p>
+                    </div>
+
+                    {/* Icon */}
+                    <span
+                      className="material-icons text-base flex-shrink-0"
+                      style={{
+                        color: isActive
+                          ? "var(--color-primary)"
+                          : "var(--color-text-muted)",
+                      }}
+                    >
+                      {t.icon}
+                    </span>
+                  </button>
+                </li>
+              );
+            })}
+          </ul>
+        </div>
+      )}
+
+      {/* Toggle Button */}
+      <button
+        onClick={() => setOpen((v) => !v)}
+        aria-label={open ? "Close theme switcher" : "Open theme switcher"}
+        aria-expanded={open}
+        className="flex items-center gap-2 px-4 py-2.5 rounded-full shadow-lg text-white font-semibold text-sm transition-all hover:scale-105 active:scale-95"
+        style={{ backgroundColor: theme.swatch }}
+      >
+        <span className="material-icons text-base">palette</span>
+        <span className="hidden sm:inline">{theme.label}</span>
+        <span
+          className="material-icons text-base transition-transform duration-200"
+          style={{ transform: open ? "rotate(180deg)" : "rotate(0deg)" }}
+        >
+          expand_less
+        </span>
+      </button>
+    </div>
+  );
+};
