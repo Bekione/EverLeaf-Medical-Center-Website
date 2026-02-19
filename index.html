@@ -221,7 +221,54 @@
         transition-timing-function: ease;
       }
 
-      /* Scrollbar hide utility */
+      /* ═══════════════════════════════════════════════════════════════════════
+         PROFESSIONAL GLOBAL SCROLLBAR
+         ═══════════════════════════════════════════════════════════════════════ */
+      ::-webkit-scrollbar {
+        width: 10px;
+        height: 10px;
+      }
+
+      ::-webkit-scrollbar-track {
+        background: var(--color-bg-alt);
+      }
+
+      ::-webkit-scrollbar-thumb {
+        background: color-mix(in srgb, var(--color-primary) 20%, transparent);
+        border: 2px solid var(--color-bg-alt);
+        border-radius: 10px;
+        transition: background 0.3s ease;
+      }
+
+      ::-webkit-scrollbar-thumb:hover {
+        background: var(--color-primary);
+      }
+
+      /* Scrollbar Buttons (Carats) */
+      ::-webkit-scrollbar-button:single-button {
+        display: block;
+        height: 12px;
+        width: 12px;
+        background-color: var(--color-bg-alt);
+        background-repeat: no-repeat;
+        background-position: center;
+      }
+
+      ::-webkit-scrollbar-button:single-button:vertical:decrement {
+        background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='10'><path d='M5 2L1 7h8z' fill='%2364748b'/></svg>");
+      }
+
+      ::-webkit-scrollbar-button:single-button:vertical:increment {
+        background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='10'><path d='M5 8L1 3h8z' fill='%2364748b'/></svg>");
+      }
+
+      /* Firefox Support */
+      * {
+        scrollbar-width: thin;
+        scrollbar-color: var(--color-primary) var(--color-bg-alt);
+      }
+
+      /* Scrollbar hide utility for specific cases */
       .scrollbar-hide::-webkit-scrollbar {
         display: none;
       }

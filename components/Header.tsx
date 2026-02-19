@@ -125,7 +125,7 @@ const Header: React.FC<HeaderProps> = ({ onBookAppointment }) => {
               </Link>
 
               {/* Services Dropdown */}
-              <div className="relative group">
+              <div className="relative group/menu">
                 <Link
                   to="/services"
                   className={`flex items-center gap-1 cursor-pointer text-sm xl:text-base font-medium transition-colors ${location.pathname.startsWith("/services") ? "text-primary" : "hover:text-primary"}`}
@@ -136,10 +136,14 @@ const Header: React.FC<HeaderProps> = ({ onBookAppointment }) => {
                   }
                 >
                   Services{" "}
-                  <span className="material-icons text-sm">expand_more</span>
+                  <span className="material-icons text-sm transition-transform duration-300 group-hover/menu:rotate-180">
+                    expand_more
+                  </span>
                 </Link>
+                {/* Invisible hover bridge — fills the mt-2 gap so hover state isn't lost */}
+                <div className="absolute top-full left-0 right-0 h-3" />
                 <div
-                  className="absolute top-full left-0 mt-2 w-56 rounded-lg shadow-xl border opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform translate-y-2 group-hover:translate-y-0 z-[9999] py-2"
+                  className="absolute top-full left-0 mt-2 w-56 rounded-lg shadow-xl border opacity-0 invisible group-hover/menu:opacity-100 group-hover/menu:visible transition-all duration-200 transform translate-y-2 group-hover/menu:translate-y-0 z-[9999] py-2"
                   style={{
                     backgroundColor: "var(--color-surface)",
                     borderColor: "var(--color-border)",
@@ -162,11 +166,7 @@ const Header: React.FC<HeaderProps> = ({ onBookAppointment }) => {
                     <Link
                       key={item.to}
                       to={item.to}
-                      className={`block px-4 py-2 text-sm transition-colors ${
-                        location.pathname === item.to
-                          ? "font-semibold"
-                          : "hover:text-primary"
-                      }`}
+                      className="block px-4 py-2.5 text-sm transition-all mx-1.5 rounded-md mb-0.5 last:mb-0 group/item"
                       style={{
                         color:
                           location.pathname === item.to
@@ -174,18 +174,37 @@ const Header: React.FC<HeaderProps> = ({ onBookAppointment }) => {
                             : "var(--color-text)",
                         backgroundColor:
                           location.pathname === item.to
-                            ? "color-mix(in srgb, var(--color-primary) 8%, transparent)"
+                            ? "color-mix(in srgb, var(--color-primary) 12%, transparent)"
                             : undefined,
                       }}
+                      onMouseEnter={(e) => {
+                        if (location.pathname !== item.to) {
+                          e.currentTarget.style.backgroundColor =
+                            "color-mix(in srgb, var(--color-primary) 8%, transparent)";
+                        }
+                      }}
+                      onMouseLeave={(e) => {
+                        if (location.pathname !== item.to) {
+                          e.currentTarget.style.backgroundColor = "transparent";
+                        }
+                      }}
                     >
-                      {item.label}
+                      <span
+                        className={`inline-block transition-transform duration-300 ${
+                          location.pathname === item.to
+                            ? "translate-x-1.5 font-semibold"
+                            : "group-hover/item:translate-x-1.5"
+                        }`}
+                      >
+                        {item.label}
+                      </span>
                     </Link>
                   ))}
                 </div>
               </div>
 
               {/* Departments Dropdown */}
-              <div className="relative group">
+              <div className="relative group/menu">
                 <Link
                   to="/departments"
                   className={`flex items-center gap-1 cursor-pointer text-sm xl:text-base font-medium transition-colors ${location.pathname.startsWith("/departments") ? "text-primary" : "hover:text-primary"}`}
@@ -196,10 +215,14 @@ const Header: React.FC<HeaderProps> = ({ onBookAppointment }) => {
                   }
                 >
                   Departments{" "}
-                  <span className="material-icons text-sm">expand_more</span>
+                  <span className="material-icons text-sm transition-transform duration-300 group-hover/menu:rotate-180">
+                    expand_more
+                  </span>
                 </Link>
+                {/* Invisible hover bridge — fills the mt-2 gap so hover state isn't lost */}
+                <div className="absolute top-full left-0 right-0 h-3" />
                 <div
-                  className="absolute top-full left-0 mt-2 w-56 rounded-lg shadow-xl border opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform translate-y-2 group-hover:translate-y-0 z-[9999] py-2"
+                  className="absolute top-full left-0 mt-2 w-56 rounded-lg shadow-xl border opacity-0 invisible group-hover/menu:opacity-100 group-hover/menu:visible transition-all duration-200 transform translate-y-2 group-hover/menu:translate-y-0 z-[9999] py-2"
                   style={{
                     backgroundColor: "var(--color-surface)",
                     borderColor: "var(--color-border)",
@@ -225,11 +248,7 @@ const Header: React.FC<HeaderProps> = ({ onBookAppointment }) => {
                     <Link
                       key={item.to}
                       to={item.to}
-                      className={`block px-4 py-2 text-sm transition-colors ${
-                        location.pathname === item.to
-                          ? "font-semibold"
-                          : "hover:text-primary"
-                      }`}
+                      className="block px-4 py-2.5 text-sm transition-all mx-1.5 rounded-md mb-0.5 last:mb-0 group/item"
                       style={{
                         color:
                           location.pathname === item.to
@@ -237,11 +256,30 @@ const Header: React.FC<HeaderProps> = ({ onBookAppointment }) => {
                             : "var(--color-text)",
                         backgroundColor:
                           location.pathname === item.to
-                            ? "color-mix(in srgb, var(--color-primary) 8%, transparent)"
+                            ? "color-mix(in srgb, var(--color-primary) 12%, transparent)"
                             : undefined,
                       }}
+                      onMouseEnter={(e) => {
+                        if (location.pathname !== item.to) {
+                          e.currentTarget.style.backgroundColor =
+                            "color-mix(in srgb, var(--color-primary) 8%, transparent)";
+                        }
+                      }}
+                      onMouseLeave={(e) => {
+                        if (location.pathname !== item.to) {
+                          e.currentTarget.style.backgroundColor = "transparent";
+                        }
+                      }}
                     >
-                      {item.label}
+                      <span
+                        className={`inline-block transition-transform duration-300 ${
+                          location.pathname === item.to
+                            ? "translate-x-1.5 font-semibold"
+                            : "group-hover/item:translate-x-1.5"
+                        }`}
+                      >
+                        {item.label}
+                      </span>
                     </Link>
                   ))}
                 </div>

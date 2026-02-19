@@ -136,51 +136,28 @@ const Footer: React.FC = () => {
               Important Links
             </h4>
             <ul className="space-y-3">
-              <li>
-                <Link
-                  to="/about"
-                  className="hover:text-primary transition-colors flex items-center gap-2"
-                >
-                  <span className="material-icons text-xs">chevron_right</span>{" "}
-                  About Us
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/doctors"
-                  className="hover:text-primary transition-colors flex items-center gap-2"
-                >
-                  <span className="material-icons text-xs">chevron_right</span>{" "}
-                  Our Doctors
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/services"
-                  className="hover:text-primary transition-colors flex items-center gap-2"
-                >
-                  <span className="material-icons text-xs">chevron_right</span>{" "}
-                  Services
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/departments"
-                  className="hover:text-primary transition-colors flex items-center gap-2"
-                >
-                  <span className="material-icons text-xs">chevron_right</span>{" "}
-                  Departments
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/contact"
-                  className="hover:text-primary transition-colors flex items-center gap-2"
-                >
-                  <span className="material-icons text-xs">chevron_right</span>{" "}
-                  Contact Us
-                </Link>
-              </li>
+              {[
+                { to: "/about", label: "About Us" },
+                { to: "/doctors", label: "Our Doctors" },
+                { to: "/services", label: "Services" },
+                { to: "/departments", label: "Departments" },
+                { to: "/contact", label: "Contact Us" },
+              ].map((item, i) => (
+                <li key={item.to}>
+                  <Link
+                    to={item.to}
+                    className="hover:text-primary transition-colors flex items-center gap-2 group/flink"
+                    style={{ transitionDelay: `${i * 40}ms` }}
+                  >
+                    <span className="material-icons text-xs transition-all duration-300 group-hover/flink:text-primary group-hover/flink:translate-x-1">
+                      chevron_right
+                    </span>
+                    <span className="inline-block transition-transform duration-300 group-hover/flink:translate-x-1">
+                      {item.label}
+                    </span>
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
           <div>
