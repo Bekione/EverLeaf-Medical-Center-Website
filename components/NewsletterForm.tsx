@@ -68,8 +68,8 @@ const NewsletterForm: React.FC<NewsletterFormProps> = ({
 
   const buttonClasses =
     variant === "section"
-      ? "px-8 py-4 bg-primary text-white font-bold rounded-full hover:bg-blue-600 transition-all shadow-xl shadow-blue-900/30 whitespace-nowrap hover:scale-105 disabled:opacity-70 disabled:cursor-wait"
-      : "w-full bg-white text-primary font-bold py-2 rounded-lg hover:bg-blue-50 transition-colors disabled:opacity-70 disabled:cursor-wait";
+      ? "px-8 py-4 bg-primary text-white font-bold rounded-full hover:bg-primary-dark transition-all shadow-xl shadow-black/20 whitespace-nowrap hover:scale-105 disabled:opacity-70 disabled:cursor-wait"
+      : "w-full bg-white text-primary font-bold py-2 rounded-lg hover:bg-white/80 transition-colors disabled:opacity-70 disabled:cursor-wait";
 
   const containerClasses =
     variant === "section"
