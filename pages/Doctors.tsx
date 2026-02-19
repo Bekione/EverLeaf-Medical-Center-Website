@@ -113,6 +113,8 @@ const Doctors: React.FC = () => {
               search
             </span>
             <input
+              id="doctor-search"
+              name="search"
               type="text"
               placeholder="Search by doctor name or keyword..."
               className="w-full pl-12 pr-10 py-3 rounded-lg border focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all shadow-sm placeholder-slate-400"

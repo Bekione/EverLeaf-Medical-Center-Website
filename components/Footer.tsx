@@ -199,6 +199,8 @@ const Footer: React.FC = () => {
             ) : (
               <form onSubmit={handleSubscribe} className="flex flex-col gap-3">
                 <input
+                  id="footer-email"
+                  name="email"
                   type="email"
                   placeholder="Your Email"
                   value={email}

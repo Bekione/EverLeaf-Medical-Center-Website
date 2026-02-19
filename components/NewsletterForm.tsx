@@ -81,6 +81,8 @@ const NewsletterForm: React.FC<NewsletterFormProps> = ({
       <div className="flex-1">
         <input
           type="email"
+          id="newsletter-email"
+          name="email"
           placeholder="Your email address"
           value={email}
           onChange={(e) => {
