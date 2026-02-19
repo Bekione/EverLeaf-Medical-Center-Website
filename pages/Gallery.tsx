@@ -46,21 +46,36 @@ const Gallery: React.FC = () => {
   };
 
   return (
-    <div className="animate-fade-in bg-slate-50 min-h-screen">
+    <div
+      className="animate-fade-in min-h-screen"
+      style={{ backgroundColor: "var(--color-bg-alt)" }}
+    >
       <SEO
         title="Hospital Gallery"
         description="View photos of our state-of-the-art medical facilities, patient rooms, and advanced equipment."
         canonical="https://everleaf-medical.com/gallery"
       />
-      <header className="bg-white border-b border-slate-100 py-16">
+      <header
+        className="border-b py-16"
+        style={{
+          backgroundColor: "var(--color-surface)",
+          borderColor: "var(--color-border)",
+        }}
+      >
         <div className="container mx-auto px-6 text-center">
           <span className="inline-block px-3 py-1 mb-4 text-xs font-semibold tracking-wider text-primary uppercase bg-blue-50 rounded-full">
             Our Environment
           </span>
-          <h1 className="text-4xl lg:text-5xl font-serif font-bold text-slate-900 mb-6">
+          <h1
+            className="text-4xl lg:text-5xl font-serif font-bold mb-6"
+            style={{ color: "var(--color-text)" }}
+          >
             MediCare Hospital Gallery
           </h1>
-          <p className="text-lg text-slate-600 leading-relaxed max-w-2xl mx-auto">
+          <p
+            className="text-lg leading-relaxed max-w-2xl mx-auto"
+            style={{ color: "var(--color-text-muted)" }}
+          >
             Explore our state-of-the-art facilities, comfortable patient rooms,
             and the dedicated environment we've built for healing and recovery.
           </p>
@@ -73,7 +88,16 @@ const Gallery: React.FC = () => {
             <button
               key={cat}
               onClick={() => setFilter(cat)}
-              className={`px-6 py-2.5 rounded-full text-sm font-semibold transition-all shadow-sm ${filter === cat ? "bg-primary text-white shadow-md ring-2 ring-primary ring-offset-2" : "bg-white text-slate-600 hover:bg-slate-50 border border-slate-200"}`}
+              className={`px-6 py-2.5 rounded-full text-sm font-semibold transition-all shadow-sm ${filter === cat ? "bg-primary text-white shadow-md ring-2 ring-primary ring-offset-2" : "border"}`}
+              style={
+                filter !== cat
+                  ? {
+                      backgroundColor: "var(--color-surface)",
+                      color: "var(--color-text-muted)",
+                      borderColor: "var(--color-border)",
+                    }
+                  : {}
+              }
             >
               {cat === "All" ? "All Photos" : cat}
             </button>

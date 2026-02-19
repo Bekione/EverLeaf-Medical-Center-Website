@@ -16,15 +16,27 @@ const Services: React.FC = () => {
         description="Comprehensive healthcare services including diagnostics, pharmacy, emergency care, and more at Everleaf Medical Center."
         canonical="https://everleaf-medical.com/services"
       />
-      <header className="bg-white border-b border-slate-100 py-16">
+      <header
+        className="border-b py-16"
+        style={{
+          backgroundColor: "var(--color-surface)",
+          borderColor: "var(--color-border)",
+        }}
+      >
         <div className="container mx-auto px-6 text-center max-w-4xl">
           <span className="inline-block px-3 py-1 mb-4 text-xs font-semibold tracking-wider text-primary uppercase bg-blue-50 rounded-full">
             Comprehensive Care
           </span>
-          <h1 className="text-4xl lg:text-5xl font-serif font-bold text-slate-900 mb-6">
+          <h1
+            className="text-4xl lg:text-5xl font-serif font-bold mb-6"
+            style={{ color: "var(--color-text)" }}
+          >
             Our Medical Services
           </h1>
-          <p className="text-lg text-slate-600 leading-relaxed max-w-2xl mx-auto">
+          <p
+            className="text-lg leading-relaxed max-w-2xl mx-auto"
+            style={{ color: "var(--color-text-muted)" }}
+          >
             We provide a full spectrum of healthcare services designed to meet
             the needs of our community, from preventive checkups to advanced
             emergency care.
@@ -38,7 +50,11 @@ const Services: React.FC = () => {
             {services.map((service, idx) => (
               <div
                 key={idx}
-                className="bg-white rounded-2xl p-8 shadow-card border border-slate-100 hover:-translate-y-2 transition-all duration-300 flex flex-col h-full group"
+                className="rounded-2xl p-8 shadow-card border hover:-translate-y-2 transition-all duration-300 flex flex-col h-full group"
+                style={{
+                  backgroundColor: "var(--color-surface)",
+                  borderColor: "var(--color-border)",
+                }}
               >
                 <div
                   className={`w-16 h-16 bg-${service.color}-50 rounded-2xl flex items-center justify-center text-${service.color}-500 mb-6 group-hover:scale-110 transition-transform duration-300`}
@@ -47,10 +63,16 @@ const Services: React.FC = () => {
                     {service.icon}
                   </span>
                 </div>
-                <h3 className="text-2xl font-bold text-slate-900 mb-3 group-hover:text-primary transition-colors">
+                <h3
+                  className="text-2xl font-bold mb-3 group-hover:text-primary transition-colors"
+                  style={{ color: "var(--color-text)" }}
+                >
                   {service.title}
                 </h3>
-                <p className="text-slate-500 mb-6 leading-relaxed flex-grow">
+                <p
+                  className="mb-6 leading-relaxed flex-grow"
+                  style={{ color: "var(--color-text-muted)" }}
+                >
                   {service.desc}
                 </p>
                 <Link
@@ -70,7 +92,13 @@ const Services: React.FC = () => {
 
       {/* New CTA Section */}
       <section className="py-24 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-slate-900 to-blue-900"></div>
+        <div
+          className="absolute inset-0"
+          style={{
+            background:
+              "linear-gradient(135deg, var(--color-cta-from), var(--color-cta-to))",
+          }}
+        ></div>
         <div
           className="absolute inset-0 opacity-10"
           style={{

@@ -16,15 +16,27 @@ const Departments: React.FC = () => {
         description="Explore our specialized medical departments including Cardiology, Neurology, Pediatrics, Surgery, and more."
         canonical="https://everleaf-medical.com/departments"
       />
-      <header className="bg-white border-b border-slate-100 py-16">
+      <header
+        className="border-b py-16"
+        style={{
+          backgroundColor: "var(--color-surface)",
+          borderColor: "var(--color-border)",
+        }}
+      >
         <div className="container mx-auto px-6 text-center">
           <span className="inline-block px-3 py-1 mb-4 text-xs font-semibold tracking-wider text-primary uppercase bg-blue-50 rounded-full">
             Medical Excellence
           </span>
-          <h1 className="text-4xl lg:text-5xl font-serif font-bold text-slate-900 mb-6">
+          <h1
+            className="text-4xl lg:text-5xl font-serif font-bold mb-6"
+            style={{ color: "var(--color-text)" }}
+          >
             Our Specialized Departments
           </h1>
-          <p className="text-lg text-slate-600 leading-relaxed max-w-2xl mx-auto">
+          <p
+            className="text-lg leading-relaxed max-w-2xl mx-auto"
+            style={{ color: "var(--color-text-muted)" }}
+          >
             We offer a wide array of specialized medical departments, each
             staffed with experienced professionals dedicated to providing
             top-quality healthcare services.
@@ -47,17 +59,27 @@ const Departments: React.FC = () => {
             {departments.map((dept) => (
               <div
                 key={dept.id}
-                className="bg-white rounded-2xl p-8 shadow-card border border-slate-100 hover:-translate-y-2 transition-all duration-300 group"
+                className="rounded-2xl p-8 shadow-card border hover:-translate-y-2 transition-all duration-300 group"
+                style={{
+                  backgroundColor: "var(--color-surface)",
+                  borderColor: "var(--color-border)",
+                }}
               >
                 <div
                   className={`w-16 h-16 bg-${dept.color}-50 rounded-2xl flex items-center justify-center text-${dept.color}-500 mb-6 group-hover:scale-110 transition-transform duration-300`}
                 >
                   <span className="material-icons text-3xl">{dept.icon}</span>
                 </div>
-                <h3 className="text-2xl font-bold text-slate-900 mb-3 group-hover:text-primary transition-colors">
+                <h3
+                  className="text-2xl font-bold mb-3 group-hover:text-primary transition-colors"
+                  style={{ color: "var(--color-text)" }}
+                >
                   {dept.name}
                 </h3>
-                <p className="text-slate-500 mb-6 leading-relaxed">
+                <p
+                  className="mb-6 leading-relaxed"
+                  style={{ color: "var(--color-text-muted)" }}
+                >
                   {dept.desc}
                 </p>
                 <Link
@@ -77,7 +99,13 @@ const Departments: React.FC = () => {
 
       {/* Revamped CTA Section */}
       <section className="py-24 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-slate-800 to-slate-900"></div>
+        <div
+          className="absolute inset-0"
+          style={{
+            background:
+              "linear-gradient(135deg, var(--color-cta-from), var(--color-cta-to))",
+          }}
+        ></div>
         <div
           className="absolute inset-0 opacity-10"
           style={{

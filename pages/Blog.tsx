@@ -54,7 +54,10 @@ const Blog: React.FC = () => {
   };
 
   return (
-    <div className="animate-fade-in bg-slate-50 min-h-screen">
+    <div
+      className="animate-fade-in min-h-screen"
+      style={{ backgroundColor: "var(--color-bg-alt)" }}
+    >
       <SEO
         title="Health Blog & News"
         description="Read the latest medical insights, health tips, and hospital announcements from the experts at Everleaf Medical Center."

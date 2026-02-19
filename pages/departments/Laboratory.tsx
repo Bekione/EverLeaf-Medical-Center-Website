@@ -66,7 +66,7 @@ const Laboratory: React.FC = () => {
               </div>
               <div className="absolute -bottom-6 -left-6 z-20 bg-white p-4 rounded-xl shadow-xl border border-slate-100 max-w-xs animate-fade-in hidden lg:block">
                 <div className="flex items-center gap-4">
-                  <div className="bg-teal-50 p-3 rounded-full text-teal-600">
+                  <div className="bg-teal-50 w-12 h-12 flex items-center justify-center rounded-full text-teal-600">
                     <span className="material-icons text-2xl">science</span>
                   </div>
                   <div>

@@ -122,7 +122,11 @@ const GalleryModal: React.FC<GalleryModalProps> = ({
 
   return (
     <div
-      className="fixed inset-0 z-[100] bg-slate-900/95 backdrop-blur-sm flex flex-col justify-center items-center p-4 sm:p-8 animate-fade-in"
+      className="fixed inset-0 z-[100] backdrop-blur-md flex flex-col justify-center items-center p-4 sm:p-8 animate-fade-in"
+      style={{
+        backgroundColor:
+          "color-mix(in srgb, var(--color-footer-bg) 95%, transparent)",
+      }}
       data-gallery-modal="true"
       role="dialog"
       aria-label="Image gallery viewer"
@@ -130,7 +134,7 @@ const GalleryModal: React.FC<GalleryModalProps> = ({
     >
       <button
         onClick={onClose}
-        className="absolute top-6 right-6 w-16 h-16 flex items-center justify-center text-white/70 hover:text-white transition-colors focus:outline-none p-2 rounded-full hover:bg-white/10"
+        className="absolute top-6 right-6 w-16 h-16 flex items-center justify-center text-white/70 hover:text-primary transition-colors focus:outline-none p-2 rounded-full hover:bg-white/10"
       >
         <span className="material-icons text-4xl">close</span>
       </button>
@@ -138,7 +142,7 @@ const GalleryModal: React.FC<GalleryModalProps> = ({
       <div className="relative w-full max-w-6xl flex items-center justify-center flex-1 min-h-0">
         <button
           onClick={onPrev}
-          className="absolute left-0 sm:-left-12 lg:-left-20 z-10 p-2 text-white/70 hover:text-white transition-colors rounded-full hover:bg-white/10 hidden sm:block"
+          className="absolute left-0 sm:-left-12 lg:-left-20 z-10 w-16 h-16 flex items-center justify-center p-2 text-white/70 hover:text-primary transition-colors rounded-full hover:bg-white/10 hidden sm:block"
         >
           <span className="material-icons text-5xl">chevron_left</span>
         </button>
@@ -153,10 +157,13 @@ const GalleryModal: React.FC<GalleryModalProps> = ({
             />
           </div>
           <div className="mt-6 text-center">
-            <h3 className="text-white text-xl font-semibold tracking-wide">
+            <h3
+              className="text-xl font-bold tracking-wide"
+              style={{ color: "var(--color-primary)" }}
+            >
               {title}
             </h3>
-            <p className="text-slate-300 text-sm mt-1">
+            <p className="text-white/80 text-sm mt-1">
               Experience comfort and privacy in our newly renovated rooms.
             </p>
           </div>
@@ -164,7 +171,7 @@ const GalleryModal: React.FC<GalleryModalProps> = ({
 
         <button
           onClick={onNext}
-          className="absolute right-0 sm:-right-12 lg:-right-20 z-10 p-2 text-white/70 hover:text-white transition-colors rounded-full hover:bg-white/10 hidden sm:block"
+          className="absolute right-0 sm:-right-12 lg:-right-20 z-10 w-16 h-16 flex items-center justify-center p-2 text-white/70 hover:text-primary transition-colors rounded-full hover:bg-white/10 hidden sm:block"
         >
           <span className="material-icons text-5xl">chevron_right</span>
         </button>
@@ -173,13 +180,13 @@ const GalleryModal: React.FC<GalleryModalProps> = ({
       <div className="flex sm:hidden gap-8 mt-4 mb-4">
         <button
           onClick={onPrev}
-          className="p-3 text-white/70 hover:text-white transition-colors rounded-full bg-white/10 hover:bg-white/20"
+          className="p-3 text-white/70 hover:text-primary transition-colors rounded-full bg-white/10 hover:bg-white/20"
         >
           <span className="material-icons text-3xl">chevron_left</span>
         </button>
         <button
           onClick={onNext}
-          className="p-3 text-white/70 hover:text-white transition-colors rounded-full bg-white/10 hover:bg-white/20"
+          className="p-3 text-white/70 hover:text-primary transition-colors rounded-full bg-white/10 hover:bg-white/20"
         >
           <span className="material-icons text-3xl">chevron_right</span>
         </button>

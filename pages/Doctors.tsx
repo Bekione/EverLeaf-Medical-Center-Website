@@ -51,7 +51,10 @@ const Doctors: React.FC = () => {
   };
 
   return (
-    <div className="animate-fade-in bg-slate-50 min-h-screen">
+    <div
+      className="animate-fade-in min-h-screen"
+      style={{ backgroundColor: "var(--color-bg-alt)" }}
+    >
       <SEO
         title="Find a Doctor"
         description="Search our directory of distinguished medical professionals and specialists at Everleaf Medical Center."
@@ -71,12 +74,24 @@ const Doctors: React.FC = () => {
         }}
       />
       {/* Page Header */}
-      <div className="bg-white border-b border-slate-200 py-12 md:py-16">
+      <div
+        className="border-b py-12 md:py-16"
+        style={{
+          backgroundColor: "var(--color-surface)",
+          borderColor: "var(--color-border)",
+        }}
+      >
         <div className="container mx-auto px-6">
-          <h1 className="text-3xl md:text-4xl font-serif font-bold text-slate-900 mb-4">
+          <h1
+            className="text-3xl md:text-4xl font-serif font-bold mb-4"
+            style={{ color: "var(--color-text)" }}
+          >
             Find a Doctor
           </h1>
-          <p className="text-slate-600 max-w-2xl text-lg leading-relaxed">
+          <p
+            className="max-w-2xl text-lg leading-relaxed"
+            style={{ color: "var(--color-text-muted)" }}
+          >
             Browse our directory of distinguished medical professionals. Use the
             filters below to find the specialist best suited for your needs.
           </p>
@@ -84,7 +99,13 @@ const Doctors: React.FC = () => {
       </div>
 
       {/* Filter Bar */}
-      <div className="sticky top-[72px] z-30 bg-white shadow-md border-b border-slate-100 py-6 transition-all duration-300">
+      <div
+        className="sticky top-[72px] z-30 shadow-md border-b py-6 transition-all duration-300"
+        style={{
+          backgroundColor: "var(--color-surface)",
+          borderColor: "var(--color-border)",
+        }}
+      >
         <div className="container mx-auto px-6 flex flex-col lg:flex-row gap-4 lg:items-center justify-between">
           <div className="relative flex-grow max-w-xl">
             <span className="material-icons absolute left-4 top-1/2 -translate-y-1/2 text-slate-400">
@@ -93,7 +114,12 @@ const Doctors: React.FC = () => {
             <input
               type="text"
               placeholder="Search by doctor name or keyword..."
-              className="w-full pl-12 pr-4 py-3 rounded-lg border border-slate-200 bg-white focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all shadow-sm text-slate-800 placeholder-slate-400"
+              className="w-full pl-12 pr-4 py-3 rounded-lg border focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all shadow-sm placeholder-slate-400"
+              style={{
+                backgroundColor: "var(--color-surface)",
+                borderColor: "var(--color-border)",
+                color: "var(--color-text)",
+              }}
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
             />
@@ -163,9 +189,16 @@ const Doctors: React.FC = () => {
           {paginatedDoctors.map((doc) => (
             <div
               key={doc.id}
-              className="group relative bg-white rounded-2xl overflow-hidden shadow-card hover:shadow-xl transition-all duration-300 border border-slate-100 flex flex-col h-full animate-fade-in"
+              className="group relative rounded-2xl overflow-hidden shadow-card hover:shadow-xl transition-all duration-300 border flex flex-col h-full animate-fade-in"
+              style={{
+                backgroundColor: "var(--color-surface)",
+                borderColor: "var(--color-border)",
+              }}
             >
-              <div className="relative h-80 overflow-hidden bg-slate-100">
+              <div
+                className="relative h-80 overflow-hidden"
+                style={{ backgroundColor: "var(--color-bg-alt)" }}
+              >
                 <ImageSkeleton
                   src={doc.img}
                   alt={doc.name}
@@ -214,18 +247,30 @@ const Doctors: React.FC = () => {
                 </div>
               </div>
 
-              <div className="p-6 flex flex-col flex-grow text-center relative z-10 bg-white">
-                <h3 className="text-xl font-bold text-slate-900 mb-1 font-serif">
+              <div
+                className="p-6 flex flex-col flex-grow text-center relative z-10"
+                style={{ backgroundColor: "var(--color-surface)" }}
+              >
+                <h3
+                  className="text-xl font-bold mb-1 font-serif"
+                  style={{ color: "var(--color-text)" }}
+                >
                   {doc.name}
                 </h3>
                 <p className="text-primary font-medium text-sm mb-1">
                   {doc.specialty}
                 </p>
-                <p className="text-slate-500 text-xs mb-6 uppercase tracking-wider">
+                <p
+                  className="text-xs mb-6 uppercase tracking-wider"
+                  style={{ color: "var(--color-text-muted)" }}
+                >
                   Department of {doc.dept}
                 </p>
 
-                <div className="mt-auto pt-4 border-t border-slate-100 w-full">
+                <div
+                  className="mt-auto pt-4 border-t w-full"
+                  style={{ borderColor: "var(--color-border)" }}
+                >
                   <button
                     onClick={() =>
                       openAppointment({
@@ -247,14 +292,23 @@ const Doctors: React.FC = () => {
         </div>
 
         {paginatedDoctors.length === 0 && (
-          <div className="text-center py-20 bg-white rounded-2xl border border-slate-100 shadow-sm">
+          <div
+            className="text-center py-20 rounded-2xl border shadow-sm"
+            style={{
+              backgroundColor: "var(--color-surface)",
+              borderColor: "var(--color-border)",
+            }}
+          >
             <span className="material-icons text-6xl text-slate-200 mb-4">
               search_off
             </span>
-            <h3 className="text-xl font-bold text-slate-900">
+            <h3
+              className="text-xl font-bold"
+              style={{ color: "var(--color-text)" }}
+            >
               No doctors found
             </h3>
-            <p className="text-slate-500 mt-2">
+            <p className="mt-2" style={{ color: "var(--color-text-muted)" }}>
               Try adjusting your search or filters to find what you're looking
               for.
             </p>
@@ -265,7 +319,11 @@ const Doctors: React.FC = () => {
                 setSpecialtyFilter("");
                 setGenderFilter("");
               }}
-              className="mt-6 px-6 py-2 bg-slate-100 text-slate-600 rounded-lg hover:bg-slate-200 transition-colors font-medium text-sm"
+              className="mt-6 px-6 py-2 rounded-lg transition-colors font-medium text-sm"
+              style={{
+                backgroundColor: "var(--color-bg-alt)",
+                color: "var(--color-text-muted)",
+              }}
             >
               Clear Filters
             </button>

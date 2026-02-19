@@ -110,7 +110,8 @@ const Imaging: React.FC = () => {
               ].map((item, i) => (
                 <div
                   key={i}
-                  className="bg-white rounded-xl overflow-hidden shadow-card hover:shadow-xl transition-all duration-300 group"
+                  className="rounded-xl overflow-hidden shadow-card hover:shadow-xl transition-all duration-300 group"
+                  style={{ backgroundColor: "var(--color-surface)" }}
                 >
                   <div className="h-48 overflow-hidden relative">
                     <img
@@ -125,7 +126,10 @@ const Imaging: React.FC = () => {
                     </div>
                   </div>
                   <div className="p-6">
-                    <h3 className="text-xl font-bold text-slate-900 mb-2">
+                    <h3
+                      className="text-xl font-bold mb-2"
+                      style={{ color: "var(--color-text)" }}
+                    >
                       {item.title}
                     </h3>
                     <p className="text-slate-500 text-sm">{item.desc}</p>
@@ -136,18 +140,33 @@ const Imaging: React.FC = () => {
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-20">
-            <div className="lg:col-span-2 bg-white rounded-2xl p-8 border border-slate-100 shadow-card">
+            <div
+              className="lg:col-span-2 rounded-2xl p-8 border shadow-card"
+              style={{
+                backgroundColor: "var(--color-surface)",
+                borderColor: "var(--color-border)",
+              }}
+            >
               <div className="flex items-center gap-4 mb-6">
-                <div className="w-12 h-12 rounded-full bg-blue-100 text-primary flex items-center justify-center">
+                <div
+                  className="w-12 h-12 rounded-full text-primary flex items-center justify-center"
+                  style={{ backgroundColor: "var(--color-primary-light)" }}
+                >
                   <span className="material-icons text-2xl">biotech</span>
                 </div>
-                <h2 className="text-2xl font-bold text-slate-900">
+                <h2
+                  className="text-2xl font-bold"
+                  style={{ color: "var(--color-text)" }}
+                >
                   Specialized Radiology
                 </h2>
               </div>
               <div className="grid md:grid-cols-2 gap-8">
                 <div>
-                  <h4 className="font-bold text-slate-800 mb-2">
+                  <h4
+                    className="font-bold mb-2"
+                    style={{ color: "var(--color-text)" }}
+                  >
                     Interventional Radiology
                   </h4>
                   <p className="text-slate-500 text-sm leading-relaxed mb-4">
@@ -170,7 +189,10 @@ const Imaging: React.FC = () => {
                   </ul>
                 </div>
                 <div>
-                  <h4 className="font-bold text-slate-800 mb-2">
+                  <h4
+                    className="font-bold mb-2"
+                    style={{ color: "var(--color-text)" }}
+                  >
                     Women's Imaging
                   </h4>
                   <p className="text-slate-500 text-sm leading-relaxed mb-4">
@@ -193,7 +215,10 @@ const Imaging: React.FC = () => {
                   </ul>
                 </div>
               </div>
-              <div className="mt-8 pt-8 border-t border-slate-100">
+              <div
+                className="mt-8 pt-8 border-t"
+                style={{ borderColor: "var(--color-border)" }}
+              >
                 <p className="text-slate-500 italic text-sm">
                   "Our radiologists are board-certified and sub-specialty
                   trained, ensuring the highest level of expertise for your
@@ -201,12 +226,24 @@ const Imaging: React.FC = () => {
                 </p>
               </div>
             </div>
-            <div className="bg-indigo-50 rounded-2xl p-8 border border-indigo-100">
+            <div
+              className="rounded-2xl p-8 border"
+              style={{
+                backgroundColor: "var(--color-primary-light)",
+                borderColor: "var(--color-border)",
+              }}
+            >
               <div className="flex items-center gap-4 mb-6">
-                <div className="w-12 h-12 rounded-full bg-white text-indigo-600 flex items-center justify-center shadow-sm">
+                <div
+                  className="w-12 h-12 rounded-full text-primary flex items-center justify-center shadow-sm"
+                  style={{ backgroundColor: "var(--color-surface)" }}
+                >
                   <span className="material-icons text-2xl">shield</span>
                 </div>
-                <h2 className="text-xl font-bold text-slate-900">
+                <h2
+                  className="text-xl font-bold"
+                  style={{ color: "var(--color-text)" }}
+                >
                   Safety First
                 </h2>
               </div>
@@ -225,7 +262,10 @@ const Imaging: React.FC = () => {
                     verified
                   </span>
                   <div>
-                    <span className="block font-bold text-sm text-slate-900">
+                    <span
+                      className="block font-bold text-sm"
+                      style={{ color: "var(--color-text)" }}
+                    >
                       ACR Accredited
                     </span>
                     <span className="text-xs text-slate-500">
@@ -307,7 +347,13 @@ const Imaging: React.FC = () => {
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div className="bg-white p-6 rounded-2xl shadow-sm hover:shadow-md transition-shadow border border-slate-100">
+            <div
+              className="p-6 rounded-2xl shadow-sm hover:shadow-md transition-shadow border"
+              style={{
+                backgroundColor: "var(--color-surface)",
+                borderColor: "var(--color-border)",
+              }}
+            >
               <div className="w-12 h-12 bg-orange-50 rounded-xl flex items-center justify-center text-orange-500 mb-4">
                 <span className="material-icons text-2xl">
                   accessibility_new
@@ -321,7 +367,13 @@ const Imaging: React.FC = () => {
                 joint abnormalities using high-resolution X-rays.
               </p>
             </div>
-            <div className="bg-white p-6 rounded-2xl shadow-sm hover:shadow-md transition-shadow border border-slate-100">
+            <div
+              className="p-6 rounded-2xl shadow-sm hover:shadow-md transition-shadow border"
+              style={{
+                backgroundColor: "var(--color-surface)",
+                borderColor: "var(--color-border)",
+              }}
+            >
               <div className="w-12 h-12 bg-purple-50 rounded-xl flex items-center justify-center text-purple-500 mb-4">
                 <span className="material-icons text-2xl">biotech</span>
               </div>
@@ -333,7 +385,13 @@ const Imaging: React.FC = () => {
                 through advanced MRI and CT scanning.
               </p>
             </div>
-            <div className="bg-white p-6 rounded-2xl shadow-sm hover:shadow-md transition-shadow border border-slate-100">
+            <div
+              className="p-6 rounded-2xl shadow-sm hover:shadow-md transition-shadow border"
+              style={{
+                backgroundColor: "var(--color-surface)",
+                borderColor: "var(--color-border)",
+              }}
+            >
               <div className="w-12 h-12 bg-red-50 rounded-xl flex items-center justify-center text-red-500 mb-4">
                 <span className="material-icons text-2xl">favorite</span>
               </div>
@@ -345,7 +403,13 @@ const Imaging: React.FC = () => {
                 identify blockages and heart conditions.
               </p>
             </div>
-            <div className="bg-white p-6 rounded-2xl shadow-sm hover:shadow-md transition-shadow border border-slate-100">
+            <div
+              className="p-6 rounded-2xl shadow-sm hover:shadow-md transition-shadow border"
+              style={{
+                backgroundColor: "var(--color-surface)",
+                borderColor: "var(--color-border)",
+              }}
+            >
               <div className="w-12 h-12 bg-teal-50 rounded-xl flex items-center justify-center text-teal-500 mb-4">
                 <span className="material-icons text-2xl">healing</span>
               </div>
@@ -361,7 +425,10 @@ const Imaging: React.FC = () => {
         </div>
       </section>
 
-      <section className="py-20 bg-white relative overflow-hidden">
+      <section
+        className="py-20 relative overflow-hidden"
+        style={{ backgroundColor: "var(--color-bg)" }}
+      >
         <div className="absolute top-0 right-0 -mr-20 -mt-20 w-80 h-80 bg-slate-50 rounded-full blur-3xl opacity-50"></div>
         <div className="absolute bottom-0 left-0 -ml-20 -mb-20 w-80 h-80 bg-blue-50 rounded-full blur-3xl opacity-50"></div>
         <div className="container mx-auto px-6 relative z-10">
@@ -370,20 +437,35 @@ const Imaging: React.FC = () => {
               <span className="text-primary font-semibold tracking-wider text-sm uppercase">
                 Our Expertise
               </span>
-              <h2 className="text-3xl lg:text-4xl font-serif font-bold text-slate-900 mt-2">
+              <h2
+                className="text-3xl lg:text-4xl font-serif font-bold mt-2"
+                style={{ color: "var(--color-text)" }}
+              >
                 Services & Procedures
               </h2>
             </div>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div className="flex gap-6 p-6 rounded-2xl border border-slate-100 hover:border-primary/30 hover:shadow-soft transition-all duration-300 bg-white group">
+            <div
+              className="flex gap-6 p-6 rounded-2xl border hover:border-primary/30 hover:shadow-soft transition-all duration-300 group"
+              style={{
+                backgroundColor: "var(--color-surface)",
+                borderColor: "var(--color-border)",
+              }}
+            >
               <div className="flex-shrink-0">
-                <div className="w-16 h-16 bg-white rounded-xl flex items-center justify-center shadow-sm text-primary group-hover:bg-primary group-hover:text-white transition-colors duration-300">
+                <div
+                  className="w-16 h-16 rounded-xl flex items-center justify-center shadow-sm text-primary group-hover:bg-primary group-hover:text-white transition-colors duration-300"
+                  style={{ backgroundColor: "var(--color-surface)" }}
+                >
                   <span className="material-icons text-3xl">image</span>
                 </div>
               </div>
               <div>
-                <h3 className="text-xl font-bold text-slate-900 mb-2">
+                <h3
+                  className="text-xl font-bold mb-2"
+                  style={{ color: "var(--color-text)" }}
+                >
                   Digital X-Ray
                 </h3>
                 <p className="text-slate-600 text-sm mb-4 leading-relaxed">
@@ -406,14 +488,26 @@ const Imaging: React.FC = () => {
                 </ul>
               </div>
             </div>
-            <div className="flex gap-6 p-6 rounded-2xl border border-slate-100 hover:border-primary/30 hover:shadow-soft transition-all duration-300 bg-white group">
+            <div
+              className="flex gap-6 p-6 rounded-2xl border hover:border-primary/30 hover:shadow-soft transition-all duration-300 group"
+              style={{
+                backgroundColor: "var(--color-surface)",
+                borderColor: "var(--color-border)",
+              }}
+            >
               <div className="flex-shrink-0">
-                <div className="w-16 h-16 bg-white rounded-xl flex items-center justify-center shadow-sm text-pink-500 group-hover:bg-pink-500 group-hover:text-white transition-colors duration-300">
+                <div
+                  className="w-16 h-16 rounded-xl flex items-center justify-center shadow-sm text-pink-500 group-hover:bg-primary group-hover:text-white transition-colors duration-300"
+                  style={{ backgroundColor: "var(--color-surface)" }}
+                >
                   <span className="material-icons text-3xl">female</span>
                 </div>
               </div>
               <div>
-                <h3 className="text-xl font-bold text-slate-900 mb-2">
+                <h3
+                  className="text-xl font-bold mb-2"
+                  style={{ color: "var(--color-text)" }}
+                >
                   3D Mammography
                 </h3>
                 <p className="text-slate-600 text-sm mb-4 leading-relaxed">
@@ -437,14 +531,26 @@ const Imaging: React.FC = () => {
                 </ul>
               </div>
             </div>
-            <div className="flex gap-6 p-6 rounded-2xl border border-slate-100 hover:border-primary/30 hover:shadow-soft transition-all duration-300 bg-white group">
+            <div
+              className="flex gap-6 p-6 rounded-2xl border hover:border-primary/30 hover:shadow-soft transition-all duration-300 group"
+              style={{
+                backgroundColor: "var(--color-surface)",
+                borderColor: "var(--color-border)",
+              }}
+            >
               <div className="flex-shrink-0">
-                <div className="w-16 h-16 bg-white rounded-xl flex items-center justify-center shadow-sm text-indigo-500 group-hover:bg-indigo-500 group-hover:text-white transition-colors duration-300">
+                <div
+                  className="w-16 h-16 rounded-xl flex items-center justify-center shadow-sm text-indigo-500 group-hover:bg-primary group-hover:text-white transition-colors duration-300"
+                  style={{ backgroundColor: "var(--color-surface)" }}
+                >
                   <span className="material-icons text-3xl">all_inclusive</span>
                 </div>
               </div>
               <div>
-                <h3 className="text-xl font-bold text-slate-900 mb-2">
+                <h3
+                  className="text-xl font-bold mb-2"
+                  style={{ color: "var(--color-text)" }}
+                >
                   MRI (Magnetic Resonance Imaging)
                 </h3>
                 <p className="text-slate-600 text-sm mb-4 leading-relaxed">
@@ -467,14 +573,26 @@ const Imaging: React.FC = () => {
                 </ul>
               </div>
             </div>
-            <div className="flex gap-6 p-6 rounded-2xl border border-slate-100 hover:border-primary/30 hover:shadow-soft transition-all duration-300 bg-white group">
+            <div
+              className="flex gap-6 p-6 rounded-2xl border hover:border-primary/30 hover:shadow-soft transition-all duration-300 group"
+              style={{
+                backgroundColor: "var(--color-surface)",
+                borderColor: "var(--color-border)",
+              }}
+            >
               <div className="flex-shrink-0">
-                <div className="w-16 h-16 bg-white rounded-xl flex items-center justify-center shadow-sm text-blue-500 group-hover:bg-blue-500 group-hover:text-white transition-colors duration-300">
+                <div
+                  className="w-16 h-16 rounded-xl flex items-center justify-center shadow-sm text-blue-500 group-hover:bg-primary group-hover:text-white transition-colors duration-300"
+                  style={{ backgroundColor: "var(--color-surface)" }}
+                >
                   <span className="material-icons text-3xl">donut_large</span>
                 </div>
               </div>
               <div>
-                <h3 className="text-xl font-bold text-slate-900 mb-2">
+                <h3
+                  className="text-xl font-bold mb-2"
+                  style={{ color: "var(--color-text)" }}
+                >
                   CT Scans (Computed Tomography)
                 </h3>
                 <p className="text-slate-600 text-sm mb-4 leading-relaxed">
@@ -541,7 +659,8 @@ const Imaging: React.FC = () => {
             ].map((doc, i) => (
               <div
                 key={i}
-                className="bg-white rounded-2xl overflow-hidden shadow-card hover:shadow-xl transition-all duration-300 group"
+                className="rounded-2xl overflow-hidden shadow-card hover:shadow-xl transition-all duration-300 group"
+                style={{ backgroundColor: "var(--color-surface)" }}
               >
                 <div className="h-64 overflow-hidden relative">
                   <img
@@ -564,7 +683,10 @@ const Imaging: React.FC = () => {
                   </div>
                 </div>
                 <div className="p-6 text-center">
-                  <h3 className="text-xl font-bold text-slate-900">
+                  <h3
+                    className="text-xl font-bold"
+                    style={{ color: "var(--color-text)" }}
+                  >
                     {doc.name}
                   </h3>
                   <p className="text-primary font-medium text-sm mb-3">
@@ -578,7 +700,13 @@ const Imaging: React.FC = () => {
       </section>
 
       <section className="py-24 relative overflow-hidden" id="appointment">
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-950 to-slate-900"></div>
+        <div
+          className="absolute inset-0"
+          style={{
+            background:
+              "linear-gradient(135deg, var(--color-cta-from), var(--color-cta-to))",
+          }}
+        ></div>
         <div
           className="absolute inset-0 opacity-10"
           style={{
@@ -605,16 +733,17 @@ const Imaging: React.FC = () => {
             </span>
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-white mb-6 leading-tight">
               Ready for Your <br />
-              <span className="text-blue-300">Scan?</span>
+              <span style={{ color: "var(--color-cta-accent)" }}>Scan?</span>
             </h2>
-            <p className="text-blue-100 text-lg md:text-xl mb-10 leading-relaxed max-w-2xl mx-auto">
+            <p className="text-white/80 text-lg md:text-xl mb-10 leading-relaxed max-w-2xl mx-auto">
               Whether you need a routine screening or a complex diagnostic
               procedure, our radiology team is here to provide exceptional care.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <button
                 onClick={() => openAppointment({ department: "Radiology" })}
-                className="inline-flex items-center justify-center px-8 py-4 text-lg font-bold text-blue-950 bg-white rounded-full hover:bg-blue-50 shadow-xl shadow-blue-900/20 transition-all hover:scale-105"
+                className="inline-flex items-center justify-center px-8 py-4 text-lg font-bold bg-white rounded-full shadow-xl transition-all hover:scale-105"
+                style={{ color: "var(--color-cta-from)" }}
               >
                 Request Appointment
               </button>

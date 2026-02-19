@@ -63,14 +63,23 @@ const CountUp = ({
 
 const About: React.FC = () => {
   return (
-    <div className="animate-fade-in bg-slate-50 min-h-screen">
+    <div
+      className="animate-fade-in min-h-screen"
+      style={{ backgroundColor: "var(--color-bg-alt)" }}
+    >
       <SEO
         title="About Us"
         description="Learn about Everleaf Medical Center's 35-year legacy of compassionate care, medical excellence, and our mission to improve community health."
         canonical="https://everleaf-medical.com/about"
       />
       {/* Hero Section - Distinct from Services Pages */}
-      <header className="relative pt-12 pb-20 lg:pt-24 lg:pb-32 overflow-hidden bg-gradient-to-b from-blue-50 via-white to-white">
+      <header
+        className="relative pt-12 pb-20 lg:pt-24 lg:pb-32 overflow-hidden"
+        style={{
+          background:
+            "linear-gradient(to bottom, var(--color-primary-light), var(--color-surface))",
+        }}
+      >
         {/* Abstract Background Elements */}
         <div className="absolute top-0 right-0 -translate-y-1/4 translate-x-1/4 w-[600px] h-[600px] bg-blue-100/40 rounded-full blur-[100px] pointer-events-none"></div>
         <div className="absolute bottom-0 left-0 translate-y-1/4 -translate-x-1/4 w-[500px] h-[500px] bg-teal-50/60 rounded-full blur-[80px] pointer-events-none"></div>
@@ -78,17 +87,29 @@ const About: React.FC = () => {
         <div className="container mx-auto px-6 relative z-10">
           <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
             <div className="lg:w-1/2 text-center lg:text-left">
-              <div className="inline-flex items-center gap-2 px-3 py-1 mb-6 text-xs font-bold tracking-wider text-primary uppercase bg-white rounded-full border border-blue-100 shadow-sm">
+              <div
+                className="inline-flex items-center gap-2 px-3 py-1 mb-6 text-xs font-bold tracking-wider text-primary uppercase rounded-full border shadow-sm"
+                style={{
+                  backgroundColor: "var(--color-surface)",
+                  borderColor: "var(--color-border)",
+                }}
+              >
                 <span className="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
                 Since 1988
               </div>
-              <h1 className="text-4xl lg:text-6xl font-serif font-bold text-slate-900 mb-6 leading-tight">
+              <h1
+                className="text-4xl lg:text-6xl font-serif font-bold mb-6 leading-tight"
+                style={{ color: "var(--color-text)" }}
+              >
                 A Legacy of Caring, <br />
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-blue-600">
                   A Future of Healing.
                 </span>
               </h1>
-              <p className="text-lg text-slate-600 mb-8 leading-relaxed max-w-xl mx-auto lg:mx-0">
+              <p
+                className="text-lg mb-8 leading-relaxed max-w-xl mx-auto lg:mx-0"
+                style={{ color: "var(--color-text-muted)" }}
+              >
                 For over 35 years, Everleaf Medical Center has been a beacon of
                 hope. We blend compassionate care with cutting-edge medical
                 innovation to improve the lives of our community.
@@ -102,31 +123,69 @@ const About: React.FC = () => {
                 </Link>
                 <Link
                   to="/gallery"
-                  className="inline-flex items-center justify-center px-8 py-3.5 text-base font-bold text-slate-700 bg-white border border-slate-200 rounded-lg hover:bg-slate-50 hover:border-slate-300 transition-all shadow-sm"
+                  className="inline-flex items-center justify-center px-8 py-3.5 text-base font-bold rounded-lg border transition-all shadow-sm"
+                  style={{
+                    color: "var(--color-text)",
+                    backgroundColor: "var(--color-surface)",
+                    borderColor: "var(--color-border)",
+                  }}
                 >
                   View Our Facilities
                 </Link>
               </div>
 
               {/* Trust Indicators */}
-              <div className="mt-12 flex items-center justify-center lg:justify-start gap-8 border-t border-slate-100 pt-8">
+              <div
+                className="mt-12 flex items-center justify-center lg:justify-start gap-8 border-t pt-8"
+                style={{ borderColor: "var(--color-border)" }}
+              >
                 <div>
-                  <p className="text-3xl font-bold text-slate-900">35+</p>
-                  <p className="text-sm text-slate-500 font-medium">
+                  <p
+                    className="text-3xl font-bold"
+                    style={{ color: "var(--color-text)" }}
+                  >
+                    35+
+                  </p>
+                  <p
+                    className="text-sm font-medium"
+                    style={{ color: "var(--color-text-muted)" }}
+                  >
                     Years Serving
                   </p>
                 </div>
-                <div className="w-px h-10 bg-slate-200"></div>
+                <div
+                  className="w-px h-10"
+                  style={{ backgroundColor: "var(--color-border)" }}
+                ></div>
                 <div>
-                  <p className="text-3xl font-bold text-slate-900">100k+</p>
-                  <p className="text-sm text-slate-500 font-medium">
+                  <p
+                    className="text-3xl font-bold"
+                    style={{ color: "var(--color-text)" }}
+                  >
+                    100k+
+                  </p>
+                  <p
+                    className="text-sm font-medium"
+                    style={{ color: "var(--color-text-muted)" }}
+                  >
                     Patients Healed
                   </p>
                 </div>
-                <div className="w-px h-10 bg-slate-200"></div>
+                <div
+                  className="w-px h-10"
+                  style={{ backgroundColor: "var(--color-border)" }}
+                ></div>
                 <div>
-                  <p className="text-3xl font-bold text-slate-900">120+</p>
-                  <p className="text-sm text-slate-500 font-medium">
+                  <p
+                    className="text-3xl font-bold"
+                    style={{ color: "var(--color-text)" }}
+                  >
+                    120+
+                  </p>
+                  <p
+                    className="text-sm font-medium"
+                    style={{ color: "var(--color-text-muted)" }}
+                  >
                     Specialists
                   </p>
                 </div>
@@ -154,7 +213,10 @@ const About: React.FC = () => {
 
                 {/* Decorative Elements */}
                 <div className="absolute -top-6 -right-6 w-24 h-24 bg-yellow-400/20 rounded-full blur-2xl"></div>
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full border border-slate-200 rounded-2xl -z-10 transform rotate-3 scale-105"></div>
+                <div
+                  className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full rounded-2xl -z-10 transform rotate-3 scale-105 border"
+                  style={{ borderColor: "var(--color-border)" }}
+                ></div>
               </div>
             </div>
           </div>
@@ -177,16 +239,25 @@ const About: React.FC = () => {
               <span className="text-primary font-bold tracking-wider uppercase text-sm mb-2 block">
                 Our Story
               </span>
-              <h2 className="text-3xl md:text-4xl font-serif font-bold text-slate-900 mb-6">
+              <h2
+                className="text-3xl md:text-4xl font-serif font-bold mb-6"
+                style={{ color: "var(--color-text)" }}
+              >
                 From Humble Beginnings to Medical Excellence
               </h2>
-              <p className="text-slate-600 text-lg mb-6 leading-relaxed">
+              <p
+                className="text-lg mb-6 leading-relaxed"
+                style={{ color: "var(--color-text-muted)" }}
+              >
                 Founded in 1988 by Dr. Eleanor Rigby with a small team of
                 dedicated nurses, Everleaf Medical Center started with a simple
                 mission: to provide accessible, high-quality healthcare to the
                 local community.
               </p>
-              <p className="text-slate-600 text-lg mb-8 leading-relaxed">
+              <p
+                className="text-lg mb-8 leading-relaxed"
+                style={{ color: "var(--color-text-muted)" }}
+              >
                 Today, we have grown into a 500-bed multi-specialty quaternary
                 care hospital. Despite our expansion, our core philosophy
                 remains unchanged—putting the patient first. We are driven by
@@ -194,29 +265,53 @@ const About: React.FC = () => {
                 but about healing people.
               </p>
               <div className="grid sm:grid-cols-2 gap-6">
-                <div className="flex items-start gap-4 p-4 rounded-xl bg-slate-50 border border-slate-100">
+                <div
+                  className="flex items-start gap-4 p-4 rounded-xl border"
+                  style={{
+                    backgroundColor: "var(--color-bg-alt)",
+                    borderColor: "var(--color-border)",
+                  }}
+                >
                   <span className="material-icons text-green-500 text-3xl">
                     volunteer_activism
                   </span>
                   <div>
-                    <h4 className="font-bold text-slate-900 mb-1">
+                    <h4
+                      className="font-bold mb-1"
+                      style={{ color: "var(--color-text)" }}
+                    >
                       Patient Centric
                     </h4>
-                    <p className="text-sm text-slate-500">
+                    <p
+                      className="text-sm"
+                      style={{ color: "var(--color-text-muted)" }}
+                    >
                       Every decision we make is centered around patient
                       well-being and comfort.
                     </p>
                   </div>
                 </div>
-                <div className="flex items-start gap-4 p-4 rounded-xl bg-slate-50 border border-slate-100">
+                <div
+                  className="flex items-start gap-4 p-4 rounded-xl border"
+                  style={{
+                    backgroundColor: "var(--color-bg-alt)",
+                    borderColor: "var(--color-border)",
+                  }}
+                >
                   <span className="material-icons text-blue-500 text-3xl">
                     science
                   </span>
                   <div>
-                    <h4 className="font-bold text-slate-900 mb-1">
+                    <h4
+                      className="font-bold mb-1"
+                      style={{ color: "var(--color-text)" }}
+                    >
                       Innovation
                     </h4>
-                    <p className="text-sm text-slate-500">
+                    <p
+                      className="text-sm"
+                      style={{ color: "var(--color-text-muted)" }}
+                    >
                       Continuously adopting the latest medical technologies and
                       research.
                     </p>
@@ -336,7 +431,7 @@ const About: React.FC = () => {
             <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mt-2 mb-4 font-serif">
               Values That Drive Us
             </h2>
-            <p className="text-slate-600 text-lg">
+            <p className="text-lg" style={{ color: "var(--color-text-muted)" }}>
               Our culture is built on a foundation of trust, integrity, and an
               unwavering commitment to our patients.
             </p>
@@ -361,15 +456,30 @@ const About: React.FC = () => {
             ].map((val, idx) => (
               <div
                 key={idx}
-                className="bg-white p-10 rounded-2xl shadow-sm hover:shadow-card transition-all duration-300 border border-slate-100 group hover:-translate-y-1"
+                className="p-10 rounded-2xl shadow-sm hover:shadow-card transition-all duration-300 border group hover:-translate-y-1"
+                style={{
+                  backgroundColor: "var(--color-surface)",
+                  borderColor: "var(--color-border)",
+                }}
               >
-                <div className="w-16 h-16 bg-blue-50 rounded-2xl flex items-center justify-center text-primary mb-6 shadow-sm group-hover:bg-primary group-hover:text-white transition-colors duration-300">
+                <div
+                  className="w-16 h-16 rounded-2xl flex items-center justify-center text-primary mb-6 shadow-sm group-hover:bg-primary group-hover:text-white transition-colors duration-300"
+                  style={{ backgroundColor: "var(--color-primary-light)" }}
+                >
                   <span className="material-icons text-3xl">{val.icon}</span>
                 </div>
-                <h3 className="text-xl font-bold text-slate-900 mb-3 font-serif">
+                <h3
+                  className="text-xl font-bold mb-3 font-serif"
+                  style={{ color: "var(--color-text)" }}
+                >
                   {val.title}
                 </h3>
-                <p className="text-slate-600 leading-relaxed">{val.desc}</p>
+                <p
+                  className="leading-relaxed"
+                  style={{ color: "var(--color-text-muted)" }}
+                >
+                  {val.desc}
+                </p>
               </div>
             ))}
           </div>
@@ -386,7 +496,10 @@ const About: React.FC = () => {
             <h2 className="text-3xl md:text-4xl font-serif font-bold text-slate-900 mt-2">
               Board of Directors
             </h2>
-            <p className="text-slate-600 mt-4 text-lg">
+            <p
+              className="mt-4 text-lg"
+              style={{ color: "var(--color-text-muted)" }}
+            >
               Guiding our vision with decades of combined medical and
               administrative expertise.
             </p>
@@ -451,7 +564,10 @@ const About: React.FC = () => {
               <span className="text-primary font-semibold tracking-wider uppercase text-sm">
                 Infrastructure
               </span>
-              <h2 className="text-3xl md:text-4xl font-serif font-bold text-slate-900 mt-2">
+              <h2
+                className="text-3xl md:text-4xl font-serif font-bold mt-2"
+                style={{ color: "var(--color-text)" }}
+              >
                 Modern Facilities
               </h2>
             </div>
@@ -516,7 +632,13 @@ const About: React.FC = () => {
 
       {/* Revamped CTA Section */}
       <section className="py-24 relative overflow-hidden" id="join">
-        <div className="absolute inset-0 bg-gradient-to-br from-slate-900 to-blue-900"></div>
+        <div
+          className="absolute inset-0"
+          style={{
+            background:
+              "linear-gradient(135deg, var(--color-cta-from), var(--color-cta-to))",
+          }}
+        ></div>
         <div
           className="absolute inset-0 opacity-10"
           style={{
@@ -526,7 +648,10 @@ const About: React.FC = () => {
         ></div>
 
         <div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/3 w-96 h-96 bg-white/10 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-0 left-0 translate-y-1/2 -translate-x-1/3 w-96 h-96 bg-blue-500/20 rounded-full blur-3xl"></div>
+        <div
+          className="absolute bottom-0 left-0 translate-y-1/2 -translate-x-1/3 w-96 h-96 rounded-full blur-3xl"
+          style={{ backgroundColor: "var(--color-cta-accent)", opacity: 0.15 }}
+        ></div>
 
         <div className="container mx-auto px-6 relative z-10 text-center">
           <div className="max-w-4xl mx-auto">

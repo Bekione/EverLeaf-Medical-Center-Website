@@ -96,23 +96,41 @@ const Contact: React.FC = () => {
         description="Get in touch with Everleaf Medical Center. Find our location, phone numbers, and visiting hours. Emergency contact available."
         canonical="https://everleaf-medical.com/contact"
       />
-      <header className="relative bg-white border-b border-slate-100 min-h-[500px] flex items-center overflow-hidden">
+      <header
+        className="relative border-b min-h-[500px] flex items-center overflow-hidden"
+        style={{
+          backgroundColor: "var(--color-surface)",
+          borderColor: "var(--color-border)",
+        }}
+      >
         <div className="absolute inset-0 z-0">
           <img
-            src="/images/gallery-1-atrium.jpg"
+            src="/images/gallery/gallery-1-atrium.jpg"
             alt="Hospital Building"
-            className="w-full h-full object-cover opacity-20"
+            className="w-full h-full object-cover opacity-30"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-white via-white/90 to-transparent"></div>
+          <div
+            className="absolute inset-0"
+            style={{
+              background:
+                "linear-gradient(to right, var(--color-surface), rgba(var(--color-surface-rgb), 0.9), transparent)",
+            }}
+          ></div>
         </div>
         <div className="container mx-auto px-6 py-12 relative z-10 w-full">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="max-w-2xl">
-              <h1 className="text-4xl lg:text-5xl font-serif font-bold text-slate-900 mb-6 leading-tight">
+              <h1
+                className="text-4xl lg:text-5xl font-serif font-bold mb-6 leading-tight"
+                style={{ color: "var(--color-text)" }}
+              >
                 Get in Touch with <br />
                 <span className="text-primary">Everleaf Medical Center</span>
               </h1>
-              <p className="text-lg text-slate-600 leading-relaxed mb-10">
+              <p
+                className="text-lg leading-relaxed mb-10"
+                style={{ color: "var(--color-text-muted)" }}
+              >
                 We are here to help. Whether you need to schedule an
                 appointment, have questions about our services, or need
                 emergency assistance, our team is ready to respond.
@@ -126,11 +144,17 @@ const Contact: React.FC = () => {
                     <span className="material-icons text-red-500 text-3xl">
                       phone_in_talk
                     </span>
-                    <span className="text-3xl font-bold text-slate-900">
+                    <span
+                      className="text-3xl font-bold"
+                      style={{ color: "var(--color-text)" }}
+                    >
                       911
                     </span>
                   </div>
-                  <p className="text-sm text-slate-500 mt-2">
+                  <p
+                    className="text-sm mt-2"
+                    style={{ color: "var(--color-text-muted)" }}
+                  >
                     For life-threatening emergencies, call immediately.
                   </p>
                 </div>
@@ -140,10 +164,16 @@ const Contact: React.FC = () => {
                       <span className="material-icons text-sm">phone</span>{" "}
                       General Inquiries
                     </h3>
-                    <p className="text-xl font-bold text-slate-800">
+                    <p
+                      className="text-xl font-bold"
+                      style={{ color: "var(--color-text)" }}
+                    >
                       +251 954 123-456
                     </p>
-                    <p className="text-sm text-slate-500 mt-1">
+                    <p
+                      className="text-sm mt-1"
+                      style={{ color: "var(--color-text-muted)" }}
+                    >
                       info@everleaf.com
                     </p>
                   </div>
@@ -154,7 +184,10 @@ const Contact: React.FC = () => {
                       </span>{" "}
                       Working Hours
                     </h3>
-                    <ul className="text-sm text-slate-600 space-y-1">
+                    <ul
+                      className="text-sm space-y-1"
+                      style={{ color: "var(--color-text-muted)" }}
+                    >
                       <li className="flex justify-between w-40">
                         <span>Mon - Fri:</span>{" "}
                         <span className="font-medium">8:00 - 20:00</span>
@@ -173,7 +206,13 @@ const Contact: React.FC = () => {
               </div>
             </div>
 
-            <div className="bg-white p-8 rounded-2xl shadow-xl border border-slate-100">
+            <div
+              className="p-8 rounded-2xl shadow-xl border"
+              style={{
+                backgroundColor: "var(--color-surface)",
+                borderColor: "var(--color-border)",
+              }}
+            >
               {status === "success" ? (
                 <div className="h-full flex flex-col items-center justify-center text-center py-12 animate-fade-in">
                   <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center text-green-500 mb-6">
@@ -181,16 +220,26 @@ const Contact: React.FC = () => {
                       check_circle
                     </span>
                   </div>
-                  <h3 className="text-2xl font-bold text-slate-900 mb-2">
+                  <h3
+                    className="text-2xl font-bold mb-2"
+                    style={{ color: "var(--color-text)" }}
+                  >
                     Message Sent!
                   </h3>
-                  <p className="text-slate-600 mb-8 max-w-xs">
+                  <p
+                    className="mb-8 max-w-xs"
+                    style={{ color: "var(--color-text-muted)" }}
+                  >
                     Thank you for reaching out. Our support team will get back
                     to you within 24 hours.
                   </p>
                   <button
                     onClick={() => setStatus("idle")}
-                    className="px-6 py-2 bg-slate-100 text-slate-700 font-semibold rounded-lg hover:bg-slate-200 transition-colors"
+                    className="px-6 py-2 font-semibold rounded-lg transition-colors"
+                    style={{
+                      backgroundColor: "var(--color-bg-alt)",
+                      color: "var(--color-text)",
+                    }}
                   >
                     Send Another Message
                   </button>
@@ -200,7 +249,10 @@ const Contact: React.FC = () => {
                   onSubmit={handleSubmit}
                   className="space-y-5 animate-fade-in"
                 >
-                  <h3 className="text-2xl font-bold text-slate-900 mb-6">
+                  <h3
+                    className="text-2xl font-bold mb-6"
+                    style={{ color: "var(--color-text)" }}
+                  >
                     Send us a Message
                   </h3>
                   {status === "error" && (
@@ -216,7 +268,10 @@ const Contact: React.FC = () => {
                   )}
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                     <div>
-                      <label className="block text-sm font-medium text-slate-700 mb-1">
+                      <label
+                        className="block text-sm font-medium mb-1"
+                        style={{ color: "var(--color-text)" }}
+                      >
                         Full Name
                       </label>
                       <input
@@ -240,7 +295,10 @@ const Contact: React.FC = () => {
                         )}
                     </div>
                     <div>
-                      <label className="block text-sm font-medium text-slate-700 mb-1">
+                      <label
+                        className="block text-sm font-medium mb-1"
+                        style={{ color: "var(--color-text)" }}
+                      >
                         Email Address
                       </label>
                       <input
@@ -262,7 +320,10 @@ const Contact: React.FC = () => {
                     </div>
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-slate-700 mb-1">
+                    <label
+                      className="block text-sm font-medium mb-1"
+                      style={{ color: "var(--color-text)" }}
+                    >
                       Subject
                     </label>
                     <select
@@ -280,7 +341,10 @@ const Contact: React.FC = () => {
                     </select>
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-slate-700 mb-1">
+                    <label
+                      className="block text-sm font-medium mb-1"
+                      style={{ color: "var(--color-text)" }}
+                    >
                       Message
                     </label>
                     <textarea
@@ -332,31 +396,56 @@ const Contact: React.FC = () => {
           loading="lazy"
           referrerPolicy="no-referrer-when-downgrade"
         ></iframe>
-        <div className="absolute bottom-6 left-6 right-6 md:left-auto md:right-12 md:w-96 bg-white p-6 rounded-xl shadow-2xl border border-slate-100">
-          <h4 className="font-bold text-slate-900 mb-4 flex items-center gap-2">
+        <div
+          className="absolute bottom-6 left-6 right-6 md:left-auto md:right-12 md:w-96 p-6 rounded-xl shadow-2xl border"
+          style={{
+            backgroundColor: "var(--color-surface)",
+            borderColor: "var(--color-border)",
+          }}
+        >
+          <h4
+            className="font-bold mb-4 flex items-center gap-2"
+            style={{ color: "var(--color-text)" }}
+          >
             <span className="material-icons text-primary">directions</span>{" "}
             Directions & Transportation
           </h4>
           <div className="space-y-4 text-sm">
             <div className="flex gap-3">
-              <div className="w-8 h-8 rounded-full bg-blue-50 flex items-center justify-center text-primary shrink-0">
+              <div
+                className="w-8 h-8 rounded-full flex items-center justify-center text-primary shrink-0"
+                style={{ backgroundColor: "var(--color-primary-light)" }}
+              >
                 <span className="material-icons text-sm">directions_bus</span>
               </div>
               <div>
-                <p className="font-semibold text-slate-800">Public Transit</p>
-                <p className="text-slate-500">
+                <p
+                  className="font-semibold"
+                  style={{ color: "var(--color-text)" }}
+                >
+                  Public Transit
+                </p>
+                <p style={{ color: "var(--color-text-muted)" }}>
                   Bus lines M15, M22 stop directly in front of the main
                   entrance.
                 </p>
               </div>
             </div>
             <div className="flex gap-3">
-              <div className="w-8 h-8 rounded-full bg-blue-50 flex items-center justify-center text-primary shrink-0">
+              <div
+                className="w-8 h-8 rounded-full flex items-center justify-center text-primary shrink-0"
+                style={{ backgroundColor: "var(--color-primary-light)" }}
+              >
                 <span className="material-icons text-sm">local_parking</span>
               </div>
               <div>
-                <p className="font-semibold text-slate-800">Parking</p>
-                <p className="text-slate-500">
+                <p
+                  className="font-semibold"
+                  style={{ color: "var(--color-text)" }}
+                >
+                  Parking
+                </p>
+                <p style={{ color: "var(--color-text-muted)" }}>
                   Visitor parking garage is available on 4th Ave (5 Br/hr).
                   Valet service available at main entrance.
                 </p>

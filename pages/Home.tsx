@@ -83,12 +83,14 @@ const Home: React.FC = () => {
         }}
       />
       {/* Hero Section */}
-      <header className="relative overflow-hidden bg-slate-50 pt-12 pb-32 lg:pt-16 lg:pb-48">
+      <header
+        className="relative overflow-hidden pt-12 pb-32 lg:pt-16 lg:pb-48"
+        style={{ backgroundColor: "var(--color-bg-alt)" }}
+      >
         <div
           className="absolute inset-0 pointer-events-none opacity-50"
           style={{
-            backgroundImage:
-              "radial-gradient(#136dec 0.5px, transparent 0.5px), radial-gradient(#136dec 0.5px, #f8fafc 0.5px)",
+            backgroundImage: `radial-gradient(var(--color-primary) 0.5px, transparent 0.5px), radial-gradient(var(--color-primary) 0.5px, var(--color-bg-alt) 0.5px)`,
             backgroundSize: "20px 20px",
             backgroundPosition: "0 0, 10px 10px",
           }}
@@ -96,11 +98,17 @@ const Home: React.FC = () => {
         <div className="container mx-auto px-6 relative z-10">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="max-w-2xl">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-100 text-primary text-xs font-bold uppercase tracking-wide mb-6">
+              <div
+                className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-primary text-xs font-bold uppercase tracking-wide mb-6"
+                style={{ backgroundColor: "var(--color-primary-light)" }}
+              >
                 <span className="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
                 Everleaf Medical Center
               </div>
-              <h1 className="text-4xl lg:text-6xl font-brand font-bold text-slate-900 leading-tight mb-6">
+              <h1
+                className="text-4xl lg:text-6xl font-brand font-bold leading-tight mb-6"
+                style={{ color: "var(--color-text)" }}
+              >
                 Care That Grows{" "}
                 <span className="text-primary relative inline-block">
                   With You.
@@ -118,7 +126,10 @@ const Home: React.FC = () => {
                   </svg>
                 </span>
               </h1>
-              <p className="text-lg text-slate-600 mb-8 leading-relaxed">
+              <p
+                className="text-lg mb-8 leading-relaxed"
+                style={{ color: "var(--color-text-muted)" }}
+              >
                 Committed to lifelong wellness through compassionate care,
                 innovation, and trust. Experience world-class healthcare in a
                 serene environment.
@@ -131,24 +142,34 @@ const Home: React.FC = () => {
                   Request an Appointment
                 </button>
               </div>
-              <div className="mt-10 flex items-center gap-4 text-sm text-slate-500">
+              <div
+                className="mt-10 flex items-center gap-4 text-sm"
+                style={{ color: "var(--color-text-muted)" }}
+              >
                 <div className="flex -space-x-3">
                   <img
-                    src="/images/image-43.jpg"
+                    src="/images/happy-patient-1.jpg"
                     alt="Doctor"
                     className="w-10 h-10 rounded-full border-2 border-white object-cover"
                   />
                   <img
-                    src="/images/image-3.jpg"
+                    src="/images/happy-patient-2.jpg"
                     alt="Doctor"
                     className="w-10 h-10 rounded-full border-2 border-white object-cover"
                   />
                   <img
-                    src="/images/image-4.jpg"
+                    src="/images/happy-patient-3.jpg"
                     alt="Doctor"
                     className="w-10 h-10 rounded-full border-2 border-white object-cover"
                   />
-                  <div className="w-10 h-10 rounded-full border-2 border-white bg-slate-100 flex items-center justify-center text-xs font-bold text-slate-600">
+                  <div
+                    className="w-10 h-10 rounded-full border-2 flex items-center justify-center text-xs font-bold"
+                    style={{
+                      borderColor: "var(--color-border)",
+                      backgroundColor: "var(--color-bg-alt)",
+                      color: "var(--color-text-muted)",
+                    }}
+                  >
                     12k+
                   </div>
                 </div>
@@ -169,15 +190,24 @@ const Home: React.FC = () => {
                   />
                 </div>
               ))}
-              <div className="absolute -bottom-6 -left-6 bg-white p-4 rounded-xl shadow-xl z-20 flex items-center gap-4 max-w-xs animate-[bounce_3s_infinite]">
+              <div
+                className="absolute -bottom-6 -left-6 p-4 rounded-xl shadow-xl z-20 flex items-center gap-4 max-w-xs animate-[bounce_3s_infinite]"
+                style={{ backgroundColor: "var(--color-surface)" }}
+              >
                 <div className="bg-green-100 p-3 rounded-lg text-green-600">
                   <span className="material-icons text-2xl">verified_user</span>
                 </div>
                 <div>
-                  <p className="text-sm font-bold text-slate-900">
+                  <p
+                    className="text-sm font-bold"
+                    style={{ color: "var(--color-text)" }}
+                  >
                     98% Satisfaction
                   </p>
-                  <p className="text-xs text-slate-500">
+                  <p
+                    className="text-xs"
+                    style={{ color: "var(--color-text-muted)" }}
+                  >
                     Based on patient reviews
                   </p>
                 </div>
@@ -189,16 +219,28 @@ const Home: React.FC = () => {
 
       {/* Info Cards */}
       <div className="relative z-20 -mt-20 lg:-mt-24 mb-20 container mx-auto px-6">
-        <div className="grid md:grid-cols-3 gap-6 bg-white rounded-2xl shadow-xl p-4 md:p-6 border border-slate-100">
-          <div className="flex items-start gap-4 p-4 rounded-xl hover:bg-slate-50 transition-colors cursor-pointer group">
+        <div
+          className="grid md:grid-cols-3 gap-6 rounded-2xl shadow-xl p-4 md:p-6 border"
+          style={{
+            backgroundColor: "var(--color-surface)",
+            borderColor: "var(--color-border)",
+          }}
+        >
+          <div className="flex items-start gap-4 p-4 rounded-xl transition-colors cursor-pointer group hover:opacity-80">
             <div className="bg-red-50 p-3 rounded-lg text-red-500 group-hover:scale-110 transition-transform">
               <span className="material-icons text-3xl">emergency</span>
             </div>
             <div>
-              <h3 className="text-lg font-bold text-slate-900 mb-1">
+              <h3
+                className="text-lg font-bold mb-1"
+                style={{ color: "var(--color-text)" }}
+              >
                 Emergency
               </h3>
-              <p className="text-sm text-slate-500 mb-2">
+              <p
+                className="text-sm mb-2"
+                style={{ color: "var(--color-text-muted)" }}
+              >
                 Immediate care for critical situations.
               </p>
               <Link
@@ -210,15 +252,24 @@ const Home: React.FC = () => {
               </Link>
             </div>
           </div>
-          <div className="flex items-start gap-4 p-4 rounded-xl hover:bg-slate-50 transition-colors cursor-pointer group border-l border-r border-slate-100">
+          <div
+            className="flex items-start gap-4 p-4 rounded-xl transition-colors cursor-pointer group border-l border-r"
+            style={{ borderColor: "var(--color-border)" }}
+          >
             <div className="bg-primary/10 p-3 rounded-lg text-primary group-hover:scale-110 transition-transform">
               <span className="material-icons text-3xl">person_search</span>
             </div>
             <div>
-              <h3 className="text-lg font-bold text-slate-900 mb-1">
+              <h3
+                className="text-lg font-bold mb-1"
+                style={{ color: "var(--color-text)" }}
+              >
                 Find a Specialist
               </h3>
-              <p className="text-sm text-slate-500 mb-2">
+              <p
+                className="text-sm mb-2"
+                style={{ color: "var(--color-text-muted)" }}
+              >
                 Search our directory of expert doctors.
               </p>
               <Link
@@ -230,15 +281,21 @@ const Home: React.FC = () => {
               </Link>
             </div>
           </div>
-          <div className="flex items-start gap-4 p-4 rounded-xl hover:bg-slate-50 transition-colors cursor-pointer group">
+          <div className="flex items-start gap-4 p-4 rounded-xl transition-colors cursor-pointer group hover:opacity-80">
             <div className="bg-secondary/10 p-3 rounded-lg text-secondary group-hover:scale-110 transition-transform">
               <span className="material-icons text-3xl">domain</span>
             </div>
             <div>
-              <h3 className="text-lg font-bold text-slate-900 mb-1">
+              <h3
+                className="text-lg font-bold mb-1"
+                style={{ color: "var(--color-text)" }}
+              >
                 Our Departments
               </h3>
-              <p className="text-sm text-slate-500 mb-2">
+              <p
+                className="text-sm mb-2"
+                style={{ color: "var(--color-text-muted)" }}
+              >
                 Explore our specialized medical units.
               </p>
               <Link
@@ -254,16 +311,22 @@ const Home: React.FC = () => {
       </div>
 
       {/* Services Section */}
-      <section className="py-20 bg-slate-50">
+      <section
+        className="py-20"
+        style={{ backgroundColor: "var(--color-bg-alt)" }}
+      >
         <div className="container mx-auto px-6">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <span className="text-primary font-semibold tracking-wider uppercase text-sm">
               Medical Excellence
             </span>
-            <h2 className="text-3xl md:text-4xl font-serif font-bold text-slate-900 mt-2 mb-4">
+            <h2
+              className="text-3xl md:text-4xl font-serif font-bold mt-2 mb-4"
+              style={{ color: "var(--color-text)" }}
+            >
               Our Specialized Services
             </h2>
-            <p className="text-slate-600 text-lg">
+            <p className="text-lg" style={{ color: "var(--color-text-muted)" }}>
               We provide a wide range of medical services to meet every need of
               your family, from routine checkups to complex surgeries.
             </p>
@@ -297,17 +360,30 @@ const Home: React.FC = () => {
             ].map((service, idx) => (
               <div
                 key={idx}
-                className="bg-white p-8 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-100 group hover:-translate-y-1"
+                className="p-8 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 border group hover:-translate-y-1"
+                style={{
+                  backgroundColor: "var(--color-surface)",
+                  borderColor: "var(--color-border)",
+                }}
               >
-                <div className="w-14 h-14 bg-blue-50 rounded-xl flex items-center justify-center text-primary mb-6 group-hover:bg-primary group-hover:text-white transition-colors">
+                <div
+                  className="w-14 h-14 rounded-xl flex items-center justify-center text-primary mb-6 group-hover:bg-primary group-hover:text-white transition-colors"
+                  style={{ backgroundColor: "var(--color-primary-light)" }}
+                >
                   <span className="material-icons text-3xl">
                     {service.icon}
                   </span>
                 </div>
-                <h3 className="text-xl font-bold text-slate-900 mb-3">
+                <h3
+                  className="text-xl font-bold mb-3"
+                  style={{ color: "var(--color-text)" }}
+                >
                   {service.title}
                 </h3>
-                <p className="text-slate-500 mb-4 text-sm leading-relaxed">
+                <p
+                  className="mb-4 text-sm leading-relaxed"
+                  style={{ color: "var(--color-text-muted)" }}
+                >
                   {service.desc}
                 </p>
                 <Link
@@ -333,21 +409,31 @@ const Home: React.FC = () => {
       </section>
 
       {/* Specialists Section */}
-      <section className="py-20 bg-white">
+      <section
+        className="py-20"
+        style={{ backgroundColor: "var(--color-surface)" }}
+      >
         <div className="container mx-auto px-6">
           <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-4">
             <div className="max-w-2xl">
               <span className="text-primary font-semibold tracking-wider uppercase text-sm">
                 Our Experts
               </span>
-              <h2 className="text-3xl md:text-4xl font-serif font-bold text-slate-900 mt-2">
+              <h2
+                className="text-3xl md:text-4xl font-serif font-bold mt-2"
+                style={{ color: "var(--color-text)" }}
+              >
                 Meet Our Leading Specialists
               </h2>
             </div>
             <div className="hidden md:block">
               <Link
                 to="/doctors"
-                className="inline-flex items-center justify-center px-6 py-2.5 text-sm font-semibold text-primary bg-blue-50 border border-blue-100 rounded-lg hover:bg-blue-100 transition-all"
+                className="inline-flex items-center justify-center px-6 py-2.5 text-sm font-semibold text-primary rounded-lg transition-all"
+                style={{
+                  backgroundColor: "var(--color-primary-light)",
+                  border: "1px solid var(--color-border)",
+                }}
               >
                 View All Doctors
                 <span className="material-icons text-sm ml-2">
@@ -382,9 +468,16 @@ const Home: React.FC = () => {
             ].map((doc, idx) => (
               <div
                 key={idx}
-                className="group relative bg-white rounded-2xl overflow-hidden shadow-card hover:shadow-xl transition-all duration-300 border border-slate-100 flex flex-col h-full"
+                className="group relative rounded-2xl overflow-hidden shadow-card hover:shadow-xl transition-all duration-300 border flex flex-col h-full"
+                style={{
+                  backgroundColor: "var(--color-surface)",
+                  borderColor: "var(--color-border)",
+                }}
               >
-                <div className="relative h-80 overflow-hidden bg-slate-100">
+                <div
+                  className="relative h-80 overflow-hidden"
+                  style={{ backgroundColor: "var(--color-bg-alt)" }}
+                >
                   <img
                     src={doc.img}
                     alt={doc.name}
@@ -413,14 +506,26 @@ const Home: React.FC = () => {
                   </div>
                 </div>
 
-                <div className="p-6 text-center">
-                  <h3 className="text-xl font-bold text-slate-900 font-serif">
+                <div
+                  className="p-6 text-center"
+                  style={{ backgroundColor: "var(--color-surface)" }}
+                >
+                  <h3
+                    className="text-xl font-bold font-serif"
+                    style={{ color: "var(--color-text)" }}
+                  >
                     {doc.name}
                   </h3>
                   <p className="text-primary font-medium text-sm mb-4">
                     {doc.role}
                   </p>
-                  <div className="flex items-center justify-center gap-4 text-sm text-slate-500 border-t border-slate-200 pt-4">
+                  <div
+                    className="flex items-center justify-center gap-4 text-sm border-t pt-4"
+                    style={{
+                      color: "var(--color-text-muted)",
+                      borderColor: "var(--color-border)",
+                    }}
+                  >
                     <span>{doc.exp} Exp.</span>
                     <span className="w-1 h-1 rounded-full bg-slate-300"></span>
                     <span>{doc.deg}</span>
@@ -432,7 +537,11 @@ const Home: React.FC = () => {
           <div className="mt-8 md:hidden text-center">
             <Link
               to="/doctors"
-              className="inline-flex items-center justify-center px-6 py-2.5 text-sm font-semibold text-primary bg-blue-50 border border-blue-100 rounded-lg hover:bg-blue-100 transition-all"
+              className="inline-flex items-center justify-center px-6 py-2.5 text-sm font-semibold text-primary rounded-lg transition-all"
+              style={{
+                backgroundColor: "var(--color-primary-light)",
+                border: "1px solid var(--color-border)",
+              }}
             >
               View All Doctors
               <span className="material-icons text-sm ml-2">arrow_forward</span>
@@ -443,7 +552,13 @@ const Home: React.FC = () => {
 
       {/* Revamped CTA Section */}
       <section className="py-24 relative overflow-hidden" id="newsletter">
-        <div className="absolute inset-0 bg-gradient-to-br from-slate-900 to-blue-900"></div>
+        <div
+          className="absolute inset-0"
+          style={{
+            background:
+              "linear-gradient(135deg, var(--color-cta-from), var(--color-cta-to))",
+          }}
+        ></div>
         <div
           className="absolute inset-0 opacity-10"
           style={{
@@ -454,7 +569,10 @@ const Home: React.FC = () => {
 
         {/* Decorative Elements */}
         <div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/3 w-96 h-96 bg-white/10 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-0 left-0 translate-y-1/2 -translate-x-1/3 w-96 h-96 bg-blue-500/20 rounded-full blur-3xl"></div>
+        <div
+          className="absolute bottom-0 left-0 translate-y-1/2 -translate-x-1/3 w-96 h-96 rounded-full blur-3xl"
+          style={{ backgroundColor: "var(--color-cta-accent)", opacity: 0.15 }}
+        ></div>
 
         <div className="container mx-auto px-6 relative z-10 text-center">
           <div className="max-w-4xl mx-auto">
@@ -463,7 +581,12 @@ const Home: React.FC = () => {
             </span>
             <h2 className="text-3xl md:text-5xl lg:text-6xl font-serif font-bold text-white mb-6 leading-tight">
               Ready to Prioritize <br />
-              <span className="text-blue-300">Your Health?</span>
+              <span
+                className="text-blue-300"
+                style={{ color: "var(--color-cta-accent)" }}
+              >
+                Your Health?
+              </span>
             </h2>
             <p className="text-blue-100 text-lg md:text-xl mb-10 leading-relaxed max-w-2xl mx-auto">
               Schedule an appointment today to consult with our experts. We are
@@ -489,24 +612,38 @@ const Home: React.FC = () => {
       </section>
 
       {/* Testimonials */}
-      <section className="py-20 bg-slate-50 overflow-hidden">
+      <section
+        className="py-20 overflow-hidden"
+        style={{ backgroundColor: "var(--color-bg-alt)" }}
+      >
         <div className="container mx-auto px-6">
           <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-4">
             <div className="max-w-3xl">
               <span className="text-primary font-semibold tracking-wider uppercase text-sm">
                 Testimonials
               </span>
-              <h2 className="text-3xl md:text-4xl font-serif font-bold text-slate-900 mt-2 mb-4">
+              <h2
+                className="text-3xl md:text-4xl font-serif font-bold mt-2 mb-4"
+                style={{ color: "var(--color-text)" }}
+              >
                 Patient Stories
               </h2>
-              <p className="text-slate-600 text-lg">
+              <p
+                className="text-lg"
+                style={{ color: "var(--color-text-muted)" }}
+              >
                 Hear from those who have experienced our care firsthand.
               </p>
             </div>
             <div className="flex gap-2">
               <button
                 onClick={() => scrollTestimonials("left")}
-                className="w-10 h-10 rounded-full border border-slate-300 flex items-center justify-center text-slate-500 hover:text-primary hover:border-primary transition-colors bg-white z-10"
+                className="w-10 h-10 rounded-full border flex items-center justify-center hover:text-primary hover:border-primary transition-colors z-10"
+                style={{
+                  borderColor: "var(--color-border)",
+                  color: "var(--color-text-muted)",
+                  backgroundColor: "var(--color-surface)",
+                }}
               >
                 <span className="material-icons">arrow_back</span>
               </button>
@@ -542,7 +679,10 @@ const Home: React.FC = () => {
                     <span className="material-icons">star</span>
                     <span className="material-icons">star</span>
                   </div>
-                  <p className="text-slate-600 mb-6 leading-relaxed relative z-10 flex-grow">
+                  <p
+                    className="mb-6 leading-relaxed relative z-10 flex-grow"
+                    style={{ color: "var(--color-text-muted)" }}
+                  >
                     "{testimonial.text}"
                   </p>
                   <div className="flex items-center gap-4 mt-auto">
@@ -552,10 +692,16 @@ const Home: React.FC = () => {
                       className="w-12 h-12 rounded-full object-cover shadow-sm"
                     />
                     <div>
-                      <h4 className="font-bold text-slate-900 font-serif">
+                      <h4
+                        className="font-bold font-serif"
+                        style={{ color: "var(--color-text)" }}
+                      >
                         {testimonial.name}
                       </h4>
-                      <p className="text-xs text-slate-500">
+                      <p
+                        className="text-xs"
+                        style={{ color: "var(--color-text-muted)" }}
+                      >
                         {testimonial.role}
                       </p>
                     </div>
@@ -568,9 +714,18 @@ const Home: React.FC = () => {
       </section>
 
       {/* Partners */}
-      <section className="py-12 bg-white border-t border-slate-100">
+      <section
+        className="py-12 border-t"
+        style={{
+          backgroundColor: "var(--color-surface)",
+          borderColor: "var(--color-border)",
+        }}
+      >
         <div className="container mx-auto px-6">
-          <p className="text-center text-slate-500 text-sm font-semibold uppercase tracking-wider mb-8">
+          <p
+            className="text-center text-sm font-semibold uppercase tracking-wider mb-8"
+            style={{ color: "var(--color-text-muted)" }}
+          >
             Trusted by Insurance Partners
           </p>
 

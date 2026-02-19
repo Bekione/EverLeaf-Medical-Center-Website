@@ -237,22 +237,38 @@ const AppointmentModal: React.FC<AppointmentModalProps> = ({
         onClick={onClose}
       ></div>
       {/* Added max-h and overflow-y-auto for better scroll handling on small screens */}
-      <div className="relative w-full max-w-lg max-h-[90vh] overflow-y-auto transform rounded-2xl bg-white p-8 shadow-2xl transition-all animate-fade-in flex flex-col">
+      <div
+        className="relative w-full max-w-lg max-h-[90vh] overflow-y-auto transform rounded-2xl p-8 shadow-2xl transition-all animate-fade-in flex flex-col"
+        style={{
+          backgroundColor: "var(--color-surface)",
+          color: "var(--color-text)",
+        }}
+      >
         <button
           onClick={onClose}
-          className="absolute top-5 right-5 text-slate-400 hover:text-slate-600 transition-colors focus:outline-none z-10"
+          className="absolute top-5 right-5 transition-colors focus:outline-none z-10"
+          style={{ color: "var(--color-text-muted)" }}
         >
           <span className="material-icons text-2xl">close</span>
         </button>
 
         <div className="mb-8 text-center sm:text-left flex-shrink-0">
-          <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-blue-50 text-primary mb-4">
+          <div
+            className="inline-flex items-center justify-center w-12 h-12 rounded-full text-primary mb-4"
+            style={{ backgroundColor: "var(--color-primary-light)" }}
+          >
             <span className="material-icons text-2xl">calendar_today</span>
           </div>
-          <h3 className="text-2xl font-bold leading-6 text-slate-900">
+          <h3
+            className="text-2xl font-bold leading-6"
+            style={{ color: "var(--color-text)" }}
+          >
             Request an Appointment
           </h3>
-          <p className="mt-2 text-sm text-slate-500">
+          <p
+            className="mt-2 text-sm"
+            style={{ color: "var(--color-text-muted)" }}
+          >
             Fill out the form below and our team will contact you to confirm
             your slot.
           </p>
@@ -269,7 +285,8 @@ const AppointmentModal: React.FC<AppointmentModalProps> = ({
           <div>
             <label
               htmlFor="fullName"
-              className="block text-sm font-medium text-slate-700 mb-1"
+              className="block text-sm font-medium mb-1"
+              style={{ color: "var(--color-text)" }}
             >
               Full Name
             </label>
@@ -284,7 +301,16 @@ const AppointmentModal: React.FC<AppointmentModalProps> = ({
                 onChange={handleChange}
                 onBlur={handleBlur}
                 disabled={status === "submitting"}
-                className={`block w-full pl-10 rounded-lg ${errors.fullName ? "border-red-300 bg-red-50" : "border-slate-200 bg-slate-50"} focus:outline-none focus:ring-2 ${errors.fullName ? "focus:ring-red-500/50" : "focus:ring-primary/50"} focus:border-primary sm:text-sm py-2.5 placeholder-slate-400 text-slate-900 disabled:opacity-70 disabled:cursor-not-allowed transition-all`}
+                className={`block w-full pl-10 rounded-lg border focus:outline-none focus:ring-2 focus:border-primary sm:text-sm py-2.5 placeholder-slate-400 disabled:opacity-70 disabled:cursor-not-allowed transition-all ${errors.fullName ? "border-red-300 bg-red-50 focus:ring-red-500/50 text-red-900" : "focus:ring-primary/50"}`}
+                style={
+                  errors.fullName
+                    ? {}
+                    : {
+                        backgroundColor: "var(--color-bg-alt)",
+                        borderColor: "var(--color-border)",
+                        color: "var(--color-text)",
+                      }
+                }
                 placeholder="John Doe"
               />
             </div>
@@ -300,7 +326,8 @@ const AppointmentModal: React.FC<AppointmentModalProps> = ({
             <div>
               <label
                 htmlFor="email"
-                className="block text-sm font-medium text-slate-700 mb-1"
+                className="block text-sm font-medium mb-1"
+                style={{ color: "var(--color-text)" }}
               >
                 Email Address
               </label>
@@ -315,7 +342,16 @@ const AppointmentModal: React.FC<AppointmentModalProps> = ({
                   onChange={handleChange}
                   onBlur={handleBlur}
                   disabled={status === "submitting"}
-                  className={`block w-full pl-10 rounded-lg ${errors.email ? "border-red-300 bg-red-50" : "border-slate-200 bg-slate-50"} focus:outline-none focus:ring-2 ${errors.email ? "focus:ring-red-500/50" : "focus:ring-primary/50"} focus:border-primary sm:text-sm py-2.5 placeholder-slate-400 text-slate-900 disabled:opacity-70 disabled:cursor-not-allowed transition-all`}
+                  className={`block w-full pl-10 rounded-lg border focus:outline-none focus:ring-2 focus:border-primary sm:text-sm py-2.5 placeholder-slate-400 disabled:opacity-70 disabled:cursor-not-allowed transition-all ${errors.email ? "border-red-300 bg-red-50 focus:ring-red-500/50 text-red-900" : "focus:ring-primary/50"}`}
+                  style={
+                    errors.email
+                      ? {}
+                      : {
+                          backgroundColor: "var(--color-bg-alt)",
+                          borderColor: "var(--color-border)",
+                          color: "var(--color-text)",
+                        }
+                  }
                   placeholder="you@example.com"
                 />
               </div>
@@ -329,7 +365,8 @@ const AppointmentModal: React.FC<AppointmentModalProps> = ({
             <div>
               <label
                 htmlFor="phone"
-                className="block text-sm font-medium text-slate-700 mb-1"
+                className="block text-sm font-medium mb-1"
+                style={{ color: "var(--color-text)" }}
               >
                 Phone Number
               </label>
@@ -344,7 +381,16 @@ const AppointmentModal: React.FC<AppointmentModalProps> = ({
                   onChange={handleChange}
                   onBlur={handleBlur}
                   disabled={status === "submitting"}
-                  className={`block w-full pl-10 rounded-lg ${errors.phone ? "border-red-300 bg-red-50" : "border-slate-200 bg-slate-50"} focus:outline-none focus:ring-2 ${errors.phone ? "focus:ring-red-500/50" : "focus:ring-primary/50"} focus:border-primary sm:text-sm py-2.5 placeholder-slate-400 text-slate-900 disabled:opacity-70 disabled:cursor-not-allowed transition-all`}
+                  className={`block w-full pl-10 rounded-lg border focus:outline-none focus:ring-2 focus:border-primary sm:text-sm py-2.5 placeholder-slate-400 disabled:opacity-70 disabled:cursor-not-allowed transition-all ${errors.phone ? "border-red-300 bg-red-50 focus:ring-red-500/50 text-red-900" : "focus:ring-primary/50"}`}
+                  style={
+                    errors.phone
+                      ? {}
+                      : {
+                          backgroundColor: "var(--color-bg-alt)",
+                          borderColor: "var(--color-border)",
+                          color: "var(--color-text)",
+                        }
+                  }
                   placeholder="(555) 000-0000"
                 />
               </div>
@@ -360,7 +406,8 @@ const AppointmentModal: React.FC<AppointmentModalProps> = ({
           <div>
             <label
               htmlFor="department"
-              className="block text-sm font-medium text-slate-700 mb-1"
+              className="block text-sm font-medium mb-1"
+              style={{ color: "var(--color-text)" }}
             >
               Preferred Department
             </label>
@@ -373,7 +420,16 @@ const AppointmentModal: React.FC<AppointmentModalProps> = ({
                 value={formData.department}
                 onChange={handleChange}
                 disabled={status === "submitting"}
-                className={`block w-full pl-10 rounded-lg ${errors.department ? "border-red-300 bg-red-50" : "border-slate-200 bg-slate-50"} focus:outline-none focus:ring-2 ${errors.department ? "focus:ring-red-500/50" : "focus:ring-primary/50"} focus:border-primary sm:text-sm py-2.5 text-slate-700 disabled:opacity-70 disabled:cursor-not-allowed transition-all`}
+                className={`block w-full pl-10 rounded-lg border focus:outline-none focus:ring-2 focus:border-primary sm:text-sm py-2.5 disabled:opacity-70 disabled:cursor-not-allowed transition-all ${errors.department ? "border-red-300 bg-red-50 focus:ring-red-500/50 text-red-900" : "focus:ring-primary/50"}`}
+                style={
+                  errors.department
+                    ? {}
+                    : {
+                        backgroundColor: "var(--color-bg-alt)",
+                        borderColor: "var(--color-border)",
+                        color: "var(--color-text)",
+                      }
+                }
               >
                 <option value="">Choose a department...</option>
                 <option value="Cardiology">Cardiology</option>
@@ -401,7 +457,8 @@ const AppointmentModal: React.FC<AppointmentModalProps> = ({
           <div>
             <label
               htmlFor="message"
-              className="block text-sm font-medium text-slate-700 mb-1"
+              className="block text-sm font-medium mb-1"
+              style={{ color: "var(--color-text)" }}
             >
               Message (Optional)
             </label>
@@ -412,7 +469,16 @@ const AppointmentModal: React.FC<AppointmentModalProps> = ({
               onChange={handleChange}
               onBlur={handleBlur}
               disabled={status === "submitting"}
-              className={`block w-full max-h-[170px] rounded-lg ${errors.message ? "border-red-300 bg-red-50" : "border-slate-200 bg-slate-50"} focus:outline-none focus:ring-2 focus:border-primary ${errors.message ? "focus:ring-red-500/50" : "focus:ring-primary/50"} sm:text-sm p-3 placeholder-slate-400 text-slate-900 disabled:opacity-70 disabled:cursor-not-allowed transition-all`}
+              className={`block w-full max-h-[170px] rounded-lg border focus:outline-none focus:ring-2 focus:border-primary sm:text-sm p-3 placeholder-slate-400 disabled:opacity-70 disabled:cursor-not-allowed transition-all ${errors.message ? "border-red-300 bg-red-50 focus:ring-red-500/50 text-red-900" : "focus:ring-primary/50"}`}
+              style={
+                errors.message
+                  ? {}
+                  : {
+                      backgroundColor: "var(--color-bg-alt)",
+                      borderColor: "var(--color-border)",
+                      color: "var(--color-text)",
+                    }
+              }
               placeholder="Briefly describe your symptoms or reason for visit..."
             ></textarea>
             {errors.message && (touched.message || hasSubmitted) && (
@@ -438,7 +504,10 @@ const AppointmentModal: React.FC<AppointmentModalProps> = ({
                 "Submit Request"
               )}
             </button>
-            <p className="mt-3 text-center text-xs text-slate-400">
+            <p
+              className="mt-3 text-center text-xs"
+              style={{ color: "var(--color-text-muted)" }}
+            >
               By submitting, you agree to our Terms and Privacy Policy.
             </p>
           </div>
