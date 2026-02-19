@@ -1370,6 +1370,99 @@ button.asw-menu-close path {
   color: var(--color-primary) !important;
 }
 
+/* --- Feature grid buttons (.asw-btn) — the individual toggle buttons ---
+   Sienna adds .asw-selected when active (not .asw-active on the card).
+   Without this, selected buttons show Sienna's hardcoded blue background. */
+.asw-menu .asw-btn {
+  background: var(--color-surface) !important;
+  border: 1px solid var(--color-border) !important;
+  border-radius: 10px !important;
+  color: var(--color-text-muted) !important;
+}
+.asw-menu .asw-btn:hover {
+  border-color: var(--color-primary) !important;
+  background: color-mix(
+    in srgb,
+    var(--color-primary) 8%,
+    var(--color-surface)
+  ) !important;
+  color: var(--color-primary) !important;
+}
+.asw-menu .asw-btn svg,
+.asw-menu .asw-btn path {
+  fill: var(--color-text-muted) !important;
+}
+
+/* Selected/active state — was showing Sienna's hardcoded #0084ca blue */
+.asw-menu .asw-btn.asw-selected {
+  background: color-mix(
+    in srgb,
+    var(--color-primary) 14%,
+    var(--color-surface)
+  ) !important;
+  border-color: var(--color-primary) !important;
+  color: var(--color-primary) !important;
+}
+.asw-menu .asw-btn.asw-selected svg,
+.asw-menu .asw-btn.asw-selected path {
+  fill: var(--color-primary) !important;
+}
+/* Text label inside selected button */
+.asw-menu .asw-btn.asw-selected .asw-translate,
+.asw-menu .asw-btn.asw-selected span {
+  color: var(--color-primary) !important;
+}
+/* ::after checkmark badge — Sienna renders it with color+background-color:#0084ca */
+.asw-menu .asw-btn.asw-selected::after {
+  color: var(--color-primary) !important;
+  background-color: var(--color-primary) !important;
+}
+/* Checkmark overlay Sienna injects on selected buttons */
+.asw-menu .asw-btn.asw-selected .asw-check,
+.asw-menu .asw-btn.asw-selected [class*="check"] {
+  color: var(--color-primary) !important;
+  fill: var(--color-primary) !important;
+  border-color: var(--color-primary) !important;
+  background: color-mix(
+    in srgb,
+    var(--color-primary) 14%,
+    var(--color-surface)
+  ) !important;
+}
+
+/* Dark theme overrides for asw-btn */
+[data-theme="dark"] .asw-menu .asw-btn {
+  background: #1e293b !important;
+  border-color: #334155 !important;
+  color: #94a3b8 !important;
+}
+[data-theme="dark"] .asw-menu .asw-btn svg,
+[data-theme="dark"] .asw-menu .asw-btn path {
+  fill: #94a3b8 !important;
+}
+[data-theme="dark"] .asw-menu .asw-btn:hover {
+  background: color-mix(in srgb, var(--color-primary) 18%, #1e293b) !important;
+  border-color: var(--color-primary) !important;
+  color: var(--color-primary) !important;
+}
+[data-theme="dark"] .asw-menu .asw-btn.asw-selected {
+  background: color-mix(in srgb, var(--color-primary) 22%, #1e293b) !important;
+  border-color: var(--color-primary) !important;
+  color: var(--color-primary) !important;
+}
+[data-theme="dark"] .asw-menu .asw-btn.asw-selected svg,
+[data-theme="dark"] .asw-menu .asw-btn.asw-selected path {
+  fill: var(--color-primary) !important;
+}
+[data-theme="dark"] .asw-menu .asw-btn.asw-selected .asw-translate,
+[data-theme="dark"] .asw-menu .asw-btn.asw-selected span {
+  color: var(--color-primary) !important;
+}
+[data-theme="dark"] .asw-menu .asw-btn.asw-selected::after {
+  color: var(--color-primary) !important;
+  background-color: var(--color-primary) !important;
+}
+
 /* --- Widget footer ("Web Accessibility By Sienna") --- */
 .asw-menu > div:last-child,
 [class*="asw-footer"],
