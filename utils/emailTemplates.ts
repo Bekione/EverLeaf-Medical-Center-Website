@@ -170,7 +170,7 @@ export const getNewsletterWelcomeTemplate = (data: { email: string }) => {
         
         <!-- CTA Button -->
         <div style="text-align: center; margin: 30px 0;">
-          <a href="https://everleaf.com/blog" style="display: inline-block; background-color: #136dec; color: #ffffff; text-decoration: none; padding: 14px 32px; border-radius: 8px; font-weight: 600; font-size: 16px;">
+          <a href="https://everleaf-medical-center.vercel.app/blog" style="display: inline-block; background-color: #136dec; color: #ffffff; text-decoration: none; padding: 14px 32px; border-radius: 8px; font-weight: 600; font-size: 16px;">
             Read Our Latest Articles
           </a>
         </div>
