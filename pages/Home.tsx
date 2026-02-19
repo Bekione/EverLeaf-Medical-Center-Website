@@ -238,12 +238,12 @@ const Home: React.FC = () => {
               <span className="material-icons text-3xl">emergency</span>
             </div>
             <div>
-              <h3
+              <p
                 className="text-lg font-bold mb-1"
                 style={{ color: "var(--color-text)" }}
               >
                 Emergency
-              </h3>
+              </p>
               <p
                 className="text-sm mb-2"
                 style={{ color: "var(--color-text-muted)" }}
@@ -252,7 +252,7 @@ const Home: React.FC = () => {
               </p>
               <Link
                 to="/services/emergency"
-                className="text-red-500 font-semibold text-sm flex items-center gap-1 group-hover:underline"
+                className="text-red-600 font-semibold text-sm flex items-center gap-1 group-hover:underline"
               >
                 Call 911{" "}
                 <span className="material-icons text-sm">arrow_forward</span>
@@ -267,12 +267,12 @@ const Home: React.FC = () => {
               <span className="material-icons text-3xl">person_search</span>
             </div>
             <div>
-              <h3
+              <p
                 className="text-lg font-bold mb-1"
                 style={{ color: "var(--color-text)" }}
               >
                 Find a Specialist
-              </h3>
+              </p>
               <p
                 className="text-sm mb-2"
                 style={{ color: "var(--color-text-muted)" }}
@@ -293,12 +293,12 @@ const Home: React.FC = () => {
               <span className="material-icons text-3xl">domain</span>
             </div>
             <div>
-              <h3
+              <p
                 className="text-lg font-bold mb-1"
                 style={{ color: "var(--color-text)" }}
               >
                 Our Departments
-              </h3>
+              </p>
               <p
                 className="text-sm mb-2"
                 style={{ color: "var(--color-text-muted)" }}
@@ -493,9 +493,9 @@ const Home: React.FC = () => {
 
                   {/* Slide-up Overlay */}
                   <div className="absolute inset-0 bg-slate-900/90 backdrop-blur-sm translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-in-out p-6 flex flex-col justify-center text-white text-center z-20">
-                    <h4 className="font-bold text-lg mb-2 text-blue-300 font-serif">
+                    <p className="font-bold text-lg mb-2 text-blue-300 font-serif">
                       Expert Care
-                    </h4>
+                    </p>
                     <p className="text-sm text-slate-300 mb-6 leading-relaxed">
                       Committed to providing the highest standard of medical
                       excellence and compassionate patient care.
@@ -699,12 +699,12 @@ const Home: React.FC = () => {
                       className="w-12 h-12 rounded-full object-cover shadow-sm"
                     />
                     <div>
-                      <h4
-                        className="font-bold font-serif"
+                      <h3
+                        className="font-bold font-serif text-base"
                         style={{ color: "var(--color-text)" }}
                       >
                         {testimonial.name}
-                      </h4>
+                      </h3>
                       <p
                         className="text-xs"
                         style={{ color: "var(--color-text-muted)" }}
@@ -747,7 +747,7 @@ const Home: React.FC = () => {
               ].map((partner, idx) => (
                 <div
                   key={idx}
-                  className="flex-shrink-0 flex items-center gap-2 text-2xl font-bold text-slate-600 opacity-60 grayscale hover:grayscale-0 hover:opacity-100 hover:text-primary transition-all duration-300 cursor-pointer hover:scale-105"
+                  className="flex-shrink-0 flex items-center gap-2 text-2xl font-bold text-slate-700 opacity-75 grayscale hover:grayscale-0 hover:opacity-100 hover:text-primary transition-all duration-300 cursor-pointer hover:scale-105"
                 >
                   <span className="material-icons text-3xl">
                     {partner.icon}

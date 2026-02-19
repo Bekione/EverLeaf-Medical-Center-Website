@@ -201,6 +201,7 @@ const Footer: React.FC = () => {
                 <input
                   id="footer-email"
                   name="email"
+                  autoComplete="email"
                   type="email"
                   placeholder="Your Email"
                   value={email}

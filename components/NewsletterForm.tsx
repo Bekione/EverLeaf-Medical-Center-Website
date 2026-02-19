@@ -83,6 +83,7 @@ const NewsletterForm: React.FC<NewsletterFormProps> = ({
           type="email"
           id="newsletter-email"
           name="email"
+          autoComplete="email"
           placeholder="Your email address"
           value={email}
           onChange={(e) => {
