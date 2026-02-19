@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://everleaf-medical-center.vercel.app/sitemap.xml

@@ -13,7 +13,7 @@ export function rawSrc(path: string): string {
 }
 
 function getDefaultTransform(path: string): string {
-  if (path.includes("/hero/")) return "w_1920,q_auto,f_auto,c_fill";
+  if (path.includes("/hero/")) return "w_960,q_auto,f_auto,c_fill";
   if (path.includes("/gallery/")) return "w_1200,q_auto,f_auto,c_fill";
   if (path.includes("/articles/")) return "w_1000,q_auto,f_auto,c_fit";
   if (path.includes("/doctors/")) return "w_400,q_auto,f_auto,c_fill,g_face";

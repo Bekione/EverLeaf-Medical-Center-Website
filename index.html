@@ -33,6 +33,7 @@
       property="og:image"
       content="https://everleaf-medical-center.vercel.app/og-image.jpg"
     />
+    <meta property="og:site_name" content="EverLeaf Medical Center" />
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image" />
@@ -56,9 +57,6 @@
     <!-- Preconnect -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="preconnect" href="https://cdn.tailwindcss.com" />
-
-    <script src="https://cdn.tailwindcss.com"></script>
 
     <!-- Material Icons (async) -->
     <link
@@ -73,11 +71,18 @@
         rel="stylesheet"
     /></noscript>
 
-    <!-- Fonts -->
+    <!-- Fonts (async — not render-blocking) -->
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Merriweather:wght@300;400;700;900&family=Montserrat:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&family=Lato:wght@300;400;700&display=swap"
       rel="stylesheet"
+      media="print"
+      onload="this.media = 'all'"
     />
+    <noscript
+      ><link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Merriweather:wght@300;400;700;900&family=Montserrat:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&family=Lato:wght@300;400;700&display=swap"
+        rel="stylesheet"
+    /></noscript>
 
     <!-- Apply saved theme BEFORE first paint to prevent flash of wrong theme -->
     <script>
@@ -85,43 +90,6 @@
         var saved = localStorage.getItem("everleaf-theme") || "default";
         document.documentElement.setAttribute("data-theme", saved);
       })();
-    </script>
-
-    <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            colors: {
-              primary: {
-                DEFAULT: "var(--color-primary)",
-                dark: "var(--color-primary-dark)",
-                light: "var(--color-primary-light)",
-              },
-              secondary: "var(--color-secondary)",
-              dark: "var(--color-dark)",
-              light: "var(--color-bg-alt)",
-            },
-            fontFamily: {
-              sans: ["var(--font-sans)"],
-              serif: ["var(--font-serif)"],
-              brand: ["var(--font-brand)"],
-              brandalt: ["Poppins", "sans-serif"],
-            },
-            boxShadow: {
-              card: "var(--shadow-card)",
-            },
-            animation: {
-              "fade-in": "fadeIn 0.5s ease-out",
-            },
-            keyframes: {
-              fadeIn: {
-                "0%": { opacity: "0", transform: "translateY(10px)" },
-                "100%": { opacity: "1", transform: "translateY(0)" },
-              },
-            },
-          },
-        },
-      };
     </script>
   </head>
   <body>

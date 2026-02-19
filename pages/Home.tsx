@@ -2,6 +2,7 @@ import React, { useRef, useState, useEffect } from "react";
 import { Link, useOutletContext } from "react-router-dom";
 import { OpenAppointmentFunc } from "../Layout";
 import SEO from "../components/SEO";
+import { CldImg } from "../components/CldImg";
 import { heroImages } from "../data/hero";
 import { testimonials } from "../data/testimonials";
 
@@ -147,19 +148,22 @@ const Home: React.FC = () => {
                 style={{ color: "var(--color-text-muted)" }}
               >
                 <div className="flex -space-x-3">
-                  <img
+                  <CldImg
                     src="/images/happy-patient-1.jpg"
-                    alt="Doctor"
+                    alt="Happy patient"
+                    transform="w_80,q_auto,f_auto,c_fill,g_face"
                     className="w-10 h-10 rounded-full border-2 border-white object-cover"
                   />
-                  <img
+                  <CldImg
                     src="/images/happy-patient-2.jpg"
-                    alt="Doctor"
+                    alt="Happy patient"
+                    transform="w_80,q_auto,f_auto,c_fill,g_face"
                     className="w-10 h-10 rounded-full border-2 border-white object-cover"
                   />
-                  <img
+                  <CldImg
                     src="/images/happy-patient-3.jpg"
-                    alt="Doctor"
+                    alt="Happy patient"
+                    transform="w_80,q_auto,f_auto,c_fill,g_face"
                     className="w-10 h-10 rounded-full border-2 border-white object-cover"
                   />
                   <div
@@ -183,10 +187,13 @@ const Home: React.FC = () => {
                   key={index}
                   className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${index === currentHeroImage ? "opacity-100 z-10" : "opacity-0 z-0"}`}
                 >
-                  <img
+                  <CldImg
                     src={src}
                     alt={`Hospital Highlight ${index + 1}`}
                     className="rounded-2xl shadow-2xl object-cover w-full h-full"
+                    {...(index === 0
+                      ? { fetchPriority: "high", loading: "eager" }
+                      : { loading: "lazy" })}
                   />
                 </div>
               ))}
