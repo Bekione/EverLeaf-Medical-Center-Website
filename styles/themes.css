@@ -1,0 +1,1468 @@
+/* ═══════════════════════════════════════════════════════════════════════
+    THEME TOKENS
+    Each [data-theme] block defines all design tokens.
+    Switching themes = setting data-theme on <html>.
+═══════════════════════════════════════════════════════════════════════ */
+
+/* ── Default — Clean Clinical Blue ─────────────────────────────────── */
+[data-theme="default"] {
+  --color-primary: #136dec;
+  --color-primary-dark: #0e5bc4;
+  --color-primary-light: #e0f2fe;
+  --color-secondary: #10b981;
+  --color-bg: #ffffff;
+  --color-bg-alt: #f6f7f8;
+  --color-surface: #ffffff;
+  --color-surface-rgb: 255, 255, 255;
+  --color-border: #e2e8f0;
+  --color-text: #0f172a;
+  --color-text-muted: #64748b;
+  --color-dark: #101822;
+  --color-footer-bg: #0d1520;
+  --color-cta-from: #0f172a;
+  --color-cta-to: #1e3a8a;
+  --color-cta-accent: #93c5fd;
+  --font-sans: "Inter", sans-serif;
+  --font-serif: "Merriweather", serif;
+  --font-brand: "Montserrat", sans-serif;
+  --radius-card: 1rem;
+  --shadow-card: 0 4px 24px 0 rgba(19, 109, 236, 0.07);
+}
+
+/* ── Dark — Deep Navy Medical ───────────────────────────────────────── */
+[data-theme="dark"] {
+  --color-primary: #60a5fa;
+  --color-primary-dark: #3b82f6;
+  --color-primary-light: #1e3a5f;
+  --color-secondary: #34d399;
+  --color-bg: #0f172a;
+  --color-bg-alt: #1e293b;
+  --color-surface: #1e293b;
+  --color-surface-rgb: 30, 41, 59;
+  --color-border: #334155;
+  --color-text: #f1f5f9;
+  --color-text-muted: #94a3b8;
+  --color-dark: #f1f5f9;
+  --color-footer-bg: #020617;
+  --color-cta-from: #020617;
+  --color-cta-to: #0f172a;
+  --color-cta-accent: #60a5fa;
+  --font-sans: "Inter", sans-serif;
+  --font-serif: "Merriweather", serif;
+  --font-brand: "Montserrat", sans-serif;
+  --radius-card: 1rem;
+  --shadow-card: 0 4px 24px 0 rgba(0, 0, 0, 0.4);
+}
+
+/* ── Forest — Calm Green / Natural Healing ──────────────────────────── */
+[data-theme="forest"] {
+  --color-primary: #059669;
+  --color-primary-dark: #047857;
+  --color-primary-light: #d1fae5;
+  --color-secondary: #0891b2;
+  --color-bg: #f0fdf4;
+  --color-bg-alt: #ecfdf5;
+  --color-surface: #ffffff;
+  --color-surface-rgb: 255, 255, 255;
+  --color-border: #bbf7d0;
+  --color-text: #064e3b;
+  --color-text-muted: #6b7280;
+  --color-dark: #064e3b;
+  --color-footer-bg: #022c22;
+  --color-cta-from: #064e3b;
+  --color-cta-to: #065f46;
+  --color-cta-accent: #6ee7b7;
+  --font-sans: "Lato", sans-serif;
+  --font-serif: "Merriweather", serif;
+  --font-brand: "Montserrat", sans-serif;
+  --radius-card: 1.25rem;
+  --shadow-card: 0 4px 24px 0 rgba(5, 150, 105, 0.1);
+}
+
+/* ── Warm — Welcoming Amber / Private Clinic ────────────────────────── */
+[data-theme="warm"] {
+  --color-primary: #d97706;
+  --color-primary-dark: #b45309;
+  --color-primary-light: #fef3c7;
+  --color-secondary: #dc2626;
+  --color-bg: #fffbeb;
+  --color-bg-alt: #fef9ee;
+  --color-surface: #ffffff;
+  --color-surface-rgb: 255, 255, 255;
+  --color-border: #fde68a;
+  --color-text: #1c1917;
+  --color-text-muted: #78716c;
+  --color-dark: #1c1917;
+  --color-footer-bg: #1c0a00;
+  --color-cta-from: #78350f;
+  --color-cta-to: #92400e;
+  --color-cta-accent: #fcd34d;
+  --font-sans: "Poppins", sans-serif;
+  --font-serif: "Merriweather", serif;
+  --font-brand: "Poppins", sans-serif;
+  --radius-card: 1.5rem;
+  --shadow-card: 0 4px 24px 0 rgba(217, 119, 6, 0.1);
+}
+
+/* ── High Contrast — WCAG AAA ───────────────────────────────────────── */
+[data-theme="high-contrast"] {
+  --color-primary: #0000cc;
+  --color-primary-dark: #000099;
+  --color-primary-light: #e8e8ff;
+  --color-secondary: #006600;
+  --color-bg: #ffffff;
+  --color-bg-alt: #f5f5f5;
+  --color-surface: #ffffff;
+  --color-border: #000000;
+  --color-text: #000000;
+  --color-text-muted: #333333;
+  --color-dark: #000000;
+  --color-footer-bg: #000000;
+  --color-cta-from: #000033;
+  --color-cta-to: #000066;
+  --color-cta-accent: #ffff00;
+  --font-sans: "Inter", sans-serif;
+  --font-serif: "Merriweather", serif;
+  --font-brand: "Montserrat", sans-serif;
+  --radius-card: 0.5rem;
+  --shadow-card: 0 0 0 2px #000000;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════
+    GLOBAL BASE
+═══════════════════════════════════════════════════════════════════════ */
+html,
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-sans);
+}
+
+/* Smooth theme transitions — color properties only, not layout */
+*,
+*::before,
+*::after {
+  transition-property:
+    background-color, border-color, color, box-shadow, fill, stroke;
+  transition-duration: 0.25s;
+  transition-timing-function: ease;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════
+    PROFESSIONAL GLOBAL SCROLLBAR
+═══════════════════════════════════════════════════════════════════════ */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-bg-alt);
+}
+
+::-webkit-scrollbar-thumb {
+  background: color-mix(in srgb, var(--color-primary) 20%, transparent);
+  border: 2px solid var(--color-bg-alt);
+  border-radius: 10px;
+  transition: background 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-primary);
+}
+
+/* Scrollbar Buttons (Carats) */
+::-webkit-scrollbar-button:single-button {
+  display: block;
+  height: 12px;
+  width: 12px;
+  background-color: var(--color-bg-alt);
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+::-webkit-scrollbar-button:single-button:vertical:decrement {
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='10'><path d='M5 2L1 7h8z' fill='%2364748b'/></svg>");
+}
+
+::-webkit-scrollbar-button:single-button:vertical:increment {
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='10'><path d='M5 8L1 3h8z' fill='%2364748b'/></svg>");
+}
+
+/* Firefox Support */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-primary) var(--color-bg-alt);
+}
+
+/* Scrollbar hide utility for specific cases */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════
+    DARK THEME OVERRIDES — covers all pages
+═══════════════════════════════════════════════════════════════════════ */
+
+/* Backgrounds */
+[data-theme="dark"] .bg-white,
+[data-theme="dark"] header.bg-white,
+[data-theme="dark"] .bg-white\/90 {
+  background-color: var(--color-surface) !important;
+}
+[data-theme="dark"] .bg-slate-50,
+[data-theme="dark"] .bg-gray-50 {
+  background-color: var(--color-bg-alt) !important;
+}
+[data-theme="dark"] .bg-slate-100,
+[data-theme="dark"] .bg-gray-100 {
+  background-color: #1e293b !important;
+}
+[data-theme="dark"] .bg-slate-200,
+[data-theme="dark"] .bg-gray-200 {
+  background-color: #334155 !important;
+}
+[data-theme="forest"] .bg-slate-200,
+[data-theme="forest"] .bg-gray-200 {
+  background-color: #a7f3d0 !important;
+}
+[data-theme="warm"] .bg-slate-200,
+[data-theme="warm"] .bg-gray-200 {
+  background-color: #fde68a !important;
+}
+[data-theme="high-contrast"] .bg-slate-200,
+[data-theme="high-contrast"] .bg-gray-200 {
+  background-color: #d4d4d4 !important;
+}
+[data-theme="dark"] .bg-slate-800 {
+  background-color: #0f172a !important;
+}
+[data-theme="dark"] .bg-slate-900 {
+  background-color: #020617 !important;
+}
+[data-theme="dark"] .bg-blue-50 {
+  background-color: #1e3a5f !important;
+}
+[data-theme="dark"] .bg-blue-100 {
+  background-color: #1e3a5f !important;
+}
+[data-theme="dark"] .bg-green-50 {
+  background-color: #052e16 !important;
+}
+[data-theme="dark"] .bg-green-100 {
+  background-color: #052e16 !important;
+}
+[data-theme="dark"] .bg-red-50 {
+  background-color: #3f0a0a !important;
+}
+[data-theme="dark"] .bg-orange-50,
+[data-theme="dark"] .bg-orange-100 {
+  background-color: #431407 !important;
+}
+[data-theme="dark"] .bg-teal-50 {
+  background-color: #042f2e !important;
+}
+[data-theme="dark"] .bg-purple-50,
+[data-theme="dark"] .bg-purple-100 {
+  background-color: #2e1065 !important;
+}
+[data-theme="dark"] .bg-cyan-50 {
+  background-color: #083344 !important;
+}
+[data-theme="dark"] .bg-sky-50,
+[data-theme="dark"] .bg-sky-100 {
+  background-color: #082f49 !important;
+}
+[data-theme="dark"] .bg-indigo-50 {
+  background-color: #1e1b4b !important;
+}
+[data-theme="dark"] .bg-yellow-50 {
+  background-color: #1c1500 !important;
+}
+[data-theme="dark"] .bg-amber-50 {
+  background-color: #1c1200 !important;
+}
+[data-theme="dark"] .bg-pink-50 {
+  background-color: #3b0a1e !important;
+}
+[data-theme="dark"] .bg-rose-50 {
+  background-color: #3b0a1e !important;
+}
+[data-theme="dark"] .bg-emerald-50 {
+  background-color: #052e16 !important;
+}
+
+/* Gradient backgrounds */
+[data-theme="dark"] .bg-gradient-to-b.from-blue-50,
+[data-theme="dark"] .from-blue-50 {
+  --tw-gradient-from: #0f172a !important;
+}
+[data-theme="dark"] .via-white {
+  --tw-gradient-via: var(--color-surface) !important;
+}
+[data-theme="dark"] .to-white {
+  --tw-gradient-to: var(--color-surface) !important;
+}
+
+/* Text colors */
+[data-theme="dark"] .text-slate-900,
+[data-theme="dark"] .text-gray-900 {
+  color: var(--color-text) !important;
+}
+[data-theme="dark"] .text-slate-800,
+[data-theme="dark"] .text-gray-800 {
+  color: #e2e8f0 !important;
+}
+[data-theme="dark"] .text-slate-700,
+[data-theme="dark"] .text-gray-700 {
+  color: #cbd5e1 !important;
+}
+[data-theme="dark"] .text-slate-600,
+[data-theme="dark"] .text-gray-600 {
+  color: #94a3b8 !important;
+}
+[data-theme="dark"] .text-slate-500,
+[data-theme="dark"] .text-gray-500 {
+  color: #64748b !important;
+}
+[data-theme="dark"] .text-slate-400,
+[data-theme="dark"] .text-gray-400 {
+  color: #475569 !important;
+}
+[data-theme="dark"] .text-green-600 {
+  color: #34d399 !important;
+}
+[data-theme="dark"] .text-green-700 {
+  color: #10b981 !important;
+}
+[data-theme="dark"] .text-red-600 {
+  color: #f87171 !important;
+}
+[data-theme="dark"] .text-orange-600 {
+  color: #fb923c !important;
+}
+[data-theme="dark"] .text-purple-600 {
+  color: #c084fc !important;
+}
+[data-theme="dark"] .text-teal-600 {
+  color: #2dd4bf !important;
+}
+[data-theme="dark"] .text-cyan-600 {
+  color: #22d3ee !important;
+}
+[data-theme="dark"] .text-indigo-600 {
+  color: #818cf8 !important;
+}
+[data-theme="dark"] .text-yellow-600 {
+  color: #facc15 !important;
+}
+[data-theme="dark"] .text-amber-600 {
+  color: #fbbf24 !important;
+}
+[data-theme="dark"] .text-pink-600 {
+  color: #f472b6 !important;
+}
+
+/* Borders */
+[data-theme="dark"] .border-slate-100,
+[data-theme="dark"] .border-gray-100 {
+  border-color: var(--color-border) !important;
+}
+[data-theme="dark"] .border-slate-200,
+[data-theme="dark"] .border-gray-200 {
+  border-color: #334155 !important;
+}
+[data-theme="dark"] .border-slate-300,
+[data-theme="dark"] .border-gray-300 {
+  border-color: #475569 !important;
+}
+[data-theme="dark"] .border-blue-100 {
+  border-color: #1e3a5f !important;
+}
+[data-theme="dark"] .border-green-100 {
+  border-color: #052e16 !important;
+}
+[data-theme="dark"] .border-green-200 {
+  border-color: #166534 !important;
+}
+[data-theme="dark"] .border-orange-200 {
+  border-color: #7c2d12 !important;
+}
+[data-theme="dark"] .border-purple-200 {
+  border-color: #4c1d95 !important;
+}
+[data-theme="dark"] .border-teal-200 {
+  border-color: #134e4a !important;
+}
+
+/* Divide colors */
+[data-theme="dark"] .divide-slate-100 > * + *,
+[data-theme="dark"] .divide-gray-100 > * + * {
+  border-color: var(--color-border) !important;
+}
+
+/* Hover states — bg */
+[data-theme="dark"] .hover\:bg-slate-50:hover {
+  background-color: var(--color-bg-alt) !important;
+}
+[data-theme="dark"] .hover\:bg-slate-100:hover {
+  background-color: #1e293b !important;
+}
+[data-theme="dark"] .hover\:bg-blue-50:hover {
+  background-color: #1e3a5f !important;
+}
+[data-theme="dark"] .hover\:bg-blue-100:hover {
+  background-color: #1e3a5f !important;
+}
+[data-theme="dark"] .hover\:bg-white:hover {
+  background-color: var(--color-surface) !important;
+}
+
+/* Inputs */
+[data-theme="dark"] input,
+[data-theme="dark"] textarea,
+[data-theme="dark"] select {
+  background-color: var(--color-bg-alt) !important;
+  border-color: var(--color-border) !important;
+  color: var(--color-text) !important;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════
+    FOREST THEME OVERRIDES
+═══════════════════════════════════════════════════════════════════════ */
+[data-theme="forest"] .bg-white {
+  background-color: var(--color-surface) !important;
+}
+[data-theme="forest"] .bg-slate-50,
+[data-theme="forest"] .bg-gray-50 {
+  background-color: var(--color-bg-alt) !important;
+}
+[data-theme="forest"] .bg-slate-100,
+[data-theme="forest"] .bg-gray-100 {
+  background-color: #d1fae5 !important;
+}
+[data-theme="forest"] .bg-blue-50 {
+  background-color: #d1fae5 !important;
+}
+[data-theme="forest"] .bg-blue-100 {
+  background-color: #a7f3d0 !important;
+}
+[data-theme="forest"] .bg-sky-50 {
+  background-color: #cffafe !important;
+}
+[data-theme="forest"] .bg-teal-50 {
+  background-color: #ccfbf1 !important;
+}
+[data-theme="forest"] .bg-indigo-50 {
+  background-color: #d1fae5 !important;
+}
+[data-theme="forest"] .bg-purple-50 {
+  background-color: #d1fae5 !important;
+}
+[data-theme="forest"] .bg-orange-50 {
+  background-color: #fef9c3 !important;
+}
+[data-theme="forest"] .bg-amber-50 {
+  background-color: #fef9c3 !important;
+}
+[data-theme="forest"] .bg-cyan-50 {
+  background-color: #cffafe !important;
+}
+
+[data-theme="forest"] .text-slate-900,
+[data-theme="forest"] .text-gray-900 {
+  color: var(--color-text) !important;
+}
+[data-theme="forest"] .text-slate-800,
+[data-theme="forest"] .text-gray-800 {
+  color: #065f46 !important;
+}
+[data-theme="forest"] .text-slate-700,
+[data-theme="forest"] .text-gray-700 {
+  color: #047857 !important;
+}
+[data-theme="forest"] .text-slate-600,
+[data-theme="forest"] .text-gray-600 {
+  color: #6b7280 !important;
+}
+[data-theme="forest"] .text-slate-500,
+[data-theme="forest"] .text-gray-500 {
+  color: #6b7280 !important;
+}
+
+[data-theme="forest"] .border-slate-100,
+[data-theme="forest"] .border-gray-100 {
+  border-color: var(--color-border) !important;
+}
+[data-theme="forest"] .border-slate-200,
+[data-theme="forest"] .border-gray-200 {
+  border-color: #a7f3d0 !important;
+}
+[data-theme="forest"] .border-blue-100 {
+  border-color: #a7f3d0 !important;
+}
+
+[data-theme="forest"] .hover\:bg-slate-50:hover {
+  background-color: var(--color-bg-alt) !important;
+}
+[data-theme="forest"] .hover\:bg-blue-50:hover {
+  background-color: #d1fae5 !important;
+}
+[data-theme="forest"] .hover\:bg-blue-100:hover {
+  background-color: #a7f3d0 !important;
+}
+
+[data-theme="forest"] input,
+[data-theme="forest"] textarea,
+[data-theme="forest"] select {
+  background-color: var(--color-bg-alt) !important;
+  border-color: var(--color-border) !important;
+  color: var(--color-text) !important;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════
+    WARM THEME OVERRIDES
+═══════════════════════════════════════════════════════════════════════ */
+[data-theme="warm"] .bg-white {
+  background-color: var(--color-surface) !important;
+}
+[data-theme="warm"] .bg-slate-50,
+[data-theme="warm"] .bg-gray-50 {
+  background-color: var(--color-bg-alt) !important;
+}
+[data-theme="warm"] .bg-slate-100,
+[data-theme="warm"] .bg-gray-100 {
+  background-color: #fef3c7 !important;
+}
+[data-theme="warm"] .bg-blue-50 {
+  background-color: #fef3c7 !important;
+}
+[data-theme="warm"] .bg-blue-100 {
+  background-color: #fde68a !important;
+}
+[data-theme="warm"] .bg-sky-50 {
+  background-color: #fef9c3 !important;
+}
+[data-theme="warm"] .bg-teal-50 {
+  background-color: #fef9c3 !important;
+}
+[data-theme="warm"] .bg-indigo-50 {
+  background-color: #fef3c7 !important;
+}
+[data-theme="warm"] .bg-purple-50 {
+  background-color: #fef3c7 !important;
+}
+[data-theme="warm"] .bg-cyan-50 {
+  background-color: #fef9c3 !important;
+}
+[data-theme="warm"] .bg-green-50 {
+  background-color: #fef9c3 !important;
+}
+[data-theme="warm"] .bg-green-100 {
+  background-color: #fde68a !important;
+}
+
+[data-theme="warm"] .text-slate-900,
+[data-theme="warm"] .text-gray-900 {
+  color: var(--color-text) !important;
+}
+[data-theme="warm"] .text-slate-800,
+[data-theme="warm"] .text-gray-800 {
+  color: #292524 !important;
+}
+[data-theme="warm"] .text-slate-700,
+[data-theme="warm"] .text-gray-700 {
+  color: #44403c !important;
+}
+[data-theme="warm"] .text-slate-600,
+[data-theme="warm"] .text-gray-600 {
+  color: #78716c !important;
+}
+[data-theme="warm"] .text-slate-500,
+[data-theme="warm"] .text-gray-500 {
+  color: #78716c !important;
+}
+
+[data-theme="warm"] .border-slate-100,
+[data-theme="warm"] .border-gray-100 {
+  border-color: var(--color-border) !important;
+}
+[data-theme="warm"] .border-slate-200,
+[data-theme="warm"] .border-gray-200 {
+  border-color: #fde68a !important;
+}
+[data-theme="warm"] .border-blue-100 {
+  border-color: #fde68a !important;
+}
+
+[data-theme="warm"] .hover\:bg-slate-50:hover {
+  background-color: var(--color-bg-alt) !important;
+}
+[data-theme="warm"] .hover\:bg-blue-50:hover {
+  background-color: #fef3c7 !important;
+}
+[data-theme="warm"] .hover\:bg-blue-100:hover {
+  background-color: #fde68a !important;
+}
+
+[data-theme="warm"] input,
+[data-theme="warm"] textarea,
+[data-theme="warm"] select {
+  background-color: var(--color-bg-alt) !important;
+  border-color: var(--color-border) !important;
+  color: var(--color-text) !important;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════
+    CTA SECTION THEMING — gradient overrides per theme
+═══════════════════════════════════════════════════════════════════════ */
+[data-theme="forest"] .from-slate-900 {
+  --tw-gradient-from: var(--color-cta-from) !important;
+}
+[data-theme="forest"] .to-blue-900 {
+  --tw-gradient-to: var(--color-cta-to) !important;
+}
+[data-theme="warm"] .from-slate-900 {
+  --tw-gradient-from: var(--color-cta-from) !important;
+}
+[data-theme="warm"] .to-blue-900 {
+  --tw-gradient-to: var(--color-cta-to) !important;
+}
+[data-theme="high-contrast"] .from-slate-900 {
+  --tw-gradient-from: var(--color-cta-from) !important;
+}
+[data-theme="high-contrast"] .to-blue-900 {
+  --tw-gradient-to: var(--color-cta-to) !important;
+}
+[data-theme="dark"] .from-slate-900 {
+  --tw-gradient-from: var(--color-cta-from) !important;
+}
+[data-theme="dark"] .to-blue-900 {
+  --tw-gradient-to: var(--color-cta-to) !important;
+}
+
+/* About page hero gradient */
+[data-theme="dark"] .from-blue-50 {
+  --tw-gradient-from: #0f172a !important;
+}
+[data-theme="forest"] .from-blue-50 {
+  --tw-gradient-from: #f0fdf4 !important;
+}
+[data-theme="warm"] .from-blue-50 {
+  --tw-gradient-from: #fffbeb !important;
+}
+
+/* CTA accent text */
+[data-theme="forest"] .text-blue-300,
+[data-theme="warm"] .text-blue-300,
+[data-theme="high-contrast"] .text-blue-300,
+[data-theme="dark"] .text-blue-300 {
+  color: var(--color-cta-accent) !important;
+}
+
+/* CTA body text */
+[data-theme="forest"] .text-blue-100,
+[data-theme="warm"] .text-blue-100,
+[data-theme="dark"] .text-blue-100 {
+  color: rgba(255, 255, 255, 0.8) !important;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════
+    SUB-PAGE SPECIFIC OVERRIDES (services/*, departments/*)
+═══════════════════════════════════════════════════════════════════════ */
+
+/* Department header decorative skew bg */
+[data-theme="dark"] .bg-blue-50\/50,
+[data-theme="forest"] .bg-blue-50\/50,
+[data-theme="warm"] .bg-blue-50\/50,
+[data-theme="high-contrast"] .bg-blue-50\/50 {
+  background-color: color-mix(
+    in srgb,
+    var(--color-primary) 8%,
+    transparent
+  ) !important;
+}
+
+/* Pricing card header sections (bg-slate-50 inside cards) */
+[data-theme="dark"] .bg-primary\/5,
+[data-theme="forest"] .bg-primary\/5,
+[data-theme="warm"] .bg-primary\/5,
+[data-theme="high-contrast"] .bg-primary\/5 {
+  background-color: color-mix(
+    in srgb,
+    var(--color-primary) 8%,
+    var(--color-surface)
+  ) !important;
+}
+
+/* Table backgrounds in comparison sections */
+[data-theme="dark"] table,
+[data-theme="forest"] table,
+[data-theme="warm"] table,
+[data-theme="high-contrast"] table {
+  background-color: var(--color-surface) !important;
+  color: var(--color-text) !important;
+}
+[data-theme="dark"] thead tr,
+[data-theme="forest"] thead tr,
+[data-theme="warm"] thead tr,
+[data-theme="high-contrast"] thead tr {
+  background-color: var(--color-bg-alt) !important;
+}
+[data-theme="dark"] .divide-y > tr,
+[data-theme="forest"] .divide-y > tr,
+[data-theme="warm"] .divide-y > tr,
+[data-theme="high-contrast"] .divide-y > tr {
+  border-color: var(--color-border) !important;
+}
+[data-theme="dark"] .text-slate-700,
+[data-theme="forest"] .text-slate-700,
+[data-theme="warm"] .text-slate-700,
+[data-theme="high-contrast"] .text-slate-700 {
+  color: var(--color-text) !important;
+}
+
+/* Sub-page CTA gradient overrides — from-slate-900 to-blue-900 */
+[data-theme="dark"] .from-slate-900.to-blue-900,
+[data-theme="forest"] .from-slate-900.to-blue-900,
+[data-theme="warm"] .from-slate-900.to-blue-900,
+[data-theme="high-contrast"] .from-slate-900.to-blue-900,
+[data-theme="dark"] .bg-gradient-to-br.from-slate-900,
+[data-theme="forest"] .bg-gradient-to-br.from-slate-900,
+[data-theme="warm"] .bg-gradient-to-br.from-slate-900,
+[data-theme="high-contrast"] .bg-gradient-to-br.from-slate-900 {
+  background: linear-gradient(
+    135deg,
+    var(--color-cta-from),
+    var(--color-cta-to)
+  ) !important;
+}
+
+/* Sub-page CTA gradient — from-emerald-900 to-slate-900 */
+[data-theme="dark"] .from-emerald-900,
+[data-theme="forest"] .from-emerald-900,
+[data-theme="warm"] .from-emerald-900,
+[data-theme="high-contrast"] .from-emerald-900 {
+  background: linear-gradient(
+    135deg,
+    var(--color-cta-from),
+    var(--color-cta-to)
+  ) !important;
+}
+
+/* CTA text accent for sub-pages (emerald-300) */
+[data-theme="dark"] .text-emerald-300,
+[data-theme="forest"] .text-emerald-300,
+[data-theme="warm"] .text-emerald-300,
+[data-theme="high-contrast"] .text-emerald-300 {
+  color: var(--color-cta-accent) !important;
+}
+
+/* CTA body text for sub-pages (emerald-100) */
+[data-theme="dark"] .text-emerald-100,
+[data-theme="forest"] .text-emerald-100,
+[data-theme="warm"] .text-emerald-100,
+[data-theme="high-contrast"] .text-emerald-100 {
+  color: rgba(255, 255, 255, 0.85) !important;
+}
+
+/* bg-blue-100 icon backgrounds in sub-pages */
+[data-theme="dark"] .bg-blue-100,
+[data-theme="forest"] .bg-blue-100,
+[data-theme="warm"] .bg-blue-100,
+[data-theme="high-contrast"] .bg-blue-100 {
+  background-color: var(--color-primary-light) !important;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════
+    DEPARTMENT PAGE OVERRIDES — covers all [data-theme] except default
+    Patterns: bg-white headers, border-slate-100 cards, bg-white sections
+═══════════════════════════════════════════════════════════════════════ */
+
+/* Department page light-background headers (bg-white border-b border-slate-100) */
+[data-theme="dark"] header.bg-white,
+[data-theme="dark"] header.relative.bg-white,
+[data-theme="forest"] header.bg-white,
+[data-theme="forest"] header.relative.bg-white,
+[data-theme="warm"] header.bg-white,
+[data-theme="warm"] header.relative.bg-white,
+[data-theme="high-contrast"] header.bg-white,
+[data-theme="high-contrast"] header.relative.bg-white {
+  background-color: var(--color-surface) !important;
+  border-color: var(--color-border) !important;
+}
+
+/* border-slate-100 — used heavily on department cards, dividers, and section borders */
+[data-theme="dark"] .border-slate-100,
+[data-theme="forest"] .border-slate-100,
+[data-theme="warm"] .border-slate-100,
+[data-theme="high-contrast"] .border-slate-100 {
+  border-color: var(--color-border) !important;
+}
+
+/* bg-white sections used as alternating section backgrounds in department pages */
+[data-theme="dark"] section.bg-white,
+[data-theme="dark"] section.py-20.bg-white,
+[data-theme="dark"] section.py-16.bg-white,
+[data-theme="forest"] section.bg-white,
+[data-theme="forest"] section.py-20.bg-white,
+[data-theme="forest"] section.py-16.bg-white,
+[data-theme="warm"] section.bg-white,
+[data-theme="warm"] section.py-20.bg-white,
+[data-theme="warm"] section.py-16.bg-white,
+[data-theme="high-contrast"] section.bg-white,
+[data-theme="high-contrast"] section.py-20.bg-white,
+[data-theme="high-contrast"] section.py-16.bg-white {
+  background-color: var(--color-surface) !important;
+  border-color: var(--color-border) !important;
+}
+
+/* bg-slate-50 sections used in department pages (alternating with bg-white) */
+[data-theme="dark"] section.bg-slate-50,
+[data-theme="dark"] section.py-20.bg-slate-50,
+[data-theme="dark"] section.py-16.bg-slate-50,
+[data-theme="forest"] section.bg-slate-50,
+[data-theme="forest"] section.py-20.bg-slate-50,
+[data-theme="forest"] section.py-16.bg-slate-50,
+[data-theme="warm"] section.bg-slate-50,
+[data-theme="warm"] section.py-20.bg-slate-50,
+[data-theme="warm"] section.py-16.bg-slate-50,
+[data-theme="high-contrast"] section.bg-slate-50,
+[data-theme="high-contrast"] section.py-20.bg-slate-50,
+[data-theme="high-contrast"] section.py-16.bg-slate-50 {
+  background-color: var(--color-bg-alt) !important;
+}
+
+/* Floating stat cards (absolute positioned, bg-white border-slate-100) */
+[data-theme="dark"] .absolute.bg-white,
+[data-theme="forest"] .absolute.bg-white,
+[data-theme="warm"] .absolute.bg-white,
+[data-theme="high-contrast"] .absolute.bg-white {
+  background-color: var(--color-surface) !important;
+  border-color: var(--color-border) !important;
+}
+
+/* bg-slate-50 rounded-3xl info panels in department pages */
+[data-theme="dark"] .bg-slate-50.rounded-3xl,
+[data-theme="forest"] .bg-slate-50.rounded-3xl,
+[data-theme="warm"] .bg-slate-50.rounded-3xl,
+[data-theme="high-contrast"] .bg-slate-50.rounded-3xl {
+  background-color: var(--color-bg-alt) !important;
+  border-color: var(--color-border) !important;
+}
+
+/* hover:bg-slate-50 list items in department service lists */
+[data-theme="dark"] .hover\:bg-slate-50:hover,
+[data-theme="forest"] .hover\:bg-slate-50:hover,
+[data-theme="warm"] .hover\:bg-slate-50:hover,
+[data-theme="high-contrast"] .hover\:bg-slate-50:hover {
+  background-color: var(--color-bg-alt) !important;
+}
+
+/* hover:border-slate-100 transparent borders on hover */
+[data-theme="dark"] .hover\:border-slate-100:hover,
+[data-theme="forest"] .hover\:border-slate-100:hover,
+[data-theme="warm"] .hover\:border-slate-100:hover,
+[data-theme="high-contrast"] .hover\:border-slate-100:hover {
+  border-color: var(--color-border) !important;
+}
+
+/* border-y border-slate-100 — horizontal rule sections */
+[data-theme="dark"] .border-y,
+[data-theme="forest"] .border-y,
+[data-theme="warm"] .border-y,
+[data-theme="high-contrast"] .border-y {
+  border-color: var(--color-border) !important;
+}
+
+/* border-t border-slate-100 — top dividers inside cards */
+[data-theme="dark"] .border-t.border-slate-100,
+[data-theme="forest"] .border-t.border-slate-100,
+[data-theme="warm"] .border-t.border-slate-100,
+[data-theme="high-contrast"] .border-t.border-slate-100 {
+  border-color: var(--color-border) !important;
+}
+
+/* text-slate-700 in department pages (headings, sub-labels) */
+[data-theme="dark"] .text-slate-700,
+[data-theme="forest"] .text-slate-700,
+[data-theme="warm"] .text-slate-700,
+[data-theme="high-contrast"] .text-slate-700 {
+  color: var(--color-text) !important;
+}
+
+/* text-slate-800 in department pages */
+[data-theme="dark"] .text-slate-800,
+[data-theme="forest"] .text-slate-800,
+[data-theme="warm"] .text-slate-800,
+[data-theme="high-contrast"] .text-slate-800 {
+  color: var(--color-text) !important;
+}
+
+/* bg-primary\/5 section accent backgrounds (Ophthalmology) */
+[data-theme="dark"] .bg-primary\/5,
+[data-theme="forest"] .bg-primary\/5,
+[data-theme="warm"] .bg-primary\/5,
+[data-theme="high-contrast"] .bg-primary\/5 {
+  background-color: color-mix(
+    in srgb,
+    var(--color-primary) 8%,
+    var(--color-surface)
+  ) !important;
+  border-color: var(--color-border) !important;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════
+    HIGH CONTRAST OVERRIDES
+═══════════════════════════════════════════════════════════════════════ */
+[data-theme="high-contrast"] a:focus,
+[data-theme="high-contrast"] button:focus {
+  outline: 3px solid #0000cc;
+  outline-offset: 2px;
+}
+[data-theme="high-contrast"] .shadow-sm,
+[data-theme="high-contrast"] .shadow-md,
+[data-theme="high-contrast"] .shadow-lg,
+[data-theme="high-contrast"] .shadow-xl,
+[data-theme="high-contrast"] .shadow-2xl {
+  box-shadow: 0 0 0 1px #000 !important;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════
+    FORM INPUT OVERRIDES — Contact page inputs adapt to theme
+═══════════════════════════════════════════════════════════════════════ */
+[data-theme="dark"]
+  input:not([type="submit"]):not([type="button"]):not([type="reset"]):not(
+    [type="checkbox"]
+  ):not([type="radio"]):not([type="range"]):not([type="file"]),
+[data-theme="dark"] textarea,
+[data-theme="dark"] select {
+  background-color: var(--color-bg-alt) !important;
+  color: var(--color-text) !important;
+  border-color: var(--color-border) !important;
+}
+[data-theme="dark"] input::placeholder,
+[data-theme="dark"] textarea::placeholder {
+  color: var(--color-text-muted) !important;
+  opacity: 0.6;
+}
+[data-theme="forest"]
+  input:not([type="submit"]):not([type="button"]):not([type="reset"]):not(
+    [type="checkbox"]
+  ):not([type="radio"]):not([type="range"]):not([type="file"]),
+[data-theme="forest"] textarea,
+[data-theme="forest"] select {
+  background-color: var(--color-bg-alt) !important;
+  color: var(--color-text) !important;
+  border-color: var(--color-border) !important;
+}
+[data-theme="forest"] input::placeholder,
+[data-theme="forest"] textarea::placeholder {
+  color: var(--color-text-muted) !important;
+  opacity: 0.7;
+}
+[data-theme="warm"]
+  input:not([type="submit"]):not([type="button"]):not([type="reset"]):not(
+    [type="checkbox"]
+  ):not([type="radio"]):not([type="range"]):not([type="file"]),
+[data-theme="warm"] textarea,
+[data-theme="warm"] select {
+  background-color: var(--color-bg-alt) !important;
+  color: var(--color-text) !important;
+  border-color: var(--color-border) !important;
+}
+[data-theme="high-contrast"]
+  input:not([type="submit"]):not([type="button"]):not([type="reset"]):not(
+    [type="checkbox"]
+  ):not([type="radio"]):not([type="range"]):not([type="file"]),
+[data-theme="high-contrast"] textarea,
+[data-theme="high-contrast"] select {
+  background-color: #ffffff !important;
+  color: #000000 !important;
+  border-color: #000000 !important;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════
+         ICON BOX OVERRIDES — Small icon boxes use bg-alt for contrast vs surface
+         (Radiology/Surgery services cards: w-16 h-16 bg-white / p-3 bg-white)
+         ═══════════════════════════════════════════════════════════════════════ */
+[data-theme="dark"] .w-16.h-16.bg-white,
+[data-theme="dark"] .w-12.h-12.bg-white,
+[data-theme="dark"] .mb-4.inline-block.p-3.bg-white,
+[data-theme="dark"] .mb-4.inline-block.bg-white {
+  background-color: var(--color-bg-alt) !important;
+  box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.3) !important;
+}
+[data-theme="forest"] .w-16.h-16.bg-white,
+[data-theme="forest"] .w-12.h-12.bg-white,
+[data-theme="forest"] .mb-4.inline-block.p-3.bg-white,
+[data-theme="forest"] .mb-4.inline-block.bg-white {
+  background-color: var(--color-bg-alt) !important;
+  box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.1) !important;
+}
+[data-theme="warm"] .w-16.h-16.bg-white,
+[data-theme="warm"] .w-12.h-12.bg-white,
+[data-theme="warm"] .mb-4.inline-block.p-3.bg-white,
+[data-theme="warm"] .mb-4.inline-block.bg-white {
+  background-color: var(--color-bg-alt) !important;
+  box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.1) !important;
+}
+[data-theme="high-contrast"] .w-16.h-16.bg-white,
+[data-theme="high-contrast"] .w-12.h-12.bg-white,
+[data-theme="high-contrast"] .mb-4.inline-block.p-3.bg-white,
+[data-theme="high-contrast"] .mb-4.inline-block.bg-white {
+  background-color: #ffffff !important;
+  border: 2px solid #000000 !important;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════
+    CTA SECTION OVERRIDES — Department page dark gradient CTA sections
+    (from-slate-800 to-slate-900, bg-slate-900, bg-gradient-to-br)
+═══════════════════════════════════════════════════════════════════════ */
+[data-theme="forest"] .bg-gradient-to-br.from-slate-800,
+[data-theme="forest"] .bg-gradient-to-br.from-blue-950 {
+  --tw-gradient-from: #064e3b !important;
+  --tw-gradient-stops:
+    var(--tw-gradient-from), var(--tw-gradient-to) !important;
+}
+[data-theme="forest"] .to-slate-900,
+[data-theme="forest"] .bg-gradient-to-br.to-slate-900 {
+  --tw-gradient-to: #022c22 !important;
+}
+[data-theme="forest"] section.bg-slate-900,
+[data-theme="forest"] .py-20.bg-slate-900 {
+  background-color: #022c22 !important;
+}
+[data-theme="warm"] .bg-gradient-to-br.from-slate-800,
+[data-theme="warm"] .bg-gradient-to-br.from-blue-950 {
+  --tw-gradient-from: #78350f !important;
+  --tw-gradient-stops:
+    var(--tw-gradient-from), var(--tw-gradient-to) !important;
+}
+[data-theme="warm"] .to-slate-900,
+[data-theme="warm"] .bg-gradient-to-br.to-slate-900 {
+  --tw-gradient-to: #451a03 !important;
+}
+[data-theme="warm"] section.bg-slate-900,
+[data-theme="warm"] .py-20.bg-slate-900 {
+  background-color: #451a03 !important;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════
+    SIENNA ACCESSIBILITY WIDGET — Full Theme Integration
+    Makes the widget look like a native part of the project.
+    Classes inspected: .asw-menu, .asw-menu-header, .asw-menu-content,
+                       .asw-card, .asw-title, #asw-language, .asw-select
+═══════════════════════════════════════════════════════════════════════ */
+
+/* --- Isolation: prevent our global rules from leaking in --- */
+
+/* Stop our universal transition from making Sienna feel laggy */
+.asw-menu *,
+.asw-menu *::before,
+.asw-menu *::after {
+  transition: none !important;
+}
+
+/* Allow only our custom dropdown transitions */
+#asw-lang-custom button,
+#asw-lang-custom span,
+#asw-lang-custom li {
+  transition:
+    border-color 0.2s,
+    background 0.15s,
+    color 0.15s,
+    transform 0.2s !important;
+}
+
+/* Prevent per-theme select overrides from corrupting Sienna's hidden native select */
+[data-theme] .asw-menu select,
+[data-theme] .asw-menu input,
+[data-theme] .asw-menu textarea {
+  background-color: revert !important;
+  border-color: revert !important;
+  color: revert !important;
+}
+
+/* --- Widget panel container --- */
+.asw-menu {
+  font-family: var(--font-sans) !important;
+  background: var(--color-surface) !important;
+  border: 1px solid var(--color-border) !important;
+  border-radius: 16px !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15) !important;
+  overflow: hidden !important;
+}
+
+/* --- Floating trigger button (the accessibility circle) --- */
+a.asw-menu-btn,
+.asw-menu-btn {
+  background: var(--color-primary) !important;
+  border: none !important;
+  outline: none !important;
+  box-shadow: 0 4px 20px
+    color-mix(in srgb, var(--color-primary) 45%, transparent) !important;
+  transition:
+    background 0.25s,
+    box-shadow 0.25s,
+    transform 0.15s !important;
+}
+a.asw-menu-btn:hover,
+.asw-menu-btn:hover {
+  background: var(--color-primary-dark, var(--color-primary)) !important;
+  transform: scale(1.08) !important;
+}
+a.asw-menu-btn:focus,
+.asw-menu-btn:focus {
+  outline: none !important;
+  box-shadow: 0 0 0 3px
+    color-mix(in srgb, var(--color-primary) 30%, transparent) !important;
+}
+/* Do NOT override fill on paths — the SVG already has style="fill:white" inline.
+   Overriding fill on paths breaks fill="none" background path, hiding the icon. */
+
+/* --- Header bar --- */
+.asw-menu-header {
+  background: linear-gradient(
+    135deg,
+    var(--color-primary),
+    var(--color-primary-dark, var(--color-primary))
+  ) !important;
+  padding: 14px 16px !important;
+  border-bottom: none !important;
+}
+
+/* Header title */
+.asw-menu-header .asw-title,
+.asw-menu-header span,
+.asw-menu-header p,
+.asw-menu-header h1,
+.asw-menu-header h2,
+.asw-menu-header h3 {
+  color: #ffffff !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.01em !important;
+}
+
+/* Header icon buttons (reset + close) */
+.asw-menu-header button,
+button.asw-menu-reset,
+button.asw-menu-close {
+  background: rgba(255, 255, 255, 0.18) !important;
+  border: 1.5px solid rgba(255, 255, 255, 0.35) !important;
+  border-radius: 50% !important;
+  color: #ffffff !important;
+  outline: none !important;
+}
+.asw-menu-header button:hover,
+button.asw-menu-reset:hover,
+button.asw-menu-close:hover {
+  background: rgba(255, 255, 255, 0.32) !important;
+  transform: scale(1.08) !important;
+}
+/* Force SVG icons inside header buttons to be white */
+button.asw-menu-reset svg,
+button.asw-menu-reset path,
+button.asw-menu-close svg,
+button.asw-menu-close path {
+  fill: #ffffff !important;
+  stroke: #ffffff !important;
+}
+
+/* --- Content area --- */
+.asw-menu-content {
+  background: var(--color-bg-alt) !important;
+  padding: 12px !important;
+}
+
+/* --- Feature cards (Highlight Title, Dyslexia Font, etc.) --- */
+.asw-card {
+  background: var(--color-surface) !important;
+  border: 1px solid var(--color-border) !important;
+  border-radius: 12px !important;
+  color: var(--color-text) !important;
+  padding: 10px 8px !important;
+  box-shadow: var(--shadow-card, 0 2px 8px rgba(0, 0, 0, 0.04)) !important;
+  transition:
+    box-shadow 0.2s,
+    border-color 0.2s !important;
+}
+/* Inner button grid — ensure consistent spacing from card edges */
+.asw-items.content,
+.asw-items {
+  padding: 0 4px 4px !important;
+  gap: 6px !important;
+}
+.asw-card:hover {
+  border-color: var(--color-primary) !important;
+  box-shadow: 0 4px 12px
+    color-mix(in srgb, var(--color-primary) 15%, transparent) !important;
+}
+
+/* Active/toggled card */
+.asw-card.asw-active,
+.asw-card[class*="active"],
+.asw-card.active {
+  background: color-mix(
+    in srgb,
+    var(--color-primary) 10%,
+    var(--color-surface)
+  ) !important;
+  border-color: var(--color-primary) !important;
+  color: var(--color-primary) !important;
+}
+
+/* Card icons and labels */
+.asw-card svg,
+.asw-card i,
+.asw-card span {
+  color: var(--color-text-muted) !important;
+  fill: var(--color-text-muted) !important;
+}
+.asw-card.asw-active svg,
+.asw-card.asw-active i,
+.asw-card.asw-active span {
+  color: var(--color-primary) !important;
+  fill: var(--color-primary) !important;
+}
+
+/* Section label (e.g. "Accessibility Settings") */
+.asw-menu-content > p,
+.asw-menu-content > span,
+[class*="asw-section-title"] {
+  color: var(--color-text-muted) !important;
+  font-size: 11px !important;
+  letter-spacing: 0.08em !important;
+  text-transform: uppercase !important;
+  font-weight: 600 !important;
+}
+
+/* Font size +/- buttons */
+.asw-menu-content button[class*="plus"],
+.asw-menu-content button[class*="minus"],
+.asw-menu-content button:not(.asw-menu-header button) {
+  border: 1px solid var(--color-border) !important;
+  background: var(--color-surface) !important;
+  color: var(--color-text) !important;
+  border-radius: 8px !important;
+}
+.asw-menu-content button:not(.asw-menu-header button):hover {
+  background: color-mix(
+    in srgb,
+    var(--color-primary) 8%,
+    var(--color-surface)
+  ) !important;
+  border-color: var(--color-primary) !important;
+  color: var(--color-primary) !important;
+}
+
+/* --- Widget footer ("Web Accessibility By Sienna") --- */
+.asw-menu > div:last-child,
+[class*="asw-footer"],
+.asw-menu-footer {
+  background: var(--color-surface) !important;
+  border-top: 1px solid var(--color-border) !important;
+  color: var(--color-text-muted) !important;
+}
+
+/* --- Widget footer — hide completely --- */
+.asw-footer {
+  display: none !important;
+}
+
+/* --- Font size +/− div buttons (role=button, not <button>) ---
+   Sienna injects its own <style> with outline/box-shadow on these.
+   Using html body prefix for higher specificity to guarantee override. */
+html body .asw-plus,
+html body .asw-minus {
+  outline: none !important;
+  box-shadow: none !important;
+  border-radius: 50% !important;
+  cursor: pointer !important;
+  transition: background 0.15s !important;
+}
+html body .asw-plus:hover,
+html body .asw-minus:hover {
+  /* Override Sienna's injected border-color:#0084ca !important */
+  border-color: var(--color-primary) !important;
+  background: color-mix(
+    in srgb,
+    var(--color-primary) 12%,
+    var(--color-surface)
+  ) !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+html body .asw-plus:focus,
+html body .asw-minus:focus {
+  outline: none !important;
+  /* Themed ring replaces browser default blue — satisfies WCAG 2.4.7 */
+  box-shadow: 0 0 0 2px var(--color-primary) !important;
+}
+/* SVG fill inside +/- icons */
+html body .asw-plus svg path,
+html body .asw-minus svg path {
+  fill: var(--color-text-muted) !important;
+}
+html body .asw-plus:hover svg path,
+html body .asw-minus:hover svg path {
+  fill: var(--color-primary) !important;
+}
+
+/* --- Reset button SVG: CSS keyframes spin (avoids transition reverse-snap bug) --- */
+@keyframes asw-icon-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(-360deg);
+  }
+}
+button.asw-menu-reset svg {
+  display: block !important;
+  transform-origin: center !important;
+  /* No transition here — animation class handles the spin */
+}
+button.asw-menu-reset svg.asw-spinning {
+  animation: asw-icon-spin 0.55s cubic-bezier(0.4, 0, 0.2, 1) forwards !important;
+}
+
+/* ─── WCAG Dark Theme Corrections ────────────────────────────────────────
+   Problem: in dark theme --color-surface = --color-bg-alt = #1e293b
+   → zero contrast between cards and background (fails WCAG 1.4.11 UI contrast).
+   Fix: use distinct bg layers to guarantee ≥ 3:1 contrast ratio.
+   All text targets ≥ 4.5:1 against their background (WCAG AA normal text).
+──────────────────────────────────────────────────────────────────────── */
+[data-theme="dark"] .asw-menu {
+  background: #0f172a !important; /* outermost panel — deep navy */
+  border-color: #334155 !important;
+}
+[data-theme="dark"] .asw-menu-content {
+  background: #0f172a !important; /* darker than cards → clear separation */
+}
+[data-theme="dark"] .asw-card {
+  background: #1e293b !important; /* cards visibly lighter than content bg */
+  border-color: #334155 !important;
+  color: #f1f5f9 !important; /* contrast ratio > 7:1 on #1e293b */
+}
+[data-theme="dark"] .asw-card:hover {
+  border-color: var(--color-primary) !important;
+  background: #263548 !important; /* subtle lift on hover */
+}
+[data-theme="dark"] .asw-card.asw-active,
+[data-theme="dark"] .asw-card[class*="active"] {
+  background: color-mix(in srgb, var(--color-primary) 22%, #1e293b) !important;
+  border-color: var(--color-primary) !important;
+}
+
+/* Card icon/label in dark — use lighter muted for ≥ 4.5:1 on #1e293b */
+[data-theme="dark"] .asw-card svg,
+[data-theme="dark"] .asw-card path {
+  fill: #94a3b8 !important; /* slate-400 — 4.6:1 on #1e293b */
+}
+[data-theme="dark"] .asw-card span,
+[data-theme="dark"] .asw-card p {
+  color: #94a3b8 !important;
+}
+[data-theme="dark"] .asw-card.asw-active svg,
+[data-theme="dark"] .asw-card.asw-active path {
+  fill: var(--color-primary) !important;
+}
+[data-theme="dark"] .asw-card.asw-active span {
+  color: var(--color-primary) !important;
+}
+
+/* Section titles ("Content Adjustments" etc.) */
+[data-theme="dark"] .asw-card-title,
+[data-theme="dark"] [class*="asw-card-title"],
+[data-theme="dark"] .asw-menu-content > div > div:first-child {
+  color: #cbd5e1 !important; /* slate-300 — meets AA on dark bg */
+}
+
+/* Font-size +/- buttons in dark mode */
+[data-theme="dark"] .asw-menu-content button:not(.asw-menu-header button) {
+  background: #1e293b !important;
+  border-color: #334155 !important;
+  color: #f1f5f9 !important;
+}
+[data-theme="dark"]
+  .asw-menu-content
+  button:not(.asw-menu-header button):hover {
+  background: #263548 !important;
+  border-color: var(--color-primary) !important;
+}
+
+/* Font size value ("100%") — needs contrast against white sub-card bg */
+[data-theme="dark"] .asw-adjust-font {
+  background: #1e293b !important;
+  border-color: #334155 !important;
+}
+[data-theme="dark"] .asw-adjust-font span,
+[data-theme="dark"] .asw-adjust-font p,
+[data-theme="dark"] .asw-adjust-font div {
+  color: #f1f5f9 !important;
+}
+
+/* Custom language dropdown in dark mode */
+[data-theme="dark"] #asw-lang-custom ul {
+  scrollbar-color: #475569 #1e293b;
+}
+
+/* --- Custom language dropdown list item text colors ---
+   Sienna injects: .asw-menu * { color: #000 !important }
+   Our ID-scoped rule (#asw-lang-custom specificity=1,0,0) beats
+   Sienna's class-level rule (specificity=0,1,0) even with !important. */
+#asw-lang-custom ul li {
+  color: var(--color-text) !important;
+}
+/* Selected item must always be white — JS also sets this but CSS guarantees it */
+#asw-lang-custom ul li[data-selected="true"] {
+  color: #ffffff !important;
+}
+
+/* --- Custom language dropdown scrollbar --- */
+#asw-lang-custom ul {
+  scrollbar-width: thin;
+  scrollbar-color: color-mix(in srgb, var(--color-primary) 40%, transparent)
+    var(--color-bg-alt);
+}
+#asw-lang-custom ul::-webkit-scrollbar {
+  width: 5px !important;
+}
+#asw-lang-custom ul::-webkit-scrollbar-track {
+  background: var(--color-bg-alt) !important;
+  border-radius: 10px !important;
+}
+#asw-lang-custom ul::-webkit-scrollbar-thumb {
+  background: color-mix(
+    in srgb,
+    var(--color-primary) 40%,
+    transparent
+  ) !important;
+  border-radius: 10px !important;
+}
+
+/* Block our scrollbar arrow buttons from appearing inside Sienna */
+.asw-menu ::-webkit-scrollbar-button {
+  display: none !important;
+}
+
+/* --- Content area scrollbar --- */
+.asw-menu-content::-webkit-scrollbar {
+  width: 5px !important;
+}
+.asw-menu-content::-webkit-scrollbar-track {
+  background: var(--color-bg-alt) !important;
+}
+.asw-menu-content::-webkit-scrollbar-thumb {
+  background: color-mix(
+    in srgb,
+    var(--color-primary) 35%,
+    transparent
+  ) !important;
+  border-radius: 10px !important;
+}

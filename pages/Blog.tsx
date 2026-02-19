@@ -205,7 +205,7 @@ const Blog: React.FC = () => {
                   </div>
                   <Link
                     to={`/blog/${article.id}`}
-                    className="text-primary hover:text-primary-dark p-2 rounded-full hover:bg-blue-50 transition-colors"
+                    className="text-primary hover:text-primary-dark p-2 rounded-full hover:bg-primary/10 transition-colors"
                   >
                     <span className="material-icons text-xl">
                       arrow_forward
