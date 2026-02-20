@@ -15,8 +15,7 @@ export function rawSrc(path: string): string {
 function getDefaultTransform(path: string): string {
   /* Hero: container is 480px tall × half-screen wide (≈750px on 1440 desktop).
      We serve 1200×800 for 1.6× retina coverage — ~80% smaller than 1920px original. */
-  if (path.includes("/hero/"))
-    return "w_1200,h_800,q_auto,f_auto,c_fill,g_auto";
+  if (path.includes("/hero/")) return "w_760,h_540,q_auto,f_auto,c_fill,g_auto";
   if (path.includes("/gallery/")) return "w_1200,q_auto,f_auto,c_fill";
   if (path.includes("/articles/")) return "w_1000,q_auto,f_auto,c_fit";
   if (path.includes("/doctors/")) return "w_400,q_auto,f_auto,c_fill,g_face";
