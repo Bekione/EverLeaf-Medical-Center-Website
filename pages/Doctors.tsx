@@ -1,19 +1,41 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useOutletContext } from "react-router-dom";
 import { OpenAppointmentFunc } from "../Layout";
 import ImageSkeleton from "../components/ImageSkeleton";
+import Reveal from "../components/Reveal";
 import SEO from "../components/SEO";
 import { doctors } from "../data/doctors";
 import { CustomSelect } from "../components/CustomSelect";
+import {
+  useFilterTransition,
+  cardAnimStyle,
+} from "../hooks/useFilterTransition";
 
 const ITEMS_PER_PAGE = 12;
 
 const Doctors: React.FC = () => {
-  const [searchTerm, setSearchTerm] = useState("");
+  const [searchInput, setSearchInput] = useState(""); // bound to <input>
+  const [searchTerm, setSearchTerm] = useState(""); // applied to filter
+  const searchTimer = useRef<ReturnType<typeof setTimeout>>();
   const [deptFilter, setDeptFilter] = useState("");
   const [specialtyFilter, setSpecialtyFilter] = useState("");
   const [genderFilter, setGenderFilter] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
+  const [phase, animateFilter] = useFilterTransition(180, 40);
+
+  /** Immediately update the visible input; debounce the card animation */
+  const handleSearch = (val: string) => {
+    setSearchInput(val);
+    if (searchTimer.current) clearTimeout(searchTimer.current);
+    searchTimer.current = setTimeout(() => {
+      animateFilter(() => setSearchTerm(val));
+    }, 300);
+  };
+
+  const clearSearch = () => {
+    setSearchInput("");
+    animateFilter(() => setSearchTerm(""));
+  };
   const { openAppointment } = useOutletContext<{
     openAppointment: OpenAppointmentFunc;
   }>();
@@ -46,8 +68,10 @@ const Doctors: React.FC = () => {
 
   const handlePageChange = (page: number) => {
     if (page >= 1 && page <= totalPages) {
-      setCurrentPage(page);
-      window.scrollTo({ top: 0, behavior: "smooth" });
+      animateFilter(() => {
+        setCurrentPage(page);
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      });
     }
   };
 
@@ -83,19 +107,24 @@ const Doctors: React.FC = () => {
         }}
       >
         <div className="container mx-auto px-6">
-          <h1
-            className="text-3xl md:text-4xl font-serif font-bold mb-4"
-            style={{ color: "var(--color-text)" }}
-          >
-            Find a Doctor
-          </h1>
-          <p
-            className="max-w-2xl text-lg leading-relaxed"
-            style={{ color: "var(--color-text-muted)" }}
-          >
-            Browse our directory of distinguished medical professionals. Use the
-            filters below to find the specialist best suited for your needs.
-          </p>
+          <Reveal delay={0}>
+            <h1
+              className="text-3xl md:text-4xl font-serif font-bold mb-4"
+              style={{ color: "var(--color-text)" }}
+            >
+              Find a Doctor
+            </h1>
+          </Reveal>
+          <Reveal delay={100}>
+            <p
+              className="max-w-2xl text-lg leading-relaxed"
+              style={{ color: "var(--color-text-muted)" }}
+            >
+              Browse our directory of distinguished medical professionals. Use
+              the filters below to find the specialist best suited for your
+              needs.
+            </p>
+          </Reveal>
         </div>
       </div>
 
@@ -123,12 +152,12 @@ const Doctors: React.FC = () => {
                 borderColor: "var(--color-border)",
                 color: "var(--color-text)",
               }}
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
+              value={searchInput}
+              onChange={(e) => handleSearch(e.target.value)}
             />
-            {searchTerm && (
+            {searchInput && (
               <button
-                onClick={() => setSearchTerm("")}
+                onClick={clearSearch}
                 className="absolute right-3 top-1/2 -translate-y-1/2 p-0.5 rounded-full transition-all duration-200 hover:bg-primary/10 hover:text-primary"
                 style={{ color: "var(--color-text-muted)" }}
                 aria-label="Clear search"
@@ -154,7 +183,7 @@ const Doctors: React.FC = () => {
                 { value: "Ophthalmology", label: "Ophthalmology" },
               ]}
               value={deptFilter}
-              onChange={setDeptFilter}
+              onChange={(val) => animateFilter(() => setDeptFilter(val))}
               placeholder="All Departments"
               icon="domain"
             />
@@ -170,7 +199,7 @@ const Doctors: React.FC = () => {
                   { value: "specialist", label: "Specialist" },
                 ]}
                 value={specialtyFilter}
-                onChange={setSpecialtyFilter}
+                onChange={(val) => animateFilter(() => setSpecialtyFilter(val))}
                 placeholder="All Specialties"
                 icon="badge"
               />
@@ -183,7 +212,7 @@ const Doctors: React.FC = () => {
                   { value: "male", label: "Male" },
                 ]}
                 value={genderFilter}
-                onChange={setGenderFilter}
+                onChange={(val) => animateFilter(() => setGenderFilter(val))}
                 placeholder="All Genders"
                 icon="wc"
               />
@@ -194,110 +223,114 @@ const Doctors: React.FC = () => {
 
       {/* Results Grid */}
       <section className="py-16 container mx-auto px-6">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
-          {paginatedDoctors.map((doc) => (
-            <div
-              key={doc.id}
-              className="group relative rounded-2xl overflow-hidden shadow-card hover:shadow-xl transition-all duration-300 border flex flex-col h-full animate-fade-in"
-              style={{
-                backgroundColor: "var(--color-surface)",
-                borderColor: "var(--color-border)",
-              }}
-            >
+        <div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+            {paginatedDoctors.map((doc, idx) => (
               <div
-                className="relative h-80 overflow-hidden"
-                style={{ backgroundColor: "var(--color-bg-alt)" }}
+                key={doc.id}
+                className="group relative rounded-2xl overflow-hidden hover:shadow-xl border flex flex-col h-full"
+                style={{
+                  backgroundColor: "var(--color-surface)",
+                  borderColor: "var(--color-border)",
+                  boxShadow: "var(--shadow-card)",
+                  ...cardAnimStyle(idx, phase),
+                }}
               >
-                <ImageSkeleton
-                  src={doc.img}
-                  alt={doc.name}
-                  className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
-                  containerClassName="w-full h-full"
-                />
+                <div
+                  className="relative h-80 overflow-hidden"
+                  style={{ backgroundColor: "var(--color-bg-alt)" }}
+                >
+                  <ImageSkeleton
+                    src={doc.img}
+                    alt={doc.name}
+                    className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
+                    containerClassName="w-full h-full"
+                  />
 
-                {/* Slide-up Overlay */}
-                <div className="absolute inset-0 bg-slate-900/90 backdrop-blur-sm translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-in-out p-6 flex flex-col justify-center text-white text-center z-20">
-                  <div className="overflow-y-auto scrollbar-hide pr-1">
-                    <h4 className="font-bold text-lg mb-2 text-blue-300 font-serif">
-                      About
-                    </h4>
-                    <p className="text-sm text-slate-300 mb-4 leading-relaxed">
-                      {doc.bio}
-                    </p>
+                  {/* Slide-up Overlay */}
+                  <div className="absolute inset-0 bg-slate-900/90 backdrop-blur-sm translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-in-out p-6 flex flex-col justify-center text-white text-center z-20">
+                    <div className="overflow-y-auto scrollbar-hide pr-1">
+                      <h4 className="font-bold text-lg mb-2 text-blue-300 font-serif">
+                        About
+                      </h4>
+                      <p className="text-sm text-slate-300 mb-4 leading-relaxed">
+                        {doc.bio}
+                      </p>
 
-                    <h4 className="font-bold text-sm mb-1 text-blue-300 uppercase tracking-wide">
-                      Education
-                    </h4>
-                    <p className="text-xs text-slate-300 mb-6">
-                      {doc.education}
-                    </p>
+                      <h4 className="font-bold text-sm mb-1 text-blue-300 uppercase tracking-wide">
+                        Education
+                      </h4>
+                      <p className="text-xs text-slate-300 mb-6">
+                        {doc.education}
+                      </p>
 
-                    <div className="pt-2 border-t border-slate-700 flex gap-4 justify-center">
-                      <a
-                        href="#"
-                        className="w-10 h-10 rounded-full bg-slate-800/80 flex items-center justify-center hover:bg-primary transition-colors text-white"
-                      >
-                        <span className="material-icons text-sm">email</span>
-                      </a>
-                      <a
-                        href="#"
-                        className="w-10 h-10 rounded-full bg-slate-800/80 flex items-center justify-center hover:bg-primary transition-colors text-white"
-                      >
-                        <span className="material-icons text-sm">share</span>
-                      </a>
-                      <a
-                        href="#"
-                        className="w-10 h-10 rounded-full bg-slate-800/80 flex items-center justify-center hover:bg-primary transition-colors text-white"
-                      >
-                        <span className="material-icons text-sm">link</span>
-                      </a>
+                      <div className="pt-2 border-t border-slate-700 flex gap-4 justify-center">
+                        <a
+                          href="#"
+                          className="w-10 h-10 rounded-full bg-slate-800/80 flex items-center justify-center hover:bg-primary transition-colors text-white"
+                        >
+                          <span className="material-icons text-sm">email</span>
+                        </a>
+                        <a
+                          href="#"
+                          className="w-10 h-10 rounded-full bg-slate-800/80 flex items-center justify-center hover:bg-primary transition-colors text-white"
+                        >
+                          <span className="material-icons text-sm">share</span>
+                        </a>
+                        <a
+                          href="#"
+                          className="w-10 h-10 rounded-full bg-slate-800/80 flex items-center justify-center hover:bg-primary transition-colors text-white"
+                        >
+                          <span className="material-icons text-sm">link</span>
+                        </a>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-
-              <div
-                className="p-6 flex flex-col flex-grow text-center relative z-10"
-                style={{ backgroundColor: "var(--color-surface)" }}
-              >
-                <h3
-                  className="text-xl font-bold mb-1 font-serif"
-                  style={{ color: "var(--color-text)" }}
-                >
-                  {doc.name}
-                </h3>
-                <p className="text-primary font-medium text-sm mb-1">
-                  {doc.specialty}
-                </p>
-                <p
-                  className="text-xs mb-6 uppercase tracking-wider"
-                  style={{ color: "var(--color-text-muted)" }}
-                >
-                  Department of {doc.dept}
-                </p>
 
                 <div
-                  className="mt-auto pt-4 border-t w-full"
-                  style={{ borderColor: "var(--color-border)" }}
+                  className="p-6 flex flex-col flex-grow text-center relative z-10"
+                  style={{ backgroundColor: "var(--color-surface)" }}
                 >
-                  <button
-                    onClick={() =>
-                      openAppointment({
-                        doctorName: doc.name,
-                        department: doc.dept,
-                      })
-                    }
-                    className="w-full py-3 rounded-lg bg-primary text-white font-semibold text-sm hover:bg-primary-dark transition-colors shadow-md hover:shadow-lg flex items-center justify-center gap-2 group/btn relative overflow-hidden"
+                  <h3
+                    className="text-xl font-bold mb-1 font-serif"
+                    style={{ color: "var(--color-text)" }}
                   >
-                    <span className="relative z-10">Request Appointment</span>
-                    <span className="material-icons text-xs relative z-10 transition-transform group-hover/btn:translate-x-1">
-                      arrow_forward
-                    </span>
-                  </button>
+                    {doc.name}
+                  </h3>
+                  <p className="text-primary font-medium text-sm mb-1">
+                    {doc.specialty}
+                  </p>
+                  <p
+                    className="text-xs mb-6 uppercase tracking-wider"
+                    style={{ color: "var(--color-text-muted)" }}
+                  >
+                    Department of {doc.dept}
+                  </p>
+
+                  <div
+                    className="mt-auto pt-4 border-t w-full"
+                    style={{ borderColor: "var(--color-border)" }}
+                  >
+                    <button
+                      onClick={() =>
+                        openAppointment({
+                          doctorName: doc.name,
+                          department: doc.dept,
+                        })
+                      }
+                      className="w-full py-3 rounded-lg bg-primary text-white font-semibold text-sm hover:bg-primary-dark transition-colors shadow-md hover:shadow-lg flex items-center justify-center gap-2 group/btn relative overflow-hidden"
+                    >
+                      <span className="relative z-10">Request Appointment</span>
+                      <span className="material-icons text-xs relative z-10 transition-transform group-hover/btn:translate-x-1">
+                        arrow_forward
+                      </span>
+                    </button>
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
 
         {paginatedDoctors.length === 0 && (

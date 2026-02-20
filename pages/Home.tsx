@@ -2,6 +2,7 @@ import React, { useRef, useState, useEffect } from "react";
 import { Link, useOutletContext } from "react-router-dom";
 import { OpenAppointmentFunc } from "../Layout";
 import SEO from "../components/SEO";
+import Reveal from "../components/Reveal";
 import { CldImg } from "../components/CldImg";
 import { heroImages } from "../data/hero";
 import { testimonials } from "../data/testimonials";
@@ -327,19 +328,28 @@ const Home: React.FC = () => {
       >
         <div className="container mx-auto px-6">
           <div className="text-center max-w-3xl mx-auto mb-16">
-            <span className="text-primary font-semibold tracking-wider uppercase text-sm">
-              Medical Excellence
-            </span>
-            <h2
-              className="text-3xl md:text-4xl font-serif font-bold mt-2 mb-4"
-              style={{ color: "var(--color-text)" }}
-            >
-              Our Specialized Services
-            </h2>
-            <p className="text-lg" style={{ color: "var(--color-text-muted)" }}>
-              We provide a wide range of medical services to meet every need of
-              your family, from routine checkups to complex surgeries.
-            </p>
+            <Reveal delay={0}>
+              <span className="text-primary font-semibold tracking-wider uppercase text-sm">
+                Medical Excellence
+              </span>
+            </Reveal>
+            <Reveal delay={80}>
+              <h2
+                className="text-3xl md:text-4xl font-serif font-bold mt-2 mb-4"
+                style={{ color: "var(--color-text)" }}
+              >
+                Our Specialized Services
+              </h2>
+            </Reveal>
+            <Reveal delay={160}>
+              <p
+                className="text-lg"
+                style={{ color: "var(--color-text-muted)" }}
+              >
+                We provide a wide range of medical services to meet every need
+                of your family, from routine checkups to complex surgeries.
+              </p>
+            </Reveal>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
             {[
@@ -368,9 +378,9 @@ const Home: React.FC = () => {
                 link: "/services/laboratory",
               },
             ].map((service, idx) => (
+              <Reveal key={idx} delay={idx * 80}>
               <div
-                key={idx}
-                className="p-8 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 border group hover:-translate-y-1"
+                className="p-8 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 border group hover:-translate-y-1 h-full"
                 style={{
                   backgroundColor: "var(--color-surface)",
                   borderColor: "var(--color-border)",
@@ -405,6 +415,7 @@ const Home: React.FC = () => {
                   <span className="material-icons text-xs">arrow_forward</span>
                 </Link>
               </div>
+              </Reveal>
             ))}
           </div>
           <div className="text-center">
@@ -427,15 +438,19 @@ const Home: React.FC = () => {
         <div className="container mx-auto px-6">
           <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-4">
             <div className="max-w-2xl">
-              <span className="text-primary font-semibold tracking-wider uppercase text-sm">
-                Our Experts
-              </span>
-              <h2
-                className="text-3xl md:text-4xl font-serif font-bold mt-2"
-                style={{ color: "var(--color-text)" }}
-              >
-                Meet Our Leading Specialists
-              </h2>
+              <Reveal delay={0}>
+                <span className="text-primary font-semibold tracking-wider uppercase text-sm">
+                  Our Experts
+                </span>
+              </Reveal>
+              <Reveal delay={80}>
+                <h2
+                  className="text-3xl md:text-4xl font-serif font-bold mt-2"
+                  style={{ color: "var(--color-text)" }}
+                >
+                  Meet Our Leading Specialists
+                </h2>
+              </Reveal>
             </div>
             <div className="hidden md:block">
               <Link
@@ -477,8 +492,8 @@ const Home: React.FC = () => {
                 deg: "MBBS, PhD",
               },
             ].map((doc, idx) => (
+              <Reveal key={idx} delay={idx * 100}>
               <div
-                key={idx}
                 className="group relative rounded-2xl overflow-hidden shadow-card hover:shadow-xl transition-all duration-300 border flex flex-col h-full"
                 style={{
                   backgroundColor: "var(--color-surface)",
@@ -543,6 +558,7 @@ const Home: React.FC = () => {
                   </div>
                 </div>
               </div>
+              </Reveal>
             ))}
           </div>
           <div className="mt-8 md:hidden text-center">
@@ -630,21 +646,27 @@ const Home: React.FC = () => {
         <div className="container mx-auto px-6">
           <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-4">
             <div className="max-w-3xl">
-              <span className="text-primary font-semibold tracking-wider uppercase text-sm">
-                Testimonials
-              </span>
-              <h2
-                className="text-3xl md:text-4xl font-serif font-bold mt-2 mb-4"
-                style={{ color: "var(--color-text)" }}
-              >
-                Patient Stories
-              </h2>
-              <p
-                className="text-lg"
-                style={{ color: "var(--color-text-muted)" }}
-              >
-                Hear from those who have experienced our care firsthand.
-              </p>
+              <Reveal delay={0}>
+                <span className="text-primary font-semibold tracking-wider uppercase text-sm">
+                  Testimonials
+                </span>
+              </Reveal>
+              <Reveal delay={80}>
+                <h2
+                  className="text-3xl md:text-4xl font-serif font-bold mt-2 mb-4"
+                  style={{ color: "var(--color-text)" }}
+                >
+                  Patient Stories
+                </h2>
+              </Reveal>
+              <Reveal delay={160}>
+                <p
+                  className="text-lg"
+                  style={{ color: "var(--color-text-muted)" }}
+                >
+                  Hear from those who have experienced our care firsthand.
+                </p>
+              </Reveal>
             </div>
             <div className="flex gap-2">
               <button

@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useRef } from "react";
 import { Link } from "react-router-dom";
 import SEO from "../components/SEO";
+import Reveal from "../components/Reveal";
 import { CldImg, rawSrc } from "@/components/CldImg";
 
 // Counter Component for animation
@@ -87,112 +88,127 @@ const About: React.FC = () => {
         <div className="container mx-auto px-6 relative z-10">
           <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
             <div className="lg:w-1/2 text-center lg:text-left">
-              <div
-                className="inline-flex items-center gap-2 px-3 py-1 mb-6 text-xs font-bold tracking-wider text-primary uppercase rounded-full border shadow-sm"
-                style={{
-                  backgroundColor: "var(--color-surface)",
-                  borderColor: "var(--color-border)",
-                }}
-              >
-                <span className="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
-                Since 1988
-              </div>
-              <h1
-                className="text-4xl lg:text-6xl font-serif font-bold mb-6 leading-tight"
-                style={{ color: "var(--color-text)" }}
-              >
-                A Legacy of Caring, <br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-blue-600">
-                  A Future of Healing.
-                </span>
-              </h1>
-              <p
-                className="text-lg mb-8 leading-relaxed max-w-xl mx-auto lg:mx-0"
-                style={{ color: "var(--color-text-muted)" }}
-              >
-                For over 35 years, Everleaf Medical Center has been a beacon of
-                hope. We blend compassionate care with cutting-edge medical
-                innovation to improve the lives of our community.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-                <Link
-                  to="/doctors"
-                  className="inline-flex items-center justify-center px-8 py-3.5 text-base font-bold text-white bg-primary rounded-lg hover:bg-primary-dark shadow-lg shadow-blue-500/20 transition-all hover:-translate-y-0.5"
-                >
-                  Meet Our Team
-                </Link>
-                <Link
-                  to="/gallery"
-                  className="inline-flex items-center justify-center px-8 py-3.5 text-base font-bold rounded-lg border transition-all shadow-sm"
+              <Reveal delay={0}>
+                <div
+                  className="inline-flex items-center gap-2 px-3 py-1 mb-6 text-xs font-bold tracking-wider text-primary uppercase rounded-full border shadow-sm"
                   style={{
-                    color: "var(--color-text)",
                     backgroundColor: "var(--color-surface)",
                     borderColor: "var(--color-border)",
                   }}
                 >
-                  View Our Facilities
-                </Link>
-              </div>
+                  <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
+                  Since 1988
+                </div>
+              </Reveal>
+              <Reveal delay={80}>
+                <h1
+                  className="text-4xl lg:text-6xl font-serif font-bold mb-6 leading-tight"
+                  style={{ color: "var(--color-text)" }}
+                >
+                  A Legacy of Caring, <br />
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-blue-600">
+                    A Future of Healing.
+                  </span>
+                </h1>
+              </Reveal>
+              <Reveal delay={160}>
+                <p
+                  className="text-lg mb-8 leading-relaxed max-w-xl mx-auto lg:mx-0"
+                  style={{ color: "var(--color-text-muted)" }}
+                >
+                  For over 35 years, Everleaf Medical Center has been a beacon
+                  of hope. We blend compassionate care with cutting-edge medical
+                  innovation to improve the lives of our community.
+                </p>
+              </Reveal>
+              <Reveal delay={240}>
+                <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                  <Link
+                    to="/doctors"
+                    className="inline-flex items-center justify-center px-8 py-3.5 text-base font-bold text-white bg-primary rounded-lg hover:bg-primary-dark shadow-lg shadow-blue-500/20 transition-all hover:-translate-y-0.5"
+                  >
+                    Meet Our Team
+                  </Link>
+                  <Link
+                    to="/gallery"
+                    className="inline-flex items-center justify-center px-8 py-3.5 text-base font-bold rounded-lg border transition-all shadow-sm"
+                    style={{
+                      color: "var(--color-text)",
+                      backgroundColor: "var(--color-surface)",
+                      borderColor: "var(--color-border)",
+                    }}
+                  >
+                    View Our Facilities
+                  </Link>
+                </div>
+              </Reveal>
 
               {/* Trust Indicators */}
-              <div
-                className="mt-12 flex items-center justify-center lg:justify-start gap-8 border-t pt-8"
-                style={{ borderColor: "var(--color-border)" }}
-              >
-                <div>
-                  <p
-                    className="text-3xl font-bold"
-                    style={{ color: "var(--color-text)" }}
-                  >
-                    35+
-                  </p>
-                  <p
-                    className="text-sm font-medium"
-                    style={{ color: "var(--color-text-muted)" }}
-                  >
-                    Years Serving
-                  </p>
-                </div>
+              <Reveal delay={300}>
                 <div
-                  className="w-px h-10"
-                  style={{ backgroundColor: "var(--color-border)" }}
-                ></div>
-                <div>
-                  <p
-                    className="text-3xl font-bold"
-                    style={{ color: "var(--color-text)" }}
-                  >
-                    100k+
-                  </p>
-                  <p
-                    className="text-sm font-medium"
-                    style={{ color: "var(--color-text-muted)" }}
-                  >
-                    Patients Healed
-                  </p>
+                  className="mt-12 flex items-center justify-center lg:justify-start gap-8 border-t pt-8"
+                  style={{ borderColor: "var(--color-border)" }}
+                >
+                  <div>
+                    <p
+                      className="text-3xl font-bold"
+                      style={{ color: "var(--color-text)" }}
+                    >
+                      35+
+                    </p>
+                    <p
+                      className="text-sm font-medium"
+                      style={{ color: "var(--color-text-muted)" }}
+                    >
+                      Years Serving
+                    </p>
+                  </div>
+                  <div
+                    className="w-px h-10"
+                    style={{ backgroundColor: "var(--color-border)" }}
+                  ></div>
+                  <div>
+                    <p
+                      className="text-3xl font-bold"
+                      style={{ color: "var(--color-text)" }}
+                    >
+                      100k+
+                    </p>
+                    <p
+                      className="text-sm font-medium"
+                      style={{ color: "var(--color-text-muted)" }}
+                    >
+                      Patients Healed
+                    </p>
+                  </div>
+                  <div
+                    className="w-px h-10"
+                    style={{ backgroundColor: "var(--color-border)" }}
+                  ></div>
+                  <div>
+                    <p
+                      className="text-3xl font-bold"
+                      style={{ color: "var(--color-text)" }}
+                    >
+                      120+
+                    </p>
+                    <p
+                      className="text-sm font-medium"
+                      style={{ color: "var(--color-text-muted)" }}
+                    >
+                      Specialists
+                    </p>
+                  </div>
                 </div>
-                <div
-                  className="w-px h-10"
-                  style={{ backgroundColor: "var(--color-border)" }}
-                ></div>
-                <div>
-                  <p
-                    className="text-3xl font-bold"
-                    style={{ color: "var(--color-text)" }}
-                  >
-                    120+
-                  </p>
-                  <p
-                    className="text-sm font-medium"
-                    style={{ color: "var(--color-text-muted)" }}
-                  >
-                    Specialists
-                  </p>
-                </div>
-              </div>
+              </Reveal>
             </div>
 
-            <div className="lg:w-1/2 relative">
+            <Reveal
+              from="right"
+              delay={100}
+              threshold={0.05}
+              className="lg:w-1/2 relative"
+            >
               <div className="relative z-10 w-full max-w-lg mx-auto lg:ml-auto group">
                 {/* Main Image */}
                 <CldImg
@@ -218,7 +234,7 @@ const About: React.FC = () => {
                   style={{ borderColor: "var(--color-border)" }}
                 ></div>
               </div>
-            </div>
+            </Reveal>
           </div>
         </div>
       </header>
@@ -227,98 +243,106 @@ const About: React.FC = () => {
       <section className="py-20 bg-white relative overflow-hidden">
         <div className="container mx-auto px-6 relative z-10">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <div className="relative order-2 lg:order-1">
-              <div className="absolute -inset-4 bg-primary/5 rounded-3xl -rotate-2"></div>
-              <img
-                src="/images/about-body-1.jpg"
-                alt="Hospital Exterior"
-                className="relative rounded-2xl shadow-2xl w-full h-[500px] object-cover"
-              />
-            </div>
-            <div className="order-1 lg:order-2">
-              <span className="text-primary font-bold tracking-wider uppercase text-sm mb-2 block">
-                Our Story
-              </span>
-              <h2
-                className="text-3xl md:text-4xl font-serif font-bold mb-6"
-                style={{ color: "var(--color-text)" }}
-              >
-                From Humble Beginnings to Medical Excellence
-              </h2>
-              <p
-                className="text-lg mb-6 leading-relaxed"
-                style={{ color: "var(--color-text-muted)" }}
-              >
-                Founded in 1988 by Dr. Eleanor Rigby with a small team of
-                dedicated nurses, Everleaf Medical Center started with a simple
-                mission: to provide accessible, high-quality healthcare to the
-                local community.
-              </p>
-              <p
-                className="text-lg mb-8 leading-relaxed"
-                style={{ color: "var(--color-text-muted)" }}
-              >
-                Today, we have grown into a 500-bed multi-specialty quaternary
-                care hospital. Despite our expansion, our core philosophy
-                remains unchanged—putting the patient first. We are driven by
-                the belief that healthcare is not just about treating diseases,
-                but about healing people.
-              </p>
-              <div className="grid sm:grid-cols-2 gap-6">
-                <div
-                  className="flex items-start gap-4 p-4 rounded-xl border"
-                  style={{
-                    backgroundColor: "var(--color-bg-alt)",
-                    borderColor: "var(--color-border)",
-                  }}
+            <Reveal
+              from="left"
+              threshold={0.1}
+              className="relative order-2 lg:order-1"
+            >
+              <div className="relative">
+                <div className="absolute -inset-4 bg-primary/5 rounded-3xl -rotate-2" />
+                <img
+                  src="/images/about-body-1.jpg"
+                  alt="Hospital Exterior"
+                  className="relative rounded-2xl shadow-2xl w-full h-[500px] object-cover"
+                />
+              </div>
+            </Reveal>
+            <Reveal from="right" threshold={0.1} className="order-1 lg:order-2">
+              <div>
+                <span className="text-primary font-bold tracking-wider uppercase text-sm mb-2 block">
+                  Our Story
+                </span>
+                <h2
+                  className="text-3xl md:text-4xl font-serif font-bold mb-6"
+                  style={{ color: "var(--color-text)" }}
                 >
-                  <span className="material-icons text-green-500 text-3xl">
-                    volunteer_activism
-                  </span>
-                  <div>
-                    <h4
-                      className="font-bold mb-1"
-                      style={{ color: "var(--color-text)" }}
-                    >
-                      Patient Centric
-                    </h4>
-                    <p
-                      className="text-sm"
-                      style={{ color: "var(--color-text-muted)" }}
-                    >
-                      Every decision we make is centered around patient
-                      well-being and comfort.
-                    </p>
+                  From Humble Beginnings to Medical Excellence
+                </h2>
+                <p
+                  className="text-lg mb-6 leading-relaxed"
+                  style={{ color: "var(--color-text-muted)" }}
+                >
+                  Founded in 1988 by Dr. Eleanor Rigby with a small team of
+                  dedicated nurses, Everleaf Medical Center started with a
+                  simple mission: to provide accessible, high-quality healthcare
+                  to the local community.
+                </p>
+                <p
+                  className="text-lg mb-8 leading-relaxed"
+                  style={{ color: "var(--color-text-muted)" }}
+                >
+                  Today, we have grown into a 500-bed multi-specialty quaternary
+                  care hospital. Despite our expansion, our core philosophy
+                  remains unchanged—putting the patient first. We are driven by
+                  the belief that healthcare is not just about treating
+                  diseases, but about healing people.
+                </p>
+                <div className="grid sm:grid-cols-2 gap-6">
+                  <div
+                    className="flex items-start gap-4 p-4 rounded-xl border"
+                    style={{
+                      backgroundColor: "var(--color-bg-alt)",
+                      borderColor: "var(--color-border)",
+                    }}
+                  >
+                    <span className="material-icons text-green-500 text-3xl">
+                      volunteer_activism
+                    </span>
+                    <div>
+                      <h4
+                        className="font-bold mb-1"
+                        style={{ color: "var(--color-text)" }}
+                      >
+                        Patient Centric
+                      </h4>
+                      <p
+                        className="text-sm"
+                        style={{ color: "var(--color-text-muted)" }}
+                      >
+                        Every decision we make is centered around patient
+                        well-being and comfort.
+                      </p>
+                    </div>
                   </div>
-                </div>
-                <div
-                  className="flex items-start gap-4 p-4 rounded-xl border"
-                  style={{
-                    backgroundColor: "var(--color-bg-alt)",
-                    borderColor: "var(--color-border)",
-                  }}
-                >
-                  <span className="material-icons text-blue-500 text-3xl">
-                    science
-                  </span>
-                  <div>
-                    <h4
-                      className="font-bold mb-1"
-                      style={{ color: "var(--color-text)" }}
-                    >
-                      Innovation
-                    </h4>
-                    <p
-                      className="text-sm"
-                      style={{ color: "var(--color-text-muted)" }}
-                    >
-                      Continuously adopting the latest medical technologies and
-                      research.
-                    </p>
+                  <div
+                    className="flex items-start gap-4 p-4 rounded-xl border"
+                    style={{
+                      backgroundColor: "var(--color-bg-alt)",
+                      borderColor: "var(--color-border)",
+                    }}
+                  >
+                    <span className="material-icons text-blue-500 text-3xl">
+                      science
+                    </span>
+                    <div>
+                      <h4
+                        className="font-bold mb-1"
+                        style={{ color: "var(--color-text)" }}
+                      >
+                        Innovation
+                      </h4>
+                      <p
+                        className="text-sm"
+                        style={{ color: "var(--color-text-muted)" }}
+                      >
+                        Continuously adopting the latest medical technologies
+                        and research.
+                      </p>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
+            </Reveal>
           </div>
         </div>
       </section>
@@ -334,42 +358,44 @@ const About: React.FC = () => {
         ></div>
         <div className="container mx-auto px-6 relative z-10">
           <div className="flex flex-col lg:flex-row gap-16 items-center">
-            <div className="lg:w-1/2">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/20 text-white text-xs font-bold uppercase tracking-wide mb-6 border border-white/30">
-                <span className="material-icons text-sm">verified</span>
-                International Standards
+            <Reveal from="left" threshold={0.1} className="lg:w-1/2">
+              <div>
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/20 text-white text-xs font-bold uppercase tracking-wide mb-6 border border-white/30">
+                  <span className="material-icons text-sm">verified</span>
+                  International Standards
+                </div>
+                <h2 className="text-3xl md:text-4xl font-serif font-bold mb-6">
+                  Uncompromising Quality & Safety
+                </h2>
+                <p className="text-blue-100 text-lg mb-8 leading-relaxed">
+                  At Everleaf, patient safety is our top priority. We adhere to
+                  rigorous international standards and protocols to ensure a
+                  safe environment for healing. Our commitment to quality is
+                  recognized by leading healthcare accreditation bodies.
+                </p>
+                <ul className="space-y-4 mb-8">
+                  <li className="flex items-center gap-3">
+                    <div className="bg-white/20 w-8 h-8 rounded-full flex items-center justify-center">
+                      <span className="material-icons text-sm">check</span>
+                    </div>
+                    <span>JCI Accredited Facility</span>
+                  </li>
+                  <li className="flex items-center gap-3">
+                    <div className="bg-white/20 w-8 h-8 rounded-full flex items-center justify-center">
+                      <span className="material-icons text-sm">check</span>
+                    </div>
+                    <span>ISO 9001:2015 Certified for Quality Management</span>
+                  </li>
+                  <li className="flex items-center gap-3">
+                    <div className="bg-white/20 w-8 h-8 rounded-full flex items-center justify-center">
+                      <span className="material-icons text-sm">check</span>
+                    </div>
+                    <span>Winner of National Patient Safety Award 2023</span>
+                  </li>
+                </ul>
               </div>
-              <h2 className="text-3xl md:text-4xl font-serif font-bold mb-6">
-                Uncompromising Quality & Safety
-              </h2>
-              <p className="text-blue-100 text-lg mb-8 leading-relaxed">
-                At Everleaf, patient safety is our top priority. We adhere to
-                rigorous international standards and protocols to ensure a safe
-                environment for healing. Our commitment to quality is recognized
-                by leading healthcare accreditation bodies.
-              </p>
-              <ul className="space-y-4 mb-8">
-                <li className="flex items-center gap-3">
-                  <div className="bg-white/20 w-8 h-8 rounded-full flex items-center justify-center">
-                    <span className="material-icons text-sm">check</span>
-                  </div>
-                  <span>JCI Accredited Facility</span>
-                </li>
-                <li className="flex items-center gap-3">
-                  <div className="bg-white/20 w-8 h-8 rounded-full flex items-center justify-center">
-                    <span className="material-icons text-sm">check</span>
-                  </div>
-                  <span>ISO 9001:2015 Certified for Quality Management</span>
-                </li>
-                <li className="flex items-center gap-3">
-                  <div className="bg-white/20 w-8 h-8 rounded-full flex items-center justify-center">
-                    <span className="material-icons text-sm">check</span>
-                  </div>
-                  <span>Winner of National Patient Safety Award 2023</span>
-                </li>
-              </ul>
-            </div>
-            <div className="lg:w-1/2 w-full">
+            </Reveal>
+            <Reveal from="right" threshold={0.1} className="lg:w-1/2 w-full">
               <div className="grid grid-cols-2 gap-4">
                 <div className="bg-white/10 backdrop-blur-sm p-8 rounded-2xl border border-white/20 text-center hover:bg-white/20 transition-colors">
                   <span className="material-icons text-4xl mb-4 opacity-80">
@@ -416,7 +442,7 @@ const About: React.FC = () => {
                   </div>
                 </div>
               </div>
-            </div>
+            </Reveal>
           </div>
         </div>
       </section>
@@ -425,16 +451,28 @@ const About: React.FC = () => {
       <section className="py-20 bg-slate-50">
         <div className="container mx-auto px-6">
           <div className="text-center max-w-3xl mx-auto mb-16">
-            <span className="text-primary font-semibold tracking-wider uppercase text-sm">
-              Our Core Principles
-            </span>
-            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mt-2 mb-4 font-serif">
-              Values That Drive Us
-            </h2>
-            <p className="text-lg" style={{ color: "var(--color-text-muted)" }}>
-              Our culture is built on a foundation of trust, integrity, and an
-              unwavering commitment to our patients.
-            </p>
+            <Reveal delay={0}>
+              <span className="text-primary font-semibold tracking-wider uppercase text-sm">
+                Our Core Principles
+              </span>
+            </Reveal>
+            <Reveal delay={80}>
+              <h2
+                className="text-3xl md:text-4xl font-bold mt-2 mb-4 font-serif"
+                style={{ color: "var(--color-text)" }}
+              >
+                Values That Drive Us
+              </h2>
+            </Reveal>
+            <Reveal delay={160}>
+              <p
+                className="text-lg"
+                style={{ color: "var(--color-text-muted)" }}
+              >
+                Our culture is built on a foundation of trust, integrity, and an
+                unwavering commitment to our patients.
+              </p>
+            </Reveal>
           </div>
           <div className="grid md:grid-cols-3 gap-8">
             {[
@@ -454,33 +492,35 @@ const About: React.FC = () => {
                 desc: "We adhere to high ethical principles and professional standards. We are honest, transparent, and accountable in our actions.",
               },
             ].map((val, idx) => (
-              <div
-                key={idx}
-                className="p-10 rounded-2xl shadow-sm hover:shadow-card transition-all duration-300 border group hover:-translate-y-1"
-                style={{
-                  backgroundColor: "var(--color-surface)",
-                  borderColor: "var(--color-border)",
-                }}
-              >
+              <Reveal key={idx} delay={idx * 80}>
                 <div
-                  className="w-16 h-16 rounded-2xl flex items-center justify-center text-primary mb-6 shadow-sm group-hover:bg-primary group-hover:text-white transition-colors duration-300"
-                  style={{ backgroundColor: "var(--color-primary-light)" }}
+                  key={idx}
+                  className="p-10 rounded-2xl shadow-sm hover:shadow-card transition-all duration-300 border group hover:-translate-y-1"
+                  style={{
+                    backgroundColor: "var(--color-surface)",
+                    borderColor: "var(--color-border)",
+                  }}
                 >
-                  <span className="material-icons text-3xl">{val.icon}</span>
+                  <div
+                    className="w-16 h-16 rounded-2xl flex items-center justify-center text-primary mb-6 shadow-sm group-hover:bg-primary group-hover:text-white transition-colors duration-300"
+                    style={{ backgroundColor: "var(--color-primary-light)" }}
+                  >
+                    <span className="material-icons text-3xl">{val.icon}</span>
+                  </div>
+                  <h3
+                    className="text-xl font-bold mb-3 font-serif"
+                    style={{ color: "var(--color-text)" }}
+                  >
+                    {val.title}
+                  </h3>
+                  <p
+                    className="leading-relaxed"
+                    style={{ color: "var(--color-text-muted)" }}
+                  >
+                    {val.desc}
+                  </p>
                 </div>
-                <h3
-                  className="text-xl font-bold mb-3 font-serif"
-                  style={{ color: "var(--color-text)" }}
-                >
-                  {val.title}
-                </h3>
-                <p
-                  className="leading-relaxed"
-                  style={{ color: "var(--color-text-muted)" }}
-                >
-                  {val.desc}
-                </p>
-              </div>
+              </Reveal>
             ))}
           </div>
         </div>
@@ -490,19 +530,28 @@ const About: React.FC = () => {
       <section className="py-20 bg-white">
         <div className="container mx-auto px-6">
           <div className="text-center max-w-3xl mx-auto mb-16">
-            <span className="text-primary font-semibold tracking-wider uppercase text-sm">
-              Our Leadership
-            </span>
-            <h2 className="text-3xl md:text-4xl font-serif font-bold text-slate-900 mt-2">
-              Board of Directors
-            </h2>
-            <p
-              className="mt-4 text-lg"
-              style={{ color: "var(--color-text-muted)" }}
-            >
-              Guiding our vision with decades of combined medical and
-              administrative expertise.
-            </p>
+            <Reveal delay={0}>
+              <span className="text-primary font-semibold tracking-wider uppercase text-sm">
+                Our Leadership
+              </span>
+            </Reveal>
+            <Reveal delay={80}>
+              <h2
+                className="text-3xl md:text-4xl font-serif font-bold mt-2"
+                style={{ color: "var(--color-text)" }}
+              >
+                Board of Directors
+              </h2>
+            </Reveal>
+            <Reveal delay={160}>
+              <p
+                className="mt-4 text-lg"
+                style={{ color: "var(--color-text-muted)" }}
+              >
+                Guiding our vision with decades of combined medical and
+                administrative expertise.
+              </p>
+            </Reveal>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {[
@@ -527,30 +576,29 @@ const About: React.FC = () => {
                 img: "/images/doctors/team-dr-danel-mekonnen.jpg",
               },
             ].map((member, idx) => (
-              <div
-                key={idx}
-                className="group relative rounded-2xl overflow-hidden shadow-lg h-96 cursor-pointer"
-              >
-                <img
-                  src={member.img}
-                  alt={member.name}
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/40 to-transparent flex flex-col justify-end p-6">
-                  <h3 className="text-xl font-bold text-white mb-1">
-                    {member.name}
-                  </h3>
-                  <p className="text-sm text-primary-light font-medium uppercase tracking-wide">
-                    {member.role}
-                  </p>
-                  <div className="h-0 group-hover:h-auto overflow-hidden transition-all duration-300">
-                    <p className="text-slate-300 text-xs mt-3 opacity-0 group-hover:opacity-100 transition-opacity delay-100 duration-300">
-                      Dedicated leader committed to excellence in healthcare
-                      administration and patient outcomes.
+              <Reveal key={idx} delay={idx * 100}>
+                <div className="group relative rounded-2xl overflow-hidden shadow-lg h-96 cursor-pointer">
+                  <img
+                    src={member.img}
+                    alt={member.name}
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/40 to-transparent flex flex-col justify-end p-6">
+                    <h3 className="text-xl font-bold text-white mb-1">
+                      {member.name}
+                    </h3>
+                    <p className="text-sm text-primary-light font-medium uppercase tracking-wide">
+                      {member.role}
                     </p>
+                    <div className="h-0 group-hover:h-auto overflow-hidden transition-all duration-300">
+                      <p className="text-slate-300 text-xs mt-3 opacity-0 group-hover:opacity-100 transition-opacity delay-100 duration-300">
+                        Dedicated leader committed to excellence in healthcare
+                        administration and patient outcomes.
+                      </p>
+                    </div>
                   </div>
                 </div>
-              </div>
+              </Reveal>
             ))}
           </div>
         </div>
@@ -560,17 +608,19 @@ const About: React.FC = () => {
       <section className="py-20 bg-slate-50">
         <div className="container mx-auto px-6">
           <div className="flex flex-col md:flex-row justify-between items-end mb-12">
-            <div>
-              <span className="text-primary font-semibold tracking-wider uppercase text-sm">
-                Infrastructure
-              </span>
-              <h2
-                className="text-3xl md:text-4xl font-serif font-bold mt-2"
-                style={{ color: "var(--color-text)" }}
-              >
-                Modern Facilities
-              </h2>
-            </div>
+            <Reveal delay={0}>
+              <div>
+                <span className="text-primary font-semibold tracking-wider uppercase text-sm">
+                  Infrastructure
+                </span>
+                <h2
+                  className="text-3xl md:text-4xl font-serif font-bold mt-2"
+                  style={{ color: "var(--color-text)" }}
+                >
+                  Modern Facilities
+                </h2>
+              </div>
+            </Reveal>
             <Link
               to="/gallery"
               className="hidden md:flex items-center gap-2 text-primary font-semibold hover:text-primary-dark transition-colors mt-4 md:mt-0"
@@ -579,54 +629,56 @@ const About: React.FC = () => {
               <span className="material-icons text-sm">arrow_forward</span>
             </Link>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-[250px]">
-            <div className="md:col-span-2 md:row-span-2 rounded-2xl overflow-hidden relative group cursor-pointer shadow-lg">
-              <img
-                src="/images/gallery/gallery-9-operation.jpg"
-                alt="Operating Theatre"
-                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-transparent to-transparent flex flex-col justify-end p-8">
-                <h3 className="text-white text-2xl font-bold mb-1">
-                  Advanced Operating Theatres
-                </h3>
-                <p className="text-white/80">
-                  Equipped with robotic surgery capabilities and high-definition
-                  imaging systems.
-                </p>
+          <Reveal delay={80} threshold={0.05}>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-[250px]">
+              <div className="md:col-span-2 md:row-span-2 rounded-2xl overflow-hidden relative group cursor-pointer shadow-lg">
+                <img
+                  src="/images/gallery/gallery-9-operation.jpg"
+                  alt="Operating Theatre"
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-transparent to-transparent flex flex-col justify-end p-8">
+                  <h3 className="text-white text-2xl font-bold mb-1">
+                    Advanced Operating Theatres
+                  </h3>
+                  <p className="text-white/80">
+                    Equipped with robotic surgery capabilities and
+                    high-definition imaging systems.
+                  </p>
+                </div>
+              </div>
+              <div className="rounded-2xl overflow-hidden relative group cursor-pointer shadow-lg bg-slate-900">
+                <img
+                  src="/images/gallery/gallery-10-recovery-suite.jpg"
+                  alt="Patient Room"
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-90 group-hover:opacity-100"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/90 to-transparent flex flex-col justify-end p-6">
+                  <h3 className="text-white text-xl font-bold">
+                    Private Recovery Suites
+                  </h3>
+                  <p className="text-white/70 text-sm mt-1">
+                    Designed for privacy and comfort.
+                  </p>
+                </div>
+              </div>
+              <div className="rounded-2xl overflow-hidden relative group cursor-pointer shadow-lg bg-slate-900">
+                <img
+                  src="/images/gallery/gallery-14-icu.jpg"
+                  alt="ICU"
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-90 group-hover:opacity-100"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/90 to-transparent flex flex-col justify-end p-6">
+                  <h3 className="text-white text-xl font-bold">
+                    Intensive Care Units
+                  </h3>
+                  <p className="text-white/70 text-sm mt-1">
+                    24/7 Monitoring &amp; Support.
+                  </p>
+                </div>
               </div>
             </div>
-            <div className="rounded-2xl overflow-hidden relative group cursor-pointer shadow-lg bg-slate-900">
-              <img
-                src="/images/gallery/gallery-10-recovery-suite.jpg"
-                alt="Patient Room"
-                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-90 group-hover:opacity-100"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-900/90 to-transparent flex flex-col justify-end p-6">
-                <h3 className="text-white text-xl font-bold">
-                  Private Recovery Suites
-                </h3>
-                <p className="text-white/70 text-sm mt-1">
-                  Designed for privacy and comfort.
-                </p>
-              </div>
-            </div>
-            <div className="rounded-2xl overflow-hidden relative group cursor-pointer shadow-lg bg-slate-900">
-              <img
-                src="/images/gallery/gallery-14-icu.jpg"
-                alt="ICU"
-                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-90 group-hover:opacity-100"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-900/90 to-transparent flex flex-col justify-end p-6">
-                <h3 className="text-white text-xl font-bold">
-                  Intensive Care Units
-                </h3>
-                <p className="text-white/70 text-sm mt-1">
-                  24/7 Monitoring & Support.
-                </p>
-              </div>
-            </div>
-          </div>
+          </Reveal>
         </div>
       </section>
 
@@ -655,31 +707,39 @@ const About: React.FC = () => {
 
         <div className="container mx-auto px-6 relative z-10 text-center">
           <div className="max-w-4xl mx-auto">
-            <span className="inline-block py-1 px-3 rounded-full bg-white/10 border border-white/20 text-white text-xs font-bold tracking-wider uppercase mb-6 backdrop-blur-md">
-              Be Part of Our Journey
-            </span>
-            <h2 className="text-3xl md:text-5xl lg:text-6xl font-serif font-bold text-white mb-6 leading-tight">
-              Ready to Experience <br />
-              <span className="text-blue-300">Better Healthcare?</span>
-            </h2>
-            <p className="text-blue-100 text-lg md:text-xl mb-10 leading-relaxed max-w-2xl mx-auto">
-              Whether you are looking for world-class treatment or want to join
-              our team of dedicated professionals, Everleaf welcomes you.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <Link
-                to="/contact"
-                className="px-8 py-4 bg-white text-primary font-bold rounded-full hover:bg-blue-50 transition-all shadow-xl shadow-blue-900/30 hover:scale-105 flex items-center gap-2"
-              >
-                Visit Us Today <span className="material-icons">near_me</span>
-              </Link>
-              <Link
-                to="/contact"
-                className="px-8 py-4 bg-transparent border-2 border-white/30 text-white font-bold rounded-full hover:bg-white/10 transition-all backdrop-blur-sm"
-              >
-                Contact Administration
-              </Link>
-            </div>
+            <Reveal delay={0}>
+              <span className="inline-block py-1 px-3 rounded-full bg-white/10 border border-white/20 text-white text-xs font-bold tracking-wider uppercase mb-6 backdrop-blur-md">
+                Be Part of Our Journey
+              </span>
+            </Reveal>
+            <Reveal delay={80}>
+              <h2 className="text-3xl md:text-5xl lg:text-6xl font-serif font-bold text-white mb-6 leading-tight">
+                Ready to Experience <br />
+                <span className="text-blue-300">Better Healthcare?</span>
+              </h2>
+            </Reveal>
+            <Reveal delay={160}>
+              <p className="text-blue-100 text-lg md:text-xl mb-10 leading-relaxed max-w-2xl mx-auto">
+                Whether you are looking for world-class treatment or want to
+                join our team of dedicated professionals, Everleaf welcomes you.
+              </p>
+            </Reveal>
+            <Reveal delay={240}>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                <Link
+                  to="/contact"
+                  className="px-8 py-4 bg-white text-primary font-bold rounded-full hover:bg-blue-50 transition-all shadow-xl shadow-blue-900/30 hover:scale-105 flex items-center gap-2"
+                >
+                  Visit Us Today <span className="material-icons">near_me</span>
+                </Link>
+                <Link
+                  to="/contact"
+                  className="px-8 py-4 bg-transparent border-2 border-white/30 text-white font-bold rounded-full hover:bg-white/10 transition-all backdrop-blur-sm"
+                >
+                  Contact Administration
+                </Link>
+              </div>
+            </Reveal>
           </div>
         </div>
       </section>

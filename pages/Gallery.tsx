@@ -2,28 +2,39 @@ import React, { useState, useEffect } from "react";
 import GalleryModal from "../components/GalleryModal";
 import ImageSkeleton from "../components/ImageSkeleton";
 import SEO from "../components/SEO";
+import Reveal from "../components/Reveal";
+import {
+  useFilterTransition,
+  cardAnimStyle,
+} from "../hooks/useFilterTransition";
 import { galleryImages as allImages } from "../data/gallery";
 
 const ITEMS_PER_PAGE = 6;
+
+const categories = [
+  "All",
+  "Facilities",
+  "Rooms",
+  "Equipment",
+  "Staff",
+] as const;
 
 const Gallery: React.FC = () => {
   const [modalOpen, setModalOpen] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [filter, setFilter] = useState("All");
   const [visibleCount, setVisibleCount] = useState(ITEMS_PER_PAGE);
+  const [phase, animateFilter] = useFilterTransition(180, 40);
 
-  // Filter images based on category
   const filteredImages =
     filter === "All"
       ? allImages
       : allImages.filter((img) => img.category === filter);
 
-  // Reset visible count when filter changes
   useEffect(() => {
     setVisibleCount(ITEMS_PER_PAGE);
   }, [filter]);
 
-  // Get currently visible images for pagination
   const visibleImages = filteredImages.slice(0, visibleCount);
 
   const openModal = (index: number) => {
@@ -31,18 +42,22 @@ const Gallery: React.FC = () => {
     setModalOpen(true);
   };
 
-  const nextImage = () => {
+  const nextImage = () =>
     setCurrentIndex((prev) => (prev + 1) % filteredImages.length);
-  };
 
-  const prevImage = () => {
+  const prevImage = () =>
     setCurrentIndex(
       (prev) => (prev - 1 + filteredImages.length) % filteredImages.length,
     );
-  };
 
-  const loadMore = () => {
-    setVisibleCount((prev) => Math.min(prev + 6, filteredImages.length));
+  const loadMore = () =>
+    animateFilter(() =>
+      setVisibleCount((prev) => Math.min(prev + 6, filteredImages.length)),
+    );
+
+  const handleFilter = (cat: string) => {
+    if (cat === filter) return;
+    animateFilter(() => setFilter(cat));
   };
 
   return (
@@ -55,6 +70,8 @@ const Gallery: React.FC = () => {
         description="View photos of our state-of-the-art medical facilities, patient rooms, and advanced equipment."
         canonical="https://everleaf-medical.com/gallery"
       />
+
+      {/* Page Header */}
       <header
         className="border-b py-16"
         style={{
@@ -63,52 +80,86 @@ const Gallery: React.FC = () => {
         }}
       >
         <div className="container mx-auto px-6 text-center">
-          <span className="inline-block px-3 py-1 mb-4 text-xs font-semibold tracking-wider text-primary uppercase bg-blue-50 rounded-full">
-            Our Environment
-          </span>
-          <h1
-            className="text-4xl lg:text-5xl font-serif font-bold mb-6"
-            style={{ color: "var(--color-text)" }}
-          >
-            MediCare Hospital Gallery
-          </h1>
-          <p
-            className="text-lg leading-relaxed max-w-2xl mx-auto"
-            style={{ color: "var(--color-text-muted)" }}
-          >
-            Explore our state-of-the-art facilities, comfortable patient rooms,
-            and the dedicated environment we've built for healing and recovery.
-          </p>
+          <Reveal delay={0}>
+            <span
+              className="inline-block px-3 py-1 mb-4 text-xs font-semibold tracking-wider uppercase rounded-full"
+              style={{
+                color: "var(--color-primary-dark)",
+                backgroundColor: "var(--color-primary-light)",
+              }}
+            >
+              Our Environment
+            </span>
+          </Reveal>
+          <Reveal delay={80}>
+            <h1
+              className="text-4xl lg:text-5xl font-serif font-bold mb-6"
+              style={{ color: "var(--color-text)" }}
+            >
+              Hospital Gallery
+            </h1>
+          </Reveal>
+          <Reveal delay={160}>
+            <p
+              className="text-lg leading-relaxed max-w-2xl mx-auto"
+              style={{ color: "var(--color-text-muted)" }}
+            >
+              Explore our state-of-the-art facilities, comfortable patient
+              rooms, and the dedicated environment we've built for healing and
+              recovery.
+            </p>
+          </Reveal>
         </div>
       </header>
 
       <section className="py-12 container mx-auto px-6">
-        <div className="flex flex-wrap justify-center gap-4 mb-12">
-          {["All", "Facilities", "Rooms", "Equipment", "Staff"].map((cat) => (
-            <button
-              key={cat}
-              onClick={() => setFilter(cat)}
-              className={`px-6 py-2.5 rounded-full text-sm font-semibold transition-all shadow-sm ${filter === cat ? "bg-primary text-white shadow-md ring-2 ring-primary ring-offset-2" : "border"}`}
-              style={
-                filter !== cat
-                  ? {
-                      backgroundColor: "var(--color-surface)",
-                      color: "var(--color-text-muted)",
-                      borderColor: "var(--color-border)",
-                    }
-                  : {}
-              }
-            >
-              {cat === "All" ? "All Photos" : cat}
-            </button>
-          ))}
-        </div>
+        {/* Filter buttons */}
+        <Reveal delay={0} threshold={0.05}>
+          <div
+            className="flex flex-wrap justify-center gap-3 mb-12"
+            role="group"
+            aria-label="Gallery category filter"
+          >
+            {categories.map((cat) => {
+              const active = filter === cat;
+              return (
+                <button
+                  key={cat}
+                  onClick={() => handleFilter(cat)}
+                  aria-pressed={active}
+                  className={`px-6 py-2.5 rounded-full text-sm font-semibold transition-all duration-250 shadow-sm ${
+                    active
+                      ? "bg-primary text-white shadow-md ring-2 ring-primary ring-offset-2"
+                      : "border hover:border-primary hover:text-primary"
+                  }`}
+                  style={
+                    !active
+                      ? {
+                          backgroundColor: "var(--color-surface)",
+                          color: "var(--color-text-muted)",
+                          borderColor: "var(--color-border)",
+                        }
+                      : {}
+                  }
+                >
+                  {cat === "All" ? "All Photos" : cat}
+                </button>
+              );
+            })}
+          </div>
+        </Reveal>
 
+        {/* Image grid — phase-animated */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {visibleImages.map((img, idx) => (
             <div
-              key={idx}
-              className="group relative overflow-hidden rounded-2xl shadow-card bg-white border border-slate-100 cursor-pointer h-72 animate-fade-in"
+              key={`${filter}-${img.src}`}
+              className="group relative overflow-hidden rounded-2xl cursor-pointer h-72"
+              style={{
+                backgroundColor: "var(--color-surface)",
+                boxShadow: "var(--shadow-card)",
+                ...cardAnimStyle(idx, phase),
+              }}
               onClick={() => openModal(idx)}
             >
               <ImageSkeleton
@@ -118,7 +169,7 @@ const Gallery: React.FC = () => {
                 containerClassName="w-full h-full"
               />
 
-              {/* Slide-up Overlay with fixed Gradient */}
+              {/* Slide-up Overlay */}
               <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-primary/80 to-transparent backdrop-blur-[2px] translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-in-out p-6 flex flex-col justify-end text-white text-left">
                 <span className="text-xs font-bold tracking-wider uppercase text-blue-200 mb-2">
                   {img.category}
@@ -138,16 +189,24 @@ const Gallery: React.FC = () => {
           ))}
         </div>
 
+        {/* Load More */}
         {visibleCount < filteredImages.length && (
-          <div className="mt-12 text-center">
-            <button
-              onClick={loadMore}
-              className="inline-flex items-center justify-center px-8 py-3 text-sm font-bold text-primary bg-white border border-slate-200 rounded-full hover:bg-slate-50 hover:shadow-md transition-all"
-            >
-              Load More Photos
-              <span className="material-icons text-sm ml-2">expand_more</span>
-            </button>
-          </div>
+          <Reveal delay={200} threshold={0.05}>
+            <div className="mt-12 text-center">
+              <button
+                onClick={loadMore}
+                className="inline-flex items-center justify-center px-8 py-3 text-sm font-bold rounded-full border hover:shadow-md transition-all"
+                style={{
+                  color: "var(--color-primary)",
+                  backgroundColor: "var(--color-surface)",
+                  borderColor: "var(--color-border)",
+                }}
+              >
+                Load More Photos
+                <span className="material-icons text-sm ml-2">expand_more</span>
+              </button>
+            </div>
+          </Reveal>
         )}
       </section>
 

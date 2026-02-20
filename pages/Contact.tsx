@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { submitForm } from "../utils/formService";
 import SEO from "../components/SEO";
+import Reveal from "../components/Reveal";
 import { contactFormSchema, validateField } from "../utils/validation";
 import { CustomSelect } from "../components/CustomSelect";
 
@@ -128,272 +129,287 @@ const Contact: React.FC = () => {
         <div className="container mx-auto px-6 py-12 relative z-10 w-full">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="max-w-2xl">
-              <h1
-                className="text-4xl lg:text-5xl font-serif font-bold mb-6 leading-tight"
-                style={{ color: "var(--color-text)" }}
-              >
-                Get in Touch with <br />
-                <span className="text-primary">Everleaf Medical Center</span>
-              </h1>
-              <p
-                className="text-lg leading-relaxed mb-10"
-                style={{ color: "var(--color-text-muted)" }}
-              >
-                We are here to help. Whether you need to schedule an
-                appointment, have questions about our services, or need
-                emergency assistance, our team is ready to respond.
-              </p>
+              <Reveal delay={0}>
+                <h1
+                  className="text-4xl lg:text-5xl font-serif font-bold mb-6 leading-tight"
+                  style={{ color: "var(--color-text)" }}
+                >
+                  Get in Touch with <br />
+                  <span className="text-primary">Everleaf Medical Center</span>
+                </h1>
+              </Reveal>
+              <Reveal delay={80}>
+                <p
+                  className="text-lg leading-relaxed mb-10"
+                  style={{ color: "var(--color-text-muted)" }}
+                >
+                  We are here to help. Whether you need to schedule an
+                  appointment, have questions about our services, or need
+                  emergency assistance, our team is ready to respond.
+                </p>
+              </Reveal>
               <div className="space-y-8">
-                <div className="bg-red-50 border-l-4 border-red-500 p-6 rounded-2xl shadow-sm">
-                  <h3 className="text-red-600 font-bold uppercase tracking-wide text-sm mb-2">
-                    Emergency Cases
-                  </h3>
-                  <div className="flex items-center gap-3">
-                    <span className="material-icons text-red-500 text-3xl">
-                      phone_in_talk
-                    </span>
-                    <span
-                      className="text-3xl font-bold"
-                      style={{ color: "var(--color-text)" }}
-                    >
-                      911
-                    </span>
-                  </div>
-                  <p
-                    className="text-sm mt-2"
-                    style={{ color: "var(--color-text-muted)" }}
-                  >
-                    For life-threatening emergencies, call immediately.
-                  </p>
-                </div>
-                <div className="flex flex-col md:flex-row gap-8">
-                  <div>
-                    <h3 className="text-primary font-semibold mb-3 flex items-center gap-2">
-                      <span className="material-icons text-sm">phone</span>{" "}
-                      General Inquiries
+                <Reveal delay={160}>
+                  <div className="bg-red-50 border-l-4 border-red-500 p-6 rounded-2xl shadow-sm">
+                    <h3 className="text-red-600 font-bold uppercase tracking-wide text-sm mb-2">
+                      Emergency Cases
                     </h3>
+                    <div className="flex items-center gap-3">
+                      <span className="material-icons text-red-500 text-3xl">
+                        phone_in_talk
+                      </span>
+                      <span
+                        className="text-3xl font-bold"
+                        style={{ color: "var(--color-text)" }}
+                      >
+                        911
+                      </span>
+                    </div>
                     <p
-                      className="text-xl font-bold"
-                      style={{ color: "var(--color-text)" }}
-                    >
-                      +251 954 123-456
-                    </p>
-                    <p
-                      className="text-sm mt-1"
+                      className="text-sm mt-2"
                       style={{ color: "var(--color-text-muted)" }}
                     >
-                      info@everleaf.com
+                      For life-threatening emergencies, call immediately.
                     </p>
                   </div>
-                  <div>
-                    <h3 className="text-primary font-semibold mb-3 flex items-center gap-2">
-                      <span className="material-icons text-sm">
-                        access_time
-                      </span>{" "}
-                      Working Hours
-                    </h3>
-                    <ul
-                      className="text-sm space-y-1"
-                      style={{ color: "var(--color-text-muted)" }}
-                    >
-                      <li className="flex justify-between w-40">
-                        <span>Mon - Fri:</span>{" "}
-                        <span className="font-medium">8:00 - 20:00</span>
-                      </li>
-                      <li className="flex justify-between w-40">
-                        <span>Saturday:</span>{" "}
-                        <span className="font-medium">9:00 - 18:00</span>
-                      </li>
-                      <li className="flex justify-between w-40">
-                        <span>Sunday:</span>{" "}
-                        <span className="font-medium">9:00 - 14:00</span>
-                      </li>
-                    </ul>
+                </Reveal>
+                <Reveal delay={240}>
+                  <div className="flex flex-col md:flex-row gap-8">
+                    <div>
+                      <h3 className="text-primary font-semibold mb-3 flex items-center gap-2">
+                        <span className="material-icons text-sm">phone</span>{" "}
+                        General Inquiries
+                      </h3>
+                      <p
+                        className="text-xl font-bold"
+                        style={{ color: "var(--color-text)" }}
+                      >
+                        +251 954 123-456
+                      </p>
+                      <p
+                        className="text-sm mt-1"
+                        style={{ color: "var(--color-text-muted)" }}
+                      >
+                        info@everleaf.com
+                      </p>
+                    </div>
+                    <div>
+                      <h3 className="text-primary font-semibold mb-3 flex items-center gap-2">
+                        <span className="material-icons text-sm">
+                          access_time
+                        </span>{" "}
+                        Working Hours
+                      </h3>
+                      <ul
+                        className="text-sm space-y-1"
+                        style={{ color: "var(--color-text-muted)" }}
+                      >
+                        <li className="flex justify-between w-40">
+                          <span>Mon - Fri:</span>{" "}
+                          <span className="font-medium">8:00 - 20:00</span>
+                        </li>
+                        <li className="flex justify-between w-40">
+                          <span>Saturday:</span>{" "}
+                          <span className="font-medium">9:00 - 18:00</span>
+                        </li>
+                        <li className="flex justify-between w-40">
+                          <span>Sunday:</span>{" "}
+                          <span className="font-medium">9:00 - 14:00</span>
+                        </li>
+                      </ul>
+                    </div>
                   </div>
-                </div>
+                </Reveal>
               </div>
             </div>
 
-            <div
-              className="p-8 rounded-2xl shadow-xl border"
-              style={{
-                backgroundColor: "var(--color-surface)",
-                borderColor: "var(--color-border)",
-              }}
-            >
-              {status === "success" ? (
-                <div className="h-full flex flex-col items-center justify-center text-center py-12 animate-fade-in">
-                  <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center text-green-500 mb-6">
-                    <span className="material-icons text-4xl">
-                      check_circle
-                    </span>
-                  </div>
-                  <h3
-                    className="text-2xl font-bold mb-2"
-                    style={{ color: "var(--color-text)" }}
-                  >
-                    Message Sent!
-                  </h3>
-                  <p
-                    className="mb-8 max-w-xs"
-                    style={{ color: "var(--color-text-muted)" }}
-                  >
-                    Thank you for reaching out. Our support team will get back
-                    to you within 24 hours.
-                  </p>
-                  <button
-                    onClick={() => setStatus("idle")}
-                    className="px-6 py-2 font-semibold rounded-lg transition-colors"
-                    style={{
-                      backgroundColor: "var(--color-bg-alt)",
-                      color: "var(--color-text)",
-                    }}
-                  >
-                    Send Another Message
-                  </button>
-                </div>
-              ) : (
-                <form
-                  onSubmit={handleSubmit}
-                  className="space-y-5 animate-fade-in"
-                >
-                  <h3
-                    className="text-2xl font-bold mb-6"
-                    style={{ color: "var(--color-text)" }}
-                  >
-                    Send us a Message
-                  </h3>
-                  {status === "error" && (
-                    <div className="bg-red-50 text-red-600 p-3 rounded-lg text-sm mb-4 flex items-start gap-2">
-                      <span className="material-icons text-lg mt-0.5">
-                        error_outline
-                      </span>
-                      <span>
-                        {errorMessage ||
-                          "Failed to send message. Please try again later."}
+            <Reveal from="right" delay={120}>
+              <div
+                className="p-8 rounded-2xl shadow-xl border"
+                style={{
+                  backgroundColor: "var(--color-surface)",
+                  borderColor: "var(--color-border)",
+                }}
+              >
+                {status === "success" ? (
+                  <div className="h-full flex flex-col items-center justify-center text-center py-12 animate-fade-in">
+                    <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center text-green-500 mb-6">
+                      <span className="material-icons text-4xl">
+                        check_circle
                       </span>
                     </div>
-                  )}
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-                    <div>
-                      <label
-                        className="block text-sm font-medium mb-1"
-                        style={{ color: "var(--color-text)" }}
-                      >
-                        Full Name
-                      </label>
-                      <input
-                        type="text"
-                        name="fullName"
-                        value={formData.fullName}
-                        onChange={handleChange}
-                        onBlur={handleBlur}
-                        disabled={status === "submitting"}
-                        className={`w-full px-4 py-3 rounded-lg border ${errors.fullName ? "border-red-300 bg-red-50" : "border-slate-200 bg-slate-50"} focus:outline-none focus:ring-2 ${errors.fullName ? "focus:ring-red-500/50 focus:border-red-500" : "focus:ring-primary/50 focus:border-primary"} transition-all text-slate-800 placeholder-slate-400 disabled:opacity-60`}
-                        placeholder="John Doe"
-                      />
-                      {errors.fullName &&
-                        (touched.fullName || hasSubmitted) && (
+                    <h3
+                      className="text-2xl font-bold mb-2"
+                      style={{ color: "var(--color-text)" }}
+                    >
+                      Message Sent!
+                    </h3>
+                    <p
+                      className="mb-8 max-w-xs"
+                      style={{ color: "var(--color-text-muted)" }}
+                    >
+                      Thank you for reaching out. Our support team will get back
+                      to you within 24 hours.
+                    </p>
+                    <button
+                      onClick={() => setStatus("idle")}
+                      className="px-6 py-2 font-semibold rounded-lg transition-colors"
+                      style={{
+                        backgroundColor: "var(--color-bg-alt)",
+                        color: "var(--color-text)",
+                      }}
+                    >
+                      Send Another Message
+                    </button>
+                  </div>
+                ) : (
+                  <form
+                    onSubmit={handleSubmit}
+                    className="space-y-5 animate-fade-in"
+                  >
+                    <h3
+                      className="text-2xl font-bold mb-6"
+                      style={{ color: "var(--color-text)" }}
+                    >
+                      Send us a Message
+                    </h3>
+                    {status === "error" && (
+                      <div className="bg-red-50 text-red-600 p-3 rounded-lg text-sm mb-4 flex items-start gap-2">
+                        <span className="material-icons text-lg mt-0.5">
+                          error_outline
+                        </span>
+                        <span>
+                          {errorMessage ||
+                            "Failed to send message. Please try again later."}
+                        </span>
+                      </div>
+                    )}
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                      <div>
+                        <label
+                          className="block text-sm font-medium mb-1"
+                          style={{ color: "var(--color-text)" }}
+                        >
+                          Full Name
+                        </label>
+                        <input
+                          type="text"
+                          name="fullName"
+                          value={formData.fullName}
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                          disabled={status === "submitting"}
+                          className={`w-full px-4 py-3 rounded-lg border ${errors.fullName ? "border-red-300 bg-red-50" : "border-slate-200 bg-slate-50"} focus:outline-none focus:ring-2 ${errors.fullName ? "focus:ring-red-500/50 focus:border-red-500" : "focus:ring-primary/50 focus:border-primary"} transition-all text-slate-800 placeholder-slate-400 disabled:opacity-60`}
+                          placeholder="John Doe"
+                        />
+                        {errors.fullName &&
+                          (touched.fullName || hasSubmitted) && (
+                            <p className="mt-1 text-sm text-red-600 flex items-center gap-1">
+                              <span className="material-icons text-sm">
+                                error
+                              </span>
+                              {errors.fullName}
+                            </p>
+                          )}
+                      </div>
+                      <div>
+                        <label
+                          className="block text-sm font-medium mb-1"
+                          style={{ color: "var(--color-text)" }}
+                        >
+                          Email Address
+                        </label>
+                        <input
+                          type="email"
+                          name="email"
+                          value={formData.email}
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                          disabled={status === "submitting"}
+                          className={`w-full px-4 py-3 rounded-lg border ${errors.email ? "border-red-300 bg-red-50" : "border-slate-200 bg-slate-50"} focus:outline-none focus:ring-2 ${errors.email ? "focus:ring-red-500/50 focus:border-red-500" : "focus:ring-primary/50 focus:border-primary"} transition-all text-slate-800 placeholder-slate-400 disabled:opacity-60`}
+                          placeholder="john@example.com"
+                        />
+                        {errors.email && (touched.email || hasSubmitted) && (
                           <p className="mt-1 text-sm text-red-600 flex items-center gap-1">
                             <span className="material-icons text-sm">
                               error
                             </span>
-                            {errors.fullName}
+                            {errors.email}
                           </p>
                         )}
+                      </div>
                     </div>
                     <div>
                       <label
                         className="block text-sm font-medium mb-1"
                         style={{ color: "var(--color-text)" }}
                       >
-                        Email Address
+                        Subject
                       </label>
-                      <input
-                        type="email"
-                        name="email"
-                        value={formData.email}
+                      <CustomSelect
+                        options={[
+                          {
+                            value: "General Inquiry",
+                            label: "General Inquiry",
+                          },
+                          {
+                            value: "Appointment Request",
+                            label: "Appointment Request",
+                          },
+                          { value: "Feedback", label: "Feedback" },
+                          {
+                            value: "Billing Question",
+                            label: "Billing Question",
+                          },
+                          { value: "Other", label: "Other" },
+                        ]}
+                        value={formData.subject}
+                        onChange={handleSubjectChange}
+                        icon="help_outline"
+                        placeholder="Select a subject"
+                      />
+                    </div>
+                    <div>
+                      <label
+                        className="block text-sm font-medium mb-1"
+                        style={{ color: "var(--color-text)" }}
+                      >
+                        Message
+                      </label>
+                      <textarea
+                        name="message"
+                        value={formData.message}
                         onChange={handleChange}
                         onBlur={handleBlur}
                         disabled={status === "submitting"}
-                        className={`w-full px-4 py-3 rounded-lg border ${errors.email ? "border-red-300 bg-red-50" : "border-slate-200 bg-slate-50"} focus:outline-none focus:ring-2 ${errors.email ? "focus:ring-red-500/50 focus:border-red-500" : "focus:ring-primary/50 focus:border-primary"} transition-all text-slate-800 placeholder-slate-400 disabled:opacity-60`}
-                        placeholder="john@example.com"
-                      />
-                      {errors.email && (touched.email || hasSubmitted) && (
+                        className={`w-full px-4 py-3 rounded-lg border ${errors.message ? "border-red-300 bg-red-50" : "border-slate-200 bg-slate-50"} focus:outline-none focus:ring-2 ${errors.message ? "focus:ring-red-500/50 focus:border-red-500" : "focus:ring-primary/50 focus:border-primary"} transition-all text-slate-800 placeholder-slate-400 min-h-[120px] max-h-60 disabled:opacity-60`}
+                        placeholder="How can we help you?"
+                      ></textarea>
+                      {errors.message && (touched.message || hasSubmitted) && (
                         <p className="mt-1 text-sm text-red-600 flex items-center gap-1">
                           <span className="material-icons text-sm">error</span>
-                          {errors.email}
+                          {errors.message}
                         </p>
                       )}
                     </div>
-                  </div>
-                  <div>
-                    <label
-                      className="block text-sm font-medium mb-1"
-                      style={{ color: "var(--color-text)" }}
-                    >
-                      Subject
-                    </label>
-                    <CustomSelect
-                      options={[
-                        { value: "General Inquiry", label: "General Inquiry" },
-                        {
-                          value: "Appointment Request",
-                          label: "Appointment Request",
-                        },
-                        { value: "Feedback", label: "Feedback" },
-                        {
-                          value: "Billing Question",
-                          label: "Billing Question",
-                        },
-                        { value: "Other", label: "Other" },
-                      ]}
-                      value={formData.subject}
-                      onChange={handleSubjectChange}
-                      icon="help_outline"
-                      placeholder="Select a subject"
-                    />
-                  </div>
-                  <div>
-                    <label
-                      className="block text-sm font-medium mb-1"
-                      style={{ color: "var(--color-text)" }}
-                    >
-                      Message
-                    </label>
-                    <textarea
-                      name="message"
-                      value={formData.message}
-                      onChange={handleChange}
-                      onBlur={handleBlur}
+                    <button
+                      type="submit"
                       disabled={status === "submitting"}
-                      className={`w-full px-4 py-3 rounded-lg border ${errors.message ? "border-red-300 bg-red-50" : "border-slate-200 bg-slate-50"} focus:outline-none focus:ring-2 ${errors.message ? "focus:ring-red-500/50 focus:border-red-500" : "focus:ring-primary/50 focus:border-primary"} transition-all text-slate-800 placeholder-slate-400 min-h-[120px] max-h-60 disabled:opacity-60`}
-                      placeholder="How can we help you?"
-                    ></textarea>
-                    {errors.message && (touched.message || hasSubmitted) && (
-                      <p className="mt-1 text-sm text-red-600 flex items-center gap-1">
-                        <span className="material-icons text-sm">error</span>
-                        {errors.message}
-                      </p>
-                    )}
-                  </div>
-                  <button
-                    type="submit"
-                    disabled={status === "submitting"}
-                    className="w-full py-3.5 px-6 text-white font-bold bg-primary hover:bg-primary-dark rounded-lg shadow-lg hover:shadow-xl transition-all duration-200 flex items-center justify-center gap-2 group transform hover:-translate-y-0.5 disabled:opacity-70 disabled:cursor-wait"
-                  >
-                    {status === "submitting"
-                      ? "Sending Message..."
-                      : "Send Message"}
-                    {!status.startsWith("sub") && (
-                      <span className="material-icons text-sm group-hover:translate-x-1 transition-transform">
-                        near_me
-                      </span>
-                    )}
-                  </button>
-                </form>
-              )}
-            </div>
+                      className="w-full py-3.5 px-6 text-white font-bold bg-primary hover:bg-primary-dark rounded-lg shadow-lg hover:shadow-xl transition-all duration-200 flex items-center justify-center gap-2 group transform hover:-translate-y-0.5 disabled:opacity-70 disabled:cursor-wait"
+                    >
+                      {status === "submitting"
+                        ? "Sending Message..."
+                        : "Send Message"}
+                      {!status.startsWith("sub") && (
+                        <span className="material-icons text-sm group-hover:translate-x-1 transition-transform">
+                          near_me
+                        </span>
+                      )}
+                    </button>
+                  </form>
+                )}
+              </div>
+            </Reveal>
           </div>
         </div>
       </header>
@@ -410,63 +426,65 @@ const Contact: React.FC = () => {
           loading="lazy"
           referrerPolicy="no-referrer-when-downgrade"
         ></iframe>
-        <div
-          className="absolute bottom-6 left-6 right-6 md:left-auto md:right-12 md:w-96 p-6 rounded-xl shadow-2xl border"
-          style={{
-            backgroundColor: "var(--color-surface)",
-            borderColor: "var(--color-border)",
-          }}
-        >
-          <h4
-            className="font-bold mb-4 flex items-center gap-2"
-            style={{ color: "var(--color-text)" }}
+        <Reveal from="left" threshold={0.1}>
+          <div
+            className="absolute bottom-6 left-6 right-6 md:left-auto md:right-12 md:w-96 p-6 rounded-xl shadow-2xl border"
+            style={{
+              backgroundColor: "var(--color-surface)",
+              borderColor: "var(--color-border)",
+            }}
           >
-            <span className="material-icons text-primary">directions</span>{" "}
-            Directions & Transportation
-          </h4>
-          <div className="space-y-4 text-sm">
-            <div className="flex gap-3">
-              <div
-                className="w-8 h-8 rounded-full flex items-center justify-center text-primary shrink-0"
-                style={{ backgroundColor: "var(--color-primary-light)" }}
-              >
-                <span className="material-icons text-sm">directions_bus</span>
-              </div>
-              <div>
-                <p
-                  className="font-semibold"
-                  style={{ color: "var(--color-text)" }}
+            <h4
+              className="font-bold mb-4 flex items-center gap-2"
+              style={{ color: "var(--color-text)" }}
+            >
+              <span className="material-icons text-primary">directions</span>{" "}
+              Directions & Transportation
+            </h4>
+            <div className="space-y-4 text-sm">
+              <div className="flex gap-3">
+                <div
+                  className="w-8 h-8 rounded-full flex items-center justify-center text-primary shrink-0"
+                  style={{ backgroundColor: "var(--color-primary-light)" }}
                 >
-                  Public Transit
-                </p>
-                <p style={{ color: "var(--color-text-muted)" }}>
-                  Bus lines M15, M22 stop directly in front of the main
-                  entrance.
-                </p>
+                  <span className="material-icons text-sm">directions_bus</span>
+                </div>
+                <div>
+                  <p
+                    className="font-semibold"
+                    style={{ color: "var(--color-text)" }}
+                  >
+                    Public Transit
+                  </p>
+                  <p style={{ color: "var(--color-text-muted)" }}>
+                    Bus lines M15, M22 stop directly in front of the main
+                    entrance.
+                  </p>
+                </div>
               </div>
-            </div>
-            <div className="flex gap-3">
-              <div
-                className="w-8 h-8 rounded-full flex items-center justify-center text-primary shrink-0"
-                style={{ backgroundColor: "var(--color-primary-light)" }}
-              >
-                <span className="material-icons text-sm">local_parking</span>
-              </div>
-              <div>
-                <p
-                  className="font-semibold"
-                  style={{ color: "var(--color-text)" }}
+              <div className="flex gap-3">
+                <div
+                  className="w-8 h-8 rounded-full flex items-center justify-center text-primary shrink-0"
+                  style={{ backgroundColor: "var(--color-primary-light)" }}
                 >
-                  Parking
-                </p>
-                <p style={{ color: "var(--color-text-muted)" }}>
-                  Visitor parking garage is available on 4th Ave (5 Br/hr).
-                  Valet service available at main entrance.
-                </p>
+                  <span className="material-icons text-sm">local_parking</span>
+                </div>
+                <div>
+                  <p
+                    className="font-semibold"
+                    style={{ color: "var(--color-text)" }}
+                  >
+                    Parking
+                  </p>
+                  <p style={{ color: "var(--color-text-muted)" }}>
+                    Visitor parking garage is available on 4th Ave (5 Br/hr).
+                    Valet service available at main entrance.
+                  </p>
+                </div>
               </div>
             </div>
           </div>
-        </div>
+        </Reveal>
       </section>
     </div>
   );
