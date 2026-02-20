@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { submitForm } from "../utils/formService";
 import { appointmentFormSchema, validateField } from "../utils/validation";
 import { CustomSelect } from "./CustomSelect";
@@ -431,6 +431,7 @@ const AppointmentModal: React.FC<AppointmentModalProps> = ({
               onChange={handleDepartmentChange}
               placeholder="Choose a department..."
               icon="local_hospital"
+              maxHeight={13}
               error={
                 errors.department && (touched.department || hasSubmitted)
                   ? errors.department
@@ -499,7 +500,7 @@ const AppointmentModal: React.FC<AppointmentModalProps> = ({
               className="mt-3 text-center text-xs"
               style={{ color: "var(--color-text-muted)" }}
             >
-              By submitting, you agree to our Terms and Privacy Policy.
+              By submitting, you agree to our <Link to="/privacy" className="text-primary" target="_blank">Terms and Privacy Policy.</Link>
             </p>
           </div>
         </form>

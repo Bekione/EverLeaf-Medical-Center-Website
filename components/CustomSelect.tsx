@@ -12,6 +12,7 @@ interface CustomSelectProps {
   placeholder?: string;
   label?: string;
   className?: string;
+  maxHeight?: number;
   icon?: string;
   error?: string;
 }
@@ -23,6 +24,7 @@ export const CustomSelect: React.FC<CustomSelectProps> = ({
   placeholder = "Select an option",
   label,
   className = "",
+  maxHeight = 15,
   icon,
   error,
 }) => {
@@ -103,7 +105,7 @@ export const CustomSelect: React.FC<CustomSelectProps> = ({
             borderColor: "var(--color-border)",
           }}
         >
-          <div className="max-h-60 overflow-y-auto custom-scrollbar">
+          <div className="overflow-y-auto custom-scrollbar" style={{maxHeight: `${maxHeight}rem`}}>
             {options.map((option) => (
               <div
                 key={option.value}
