@@ -2,6 +2,7 @@ import React from "react";
 import { Link, useOutletContext } from "react-router-dom";
 import { OpenAppointmentFunc } from "../../Layout";
 import SEO from "../../components/SEO";
+import Reveal from "../../components/Reveal";
 
 const Imaging: React.FC = () => {
   const { openAppointment } = useOutletContext<{
@@ -30,37 +31,45 @@ const Imaging: React.FC = () => {
             alt="Advanced MRI Scanner Room"
             className="w-full h-full object-cover opacity-30"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-slate-900 via-slate-900/80 to-transparent"></div>
+          <div className="absolute inset-0 bg-linear-to-r from-slate-900 via-slate-900/80 to-transparent"></div>
         </div>
         <div className="container mx-auto px-6 py-24 md:py-32 relative z-10">
           <div className="max-w-3xl">
-            <div className="flex items-center gap-2 mb-4 text-blue-300 font-semibold tracking-wide uppercase text-sm">
-              <span className="material-icons text-lg">scanner</span>
-              <span>Medical Imaging Services</span>
-            </div>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold mb-6 leading-tight">
-              Advanced Imaging &<br />
-              Diagnostics
-            </h1>
-            <p className="text-lg md:text-xl text-slate-300 mb-8 max-w-2xl leading-relaxed">
-              Utilizing state-of-the-art technology to provide crystal-clear
-              insights for precise diagnoses. From routine X-rays to advanced
-              MRI scans, your health is our focus.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4">
-              <button
-                onClick={() => openAppointment({ department: "Radiology" })}
-                className="inline-flex items-center justify-center px-8 py-3.5 text-base font-bold text-white bg-primary rounded-lg hover:bg-primary-dark shadow-lg shadow-primary/30 hover:shadow-primary/50 transition-all transform hover:-translate-y-0.5"
-              >
-                Schedule a Scan
-              </button>
-              <button
-                onClick={(e) => scrollToSection(e, "procedures")}
-                className="inline-flex items-center justify-center px-8 py-3.5 text-base font-bold text-white bg-white/10 border border-white/20 backdrop-blur-sm rounded-lg hover:bg-white/20 transition-all"
-              >
-                View Procedures
-              </button>
-            </div>
+            <Reveal delay={0}>
+              <div className="flex items-center gap-2 mb-4 text-blue-300 font-semibold tracking-wide uppercase text-sm">
+                <span className="material-icons text-lg">scanner</span>
+                <span>Medical Imaging Services</span>
+              </div>
+            </Reveal>
+            <Reveal delay={100}>
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold mb-6 leading-tight">
+                Advanced Imaging &<br />
+                Diagnostics
+              </h1>
+            </Reveal>
+            <Reveal delay={200}>
+              <p className="text-lg md:text-xl text-slate-300 mb-8 max-w-2xl leading-relaxed">
+                Utilizing state-of-the-art technology to provide crystal-clear
+                insights for precise diagnoses. From routine X-rays to advanced
+                MRI scans, your health is our focus.
+              </p>
+            </Reveal>
+            <Reveal delay={300}>
+              <div className="flex flex-col sm:flex-row gap-4">
+                <button
+                  onClick={() => openAppointment({ department: "Radiology" })}
+                  className="inline-flex items-center justify-center px-8 py-3.5 text-base font-bold text-white bg-primary rounded-lg hover:bg-primary-dark shadow-lg shadow-primary/30 hover:shadow-primary/50 transition-all transform hover:-translate-y-0.5"
+                >
+                  Schedule a Scan
+                </button>
+                <button
+                  onClick={(e) => scrollToSection(e, "procedures")}
+                  className="inline-flex items-center justify-center px-8 py-3.5 text-base font-bold text-white bg-white/10 border border-white/20 backdrop-blur-sm rounded-lg hover:bg-white/20 transition-all"
+                >
+                  View Procedures
+                </button>
+              </div>
+            </Reveal>
           </div>
         </div>
       </header>
@@ -68,15 +77,18 @@ const Imaging: React.FC = () => {
       <section className="py-16 md:py-24 bg-slate-50 relative">
         <div className="container mx-auto px-6">
           <div className="mb-20" id="procedures">
-            <div className="text-center max-w-3xl mx-auto mb-16">
-              <h2 className="text-3xl font-serif font-bold text-slate-900 mb-4">
-                High-Resolution Medical Imaging
-              </h2>
-              <p className="text-slate-600">
-                Our center is equipped with the latest generation of imaging
-                technology, ensuring high fidelity results and patient comfort.
-              </p>
-            </div>
+            <Reveal threshold={0.1}>
+              <div className="text-center max-w-3xl mx-auto mb-16">
+                <h2 className="text-3xl font-serif font-bold text-slate-900 mb-4">
+                  High-Resolution Medical Imaging
+                </h2>
+                <p className="text-slate-600">
+                  Our center is equipped with the latest generation of imaging
+                  technology, ensuring high fidelity results and patient
+                  comfort.
+                </p>
+              </div>
+            </Reveal>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
               {[
                 {
@@ -108,319 +120,302 @@ const Imaging: React.FC = () => {
                   color: "purple-600",
                 },
               ].map((item, i) => (
-                <div
-                  key={i}
-                  className="rounded-xl overflow-hidden shadow-card hover:shadow-xl transition-all duration-300 group"
-                  style={{ backgroundColor: "var(--color-surface)" }}
-                >
-                  <div className="h-48 overflow-hidden relative">
-                    <img
-                      src={item.img}
-                      alt={item.title}
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                    />
-                    <div
-                      className={`absolute top-4 left-4 bg-white/90 backdrop-blur px-3 py-1 rounded text-xs font-bold text-${item.color}`}
-                    >
-                      {item.tag}
+                <Reveal key={i} delay={i * 100} threshold={0.1}>
+                  <div
+                    className="rounded-xl overflow-hidden shadow-card hover:shadow-xl transition-all duration-300 group h-full"
+                    style={{ backgroundColor: "var(--color-surface)" }}
+                  >
+                    <div className="h-48 overflow-hidden relative">
+                      <img
+                        src={item.img}
+                        alt={item.title}
+                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                      />
+                      <div
+                        className={`absolute top-4 left-4 bg-white/90 backdrop-blur px-3 py-1 rounded text-xs font-bold text-${item.color}`}
+                      >
+                        {item.tag}
+                      </div>
+                    </div>
+                    <div className="p-6">
+                      <h3
+                        className="text-xl font-bold mb-2"
+                        style={{ color: "var(--color-text)" }}
+                      >
+                        {item.title}
+                      </h3>
+                      <p className="text-slate-500 text-sm">{item.desc}</p>
                     </div>
                   </div>
-                  <div className="p-6">
-                    <h3
-                      className="text-xl font-bold mb-2"
-                      style={{ color: "var(--color-text)" }}
-                    >
-                      {item.title}
-                    </h3>
-                    <p className="text-slate-500 text-sm">{item.desc}</p>
-                  </div>
-                </div>
+                </Reveal>
               ))}
             </div>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-20">
-            <div
-              className="lg:col-span-2 rounded-2xl p-8 border shadow-card"
-              style={{
-                backgroundColor: "var(--color-surface)",
-                borderColor: "var(--color-border)",
-              }}
-            >
-              <div className="flex items-center gap-4 mb-6">
-                <div
-                  className="w-12 h-12 rounded-full text-primary flex items-center justify-center"
-                  style={{ backgroundColor: "var(--color-primary-light)" }}
-                >
-                  <span className="material-icons text-2xl">biotech</span>
-                </div>
-                <h2
-                  className="text-2xl font-bold"
-                  style={{ color: "var(--color-text)" }}
-                >
-                  Specialized Radiology
-                </h2>
-              </div>
-              <div className="grid md:grid-cols-2 gap-8">
-                <div>
-                  <h4
-                    className="font-bold mb-2"
-                    style={{ color: "var(--color-text)" }}
-                  >
-                    Interventional Radiology
-                  </h4>
-                  <p className="text-slate-500 text-sm leading-relaxed mb-4">
-                    Minimally invasive image-guided procedures to diagnose and
-                    treat diseases in nearly every organ system.
-                  </p>
-                  <ul className="space-y-2">
-                    <li className="flex items-center text-sm text-slate-600">
-                      <span className="material-icons text-secondary text-base mr-2">
-                        check_circle
-                      </span>{" "}
-                      Biopsies
-                    </li>
-                    <li className="flex items-center text-sm text-slate-600">
-                      <span className="material-icons text-secondary text-base mr-2">
-                        check_circle
-                      </span>{" "}
-                      Angiography
-                    </li>
-                  </ul>
-                </div>
-                <div>
-                  <h4
-                    className="font-bold mb-2"
-                    style={{ color: "var(--color-text)" }}
-                  >
-                    Women's Imaging
-                  </h4>
-                  <p className="text-slate-500 text-sm leading-relaxed mb-4">
-                    Dedicated suite for mammography, breast ultrasound, and bone
-                    density scanning (DEXA) in a private setting.
-                  </p>
-                  <ul className="space-y-2">
-                    <li className="flex items-center text-sm text-slate-600">
-                      <span className="material-icons text-secondary text-base mr-2">
-                        check_circle
-                      </span>{" "}
-                      3D Mammography
-                    </li>
-                    <li className="flex items-center text-sm text-slate-600">
-                      <span className="material-icons text-secondary text-base mr-2">
-                        check_circle
-                      </span>{" "}
-                      DEXA Scans
-                    </li>
-                  </ul>
-                </div>
-              </div>
+            <Reveal from="left" threshold={0.1} className="lg:col-span-2">
               <div
-                className="mt-8 pt-8 border-t"
-                style={{ borderColor: "var(--color-border)" }}
+                className="rounded-2xl p-8 border shadow-card h-full"
+                style={{
+                  backgroundColor: "var(--color-surface)",
+                  borderColor: "var(--color-border)",
+                }}
               >
-                <p className="text-slate-500 italic text-sm">
-                  "Our radiologists are board-certified and sub-specialty
-                  trained, ensuring the highest level of expertise for your
-                  interpretation."
-                </p>
-              </div>
-            </div>
-            <div
-              className="rounded-2xl p-8 border"
-              style={{
-                backgroundColor: "var(--color-primary-light)",
-                borderColor: "var(--color-border)",
-              }}
-            >
-              <div className="flex items-center gap-4 mb-6">
-                <div
-                  className="w-12 h-12 rounded-full text-primary flex items-center justify-center shadow-sm"
-                  style={{ backgroundColor: "var(--color-surface)" }}
-                >
-                  <span className="material-icons text-2xl">shield</span>
+                <div className="flex items-center gap-4 mb-6">
+                  <div
+                    className="w-12 h-12 rounded-full text-primary flex items-center justify-center"
+                    style={{ backgroundColor: "var(--color-primary-light)" }}
+                  >
+                    <span className="material-icons text-2xl">biotech</span>
+                  </div>
+                  <h2
+                    className="text-2xl font-bold"
+                    style={{ color: "var(--color-text)" }}
+                  >
+                    Specialized Radiology
+                  </h2>
                 </div>
-                <h2
-                  className="text-xl font-bold"
-                  style={{ color: "var(--color-text)" }}
-                >
-                  Safety First
-                </h2>
-              </div>
-              <h3 className="font-semibold text-slate-800 mb-3">
-                Low-Radiation Protocols
-              </h3>
-              <p className="text-slate-600 text-sm leading-relaxed mb-6">
-                We adhere to the ALARA principle (As Low As Reasonably
-                Achievable). Our equipment uses dose-reduction software to
-                ensure you receive the lowest radiation possible without
-                compromising image quality.
-              </p>
-              <div className="bg-white p-4 rounded-lg shadow-sm mb-6">
-                <div className="flex items-start gap-3">
-                  <span className="material-icons text-secondary mt-1">
-                    verified
-                  </span>
+                <div className="grid md:grid-cols-2 gap-8">
                   <div>
-                    <span
-                      className="block font-bold text-sm"
+                    <h4
+                      className="font-bold mb-2"
                       style={{ color: "var(--color-text)" }}
                     >
-                      ACR Accredited
+                      Interventional Radiology
+                    </h4>
+                    <p className="text-slate-500 text-sm leading-relaxed mb-4">
+                      Minimally invasive image-guided procedures to diagnose and
+                      treat diseases in nearly every organ system.
+                    </p>
+                    <ul className="space-y-2">
+                      <li className="flex items-center text-sm text-slate-600">
+                        <span className="material-icons text-secondary text-base mr-2">
+                          check_circle
+                        </span>{" "}
+                        Biopsies
+                      </li>
+                      <li className="flex items-center text-sm text-slate-600">
+                        <span className="material-icons text-secondary text-base mr-2">
+                          check_circle
+                        </span>{" "}
+                        Angiography
+                      </li>
+                    </ul>
+                  </div>
+                  <div>
+                    <h4
+                      className="font-bold mb-2"
+                      style={{ color: "var(--color-text)" }}
+                    >
+                      Women's Imaging
+                    </h4>
+                    <p className="text-slate-500 text-sm leading-relaxed mb-4">
+                      Dedicated suite for mammography, breast ultrasound, and
+                      bone density scanning (DEXA) in a private setting.
+                    </p>
+                    <ul className="space-y-2">
+                      <li className="flex items-center text-sm text-slate-600">
+                        <span className="material-icons text-secondary text-base mr-2">
+                          check_circle
+                        </span>{" "}
+                        3D Mammography
+                      </li>
+                      <li className="flex items-center text-sm text-slate-600">
+                        <span className="material-icons text-secondary text-base mr-2">
+                          check_circle
+                        </span>{" "}
+                        DEXA Scans
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                <div
+                  className="mt-8 pt-8 border-t"
+                  style={{ borderColor: "var(--color-border)" }}
+                >
+                  <p className="text-slate-500 italic text-sm">
+                    "Our radiologists are board-certified and sub-specialty
+                    trained, ensuring the highest level of expertise for your
+                    interpretation."
+                  </p>
+                </div>
+              </div>
+            </Reveal>
+            <Reveal from="right" threshold={0.1}>
+              <div
+                className="rounded-2xl p-8 border h-full"
+                style={{
+                  backgroundColor: "var(--color-primary-light)",
+                  borderColor: "var(--color-border)",
+                }}
+              >
+                <div className="flex items-center gap-4 mb-6">
+                  <div
+                    className="w-12 h-12 rounded-full text-primary flex items-center justify-center shadow-sm"
+                    style={{ backgroundColor: "var(--color-surface)" }}
+                  >
+                    <span className="material-icons text-2xl">shield</span>
+                  </div>
+                  <h2
+                    className="text-xl font-bold"
+                    style={{ color: "var(--color-text)" }}
+                  >
+                    Safety First
+                  </h2>
+                </div>
+                <h3 className="font-semibold text-slate-800 mb-3">
+                  Low-Radiation Protocols
+                </h3>
+                <p className="text-slate-600 text-sm leading-relaxed mb-6">
+                  We adhere to the ALARA principle (As Low As Reasonably
+                  Achievable). Our equipment uses dose-reduction software to
+                  ensure you receive the lowest radiation possible without
+                  compromising image quality.
+                </p>
+                <div className="bg-white p-4 rounded-lg shadow-sm mb-6">
+                  <div className="flex items-start gap-3">
+                    <span className="material-icons text-secondary mt-1">
+                      verified
                     </span>
-                    <span className="text-xs text-slate-500">
-                      American College of Radiology
-                    </span>
+                    <div>
+                      <span
+                        className="block font-bold text-sm"
+                        style={{ color: "var(--color-text)" }}
+                      >
+                        ACR Accredited
+                      </span>
+                      <span className="text-xs text-slate-500">
+                        American College of Radiology
+                      </span>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
+            </Reveal>
           </div>
 
-          <div className="bg-primary rounded-3xl overflow-hidden relative shadow-lg">
-            <div
-              className="absolute inset-0 opacity-10"
-              style={{
-                backgroundImage:
-                  "url('https://www.transparenttextures.com/patterns/cubes.png')",
-              }}
-            ></div>
-            <div className="grid md:grid-cols-2 items-center relative z-10">
-              <div className="p-8 md:p-12 text-white">
-                <h2 className="text-3xl font-bold mb-4">
-                  Accessing Your Results
-                </h2>
-                <p className="text-blue-100 mb-6 leading-relaxed">
-                  Your imaging results and radiologist reports are available
-                  securely online. Please contact our reception for access
-                  details.
-                </p>
-                <ul className="space-y-4 mb-8">
-                  <li className="flex items-center gap-3">
-                    <span className="bg-white/20 p-1.5 rounded-full">
-                      <span className="material-icons text-sm">lock</span>
-                    </span>
-                    <span>Secure & Private Access</span>
-                  </li>
-                  <li className="flex items-center gap-3">
-                    <span className="bg-white/20 p-1.5 rounded-full">
-                      <span className="material-icons text-sm">history</span>
-                    </span>
-                    <span>View Exam History</span>
-                  </li>
-                  <li className="flex items-center gap-3">
-                    <span className="bg-white/20 p-1.5 rounded-full">
-                      <span className="material-icons text-sm">share</span>
-                    </span>
-                    <span>Share with Specialists</span>
-                  </li>
-                </ul>
-                <Link
-                  to="/contact"
-                  className="inline-flex items-center px-6 py-3 bg-white text-primary font-bold rounded-lg hover:bg-blue-50 transition-colors"
-                >
-                  Request Results
-                </Link>
-              </div>
-              <div className="h-64 md:h-full relative bg-slate-800">
-                <img
-                  src="/images/imaging-body-5.jpg"
-                  alt="Doctor reviewing digital scan"
-                  className="absolute inset-0 w-full h-full object-cover opacity-80 mix-blend-overlay"
-                />
-                <div className="absolute inset-0 bg-gradient-to-l from-transparent to-primary/80 md:to-primary"></div>
+          <Reveal threshold={0.1}>
+            <div className="bg-primary rounded-3xl overflow-hidden relative shadow-lg">
+              <div
+                className="absolute inset-0 opacity-10"
+                style={{
+                  backgroundImage:
+                    "url('https://www.transparenttextures.com/patterns/cubes.png')",
+                }}
+              ></div>
+              <div className="grid md:grid-cols-2 items-center relative z-10">
+                <div className="p-8 md:p-12 text-white">
+                  <h2 className="text-3xl font-bold mb-4">
+                    Accessing Your Results
+                  </h2>
+                  <p className="text-blue-100 mb-6 leading-relaxed">
+                    Your imaging results and radiologist reports are available
+                    securely online. Please contact our reception for access
+                    details.
+                  </p>
+                  <ul className="space-y-4 mb-8">
+                    <li className="flex items-center gap-3">
+                      <span className="bg-white/20 p-1.5 rounded-full">
+                        <span className="material-icons text-sm">lock</span>
+                      </span>
+                      <span>Secure & Private Access</span>
+                    </li>
+                    <li className="flex items-center gap-3">
+                      <span className="bg-white/20 p-1.5 rounded-full">
+                        <span className="material-icons text-sm">history</span>
+                      </span>
+                      <span>View Exam History</span>
+                    </li>
+                    <li className="flex items-center gap-3">
+                      <span className="bg-white/20 p-1.5 rounded-full">
+                        <span className="material-icons text-sm">share</span>
+                      </span>
+                      <span>Share with Specialists</span>
+                    </li>
+                  </ul>
+                  <Link
+                    to="/contact"
+                    className="inline-flex items-center px-6 py-3 bg-white text-primary font-bold rounded-lg hover:bg-blue-50 transition-colors"
+                  >
+                    Request Results
+                  </Link>
+                </div>
+                <div className="h-64 md:h-full relative bg-slate-800">
+                  <img
+                    src="/images/imaging-body-5.jpg"
+                    alt="Doctor reviewing digital scan"
+                    className="absolute inset-0 w-full h-full object-cover opacity-80 mix-blend-overlay"
+                  />
+                  <div className="absolute inset-0 bg-linear-to-l from-transparent to-primary/80 md:to-primary"></div>
+                </div>
               </div>
             </div>
-          </div>
+          </Reveal>
         </div>
       </section>
 
       <section className="py-20 bg-slate-50">
         <div className="container mx-auto px-6">
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="text-3xl font-serif font-bold text-slate-900 mb-4">
-              Conditions We Treat
-            </h2>
-            <p className="text-slate-600">
-              Our imaging capabilities allow us to detect and monitor a wide
-              range of medical conditions with exceptional clarity.
-            </p>
-          </div>
+          <Reveal threshold={0.1}>
+            <div className="text-center max-w-3xl mx-auto mb-16">
+              <h2 className="text-3xl font-serif font-bold text-slate-900 mb-4">
+                Conditions We Treat
+              </h2>
+              <p className="text-slate-600">
+                Our imaging capabilities allow us to detect and monitor a wide
+                range of medical conditions with exceptional clarity.
+              </p>
+            </div>
+          </Reveal>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div
-              className="p-6 rounded-2xl shadow-sm hover:shadow-md transition-shadow border"
-              style={{
-                backgroundColor: "var(--color-surface)",
-                borderColor: "var(--color-border)",
-              }}
-            >
-              <div className="w-12 h-12 bg-orange-50 rounded-xl flex items-center justify-center text-orange-500 mb-4">
-                <span className="material-icons text-2xl">
-                  accessibility_new
-                </span>
-              </div>
-              <h3 className="text-lg font-bold text-slate-900 mb-2">
-                Fracture Detection
-              </h3>
-              <p className="text-sm text-slate-500 leading-relaxed">
-                Precise identification of bone fractures, dislocations, and
-                joint abnormalities using high-resolution X-rays.
-              </p>
-            </div>
-            <div
-              className="p-6 rounded-2xl shadow-sm hover:shadow-md transition-shadow border"
-              style={{
-                backgroundColor: "var(--color-surface)",
-                borderColor: "var(--color-border)",
-              }}
-            >
-              <div className="w-12 h-12 bg-purple-50 rounded-xl flex items-center justify-center text-purple-500 mb-4">
-                <span className="material-icons text-2xl">biotech</span>
-              </div>
-              <h3 className="text-lg font-bold text-slate-900 mb-2">
-                Tumor Screening
-              </h3>
-              <p className="text-sm text-slate-500 leading-relaxed">
-                Early detection and staging of tumors in soft tissues and organs
-                through advanced MRI and CT scanning.
-              </p>
-            </div>
-            <div
-              className="p-6 rounded-2xl shadow-sm hover:shadow-md transition-shadow border"
-              style={{
-                backgroundColor: "var(--color-surface)",
-                borderColor: "var(--color-border)",
-              }}
-            >
-              <div className="w-12 h-12 bg-red-50 rounded-xl flex items-center justify-center text-red-500 mb-4">
-                <span className="material-icons text-2xl">favorite</span>
-              </div>
-              <h3 className="text-lg font-bold text-slate-900 mb-2">
-                Cardiovascular Imaging
-              </h3>
-              <p className="text-sm text-slate-500 leading-relaxed">
-                Detailed visualization of heart structure and blood flow to
-                identify blockages and heart conditions.
-              </p>
-            </div>
-            <div
-              className="p-6 rounded-2xl shadow-sm hover:shadow-md transition-shadow border"
-              style={{
-                backgroundColor: "var(--color-surface)",
-                borderColor: "var(--color-border)",
-              }}
-            >
-              <div className="w-12 h-12 bg-teal-50 rounded-xl flex items-center justify-center text-teal-500 mb-4">
-                <span className="material-icons text-2xl">healing</span>
-              </div>
-              <h3 className="text-lg font-bold text-slate-900 mb-2">
-                Organ Health
-              </h3>
-              <p className="text-sm text-slate-500 leading-relaxed">
-                Comprehensive assessment of internal organs including liver,
-                kidneys, and lungs for function and pathology.
-              </p>
-            </div>
+            {[
+              {
+                title: "Fracture Detection",
+                icon: "accessibility_new",
+                color: "orange",
+                desc: "Precise identification of bone fractures, dislocations, and joint abnormalities using high-resolution X-rays.",
+              },
+              {
+                title: "Tumor Screening",
+                icon: "biotech",
+                color: "purple",
+                desc: "Early detection and staging of tumors in soft tissues and organs through advanced MRI and CT scanning.",
+              },
+              {
+                title: "Cardiovascular Imaging",
+                icon: "favorite",
+                color: "red",
+                desc: "Detailed visualization of heart structure and blood flow to identify blockages and heart conditions.",
+              },
+              {
+                title: "Organ Health",
+                icon: "teal",
+                color: "teal",
+                desc: "Comprehensive assessment of internal organs including liver, kidneys, and lungs for function and pathology.",
+              },
+            ].map((item, i) => (
+              <Reveal key={i} delay={i * 100} threshold={0.1}>
+                <div
+                  className="p-6 rounded-2xl shadow-sm hover:shadow-md transition-shadow border h-full"
+                  style={{
+                    backgroundColor: "var(--color-surface)",
+                    borderColor: "var(--color-border)",
+                  }}
+                >
+                  <div
+                    className={`w-12 h-12 bg-${item.color}-50 rounded-xl flex items-center justify-center text-${item.color}-500 mb-4`}
+                  >
+                    <span className="material-icons text-2xl">{item.icon}</span>
+                  </div>
+                  <h3 className="text-lg font-bold text-slate-900 mb-2">
+                    {item.title}
+                  </h3>
+                  <p className="text-sm text-slate-500 leading-relaxed">
+                    {item.desc}
+                  </p>
+                </div>
+              </Reveal>
+            ))}
           </div>
         </div>
       </section>
@@ -446,176 +441,78 @@ const Imaging: React.FC = () => {
             </div>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div
-              className="flex gap-6 p-6 rounded-2xl border hover:border-primary/30 hover:shadow-soft transition-all duration-300 group"
-              style={{
-                backgroundColor: "var(--color-surface)",
-                borderColor: "var(--color-border)",
-              }}
-            >
-              <div className="flex-shrink-0">
+            {[
+              {
+                title: "Digital X-Ray",
+                icon: "image",
+                color: "primary",
+                desc: "High-resolution digital radiography for quick and accurate assessment of bones and chest with minimal radiation exposure.",
+                items: ["Instant Results", "Low Dose Radiation"],
+              },
+              {
+                title: "3D Mammography",
+                icon: "female",
+                color: "pink-500",
+                desc: "Advanced tomosynthesis technology that provides a three-dimensional view of breast tissue for earlier cancer detection.",
+                items: ["Increased Accuracy", "Comfortable Design"],
+              },
+              {
+                title: "MRI (Magnetic Resonance Imaging)",
+                icon: "all_inclusive",
+                color: "indigo-500",
+                desc: "Detailed imaging of soft tissues, organs, and the nervous system using strong magnetic fields and radio waves.",
+                items: ["Wide-Bore Options", "Contrast Enhanced"],
+              },
+              {
+                title: "CT Scans (Computed Tomography)",
+                icon: "donut_large",
+                color: "blue-500",
+                desc: "Cross-sectional images of the body used to diagnose complex conditions, guide biopsies, and monitor treatment effectiveness.",
+                items: ["64-Slice Technology", "Low-Dose Protocols"],
+              },
+            ].map((service, i) => (
+              <Reveal key={i} delay={i * 100} threshold={0.1}>
                 <div
-                  className="w-16 h-16 rounded-xl flex items-center justify-center shadow-sm text-primary group-hover:bg-primary group-hover:text-white transition-colors duration-300"
-                  style={{ backgroundColor: "var(--color-surface)" }}
+                  className="flex gap-6 p-6 rounded-2xl border hover:border-primary/30 hover:shadow-soft transition-all duration-300 group h-full"
+                  style={{
+                    backgroundColor: "var(--color-surface)",
+                    borderColor: "var(--color-border)",
+                  }}
                 >
-                  <span className="material-icons text-3xl">image</span>
+                  <div className="shrink-0">
+                    <div
+                      className={`w-16 h-16 rounded-xl flex items-center justify-center shadow-sm text-${service.color === "primary" ? "primary" : service.color} group-hover:bg-primary group-hover:text-white transition-colors duration-300`}
+                      style={{ backgroundColor: "var(--color-surface)" }}
+                    >
+                      <span className="material-icons text-3xl">
+                        {service.icon}
+                      </span>
+                    </div>
+                  </div>
+                  <div>
+                    <h3
+                      className="text-xl font-bold mb-2"
+                      style={{ color: "var(--color-text)" }}
+                    >
+                      {service.title}
+                    </h3>
+                    <p className="text-slate-600 text-sm mb-4 leading-relaxed">
+                      {service.desc}
+                    </p>
+                    <ul className="text-sm space-y-1 text-slate-500">
+                      {service.items.map((item, idx) => (
+                        <li key={idx} className="flex items-center gap-2">
+                          <span className="material-icons text-green-500 text-xs">
+                            check
+                          </span>{" "}
+                          {item}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
                 </div>
-              </div>
-              <div>
-                <h3
-                  className="text-xl font-bold mb-2"
-                  style={{ color: "var(--color-text)" }}
-                >
-                  Digital X-Ray
-                </h3>
-                <p className="text-slate-600 text-sm mb-4 leading-relaxed">
-                  High-resolution digital radiography for quick and accurate
-                  assessment of bones and chest with minimal radiation exposure.
-                </p>
-                <ul className="text-sm space-y-1 text-slate-500">
-                  <li className="flex items-center gap-2">
-                    <span className="material-icons text-green-500 text-xs">
-                      check
-                    </span>{" "}
-                    Instant Results
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <span className="material-icons text-green-500 text-xs">
-                      check
-                    </span>{" "}
-                    Low Dose Radiation
-                  </li>
-                </ul>
-              </div>
-            </div>
-            <div
-              className="flex gap-6 p-6 rounded-2xl border hover:border-primary/30 hover:shadow-soft transition-all duration-300 group"
-              style={{
-                backgroundColor: "var(--color-surface)",
-                borderColor: "var(--color-border)",
-              }}
-            >
-              <div className="flex-shrink-0">
-                <div
-                  className="w-16 h-16 rounded-xl flex items-center justify-center shadow-sm text-pink-500 group-hover:bg-primary group-hover:text-white transition-colors duration-300"
-                  style={{ backgroundColor: "var(--color-surface)" }}
-                >
-                  <span className="material-icons text-3xl">female</span>
-                </div>
-              </div>
-              <div>
-                <h3
-                  className="text-xl font-bold mb-2"
-                  style={{ color: "var(--color-text)" }}
-                >
-                  3D Mammography
-                </h3>
-                <p className="text-slate-600 text-sm mb-4 leading-relaxed">
-                  Advanced tomosynthesis technology that provides a
-                  three-dimensional view of breast tissue for earlier cancer
-                  detection.
-                </p>
-                <ul className="text-sm space-y-1 text-slate-500">
-                  <li className="flex items-center gap-2">
-                    <span className="material-icons text-green-500 text-xs">
-                      check
-                    </span>{" "}
-                    Increased Accuracy
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <span className="material-icons text-green-500 text-xs">
-                      check
-                    </span>{" "}
-                    Comfortable Design
-                  </li>
-                </ul>
-              </div>
-            </div>
-            <div
-              className="flex gap-6 p-6 rounded-2xl border hover:border-primary/30 hover:shadow-soft transition-all duration-300 group"
-              style={{
-                backgroundColor: "var(--color-surface)",
-                borderColor: "var(--color-border)",
-              }}
-            >
-              <div className="flex-shrink-0">
-                <div
-                  className="w-16 h-16 rounded-xl flex items-center justify-center shadow-sm text-indigo-500 group-hover:bg-primary group-hover:text-white transition-colors duration-300"
-                  style={{ backgroundColor: "var(--color-surface)" }}
-                >
-                  <span className="material-icons text-3xl">all_inclusive</span>
-                </div>
-              </div>
-              <div>
-                <h3
-                  className="text-xl font-bold mb-2"
-                  style={{ color: "var(--color-text)" }}
-                >
-                  MRI (Magnetic Resonance Imaging)
-                </h3>
-                <p className="text-slate-600 text-sm mb-4 leading-relaxed">
-                  Detailed imaging of soft tissues, organs, and the nervous
-                  system using strong magnetic fields and radio waves.
-                </p>
-                <ul className="text-sm space-y-1 text-slate-500">
-                  <li className="flex items-center gap-2">
-                    <span className="material-icons text-green-500 text-xs">
-                      check
-                    </span>{" "}
-                    Wide-Bore Options
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <span className="material-icons text-green-500 text-xs">
-                      check
-                    </span>{" "}
-                    Contrast Enhanced
-                  </li>
-                </ul>
-              </div>
-            </div>
-            <div
-              className="flex gap-6 p-6 rounded-2xl border hover:border-primary/30 hover:shadow-soft transition-all duration-300 group"
-              style={{
-                backgroundColor: "var(--color-surface)",
-                borderColor: "var(--color-border)",
-              }}
-            >
-              <div className="flex-shrink-0">
-                <div
-                  className="w-16 h-16 rounded-xl flex items-center justify-center shadow-sm text-blue-500 group-hover:bg-primary group-hover:text-white transition-colors duration-300"
-                  style={{ backgroundColor: "var(--color-surface)" }}
-                >
-                  <span className="material-icons text-3xl">donut_large</span>
-                </div>
-              </div>
-              <div>
-                <h3
-                  className="text-xl font-bold mb-2"
-                  style={{ color: "var(--color-text)" }}
-                >
-                  CT Scans (Computed Tomography)
-                </h3>
-                <p className="text-slate-600 text-sm mb-4 leading-relaxed">
-                  Cross-sectional images of the body used to diagnose complex
-                  conditions, guide biopsies, and monitor treatment
-                  effectiveness.
-                </p>
-                <ul className="text-sm space-y-1 text-slate-500">
-                  <li className="flex items-center gap-2">
-                    <span className="material-icons text-green-500 text-xs">
-                      check
-                    </span>{" "}
-                    64-Slice Technology
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <span className="material-icons text-green-500 text-xs">
-                      check
-                    </span>{" "}
-                    Low-Dose Protocols
-                  </li>
-                </ul>
-              </div>
-            </div>
+              </Reveal>
+            ))}
           </div>
         </div>
       </section>
@@ -657,43 +554,44 @@ const Imaging: React.FC = () => {
                 img: "/images/doctors/team-dr-emily-chen.jpg",
               },
             ].map((doc, i) => (
-              <div
-                key={i}
-                className="rounded-2xl overflow-hidden shadow-card hover:shadow-xl transition-all duration-300 group"
-                style={{ backgroundColor: "var(--color-surface)" }}
-              >
-                <div className="h-64 overflow-hidden relative">
-                  <img
-                    src={doc.img}
-                    alt={doc.name}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-4">
-                    <button
-                      onClick={() =>
-                        openAppointment({
-                          doctorName: doc.name,
-                          department: "Radiology",
-                        })
-                      }
-                      className="text-white bg-primary hover:bg-primary-dark px-4 py-2 rounded-full text-sm font-medium"
+              <Reveal key={i} delay={i * 100} threshold={0.1}>
+                <div
+                  className="rounded-2xl overflow-hidden shadow-card hover:shadow-xl transition-all duration-300 group h-full"
+                  style={{ backgroundColor: "var(--color-surface)" }}
+                >
+                  <div className="h-64 overflow-hidden relative">
+                    <img
+                      src={doc.img}
+                      alt={doc.name}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                    <div className="absolute inset-0 bg-linear-to-t from-slate-900/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-4">
+                      <button
+                        onClick={() =>
+                          openAppointment({
+                            doctorName: doc.name,
+                            department: "Radiology",
+                          })
+                        }
+                        className="text-white bg-primary hover:bg-primary-dark px-4 py-2 rounded-full text-sm font-medium"
+                      >
+                        Book Appointment
+                      </button>
+                    </div>
+                  </div>
+                  <div className="p-6 text-center">
+                    <h3
+                      className="text-xl font-bold"
+                      style={{ color: "var(--color-text)" }}
                     >
-                      Book Appointment
-                    </button>
+                      {doc.name}
+                    </h3>
+                    <p className="text-primary font-medium text-sm mb-3">
+                      {doc.role}
+                    </p>
                   </div>
                 </div>
-                <div className="p-6 text-center">
-                  <h3
-                    className="text-xl font-bold"
-                    style={{ color: "var(--color-text)" }}
-                  >
-                    {doc.name}
-                  </h3>
-                  <p className="text-primary font-medium text-sm mb-3">
-                    {doc.role}
-                  </p>
-                </div>
-              </div>
+              </Reveal>
             ))}
           </div>
         </div>
@@ -727,34 +625,37 @@ const Imaging: React.FC = () => {
         </div>
 
         <div className="container mx-auto px-6 relative z-10 text-center">
-          <div className="max-w-4xl mx-auto">
-            <span className="inline-block py-1 px-3 rounded-full bg-white/10 border border-white/20 text-white text-xs font-bold tracking-wider uppercase mb-6 backdrop-blur-md">
-              Precise Diagnostics
-            </span>
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-white mb-6 leading-tight">
-              Ready for Your <br />
-              <span style={{ color: "var(--color-cta-accent)" }}>Scan?</span>
-            </h2>
-            <p className="text-white/80 text-lg md:text-xl mb-10 leading-relaxed max-w-2xl mx-auto">
-              Whether you need a routine screening or a complex diagnostic
-              procedure, our radiology team is here to provide exceptional care.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button
-                onClick={() => openAppointment({ department: "Radiology" })}
-                className="inline-flex items-center justify-center px-8 py-4 text-lg font-bold bg-white rounded-full shadow-xl transition-all hover:scale-105"
-                style={{ color: "var(--color-cta-from)" }}
-              >
-                Request Appointment
-              </button>
-              <Link
-                to="/contact"
-                className="inline-flex items-center justify-center px-8 py-4 text-lg font-bold text-white border border-white/30 rounded-full hover:bg-white/10 backdrop-blur-sm transition-all"
-              >
-                Doctor Referrals
-              </Link>
+          <Reveal threshold={0.1}>
+            <div className="max-w-4xl mx-auto">
+              <span className="inline-block py-1 px-3 rounded-full bg-white/10 border border-white/20 text-white text-xs font-bold tracking-wider uppercase mb-6 backdrop-blur-md">
+                Precise Diagnostics
+              </span>
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-white mb-6 leading-tight">
+                Ready for Your <br />
+                <span style={{ color: "var(--color-cta-accent)" }}>Scan?</span>
+              </h2>
+              <p className="text-white/80 text-lg md:text-xl mb-10 leading-relaxed max-w-2xl mx-auto">
+                Whether you need a routine screening or a complex diagnostic
+                procedure, our radiology team is here to provide exceptional
+                care.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <button
+                  onClick={() => openAppointment({ department: "Radiology" })}
+                  className="inline-flex items-center justify-center px-8 py-4 text-lg font-bold bg-white rounded-full shadow-xl transition-all hover:scale-105"
+                  style={{ color: "var(--color-cta-from)" }}
+                >
+                  Request Appointment
+                </button>
+                <Link
+                  to="/contact"
+                  className="inline-flex items-center justify-center px-8 py-4 text-lg font-bold text-white border border-white/30 rounded-full hover:bg-white/10 backdrop-blur-sm transition-all"
+                >
+                  Doctor Referrals
+                </Link>
+              </div>
             </div>
-          </div>
+          </Reveal>
         </div>
       </section>
     </div>

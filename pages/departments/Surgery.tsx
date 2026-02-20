@@ -2,6 +2,7 @@ import React from "react";
 import { Link, useOutletContext } from "react-router-dom";
 import { OpenAppointmentFunc } from "../../Layout";
 import SEO from "../../components/SEO";
+import Reveal from "../../components/Reveal";
 
 const Surgery: React.FC = () => {
   const { openAppointment } = useOutletContext<{
@@ -27,73 +28,89 @@ const Surgery: React.FC = () => {
         <div className="absolute right-0 top-0 h-full w-1/3 bg-blue-50/50 skew-x-12 translate-x-12"></div>
         <div className="container mx-auto px-6 relative z-10">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <span className="inline-block px-3 py-1 mb-4 text-xs font-bold tracking-wider text-blue-600 uppercase bg-blue-50 rounded-full">
-                Surgery Department
-              </span>
-              <h1 className="text-4xl lg:text-5xl font-serif font-bold text-slate-900 mb-6 leading-tight">
-                Precision Surgical{" "}
-                <span className="text-primary">Excellence</span>
-              </h1>
-              <p className="text-lg text-slate-600 leading-relaxed mb-8 max-w-xl">
-                Our Surgery Department combines world-class surgeons with
-                cutting-edge technology to deliver precise, minimally invasive,
-                and effective surgical care tailored to your needs.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4">
-                <button
-                  onClick={() => openAppointment({ department: "Surgery" })}
-                  className="inline-flex items-center justify-center px-6 py-3 text-sm font-semibold text-white transition-all duration-200 bg-primary rounded-lg hover:bg-primary-dark shadow-soft hover:shadow-lg hover:-translate-y-0.5"
-                >
-                  Book Consultation
-                </button>
-                <button
-                  onClick={(e) => scrollToSection(e, "specialists")}
-                  className="inline-flex items-center justify-center px-6 py-3 text-sm font-semibold text-slate-700 transition-all duration-200 bg-white border border-slate-200 rounded-lg hover:bg-slate-50"
-                >
-                  Meet Our Surgeons
-                </button>
-              </div>
+            <div className="max-w-2xl">
+              <Reveal delay={0}>
+                <span className="inline-block px-3 py-1 mb-4 text-xs font-bold tracking-wider text-blue-600 uppercase bg-blue-50 rounded-full">
+                  Surgery Department
+                </span>
+              </Reveal>
+              <Reveal delay={100}>
+                <h1 className="text-4xl lg:text-5xl font-serif font-bold text-slate-900 mb-6 leading-tight">
+                  Precision Surgical{" "}
+                  <span className="text-primary">Excellence</span>
+                </h1>
+              </Reveal>
+              <Reveal delay={200}>
+                <p className="text-lg text-slate-600 leading-relaxed mb-8 max-w-xl">
+                  Our Surgery Department combines world-class surgeons with
+                  cutting-edge technology to deliver precise, minimally
+                  invasive, and effective surgical care tailored to your needs.
+                </p>
+              </Reveal>
+              <Reveal delay={300}>
+                <div className="flex flex-col sm:flex-row gap-4">
+                  <button
+                    onClick={() => openAppointment({ department: "Surgery" })}
+                    className="inline-flex items-center justify-center px-6 py-3 text-sm font-semibold text-white transition-all duration-200 bg-primary rounded-lg hover:bg-primary-dark shadow-soft hover:shadow-lg hover:-translate-y-0.5"
+                  >
+                    Book Consultation
+                  </button>
+                  <button
+                    onClick={(e) => scrollToSection(e, "specialists")}
+                    className="inline-flex items-center justify-center px-6 py-3 text-sm font-semibold text-slate-700 transition-all duration-200 bg-white border border-slate-200 rounded-lg hover:bg-slate-50"
+                  >
+                    Meet Our Surgeons
+                  </button>
+                </div>
+              </Reveal>
             </div>
-            <div className="relative hidden lg:flex w-full justify-center">
-              <div className="relative z-10 rounded-2xl overflow-hidden shadow-2xl border-4 border-white transform rotate-2 hover:rotate-0 transition-transform duration-500 max-h-[450px] w-full max-w-lg">
-                <img
-                  src="/images/hero/home-hero-3.jpg"
-                  alt="Advanced Surgery Room"
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <div className="absolute -bottom-6 -left-6 z-20 bg-white p-4 rounded-xl shadow-xl border border-slate-100 max-w-xs">
-                <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 flex items-center justify-center bg-green-100 rounded-full text-green-600">
-                    <span className="material-icons">verified_user</span>
-                  </div>
-                  <div>
-                    <p className="text-sm font-bold text-slate-900">
-                      99% Success Rate
-                    </p>
-                    <p className="text-xs text-slate-500">
-                      In Minimally Invasive Procedures
-                    </p>
+            <Reveal
+              from="right"
+              threshold={0.1}
+              className="relative hidden lg:flex w-full justify-center"
+            >
+              <div className="relative">
+                <div className="relative z-10 rounded-2xl overflow-hidden shadow-2xl border-4 border-white transform rotate-2 hover:rotate-0 transition-transform duration-500 max-h-[450px] w-full max-w-lg">
+                  <img
+                    src="/images/hero/home-hero-3.jpg"
+                    alt="Advanced Surgery Room"
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <div className="absolute -bottom-6 -left-6 z-20 bg-white p-4 rounded-xl shadow-xl border border-slate-100 max-w-xs transition-all duration-500 animate-fade-in">
+                  <div className="flex items-center gap-4">
+                    <div className="w-12 h-12 flex items-center justify-center bg-green-100 rounded-full text-green-600">
+                      <span className="material-icons">verified_user</span>
+                    </div>
+                    <div>
+                      <p className="text-sm font-bold text-slate-900">
+                        99% Success Rate
+                      </p>
+                      <p className="text-xs text-slate-500">
+                        In Minimally Invasive Procedures
+                      </p>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
+            </Reveal>
           </div>
         </div>
       </header>
 
       <section className="py-20 bg-slate-50 relative">
         <div className="container mx-auto px-6">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl font-serif font-bold text-slate-900 mb-4">
-              Conditions We Treat
-            </h2>
-            <p className="text-slate-600 max-w-2xl mx-auto">
-              We provide comprehensive surgical solutions for a wide range of
-              medical conditions.
-            </p>
-          </div>
+          <Reveal threshold={0.1}>
+            <div className="text-center mb-16">
+              <h2 className="text-3xl font-serif font-bold text-slate-900 mb-4">
+                Conditions We Treat
+              </h2>
+              <p className="text-slate-600 max-w-2xl mx-auto">
+                We provide comprehensive surgical solutions for a wide range of
+                medical conditions.
+              </p>
+            </div>
+          </Reveal>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
               {
@@ -121,20 +138,19 @@ const Surgery: React.FC = () => {
                 desc: "Critical care surgery for injuries resulting from accidents and emergencies.",
               },
             ].map((item, i) => (
-              <div
-                key={i}
-                className="bg-white p-6 rounded-xl shadow-sm border border-slate-100 hover:shadow-md transition-shadow"
-              >
-                <div
-                  className={`w-12 h-12 bg-${item.color}-100 text-${item.color}-600 rounded-lg flex items-center justify-center mb-4`}
-                >
-                  <span className="material-icons">{item.icon}</span>
+              <Reveal key={i} delay={i * 100} threshold={0.1}>
+                <div className="bg-white p-6 rounded-xl shadow-sm border border-slate-100 hover:shadow-md transition-shadow h-full">
+                  <div
+                    className={`w-12 h-12 bg-${item.color}-100 text-${item.color}-600 rounded-lg flex items-center justify-center mb-4`}
+                  >
+                    <span className="material-icons">{item.icon}</span>
+                  </div>
+                  <h3 className="text-lg font-bold text-slate-900 mb-2">
+                    {item.title}
+                  </h3>
+                  <p className="text-sm text-slate-500">{item.desc}</p>
                 </div>
-                <h3 className="text-lg font-bold text-slate-900 mb-2">
-                  {item.title}
-                </h3>
-                <p className="text-sm text-slate-500">{item.desc}</p>
-              </div>
+              </Reveal>
             ))}
           </div>
         </div>
@@ -143,19 +159,25 @@ const Surgery: React.FC = () => {
       <section className="py-20 bg-white">
         <div className="container mx-auto px-6">
           <div className="flex flex-col lg:flex-row gap-16 items-start">
-            <div className="lg:w-1/3 lg:sticky lg:top-24 self-start">
-              <span className="text-primary font-bold tracking-wider text-sm uppercase mb-2 block">
-                Our Expertise
-              </span>
-              <h2 className="text-3xl md:text-4xl font-serif font-bold text-slate-900 mb-6">
-                Services & Procedures
-              </h2>
-              <p className="text-slate-600 mb-8 leading-relaxed">
-                We specialize in a broad spectrum of surgical procedures,
-                prioritizing patient safety and recovery speed through
-                innovation.
-              </p>
-            </div>
+            <Reveal
+              from="left"
+              threshold={0.1}
+              className="lg:w-1/3 lg:sticky lg:top-24 self-start"
+            >
+              <div>
+                <span className="text-primary font-bold tracking-wider text-sm uppercase mb-2 block">
+                  Our Expertise
+                </span>
+                <h2 className="text-3xl md:text-4xl font-serif font-bold text-slate-900 mb-6">
+                  Services & Procedures
+                </h2>
+                <p className="text-slate-600 mb-8 leading-relaxed">
+                  We specialize in a broad spectrum of surgical procedures,
+                  prioritizing patient safety and recovery speed through
+                  innovation.
+                </p>
+              </div>
+            </Reveal>
             <div className="lg:w-2/3 grid md:grid-cols-2 gap-8">
               {[
                 {
@@ -179,21 +201,23 @@ const Surgery: React.FC = () => {
                   icon: "monitor_heart",
                 },
               ].map((service, i) => (
-                <div key={i} className="group">
-                  <div className="h-full bg-slate-50 p-8 rounded-2xl border border-slate-100 hover:border-primary/30 transition-colors">
-                    <div className="mb-4 inline-block p-3 bg-white rounded-lg shadow-sm group-hover:bg-primary group-hover:text-white transition-colors text-primary">
-                      <span className="material-icons text-2xl">
-                        {service.icon}
-                      </span>
+                <Reveal key={i} delay={i * 100} threshold={0.1}>
+                  <div className="group h-full">
+                    <div className="h-full bg-slate-50 p-8 rounded-2xl border border-slate-100 hover:border-primary/30 transition-colors">
+                      <div className="mb-4 inline-block p-3 bg-white rounded-lg shadow-sm group-hover:bg-primary group-hover:text-white transition-colors text-primary">
+                        <span className="material-icons text-2xl">
+                          {service.icon}
+                        </span>
+                      </div>
+                      <h3 className="text-xl font-bold text-slate-900 mb-3">
+                        {service.title}
+                      </h3>
+                      <p className="text-slate-500 leading-relaxed">
+                        {service.desc}
+                      </p>
                     </div>
-                    <h3 className="text-xl font-bold text-slate-900 mb-3">
-                      {service.title}
-                    </h3>
-                    <p className="text-slate-500 leading-relaxed">
-                      {service.desc}
-                    </p>
                   </div>
-                </div>
+                </Reveal>
               ))}
             </div>
           </div>
@@ -210,80 +234,84 @@ const Surgery: React.FC = () => {
         ></div>
         <div className="container mx-auto px-6 relative z-10">
           <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div className="order-2 md:order-1">
+            <Reveal from="left" threshold={0.1} className="order-2 md:order-1">
               <img
                 src="/images/surgery-body-1.jpg"
                 alt="Robotic Surgery"
-                className="rounded-2xl shadow-2xl border border-slate-700"
+                className="rounded-2xl shadow-2xl border border-slate-700 w-full"
               />
-            </div>
-            <div className="order-1 md:order-2">
-              <span className="text-primary font-bold tracking-wider text-sm uppercase mb-2 block">
-                Our Technology
-              </span>
-              <h2 className="text-3xl md:text-4xl font-bold mb-6">
-                Advanced Surgical Technology
-              </h2>
-              <p className="text-slate-300 mb-8 leading-relaxed">
-                We invest in the latest surgical innovations to provide safer,
-                more accurate, and less invasive treatments for our patients.
-              </p>
-              <div className="space-y-6">
-                <div className="flex gap-4">
-                  <div className="flex-shrink-0 w-12 h-12 bg-slate-800 rounded-full flex items-center justify-center text-primary">
-                    <span className="material-icons">
-                      precision_manufacturing
-                    </span>
+            </Reveal>
+            <Reveal from="right" threshold={0.1} className="order-1 md:order-2">
+              <div>
+                <span className="text-primary font-bold tracking-wider text-sm uppercase mb-2 block">
+                  Our Technology
+                </span>
+                <h2 className="text-3xl md:text-4xl font-bold mb-6">
+                  Advanced Surgical Technology
+                </h2>
+                <p className="text-slate-300 mb-8 leading-relaxed">
+                  We invest in the latest surgical innovations to provide safer,
+                  more accurate, and less invasive treatments for our patients.
+                </p>
+                <div className="space-y-6">
+                  <div className="flex gap-4 group">
+                    <div className="shrink-0 w-12 h-12 bg-slate-800 rounded-full flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-colors duration-300">
+                      <span className="material-icons">
+                        precision_manufacturing
+                      </span>
+                    </div>
+                    <div>
+                      <h4 className="text-xl font-bold mb-2">
+                        Robotic Surgical Systems
+                      </h4>
+                      <p className="text-slate-600 text-sm">
+                        Enhanced precision and control for complex procedures,
+                        reducing recovery times significantly.
+                      </p>
+                    </div>
                   </div>
-                  <div>
-                    <h4 className="text-xl font-bold mb-2">
-                      Robotic Surgical Systems
-                    </h4>
-                    <p className="text-slate-600 text-sm">
-                      Enhanced precision and control for complex procedures,
-                      reducing recovery times significantly.
-                    </p>
-                  </div>
-                </div>
-                <div className="flex gap-4">
-                  <div className="flex-shrink-0 w-12 h-12 bg-slate-800 rounded-full flex items-center justify-center text-primary">
-                    <span className="material-icons">hd</span>
-                  </div>
-                  <div>
-                    <h4 className="text-xl font-bold mb-2">
-                      High-Definition Imaging
-                    </h4>
-                    <p className="text-slate-600 text-sm">
-                      Real-time, crystal-clear visualization of internal anatomy
-                      during laparoscopic procedures.
-                    </p>
+                  <div className="flex gap-4 group">
+                    <div className="shrink-0 w-12 h-12 bg-slate-800 rounded-full flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-colors duration-300">
+                      <span className="material-icons">hd</span>
+                    </div>
+                    <div>
+                      <h4 className="text-xl font-bold mb-2">
+                        High-Definition Imaging
+                      </h4>
+                      <p className="text-slate-600 text-sm">
+                        Real-time, crystal-clear visualization of internal
+                        anatomy during laparoscopic procedures.
+                      </p>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
+            </Reveal>
           </div>
         </div>
       </section>
 
       <section className="py-20 bg-slate-50" id="specialists">
         <div className="container mx-auto px-6">
-          <div className="flex justify-between items-end mb-12">
-            <div>
-              <span className="text-primary font-semibold tracking-wider text-sm uppercase block mb-2">
-                Our Team
-              </span>
-              <h2 className="text-3xl lg:text-4xl font-serif font-bold text-slate-900">
-                Meet Our Surgeons
-              </h2>
+          <Reveal threshold={0.1}>
+            <div className="flex justify-between items-end mb-12">
+              <div>
+                <span className="text-primary font-semibold tracking-wider text-sm uppercase block mb-2">
+                  Our Team
+                </span>
+                <h2 className="text-3xl lg:text-4xl font-serif font-bold text-slate-900">
+                  Meet Our Surgeons
+                </h2>
+              </div>
+              <Link
+                to="/doctors"
+                className="hidden md:flex items-center gap-2 text-primary font-semibold hover:text-primary-dark transition-colors"
+              >
+                View All Doctors{" "}
+                <span className="material-icons text-sm">arrow_forward</span>
+              </Link>
             </div>
-            <Link
-              to="/doctors"
-              className="hidden md:flex items-center gap-2 text-primary font-semibold hover:text-primary-dark transition-colors"
-            >
-              View All Doctors{" "}
-              <span className="material-icons text-sm">arrow_forward</span>
-            </Link>
-          </div>
+          </Reveal>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
               {
@@ -302,46 +330,45 @@ const Surgery: React.FC = () => {
                 img: "/images/doctors/team-dr-nikita-davis.jpg",
               },
             ].map((doc, i) => (
-              <div
-                key={i}
-                className="bg-white rounded-2xl overflow-hidden shadow-card hover:shadow-xl transition-all duration-300 group"
-              >
-                <div className="h-64 overflow-hidden relative">
-                  <img
-                    src={doc.img}
-                    alt={doc.name}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-4">
-                    <button
-                      onClick={() =>
-                        openAppointment({
-                          doctorName: doc.name,
-                          department: "Surgery",
-                        })
-                      }
-                      className="text-white bg-primary hover:bg-primary-dark px-4 py-2 rounded-full text-sm font-medium"
-                    >
-                      Book Appointment
-                    </button>
+              <Reveal key={i} delay={i * 100} threshold={0.1}>
+                <div className="bg-white rounded-2xl overflow-hidden shadow-card hover:shadow-xl transition-all duration-300 group h-full">
+                  <div className="h-64 overflow-hidden relative">
+                    <img
+                      src={doc.img}
+                      alt={doc.name}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                    <div className="absolute inset-0 bg-linear-to-t from-slate-900/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-4">
+                      <button
+                        onClick={() =>
+                          openAppointment({
+                            doctorName: doc.name,
+                            department: "Surgery",
+                          })
+                        }
+                        className="text-white bg-primary hover:bg-primary-dark px-4 py-2 rounded-full text-sm font-medium"
+                      >
+                        Book Appointment
+                      </button>
+                    </div>
+                  </div>
+                  <div className="p-6 text-center">
+                    <h3 className="text-xl font-bold text-slate-900">
+                      {doc.name}
+                    </h3>
+                    <p className="text-primary font-medium text-sm mb-3">
+                      {doc.role}
+                    </p>
                   </div>
                 </div>
-                <div className="p-6 text-center">
-                  <h3 className="text-xl font-bold text-slate-900">
-                    {doc.name}
-                  </h3>
-                  <p className="text-primary font-medium text-sm mb-3">
-                    {doc.role}
-                  </p>
-                </div>
-              </div>
+              </Reveal>
             ))}
           </div>
         </div>
       </section>
 
       <section className="py-24 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-slate-800 to-slate-900"></div>
+        <div className="absolute inset-0 bg-linear-to-br from-slate-800 to-slate-900"></div>
         <div
           className="absolute inset-0 opacity-10"
           style={{
@@ -363,31 +390,39 @@ const Surgery: React.FC = () => {
 
         <div className="container mx-auto px-6 relative z-10 text-center">
           <div className="max-w-4xl mx-auto">
-            <span className="inline-block py-1 px-3 rounded-full bg-white/10 border border-white/20 text-white text-xs font-bold tracking-wider uppercase mb-6 backdrop-blur-md">
-              Expert Surgical Care
-            </span>
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-white mb-6 leading-tight">
-              Ready for Your <br />
-              <span className="text-blue-300">Consultation?</span>
-            </h2>
-            <p className="text-blue-100 text-lg md:text-xl mb-10 leading-relaxed max-w-2xl mx-auto">
-              Take the first step towards better health. Our surgical team is
-              ready to provide you with a personalized treatment plan.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button
-                onClick={() => openAppointment({ department: "Surgery" })}
-                className="inline-flex items-center justify-center px-8 py-4 text-lg font-bold text-slate-900 bg-white rounded-full hover:bg-blue-50 shadow-xl shadow-blue-900/20 transition-all hover:scale-105"
-              >
-                Book Consultation
-              </button>
-              <Link
-                to="/contact"
-                className="inline-flex items-center justify-center px-8 py-4 text-lg font-bold text-white border border-white/30 rounded-full hover:bg-white/10 backdrop-blur-sm transition-all"
-              >
-                Contact Department
-              </Link>
-            </div>
+            <Reveal delay={0}>
+              <span className="inline-block py-1 px-3 rounded-full bg-white/10 border border-white/20 text-white text-xs font-bold tracking-wider uppercase mb-6 backdrop-blur-md">
+                Expert Surgical Care
+              </span>
+            </Reveal>
+            <Reveal delay={100}>
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-white mb-6 leading-tight">
+                Ready for Your <br />
+                <span className="text-blue-300">Consultation?</span>
+              </h2>
+            </Reveal>
+            <Reveal delay={200}>
+              <p className="text-blue-100 text-lg md:text-xl mb-10 leading-relaxed max-w-2xl mx-auto">
+                Take the first step towards better health. Our surgical team is
+                ready to provide you with a personalized treatment plan.
+              </p>
+            </Reveal>
+            <Reveal delay={300}>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <button
+                  onClick={() => openAppointment({ department: "Surgery" })}
+                  className="inline-flex items-center justify-center px-8 py-4 text-lg font-bold text-slate-900 bg-white rounded-full hover:bg-blue-50 shadow-xl shadow-blue-900/20 transition-all hover:scale-105"
+                >
+                  Book Consultation
+                </button>
+                <Link
+                  to="/contact"
+                  className="inline-flex items-center justify-center px-8 py-4 text-lg font-bold text-white border border-white/30 rounded-full hover:bg-white/10 backdrop-blur-sm transition-all"
+                >
+                  Contact Department
+                </Link>
+              </div>
+            </Reveal>
           </div>
         </div>
       </section>

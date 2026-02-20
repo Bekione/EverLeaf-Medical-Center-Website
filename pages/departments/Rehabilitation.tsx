@@ -2,6 +2,7 @@ import React from "react";
 import { Link, useOutletContext } from "react-router-dom";
 import { OpenAppointmentFunc } from "../../Layout";
 import SEO from "../../components/SEO";
+import Reveal from "../../components/Reveal";
 
 const Rehabilitation: React.FC = () => {
   const { openAppointment } = useOutletContext<{
@@ -28,70 +29,86 @@ const Rehabilitation: React.FC = () => {
         <div className="container mx-auto px-6 relative z-10">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="max-w-2xl">
-              <span className="inline-block px-3 py-1 mb-6 text-xs font-bold tracking-wider text-primary uppercase bg-blue-50 rounded-full">
-                Department of Rehabilitation
-              </span>
-              <h1 className="text-4xl lg:text-5xl font-serif font-bold text-slate-900 mb-6 leading-tight">
-                Expert Rehabilitation & <br />
-                Physical Therapy
-              </h1>
-              <p className="text-lg text-slate-600 leading-relaxed max-w-xl mb-8">
-                Our dedicated team of therapists and specialists help you regain
-                strength, mobility, and independence. We create personalized
-                recovery plans tailored to your specific needs.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4">
-                <button
-                  onClick={(e) => scrollToSection(e, "specialists")}
-                  className="inline-flex items-center justify-center px-6 py-3 text-sm font-semibold text-white transition-all duration-200 bg-primary rounded-lg hover:bg-primary-dark shadow-soft hover:shadow-lg hover:-translate-y-0.5"
-                >
-                  Meet Our Specialists
-                </button>
-                <button
-                  onClick={(e) => scrollToSection(e, "services")}
-                  className="inline-flex items-center justify-center px-6 py-3 text-sm font-semibold text-primary transition-all duration-200 bg-white border border-primary/20 rounded-lg hover:bg-primary/5"
-                >
-                  View Services
-                </button>
-              </div>
+              <Reveal delay={0}>
+                <span className="inline-block px-3 py-1 mb-6 text-xs font-bold tracking-wider text-primary uppercase bg-blue-50 rounded-full">
+                  Department of Rehabilitation
+                </span>
+              </Reveal>
+              <Reveal delay={100}>
+                <h1 className="text-4xl lg:text-5xl font-serif font-bold text-slate-900 mb-6 leading-tight">
+                  Expert Rehabilitation & <br />
+                  Physical Therapy
+                </h1>
+              </Reveal>
+              <Reveal delay={200}>
+                <p className="text-lg text-slate-600 leading-relaxed max-w-xl mb-8">
+                  Our dedicated team of therapists and specialists help you
+                  regain strength, mobility, and independence. We create
+                  personalized recovery plans tailored to your specific needs.
+                </p>
+              </Reveal>
+              <Reveal delay={300}>
+                <div className="flex flex-col sm:flex-row gap-4">
+                  <button
+                    onClick={(e) => scrollToSection(e, "specialists")}
+                    className="inline-flex items-center justify-center px-6 py-3 text-sm font-semibold text-white transition-all duration-200 bg-primary rounded-lg hover:bg-primary-dark shadow-soft hover:shadow-lg hover:-translate-y-0.5"
+                  >
+                    Meet Our Specialists
+                  </button>
+                  <button
+                    onClick={(e) => scrollToSection(e, "services")}
+                    className="inline-flex items-center justify-center px-6 py-3 text-sm font-semibold text-primary transition-all duration-200 bg-white border border-primary/20 rounded-lg hover:bg-primary/5"
+                  >
+                    View Services
+                  </button>
+                </div>
+              </Reveal>
             </div>
-            <div className="relative hidden lg:flex w-full justify-center">
-              <div className="relative z-10 rounded-2xl overflow-hidden shadow-2xl border-4 border-white transform rotate-2 hover:rotate-0 transition-transform duration-500 max-h-[450px] w-full max-w-lg">
-                <img
-                  src="/images/hero/rehabilitation-hero.jpg"
-                  alt="Rehabilitation Session"
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <div className="absolute -bottom-6 -left-6 z-20 bg-white p-4 rounded-xl shadow-xl border border-slate-100 max-w-xs animate-fade-in hidden lg:block">
-                <div className="flex items-center gap-3">
-                  <div className="bg-orange-100 w-12 h-12 flex items-center justify-center rounded-full text-orange-600">
-                    <span className="material-icons text-xl">verified</span>
-                  </div>
-                  <div>
-                    <p className="font-bold text-slate-900 text-xl">98%</p>
-                    <p className="text-xs text-slate-500 uppercase tracking-wide font-semibold">
-                      Recovery Rate
-                    </p>
+            <Reveal
+              from="right"
+              threshold={0.1}
+              className="relative hidden lg:flex w-full justify-center"
+            >
+              <div className="relative">
+                <div className="relative z-10 rounded-2xl overflow-hidden shadow-2xl border-4 border-white transform rotate-2 hover:rotate-0 transition-transform duration-500 max-h-[450px] w-full max-w-lg">
+                  <img
+                    src="/images/hero/rehabilitation-hero.jpg"
+                    alt="Rehabilitation Session"
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <div className="absolute -bottom-6 -left-6 z-20 bg-white p-4 rounded-xl shadow-xl border border-slate-100 max-w-xs animate-fade-in hidden lg:block">
+                  <div className="flex items-center gap-3">
+                    <div className="bg-orange-100 w-12 h-12 flex items-center justify-center rounded-full text-orange-600">
+                      <span className="material-icons text-xl">verified</span>
+                    </div>
+                    <div>
+                      <p className="font-bold text-slate-900 text-xl">98%</p>
+                      <p className="text-xs text-slate-500 uppercase tracking-wide font-semibold">
+                        Recovery Rate
+                      </p>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
+            </Reveal>
           </div>
         </div>
       </header>
 
       <section className="py-20 bg-slate-50">
         <div className="container mx-auto px-6">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl font-serif font-bold text-slate-900 mb-4">
-              Conditions We Treat
-            </h2>
-            <p className="text-slate-600 max-w-2xl mx-auto">
-              We specialize in treating a wide range of conditions to help you
-              return to your daily activities pain-free.
-            </p>
-          </div>
+          <Reveal threshold={0.1}>
+            <div className="text-center mb-16">
+              <h2 className="text-3xl font-serif font-bold text-slate-900 mb-4">
+                Conditions We Treat
+              </h2>
+              <p className="text-slate-600 max-w-2xl mx-auto">
+                We specialize in treating a wide range of conditions to help you
+                return to your daily activities pain-free.
+              </p>
+            </div>
+          </Reveal>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {[
               {
@@ -119,22 +136,21 @@ const Rehabilitation: React.FC = () => {
                 desc: "Management strategies and therapies for back pain, arthritis, fibromyalgia, and other long-term pain conditions.",
               },
             ].map((item, i) => (
-              <div
-                key={i}
-                className="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 hover:shadow-card transition-all duration-300 group"
-              >
-                <div
-                  className={`w-14 h-14 bg-${item.color}-50 rounded-xl flex items-center justify-center text-${item.color}-500 mb-6 group-hover:bg-${item.color}-500 group-hover:text-white transition-colors duration-300`}
-                >
-                  <span className="material-icons text-2xl">{item.icon}</span>
+              <Reveal key={i} delay={i * 100} threshold={0.1}>
+                <div className="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 hover:shadow-card transition-all duration-300 group h-full">
+                  <div
+                    className={`w-14 h-14 bg-${item.color}-50 rounded-xl flex items-center justify-center text-${item.color}-500 mb-6 group-hover:bg-${item.color}-500 group-hover:text-white transition-colors duration-300`}
+                  >
+                    <span className="material-icons text-2xl">{item.icon}</span>
+                  </div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-3">
+                    {item.title}
+                  </h3>
+                  <p className="text-sm text-slate-500 leading-relaxed">
+                    {item.desc}
+                  </p>
                 </div>
-                <h3 className="text-xl font-bold text-slate-900 mb-3">
-                  {item.title}
-                </h3>
-                <p className="text-sm text-slate-500 leading-relaxed">
-                  {item.desc}
-                </p>
-              </div>
+              </Reveal>
             ))}
           </div>
         </div>
@@ -143,19 +159,21 @@ const Rehabilitation: React.FC = () => {
       <section className="py-20 bg-white" id="services">
         <div className="container mx-auto px-6">
           <div className="flex flex-col md:flex-row gap-16 items-start">
-            <div className="w-full md:w-1/3">
-              <span className="text-primary font-bold tracking-wider uppercase text-sm mb-2 block">
-                Our Expertise
-              </span>
-              <h2 className="text-3xl font-serif font-bold text-slate-900 mb-6">
-                Services & Procedures
-              </h2>
-              <p className="text-slate-600 mb-8 leading-relaxed">
-                Our department is equipped with modern facilities and expert
-                staff to provide a full spectrum of rehabilitation services
-                designed for your unique recovery journey.
-              </p>
-            </div>
+            <Reveal from="left" threshold={0.1} className="w-full md:w-1/3">
+              <div>
+                <span className="text-primary font-bold tracking-wider uppercase text-sm mb-2 block">
+                  Our Expertise
+                </span>
+                <h2 className="text-3xl font-serif font-bold text-slate-900 mb-6">
+                  Services & Procedures
+                </h2>
+                <p className="text-slate-600 mb-8 leading-relaxed">
+                  Our department is equipped with modern facilities and expert
+                  staff to provide a full spectrum of rehabilitation services
+                  designed for your unique recovery journey.
+                </p>
+              </div>
+            </Reveal>
             <div className="w-full md:w-2/3">
               <div className="space-y-6">
                 {[
@@ -178,22 +196,21 @@ const Rehabilitation: React.FC = () => {
                     color: "blue",
                   },
                 ].map((service, i) => (
-                  <div
-                    key={i}
-                    className="flex gap-6 p-6 rounded-xl hover:bg-slate-50 transition-colors border border-transparent hover:border-slate-100"
-                  >
-                    <div
-                      className={`shrink-0 w-12 h-12 rounded-full bg-${service.color}-100 text-${service.color}-600 flex items-center justify-center`}
-                    >
-                      <span className="material-icons">{service.icon}</span>
+                  <Reveal key={i} delay={i * 100} threshold={0.1}>
+                    <div className="flex gap-6 p-6 rounded-xl hover:bg-slate-50 transition-colors border border-transparent hover:border-slate-100 group">
+                      <div
+                        className={`shrink-0 w-12 h-12 rounded-full bg-${service.color}-100 text-${service.color}-600 flex items-center justify-center group-hover:bg-${service.color}-500 group-hover:text-white transition-colors duration-300`}
+                      >
+                        <span className="material-icons">{service.icon}</span>
+                      </div>
+                      <div>
+                        <h3 className="text-xl font-bold text-slate-900 mb-2">
+                          {service.title}
+                        </h3>
+                        <p className="text-slate-600 text-sm">{service.desc}</p>
+                      </div>
                     </div>
-                    <div>
-                      <h3 className="text-xl font-bold text-slate-900 mb-2">
-                        {service.title}
-                      </h3>
-                      <p className="text-slate-600 text-sm">{service.desc}</p>
-                    </div>
-                  </div>
+                  </Reveal>
                 ))}
               </div>
             </div>
@@ -204,76 +221,84 @@ const Rehabilitation: React.FC = () => {
       <section className="py-20 bg-slate-50 relative">
         <div className="absolute inset-0 bg-slate-900/5 skew-y-3 transform origin-bottom-right translate-y-20 z-0"></div>
         <div className="container mx-auto px-6 relative z-10">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl font-serif font-bold text-slate-900 mb-4">
-              Advanced Technology
-            </h2>
-            <p className="text-slate-600 max-w-2xl mx-auto">
-              We utilize cutting-edge equipment to accelerate your recovery.
-            </p>
-          </div>
+          <Reveal threshold={0.1}>
+            <div className="text-center mb-16">
+              <h2 className="text-3xl font-serif font-bold text-slate-900 mb-4">
+                Advanced Technology
+              </h2>
+              <p className="text-slate-600 max-w-2xl mx-auto">
+                We utilize cutting-edge equipment to accelerate your recovery.
+              </p>
+            </div>
+          </Reveal>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            <div className="bg-white rounded-2xl overflow-hidden shadow-lg group">
-              <div className="h-48 overflow-hidden relative">
-                <div className="absolute inset-0 bg-slate-900/20 group-hover:bg-slate-900/10 transition-colors"></div>
-                <img
-                  src="/images/rehabilitation-body-1.jpg"
-                  alt="Advanced Mobility Aids"
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                />
+            <Reveal from="left" threshold={0.1}>
+              <div className="bg-white rounded-2xl overflow-hidden shadow-lg group h-full">
+                <div className="h-48 overflow-hidden relative">
+                  <div className="absolute inset-0 bg-slate-900/20 group-hover:bg-slate-900/10 transition-colors"></div>
+                  <img
+                    src="/images/rehabilitation-body-1.jpg"
+                    alt="Advanced Mobility Aids"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                </div>
+                <div className="p-8">
+                  <h3 className="text-xl font-bold text-slate-900 mb-3">
+                    Advanced Mobility Aids
+                  </h3>
+                  <p className="text-slate-600 text-sm">
+                    State-of-the-art robotic exoskeletons and computerized gait
+                    trainers to assist in walking re-education.
+                  </p>
+                </div>
               </div>
-              <div className="p-8">
-                <h3 className="text-xl font-bold text-slate-900 mb-3">
-                  Advanced Mobility Aids
-                </h3>
-                <p className="text-slate-600 text-sm">
-                  State-of-the-art robotic exoskeletons and computerized gait
-                  trainers to assist in walking re-education.
-                </p>
+            </Reveal>
+            <Reveal from="right" threshold={0.1}>
+              <div className="bg-white rounded-2xl overflow-hidden shadow-lg group h-full">
+                <div className="h-48 overflow-hidden relative">
+                  <div className="absolute inset-0 bg-slate-900/20 group-hover:bg-slate-900/10 transition-colors"></div>
+                  <img
+                    src="/images/rehabilitation-body-2.jpg"
+                    alt="Therapeutic Equipment"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                </div>
+                <div className="p-8">
+                  <h3 className="text-xl font-bold text-slate-900 mb-3">
+                    Therapeutic Equipment
+                  </h3>
+                  <p className="text-slate-600 text-sm">
+                    Specialized hydrotherapy pools, electrical stimulation
+                    devices, and ultrasound therapy units.
+                  </p>
+                </div>
               </div>
-            </div>
-            <div className="bg-white rounded-2xl overflow-hidden shadow-lg group">
-              <div className="h-48 overflow-hidden relative">
-                <div className="absolute inset-0 bg-slate-900/20 group-hover:bg-slate-900/10 transition-colors"></div>
-                <img
-                  src="/images/rehabilitation-body-2.jpg"
-                  alt="Therapeutic Equipment"
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                />
-              </div>
-              <div className="p-8">
-                <h3 className="text-xl font-bold text-slate-900 mb-3">
-                  Therapeutic Equipment
-                </h3>
-                <p className="text-slate-600 text-sm">
-                  Specialized hydrotherapy pools, electrical stimulation
-                  devices, and ultrasound therapy units.
-                </p>
-              </div>
-            </div>
+            </Reveal>
           </div>
         </div>
       </section>
 
       <section className="py-20 bg-white" id="specialists">
         <div className="container mx-auto px-6">
-          <div className="flex justify-between items-end mb-12">
-            <div>
-              <span className="text-primary font-semibold tracking-wider text-sm uppercase block mb-2">
-                Our Team
-              </span>
-              <h2 className="text-3xl lg:text-4xl font-serif font-bold text-slate-900">
-                Meet Our Specialists
-              </h2>
+          <Reveal threshold={0.1}>
+            <div className="flex justify-between items-end mb-12">
+              <div>
+                <span className="text-primary font-semibold tracking-wider text-sm uppercase block mb-2">
+                  Our Team
+                </span>
+                <h2 className="text-3xl lg:text-4xl font-serif font-bold text-slate-900">
+                  Meet Our Specialists
+                </h2>
+              </div>
+              <Link
+                to="/doctors"
+                className="hidden md:flex items-center gap-2 text-primary font-semibold hover:text-primary-dark transition-colors"
+              >
+                View All Doctors{" "}
+                <span className="material-icons text-sm">arrow_forward</span>
+              </Link>
             </div>
-            <Link
-              to="/doctors"
-              className="hidden md:flex items-center gap-2 text-primary font-semibold hover:text-primary-dark transition-colors"
-            >
-              View All Doctors{" "}
-              <span className="material-icons text-sm">arrow_forward</span>
-            </Link>
-          </div>
+          </Reveal>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
               {
@@ -292,46 +317,45 @@ const Rehabilitation: React.FC = () => {
                 img: "/images/doctors/team-dr-sandra-mornay.jpg",
               },
             ].map((doc, i) => (
-              <div
-                key={i}
-                className="bg-white rounded-2xl overflow-hidden shadow-card hover:shadow-xl transition-all duration-300 group"
-              >
-                <div className="h-64 overflow-hidden relative">
-                  <img
-                    src={doc.img}
-                    alt={doc.name}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-4">
-                    <button
-                      onClick={() =>
-                        openAppointment({
-                          doctorName: doc.name,
-                          department: "Rehabilitation",
-                        })
-                      }
-                      className="text-white bg-primary hover:bg-primary-dark px-4 py-2 rounded-full text-sm font-medium"
-                    >
-                      Book Appointment
-                    </button>
+              <Reveal key={i} delay={i * 100} threshold={0.1}>
+                <div className="bg-white rounded-2xl overflow-hidden shadow-card hover:shadow-xl transition-all duration-300 group h-full">
+                  <div className="h-64 overflow-hidden relative">
+                    <img
+                      src={doc.img}
+                      alt={doc.name}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                    <div className="absolute inset-0 bg-linear-to-t from-slate-900/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-4">
+                      <button
+                        onClick={() =>
+                          openAppointment({
+                            doctorName: doc.name,
+                            department: "Rehabilitation",
+                          })
+                        }
+                        className="text-white bg-primary hover:bg-primary-dark px-4 py-2 rounded-full text-sm font-medium"
+                      >
+                        Book Appointment
+                      </button>
+                    </div>
+                  </div>
+                  <div className="p-6 text-center">
+                    <h3 className="text-xl font-bold text-slate-900">
+                      {doc.name}
+                    </h3>
+                    <p className="text-primary font-medium text-sm mb-3">
+                      {doc.role}
+                    </p>
                   </div>
                 </div>
-                <div className="p-6 text-center">
-                  <h3 className="text-xl font-bold text-slate-900">
-                    {doc.name}
-                  </h3>
-                  <p className="text-primary font-medium text-sm mb-3">
-                    {doc.role}
-                  </p>
-                </div>
-              </div>
+              </Reveal>
             ))}
           </div>
         </div>
       </section>
 
       <section className="py-24 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-teal-900 to-slate-900"></div>
+        <div className="absolute inset-0 bg-linear-to-br from-teal-900 to-slate-900"></div>
         <div
           className="absolute inset-0 opacity-10"
           style={{
@@ -353,34 +377,42 @@ const Rehabilitation: React.FC = () => {
 
         <div className="container mx-auto px-6 relative z-10 text-center">
           <div className="max-w-4xl mx-auto">
-            <span className="inline-block py-1 px-3 rounded-full bg-white/10 border border-white/20 text-white text-xs font-bold tracking-wider uppercase mb-6 backdrop-blur-md">
-              Regain Your Independence
-            </span>
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-white mb-6 leading-tight">
-              Start Your <br />
-              <span className="text-teal-300">Recovery Journey</span> Today
-            </h2>
-            <p className="text-teal-100 text-lg md:text-xl mb-10 leading-relaxed max-w-2xl mx-auto">
-              Take the first step towards a pain-free life. Schedule a
-              consultation with our rehabilitation experts and get back to doing
-              what you love.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button
-                onClick={() =>
-                  openAppointment({ department: "Rehabilitation" })
-                }
-                className="inline-flex items-center justify-center px-8 py-4 text-lg font-bold text-teal-900 bg-white rounded-full hover:bg-teal-50 shadow-xl shadow-teal-900/20 transition-all hover:scale-105"
-              >
-                Book Consultation
-              </button>
-              <Link
-                to="/contact"
-                className="inline-flex items-center justify-center px-8 py-4 text-lg font-bold text-white border border-white/30 rounded-full hover:bg-white/10 backdrop-blur-sm transition-all"
-              >
-                Contact Department
-              </Link>
-            </div>
+            <Reveal delay={0}>
+              <span className="inline-block py-1 px-3 rounded-full bg-white/10 border border-white/20 text-white text-xs font-bold tracking-wider uppercase mb-6 backdrop-blur-md">
+                Regain Your Independence
+              </span>
+            </Reveal>
+            <Reveal delay={100}>
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-white mb-6 leading-tight">
+                Start Your <br />
+                <span className="text-teal-300">Recovery Journey</span> Today
+              </h2>
+            </Reveal>
+            <Reveal delay={200}>
+              <p className="text-teal-100 text-lg md:text-xl mb-10 leading-relaxed max-w-2xl mx-auto">
+                Take the first step towards a pain-free life. Schedule a
+                consultation with our rehabilitation experts and get back to
+                doing what you love.
+              </p>
+            </Reveal>
+            <Reveal delay={300}>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <button
+                  onClick={() =>
+                    openAppointment({ department: "Rehabilitation" })
+                  }
+                  className="inline-flex items-center justify-center px-8 py-4 text-lg font-bold text-teal-900 bg-white rounded-full hover:bg-teal-50 shadow-xl shadow-teal-900/20 transition-all hover:scale-105"
+                >
+                  Book Consultation
+                </button>
+                <Link
+                  to="/contact"
+                  className="inline-flex items-center justify-center px-8 py-4 text-lg font-bold text-white border border-white/30 rounded-full hover:bg-white/10 backdrop-blur-sm transition-all"
+                >
+                  Contact Department
+                </Link>
+              </div>
+            </Reveal>
           </div>
         </div>
       </section>
