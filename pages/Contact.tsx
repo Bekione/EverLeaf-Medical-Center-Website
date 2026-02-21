@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useTranslation } from "react-i18next";
 import { submitForm } from "../utils/formService";
 import SEO from "../components/SEO";
 import Reveal from "../components/Reveal";
@@ -6,10 +7,11 @@ import { contactFormSchema, validateField } from "../utils/validation";
 import { CustomSelect } from "../components/CustomSelect";
 
 const Contact: React.FC = () => {
+  const { t } = useTranslation();
   const [formData, setFormData] = useState({
     fullName: "",
     email: "",
-    subject: "General Inquiry",
+    subject: "general",
     message: "",
   });
 
@@ -87,7 +89,7 @@ const Contact: React.FC = () => {
       setFormData({
         fullName: "",
         email: "",
-        subject: "General Inquiry",
+        subject: "general",
         message: "",
       });
       setErrors({});
@@ -101,8 +103,8 @@ const Contact: React.FC = () => {
   return (
     <div className="animate-fade-in">
       <SEO
-        title="Contact Us"
-        description="Get in touch with Everleaf Medical Center. Find our location, phone numbers, and visiting hours. Emergency contact available."
+        title={t("nav.contact")}
+        description={t("pages.contact.hero.subtitle")}
         canonical="https://everleaf-medical.com/contact"
       />
       <header
@@ -134,8 +136,10 @@ const Contact: React.FC = () => {
                   className="text-4xl lg:text-5xl font-serif font-bold mb-6 leading-tight"
                   style={{ color: "var(--color-text)" }}
                 >
-                  Get in Touch with <br />
-                  <span className="text-primary">Everleaf Medical Center</span>
+                  {t("pages.contact.hero.titleStart")} <br />
+                  <span className="text-primary">
+                    {t("pages.contact.hero.titleHighlight")}
+                  </span>
                 </h1>
               </Reveal>
               <Reveal delay={80}>
@@ -143,16 +147,14 @@ const Contact: React.FC = () => {
                   className="text-lg leading-relaxed mb-10"
                   style={{ color: "var(--color-text-muted)" }}
                 >
-                  We are here to help. Whether you need to schedule an
-                  appointment, have questions about our services, or need
-                  emergency assistance, our team is ready to respond.
+                  {t("pages.contact.hero.subtitle")}
                 </p>
               </Reveal>
               <div className="space-y-8">
                 <Reveal delay={160}>
                   <div className="bg-red-50 border-l-4 border-red-500 p-6 rounded-2xl shadow-sm">
                     <h3 className="text-red-600 font-bold uppercase tracking-wide text-sm mb-2">
-                      Emergency Cases
+                      {t("pages.contact.emergency.title")}
                     </h3>
                     <div className="flex items-center gap-3">
                       <span className="material-icons text-red-500 text-3xl">
@@ -162,14 +164,14 @@ const Contact: React.FC = () => {
                         className="text-3xl font-bold"
                         style={{ color: "var(--color-text)" }}
                       >
-                        911
+                        {t("pages.contact.emergency.phone")}
                       </span>
                     </div>
                     <p
                       className="text-sm mt-2"
                       style={{ color: "var(--color-text-muted)" }}
                     >
-                      For life-threatening emergencies, call immediately.
+                      {t("pages.contact.emergency.subtitle")}
                     </p>
                   </div>
                 </Reveal>
@@ -178,19 +180,19 @@ const Contact: React.FC = () => {
                     <div>
                       <h3 className="text-primary font-semibold mb-3 flex items-center gap-2">
                         <span className="material-icons text-sm">phone</span>{" "}
-                        General Inquiries
+                        {t("pages.contact.inquiries.title")}
                       </h3>
                       <p
                         className="text-xl font-bold"
                         style={{ color: "var(--color-text)" }}
                       >
-                        +251 954 123-456
+                        {t("pages.contact.inquiries.phone")}
                       </p>
                       <p
                         className="text-sm mt-1"
                         style={{ color: "var(--color-text-muted)" }}
                       >
-                        info@everleaf.com
+                        {t("pages.contact.inquiries.email")}
                       </p>
                     </div>
                     <div>
@@ -198,22 +200,22 @@ const Contact: React.FC = () => {
                         <span className="material-icons text-sm">
                           access_time
                         </span>{" "}
-                        Working Hours
+                        {t("pages.contact.hours.title")}
                       </h3>
                       <ul
                         className="text-sm space-y-1"
                         style={{ color: "var(--color-text-muted)" }}
                       >
                         <li className="flex justify-between w-40">
-                          <span>Mon - Fri:</span>{" "}
+                          <span>{t("pages.contact.hours.monFri")}:</span>{" "}
                           <span className="font-medium">8:00 - 20:00</span>
                         </li>
                         <li className="flex justify-between w-40">
-                          <span>Saturday:</span>{" "}
+                          <span>{t("pages.contact.hours.sat")}:</span>{" "}
                           <span className="font-medium">9:00 - 18:00</span>
                         </li>
                         <li className="flex justify-between w-40">
-                          <span>Sunday:</span>{" "}
+                          <span>{t("pages.contact.hours.sun")}:</span>{" "}
                           <span className="font-medium">9:00 - 14:00</span>
                         </li>
                       </ul>
@@ -242,14 +244,13 @@ const Contact: React.FC = () => {
                       className="text-2xl font-bold mb-2"
                       style={{ color: "var(--color-text)" }}
                     >
-                      Message Sent!
+                      {t("pages.contact.form.success")}
                     </h3>
                     <p
                       className="mb-8 max-w-xs"
                       style={{ color: "var(--color-text-muted)" }}
                     >
-                      Thank you for reaching out. Our support team will get back
-                      to you within 24 hours.
+                      {t("pages.contact.form.successDesc")}
                     </p>
                     <button
                       onClick={() => setStatus("idle")}
@@ -259,7 +260,7 @@ const Contact: React.FC = () => {
                         color: "var(--color-text)",
                       }}
                     >
-                      Send Another Message
+                      {t("pages.contact.form.sendAnother")}
                     </button>
                   </div>
                 ) : (
@@ -271,7 +272,7 @@ const Contact: React.FC = () => {
                       className="text-2xl font-bold mb-6"
                       style={{ color: "var(--color-text)" }}
                     >
-                      Send us a Message
+                      {t("pages.contact.form.title")}
                     </h3>
                     {status === "error" && (
                       <div className="bg-red-50 text-red-600 p-3 rounded-lg text-sm mb-4 flex items-start gap-2">
@@ -279,8 +280,7 @@ const Contact: React.FC = () => {
                           error_outline
                         </span>
                         <span>
-                          {errorMessage ||
-                            "Failed to send message. Please try again later."}
+                          {errorMessage || t("pages.contact.form.error")}
                         </span>
                       </div>
                     )}
@@ -290,7 +290,7 @@ const Contact: React.FC = () => {
                           className="block text-sm font-medium mb-1"
                           style={{ color: "var(--color-text)" }}
                         >
-                          Full Name
+                          {t("pages.contact.form.labels.fullName")}
                         </label>
                         <input
                           type="text"
@@ -300,7 +300,9 @@ const Contact: React.FC = () => {
                           onBlur={handleBlur}
                           disabled={status === "submitting"}
                           className={`w-full px-4 py-3 rounded-lg border ${errors.fullName ? "border-red-300 bg-red-50" : "border-slate-200 bg-slate-50"} focus:outline-none focus:ring-2 ${errors.fullName ? "focus:ring-red-500/50 focus:border-red-500" : "focus:ring-primary/50 focus:border-primary"} transition-all text-slate-800 placeholder-slate-400 disabled:opacity-60`}
-                          placeholder="John Doe"
+                          placeholder={t(
+                            "pages.contact.form.placeholders.fullName",
+                          )}
                         />
                         {errors.fullName &&
                           (touched.fullName || hasSubmitted) && (
@@ -317,7 +319,7 @@ const Contact: React.FC = () => {
                           className="block text-sm font-medium mb-1"
                           style={{ color: "var(--color-text)" }}
                         >
-                          Email Address
+                          {t("pages.contact.form.labels.email")}
                         </label>
                         <input
                           type="email"
@@ -327,7 +329,9 @@ const Contact: React.FC = () => {
                           onBlur={handleBlur}
                           disabled={status === "submitting"}
                           className={`w-full px-4 py-3 rounded-lg border ${errors.email ? "border-red-300 bg-red-50" : "border-slate-200 bg-slate-50"} focus:outline-none focus:ring-2 ${errors.email ? "focus:ring-red-500/50 focus:border-red-500" : "focus:ring-primary/50 focus:border-primary"} transition-all text-slate-800 placeholder-slate-400 disabled:opacity-60`}
-                          placeholder="john@example.com"
+                          placeholder={t(
+                            "pages.contact.form.placeholders.email",
+                          )}
                         />
                         {errors.email && (touched.email || hasSubmitted) && (
                           <p className="mt-1 text-sm text-red-600 flex items-center gap-1">
@@ -344,29 +348,37 @@ const Contact: React.FC = () => {
                         className="block text-sm font-medium mb-1"
                         style={{ color: "var(--color-text)" }}
                       >
-                        Subject
+                        {t("pages.contact.form.labels.subject")}
                       </label>
                       <CustomSelect
                         options={[
                           {
-                            value: "General Inquiry",
-                            label: "General Inquiry",
+                            value: "general",
+                            label: t("pages.contact.form.subjects.general"),
                           },
                           {
-                            value: "Appointment Request",
-                            label: "Appointment Request",
+                            value: "appointment",
+                            label: t("pages.contact.form.subjects.appointment"),
                           },
-                          { value: "Feedback", label: "Feedback" },
                           {
-                            value: "Billing Question",
-                            label: "Billing Question",
+                            value: "feedback",
+                            label: t("pages.contact.form.subjects.feedback"),
                           },
-                          { value: "Other", label: "Other" },
+                          {
+                            value: "billing",
+                            label: t("pages.contact.form.subjects.billing"),
+                          },
+                          {
+                            value: "other",
+                            label: t("pages.contact.form.subjects.other"),
+                          },
                         ]}
                         value={formData.subject}
                         onChange={handleSubjectChange}
                         icon="help_outline"
-                        placeholder="Select a subject"
+                        placeholder={t(
+                          "pages.contact.form.placeholders.subject",
+                        )}
                       />
                     </div>
                     <div>
@@ -374,7 +386,7 @@ const Contact: React.FC = () => {
                         className="block text-sm font-medium mb-1"
                         style={{ color: "var(--color-text)" }}
                       >
-                        Message
+                        {t("pages.contact.form.labels.message")}
                       </label>
                       <textarea
                         name="message"
@@ -383,7 +395,9 @@ const Contact: React.FC = () => {
                         onBlur={handleBlur}
                         disabled={status === "submitting"}
                         className={`w-full px-4 py-3 rounded-lg border ${errors.message ? "border-red-300 bg-red-50" : "border-slate-200 bg-slate-50"} focus:outline-none focus:ring-2 ${errors.message ? "focus:ring-red-500/50 focus:border-red-500" : "focus:ring-primary/50 focus:border-primary"} transition-all text-slate-800 placeholder-slate-400 min-h-[120px] max-h-60 disabled:opacity-60`}
-                        placeholder="How can we help you?"
+                        placeholder={t(
+                          "pages.contact.form.placeholders.message",
+                        )}
                       ></textarea>
                       {errors.message && (touched.message || hasSubmitted) && (
                         <p className="mt-1 text-sm text-red-600 flex items-center gap-1">
@@ -398,8 +412,8 @@ const Contact: React.FC = () => {
                       className="w-full py-3.5 px-6 text-white font-bold bg-primary hover:bg-primary-dark rounded-lg shadow-lg hover:shadow-xl transition-all duration-200 flex items-center justify-center gap-2 group transform hover:-translate-y-0.5 disabled:opacity-70 disabled:cursor-wait"
                     >
                       {status === "submitting"
-                        ? "Sending Message..."
-                        : "Send Message"}
+                        ? t("pages.contact.form.submitting")
+                        : t("pages.contact.form.submit")}
                       {!status.startsWith("sub") && (
                         <span className="material-icons text-sm group-hover:translate-x-1 transition-transform">
                           near_me
@@ -439,7 +453,7 @@ const Contact: React.FC = () => {
               style={{ color: "var(--color-text)" }}
             >
               <span className="material-icons text-primary">directions</span>{" "}
-              Directions & Transportation
+              {t("pages.contact.directions.title")}
             </h4>
             <div className="space-y-4 text-sm">
               <div className="flex gap-3">
@@ -454,11 +468,10 @@ const Contact: React.FC = () => {
                     className="font-semibold"
                     style={{ color: "var(--color-text)" }}
                   >
-                    Public Transit
+                    {t("pages.contact.directions.transit.title")}
                   </p>
                   <p style={{ color: "var(--color-text-muted)" }}>
-                    Bus lines M15, M22 stop directly in front of the main
-                    entrance.
+                    {t("pages.contact.directions.transit.desc")}
                   </p>
                 </div>
               </div>
@@ -474,11 +487,10 @@ const Contact: React.FC = () => {
                     className="font-semibold"
                     style={{ color: "var(--color-text)" }}
                   >
-                    Parking
+                    {t("pages.contact.directions.parking.title")}
                   </p>
                   <p style={{ color: "var(--color-text-muted)" }}>
-                    Visitor parking garage is available on 4th Ave (5 Br/hr).
-                    Valet service available at main entrance.
+                    {t("pages.contact.directions.parking.desc")}
                   </p>
                 </div>
               </div>

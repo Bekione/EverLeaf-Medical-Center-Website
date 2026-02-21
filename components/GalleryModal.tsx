@@ -1,10 +1,12 @@
 import React, { useEffect, useRef } from "react";
 import { CldImg } from "./CldImg";
+import { useTranslation } from "react-i18next";
 
 interface GalleryModalProps {
   isOpen: boolean;
   imageSrc: string;
   title: string;
+  description: string;
   onClose: () => void;
   onNext: () => void;
   onPrev: () => void;
@@ -17,6 +19,7 @@ const GalleryModal: React.FC<GalleryModalProps> = ({
   isOpen,
   imageSrc,
   title,
+  description,
   onClose,
   onNext,
   onPrev,
@@ -24,6 +27,7 @@ const GalleryModal: React.FC<GalleryModalProps> = ({
   currentImageIndex,
   onSelect,
 }) => {
+  const { t } = useTranslation();
   const thumbnailContainerRef = useRef<HTMLDivElement>(null);
   const activeThumbnailRef = useRef<HTMLDivElement>(null);
 
@@ -129,7 +133,7 @@ const GalleryModal: React.FC<GalleryModalProps> = ({
       }}
       data-gallery-modal="true"
       role="dialog"
-      aria-label="Image gallery viewer"
+      aria-label={t("components.galleryModal.aria.viewer")}
       aria-modal="true"
     >
       <button
@@ -163,9 +167,7 @@ const GalleryModal: React.FC<GalleryModalProps> = ({
             >
               {title}
             </h3>
-            <p className="text-white/80 text-sm mt-1">
-              Experience comfort and privacy in our newly renovated rooms.
-            </p>
+            <p className="text-white/80 text-sm mt-1">{description}</p>
           </div>
         </div>
 
@@ -194,20 +196,20 @@ const GalleryModal: React.FC<GalleryModalProps> = ({
 
       <div
         ref={thumbnailContainerRef}
-        className="mt-auto h-20 w-full max-w-4xl overflow-x-auto flex gap-4 pb-2 px-4 scrollbar-hide justify-start sm:justify-center scroll-smooth"
+        className="mt-auto h-20 w-full max-w-4xl overflow-x-auto flex gap-4 py-2 px-4 scrollbar-hide justify-start sm:justify-center scroll-smooth"
       >
         {thumbnails.map((thumb, idx) => (
           <div
             key={idx}
             ref={idx === currentImageIndex ? activeThumbnailRef : null}
             onClick={() => onSelect(idx)}
-            className={`flex-shrink-0 w-24 h-16 rounded overflow-hidden cursor-pointer transition-all border ${currentImageIndex === idx ? "ring-2 ring-primary border-transparent opacity-100" : "border-white/20 opacity-50 hover:opacity-100"}`}
+            className={`shrink-0 w-24 h-16 rounded overflow-hidden cursor-pointer transition-all border ${currentImageIndex === idx ? "ring-2 ring-primary border-transparent opacity-100" : "border-white/20 opacity-50 hover:opacity-100"}`}
           >
             <CldImg
               src={thumb}
               transform="w_200,q_auto,f_auto,c_fill"
               className="w-full h-full object-cover"
-              alt="thumbnail"
+              alt={t("components.galleryModal.thumbnails.alt")}
             />
           </div>
         ))}

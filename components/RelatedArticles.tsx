@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import { articles } from "../data/articles";
 import { CldImg } from "./CldImg";
 
+import { useTranslation } from "react-i18next";
+
 interface RelatedArticlesProps {
   currentId: string;
   currentCategory: string;
@@ -12,6 +14,7 @@ const RelatedArticles: React.FC<RelatedArticlesProps> = ({
   currentId,
   currentCategory,
 }) => {
+  const { t } = useTranslation();
   const sameCategory = articles.filter(
     (a) => a.id !== currentId && a.category === currentCategory,
   );
@@ -35,7 +38,7 @@ const RelatedArticles: React.FC<RelatedArticlesProps> = ({
           borderColor: "var(--color-border)",
         }}
       >
-        Related Articles
+        {t("components.relatedArticles.title")}
       </h3>
       <div className="space-y-6">
         {related.map((article) => (

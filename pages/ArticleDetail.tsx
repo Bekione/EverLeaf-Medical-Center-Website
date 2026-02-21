@@ -5,6 +5,7 @@ import SEO from "../components/SEO";
 import RelatedArticles from "../components/RelatedArticles";
 import { CldImg } from "../components/CldImg";
 import { articles, ContentBlock } from "../data/articles";
+import { useTranslation } from "react-i18next";
 
 // ─── Category Styling ────────────────────────────────────────────────────────
 
@@ -41,10 +42,16 @@ const getCalloutStyle = (color?: string) => {
 
 // ─── Block Renderer ──────────────────────────────────────────────────────────
 
-const renderBlock = (block: ContentBlock, index: number): React.ReactNode => {
+const renderBlock = (
+  block: ContentBlock,
+  index: number,
+  articleId: string,
+  t: any,
+): React.ReactNode => {
+  const baseKey = `data.articles.${articleId}.content.${index}`;
   switch (block.type) {
     case "paragraph":
-      return <p key={index}>{block.text}</p>;
+      return <p key={index}>{t(`${baseKey}.text`, block.text)}</p>;
 
     case "heading":
       return (
@@ -52,7 +59,7 @@ const renderBlock = (block: ContentBlock, index: number): React.ReactNode => {
           key={index}
           className="text-2xl font-bold text-slate-900 mt-10 mb-6"
         >
-          {block.text}
+          {t(`${baseKey}.text`, block.text)}
         </h2>
       );
 
@@ -69,8 +76,12 @@ const renderBlock = (block: ContentBlock, index: number): React.ReactNode => {
                 </span>
               )}
               <span>
-                {item.title && <strong>{item.title}: </strong>}
-                {item.text}
+                {item.title && (
+                  <strong>
+                    {t(`${baseKey}.items.${i}.title`, item.title)}:{" "}
+                  </strong>
+                )}
+                {t(`${baseKey}.items.${i}.text`, item.text)}
               </span>
             </li>
           ))}
@@ -84,9 +95,9 @@ const renderBlock = (block: ContentBlock, index: number): React.ReactNode => {
           className={`p-6 rounded-xl border-l-4 my-8 ${getCalloutStyle(block.color)}`}
         >
           <h4 className="text-lg font-bold text-slate-900 mb-2">
-            {block.title}
+            {t(`${baseKey}.title`, block.title)}
           </h4>
-          <p className="text-sm mb-0">{block.text}</p>
+          <p className="text-sm mb-0">{t(`${baseKey}.text`, block.text)}</p>
         </div>
       );
 
@@ -114,7 +125,7 @@ const renderBlock = (block: ContentBlock, index: number): React.ReactNode => {
           className="bg-blue-50 p-6 rounded-xl border-l-4 border-primary my-8"
         >
           <h4 className="text-lg font-bold text-slate-900 mb-3">
-            Essential Metrics to Monitor:
+            {t(`${baseKey}.title`, "Essential Metrics to Monitor:")}
           </h4>
           <ul className="space-y-2 list-none pl-0 mb-0">
             {block.items.map((item, i) => (
@@ -123,7 +134,10 @@ const renderBlock = (block: ContentBlock, index: number): React.ReactNode => {
                   {item.icon}
                 </span>
                 <span className="text-sm">
-                  <strong>{item.metric}:</strong> Target {item.target}
+                  <strong>
+                    {t(`${baseKey}.items.${i}.metric`, item.metric)}:
+                  </strong>{" "}
+                  {t(`${baseKey}.items.${i}.target`, `Target ${item.target}`)}
                 </span>
               </li>
             ))}
@@ -140,6 +154,7 @@ const renderBlock = (block: ContentBlock, index: number): React.ReactNode => {
 
 const ArticleDetail: React.FC = () => {
   const { id } = useParams<{ id: string }>();
+  const { t, i18n } = useTranslation();
   const article = articles.find((a) => a.id === id);
 
   if (!article) {
@@ -166,8 +181,11 @@ const ArticleDetail: React.FC = () => {
   return (
     <div className="animate-fade-in bg-white min-h-screen">
       <SEO
-        title={article.seoTitle}
-        description={article.seoDescription}
+        title={t(`data.articles.${article.id}.seoTitle`, article.seoTitle)}
+        description={t(
+          `data.articles.${article.id}.seoDescription`,
+          article.seoDescription,
+        )}
         type="article"
         canonical={`https://everleaf-medical.com/blog/${article.id}`}
         image={article.img}
@@ -184,7 +202,7 @@ const ArticleDetail: React.FC = () => {
                   className="inline-flex items-center hover:text-primary transition-colors"
                 >
                   <span className="material-icons text-sm mr-1">home</span>
-                  Home
+                  {t("nav.home")}
                 </Link>
               </li>
               <li>
@@ -196,7 +214,7 @@ const ArticleDetail: React.FC = () => {
                     to="/blog"
                     className="ml-1 md:ml-2 hover:text-primary transition-colors"
                   >
-                    Articles
+                    {t("nav.blog")}
                   </Link>
                 </div>
               </li>
@@ -206,9 +224,13 @@ const ArticleDetail: React.FC = () => {
                     chevron_right
                   </span>
                   <span className="ml-1 md:ml-2 text-slate-700 font-medium truncate max-w-[200px]">
-                    {article.title.length > 30
-                      ? article.title.slice(0, 30) + "…"
-                      : article.title}
+                    {t(`data.articles.${article.id}.title`, article.title)
+                      .length > 30
+                      ? t(
+                          `data.articles.${article.id}.title`,
+                          article.title,
+                        ).slice(0, 30) + "…"
+                      : t(`data.articles.${article.id}.title`, article.title)}
                   </span>
                 </div>
               </li>
@@ -228,11 +250,16 @@ const ArticleDetail: React.FC = () => {
                   <span
                     className={`inline-block px-3 py-1 text-xs font-bold tracking-wider uppercase rounded-full border ${getCategoryStyle(article.category)}`}
                   >
-                    {article.category}
+                    {t(
+                      `pages.blog.articles.categories.${article.category
+                        .toLowerCase()
+                        .replace(/\s+/g, "")}`,
+                      article.category,
+                    )}
                   </span>
                   <span className="text-sm text-slate-500 flex items-center gap-1">
                     <span className="material-icons text-sm">schedule</span>
-                    {article.read}
+                    {t(`data.articles.${article.id}.read`, article.read)}
                   </span>
                 </div>
                 <button
@@ -241,16 +268,16 @@ const ArticleDetail: React.FC = () => {
                 >
                   <span className="material-icons text-lg">share</span>
                   <span className="text-sm font-medium hidden sm:inline">
-                    Share
+                    {t("pages.blog.article.share")}
                   </span>
                 </button>
               </div>
 
               <h1 className="text-4xl md:text-5xl font-serif font-bold text-slate-900 mb-6 leading-tight">
-                {article.title}
+                {t(`data.articles.${article.id}.title`, article.title)}
               </h1>
               <p className="text-xl text-slate-600 leading-relaxed font-serif italic">
-                {article.subtitle}
+                {t(`data.articles.${article.id}.excerpt`, article.subtitle)}
               </p>
 
               {/* Author + Date meta */}
@@ -263,9 +290,11 @@ const ArticleDetail: React.FC = () => {
                 />
                 <div>
                   <p className="text-sm font-semibold text-slate-800">
-                    {article.author}
+                    {t(`data.articles.${article.id}.author`, article.author)}
                   </p>
-                  <p className="text-xs text-slate-500">{article.date}</p>
+                  <p className="text-xs text-slate-500">
+                    {t(`data.articles.${article.id}.date`, article.date)}
+                  </p>
                 </div>
               </div>
             </header>
@@ -281,7 +310,9 @@ const ArticleDetail: React.FC = () => {
 
             {/* Article Content Blocks */}
             <article className="prose prose-lg prose-slate max-w-none">
-              {article.content.map((block, i) => renderBlock(block, i))}
+              {article.content.map((block, i) =>
+                renderBlock(block, i, article.id, t),
+              )}
             </article>
 
             <hr className="border-slate-200 my-12" />
@@ -296,13 +327,19 @@ const ArticleDetail: React.FC = () => {
               />
               <div>
                 <h3 className="text-xl font-bold text-slate-900 mb-2">
-                  {article.author}
+                  {t(`data.articles.${article.id}.author`, article.author)}
                 </h3>
                 <p className="text-primary font-medium text-sm mb-3">
-                  {article.authorTitle}
+                  {t(
+                    `data.articles.${article.id}.authorTitle`,
+                    article.authorTitle,
+                  )}
                 </p>
                 <p className="text-slate-600 text-sm leading-relaxed mb-4">
-                  {article.authorBio}
+                  {t(
+                    `data.articles.${article.id}.authorBio`,
+                    article.authorBio,
+                  )}
                 </p>
                 <div className="flex gap-3 justify-center sm:justify-start">
                   <a
@@ -332,11 +369,13 @@ const ArticleDetail: React.FC = () => {
             <div className="bg-gradient-to-br from-slate-900 to-blue-900 rounded-2xl p-8 text-white shadow-lg relative overflow-hidden">
               <div className="absolute top-0 right-0 w-32 h-32 bg-white opacity-10 rounded-full blur-2xl translate-x-1/2 -translate-y-1/2 pointer-events-none" />
               <h3 className="text-xl font-bold mb-3 relative z-10">
-                Subscribe to Updates
+                {t("pages.blog.newsletter.title")}
               </h3>
               <p className="text-blue-100 text-sm mb-6 relative z-10">
-                Get the latest health insights and medical news delivered to
-                your inbox.
+                {t(
+                  "pages.blog.newsletter.subtitleSidebar",
+                  t("pages.blog.newsletter.subtitle"),
+                )}
               </p>
               <NewsletterForm variant="sidebar" />
             </div>

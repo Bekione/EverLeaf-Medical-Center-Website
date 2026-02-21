@@ -6,8 +6,12 @@ import Reveal from "../components/Reveal";
 import { CldImg } from "../components/CldImg";
 import { heroImages } from "../data/hero";
 import { testimonials } from "../data/testimonials";
+import { doctors } from "../data/doctors";
+import { services } from "../data/services";
+import { useTranslation } from "react-i18next";
 
 const Home: React.FC = () => {
+  const { t } = useTranslation();
   const { openAppointment } = useOutletContext<{
     openAppointment: OpenAppointmentFunc;
   }>();
@@ -41,8 +45,8 @@ const Home: React.FC = () => {
   return (
     <div className="animate-fade-in">
       <SEO
-        title="Home"
-        description="Care That Grows With You. Everleaf Medical Center offers world-class healthcare, specialized departments, and expert doctors in Addis Abeba."
+        title={t("nav.home")}
+        description={t("pages.home.hero.subtitle")}
         structuredData={{
           "@context": "https://schema.org",
           "@type": "Hospital",
@@ -78,9 +82,12 @@ const Home: React.FC = () => {
             closes: "23:59",
           },
           department: [
-            { "@type": "MedicalSpecialty", name: "Cardiology" },
-            { "@type": "MedicalSpecialty", name: "Pediatrics" },
-            { "@type": "EmergencyService", name: "Emergency Department" },
+            { "@type": "MedicalSpecialty", name: t("departments.cardiology") },
+            { "@type": "MedicalSpecialty", name: t("departments.pediatrics") },
+            {
+              "@type": "EmergencyService",
+              name: t("pages.home.infoCards.emergency.title"),
+            },
           ],
         }}
       />
@@ -108,15 +115,15 @@ const Home: React.FC = () => {
                 }}
               >
                 <span className="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
-                Everleaf Medical Center
+                {t("pages.home.hero.badge")}
               </div>
               <h1
                 className="text-4xl lg:text-6xl font-brand font-bold leading-tight mb-6"
                 style={{ color: "var(--color-text)" }}
               >
-                Care That Grows{" "}
+                {t("pages.home.hero.titleStart")}
                 <span className="text-primary relative inline-block">
-                  With You.
+                  {t("pages.home.hero.titleHighlight")}
                   <svg
                     className="absolute w-full h-3 -bottom-1 left-0 text-secondary opacity-40"
                     preserveAspectRatio="none"
@@ -135,16 +142,14 @@ const Home: React.FC = () => {
                 className="text-lg mb-8 leading-relaxed"
                 style={{ color: "var(--color-text-muted)" }}
               >
-                Committed to lifelong wellness through compassionate care,
-                innovation, and trust. Experience world-class healthcare in a
-                serene environment.
+                {t("pages.home.hero.subtitle")}
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <button
                   onClick={() => openAppointment()}
                   className="inline-flex items-center justify-center px-8 py-3.5 text-base font-bold text-white transition-all duration-200 bg-primary rounded-lg hover:bg-primary-dark shadow-lg hover:-translate-y-0.5"
                 >
-                  Request an Appointment
+                  {t("pages.home.hero.appointment")}
                 </button>
               </div>
               <div
@@ -178,10 +183,10 @@ const Home: React.FC = () => {
                       color: "var(--color-text)",
                     }}
                   >
-                    12k+
+                    {t("pages.home.hero.stats.recoveredCount", { count: 12 })}
                   </div>
                 </div>
-                <p>Happy patients recovered this year.</p>
+                <p>{t("pages.home.hero.patientsRecovered")}</p>
               </div>
             </div>
             <div className="relative hidden lg:block h-[480px] w-full">
@@ -213,13 +218,13 @@ const Home: React.FC = () => {
                     className="text-sm font-bold"
                     style={{ color: "var(--color-text)" }}
                   >
-                    98% Satisfaction
+                    {t("pages.home.hero.satisfaction")}
                   </p>
                   <p
                     className="text-xs"
                     style={{ color: "var(--color-text-muted)" }}
                   >
-                    Based on patient reviews
+                    {t("pages.home.hero.satisfactionSub")}
                   </p>
                 </div>
               </div>
@@ -246,19 +251,19 @@ const Home: React.FC = () => {
                 className="text-lg font-bold mb-1"
                 style={{ color: "var(--color-text)" }}
               >
-                Emergency
+                {t("pages.home.infoCards.emergency.title")}
               </p>
               <p
                 className="text-sm mb-2"
                 style={{ color: "var(--color-text-muted)" }}
               >
-                Immediate care for critical situations.
+                {t("pages.home.infoCards.emergency.desc")}
               </p>
               <Link
                 to="/services/emergency"
                 className="text-red-600 font-semibold text-sm flex items-center gap-1 group-hover:underline"
               >
-                Call 911{" "}
+                {t("pages.home.infoCards.emergency.call")}{" "}
                 <span className="material-icons text-sm">arrow_forward</span>
               </Link>
             </div>
@@ -275,19 +280,19 @@ const Home: React.FC = () => {
                 className="text-lg font-bold mb-1"
                 style={{ color: "var(--color-text)" }}
               >
-                Find a Specialist
+                {t("pages.home.infoCards.specialist.title")}
               </p>
               <p
                 className="text-sm mb-2"
                 style={{ color: "var(--color-text-muted)" }}
               >
-                Search our directory of expert doctors.
+                {t("pages.home.infoCards.specialist.desc")}
               </p>
               <Link
                 to="/doctors"
                 className="text-primary font-semibold text-sm flex items-center gap-1 group-hover:underline"
               >
-                Search Doctors{" "}
+                {t("pages.home.infoCards.specialist.search")}{" "}
                 <span className="material-icons text-sm">arrow_forward</span>
               </Link>
             </div>
@@ -301,19 +306,19 @@ const Home: React.FC = () => {
                 className="text-lg font-bold mb-1"
                 style={{ color: "var(--color-text)" }}
               >
-                Our Departments
+                {t("pages.home.infoCards.departments.title")}
               </p>
               <p
                 className="text-sm mb-2"
                 style={{ color: "var(--color-text-muted)" }}
               >
-                Explore our specialized medical units.
+                {t("pages.home.infoCards.departments.desc")}
               </p>
               <Link
                 to="/departments"
                 className="text-primary font-semibold text-sm flex items-center gap-1 group-hover:underline"
               >
-                View Departments{" "}
+                {t("pages.home.infoCards.departments.view")}{" "}
                 <span className="material-icons text-sm">arrow_forward</span>
               </Link>
             </div>
@@ -330,7 +335,7 @@ const Home: React.FC = () => {
           <div className="text-center max-w-3xl mx-auto mb-16">
             <Reveal delay={0}>
               <span className="text-primary font-semibold tracking-wider uppercase text-sm">
-                Medical Excellence
+                {t("pages.home.services.badge")}
               </span>
             </Reveal>
             <Reveal delay={80}>
@@ -338,7 +343,7 @@ const Home: React.FC = () => {
                 className="text-3xl md:text-4xl font-serif font-bold mt-2 mb-4"
                 style={{ color: "var(--color-text)" }}
               >
-                Our Specialized Services
+                {t("pages.home.services.title")}
               </h2>
             </Reveal>
             <Reveal delay={160}>
@@ -346,8 +351,7 @@ const Home: React.FC = () => {
                 className="text-lg"
                 style={{ color: "var(--color-text-muted)" }}
               >
-                We provide a wide range of medical services to meet every need
-                of your family, from routine checkups to complex surgeries.
+                {t("pages.home.services.subtitle")}
               </p>
             </Reveal>
           </div>
@@ -355,66 +359,68 @@ const Home: React.FC = () => {
             {[
               {
                 icon: "favorite",
-                title: "Cardiology",
-                desc: "Expert heart care including diagnostics, treatment, and preventive cardiology services.",
+                deptKey: "cardiology",
+                descKey: "cardiologyDesc",
                 link: "/departments/cardiology",
               },
               {
                 icon: "psychology",
-                title: "Neurology",
-                desc: "Advanced diagnosis and treatment for disorders affecting the brain, spine, and nerves.",
+                deptKey: "neurology",
+                descKey: "neurologyDesc",
                 link: "/departments/neurology",
               },
               {
                 icon: "child_care",
-                title: "Pediatrics",
-                desc: "Compassionate care for infants, children, and adolescents in a kid-friendly environment.",
+                deptKey: "pediatrics",
+                descKey: "pediatricsDesc",
                 link: "/departments/pediatrics",
               },
               {
                 icon: "science",
-                title: "Laboratory",
-                desc: "State-of-the-art laboratory services providing accurate and timely diagnostic results.",
+                deptKey: "laboratory",
+                descKey: "laboratoryDesc",
                 link: "/services/laboratory",
               },
             ].map((service, idx) => (
               <Reveal key={idx} delay={idx * 80}>
-              <div
-                className="p-8 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 border group hover:-translate-y-1 h-full"
-                style={{
-                  backgroundColor: "var(--color-surface)",
-                  borderColor: "var(--color-border)",
-                }}
-              >
                 <div
-                  className="w-14 h-14 rounded-xl flex items-center justify-center text-primary mb-6 group-hover:bg-primary group-hover:text-white transition-colors"
-                  style={{ backgroundColor: "var(--color-primary-light)" }}
+                  className="p-8 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 border group hover:-translate-y-1 h-full"
+                  style={{
+                    backgroundColor: "var(--color-surface)",
+                    borderColor: "var(--color-border)",
+                  }}
                 >
-                  <span className="material-icons text-3xl">
-                    {service.icon}
-                  </span>
+                  <div
+                    className="w-14 h-14 rounded-xl flex items-center justify-center text-primary mb-6 group-hover:bg-primary group-hover:text-white transition-colors"
+                    style={{ backgroundColor: "var(--color-primary-light)" }}
+                  >
+                    <span className="material-icons text-3xl">
+                      {service.icon}
+                    </span>
+                  </div>
+                  <h3
+                    className="text-xl font-bold mb-3"
+                    style={{ color: "var(--color-text)" }}
+                  >
+                    {t(`data.departments.${service.deptKey}.name`)}
+                  </h3>
+                  <p
+                    className="mb-4 text-sm leading-relaxed"
+                    style={{ color: "var(--color-text-muted)" }}
+                  >
+                    {t(`pages.home.services.${service.descKey}`)}
+                  </p>
+                  <Link
+                    to={service.link}
+                    aria-label={`Learn more about ${t(`data.departments.${service.deptKey}.name`)}`}
+                    className="text-primary font-semibold text-sm flex items-center gap-1 group-hover:gap-2 transition-all"
+                  >
+                    {t("common.buttons.learnMore")}{" "}
+                    <span className="material-icons text-xs">
+                      arrow_forward
+                    </span>
+                  </Link>
                 </div>
-                <h3
-                  className="text-xl font-bold mb-3"
-                  style={{ color: "var(--color-text)" }}
-                >
-                  {service.title}
-                </h3>
-                <p
-                  className="mb-4 text-sm leading-relaxed"
-                  style={{ color: "var(--color-text-muted)" }}
-                >
-                  {service.desc}
-                </p>
-                <Link
-                  to={service.link}
-                  aria-label={`Learn more about ${service.title}`}
-                  className="text-primary font-semibold text-sm flex items-center gap-1 group-hover:gap-2 transition-all"
-                >
-                  Learn More{" "}
-                  <span className="material-icons text-xs">arrow_forward</span>
-                </Link>
-              </div>
               </Reveal>
             ))}
           </div>
@@ -423,7 +429,7 @@ const Home: React.FC = () => {
               to="/services"
               className="inline-flex items-center justify-center px-6 py-3 text-sm font-semibold text-white bg-primary rounded-lg hover:bg-primary-dark transition-all shadow-md"
             >
-              View All Services
+              {t("data.services.all")}
               <span className="material-icons text-sm ml-2">arrow_forward</span>
             </Link>
           </div>
@@ -440,7 +446,7 @@ const Home: React.FC = () => {
             <div className="max-w-2xl">
               <Reveal delay={0}>
                 <span className="text-primary font-semibold tracking-wider uppercase text-sm">
-                  Our Experts
+                  {t("pages.home.experts.badge")}
                 </span>
               </Reveal>
               <Reveal delay={80}>
@@ -448,7 +454,7 @@ const Home: React.FC = () => {
                   className="text-3xl md:text-4xl font-serif font-bold mt-2"
                   style={{ color: "var(--color-text)" }}
                 >
-                  Meet Our Leading Specialists
+                  {t("pages.home.experts.title")}
                 </h2>
               </Reveal>
             </div>
@@ -461,7 +467,7 @@ const Home: React.FC = () => {
                   border: "1px solid var(--color-border)",
                 }}
               >
-                View All Doctors
+                {t("nav.doctors")}
                 <span className="material-icons text-sm ml-2">
                   arrow_forward
                 </span>
@@ -469,95 +475,79 @@ const Home: React.FC = () => {
             </div>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[
-              {
-                name: "Dr. Sarah Johnson",
-                role: "Neurologist",
-                img: "/images/doctors/team-dr-sarah-johnson.jpg",
-                exp: "15 Years",
-                deg: "MBBS, MD",
-              },
-              {
-                name: "Dr. Mark Williams",
-                role: "Cardiologist",
-                img: "/images/doctors/team-dr-mark-williams.jpg",
-                exp: "12 Years",
-                deg: "MBBS, MD",
-              },
-              {
-                name: "Dr. Emily Chen",
-                role: "Pediatrician",
-                img: "/images/doctors/team-dr-emily-chen.jpg",
-                exp: "18 Years",
-                deg: "MBBS, PhD",
-              },
-            ].map((doc, idx) => (
+            {doctors.slice(0, 3).map((doc, idx) => (
               <Reveal key={idx} delay={idx * 100}>
-              <div
-                className="group relative rounded-2xl overflow-hidden shadow-card hover:shadow-xl transition-all duration-300 border flex flex-col h-full"
-                style={{
-                  backgroundColor: "var(--color-surface)",
-                  borderColor: "var(--color-border)",
-                }}
-              >
                 <div
-                  className="relative h-80 overflow-hidden"
-                  style={{ backgroundColor: "var(--color-bg-alt)" }}
+                  className="group relative rounded-2xl overflow-hidden shadow-card hover:shadow-xl transition-all duration-300 border flex flex-col h-full"
+                  style={{
+                    backgroundColor: "var(--color-surface)",
+                    borderColor: "var(--color-border)",
+                  }}
                 >
-                  <img
-                    src={doc.img}
-                    alt={doc.name}
-                    className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
-                  />
+                  <div
+                    className="relative h-80 overflow-hidden"
+                    style={{ backgroundColor: "var(--color-bg-alt)" }}
+                  >
+                    <img
+                      src={doc.img}
+                      alt={t(`data.doctors.${doc.id}.name`)}
+                      className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
+                    />
 
-                  {/* Slide-up Overlay */}
-                  <div className="absolute inset-0 bg-slate-900/90 backdrop-blur-sm translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-in-out p-6 flex flex-col justify-center text-white text-center z-20">
-                    <p className="font-bold text-lg mb-2 text-blue-300 font-serif">
-                      Expert Care
+                    {/* Slide-up Overlay */}
+                    <div className="absolute inset-0 bg-slate-900/90 backdrop-blur-sm translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-in-out p-6 flex flex-col justify-center text-white text-center z-20">
+                      <p className="font-bold text-lg mb-2 text-blue-300 font-serif">
+                        {t("pages.home.experts.overlayTitle")}
+                      </p>
+                      <p className="text-sm text-slate-300 mb-6 leading-relaxed">
+                        {t(`data.doctors.${doc.id}.bio`)}
+                      </p>
+                      <div className="pt-2 border-t border-slate-700 flex gap-4 justify-center">
+                        <button
+                          onClick={() =>
+                            openAppointment({
+                              doctorName: t(`data.doctors.${doc.id}.name`),
+                            })
+                          }
+                          className="px-4 py-2 bg-primary rounded-full text-sm font-bold hover:bg-primary-dark transition-colors"
+                        >
+                          {t("pages.home.experts.bookNow")}
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div
+                    className="p-6 text-center"
+                    style={{ backgroundColor: "var(--color-surface)" }}
+                  >
+                    <h3
+                      className="text-xl font-bold font-serif"
+                      style={{ color: "var(--color-text)" }}
+                    >
+                      {t(`data.doctors.${doc.id}.name`)}
+                    </h3>
+                    <p className="text-primary font-medium text-sm mb-4">
+                      {t(`data.doctors.${doc.id}.specialty`)}
                     </p>
-                    <p className="text-sm text-slate-300 mb-6 leading-relaxed">
-                      Committed to providing the highest standard of medical
-                      excellence and compassionate patient care.
-                    </p>
-                    <div className="pt-2 border-t border-slate-700 flex gap-4 justify-center">
-                      <button
-                        onClick={() =>
-                          openAppointment({ doctorName: doc.name })
-                        }
-                        className="px-4 py-2 bg-primary rounded-full text-sm font-bold hover:bg-primary-dark transition-colors"
-                      >
-                        Book Now
-                      </button>
+                    <div
+                      className="flex items-center justify-center gap-4 text-sm border-t pt-4"
+                      style={{
+                        borderColor: "var(--color-border)",
+                      }}
+                    >
+                      <span>
+                        {t("common.labels.experience", { count: 15 })}
+                      </span>
+                      <span className="w-1 h-1 rounded-full bg-slate-300"></span>
+                      <span>
+                        {t(`data.doctors.${doc.id}.educationShort`, {
+                          defaultValue: "MBBS, MD",
+                        })}
+                      </span>
                     </div>
                   </div>
                 </div>
-
-                <div
-                  className="p-6 text-center"
-                  style={{ backgroundColor: "var(--color-surface)" }}
-                >
-                  <h3
-                    className="text-xl font-bold font-serif"
-                    style={{ color: "var(--color-text)" }}
-                  >
-                    {doc.name}
-                  </h3>
-                  <p className="text-primary font-medium text-sm mb-4">
-                    {doc.role}
-                  </p>
-                  <div
-                    className="flex items-center justify-center gap-4 text-sm border-t pt-4"
-                    style={{
-                      color: "var(--color-text-muted)",
-                      borderColor: "var(--color-border)",
-                    }}
-                  >
-                    <span>{doc.exp} Exp.</span>
-                    <span className="w-1 h-1 rounded-full bg-slate-300"></span>
-                    <span>{doc.deg}</span>
-                  </div>
-                </div>
-              </div>
               </Reveal>
             ))}
           </div>
@@ -570,7 +560,7 @@ const Home: React.FC = () => {
                 border: "1px solid var(--color-border)",
               }}
             >
-              View All Doctors
+              {t("common.buttons.viewAllDoctors")}
               <span className="material-icons text-sm ml-2">arrow_forward</span>
             </Link>
           </div>
@@ -604,34 +594,33 @@ const Home: React.FC = () => {
         <div className="container mx-auto px-6 relative z-10 text-center">
           <div className="max-w-4xl mx-auto">
             <span className="inline-block py-1 px-3 rounded-full bg-white/10 border border-white/20 text-white text-xs font-bold tracking-wider uppercase mb-6 backdrop-blur-md">
-              Start Your Journey
+              {t("pages.home.cta.badge")}
             </span>
             <h2 className="text-3xl md:text-5xl lg:text-6xl font-serif font-bold text-white mb-6 leading-tight">
-              Ready to Prioritize <br />
+              {t("pages.home.cta.titleStart")} <br />
               <span
                 className="text-blue-300"
                 style={{ color: "var(--color-cta-accent)" }}
               >
-                Your Health?
+                {t("pages.home.cta.titleHighlight")}
               </span>
             </h2>
             <p className="text-blue-100 text-lg md:text-xl mb-10 leading-relaxed max-w-2xl mx-auto">
-              Schedule an appointment today to consult with our experts. We are
-              committed to helping you lead a healthier, happier life.
+              {t("pages.home.cta.subtitle")}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <button
                 onClick={() => openAppointment()}
                 className="px-8 py-4 bg-white text-primary font-bold rounded-full hover:bg-blue-50 transition-all shadow-xl shadow-blue-900/30 hover:scale-105 flex items-center gap-2"
               >
-                Book Appointment Now{" "}
+                {t("pages.home.cta.button")}{" "}
                 <span className="material-icons">calendar_today</span>
               </button>
               <Link
                 to="/contact"
                 className="px-8 py-4 bg-transparent border-2 border-white/30 text-white font-bold rounded-full hover:bg-white/10 transition-all backdrop-blur-sm"
               >
-                Contact Us
+                {t("common.buttons.contactUs")}
               </Link>
             </div>
           </div>
@@ -648,7 +637,7 @@ const Home: React.FC = () => {
             <div className="max-w-3xl">
               <Reveal delay={0}>
                 <span className="text-primary font-semibold tracking-wider uppercase text-sm">
-                  Testimonials
+                  {t("pages.home.testimonials.badge")}
                 </span>
               </Reveal>
               <Reveal delay={80}>
@@ -656,7 +645,7 @@ const Home: React.FC = () => {
                   className="text-3xl md:text-4xl font-serif font-bold mt-2 mb-4"
                   style={{ color: "var(--color-text)" }}
                 >
-                  Patient Stories
+                  {t("pages.home.testimonials.title")}
                 </h2>
               </Reveal>
               <Reveal delay={160}>
@@ -664,7 +653,7 @@ const Home: React.FC = () => {
                   className="text-lg"
                   style={{ color: "var(--color-text-muted)" }}
                 >
-                  Hear from those who have experienced our care firsthand.
+                  {t("pages.home.testimonials.subtitle")}
                 </p>
               </Reveal>
             </div>
@@ -701,7 +690,7 @@ const Home: React.FC = () => {
                   <a
                     href="#"
                     className="absolute top-6 right-6 text-slate-300 hover:text-primary transition-colors"
-                    title="Read on Google"
+                    title={t("pages.home.testimonials.readOnGoogle")}
                   >
                     <span className="material-icons text-2xl">open_in_new</span>
                   </a>
@@ -713,15 +702,15 @@ const Home: React.FC = () => {
                     <span className="material-icons">star</span>
                   </div>
                   <p
-                    className="mb-6 leading-relaxed relative z-10 flex-grow"
+                    className="mb-6 leading-relaxed relative z-10 grow"
                     style={{ color: "var(--color-text-muted)" }}
                   >
-                    "{testimonial.text}"
+                    "{t(`data.testimonials.${testimonial.id}.text`)}"
                   </p>
                   <div className="flex items-center gap-4 mt-auto">
                     <img
                       src={testimonial.img}
-                      alt={testimonial.name}
+                      alt={t(`data.testimonials.${testimonial.id}.name`)}
                       className="w-12 h-12 rounded-full object-cover shadow-sm"
                     />
                     <div>
@@ -729,13 +718,13 @@ const Home: React.FC = () => {
                         className="font-bold font-serif text-base"
                         style={{ color: "var(--color-text)" }}
                       >
-                        {testimonial.name}
+                        {t(`data.testimonials.${testimonial.id}.name`)}
                       </h3>
                       <p
                         className="text-xs"
                         style={{ color: "var(--color-text-muted)" }}
                       >
-                        {testimonial.role}
+                        {t(`data.testimonials.${testimonial.id}.role`)}
                       </p>
                     </div>
                   </div>
@@ -759,7 +748,7 @@ const Home: React.FC = () => {
             className="text-center text-sm font-semibold uppercase tracking-wider mb-8"
             style={{ color: "var(--color-text-muted)" }}
           >
-            Trusted by Insurance Partners
+            {t("pages.home.partners.title")}
           </p>
 
           <div className="overflow-x-auto scrollbar-hide">

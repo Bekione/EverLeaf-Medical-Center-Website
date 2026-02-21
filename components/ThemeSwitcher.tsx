@@ -1,10 +1,12 @@
 import React, { useState, useRef, useEffect } from "react";
 import { THEMES, useTheme, type ThemeId } from "../contexts/ThemeContext";
+import { useTranslation } from "react-i18next";
 
 export const ThemeSwitcher: React.FC<{ inline?: boolean }> = ({
   inline = false,
 }) => {
   const { theme, setTheme } = useTheme();
+  const { t: translate } = useTranslation();
   const [open, setOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
 
@@ -39,7 +41,7 @@ export const ThemeSwitcher: React.FC<{ inline?: boolean }> = ({
             borderColor: "var(--color-border)",
           }}
           role="dialog"
-          aria-label="Theme selector"
+          aria-label={translate("components.themeSwitcher.aria.selector")}
         >
           {/* Header */}
           <div
@@ -56,12 +58,16 @@ export const ThemeSwitcher: React.FC<{ inline?: boolean }> = ({
               className="text-sm font-bold"
               style={{ color: "var(--color-text)" }}
             >
-              Choose Theme
+              {translate("components.themeSwitcher.title")}
             </span>
           </div>
 
           {/* Theme Options */}
-          <ul className="py-2" role="listbox" aria-label="Available themes">
+          <ul
+            className="py-2"
+            role="listbox"
+            aria-label={translate("components.themeSwitcher.aria.list")}
+          >
             {THEMES.map((t) => {
               const isActive = t.id === theme.id;
               return (
@@ -113,13 +119,13 @@ export const ThemeSwitcher: React.FC<{ inline?: boolean }> = ({
                             : "var(--color-text)",
                         }}
                       >
-                        {t.label}
+                        {translate(t.label)}
                       </p>
                       <p
                         className="text-xs truncate"
                         style={{ color: "var(--color-text-muted)" }}
                       >
-                        {t.description}
+                        {translate(t.description)}
                       </p>
                     </div>
 
@@ -145,7 +151,11 @@ export const ThemeSwitcher: React.FC<{ inline?: boolean }> = ({
       {/* Toggle Button */}
       <button
         onClick={() => setOpen((v) => !v)}
-        aria-label={open ? "Close theme switcher" : "Open theme switcher"}
+        aria-label={
+          open
+            ? translate("components.themeSwitcher.aria.close")
+            : translate("components.themeSwitcher.aria.open")
+        }
         aria-expanded={open}
         className={`flex items-center gap-2 rounded-full text-white font-semibold text-sm transition-all hover:scale-105 active:scale-95 shadow-lg ${
           inline ? "px-3 py-2" : "px-4 py-2.5"
@@ -153,7 +163,9 @@ export const ThemeSwitcher: React.FC<{ inline?: boolean }> = ({
         style={{ backgroundColor: theme.swatch }}
       >
         <span className="material-icons text-base">palette</span>
-        {!inline && <span className="hidden sm:inline">{theme.label}</span>}
+        {!inline && (
+          <span className="hidden sm:inline">{translate(theme.label)}</span>
+        )}
         <span
           className="material-icons text-base transition-transform duration-200"
           style={{ transform: open ? "rotate(180deg)" : "rotate(0deg)" }}

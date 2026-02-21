@@ -177,9 +177,7 @@ const Diagnostics: React.FC = () => {
                   >
                     {cap.title}
                   </h3>
-                  <p className="text-sm text-slate-500 mb-4 flex-grow">
-                    {cap.desc}
-                  </p>
+                  <p className="text-sm text-slate-500 mb-4 grow">{cap.desc}</p>
                   <ul className="text-sm text-slate-600 space-y-2 mt-auto">
                     {cap.items.map((item, idx) => (
                       <li key={idx} className="flex items-center gap-2">

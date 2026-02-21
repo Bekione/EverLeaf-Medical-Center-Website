@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import NewsletterForm from "../components/NewsletterForm";
 import SEO from "../components/SEO";
@@ -37,6 +38,7 @@ const getCategoryColor = (category: string) => {
 };
 
 const Blog: React.FC = () => {
+  const { t } = useTranslation();
   const [filter, setFilter] = useState("All");
   const [currentPage, setCurrentPage] = useState(1);
   const [phase, animateFilter] = useFilterTransition(180, 40);
@@ -76,8 +78,8 @@ const Blog: React.FC = () => {
       style={{ backgroundColor: "var(--color-bg-alt)" }}
     >
       <SEO
-        title="Health Blog & News"
-        description="Read the latest medical insights, health tips, and hospital announcements from the experts at Everleaf Medical Center."
+        title={t("pages.blog.hero.title")}
+        description={t("pages.blog.hero.subtitle")}
         canonical="https://everleaf-medical.com/blog"
       />
 
@@ -96,17 +98,30 @@ const Blog: React.FC = () => {
             <Reveal delay={0}>
               <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/20 text-blue-300 border border-blue-500/30 text-xs font-semibold tracking-wider uppercase mb-6">
                 <span className="w-2 h-2 rounded-full bg-blue-400 animate-pulse" />
-                Featured Article
+                {t("pages.blog.hero.featured")}
               </span>
             </Reveal>
             <Reveal delay={80}>
               <h1 className="text-4xl lg:text-5xl font-serif font-bold mb-6 leading-tight">
-                {featuredArticle.title.split(":")[0]}
-                {featuredArticle.title.includes(":") && (
+                {
+                  t(
+                    `data.articles.${featuredArticle.id}.title`,
+                    featuredArticle.title,
+                  ).split(":")[0]
+                }
+                {t(
+                  `data.articles.${featuredArticle.id}.title`,
+                  featuredArticle.title,
+                ).includes(":") && (
                   <>
                     :<br />
                     <span className="text-primary">
-                      {featuredArticle.title.split(":")[1].trim()}
+                      {t(
+                        `data.articles.${featuredArticle.id}.title`,
+                        featuredArticle.title,
+                      )
+                        .split(":")[1]
+                        .trim()}
                     </span>
                   </>
                 )}
@@ -114,7 +129,10 @@ const Blog: React.FC = () => {
             </Reveal>
             <Reveal delay={160}>
               <p className="text-lg text-slate-300 mb-8 leading-relaxed max-w-2xl">
-                {featuredArticle.excerpt ?? featuredArticle.subtitle}
+                {t(
+                  `data.articles.${featuredArticle.id}.excerpt`,
+                  featuredArticle.excerpt ?? featuredArticle.subtitle,
+                )}
               </p>
             </Reveal>
             <Reveal delay={240}>
@@ -122,16 +140,25 @@ const Blog: React.FC = () => {
                 <div className="flex items-center gap-3">
                   <CldImg
                     src={featuredArticle.authorImg}
-                    alt={featuredArticle.author}
+                    alt={t(
+                      `data.articles.${featuredArticle.id}.author`,
+                      featuredArticle.author,
+                    )}
                     transform="w_80,q_auto,f_auto,c_fill,g_face"
                     className="w-10 h-10 rounded-full object-cover border-2 border-white/30"
                   />
                   <div>
                     <p className="text-sm font-semibold text-white">
-                      {featuredArticle.author}
+                      {t(
+                        `data.articles.${featuredArticle.id}.author`,
+                        featuredArticle.author,
+                      )}
                     </p>
                     <p className="text-xs text-slate-400">
-                      {featuredArticle.authorTitle}
+                      {t(
+                        `data.articles.${featuredArticle.id}.authorTitle`,
+                        featuredArticle.authorTitle,
+                      )}
                     </p>
                   </div>
                 </div>
@@ -140,18 +167,24 @@ const Blog: React.FC = () => {
                   <span className="material-icons text-base">
                     calendar_today
                   </span>
-                  {featuredArticle.date}
+                  {t(
+                    `data.articles.${featuredArticle.id}.date`,
+                    featuredArticle.date,
+                  )}
                 </div>
                 <div className="text-sm text-slate-400 flex items-center gap-2">
                   <span className="material-icons text-base">schedule</span>
-                  {featuredArticle.read}
+                  {t(
+                    `data.articles.${featuredArticle.id}.read`,
+                    featuredArticle.read,
+                  )}
                 </div>
               </div>
               <Link
                 to={`/blog/${featuredArticle.id}`}
                 className="inline-flex items-center gap-2 text-white font-semibold hover:text-primary transition-colors border-b-2 border-primary pb-0.5"
               >
-                Read Full Article
+                {t("pages.blog.hero.readMore")}
                 <span className="material-icons text-sm">arrow_forward</span>
               </Link>
             </Reveal>
@@ -171,7 +204,7 @@ const Blog: React.FC = () => {
               className="text-2xl font-bold mb-6 md:mb-0"
               style={{ color: "var(--color-text)" }}
             >
-              Latest Health Insights
+              {t("pages.blog.articles.title")}
             </h2>
           </Reveal>
           <Reveal delay={80}>
@@ -200,7 +233,14 @@ const Blog: React.FC = () => {
                       : {}
                   }
                 >
-                  {cat === "All" ? "All Articles" : cat}
+                  {cat === "All"
+                    ? t("pages.blog.articles.all")
+                    : t(
+                        `pages.blog.articles.categories.${cat
+                          .toLowerCase()
+                          .replace(/\s+/g, "")}`,
+                        cat,
+                      )}
                 </button>
               ))}
             </div>
@@ -223,7 +263,7 @@ const Blog: React.FC = () => {
               <div className="relative h-56 overflow-hidden">
                 <CldImg
                   src={article.img}
-                  alt={article.title}
+                  alt={t(`data.articles.${article.id}.title`, article.title)}
                   transform="w_600,q_auto,f_auto,c_fill"
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />
@@ -231,24 +271,33 @@ const Blog: React.FC = () => {
                   <span
                     className={`px-3 py-1 backdrop-blur-md text-xs font-bold uppercase tracking-wider rounded-md shadow-sm ${getCategoryColor(article.category)} bg-white/90`}
                   >
-                    {article.category}
+                    {t(
+                      `pages.blog.articles.categories.${article.category
+                        .toLowerCase()
+                        .replace(/\s+/g, "")}`,
+                      article.category,
+                    )}
                   </span>
                 </div>
               </div>
-              <div className="p-6 flex flex-col flex-grow">
+              <div className="p-6 flex flex-col grow">
                 <div
                   className="flex items-center text-xs mb-3 space-x-2"
                   style={{ color: "var(--color-text-muted)" }}
                 >
-                  <span>{article.date}</span>
+                  <span>
+                    {t(`data.articles.${article.id}.date`, article.date)}
+                  </span>
                   <span className="w-1 h-1 rounded-full bg-slate-300" />
-                  <span>{article.read}</span>
+                  <span>
+                    {t(`data.articles.${article.id}.read`, article.read)}
+                  </span>
                 </div>
                 <h3
                   className="text-xl font-bold mb-3 group-hover:text-primary transition-colors line-clamp-2"
                   style={{ color: "var(--color-text)" }}
                 >
-                  {article.title}
+                  {t(`data.articles.${article.id}.title`, article.title)}
                 </h3>
                 <div
                   className="pt-4 mt-auto border-t flex items-center justify-between"
@@ -262,9 +311,9 @@ const Blog: React.FC = () => {
                         color: "var(--color-text-muted)",
                       }}
                     >
-                      {article.author
+                      {t(`data.articles.${article.id}.author`, article.author)
                         .split(" ")
-                        .map((n) => n[0])
+                        .map((n: string) => n[0])
                         .join("")
                         .slice(0, 2)}
                     </div>
@@ -272,12 +321,14 @@ const Blog: React.FC = () => {
                       className="text-xs font-medium"
                       style={{ color: "var(--color-text)" }}
                     >
-                      {article.author}
+                      {t(`data.articles.${article.id}.author`, article.author)}
                     </span>
                   </div>
                   <Link
                     to={`/blog/${article.id}`}
-                    aria-label={`Read ${article.title}`}
+                    aria-label={t("common.buttons.readMore", {
+                      title: article.title,
+                    })}
                     className="text-primary hover:text-primary-dark p-2 rounded-full hover:bg-primary/10 transition-colors"
                   >
                     <span className="material-icons text-xl">
@@ -294,13 +345,13 @@ const Blog: React.FC = () => {
         {paginatedArticles.length === 0 && (
           <div className="text-center py-20">
             <p className="text-lg" style={{ color: "var(--color-text-muted)" }}>
-              No articles found in this category.
+              {t("pages.blog.articles.noResults")}
             </p>
             <button
               onClick={() => animateFilter(() => setFilter("All"))}
               className="mt-4 px-6 py-2 bg-primary text-white rounded-lg hover:bg-primary-dark transition-colors"
             >
-              View All
+              {t("pages.blog.articles.viewAll")}
             </button>
           </div>
         )}
@@ -380,26 +431,33 @@ const Blog: React.FC = () => {
           <div className="max-w-4xl mx-auto">
             <Reveal delay={0}>
               <span className="inline-block py-1 px-3 rounded-full bg-white/10 border border-white/20 text-white text-xs font-bold tracking-wider uppercase mb-6 backdrop-blur-md">
-                Stay Connected
+                {t("pages.blog.newsletter.badge")}
               </span>
             </Reveal>
             <Reveal delay={80}>
               <h2 className="text-3xl md:text-5xl lg:text-6xl font-serif font-bold text-white mb-6 leading-tight">
-                Health Insights <br />
-                <span className="text-blue-300">Delivered to You</span>
+                {t("pages.blog.newsletter.title")
+                  .split(" ")
+                  .slice(0, 2)
+                  .join(" ")}{" "}
+                <br />
+                <span className="text-blue-300">
+                  {t("pages.blog.newsletter.title")
+                    .split(" ")
+                    .slice(2)
+                    .join(" ")}
+                </span>
               </h2>
             </Reveal>
             <Reveal delay={160}>
               <p className="text-blue-100 text-lg md:text-xl mb-10 leading-relaxed max-w-2xl mx-auto">
-                Join over 50,000 subscribers who receive our latest medical
-                news, health tips, and exclusive event invitations directly in
-                their inbox.
+                {t("pages.blog.newsletter.subtitle")}
               </p>
             </Reveal>
             <Reveal delay={240}>
               <NewsletterForm variant="section" />
               <p className="text-blue-300 text-xs mt-6">
-                We respect your privacy. Unsubscribe at any time.
+                {t("pages.blog.newsletter.privacy")}
               </p>
             </Reveal>
           </div>

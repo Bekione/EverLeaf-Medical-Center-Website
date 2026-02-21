@@ -213,7 +213,7 @@ const PreventiveCheckups: React.FC = () => {
                     </span>
                   </div>
                 </div>
-                <div className="p-8 flex-grow">
+                <div className="p-8 grow">
                   <ul className="space-y-4">
                     {[
                       "Physical Examination",
@@ -284,7 +284,7 @@ const PreventiveCheckups: React.FC = () => {
                     </span>
                   </div>
                 </div>
-                <div className="p-8 flex-grow">
+                <div className="p-8 grow">
                   <ul className="space-y-4">
                     <li className="flex items-start gap-3 text-sm text-slate-600">
                       <span className="material-icons text-green-500 text-lg">
@@ -360,7 +360,7 @@ const PreventiveCheckups: React.FC = () => {
                     </span>
                   </div>
                 </div>
-                <div className="p-8 flex-grow">
+                <div className="p-8 grow">
                   <ul className="space-y-4">
                     <li className="flex items-start gap-3 text-sm text-slate-600">
                       <span className="material-icons text-green-500 text-lg">

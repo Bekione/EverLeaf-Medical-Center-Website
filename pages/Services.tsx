@@ -4,8 +4,10 @@ import { OpenAppointmentFunc } from "../Layout";
 import SEO from "../components/SEO";
 import Reveal from "../components/Reveal";
 import { services } from "../data/services";
+import { useTranslation } from "react-i18next";
 
 const Services: React.FC = () => {
+  const { t } = useTranslation();
   const { openAppointment } = useOutletContext<{
     openAppointment: OpenAppointmentFunc;
   }>();
@@ -13,8 +15,8 @@ const Services: React.FC = () => {
   return (
     <div className="animate-fade-in">
       <SEO
-        title="Medical Services"
-        description="Comprehensive healthcare services including diagnostics, pharmacy, emergency care, and more at Everleaf Medical Center."
+        title={t("nav.services")}
+        description={t("pages.home.services.subtitle")}
         canonical="https://everleaf-medical.com/services"
       />
 
@@ -35,7 +37,7 @@ const Services: React.FC = () => {
                 backgroundColor: "var(--color-primary-light)",
               }}
             >
-              Comprehensive Care
+              {t("pages.home.services.badge")}
             </span>
           </Reveal>
           <Reveal delay={80}>
@@ -43,7 +45,7 @@ const Services: React.FC = () => {
               className="text-4xl lg:text-5xl font-serif font-bold mb-6"
               style={{ color: "var(--color-text)" }}
             >
-              Our Medical Services
+              {t("nav.services")}
             </h1>
           </Reveal>
           <Reveal delay={160}>
@@ -51,9 +53,7 @@ const Services: React.FC = () => {
               className="text-lg leading-relaxed max-w-2xl mx-auto"
               style={{ color: "var(--color-text-muted)" }}
             >
-              We provide a full spectrum of healthcare services designed to meet
-              the needs of our community, from preventive checkups to advanced
-              emergency care.
+              {t("pages.home.services.subtitle")}
             </p>
           </Reveal>
         </div>
@@ -86,20 +86,20 @@ const Services: React.FC = () => {
                     className="text-2xl font-bold mb-3 group-hover:text-primary transition-colors"
                     style={{ color: "var(--color-text)" }}
                   >
-                    {service.title}
+                    {t(`data.services.${service.id}.title`)}
                   </h3>
                   <p
-                    className="mb-6 leading-relaxed flex-grow"
+                    className="mb-6 leading-relaxed grow"
                     style={{ color: "var(--color-text-muted)" }}
                   >
-                    {service.desc}
+                    {t(`data.services.${service.id}.desc`)}
                   </p>
                   <Link
                     to={service.link}
-                    aria-label={`Learn more about ${service.title}`}
+                    aria-label={t("common.buttons.learnMore")}
                     className="inline-flex items-center font-semibold text-primary hover:text-primary-dark transition-colors group/link mt-auto"
                   >
-                    Learn More{" "}
+                    {t("common.buttons.learnMore")}{" "}
                     <span className="material-icons text-sm ml-1 group-hover/link:translate-x-1 transition-transform">
                       arrow_forward
                     </span>
@@ -134,20 +134,20 @@ const Services: React.FC = () => {
           <div className="max-w-4xl mx-auto">
             <Reveal delay={0}>
               <span className="inline-block py-1 px-3 rounded-full bg-white/10 border border-white/20 text-white text-xs font-bold tracking-wider uppercase mb-6 backdrop-blur-md">
-                Here For You
+                {t("pages.about.hero.badge")}
               </span>
             </Reveal>
             <Reveal delay={80}>
               <h2 className="text-3xl md:text-5xl lg:text-6xl font-serif font-bold text-white mb-6 leading-tight">
-                Compassionate Care, <br />
-                <span className="text-blue-300">Advanced Medicine</span>
+                {t("pages.home.cta.titleStart")} <br />
+                <span className="text-blue-300">
+                  {t("pages.home.cta.titleHighlight")}
+                </span>
               </h2>
             </Reveal>
             <Reveal delay={160}>
               <p className="text-blue-100 text-lg md:text-xl mb-10 leading-relaxed max-w-2xl mx-auto">
-                Whether you need a routine check-up or specialized treatment,
-                our team is ready to provide the highest quality care tailored
-                to your needs.
+                {t("pages.home.cta.subtitle")}
               </p>
             </Reveal>
             <Reveal delay={240}>
@@ -156,14 +156,14 @@ const Services: React.FC = () => {
                   onClick={() => openAppointment()}
                   className="px-8 py-4 bg-white text-primary font-bold rounded-full hover:bg-blue-50 transition-all shadow-xl shadow-blue-900/30 hover:scale-105 flex items-center gap-2"
                 >
-                  Book Appointment{" "}
+                  {t("common.buttons.bookAppointment")}{" "}
                   <span className="material-icons">calendar_today</span>
                 </button>
                 <Link
                   to="/contact"
                   className="px-8 py-4 bg-transparent border-2 border-white/30 text-white font-bold rounded-full hover:bg-white/10 transition-all backdrop-blur-sm"
                 >
-                  Contact Us
+                  {t("common.buttons.contactUs")}
                 </Link>
               </div>
             </Reveal>

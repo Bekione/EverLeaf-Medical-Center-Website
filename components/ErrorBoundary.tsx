@@ -1,6 +1,7 @@
 import React, { Component, ErrorInfo, ReactNode } from "react";
+import { withTranslation, WithTranslation } from "react-i18next";
 
-interface Props {
+interface Props extends WithTranslation {
   children: ReactNode;
 }
 
@@ -24,6 +25,8 @@ class ErrorBoundary extends Component<Props, State> {
   }
 
   public render(): ReactNode {
+    const { t } = this.props;
+
     if (this.state.hasError) {
       return (
         <div
@@ -44,14 +47,13 @@ class ErrorBoundary extends Component<Props, State> {
               className="text-3xl font-serif font-bold mb-4"
               style={{ color: "var(--color-text)" }}
             >
-              Something went wrong
+              {t("components.errorBoundary.title")}
             </h1>
             <p
               className="mb-8 leading-relaxed"
               style={{ color: "var(--color-text-muted)" }}
             >
-              We encountered an unexpected error. Our technical team has been
-              notified. Please try refreshing the page or return home.
+              {t("components.errorBoundary.description")}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <button
@@ -59,7 +61,7 @@ class ErrorBoundary extends Component<Props, State> {
                 className="inline-flex items-center justify-center px-6 py-3 text-sm font-bold text-white bg-primary rounded-lg hover:bg-primary-dark transition-colors"
               >
                 <span className="material-icons text-sm mr-2">refresh</span>
-                Refresh Page
+                {t("components.errorBoundary.refresh")}
               </button>
               <a
                 href="/"
@@ -70,7 +72,7 @@ class ErrorBoundary extends Component<Props, State> {
                   borderColor: "var(--color-border)",
                 }}
               >
-                Return Home
+                {t("components.errorBoundary.returnHome")}
               </a>
             </div>
           </div>
@@ -82,4 +84,4 @@ class ErrorBoundary extends Component<Props, State> {
   }
 }
 
-export default ErrorBoundary;
+export default withTranslation()(ErrorBoundary);

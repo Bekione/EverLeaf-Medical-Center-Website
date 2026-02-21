@@ -43,7 +43,7 @@ const Layout: React.FC = () => {
     >
       <ScrollToTop />
       <Header onBookAppointment={() => openAppointment()} />
-      <main className="flex-grow">
+      <main className="grow">
         <Outlet context={{ openAppointment }} />
       </main>
       <Footer />

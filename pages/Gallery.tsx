@@ -8,26 +8,20 @@ import {
   cardAnimStyle,
 } from "../hooks/useFilterTransition";
 import { galleryImages as allImages } from "../data/gallery";
+import { useTranslation } from "react-i18next";
 
 const ITEMS_PER_PAGE = 6;
 
-const categories = [
-  "All",
-  "Facilities",
-  "Rooms",
-  "Equipment",
-  "Staff",
-] as const;
-
 const Gallery: React.FC = () => {
+  const { t } = useTranslation();
   const [modalOpen, setModalOpen] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [filter, setFilter] = useState("All");
+  const [filter, setFilter] = useState("all");
   const [visibleCount, setVisibleCount] = useState(ITEMS_PER_PAGE);
   const [phase, animateFilter] = useFilterTransition(180, 40);
 
   const filteredImages =
-    filter === "All"
+    filter === "all"
       ? allImages
       : allImages.filter((img) => img.category === filter);
 
@@ -66,8 +60,8 @@ const Gallery: React.FC = () => {
       style={{ backgroundColor: "var(--color-bg-alt)" }}
     >
       <SEO
-        title="Hospital Gallery"
-        description="View photos of our state-of-the-art medical facilities, patient rooms, and advanced equipment."
+        title={t("pages.gallery.hero.title")}
+        description={t("pages.gallery.hero.subtitle")}
         canonical="https://everleaf-medical.com/gallery"
       />
 
@@ -88,7 +82,7 @@ const Gallery: React.FC = () => {
                 backgroundColor: "var(--color-primary-light)",
               }}
             >
-              Our Environment
+              {t("pages.gallery.hero.badge")}
             </span>
           </Reveal>
           <Reveal delay={80}>
@@ -96,7 +90,7 @@ const Gallery: React.FC = () => {
               className="text-4xl lg:text-5xl font-serif font-bold mb-6"
               style={{ color: "var(--color-text)" }}
             >
-              Hospital Gallery
+              {t("pages.gallery.hero.title")}
             </h1>
           </Reveal>
           <Reveal delay={160}>
@@ -104,9 +98,7 @@ const Gallery: React.FC = () => {
               className="text-lg leading-relaxed max-w-2xl mx-auto"
               style={{ color: "var(--color-text-muted)" }}
             >
-              Explore our state-of-the-art facilities, comfortable patient
-              rooms, and the dedicated environment we've built for healing and
-              recovery.
+              {t("pages.gallery.hero.subtitle")}
             </p>
           </Reveal>
         </div>
@@ -120,7 +112,7 @@ const Gallery: React.FC = () => {
             role="group"
             aria-label="Gallery category filter"
           >
-            {categories.map((cat) => {
+            {["all", "facilities", "rooms", "equipment", "staff"].map((cat) => {
               const active = filter === cat;
               return (
                 <button
@@ -142,7 +134,7 @@ const Gallery: React.FC = () => {
                       : {}
                   }
                 >
-                  {cat === "All" ? "All Photos" : cat}
+                  {t(`pages.gallery.filters.${cat}`)}
                 </button>
               );
             })}
@@ -164,25 +156,25 @@ const Gallery: React.FC = () => {
             >
               <ImageSkeleton
                 src={img.src}
-                alt={img.title}
+                alt={t(`data.gallery.${img.id}.title`)}
                 className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700 ease-out"
                 containerClassName="w-full h-full"
               />
 
               {/* Slide-up Overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-primary/80 to-transparent backdrop-blur-[2px] translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-in-out p-6 flex flex-col justify-end text-white text-left">
+              <div className="absolute inset-0 bg-linear-to-t from-slate-900 via-primary/80 to-transparent backdrop-blur-[2px] translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-in-out p-6 flex flex-col justify-end text-white text-left">
                 <span className="text-xs font-bold tracking-wider uppercase text-blue-200 mb-2">
-                  {img.category}
+                  {t(`data.categories.${img.category}`)}
                 </span>
                 <h3 className="text-xl font-bold font-serif mb-2">
-                  {img.title}
+                  {t(`data.gallery.${img.id}.title`)}
                 </h3>
                 <p className="text-sm text-slate-100 line-clamp-2 mb-4">
-                  {img.desc}
+                  {t(`data.gallery.${img.id}.desc`)}
                 </p>
                 <div className="flex items-center text-xs font-semibold text-white/90 group-hover:text-white transition-colors">
                   <span className="material-icons text-sm mr-1">zoom_in</span>{" "}
-                  View Larger
+                  {t("pages.gallery.card.viewLarger")}
                 </div>
               </div>
             </div>
@@ -202,7 +194,7 @@ const Gallery: React.FC = () => {
                   borderColor: "var(--color-border)",
                 }}
               >
-                Load More Photos
+                {t("pages.gallery.loadMore")}
                 <span className="material-icons text-sm ml-2">expand_more</span>
               </button>
             </div>
@@ -213,7 +205,8 @@ const Gallery: React.FC = () => {
       <GalleryModal
         isOpen={modalOpen}
         imageSrc={filteredImages[currentIndex]?.src}
-        title={filteredImages[currentIndex]?.title}
+        title={t(`data.gallery.${filteredImages[currentIndex]?.id}.title`)}
+        description={t(`data.gallery.${filteredImages[currentIndex]?.id}.desc`)}
         onClose={() => setModalOpen(false)}
         onNext={nextImage}
         onPrev={prevImage}

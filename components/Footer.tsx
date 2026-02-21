@@ -3,8 +3,10 @@ import { Link } from "react-router-dom";
 import { submitForm } from "../utils/formService";
 import { EverleafLogo } from "./Logo";
 import { ThemeSwitcher } from "./ThemeSwitcher";
+import { useTranslation } from "react-i18next";
 
 const Footer: React.FC = () => {
+  const { t } = useTranslation();
   const [email, setEmail] = useState("");
   const [status, setStatus] = useState<"idle" | "submitting" | "success">(
     "idle",
@@ -43,13 +45,13 @@ const Footer: React.FC = () => {
               </div>
               <div className="flex flex-col">
                 <span className="text-xl font-brand font-semibold text-white leading-none">
-                  Everleaf
+                  {t("nav.brand")}
                 </span>
                 <span
                   className="text-[10px] font-brand tracking-[0.2em] uppercase mt-1"
                   style={{ color: "rgba(255,255,255,0.7)" }}
                 >
-                  Medical Center
+                  {t("nav.brandSub")}
                 </span>
               </div>
             </Link>
@@ -57,8 +59,7 @@ const Footer: React.FC = () => {
               className="mb-6 leading-relaxed"
               style={{ color: "rgba(255,255,255,0.75)" }}
             >
-              Care That Grows With You. Committed to lifelong wellness through
-              compassionate care, innovation, and trust.
+              {t("footer.tagline")}
             </p>
             <div className="flex gap-4">
               {/* Facebook */}
@@ -134,15 +135,15 @@ const Footer: React.FC = () => {
           </div>
           <div>
             <h4 className="text-white font-bold text-lg mb-6">
-              Important Links
+              {t("footer.links")}
             </h4>
             <ul className="space-y-3">
               {[
-                { to: "/about", label: "About Us" },
-                { to: "/doctors", label: "Our Doctors" },
-                { to: "/services", label: "Services" },
-                { to: "/departments", label: "Departments" },
-                { to: "/contact", label: "Contact Us" },
+                { to: "/about", label: t("nav.about") },
+                { to: "/doctors", label: t("nav.doctors") },
+                { to: "/services", label: t("nav.services") },
+                { to: "/departments", label: t("nav.departments") },
+                { to: "/contact", label: t("nav.contact") },
               ].map((item, i) => (
                 <li key={item.to}>
                   <Link
@@ -162,16 +163,18 @@ const Footer: React.FC = () => {
             </ul>
           </div>
           <div>
-            <h4 className="text-white font-bold text-lg mb-6">Contact Us</h4>
+            <h4 className="text-white font-bold text-lg mb-6">
+              {t("footer.contact")}
+            </h4>
             <ul className="space-y-4">
               <li className="flex items-start gap-3">
                 <span className="material-icons text-primary mt-1">
                   location_on
                 </span>
                 <span>
-                  123 Health Avenue, Medical District,
+                  {t("footer.address.street")}
                   <br />
-                  Addis Abeba, AA 10012
+                  {t("footer.address.cityStateZip")}
                 </span>
               </li>
               <li className="flex items-center gap-3">
@@ -185,16 +188,18 @@ const Footer: React.FC = () => {
             </ul>
           </div>
           <div>
-            <h4 className="text-white font-bold text-lg mb-6">Newsletter</h4>
+            <h4 className="text-white font-bold text-lg mb-6">
+              {t("footer.newsletter.title")}
+            </h4>
             <p className="mb-4" style={{ color: "rgba(255,255,255,0.75)" }}>
-              Subscribe to our newsletter to get the latest news and updates.
+              {t("footer.newsletter.description")}
             </p>
             {status === "success" ? (
               <div className="bg-green-500/20 border border-green-500/50 p-4 rounded-lg text-green-300 flex items-center gap-2 animate-fade-in">
                 <span className="material-icons text-green-400">
                   check_circle
                 </span>
-                <span>Subscribed successfully!</span>
+                <span>{t("footer.newsletter.success")}</span>
               </div>
             ) : (
               <form onSubmit={handleSubscribe} className="flex flex-col gap-3">
@@ -203,7 +208,7 @@ const Footer: React.FC = () => {
                   name="email"
                   autoComplete="email"
                   type="email"
-                  placeholder="Your Email"
+                  placeholder={t("footer.newsletter.placeholder")}
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   required
@@ -220,7 +225,9 @@ const Footer: React.FC = () => {
                   disabled={status === "submitting"}
                   className="px-6 py-2.5 bg-primary hover:bg-primary-dark text-white font-bold rounded-lg transition-all shadow-lg hover:shadow-primary/30 flex items-center justify-center gap-2 uppercase tracking-wide text-xs disabled:opacity-70 disabled:cursor-wait"
                 >
-                  {status === "submitting" ? "Subscribing..." : "Subscribe"}
+                  {status === "submitting"
+                    ? t("footer.newsletter.subscribing")
+                    : t("footer.newsletter.button")}
                   {!status.startsWith("sub") && (
                     <span className="material-icons text-sm">send</span>
                   )}
@@ -237,16 +244,16 @@ const Footer: React.FC = () => {
           }}
         >
           <p>
-            © {new Date().getFullYear()} Everleaf Medical Center. All rights
-            reserved.
+            © {new Date().getFullYear()} {t("components.seo.siteName")}.{" "}
+            {t("footer.rights")}
           </p>
           <div className="flex items-center gap-6 mt-4 md:mt-0">
             <ThemeSwitcher inline />
             <Link to="/privacy" className="hover:text-white transition-colors">
-              Privacy Policy
+              {t("footer.privacy")}
             </Link>
             <Link to="/privacy" className="hover:text-white transition-colors">
-              Terms of Service
+              {t("footer.terms")}
             </Link>
           </div>
         </div>

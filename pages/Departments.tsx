@@ -3,9 +3,11 @@ import { Link, useOutletContext } from "react-router-dom";
 import { OpenAppointmentFunc } from "../Layout";
 import SEO from "../components/SEO";
 import Reveal from "../components/Reveal";
+import { useTranslation } from "react-i18next";
 import { departments } from "../data/departments";
 
 const Departments: React.FC = () => {
+  const { t } = useTranslation();
   const { openAppointment } = useOutletContext<{
     openAppointment: OpenAppointmentFunc;
   }>();
@@ -13,8 +15,8 @@ const Departments: React.FC = () => {
   return (
     <div className="animate-fade-in">
       <SEO
-        title="Departments"
-        description="Explore our specialized medical departments including Cardiology, Neurology, Pediatrics, Surgery, and more."
+        title={t("nav.departments")}
+        description={t("pages.home.infoCards.departments.desc")}
         canonical="https://everleaf-medical.com/departments"
       />
 
@@ -35,7 +37,7 @@ const Departments: React.FC = () => {
                 backgroundColor: "var(--color-primary-light)",
               }}
             >
-              Medical Excellence
+              {t("pages.home.services.badge")}
             </span>
           </Reveal>
           <Reveal delay={80}>
@@ -43,7 +45,7 @@ const Departments: React.FC = () => {
               className="text-4xl lg:text-5xl font-serif font-bold mb-6"
               style={{ color: "var(--color-text)" }}
             >
-              Our Specialized Departments
+              {t("pages.home.infoCards.departments.title")}
             </h1>
           </Reveal>
           <Reveal delay={160}>
@@ -51,9 +53,7 @@ const Departments: React.FC = () => {
               className="text-lg leading-relaxed max-w-2xl mx-auto"
               style={{ color: "var(--color-text-muted)" }}
             >
-              We offer a wide array of specialized medical departments, each
-              staffed with experienced professionals dedicated to providing
-              top-quality healthcare services.
+              {t("pages.home.infoCards.departments.desc")}
             </p>
           </Reveal>
         </div>
@@ -93,19 +93,19 @@ const Departments: React.FC = () => {
                     className="text-2xl font-bold mb-3 group-hover:text-primary transition-colors"
                     style={{ color: "var(--color-text)" }}
                   >
-                    {dept.name}
+                    {t(`data.departments.${dept.id}.name`)}
                   </h3>
                   <p
                     className="mb-6 leading-relaxed"
                     style={{ color: "var(--color-text-muted)" }}
                   >
-                    {dept.desc}
+                    {t(`data.departments.${dept.id}.desc`)}
                   </p>
                   <Link
                     to={`/departments/${dept.id}`}
                     className="inline-flex items-center font-semibold text-primary hover:text-primary-dark transition-colors group/link"
                   >
-                    View Details{" "}
+                    {t("common.buttons.learnMore")}{" "}
                     <span className="material-icons text-sm ml-1 group-hover/link:translate-x-1 transition-transform">
                       arrow_forward
                     </span>
@@ -140,20 +140,20 @@ const Departments: React.FC = () => {
           <div className="max-w-4xl mx-auto">
             <Reveal delay={0}>
               <span className="inline-block py-1 px-3 rounded-full bg-white/10 border border-white/20 text-white text-xs font-bold tracking-wider uppercase mb-6 backdrop-blur-md">
-                Expert Consultation
+                {t("pages.about.hero.badge")}
               </span>
             </Reveal>
             <Reveal delay={80}>
               <h2 className="text-3xl md:text-5xl lg:text-6xl font-serif font-bold text-white mb-6 leading-tight">
-                Need Expert <br />
-                <span className="text-blue-300">Medical Advice?</span>
+                {t("pages.home.cta.titleStart")} <br />
+                <span className="text-blue-300">
+                  {t("pages.home.cta.titleHighlight")}
+                </span>
               </h2>
             </Reveal>
             <Reveal delay={160}>
               <p className="text-slate-300 text-lg md:text-xl mb-10 leading-relaxed max-w-2xl mx-auto">
-                Our specialists are ready to help you with personalized care
-                plans. Schedule an appointment with one of our departments
-                today.
+                {t("pages.home.cta.subtitle")}
               </p>
             </Reveal>
             <Reveal delay={240}>
@@ -162,13 +162,14 @@ const Departments: React.FC = () => {
                   onClick={() => openAppointment()}
                   className="px-8 py-4 bg-primary text-white font-bold rounded-full hover:bg-primary-dark transition-all shadow-xl shadow-primary/30 hover:scale-105 flex items-center gap-2"
                 >
-                  Book Appointment <span className="material-icons">event</span>
+                  {t("common.buttons.bookAppointment")}{" "}
+                  <span className="material-icons">event</span>
                 </button>
                 <Link
                   to="/doctors"
                   className="px-8 py-4 bg-transparent border-2 border-white/30 text-white font-bold rounded-full hover:bg-white/10 transition-all backdrop-blur-sm"
                 >
-                  Find a Doctor
+                  {t("pages.home.infoCards.specialist.search")}
                 </Link>
               </div>
             </Reveal>

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { submitForm } from "../utils/formService";
 import { newsletterFormSchema } from "../utils/validation";
+import { useTranslation } from "react-i18next";
 
 interface NewsletterFormProps {
   variant?: "sidebar" | "section";
@@ -9,6 +10,7 @@ interface NewsletterFormProps {
 const NewsletterForm: React.FC<NewsletterFormProps> = ({
   variant = "sidebar",
 }) => {
+  const { t } = useTranslation();
   const [email, setEmail] = useState("");
   const [status, setStatus] = useState<
     "idle" | "submitting" | "success" | "error"
@@ -23,7 +25,10 @@ const NewsletterForm: React.FC<NewsletterFormProps> = ({
     const validation = newsletterFormSchema.safeParse({ email });
 
     if (!validation.success) {
-      setError(validation.error.issues[0]?.message || "Invalid email");
+      setError(
+        validation.error.issues[0]?.message ||
+          t("footer.newsletter.invalidEmail"),
+      );
       return;
     }
 
@@ -35,7 +40,7 @@ const NewsletterForm: React.FC<NewsletterFormProps> = ({
       setError("");
     } catch {
       setStatus("error");
-      setError("Failed to subscribe. Please try again.");
+      setError(t("footer.newsletter.error"));
     }
   };
 
@@ -47,15 +52,15 @@ const NewsletterForm: React.FC<NewsletterFormProps> = ({
         <span className="material-icons text-3xl mb-2 block text-white">
           check_circle
         </span>
-        <p className="font-bold text-white">Thanks for subscribing!</p>
+        <p className="font-bold text-white">{t("footer.newsletter.success")}</p>
         <p className="text-xs text-blue-100 opacity-90">
-          Watch your inbox for our latest updates.
+          {t("footer.newsletter.successDesc")}
         </p>
         <button
           onClick={() => setStatus("idle")}
           className="text-xs text-white underline mt-2 hover:opacity-80"
         >
-          Subscribe another email
+          {t("footer.newsletter.subscribeAnother")}
         </button>
       </div>
     );
@@ -84,7 +89,7 @@ const NewsletterForm: React.FC<NewsletterFormProps> = ({
           id="newsletter-email"
           name="email"
           autoComplete="email"
-          placeholder="Your email address"
+          placeholder={t("footer.newsletter.placeholder")}
           value={email}
           onChange={(e) => {
             setEmail(e.target.value);
@@ -107,7 +112,9 @@ const NewsletterForm: React.FC<NewsletterFormProps> = ({
         disabled={status === "submitting"}
         className={buttonClasses}
       >
-        {status === "submitting" ? "Subscribing..." : "Subscribe"}
+        {status === "submitting"
+          ? t("footer.newsletter.subscribing")
+          : t("footer.newsletter.button")}
       </button>
     </form>
   );

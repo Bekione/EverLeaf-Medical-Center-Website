@@ -1,12 +1,15 @@
 import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { EverleafLogo } from "./Logo";
+import { useTranslation } from "react-i18next";
+import LanguageSwitcher from "./LanguageSwitcher";
 
 interface HeaderProps {
   onBookAppointment: () => void;
 }
 
 const Header: React.FC<HeaderProps> = ({ onBookAppointment }) => {
+  const { t } = useTranslation();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [expandedMobileMenu, setExpandedMobileMenu] = useState<string | null>(
     null,
@@ -53,27 +56,30 @@ const Header: React.FC<HeaderProps> = ({ onBookAppointment }) => {
               <span className="material-icons text-base text-primary">
                 phone
               </span>{" "}
-              Emergency: 911
+              {t("nav.emergency")}: 911
             </span>
             <span className="flex items-center gap-2 opacity-80">
-              <span className="material-icons text-base">schedule</span> Mon -
-              Sun: 24 Hours
+              <span className="material-icons text-base">schedule</span>{" "}
+              {t("nav.schedule")}
             </span>
           </div>
-          <div className="flex items-center space-x-4">
-            <Link
-              to="/gallery"
-              className="opacity-80 hover:opacity-100 transition-opacity"
-            >
-              Gallery
-            </Link>
-            <span className="opacity-30">|</span>
-            <Link
-              to="/blog"
-              className="opacity-80 hover:opacity-100 transition-opacity"
-            >
-              News & Media
-            </Link>
+          <div className="flex items-center space-x-6">
+            <LanguageSwitcher />
+            <div className="flex items-center space-x-4">
+              <Link
+                to="/gallery"
+                className="opacity-80 hover:opacity-100 transition-opacity"
+              >
+                {t("nav.gallery")}
+              </Link>
+              <span className="opacity-30">|</span>
+              <Link
+                to="/blog"
+                className="opacity-80 hover:opacity-100 transition-opacity"
+              >
+                {t("nav.media")}
+              </Link>
+            </div>
           </div>
         </div>
       </div>
@@ -96,13 +102,13 @@ const Header: React.FC<HeaderProps> = ({ onBookAppointment }) => {
                   className="text-xl lg:text-2xl font-brand font-semibold leading-none tracking-tight"
                   style={{ color: "var(--color-text)" }}
                 >
-                  Everleaf
+                  {t("nav.brand")}
                 </span>
                 <span
                   className="text-[10px] lg:text-xs font-brand tracking-[0.2em] uppercase mt-0.5"
                   style={{ color: "var(--color-text-muted)" }}
                 >
-                  Medical Center
+                  {t("nav.brandSub")}
                 </span>
               </div>
             </Link>
@@ -114,14 +120,14 @@ const Header: React.FC<HeaderProps> = ({ onBookAppointment }) => {
                 style={getNavLinkStyle("/")}
                 to="/"
               >
-                Home
+                {t("nav.home")}
               </Link>
               <Link
                 className={`${isActive("/about")} text-sm xl:text-base font-medium transition-colors`}
                 style={getNavLinkStyle("/about")}
                 to="/about"
               >
-                About
+                {t("nav.about")}
               </Link>
 
               {/* Services Dropdown */}
@@ -135,7 +141,7 @@ const Header: React.FC<HeaderProps> = ({ onBookAppointment }) => {
                       : { color: "var(--color-text)" }
                   }
                 >
-                  Services{" "}
+                  {t("nav.services")}{" "}
                   <span className="material-icons text-sm transition-transform duration-300 group-hover/menu:rotate-180">
                     expand_more
                   </span>
@@ -152,15 +158,27 @@ const Header: React.FC<HeaderProps> = ({ onBookAppointment }) => {
                   {[
                     {
                       to: "/services/diagnostics",
-                      label: "Diagnostic Services",
+                      label: t("data.services.diagnostics.title"),
                     },
-                    { to: "/services/laboratory", label: "Laboratory" },
-                    { to: "/services/imaging", label: "Imaging" },
-                    { to: "/services/pharmacy", label: "Pharmacy" },
-                    { to: "/services/emergency", label: "Emergency Care" },
+                    {
+                      to: "/services/laboratory",
+                      label: t("data.services.laboratory.title"),
+                    },
+                    {
+                      to: "/services/imaging",
+                      label: t("data.services.imaging.title"),
+                    },
+                    {
+                      to: "/services/pharmacy",
+                      label: t("data.services.pharmacy.title"),
+                    },
+                    {
+                      to: "/services/emergency",
+                      label: t("data.services.emergency.title"),
+                    },
                     {
                       to: "/services/preventive-checkups",
-                      label: "Preventive Checkups",
+                      label: t("data.services.preventive.title"),
                     },
                   ].map((item) => (
                     <Link
@@ -214,7 +232,7 @@ const Header: React.FC<HeaderProps> = ({ onBookAppointment }) => {
                       : { color: "var(--color-text)" }
                   }
                 >
-                  Departments{" "}
+                  {t("nav.departments")}{" "}
                   <span className="material-icons text-sm transition-transform duration-300 group-hover/menu:rotate-180">
                     expand_more
                   </span>
@@ -229,20 +247,41 @@ const Header: React.FC<HeaderProps> = ({ onBookAppointment }) => {
                   }}
                 >
                   {[
-                    { to: "/departments/cardiology", label: "Cardiology" },
-                    { to: "/departments/neurology", label: "Neurology" },
-                    { to: "/departments/pediatrics", label: "Pediatrics" },
-                    { to: "/departments/surgery", label: "Surgery" },
-                    { to: "/departments/dental", label: "Dental Clinic" },
+                    {
+                      to: "/departments/cardiology",
+                      label: t("data.departments.cardiology.name"),
+                    },
+                    {
+                      to: "/departments/neurology",
+                      label: t("data.departments.neurology.name"),
+                    },
+                    {
+                      to: "/departments/pediatrics",
+                      label: t("data.departments.pediatrics.name"),
+                    },
+                    {
+                      to: "/departments/surgery",
+                      label: t("data.departments.surgery.name"),
+                    },
+                    {
+                      to: "/departments/dental",
+                      label: t("data.departments.dental.name"),
+                    },
                     {
                       to: "/departments/ophthalmology",
-                      label: "Ophthalmology",
+                      label: t("data.departments.ophthalmology.name"),
                     },
-                    { to: "/departments/laboratory", label: "Laboratory" },
-                    { to: "/departments/radiology", label: "Radiology" },
+                    {
+                      to: "/departments/laboratory",
+                      label: t("data.departments.laboratory.name"),
+                    },
+                    {
+                      to: "/departments/radiology",
+                      label: t("data.departments.radiology.name"),
+                    },
                     {
                       to: "/departments/rehabilitation",
-                      label: "Rehabilitation",
+                      label: t("data.departments.rehabilitation.name"),
                     },
                   ].map((item) => (
                     <Link
@@ -289,28 +328,28 @@ const Header: React.FC<HeaderProps> = ({ onBookAppointment }) => {
                 style={getNavLinkStyle("/doctors")}
                 to="/doctors"
               >
-                Doctors
+                {t("nav.doctors")}
               </Link>
               <Link
                 className={`${isActive("/blog")} text-sm xl:text-base font-medium transition-colors`}
                 style={getNavLinkStyle("/blog")}
                 to="/blog"
               >
-                Articles
+                {t("nav.blog")}
               </Link>
               <Link
                 className={`${isActive("/gallery")} text-sm xl:text-base font-medium transition-colors`}
                 style={getNavLinkStyle("/gallery")}
                 to="/gallery"
               >
-                Gallery
+                {t("nav.gallery")}
               </Link>
               <Link
                 className={`${isActive("/contact")} text-sm xl:text-base font-medium transition-colors`}
                 style={getNavLinkStyle("/contact")}
                 to="/contact"
               >
-                Contact
+                {t("nav.contact")}
               </Link>
             </div>
 
@@ -319,8 +358,10 @@ const Header: React.FC<HeaderProps> = ({ onBookAppointment }) => {
                 onClick={onBookAppointment}
                 className="inline-flex items-center justify-center px-4 py-2 xl:px-6 xl:py-2.5 text-sm font-semibold text-white transition-all duration-200 bg-primary rounded-lg hover:bg-primary-dark shadow-lg hover:-translate-y-0.5"
               >
-                <span className="hidden xl:inline">Book Appointment</span>
-                <span className="xl:hidden">Book</span>
+                <span className="hidden xl:inline">
+                  {t("common.buttons.bookAppointment")}
+                </span>
+                <span className="xl:hidden">{t("common.buttons.book")}</span>
                 <span className="material-icons text-sm ml-2">
                   arrow_forward
                 </span>
@@ -357,14 +398,14 @@ const Header: React.FC<HeaderProps> = ({ onBookAppointment }) => {
                 className={getMobileLinkClass("/")}
                 to="/"
               >
-                Home
+                {t("nav.home")}
               </Link>
               <Link
                 onClick={() => setIsMenuOpen(false)}
                 className={getMobileLinkClass("/about")}
                 to="/about"
               >
-                About
+                {t("nav.about")}
               </Link>
 
               {/* Expandable Services Menu */}
@@ -381,7 +422,7 @@ const Header: React.FC<HeaderProps> = ({ onBookAppointment }) => {
                   }
                   onClick={() => toggleMobileSubmenu("services")}
                 >
-                  <span>Services</span>
+                  <span>{t("nav.services")}</span>
                   <span
                     className={`material-icons text-sm transition-transform duration-300 ${expandedMobileMenu === "services" ? "rotate-180" : ""}`}
                   >
@@ -401,42 +442,42 @@ const Header: React.FC<HeaderProps> = ({ onBookAppointment }) => {
                       className={getMobileSubLinkClass("/services")}
                       to="/services"
                     >
-                      All Services
+                      {t("data.services.all")}
                     </Link>
                     <Link
                       onClick={() => setIsMenuOpen(false)}
                       className={getMobileSubLinkClass("/services/diagnostics")}
                       to="/services/diagnostics"
                     >
-                      Diagnostics
+                      {t("data.services.diagnostics.title")}
                     </Link>
                     <Link
                       onClick={() => setIsMenuOpen(false)}
                       className={getMobileSubLinkClass("/services/laboratory")}
                       to="/services/laboratory"
                     >
-                      Laboratory
+                      {t("data.services.laboratory.title")}
                     </Link>
                     <Link
                       onClick={() => setIsMenuOpen(false)}
                       className={getMobileSubLinkClass("/services/imaging")}
                       to="/services/imaging"
                     >
-                      Imaging
+                      {t("data.services.imaging.title")}
                     </Link>
                     <Link
                       onClick={() => setIsMenuOpen(false)}
                       className={getMobileSubLinkClass("/services/pharmacy")}
                       to="/services/pharmacy"
                     >
-                      Pharmacy
+                      {t("data.services.pharmacy.title")}
                     </Link>
                     <Link
                       onClick={() => setIsMenuOpen(false)}
                       className={getMobileSubLinkClass("/services/emergency")}
                       to="/services/emergency"
                     >
-                      Emergency
+                      {t("data.services.emergency.title")}
                     </Link>
                     <Link
                       onClick={() => setIsMenuOpen(false)}
@@ -445,7 +486,7 @@ const Header: React.FC<HeaderProps> = ({ onBookAppointment }) => {
                       )}
                       to="/services/preventive-checkups"
                     >
-                      Checkups
+                      {t("data.services.preventive.title")}
                     </Link>
                   </div>
                 </div>
@@ -465,7 +506,7 @@ const Header: React.FC<HeaderProps> = ({ onBookAppointment }) => {
                   }
                   onClick={() => toggleMobileSubmenu("departments")}
                 >
-                  <span>Departments</span>
+                  <span>{t("nav.departments")}</span>
                   <span
                     className={`material-icons text-sm transition-transform duration-300 ${expandedMobileMenu === "departments" ? "rotate-180" : ""}`}
                   >
@@ -485,7 +526,7 @@ const Header: React.FC<HeaderProps> = ({ onBookAppointment }) => {
                       className={getMobileSubLinkClass("/departments")}
                       to="/departments"
                     >
-                      All Departments
+                      {t("data.departments.all.name")}
                     </Link>
                     <Link
                       onClick={() => setIsMenuOpen(false)}
@@ -494,7 +535,7 @@ const Header: React.FC<HeaderProps> = ({ onBookAppointment }) => {
                       )}
                       to="/departments/cardiology"
                     >
-                      Cardiology
+                      {t("data.departments.cardiology.name")}
                     </Link>
                     <Link
                       onClick={() => setIsMenuOpen(false)}
@@ -503,7 +544,7 @@ const Header: React.FC<HeaderProps> = ({ onBookAppointment }) => {
                       )}
                       to="/departments/neurology"
                     >
-                      Neurology
+                      {t("data.departments.neurology.name")}
                     </Link>
                     <Link
                       onClick={() => setIsMenuOpen(false)}
@@ -512,21 +553,21 @@ const Header: React.FC<HeaderProps> = ({ onBookAppointment }) => {
                       )}
                       to="/departments/pediatrics"
                     >
-                      Pediatrics
+                      {t("data.departments.pediatrics.name")}
                     </Link>
                     <Link
                       onClick={() => setIsMenuOpen(false)}
                       className={getMobileSubLinkClass("/departments/surgery")}
                       to="/departments/surgery"
                     >
-                      Surgery
+                      {t("data.departments.surgery.name")}
                     </Link>
                     <Link
                       onClick={() => setIsMenuOpen(false)}
                       className={getMobileSubLinkClass("/departments/dental")}
                       to="/departments/dental"
                     >
-                      Dental
+                      {t("data.departments.dental.name")}
                     </Link>
                     <Link
                       onClick={() => setIsMenuOpen(false)}
@@ -535,14 +576,14 @@ const Header: React.FC<HeaderProps> = ({ onBookAppointment }) => {
                       )}
                       to="/departments/ophthalmology"
                     >
-                      Ophthalmology
+                      {t("data.departments.ophthalmology.name")}
                     </Link>
                     <Link
                       onClick={() => setIsMenuOpen(false)}
                       className={getMobileSubLinkClass("/services/laboratory")}
                       to="/services/laboratory"
                     >
-                      Laboratory
+                      {t("data.departments.laboratory.name")}
                     </Link>
                     <Link
                       onClick={() => setIsMenuOpen(false)}
@@ -551,7 +592,7 @@ const Header: React.FC<HeaderProps> = ({ onBookAppointment }) => {
                       )}
                       to="/departments/radiology"
                     >
-                      Radiology
+                      {t("data.departments.radiology.name")}
                     </Link>
                     <Link
                       onClick={() => setIsMenuOpen(false)}
@@ -560,7 +601,7 @@ const Header: React.FC<HeaderProps> = ({ onBookAppointment }) => {
                       )}
                       to="/departments/rehabilitation"
                     >
-                      Rehabilitation
+                      {t("data.departments.rehabilitation.name")}
                     </Link>
                   </div>
                 </div>
@@ -571,29 +612,32 @@ const Header: React.FC<HeaderProps> = ({ onBookAppointment }) => {
                 className={getMobileLinkClass("/doctors")}
                 to="/doctors"
               >
-                Doctors
+                {t("nav.doctors")}
               </Link>
               <Link
                 onClick={() => setIsMenuOpen(false)}
                 className={getMobileLinkClass("/blog")}
                 to="/blog"
               >
-                Articles
+                {t("nav.blog")}
               </Link>
               <Link
                 onClick={() => setIsMenuOpen(false)}
                 className={getMobileLinkClass("/gallery")}
                 to="/gallery"
               >
-                Gallery
+                {t("nav.gallery")}
               </Link>
               <Link
                 onClick={() => setIsMenuOpen(false)}
                 className={getMobileLinkClass("/contact")}
                 to="/contact"
               >
-                Contact
+                {t("nav.contact")}
               </Link>
+              <div className="py-4 border-t border-white/10">
+                <LanguageSwitcher />
+              </div>
               <button
                 onClick={() => {
                   onBookAppointment();
@@ -601,7 +645,7 @@ const Header: React.FC<HeaderProps> = ({ onBookAppointment }) => {
                 }}
                 className="w-full text-center py-3 mt-4 text-white bg-primary rounded-lg font-bold"
               >
-                Book Appointment
+                {t("common.buttons.bookAppointment")}
               </button>
             </div>
           </div>

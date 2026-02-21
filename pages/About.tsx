@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import SEO from "../components/SEO";
 import Reveal from "../components/Reveal";
 import { CldImg, rawSrc } from "@/components/CldImg";
+import { useTranslation } from "react-i18next";
 
 // Counter Component for animation
 const CountUp = ({
@@ -63,14 +64,15 @@ const CountUp = ({
 };
 
 const About: React.FC = () => {
+  const { t } = useTranslation();
   return (
     <div
       className="animate-fade-in min-h-screen"
       style={{ backgroundColor: "var(--color-bg-alt)" }}
     >
       <SEO
-        title="About Us"
-        description="Learn about Everleaf Medical Center's 35-year legacy of compassionate care, medical excellence, and our mission to improve community health."
+        title={t("nav.about")}
+        description={t("pages.about.hero.subtitle")}
         canonical="https://everleaf-medical.com/about"
       />
       {/* Hero Section - Distinct from Services Pages */}
@@ -97,7 +99,7 @@ const About: React.FC = () => {
                   }}
                 >
                   <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
-                  Since 1988
+                  {t("pages.about.hero.badge")}
                 </div>
               </Reveal>
               <Reveal delay={80}>
@@ -105,9 +107,9 @@ const About: React.FC = () => {
                   className="text-4xl lg:text-6xl font-serif font-bold mb-6 leading-tight"
                   style={{ color: "var(--color-text)" }}
                 >
-                  A Legacy of Caring, <br />
+                  {t("pages.about.hero.titleStart")} <br />
                   <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-blue-600">
-                    A Future of Healing.
+                    {t("pages.about.hero.titleHighlight")}
                   </span>
                 </h1>
               </Reveal>
@@ -116,9 +118,7 @@ const About: React.FC = () => {
                   className="text-lg mb-8 leading-relaxed max-w-xl mx-auto lg:mx-0"
                   style={{ color: "var(--color-text-muted)" }}
                 >
-                  For over 35 years, Everleaf Medical Center has been a beacon
-                  of hope. We blend compassionate care with cutting-edge medical
-                  innovation to improve the lives of our community.
+                  {t("pages.about.hero.subtitle")}
                 </p>
               </Reveal>
               <Reveal delay={240}>
@@ -127,7 +127,7 @@ const About: React.FC = () => {
                     to="/doctors"
                     className="inline-flex items-center justify-center px-8 py-3.5 text-base font-bold text-white bg-primary rounded-lg hover:bg-primary-dark shadow-lg shadow-blue-500/20 transition-all hover:-translate-y-0.5"
                   >
-                    Meet Our Team
+                    {t("pages.about.hero.meetTeam")}
                   </Link>
                   <Link
                     to="/gallery"
@@ -138,7 +138,7 @@ const About: React.FC = () => {
                       borderColor: "var(--color-border)",
                     }}
                   >
-                    View Our Facilities
+                    {t("pages.about.hero.viewFacilities")}
                   </Link>
                 </div>
               </Reveal>
@@ -160,7 +160,7 @@ const About: React.FC = () => {
                       className="text-sm font-medium"
                       style={{ color: "var(--color-text-muted)" }}
                     >
-                      Years Serving
+                      {t("pages.about.stats.years")}
                     </p>
                   </div>
                   <div
@@ -178,7 +178,7 @@ const About: React.FC = () => {
                       className="text-sm font-medium"
                       style={{ color: "var(--color-text-muted)" }}
                     >
-                      Patients Healed
+                      {t("pages.about.stats.patients")}
                     </p>
                   </div>
                   <div
@@ -196,7 +196,7 @@ const About: React.FC = () => {
                       className="text-sm font-medium"
                       style={{ color: "var(--color-text-muted)" }}
                     >
-                      Specialists
+                      {t("pages.about.stats.specialists")}
                     </p>
                   </div>
                 </div>
@@ -260,32 +260,25 @@ const About: React.FC = () => {
             <Reveal from="right" threshold={0.1} className="order-1 lg:order-2">
               <div>
                 <span className="text-primary font-bold tracking-wider uppercase text-sm mb-2 block">
-                  Our Story
+                  {t("pages.about.story.badge")}
                 </span>
                 <h2
                   className="text-3xl md:text-4xl font-serif font-bold mb-6"
                   style={{ color: "var(--color-text)" }}
                 >
-                  From Humble Beginnings to Medical Excellence
+                  {t("pages.about.story.title")}
                 </h2>
                 <p
                   className="text-lg mb-6 leading-relaxed"
                   style={{ color: "var(--color-text-muted)" }}
                 >
-                  Founded in 1988 by Dr. Eleanor Rigby with a small team of
-                  dedicated nurses, Everleaf Medical Center started with a
-                  simple mission: to provide accessible, high-quality healthcare
-                  to the local community.
+                  {t("pages.about.story.p1")}
                 </p>
                 <p
                   className="text-lg mb-8 leading-relaxed"
                   style={{ color: "var(--color-text-muted)" }}
                 >
-                  Today, we have grown into a 500-bed multi-specialty quaternary
-                  care hospital. Despite our expansion, our core philosophy
-                  remains unchanged—putting the patient first. We are driven by
-                  the belief that healthcare is not just about treating
-                  diseases, but about healing people.
+                  {t("pages.about.story.p2")}
                 </p>
                 <div className="grid sm:grid-cols-2 gap-6">
                   <div
@@ -303,14 +296,13 @@ const About: React.FC = () => {
                         className="font-bold mb-1"
                         style={{ color: "var(--color-text)" }}
                       >
-                        Patient Centric
+                        {t("pages.about.story.patientCentric.title")}
                       </h4>
                       <p
                         className="text-sm"
                         style={{ color: "var(--color-text-muted)" }}
                       >
-                        Every decision we make is centered around patient
-                        well-being and comfort.
+                        {t("pages.about.story.patientCentric.desc")}
                       </p>
                     </div>
                   </div>
@@ -329,14 +321,13 @@ const About: React.FC = () => {
                         className="font-bold mb-1"
                         style={{ color: "var(--color-text)" }}
                       >
-                        Innovation
+                        {t("pages.about.story.innovation.title")}
                       </h4>
                       <p
                         className="text-sm"
                         style={{ color: "var(--color-text-muted)" }}
                       >
-                        Continuously adopting the latest medical technologies
-                        and research.
+                        {t("pages.about.story.innovation.desc")}
                       </p>
                     </div>
                   </div>
@@ -354,6 +345,7 @@ const About: React.FC = () => {
           style={{
             backgroundImage:
               "url('https://www.transparenttextures.com/patterns/cubes.png')",
+          
           }}
         ></div>
         <div className="container mx-auto px-6 relative z-10">
@@ -362,35 +354,32 @@ const About: React.FC = () => {
               <div>
                 <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/20 text-white text-xs font-bold uppercase tracking-wide mb-6 border border-white/30">
                   <span className="material-icons text-sm">verified</span>
-                  International Standards
+                  {t("pages.about.quality.badge")}
                 </div>
                 <h2 className="text-3xl md:text-4xl font-serif font-bold mb-6">
-                  Uncompromising Quality & Safety
+                  {t("pages.about.quality.title")}
                 </h2>
                 <p className="text-blue-100 text-lg mb-8 leading-relaxed">
-                  At Everleaf, patient safety is our top priority. We adhere to
-                  rigorous international standards and protocols to ensure a
-                  safe environment for healing. Our commitment to quality is
-                  recognized by leading healthcare accreditation bodies.
+                  {t("pages.about.quality.subtitle")}
                 </p>
                 <ul className="space-y-4 mb-8">
                   <li className="flex items-center gap-3">
                     <div className="bg-white/20 w-8 h-8 rounded-full flex items-center justify-center">
                       <span className="material-icons text-sm">check</span>
                     </div>
-                    <span>JCI Accredited Facility</span>
+                    <span>{t("pages.about.quality.item1")}</span>
                   </li>
                   <li className="flex items-center gap-3">
                     <div className="bg-white/20 w-8 h-8 rounded-full flex items-center justify-center">
                       <span className="material-icons text-sm">check</span>
                     </div>
-                    <span>ISO 9001:2015 Certified for Quality Management</span>
+                    <span>{t("pages.about.quality.item2")}</span>
                   </li>
                   <li className="flex items-center gap-3">
                     <div className="bg-white/20 w-8 h-8 rounded-full flex items-center justify-center">
                       <span className="material-icons text-sm">check</span>
                     </div>
-                    <span>Winner of National Patient Safety Award 2023</span>
+                    <span>{t("pages.about.quality.item3")}</span>
                   </li>
                 </ul>
               </div>
@@ -405,7 +394,7 @@ const About: React.FC = () => {
                     <CountUp end={100} suffix="%" />
                   </div>
                   <div className="text-sm text-blue-100 uppercase tracking-wide">
-                    Safety Compliance
+                    {t("pages.about.quality.stats.safety")}
                   </div>
                 </div>
                 <div className="bg-white/10 backdrop-blur-sm p-8 rounded-2xl border border-white/20 text-center hover:bg-white/20 transition-colors">
@@ -416,7 +405,7 @@ const About: React.FC = () => {
                     <CountUp end={99.9} decimals={1} suffix="%" />
                   </div>
                   <div className="text-sm text-blue-100 uppercase tracking-wide">
-                    Infection Control
+                    {t("pages.about.quality.stats.infection")}
                   </div>
                 </div>
                 <div className="bg-white/10 backdrop-blur-sm p-8 rounded-2xl border border-white/20 text-center hover:bg-white/20 transition-colors">
@@ -427,7 +416,7 @@ const About: React.FC = () => {
                     <CountUp end={50} suffix="+" />
                   </div>
                   <div className="text-sm text-blue-100 uppercase tracking-wide">
-                    Awards Won
+                    {t("pages.about.quality.stats.awards")}
                   </div>
                 </div>
                 <div className="bg-white/10 backdrop-blur-sm p-8 rounded-2xl border border-white/20 text-center hover:bg-white/20 transition-colors">
@@ -438,7 +427,7 @@ const About: React.FC = () => {
                     <CountUp end={1200} suffix="+" />
                   </div>
                   <div className="text-sm text-blue-100 uppercase tracking-wide">
-                    Medical Staff
+                    {t("pages.about.quality.stats.staff")}
                   </div>
                 </div>
               </div>
@@ -453,7 +442,7 @@ const About: React.FC = () => {
           <div className="text-center max-w-3xl mx-auto mb-16">
             <Reveal delay={0}>
               <span className="text-primary font-semibold tracking-wider uppercase text-sm">
-                Our Core Principles
+                {t("pages.about.values.badge")}
               </span>
             </Reveal>
             <Reveal delay={80}>
@@ -461,7 +450,7 @@ const About: React.FC = () => {
                 className="text-3xl md:text-4xl font-bold mt-2 mb-4 font-serif"
                 style={{ color: "var(--color-text)" }}
               >
-                Values That Drive Us
+                {t("pages.about.values.title")}
               </h2>
             </Reveal>
             <Reveal delay={160}>
@@ -469,8 +458,7 @@ const About: React.FC = () => {
                 className="text-lg"
                 style={{ color: "var(--color-text-muted)" }}
               >
-                Our culture is built on a foundation of trust, integrity, and an
-                unwavering commitment to our patients.
+                {t("pages.about.values.subtitle")}
               </p>
             </Reveal>
           </div>
@@ -478,18 +466,18 @@ const About: React.FC = () => {
             {[
               {
                 icon: "volunteer_activism",
-                title: "Compassion",
-                desc: "We treat everyone with kindness, empathy, and understanding. We listen to our patients and support them through their healing journey.",
+                title: t("pages.about.values.compassion.title"),
+                desc: t("pages.about.values.compassion.desc"),
               },
               {
                 icon: "diamond",
-                title: "Excellence",
-                desc: "We strive for the highest standards in everything we do. From medical procedures to patient service, we are committed to continuous improvement.",
+                title: t("pages.about.values.excellence.title"),
+                desc: t("pages.about.values.excellence.desc"),
               },
               {
                 icon: "handshake",
-                title: "Integrity",
-                desc: "We adhere to high ethical principles and professional standards. We are honest, transparent, and accountable in our actions.",
+                title: t("pages.about.values.integrity.title"),
+                desc: t("pages.about.values.integrity.desc"),
               },
             ].map((val, idx) => (
               <Reveal key={idx} delay={idx * 80}>
@@ -532,7 +520,7 @@ const About: React.FC = () => {
           <div className="text-center max-w-3xl mx-auto mb-16">
             <Reveal delay={0}>
               <span className="text-primary font-semibold tracking-wider uppercase text-sm">
-                Our Leadership
+                {t("pages.about.leadership.badge")}
               </span>
             </Reveal>
             <Reveal delay={80}>
@@ -540,7 +528,7 @@ const About: React.FC = () => {
                 className="text-3xl md:text-4xl font-serif font-bold mt-2"
                 style={{ color: "var(--color-text)" }}
               >
-                Board of Directors
+                {t("pages.about.leadership.title")}
               </h2>
             </Reveal>
             <Reveal delay={160}>
@@ -548,31 +536,30 @@ const About: React.FC = () => {
                 className="mt-4 text-lg"
                 style={{ color: "var(--color-text-muted)" }}
               >
-                Guiding our vision with decades of combined medical and
-                administrative expertise.
+                {t("pages.about.leadership.subtitle")}
               </p>
             </Reveal>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {[
               {
-                name: "Dr. Eleanor Rigby",
-                role: "Chief Medical Director",
+                name: t("pages.about.leadership.members.eleanor.name"),
+                role: t("common.roles.chiefMedicalDirector"),
                 img: "/images/doctors/team-dr-eleanor-rigby.jpg",
               },
               {
-                name: "Dr. James Wilson",
-                role: "Head of Surgery",
+                name: t("pages.about.leadership.members.james.name"),
+                role: t("common.roles.headOfSurgery"),
                 img: "/images/doctors/team-dr-mark-williams.jpg",
               },
               {
-                name: "Ms. Sarah Connor",
-                role: "Director of Nursing",
+                name: t("pages.about.leadership.members.sarah.name"),
+                role: t("common.roles.directorOfNursing"),
                 img: "/images/doctors/team-dr-sarah-johnson.jpg",
               },
               {
-                name: "Mr. Daneil Mekonnen",
-                role: "Chief Financial Officer",
+                name: t("pages.about.leadership.members.danel.name"),
+                role: t("common.roles.chiefFinancialOfficer"),
                 img: "/images/doctors/team-dr-danel-mekonnen.jpg",
               },
             ].map((member, idx) => (
@@ -583,7 +570,7 @@ const About: React.FC = () => {
                     alt={member.name}
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/40 to-transparent flex flex-col justify-end p-6">
+                  <div className="absolute inset-0 bg-linear-to-t from-slate-900/90 via-slate-900/40 to-transparent flex flex-col justify-end p-6">
                     <h3 className="text-xl font-bold text-white mb-1">
                       {member.name}
                     </h3>
@@ -592,8 +579,7 @@ const About: React.FC = () => {
                     </p>
                     <div className="h-0 group-hover:h-auto overflow-hidden transition-all duration-300">
                       <p className="text-slate-300 text-xs mt-3 opacity-0 group-hover:opacity-100 transition-opacity delay-100 duration-300">
-                        Dedicated leader committed to excellence in healthcare
-                        administration and patient outcomes.
+                        {t("pages.about.leadership.desc")}
                       </p>
                     </div>
                   </div>
@@ -611,13 +597,13 @@ const About: React.FC = () => {
             <Reveal delay={0}>
               <div>
                 <span className="text-primary font-semibold tracking-wider uppercase text-sm">
-                  Infrastructure
+                  {t("pages.about.infrastructure.badge")}
                 </span>
                 <h2
                   className="text-3xl md:text-4xl font-serif font-bold mt-2"
                   style={{ color: "var(--color-text)" }}
                 >
-                  Modern Facilities
+                  {t("pages.about.infrastructure.title")}
                 </h2>
               </div>
             </Reveal>
@@ -625,7 +611,7 @@ const About: React.FC = () => {
               to="/gallery"
               className="hidden md:flex items-center gap-2 text-primary font-semibold hover:text-primary-dark transition-colors mt-4 md:mt-0"
             >
-              View Full Gallery{" "}
+              {t("pages.about.infrastructure.viewGallery")}{" "}
               <span className="material-icons text-sm">arrow_forward</span>
             </Link>
           </div>
@@ -637,13 +623,12 @@ const About: React.FC = () => {
                   alt="Operating Theatre"
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-transparent to-transparent flex flex-col justify-end p-8">
+                <div className="absolute inset-0 bg-linear-to-t from-slate-900/90 via-transparent to-transparent flex flex-col justify-end p-8">
                   <h3 className="text-white text-2xl font-bold mb-1">
-                    Advanced Operating Theatres
+                    {t("pages.about.infrastructure.operating.title")}
                   </h3>
                   <p className="text-white/80">
-                    Equipped with robotic surgery capabilities and
-                    high-definition imaging systems.
+                    {t("pages.about.infrastructure.operating.desc")}
                   </p>
                 </div>
               </div>
@@ -653,12 +638,12 @@ const About: React.FC = () => {
                   alt="Patient Room"
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-90 group-hover:opacity-100"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/90 to-transparent flex flex-col justify-end p-6">
+                <div className="absolute inset-0 bg-linear-to-t from-slate-900/90 to-transparent flex flex-col justify-end p-6">
                   <h3 className="text-white text-xl font-bold">
-                    Private Recovery Suites
+                    {t("pages.about.infrastructure.recovery.title")}
                   </h3>
                   <p className="text-white/70 text-sm mt-1">
-                    Designed for privacy and comfort.
+                    {t("pages.about.infrastructure.recovery.desc")}
                   </p>
                 </div>
               </div>
@@ -668,12 +653,12 @@ const About: React.FC = () => {
                   alt="ICU"
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-90 group-hover:opacity-100"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/90 to-transparent flex flex-col justify-end p-6">
+                <div className="absolute inset-0 bg-linear-to-t from-slate-900/90 to-transparent flex flex-col justify-end p-6">
                   <h3 className="text-white text-xl font-bold">
-                    Intensive Care Units
+                    {t("pages.about.infrastructure.icu.title")}
                   </h3>
                   <p className="text-white/70 text-sm mt-1">
-                    24/7 Monitoring &amp; Support.
+                    {t("pages.about.infrastructure.icu.desc")}
                   </p>
                 </div>
               </div>
@@ -695,7 +680,7 @@ const About: React.FC = () => {
           className="absolute inset-0 opacity-10"
           style={{
             backgroundImage:
-              "url('https://www.transparenttextures.com/patterns/cubes.png')",
+              "url('https://www.transparenttextures.com/patterns/xv.png')",
           }}
         ></div>
 
@@ -709,19 +694,20 @@ const About: React.FC = () => {
           <div className="max-w-4xl mx-auto">
             <Reveal delay={0}>
               <span className="inline-block py-1 px-3 rounded-full bg-white/10 border border-white/20 text-white text-xs font-bold tracking-wider uppercase mb-6 backdrop-blur-md">
-                Be Part of Our Journey
+                {t("pages.about.cta.badge")}
               </span>
             </Reveal>
             <Reveal delay={80}>
               <h2 className="text-3xl md:text-5xl lg:text-6xl font-serif font-bold text-white mb-6 leading-tight">
-                Ready to Experience <br />
-                <span className="text-blue-300">Better Healthcare?</span>
+                {t("pages.about.cta.titleStart")} <br />
+                <span className="text-blue-300">
+                  {t("pages.about.cta.titleHighlight")}
+                </span>
               </h2>
             </Reveal>
             <Reveal delay={160}>
               <p className="text-blue-100 text-lg md:text-xl mb-10 leading-relaxed max-w-2xl mx-auto">
-                Whether you are looking for world-class treatment or want to
-                join our team of dedicated professionals, Everleaf welcomes you.
+                {t("pages.about.cta.subtitle")}
               </p>
             </Reveal>
             <Reveal delay={240}>
@@ -730,13 +716,14 @@ const About: React.FC = () => {
                   to="/contact"
                   className="px-8 py-4 bg-white text-primary font-bold rounded-full hover:bg-blue-50 transition-all shadow-xl shadow-blue-900/30 hover:scale-105 flex items-center gap-2"
                 >
-                  Visit Us Today <span className="material-icons">near_me</span>
+                  {t("pages.about.cta.visitUs")}{" "}
+                  <span className="material-icons">near_me</span>
                 </Link>
                 <Link
                   to="/contact"
                   className="px-8 py-4 bg-transparent border-2 border-white/30 text-white font-bold rounded-full hover:bg-white/10 transition-all backdrop-blur-sm"
                 >
-                  Contact Administration
+                  {t("pages.about.cta.contactAdmin")}
                 </Link>
               </div>
             </Reveal>

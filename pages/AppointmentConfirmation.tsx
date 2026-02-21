@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import SEO from "../components/SEO";
+import { useTranslation, Trans } from "react-i18next";
 
 interface AppointmentData {
   fullName: string;
@@ -14,6 +15,7 @@ interface AppointmentData {
 }
 
 const AppointmentConfirmation: React.FC = () => {
+  const { t } = useTranslation();
   const location = useLocation();
   const navigate = useNavigate();
   const appointmentData = (
@@ -43,10 +45,15 @@ const AppointmentConfirmation: React.FC = () => {
   });
 
   return (
-    <div className="flex-grow flex items-center justify-center py-20 relative overflow-hidden min-h-[70vh] bg-slate-50">
+    <div className="grow flex items-center justify-center py-20 relative overflow-hidden min-h-[70vh] bg-slate-50">
       <SEO
-        title="Appointment Request Received"
-        description="Thank you for requesting an appointment. Our team will contact you shortly."
+        title={t("pages.appointmentConfirmation.hero.title", {
+          name: appointmentData.fullName,
+        })}
+        description={t("pages.appointmentConfirmation.hero.subtitle", {
+          email: appointmentData.email,
+          phone: appointmentData.phone,
+        })}
         // Usually, we don't want search engines indexing confirmation pages
         structuredData={{
           "@context": "https://schema.org",
@@ -67,23 +74,30 @@ const AppointmentConfirmation: React.FC = () => {
               </span>
             </div>
             <h1 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
-              Thank You, {appointmentData.fullName}!
+              {t("pages.appointmentConfirmation.hero.title", {
+                name: appointmentData.fullName,
+              })}
             </h1>
             <p className="text-lg text-slate-600 mb-8 leading-relaxed">
-              Your appointment request has been received. Our team will review
-              your details and contact you at{" "}
-              <strong>{appointmentData.email}</strong> or{" "}
-              <strong>{appointmentData.phone}</strong> within 24 hours to
-              confirm your appointment.
+              <Trans
+                i18nKey="pages.appointmentConfirmation.hero.subtitle"
+                values={{
+                  email: appointmentData.email,
+                  phone: appointmentData.phone,
+                }}
+                components={[<strong key="0" />]}
+              />
             </p>
             <div className="bg-slate-50 rounded-xl p-6 mb-10 text-left border border-slate-200">
               <h3 className="text-sm uppercase tracking-wider text-slate-500 font-semibold mb-4 border-b border-slate-200 pb-2">
-                Request Summary
+                {t("pages.appointmentConfirmation.summary.title")}
               </h3>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-4 gap-x-8">
                 <div>
                   <span className="block text-xs text-slate-500 mb-1">
-                    Patient Name
+                    {t(
+                      "pages.appointmentConfirmation.summary.labels.patientName",
+                    )}
                   </span>
                   <span className="block text-base font-medium text-slate-900">
                     {appointmentData.fullName}
@@ -91,7 +105,9 @@ const AppointmentConfirmation: React.FC = () => {
                 </div>
                 <div>
                   <span className="block text-xs text-slate-500 mb-1">
-                    Department
+                    {t(
+                      "pages.appointmentConfirmation.summary.labels.department",
+                    )}
                   </span>
                   <span className="block text-base font-medium text-slate-900">
                     {appointmentData.department}
@@ -100,7 +116,7 @@ const AppointmentConfirmation: React.FC = () => {
                 {appointmentData.doctorName && (
                   <div>
                     <span className="block text-xs text-slate-500 mb-1">
-                      Requested Doctor
+                      {t("pages.appointmentConfirmation.summary.labels.doctor")}
                     </span>
                     <span className="block text-base font-medium text-slate-900">
                       {appointmentData.doctorName}
@@ -109,7 +125,9 @@ const AppointmentConfirmation: React.FC = () => {
                 )}
                 <div>
                   <span className="block text-xs text-slate-500 mb-1">
-                    Submitted On
+                    {t(
+                      "pages.appointmentConfirmation.summary.labels.submittedOn",
+                    )}
                   </span>
                   <span className="block text-base font-medium text-slate-900">
                     {formattedDate}
@@ -117,7 +135,7 @@ const AppointmentConfirmation: React.FC = () => {
                 </div>
                 <div>
                   <span className="block text-xs text-slate-500 mb-1">
-                    Email
+                    {t("pages.appointmentConfirmation.summary.labels.email")}
                   </span>
                   <span className="block text-base font-medium text-slate-900">
                     {appointmentData.email}
@@ -125,7 +143,7 @@ const AppointmentConfirmation: React.FC = () => {
                 </div>
                 <div>
                   <span className="block text-xs text-slate-500 mb-1">
-                    Phone
+                    {t("pages.appointmentConfirmation.summary.labels.phone")}
                   </span>
                   <span className="block text-base font-medium text-slate-900">
                     {appointmentData.phone}
@@ -133,7 +151,9 @@ const AppointmentConfirmation: React.FC = () => {
                 </div>
                 <div className="sm:col-span-2">
                   <span className="block text-xs text-slate-500 mb-1">
-                    Reference ID
+                    {t(
+                      "pages.appointmentConfirmation.summary.labels.referenceId",
+                    )}
                   </span>
                   <span className="block text-base font-medium text-slate-900 font-mono bg-slate-200 px-2 py-0.5 rounded inline-block">
                     #{appointmentData.referenceId}
@@ -142,7 +162,7 @@ const AppointmentConfirmation: React.FC = () => {
                 {appointmentData.message && (
                   <div className="sm:col-span-2">
                     <span className="block text-xs text-slate-500 mb-1">
-                      Additional Notes
+                      {t("pages.appointmentConfirmation.summary.labels.notes")}
                     </span>
                     <span className="block text-sm text-slate-700 bg-white p-3 rounded border border-slate-200">
                       {appointmentData.message}
@@ -157,21 +177,21 @@ const AppointmentConfirmation: React.FC = () => {
                 className="w-full sm:w-auto inline-flex items-center justify-center px-8 py-3.5 text-base font-bold text-white transition-all duration-200 bg-primary rounded-lg hover:bg-primary-dark shadow-soft hover:shadow-lg hover:-translate-y-0.5"
               >
                 <span className="material-icons text-sm mr-2">home</span>
-                Return to Home
+                {t("pages.appointmentConfirmation.actions.returnHome")}
               </Link>
               <Link
                 to="/blog"
                 className="w-full sm:w-auto inline-flex items-center justify-center px-8 py-3.5 text-base font-bold text-slate-700 bg-white border border-slate-200 rounded-lg hover:bg-slate-50 transition-colors"
               >
                 <span className="material-icons text-sm mr-2">article</span>
-                Explore Health Articles
+                {t("pages.appointmentConfirmation.actions.exploreBlog")}
               </Link>
             </div>
           </div>
           <div className="bg-blue-50 p-4 text-center border-t border-blue-100">
             <p className="text-sm text-blue-800 flex items-center justify-center gap-2">
               <span className="material-icons text-sm">verified_user</span>
-              Your health information is secure and protected.
+              {t("pages.appointmentConfirmation.footer.secure")}
             </p>
           </div>
         </div>

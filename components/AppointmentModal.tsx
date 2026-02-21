@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { submitForm } from "../utils/formService";
 import { appointmentFormSchema, validateField } from "../utils/validation";
 import { CustomSelect } from "./CustomSelect";
+import { useTranslation, Trans } from "react-i18next";
 
 interface AppointmentModalProps {
   isOpen: boolean;
@@ -20,6 +21,7 @@ const AppointmentModal: React.FC<AppointmentModalProps> = ({
   initialData,
 }) => {
   const navigate = useNavigate();
+  const { t } = useTranslation();
   const [formData, setFormData] = useState({
     fullName: "",
     email: "",
@@ -46,9 +48,15 @@ const AppointmentModal: React.FC<AppointmentModalProps> = ({
 
       if (initialData) {
         if (initialData.serviceName) {
-          defaultMessage = `I am interested in booking the ${initialData.serviceName}.`;
+          defaultMessage = t(
+            "components.appointmentModal.footer.preMessage.service",
+            { serviceName: initialData.serviceName },
+          );
         } else if (initialData.doctorName) {
-          defaultMessage = `I would like to book an appointment with ${initialData.doctorName}.`;
+          defaultMessage = t(
+            "components.appointmentModal.footer.preMessage.doctor",
+            { doctorName: initialData.doctorName },
+          );
         }
         if (initialData.department) {
           defaultDept = initialData.department;
@@ -182,7 +190,7 @@ const AppointmentModal: React.FC<AppointmentModalProps> = ({
       });
       setErrors(fieldErrors);
       setStatus("error");
-      setErrorMessage("Please correct the errors highlighted below.");
+      setErrorMessage(t("components.appointmentModal.validation.error"));
       return; // STOP submission if validation fails
     }
 
@@ -224,9 +232,7 @@ const AppointmentModal: React.FC<AppointmentModalProps> = ({
       setHasSubmitted(false);
     } catch (error) {
       setStatus("error");
-      setErrorMessage(
-        "Failed to submit appointment request. Please try again.",
-      );
+      setErrorMessage(t("components.appointmentModal.validation.submitError"));
     } finally {
       if (status !== "error") {
         setStatus("idle");
@@ -260,7 +266,7 @@ const AppointmentModal: React.FC<AppointmentModalProps> = ({
           <span className="material-icons text-2xl">close</span>
         </button>
 
-        <div className="mb-8 text-center sm:text-left flex-shrink-0">
+        <div className="mb-8 text-center sm:text-left shrink-0">
           <div
             className="inline-flex items-center justify-center w-12 h-12 rounded-full text-primary mb-4"
             style={{ backgroundColor: "var(--color-primary-light)" }}
@@ -271,14 +277,13 @@ const AppointmentModal: React.FC<AppointmentModalProps> = ({
             className="text-2xl font-bold leading-6"
             style={{ color: "var(--color-text)" }}
           >
-            Request an Appointment
+            {t("components.appointmentModal.title")}
           </h3>
           <p
             className="mt-2 text-sm"
             style={{ color: "var(--color-text-muted)" }}
           >
-            Fill out the form below and our team will contact you to confirm
-            your slot.
+            {t("components.appointmentModal.subtitle")}
           </p>
         </div>
 
@@ -289,14 +294,14 @@ const AppointmentModal: React.FC<AppointmentModalProps> = ({
           </div>
         )}
 
-        <form onSubmit={handleSubmit} className="space-y-5 flex-grow">
+        <form onSubmit={handleSubmit} className="space-y-5 grow">
           <div>
             <label
               htmlFor="fullName"
               className="block text-sm font-medium mb-1"
               style={{ color: "var(--color-text)" }}
             >
-              Full Name
+              {t("components.appointmentModal.fields.fullName.label")}
             </label>
             <div className="relative">
               <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400">
@@ -319,7 +324,9 @@ const AppointmentModal: React.FC<AppointmentModalProps> = ({
                         color: "var(--color-text)",
                       }
                 }
-                placeholder="John Doe"
+                placeholder={t(
+                  "components.appointmentModal.fields.fullName.placeholder",
+                )}
               />
             </div>
             {errors.fullName && (touched.fullName || hasSubmitted) && (
@@ -337,7 +344,7 @@ const AppointmentModal: React.FC<AppointmentModalProps> = ({
                 className="block text-sm font-medium mb-1"
                 style={{ color: "var(--color-text)" }}
               >
-                Email Address
+                {t("components.appointmentModal.fields.email.label")}
               </label>
               <div className="relative">
                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400">
@@ -360,7 +367,9 @@ const AppointmentModal: React.FC<AppointmentModalProps> = ({
                           color: "var(--color-text)",
                         }
                   }
-                  placeholder="you@example.com"
+                  placeholder={t(
+                    "components.appointmentModal.fields.email.placeholder",
+                  )}
                 />
               </div>
               {errors.email && (touched.email || hasSubmitted) && (
@@ -376,7 +385,7 @@ const AppointmentModal: React.FC<AppointmentModalProps> = ({
                 className="block text-sm font-medium mb-1"
                 style={{ color: "var(--color-text)" }}
               >
-                Phone Number
+                {t("components.appointmentModal.fields.phone.label")}
               </label>
               <div className="relative">
                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400">
@@ -399,7 +408,9 @@ const AppointmentModal: React.FC<AppointmentModalProps> = ({
                           color: "var(--color-text)",
                         }
                   }
-                  placeholder="(555) 000-0000"
+                  placeholder={t(
+                    "components.appointmentModal.fields.phone.placeholder",
+                  )}
                 />
               </div>
               {errors.phone && (touched.phone || hasSubmitted) && (
@@ -429,7 +440,9 @@ const AppointmentModal: React.FC<AppointmentModalProps> = ({
               ]}
               value={formData.department}
               onChange={handleDepartmentChange}
-              placeholder="Choose a department..."
+              placeholder={t(
+                "components.appointmentModal.fields.department.placeholder",
+              )}
               icon="local_hospital"
               maxHeight={13}
               error={
@@ -452,7 +465,7 @@ const AppointmentModal: React.FC<AppointmentModalProps> = ({
               className="block text-sm font-medium mb-1"
               style={{ color: "var(--color-text)" }}
             >
-              Message (Optional)
+              {t("components.appointmentModal.fields.message.label")}
             </label>
             <textarea
               id="message"
@@ -471,7 +484,9 @@ const AppointmentModal: React.FC<AppointmentModalProps> = ({
                       color: "var(--color-text)",
                     }
               }
-              placeholder="Briefly describe your symptoms or reason for visit..."
+              placeholder={t(
+                "components.appointmentModal.fields.message.placeholder",
+              )}
             ></textarea>
             {errors.message && (touched.message || hasSubmitted) && (
               <p className="mt-1 text-xs text-red-600 flex items-center gap-1">
@@ -490,17 +505,28 @@ const AppointmentModal: React.FC<AppointmentModalProps> = ({
               {status === "submitting" ? (
                 <>
                   <span className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin mr-2"></span>
-                  Processing...
+                  {t("components.appointmentModal.status.processing")}
                 </>
               ) : (
-                "Submit Request"
+                t("components.appointmentModal.status.submit")
               )}
             </button>
             <p
               className="mt-3 text-center text-xs"
               style={{ color: "var(--color-text-muted)" }}
             >
-              By submitting, you agree to our <Link to="/privacy" className="text-primary" target="_blank">Terms and Privacy Policy.</Link>
+              <Trans
+                i18nKey="components.appointmentModal.footer.terms"
+                components={{
+                  1: (
+                    <Link
+                      to="/privacy"
+                      className="text-primary"
+                      target="_blank"
+                    />
+                  ),
+                }}
+              />
             </p>
           </div>
         </form>

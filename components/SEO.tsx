@@ -1,5 +1,6 @@
 import React from "react";
 import { Helmet } from "react-helmet-async";
+import { useTranslation } from "react-i18next";
 
 interface SEOProps {
   title: string;
@@ -18,6 +19,7 @@ const SEO: React.FC<SEOProps> = ({
   image,
   structuredData,
 }) => {
+  const { t } = useTranslation();
   // Use environment variable for production domain, fallback to everleaf-medical.com
   const siteUrl =
     import.meta.env.VITE_SITE_URL || "https://everleaf-medical.com";
@@ -36,7 +38,9 @@ const SEO: React.FC<SEOProps> = ({
   return (
     <Helmet>
       {/* Standard Meta Tags */}
-      <title>{title} | Everleaf Medical Center</title>
+      <title>
+        {title} | {t("components.seo.siteName")}
+      </title>
       <meta name="description" content={description} />
       <link rel="canonical" href={fullUrl} />
 
@@ -46,7 +50,7 @@ const SEO: React.FC<SEOProps> = ({
       <meta property="og:type" content={type} />
       <meta property="og:url" content={fullUrl} />
       <meta property="og:image" content={metaImage} />
-      <meta property="og:site_name" content="Everleaf Medical Center" />
+      <meta property="og:site_name" content={t("components.seo.siteName")} />
 
       {/* Twitter Card Tags */}
       <meta name="twitter:card" content="summary_large_image" />
