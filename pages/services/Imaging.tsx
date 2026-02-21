@@ -1,10 +1,12 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 import { Link, useOutletContext } from "react-router-dom";
 import { OpenAppointmentFunc } from "../../Layout";
 import SEO from "../../components/SEO";
 import Reveal from "../../components/Reveal";
 
 const Imaging: React.FC = () => {
+  const { t } = useTranslation();
   const { openAppointment } = useOutletContext<{
     openAppointment: OpenAppointmentFunc;
   }>();
@@ -20,8 +22,8 @@ const Imaging: React.FC = () => {
   return (
     <div className="animate-fade-in">
       <SEO
-        title="Diagnostic Imaging Center"
-        description="High-resolution medical imaging including MRI, CT, and Ultrasound with rapid reporting."
+        title={t("pages.services.imaging.seo.title")}
+        description={t("pages.services.imaging.seo.description")}
         canonical="https://everleaf-medical.com/services/imaging"
       />
       <header className="relative bg-slate-900 text-white overflow-hidden">
@@ -38,20 +40,19 @@ const Imaging: React.FC = () => {
             <Reveal delay={0}>
               <div className="flex items-center gap-2 mb-4 text-blue-300 font-semibold tracking-wide uppercase text-sm">
                 <span className="material-icons text-lg">scanner</span>
-                <span>Medical Imaging Services</span>
+                <span>{t("pages.services.imaging.hero.badge")}</span>
               </div>
             </Reveal>
             <Reveal delay={100}>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold mb-6 leading-tight">
-                Advanced Imaging &<br />
-                Diagnostics
+                {t("pages.services.imaging.hero.titlePart1")}
+                <br />
+                {t("pages.services.imaging.hero.titlePart2")}
               </h1>
             </Reveal>
             <Reveal delay={200}>
               <p className="text-lg md:text-xl text-slate-300 mb-8 max-w-2xl leading-relaxed">
-                Utilizing state-of-the-art technology to provide crystal-clear
-                insights for precise diagnoses. From routine X-rays to advanced
-                MRI scans, your health is our focus.
+                {t("pages.services.imaging.hero.description")}
               </p>
             </Reveal>
             <Reveal delay={300}>
@@ -60,13 +61,13 @@ const Imaging: React.FC = () => {
                   onClick={() => openAppointment({ department: "Radiology" })}
                   className="inline-flex items-center justify-center px-8 py-3.5 text-base font-bold text-white bg-primary rounded-lg hover:bg-primary-dark shadow-lg shadow-primary/30 hover:shadow-primary/50 transition-all transform hover:-translate-y-0.5"
                 >
-                  Schedule a Scan
+                  {t("pages.services.imaging.hero.buttons.schedule")}
                 </button>
                 <button
                   onClick={(e) => scrollToSection(e, "procedures")}
                   className="inline-flex items-center justify-center px-8 py-3.5 text-base font-bold text-white bg-white/10 border border-white/20 backdrop-blur-sm rounded-lg hover:bg-white/20 transition-all"
                 >
-                  View Procedures
+                  {t("pages.services.imaging.hero.buttons.procedures")}
                 </button>
               </div>
             </Reveal>
@@ -80,42 +81,48 @@ const Imaging: React.FC = () => {
             <Reveal threshold={0.1}>
               <div className="text-center max-w-3xl mx-auto mb-16">
                 <h2 className="text-3xl font-serif font-bold text-slate-900 mb-4">
-                  High-Resolution Medical Imaging
+                  {t("pages.services.imaging.intro.title")}
                 </h2>
                 <p className="text-slate-600">
-                  Our center is equipped with the latest generation of imaging
-                  technology, ensuring high fidelity results and patient
-                  comfort.
+                  {t("pages.services.imaging.intro.description")}
                 </p>
               </div>
             </Reveal>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
               {[
                 {
-                  title: "MRI Scans",
-                  desc: "Detailed imaging of organs and soft tissues without radiation. Ideal for neurological and musculoskeletal conditions.",
-                  tag: "3T MRI",
+                  title: t("pages.services.imaging.mainProcedures.0.title"),
+                  desc: t(
+                    "pages.services.imaging.mainProcedures.0.description",
+                  ),
+                  tag: t("pages.services.imaging.mainProcedures.0.tag"),
                   img: "/images/imaging-body-1.jpg",
                   color: "primary",
                 },
                 {
-                  title: "CT Scans",
-                  desc: "Fast, high-resolution cross-sectional images. Essential for trauma assessment, oncology, and vascular analysis.",
-                  tag: "64-Slice CT",
+                  title: t("pages.services.imaging.mainProcedures.1.title"),
+                  desc: t(
+                    "pages.services.imaging.mainProcedures.1.description",
+                  ),
+                  tag: t("pages.services.imaging.mainProcedures.1.tag"),
                   img: "/images/imaging-body-2.jpg",
                   color: "teal-600",
                 },
                 {
-                  title: "Ultrasound",
-                  desc: "Real-time imaging using sound waves. Used extensively for pregnancy, cardiac health, and abdominal exams.",
-                  tag: "4D Ultrasound",
+                  title: t("pages.services.imaging.mainProcedures.2.title"),
+                  desc: t(
+                    "pages.services.imaging.mainProcedures.2.description",
+                  ),
+                  tag: t("pages.services.imaging.mainProcedures.2.tag"),
                   img: "/images/imaging-body-3.jpg",
                   color: "indigo-600",
                 },
                 {
-                  title: "Digital X-Ray",
-                  desc: "Advanced digital radiography for quick bone assessments and chest imaging with significantly reduced radiation.",
-                  tag: "Low Dose",
+                  title: t("pages.services.imaging.mainProcedures.3.title"),
+                  desc: t(
+                    "pages.services.imaging.mainProcedures.3.description",
+                  ),
+                  tag: t("pages.services.imaging.mainProcedures.3.tag"),
                   img: "/images/imaging-body-4.jpg",
                   color: "purple-600",
                 },
@@ -172,7 +179,7 @@ const Imaging: React.FC = () => {
                     className="text-2xl font-bold"
                     style={{ color: "var(--color-text)" }}
                   >
-                    Specialized Radiology
+                    {t("pages.services.imaging.specialized.title")}
                   </h2>
                 </div>
                 <div className="grid md:grid-cols-2 gap-8">
@@ -181,24 +188,31 @@ const Imaging: React.FC = () => {
                       className="font-bold mb-2"
                       style={{ color: "var(--color-text)" }}
                     >
-                      Interventional Radiology
+                      {t(
+                        "pages.services.imaging.specialized.interventional.title",
+                      )}
                     </h4>
                     <p className="text-slate-500 text-sm leading-relaxed mb-4">
-                      Minimally invasive image-guided procedures to diagnose and
-                      treat diseases in nearly every organ system.
+                      {t(
+                        "pages.services.imaging.specialized.interventional.description",
+                      )}
                     </p>
                     <ul className="space-y-2">
                       <li className="flex items-center text-sm text-slate-600">
                         <span className="material-icons text-secondary text-base mr-2">
                           check_circle
                         </span>{" "}
-                        Biopsies
+                        {t(
+                          "pages.services.imaging.specialized.interventional.items.0",
+                        )}
                       </li>
                       <li className="flex items-center text-sm text-slate-600">
                         <span className="material-icons text-secondary text-base mr-2">
                           check_circle
                         </span>{" "}
-                        Angiography
+                        {t(
+                          "pages.services.imaging.specialized.interventional.items.1",
+                        )}
                       </li>
                     </ul>
                   </div>
@@ -207,24 +221,25 @@ const Imaging: React.FC = () => {
                       className="font-bold mb-2"
                       style={{ color: "var(--color-text)" }}
                     >
-                      Women's Imaging
+                      {t("pages.services.imaging.specialized.women.title")}
                     </h4>
                     <p className="text-slate-500 text-sm leading-relaxed mb-4">
-                      Dedicated suite for mammography, breast ultrasound, and
-                      bone density scanning (DEXA) in a private setting.
+                      {t(
+                        "pages.services.imaging.specialized.women.description",
+                      )}
                     </p>
                     <ul className="space-y-2">
                       <li className="flex items-center text-sm text-slate-600">
                         <span className="material-icons text-secondary text-base mr-2">
                           check_circle
                         </span>{" "}
-                        3D Mammography
+                        {t("pages.services.imaging.specialized.women.items.0")}
                       </li>
                       <li className="flex items-center text-sm text-slate-600">
                         <span className="material-icons text-secondary text-base mr-2">
                           check_circle
                         </span>{" "}
-                        DEXA Scans
+                        {t("pages.services.imaging.specialized.women.items.1")}
                       </li>
                     </ul>
                   </div>
@@ -234,9 +249,7 @@ const Imaging: React.FC = () => {
                   style={{ borderColor: "var(--color-border)" }}
                 >
                   <p className="text-slate-500 italic text-sm">
-                    "Our radiologists are board-certified and sub-specialty
-                    trained, ensuring the highest level of expertise for your
-                    interpretation."
+                    "{t("pages.services.imaging.specialized.quote")}"
                   </p>
                 </div>
               </div>
@@ -260,17 +273,14 @@ const Imaging: React.FC = () => {
                     className="text-xl font-bold"
                     style={{ color: "var(--color-text)" }}
                   >
-                    Safety First
+                    {t("pages.services.imaging.safety.title")}
                   </h2>
                 </div>
                 <h3 className="font-semibold text-slate-800 mb-3">
-                  Low-Radiation Protocols
+                  {t("pages.services.imaging.safety.subtitle")}
                 </h3>
                 <p className="text-slate-600 text-sm leading-relaxed mb-6">
-                  We adhere to the ALARA principle (As Low As Reasonably
-                  Achievable). Our equipment uses dose-reduction software to
-                  ensure you receive the lowest radiation possible without
-                  compromising image quality.
+                  {t("pages.services.imaging.safety.description")}
                 </p>
                 <div className="bg-white p-4 rounded-lg shadow-sm mb-6">
                   <div className="flex items-start gap-3">
@@ -282,10 +292,10 @@ const Imaging: React.FC = () => {
                         className="block font-bold text-sm"
                         style={{ color: "var(--color-text)" }}
                       >
-                        ACR Accredited
+                        {t("pages.services.imaging.safety.accredited")}
                       </span>
                       <span className="text-xs text-slate-500">
-                        American College of Radiology
+                        {t("pages.services.imaging.safety.accreditedFull")}
                       </span>
                     </div>
                   </div>
@@ -306,38 +316,36 @@ const Imaging: React.FC = () => {
               <div className="grid md:grid-cols-2 items-center relative z-10">
                 <div className="p-8 md:p-12 text-white">
                   <h2 className="text-3xl font-bold mb-4">
-                    Accessing Your Results
+                    {t("pages.services.imaging.results.title")}
                   </h2>
                   <p className="text-blue-100 mb-6 leading-relaxed">
-                    Your imaging results and radiologist reports are available
-                    securely online. Please contact our reception for access
-                    details.
+                    {t("pages.services.imaging.results.description")}
                   </p>
                   <ul className="space-y-4 mb-8">
                     <li className="flex items-center gap-3">
                       <span className="bg-white/20 p-1.5 rounded-full">
                         <span className="material-icons text-sm">lock</span>
                       </span>
-                      <span>Secure & Private Access</span>
+                      <span>{t("pages.services.imaging.results.items.0")}</span>
                     </li>
                     <li className="flex items-center gap-3">
                       <span className="bg-white/20 p-1.5 rounded-full">
                         <span className="material-icons text-sm">history</span>
                       </span>
-                      <span>View Exam History</span>
+                      <span>{t("pages.services.imaging.results.items.1")}</span>
                     </li>
                     <li className="flex items-center gap-3">
                       <span className="bg-white/20 p-1.5 rounded-full">
                         <span className="material-icons text-sm">share</span>
                       </span>
-                      <span>Share with Specialists</span>
+                      <span>{t("pages.services.imaging.results.items.2")}</span>
                     </li>
                   </ul>
                   <Link
                     to="/contact"
                     className="inline-flex items-center px-6 py-3 bg-white text-primary font-bold rounded-lg hover:bg-blue-50 transition-colors"
                   >
-                    Request Results
+                    {t("pages.services.imaging.results.button")}
                   </Link>
                 </div>
                 <div className="h-64 md:h-full relative bg-slate-800">
@@ -359,39 +367,46 @@ const Imaging: React.FC = () => {
           <Reveal threshold={0.1}>
             <div className="text-center max-w-3xl mx-auto mb-16">
               <h2 className="text-3xl font-serif font-bold text-slate-900 mb-4">
-                Conditions We Treat
+                {t("pages.services.imaging.conditions.title")}
               </h2>
               <p className="text-slate-600">
-                Our imaging capabilities allow us to detect and monitor a wide
-                range of medical conditions with exceptional clarity.
+                {t("pages.services.imaging.conditions.description")}
               </p>
             </div>
           </Reveal>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
               {
-                title: "Fracture Detection",
+                title: t("pages.services.imaging.conditions.items.0.title"),
                 icon: "accessibility_new",
                 color: "orange",
-                desc: "Precise identification of bone fractures, dislocations, and joint abnormalities using high-resolution X-rays.",
+                desc: t(
+                  "pages.services.imaging.conditions.items.0.description",
+                ),
               },
               {
-                title: "Tumor Screening",
+                title: t("pages.services.imaging.conditions.items.1.title"),
                 icon: "biotech",
                 color: "purple",
-                desc: "Early detection and staging of tumors in soft tissues and organs through advanced MRI and CT scanning.",
+                desc: t(
+                  "pages.services.imaging.conditions.items.1.description",
+                ),
               },
               {
-                title: "Cardiovascular Imaging",
+                title: t("pages.services.imaging.conditions.items.2.title"),
                 icon: "favorite",
                 color: "red",
-                desc: "Detailed visualization of heart structure and blood flow to identify blockages and heart conditions.",
+                desc: t(
+                  "pages.services.imaging.conditions.items.2.description",
+                ),
               },
               {
-                title: "Organ Health",
+                title: t("pages.services.imaging.conditions.items.3.title"),
                 icon: "teal",
                 color: "teal",
-                desc: "Comprehensive assessment of internal organs including liver, kidneys, and lungs for function and pathology.",
+                desc: t(
+                  "pages.services.imaging.conditions.items.3.description",
+                ),
               },
             ].map((item, i) => (
               <Reveal key={i} delay={i * 100} threshold={0.1}>
@@ -430,45 +445,65 @@ const Imaging: React.FC = () => {
           <div className="flex flex-col md:flex-row justify-between items-end mb-12">
             <div className="max-w-2xl">
               <span className="text-primary font-semibold tracking-wider text-sm uppercase">
-                Our Expertise
+                {t("pages.services.imaging.procedures.subtitle")}
               </span>
               <h2
                 className="text-3xl lg:text-4xl font-serif font-bold mt-2"
                 style={{ color: "var(--color-text)" }}
               >
-                Services & Procedures
+                {t("pages.services.imaging.procedures.title")}
               </h2>
             </div>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {[
               {
-                title: "Digital X-Ray",
+                title: t("pages.services.imaging.procedures.items.0.title"),
                 icon: "image",
                 color: "primary",
-                desc: "High-resolution digital radiography for quick and accurate assessment of bones and chest with minimal radiation exposure.",
-                items: ["Instant Results", "Low Dose Radiation"],
+                desc: t(
+                  "pages.services.imaging.procedures.items.0.description",
+                ),
+                items: [
+                  t("common.labels.instantResults"),
+                  t("common.labels.lowDose"),
+                ],
               },
               {
-                title: "3D Mammography",
+                title: t("pages.services.imaging.procedures.items.1.title"),
                 icon: "female",
                 color: "pink-500",
-                desc: "Advanced tomosynthesis technology that provides a three-dimensional view of breast tissue for earlier cancer detection.",
-                items: ["Increased Accuracy", "Comfortable Design"],
+                desc: t(
+                  "pages.services.imaging.procedures.items.1.description",
+                ),
+                items: [
+                  t("common.labels.increasedAccuracy"),
+                  t("common.labels.comfortableDesign"),
+                ],
               },
               {
-                title: "MRI (Magnetic Resonance Imaging)",
+                title: t("pages.services.imaging.procedures.items.2.title"),
                 icon: "all_inclusive",
                 color: "indigo-500",
-                desc: "Detailed imaging of soft tissues, organs, and the nervous system using strong magnetic fields and radio waves.",
-                items: ["Wide-Bore Options", "Contrast Enhanced"],
+                desc: t(
+                  "pages.services.imaging.procedures.items.2.description",
+                ),
+                items: [
+                  t("common.labels.wideBore"),
+                  t("common.labels.contrastEnhanced"),
+                ],
               },
               {
-                title: "CT Scans (Computed Tomography)",
+                title: t("pages.services.imaging.procedures.items.3.title"),
                 icon: "donut_large",
                 color: "blue-500",
-                desc: "Cross-sectional images of the body used to diagnose complex conditions, guide biopsies, and monitor treatment effectiveness.",
-                items: ["64-Slice Technology", "Low-Dose Protocols"],
+                desc: t(
+                  "pages.services.imaging.procedures.items.3.description",
+                ),
+                items: [
+                  t("common.labels.64SliceTech"),
+                  t("common.labels.lowDoseProtocols"),
+                ],
               },
             ].map((service, i) => (
               <Reveal key={i} delay={i * 100} threshold={0.1}>
@@ -522,17 +557,17 @@ const Imaging: React.FC = () => {
           <div className="flex justify-between items-end mb-12">
             <div>
               <span className="text-primary font-semibold tracking-wider text-sm uppercase block mb-2">
-                Our Team
+                {t("pages.services.imaging.team.badge")}
               </span>
               <h2 className="text-3xl lg:text-4xl font-serif font-bold text-slate-900">
-                Meet Our Radiologists
+                {t("pages.services.imaging.team.title")}
               </h2>
             </div>
             <Link
               to="/doctors"
               className="hidden md:flex items-center gap-2 text-primary font-semibold hover:text-primary-dark transition-colors"
             >
-              View All Doctors{" "}
+              {t("pages.services.imaging.team.viewAll")}{" "}
               <span className="material-icons text-sm">arrow_forward</span>
             </Link>
           </div>
@@ -575,7 +610,7 @@ const Imaging: React.FC = () => {
                         }
                         className="text-white bg-primary hover:bg-primary-dark px-4 py-2 rounded-full text-sm font-medium"
                       >
-                        Book Appointment
+                        {t("pages.services.imaging.team.button")}
                       </button>
                     </div>
                   </div>
@@ -628,16 +663,16 @@ const Imaging: React.FC = () => {
           <Reveal threshold={0.1}>
             <div className="max-w-4xl mx-auto">
               <span className="inline-block py-1 px-3 rounded-full bg-white/10 border border-white/20 text-white text-xs font-bold tracking-wider uppercase mb-6 backdrop-blur-md">
-                Precise Diagnostics
+                {t("pages.services.imaging.cta.badge")}
               </span>
               <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-white mb-6 leading-tight">
-                Ready for Your <br />
-                <span style={{ color: "var(--color-cta-accent)" }}>Scan?</span>
+                {t("pages.services.imaging.cta.titlePart1")} <br />
+                <span style={{ color: "var(--color-cta-accent)" }}>
+                  {t("pages.services.imaging.cta.titlePart2")}
+                </span>
               </h2>
               <p className="text-white/80 text-lg md:text-xl mb-10 leading-relaxed max-w-2xl mx-auto">
-                Whether you need a routine screening or a complex diagnostic
-                procedure, our radiology team is here to provide exceptional
-                care.
+                {t("pages.services.imaging.cta.description")}
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <button
@@ -645,13 +680,13 @@ const Imaging: React.FC = () => {
                   className="inline-flex items-center justify-center px-8 py-4 text-lg font-bold bg-white rounded-full shadow-xl transition-all hover:scale-105"
                   style={{ color: "var(--color-cta-from)" }}
                 >
-                  Request Appointment
+                  {t("pages.services.imaging.cta.buttons.appointment")}
                 </button>
                 <Link
                   to="/contact"
                   className="inline-flex items-center justify-center px-8 py-4 text-lg font-bold text-white border border-white/30 rounded-full hover:bg-white/10 backdrop-blur-sm transition-all"
                 >
-                  Doctor Referrals
+                  {t("pages.services.imaging.cta.buttons.referrals")}
                 </Link>
               </div>
             </div>

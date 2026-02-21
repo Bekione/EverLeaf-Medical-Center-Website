@@ -836,7 +836,7 @@
               "text": "Les dépistages réguliers sont la base."
             },
             "4": {
-              "title": "Indicateurs essentiels :",
+              "title": "Indicateurs essentiels à surveiller :",
               "items": {
                 "0": {
                   "metric": "Pression artérielle",
@@ -846,9 +846,65 @@
                   "metric": "Cholestérol total",
                   "target": "Moins de 200 mg/dL"
                 },
-                "2": { "metric": "Glycémie", "target": "Moins de 100 mg/dL" },
-                "3": { "metric": "IMC", "target": "18.5 – 24.9" }
+                "2": {
+                  "metric": "Glycémie",
+                  "target": "Moins de 100 mg/dL (à jeun)"
+                },
+                "3": {
+                  "metric": "IMC (Indice de Masse Corporelle)",
+                  "target": "18.5 – 24.9"
+                }
               }
+            },
+            "5": { "text": "2. Adoptez une alimentation saine pour le cœur" },
+            "6": {
+              "text": "La nutrition joue un rôle crucial dans la santé cardiovasculaire. Le régime méditerranéen, riche en fruits, légumes, céréales complètes et graisses saines, a démontré une réduction du risque de maladie cardiaque allant jusqu'à 30 %."
+            },
+            "7": {
+              "0": { "alt": "Régime méditerranéen sain" },
+              "1": { "alt": "Fruits et légumes frais" }
+            },
+            "8": { "text": "3. Faites de l'exercice régulièrement" },
+            "9": {
+              "text": "L'American Heart Association recommande au moins 150 minutes d'activité aérobique d'intensité modérée ou 75 minutes d'activité vigoureuse par semaine. L'exercice renforce le muscle cardiaque, améliore la circulation et aide à gérer le poids."
+            },
+            "10": {
+              "text": "Commencez doucement si vous débutez. Même une marche quotidienne de 10 minutes peut faire une différence. Augmentez progressivement la durée et l'intensité à mesure que votre condition physique s'améliore."
+            },
+            "11": { "text": "4. Gérez votre stress efficacement" },
+            "12": {
+              "text": "Le stress chronique contribue à l'hypertension artérielle, à l'inflammation et à des comportements d'adaptation malsains. Intégrez des techniques de réduction du stress dans votre routine quotidienne :"
+            },
+            "13": {
+              "items": {
+                "0": {
+                  "title": "Méditation de pleine conscience",
+                  "text": "Seulement 10 minutes par jour peuvent abaisser les taux de cortisol."
+                },
+                "1": {
+                  "title": "Sommeil de qualité",
+                  "text": "Visez 7 à 9 heures par nuit."
+                },
+                "2": {
+                  "title": "Liens sociaux",
+                  "text": "Des relations solides protègent contre le stress."
+                },
+                "3": {
+                  "title": "Soutien professionnel",
+                  "text": "N'hésitez pas à demander conseil si nécessaire."
+                }
+              }
+            },
+            "14": { "text": "5. Arrêtez de fumer et limitez l'alcool" },
+            "15": {
+              "text": "Le tabagisme est l'un des facteurs de risque les plus importants pour les maladies cardiaques. En un an seulement après avoir arrêté, votre risque de crise cardiaque chute de 50 %. EverLeaf propose des programmes complets de sevrage tabagique."
+            },
+            "16": {
+              "text": "Si vous consommez de l'alcool, faites-le avec modération : jusqu'à un verre par jour pour les femmes et deux pour les hommes. L'alcool excessif peut augmenter la pression artérielle."
+            },
+            "17": {
+              "title": "⚠ Connaître les signes d'alerte",
+              "text": "Consultez immédiatement un médecin si vous ressentez une douleur ou un inconfort thoracique, un essoufflement, une douleur dans les bras, le dos, le cou, la mâchoire ou l'estomac, ou des étourdissements soudains. Appelez le 911 immédiatement pour ces symptômes."
             }
           }
         },
@@ -859,7 +915,58 @@
           "authorTitle": "Chef du service de cardiologie",
           "authorBio": "Le Dr Williams est également un chercheur de premier plan dans le domaine de l'endocrinologie, explorant les intersections entre la santé cardiaque et les troubles métaboliques comme le diabète.",
           "date": "12 janv. 2026",
-          "read": "7 min de lecture"
+          "read": "7 min de lecture",
+          "content": {
+            "0": {
+              "text": "Dans un développement majeur pour l'endocrinologie, le centre de recherche EverLeaf a annoncé des résultats prometteurs de son dernier essai clinique impliquant des systèmes de gestion du diabète pilotés par l'IA. Cette nouvelle technologie exploite des algorithmes d'apprentissage automatique pour prédire les fluctuations de la glycémie avant qu'elles ne surviennent, permettant des ajustements préventifs de l'insuline."
+            },
+            "1": {
+              "text": "Pendant des décennies, les patients atteints de diabète de type 2 se sont appuyés sur des mesures réactives : tester la glycémie, puis administrer des médicaments. Cette nouvelle approche par l'IA déplace le paradigme vers des soins proactifs, réduisant considérablement le risque d'événements hypoglycémiques dangereux."
+            },
+            "2": { "text": "Comment fonctionne la technologie IA" },
+            "3": {
+              "text": "Le système s'intègre aux moniteurs de glucose en continu (CGM) et aux pompes à insuline standard. Contrairement aux boucles traditionnelles, ce modèle d'IA analyse les données historiques du patient, ses habitudes alimentaires et même ses cycles de sommeil pour prévoir les niveaux de glucose jusqu'à 60 minutes à l'avance."
+            },
+            "4": {
+              "items": {
+                "0": {
+                  "title": "Analyse prédictive",
+                  "text": "Anticipe les pics après les repas basés sur l'analyse de la composition des aliments."
+                },
+                "1": {
+                  "title": "Dosage automatisé",
+                  "text": "Micro-ajustements de l'administration d'insuline toutes les 5 minutes."
+                },
+                "2": {
+                  "title": "Alertes médecin en temps réel",
+                  "text": "Partage de manière fluide les anomalies critiques avec votre endocrinologue EverLeaf."
+                }
+              }
+            },
+            "5": { "text": "Résultats de l'essai clinique chez EverLeaf" },
+            "6": {
+              "text": "Notre étude récente de 12 mois a suivi 500 patients présentant un diabète de type 2 non contrôlé. Les résultats ont été statistiquement significatifs et cliniquement transformateurs."
+            },
+            "7": {
+              "title": "Principales conclusions",
+              "text": "Le groupe utilisant le système de gestion assisté par l'IA a constaté une réduction moyenne de 2,5 % des taux d'A1C par rapport au groupe témoin. De plus, le temps dans la plage cible (le pourcentage de temps où la glycémie est dans les limites saines) est passé de 55 % à 78 %."
+            },
+            "8": { "text": "Avantages pour les patients de type 2" },
+            "9": {
+              "text": "Cette technologie n'est pas seulement une question de chiffres ; c'est une question de qualité de vie. Les patients ont signalé beaucoup moins de « burn-out du diabète » — l'épuisement émotionnel qui accompagne l'autogestion constante."
+            },
+            "10": {
+              "0": { "alt": "Patient utilisant l'application" },
+              "1": { "alt": "Visualisation des données" }
+            },
+            "11": { "text": "L'avenir de la médecine personnalisée" },
+            "12": {
+              "text": "« Ce n'est que le début », déclare le Dr Mark Williams. « À mesure que nos ensembles de données s'agrandissent, l'IA devient plus intelligente et plus personnalisée pour chaque individu. Nous nous dirigeons vers un avenir où la gestion du diabète est presque invisible pour le patient. »"
+            },
+            "13": {
+              "text": "EverLeaf étend actuellement ce programme à tous les patients éligibles de notre réseau à partir du mois prochain."
+            }
+          }
         },
         "immune-system": {
           "title": "5 superaliments pour booster votre système immunitaire cet hiver",
@@ -868,7 +975,75 @@
           "authorTitle": "Endocrinologue",
           "authorBio": "Le Dr Rodriguez traite les troubles hormonaux, notamment le diabète, les affections thyroïdiennes et le syndrome métabolique. Elle est passionnée par la nutrition fonctionnelle et son rôle dans la santé immunitaire.",
           "date": "08 nov. 2025",
-          "read": "4 min de lecture"
+          "read": "4 min de lecture",
+          "content": {
+            "0": {
+              "text": "À l'approche de l'hiver, la baisse des températures s'accompagne souvent d'une augmentation des rhumes et de la grippe. Bien qu'aucun aliment ne puisse guérir une maladie, le maintien d'un système immunitaire sain donne à votre corps une chance de se battre. L'incorporation de superaliments spécifiques dans votre alimentation quotidienne peut fournir les vitamines, minéraux et antioxydants nécessaires pour garder votre réponse immunitaire forte."
+            },
+            "1": { "text": "1. Agrumes : La centrale de vitamine C" },
+            "2": {
+              "text": "La plupart des gens se tournent vers la vitamine C après avoir attrapé un rhume, mais il est préférable de l'utiliser comme mesure préventive. On pense que la vitamine C augmente la production de globules blancs, qui sont essentiels pour combattre les infections."
+            },
+            "3": {
+              "items": {
+                "0": {
+                  "title": "Types à essayer",
+                  "text": "Pamplemousse, oranges, clémentines, mandarines, citrons et limes."
+                },
+                "1": {
+                  "title": "Apport quotidien",
+                  "text": "Votre corps ne la produit ni ne la stocke, vous avez donc besoin de vitamine C quotidiennement pour une santé continue."
+                }
+              }
+            },
+            "4": {
+              "title": "Astuce recette : Jus booster du matin",
+              "text": "Mélangez 2 oranges pelées, 1/2 citron et une petite pincée de curcuma pour un départ immunitaire matinal zesté."
+            },
+            "5": { "text": "2. Gingembre : La racine anti-inflammatoire" },
+            "6": {
+              "text": "Le gingembre est un autre ingrédient vers lequel beaucoup se tournent après être tombés malades. Il peut aider à réduire l'inflammation, ce qui peut aider à soulager un mal de gorge. Le gingembre peut également aider en cas de nausée."
+            },
+            "7": {
+              "text": "Il contient du gingérol, un parent de la capsaïcine. Ce composé est connu pour ses puissantes propriétés médicinales et son efficacité à réduire la douleur chronique."
+            },
+            "8": { "text": "3. Épinards : Pas seulement pour Popeye" },
+            "9": {
+              "text": "Les épinards figurent sur notre liste non seulement parce qu'ils sont riches en vitamine C, mais aussi parce qu'ils regorgent de nombreux antioxydants et de bêta-carotène, qui peuvent augmenter la capacité de lutte contre l'infection de nos systèmes immunitaires."
+            },
+            "10": {
+              "0": { "alt": "Épinards frais" },
+              "1": { "alt": "Préparation de thé au gingembre" }
+            },
+            "11": {
+              "text": "Comme le brocoli, les épinards sont plus sains lorsqu'ils sont cuits le moins possible afin de conserver leurs nutriments. Cependant, une cuisson légère facilite l'absorption de la vitamine A et permet aux autres nutriments d'être libérés."
+            },
+            "12": {
+              "text": "4. Yaourt : Probiotiques pour la santé intestinale"
+            },
+            "13": {
+              "text": "Recherchez des yaourts portant la mention « cultures vivantes et actives » sur l'étiquette. Ces cultures peuvent stimuler votre système immunitaire pour aider à combattre les maladies."
+            },
+            "14": {
+              "text": "Essayez de privilégier les yaourts nature plutôt que ceux aromatisés et chargés de sucre. Vous pouvez sucrer le yaourt nature vous-même avec des fruits sains et un filet de miel."
+            },
+            "15": { "text": "5. Amandes : Vitamine E pour la victoire" },
+            "16": {
+              "text": "Lorsqu'il s'agit de prévenir et de combattre les rhumes, la vitamine E a tendance à passer après la vitamine C. Cependant, ce puissant antioxydant est essentiel à un système immunitaire sain."
+            },
+            "17": {
+              "items": {
+                "0": {
+                  "title": "Vitamine liposoluble",
+                  "text": "La vitamine E nécessite la présence de graisses pour être absorbée correctement."
+                },
+                "1": {
+                  "title": "En-cas parfait",
+                  "text": "Une portion d'une demi-tasse fournit près de 100 % de la quantité quotidienne recommandée."
+                }
+              }
+            }
+          }
         },
         "pediatric-wing": {
           "title": "EverLeaf ouvre une nouvelle aile pédiatrique dans l'aile ouest",
@@ -877,7 +1052,39 @@
           "authorTitle": "Pédiatre senior",
           "authorBio": "Le Dr Chen est une pédiatre passionnée connue pour son approche douce et son expertise dans le développement de la petite enfance. Elle a supervisé la conception et la mise en œuvre de la nouvelle aile pédiatrique.",
           "date": "01 nov. 2025",
-          "read": "2 min de lecture"
+          "read": "2 min de lecture",
+          "content": {
+            "0": {
+              "text": "Nous sommes ravis d'annoncer l'ouverture officielle de la nouvelle aile pédiatrique située dans l'aile ouest de l'hôpital. Cette expansion représente un investissement important dans la santé et le bien-être des enfants de notre communauté."
+            },
+            "1": {
+              "text": "Le nouvel établissement comprend 50 chambres individuelles, un service d'urgence pédiatrique dédié et des zones de thérapie par le jeu spécialisées conçues pour réduire l'anxiété pendant les séjours à l'hôpital. Chaque chambre permet aux parents de rester la nuit, reconnaissant que la présence de la famille est essentielle au rétablissement d'un enfant."
+            },
+            "2": { "text": "Caractéristiques de la nouvelle aile" },
+            "3": {
+              "items": {
+                "0": {
+                  "title": "Chambres centrées sur la famille",
+                  "text": "Suites spacieuses avec couchage pour les parents."
+                },
+                "1": {
+                  "title": "Aires de jeux interactives",
+                  "text": "Zones sans technologie pour encourager le jeu imaginatif."
+                },
+                "2": {
+                  "title": "Surveillance avancée",
+                  "text": "Le dernier cri en matière de systèmes de surveillance pédiatrique non invasifs."
+                }
+              }
+            },
+            "4": {
+              "text": "« Cette nouvelle aile nous permet de fournir le plus haut niveau de soins médicaux tout en reconnaissant que les enfants ont besoin d'un environnement différent pour guérir efficacement. Chaque détail, de l'art sur les murs à l'éclairage, a été choisi pour réconforter nos patients », déclare le Dr Emily Chen."
+            },
+            "5": {
+              "title": "Visitez-nous",
+              "text": "La nouvelle aile pédiatrique est désormais ouverte et accepte les patients. Des visites pour les familles sont disponibles tous les samedis matin. Contactez notre service de pédiatrie pour planifier une visite."
+            }
+          }
         },
         "anxiety-in-teens": {
           "title": "Reconnaître les premiers signes d'anxiété chez les adolescents",
@@ -886,7 +1093,56 @@
           "authorTitle": "Psychologue clinicienne",
           "authorBio": "Le Dr Green est spécialisée dans la thérapie cognitivo-comportementale et le soutien en santé mentale pour les patients atteints de maladies chroniques. Elle travaille en étroite collaboration avec les familles pour créer des environnements favorables aux adolescents confrontés à l'anxiété et à la dépression.",
           "date": "28 oct. 2025",
-          "read": "6 min de lecture"
+          "read": "6 min de lecture",
+          "content": {
+            "0": {
+              "text": "L'adolescence est une période de changements importants, et une certaine instabilité émotionnelle est normale. Cependant, les troubles anxieux deviennent de plus en plus fréquents chez les adolescents. Identifier les symptômes tôt peut mener à de meilleurs résultats et prévenir des difficultés à long terme."
+            },
+            "1": { "text": "Symptômes physiques vs émotionnels" },
+            "2": {
+              "text": "L'anxiété ne se manifeste pas seulement par de l'inquiétude. Chez les adolescents, elle se présente souvent physiquement. Les parents doivent être attentifs aux plaintes inexpliquées telles que :"
+            },
+            "3": {
+              "items": {
+                "0": {
+                  "text": "Maux de tête ou maux d'estomac fréquents sans cause médicale."
+                },
+                "1": {
+                  "text": "Changements dans les habitudes de sommeil (insomnie ou hypersomnie)."
+                },
+                "2": {
+                  "text": "Baisse soudaine des notes ou évitement des situations sociales."
+                }
+              }
+            },
+            "4": {
+              "text": "Les signes émotionnels peuvent inclure l'irritabilité, l'agitation ou une peur intense de faire des erreurs."
+            },
+            "5": {
+              "title": "Quand demander de l'aide",
+              "text": "Si l'anxiété interfère avec les activités quotidiennes, le travail scolaire ou les relations pendant plus de deux semaines, il est conseillé de consulter un psychologue ou un psychiatre professionnel."
+            },
+            "6": { "text": "Comment les parents peuvent aider" },
+            "7": {
+              "text": "Créer un espace sûr et non porter de jugement pour que les adolescents expriment leurs sentiments est la première étape. Évitez de rejeter leurs préoccupations comme étant « juste une phase ». Au lieu de cela :"
+            },
+            "8": {
+              "items": {
+                "0": {
+                  "title": "Écoutez activement",
+                  "text": "Accordez toute votre attention sans proposer immédiatement de solutions."
+                },
+                "1": {
+                  "title": "Validez les sentiments",
+                  "text": "Reconnaissez que leur anxiété est réelle, même si la cause semble mineure."
+                },
+                "2": {
+                  "title": "Cherchez une aide professionnelle",
+                  "text": "Un thérapeute agréé peut proposer une thérapie cognitivo-comportementale (TCC), qui est très efficace contre l'anxiété chez les adolescents."
+                }
+              }
+            }
+          }
         },
         "flu-season": {
           "title": "Saison de la grippe 2025 : Pourquoi le vaccin est plus important que jamais",
@@ -895,7 +1151,37 @@
           "authorTitle": "Spécialiste des maladies infectieuses",
           "authorBio": "Le Dr Kinfe est un expert dans le diagnostic et le traitement des maladies infectieuses complexes. Il dirige le programme annuel de vaccination communautaire d'EverLeaf et conseille sur les stratégies de prévention de la grippe saisonnière.",
           "date": "15 oct. 2025",
-          "read": "3 min de lecture"
+          "read": "3 min de lecture",
+          "content": {
+            "0": {
+              "text": "À l'approche de l'hiver, les experts de la santé prévoient une saison de la grippe potentiellement sévère. Le relâchement des précautions de l'ère pandémique signifie que les virus circulent plus librement que les années précédentes."
+            },
+            "1": { "text": "Qui devrait se faire vacciner ?" },
+            "2": {
+              "text": "Le CDC recommande que toute personne âgée de 6 mois et plus reçoive un vaccin contre la grippe chaque saison. C'est particulièrement crucial pour :"
+            },
+            "3": {
+              "items": {
+                "0": { "text": "Les adultes de 65 ans et plus." },
+                "1": { "text": "Les enfants de moins de 5 ans." },
+                "2": { "text": "Les femmes enceintes." },
+                "3": {
+                  "text": "Les personnes souffrant de maladies chroniques (asthme, maladies cardiaques, diabète)."
+                }
+              }
+            },
+            "4": {
+              "text": "La vaccination réduit non seulement votre risque de tomber malade, mais prévient également les hospitalisations et les décès. Elle crée une barrière d'immunité communautaire qui protège ceux qui ne peuvent pas être vaccinés."
+            },
+            "5": { "text": "Qu'est-ce qui est différent cette année ?" },
+            "6": {
+              "text": "Le vaccin de cette saison a été mis à jour pour mieux correspondre aux souches circulantes. Le centre médical EverLeaf propose des vaccins contre la grippe dans tous nos sites, sans rendez-vous. Nos pharmaciens et infirmières sont disponibles pour répondre à toutes vos questions."
+            },
+            "7": {
+              "title": "Horaires de la clinique de la grippe EverLeaf",
+              "text": "Les vaccins contre la grippe sans rendez-vous sont disponibles du lundi au samedi, de 8h à 18h dans tous les sites EverLeaf. Aucun rendez-vous n'est requis. La plupart des régimes d'assurance couvrent le coût à 100 %."
+            }
+          }
         },
         "senior-mobility": {
           "title": "Mobilité chez les seniors : le lien entre la marche et la santé cognitive",
@@ -904,7 +1190,1751 @@
           "authorTitle": "Neurologue senior",
           "authorBio": "Le Dr Johnson est spécialisée dans les troubles neurologiques complexes avec plus de 15 ans d'expérience. Ses recherches portent sur le lien entre la mobilité physique et la santé cognitive chez les personnes âgées.",
           "date": "10 oct. 2025",
-          "read": "7 min de lecture"
+          "read": "7 min de lecture",
+          "content": {
+            "0": {
+              "text": "Pendant des années, les médecins ont su que l'exercice est bon pour le cerveau. Cependant, des recherches récentes soulignent spécifiquement le lien entre la vitesse de marche (la cadence) et l'apparition de la démence."
+            },
+            "1": {
+              "text": "L'étude, publiée dans le Journal of Geriatry Medicine, a suivi 1 000 seniors pendant cinq ans. Elle a révélé que ceux qui maintenaient une cadence de marche rapide étaient 40 % moins susceptibles de développer une déficience cognitive."
+            },
+            "2": { "text": "Pourquoi le mouvement est important" },
+            "3": {
+              "text": "La marche nécessite une coordination complexe entre le cerveau, le système nerveux et les muscles. Un déclin de cette capacité signale souvent des changements neurologiques sous-jacents avant que la perte de mémoire ne devienne apparente."
+            },
+            "4": {
+              "title": "Conseils du médecin",
+              "text": "« Ne vous arrêtez pas de bouger. Même une marche quotidienne de 20 minutes peut stimuler la neurogenèse — la création de nouvelles cellules cérébrales », déclare la Dre Sarah Johnson."
+            },
+            "5": { "text": "Étapes pratiques pour rester mobile" },
+            "6": {
+              "items": {
+                "0": {
+                  "title": "Marches quotidiennes",
+                  "text": "Visez au moins 20 à 30 minutes de marche rapide chaque jour."
+                },
+                "1": {
+                  "title": "Exercices d'équilibre",
+                  "text": "Le yoga et le tai-chi améliorent la coordination et réduisent le risque de chute."
+                },
+                "2": {
+                  "title": "Entraînement musculaire",
+                  "text": "Des exercices de résistance légère préservent la masse musculaire critique pour la mobilité."
+                },
+                "3": {
+                  "title": "Contrôles réguliers",
+                  "text": "Les évaluations de la vitesse de marche chez EverLeaf peuvent détecter un déclin précoce."
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "services": {
+      "emergency": {
+        "seo": {
+          "title": "Département des Urgences (ER)",
+          "description": "Centre de traumatologie de niveau I ouvert 24h/24 et 7j/7 fournissant des soins critiques immédiats. Appelez le 911 pour les urgences vitales."
+        },
+        "hero": {
+          "badge": "Unité de soins intensifs",
+          "status": "Ouvert 24 heures sur 24",
+          "titlePart1": "Soins d'Urgence",
+          "titlePart2": "Quand chaque seconde compte.",
+          "description": "Notre centre de traumatologie de niveau I est doté 24h/24 et 7j/7 de médecins urgentistes certifiés et d'infirmières spécialisées, prêts à gérer toute crise médicale avec expertise, rapidité et compassion.",
+          "buttons": {
+            "call": "Appeler les Urgences",
+            "directions": "Obtenir l'itinéraire"
+          }
+        },
+        "intro": {
+          "title": "Traumatologie et Soins Intensifs 24/7",
+          "description1": "Le service des urgences d'Everleaf est une installation de pointe conçue pour fournir des services d'urgence complets aux patients de tous âges. Des blessures mineures aux conditions vitales, notre équipe est prête à tout.",
+          "description2": "Nous utilisons les dernières technologies médicales, y compris l'imagerie avancée (Scanner, IRM) située directement au sein des urgences pour des diagnostics immédiats, garantissant des décisions de traitement rapides et précises.",
+          "stats": {
+            "wait": "Attente pour les cas critiques",
+            "specialists": "Spécialistes en traumatologie",
+            "support": "Labo et Pharmacie",
+            "rating": "Centre de traumatologie"
+          },
+          "ambulance": {
+            "title": "Services d'Ambulance",
+            "description": "Notre flotte d'ambulances de soins intensifs avancés est stratégiquement positionnée pour assurer les temps de réponse les plus rapides de la région."
+          }
+        },
+        "triage": {
+          "badge": "Flux des patients",
+          "title": "Notre processus de triage",
+          "description": "Nous évaluons rapidement la gravité de votre état et veillons à ce que les cas les plus urgents soient prioritaires.",
+          "steps": {
+            "0": {
+              "title": "Enregistrement et évaluation rapide",
+              "desc": "Dès votre arrivée, un enregistrement immédiat et une évaluation initiale par une infirmière sont effectués."
+            },
+            "1": {
+              "title": "Affectation au triage",
+              "desc": "Les infirmières évaluent les signes vitaux et les symptômes pour déterminer l'ordre de priorité médicale."
+            },
+            "2": {
+              "title": "Évaluation médicale",
+              "desc": "Un urgentiste vous examine et ordonne des tests de diagnostic ou un plan de traitement."
+            }
+          }
+        },
+        "capabilities": {
+          "badge": "Expertise",
+          "title": "Services d'Urgence Spécialisés",
+          "description": "Notre équipe est équipée pour gérer les urgences médicales les plus complexes avec une précision de haut niveau.",
+          "items": {
+            "0": {
+              "title": "Centre de Traumatologie de Niveau I",
+              "description": "Chirurgie de haut niveau et soins intensifs pour les patients souffrant de blessures graves."
+            },
+            "1": {
+              "title": "Urgence Cardiaque",
+              "description": "Intervention rapide pour les crises cardiaques et autres urgences cardiovasculaires."
+            },
+            "2": {
+              "title": "Centre de l'AVC",
+              "description": "Traitement spécialisé fourni dans les premières minutes critiques suivant les symptômes d'un AVC."
+            },
+            "3": {
+              "title": "Urgence Pédiatrique",
+              "description": "Soins spécialisés et compatissants fournis par des spécialistes en pédiatrie pour nos plus jeunes patients."
+            }
+          }
+        },
+        "preparation": {
+          "title": "Préparation de votre visite",
+          "sections": {
+            "top": {
+              "content": "Se préparer à une urgence peut être difficile. Si possible, avoir ces informations prêtes peut accélérer le processus de soin."
+            },
+            "whatToBring": {
+              "title": "Ce qu'il faut apporter",
+              "items": {
+                "0": "Pièce d'identité avec photo et carte d'assurance maladie",
+                "1": "Liste des médicaments actuels et allergies",
+                "2": "Coordonnées des personnes à contacter en cas d'urgence"
+              }
+            },
+            "visitorPolicy": {
+              "title": "Politique de visite",
+              "description": "Pour assurer la sécurité de nos patients et de notre personnel, nous autorisons actuellement un visiteur par patient aux urgences."
+            }
+          }
+        },
+        "contact": {
+          "title": "Coordonnées d'Urgence",
+          "description": "Si vous vivez une urgence médicale, appelez immédiatement le 911.",
+          "hotline": {
+            "label": "Ligne d'Urgence"
+          },
+          "mainLine": {
+            "label": "Ligne Principale de l'Hôpital"
+          },
+          "poisonControl": {
+            "label": "Centre Antipoison"
+          },
+          "box": {
+            "title": "Quand venir aux Urgences ?",
+            "description": "Douleur thoracique, difficulté à respirer, saignement grave, traumatisme crânien, perte de conscience ou douleur abdominale sévère.",
+            "button": "Voir toutes les directives"
+          }
+        },
+        "modal": {
+          "title": "Directives pour les Visiteurs des Urgences",
+          "button": "Fermer les Directives",
+          "sections": {
+            "call911": {
+              "title": "Quand appeler le 911",
+              "items": {
+                "0": "Difficulté à respirer ou essoufflement",
+                "1": "Douleur thoracique ou abdominale supérieure",
+                "2": "Évanouissement, étourdissements soudains ou faiblesse",
+                "3": "Changements dans la vision",
+                "4": "Confusion ou changement d'état mental",
+                "5": "Toute douleur soudaine ou sévère",
+                "6": "Saignement incontrôlable"
+              }
+            },
+            "whatToBring": {
+              "title": "Ce qu'il faut apporter",
+              "items": {
+                "0": "Pièce d'identité avec photo et carte d'assurance maladie",
+                "1": "Liste des médicaments actuels et allergies",
+                "2": "Coordonnées des personnes à contacter en cas d'urgence"
+              }
+            },
+            "visitorPolicy": {
+              "title": "Politique de visite",
+              "description": "Pour assurer la sécurité, nous autorisons actuellement un visiteur par patient aux urgences. Le masque est obligatoire dans toutes les zones cliniques."
+            }
+          }
+        }
+      },
+      "diagnostics": {
+        "seo": {
+          "title": "Diagnostics Avancés",
+          "description": "Services de diagnostic de précision assurant des évaluations médicales exactes pour des plans de traitement efficaces."
+        },
+        "hero": {
+          "badge": "Centre d'Excellence",
+          "titlePart1": "Services de",
+          "titlePart2": "Diagnostic Avancés",
+          "description": "Un diagnostic précis est la base d'un traitement efficace. Chez Everleaf, nous combinons une expertise de classe mondiale avec des technologies de pointe pour fournir des résultats fiables.",
+          "buttons": {
+            "schedule": "Planifier un test",
+            "explore": "Explorer nos capacités"
+          }
+        },
+        "intro": {
+          "title": "Pourquoi le diagnostic de précision est important",
+          "description": "Avant de commencer tout plan de traitement, il est essentiel de comprendre la cause profonde de vos problèmes de santé. Notre centre de diagnostic s'assure que chaque test fournit un chemin clair vers votre rétablissement."
+        },
+        "capabilities": {
+          "badge": "Nos Services",
+          "title": "Capacités de Diagnostic",
+          "description": "Des analyses de sang de routine à l'imagerie neurologique avancée, nous couvrons tous les besoins de diagnostic sous un même toit.",
+          "items": {
+            "0": {
+              "title": "Imagerie Avancée",
+              "description": "Utilisation de l'IRM, du Scanner et de la radiographie numérique pour des vues détaillées du corps.",
+              "services": {
+                "0": "IRM & Scanner",
+                "1": "Échographie",
+                "2": "Mammographie"
+              }
+            },
+            "1": {
+              "title": "Laboratoire de Pathologie",
+              "description": "Laboratoire entièrement automatisé fournissant des résultats précis en biochimie et microbiologie.",
+              "services": {
+                "0": "Analyses de sang",
+                "1": "Tests hormonaux",
+                "2": "Services de biopsie"
+              }
+            },
+            "2": {
+              "title": "Diagnostics Cardiaques",
+              "description": "Surveillance complète de la santé cardiaque pour détecter les problèmes cardiovasculaires précocement.",
+              "services": {
+                "0": "ECG & Écho",
+                "1": "Test d'effort",
+                "2": "Surveillance Holter"
+              }
+            },
+            "3": {
+              "title": "Neurodiagnostics",
+              "description": "Évaluation de la fonction du système nerveux pour identifier les troubles neurologiques.",
+              "services": {
+                "0": "EEG (Ondes cérébrales)",
+                "1": "EMG / VCN",
+                "2": "Études du sommeil"
+              }
+            }
+          }
+        },
+        "technology": {
+          "badge": "Innovation",
+          "title": "Technologie de Pointe",
+          "description": "Nous investissons dans les dernières technologies médicales pour garantir des temps d'examen rapides et des images d'une clarté exceptionnelle.",
+          "newest": {
+            "title": "Dernier ajout",
+            "description": "Scanner CT Siemens Somatom installé en 2025."
+          },
+          "items": {
+            "0": "Temps d'examen plus rapides pour le confort du patient",
+            "1": "Exposition aux radiations réduite",
+            "2": "Résultats numériques intégrés au portail patient"
+          }
+        },
+        "preparation": {
+          "title": "Préparation de votre visite",
+          "sections": {
+            "0": {
+              "title": "Ce qu'il faut apporter",
+              "items": {
+                "0": "Pièce d'identité et carte d'assurance",
+                "1": "Formulaire de demande du médecin",
+                "2": "Liste des médicaments actuels"
+              }
+            },
+            "1": {
+              "title": "Instructions de jeûne",
+              "items": {
+                "0": "Échographie abdominale : jeun de 8h",
+                "1": "Test de cholestérol : jeun de 12h",
+                "2": "Scanner : pas de nourriture 4h avant"
+              }
+            },
+            "2": {
+              "title": "Tenue et arrivée",
+              "items": {
+                "0": "Tenue ample et confortable",
+                "1": "Évitez les bijoux et objets métalliques",
+                "2": "Arrivée 15 minutes à l'avance"
+              }
+            }
+          }
+        },
+        "whyChoose": {
+          "title": "Pourquoi choisir les diagnostics Everleaf ?",
+          "items": {
+            "0": {
+              "title": "Radiologues Experts",
+              "description": "Notre équipe comprend des spécialistes de l'imagerie certifiés par le conseil d'administration."
+            },
+            "1": {
+              "title": "Résultats Rapides",
+              "description": "La plupart des rapports d'imagerie sont envoyés à votre médecin sous 24h."
+            },
+            "2": {
+              "title": "Soins Centrés sur le Patient",
+              "description": "Nous accordons la priorité à votre confort et à votre compréhension à chaque étape."
+            }
+          }
+        },
+        "cta": {
+          "badge": "Commencez votre diagnostic",
+          "titlePart1": "Prêt à planifier",
+          "titlePart2": "votre test ?",
+          "description": "Appelez-nous directement ou utilisez notre portail en ligne pour prendre rendez-vous.",
+          "buttons": {
+            "request": "Demander un rendez-vous"
+          },
+          "emergency": "En cas d'urgence, veuillez appeler le 911 immédiatement."
+        }
+      },
+      "imaging": {
+        "seo": {
+          "title": "Centre d'Imagerie Diagnostique",
+          "description": "Imagerie médicale haute résolution comprenant l'IRM, le Scanner et l'Échographie avec rapports rapides."
+        },
+        "hero": {
+          "badge": "Services d'Imagerie Médicale",
+          "titlePart1": "Imagerie Avancée &",
+          "titlePart2": "Diagnostics",
+          "description": "Utilisation de technologies de pointe pour fournir des informations claires pour des diagnostics précis. De la radiographie de routine à l'IRM avancée, votre santé est notre priorité.",
+          "buttons": {
+            "schedule": "Planifier un examen",
+            "procedures": "Voir les procédures"
+          }
+        },
+        "intro": {
+          "title": "Imagerie Médicale Haute Résolution",
+          "description": "Notre centre est équipé de la dernière génération de technologies d'imagerie, garantissant des résultats de haute fidélité et le confort du patient."
+        },
+        "mainProcedures": {
+          "0": {
+            "title": "Examens IRM",
+            "description": "Imagerie détaillée des organes et des tissus mous sans radiation. Idéal pour les conditions neurologiques et musculo-squelettiques.",
+            "tag": "IRM 3T"
+          },
+          "1": {
+            "title": "Scanners CT",
+            "description": "Images transversales rapides et haute résolution. Essentiel pour l'évaluation des traumatismes, l'oncologie et l'analyse vasculaire.",
+            "tag": "Scanner 64 coupes"
+          },
+          "2": {
+            "title": "Échographie",
+            "description": "Imagerie en temps réel utilisant des ondes sonores. Utilisé pour la grossesse, la santé cardiaque et les examens abdominaux.",
+            "tag": "Échographie 4D"
+          },
+          "3": {
+            "title": "Radiographie Numérique",
+            "description": "Radiographie numérique avancée pour des évaluations osseuses rapides avec une dose de radiation considérablement réduite.",
+            "tag": "Faible dose"
+          }
+        },
+        "specialized": {
+          "title": "Radiologie Spécialisée",
+          "interventional": {
+            "title": "Radiologie Interventionnelle",
+            "description": "Procédures mini-invasives guidées par l'image pour diagnostiquer et traiter des maladies dans presque tous les systèmes d'organes.",
+            "items": {
+              "0": "Biopsies",
+              "1": "Angiographie"
+            }
+          },
+          "women": {
+            "title": "Imagerie de la Femme",
+            "description": "Suite dédiée à la mammographie, à l'échographie mammaire et à l'ostéodensitométrie (DEXA) dans un cadre privé.",
+            "items": {
+              "0": "Mammographie 3D",
+              "1": "Scans DEXA"
+            }
+          },
+          "quote": "Nos radiologues sont certifiés par le conseil d'administration et formés en sous-spécialité, garantissant le plus haut niveau d'expertise pour votre interprétation."
+        },
+        "safety": {
+          "title": "La Sécurité d'Abord",
+          "subtitle": "Protocoles à faible dose de radiation",
+          "description": "Nous adhérons au principe ALARA (aussi bas que raisonnablement possible). Notre équipement utilise des logiciels de réduction de dose pour vous assurer de recevoir la dose de radiation la plus basse possible sans compromettre la qualité de l'image.",
+          "accredited": "Accrédité ACR",
+          "accreditedFull": "Collège Américain de Radiologie"
+        },
+        "results": {
+          "title": "Accéder à vos Résultats",
+          "description": "Vos résultats d'imagerie et les rapports des radiologues sont disponibles en ligne de manière sécurisée. Veuillez contacter notre réception pour les détails d'accès.",
+          "items": {
+            "0": "Accès sécurisé et privé",
+            "1": "Voir l'historique des examens",
+            "2": "Partager avec des spécialistes"
+          },
+          "button": "Demander les résultats"
+        },
+        "conditions": {
+          "title": "Affections Traitées",
+          "description": "Nos capacités d'imagerie nous permettent de détecter et de surveiller un large éventail de conditions médicales avec une clarté exceptionnelle.",
+          "items": {
+            "0": {
+              "title": "Détection de fractures",
+              "description": "Identification précise des fractures osseuses, des luxations et des anomalies articulaires grâce à la radiographie haute résolution."
+            },
+            "1": {
+              "title": "Dépistage de tumeurs",
+              "description": "Détection et stadification précoces des tumeurs dans les tissus mous et les organes grâce à l'IRM et au scanner avancés."
+            },
+            "2": {
+              "title": "Imagerie Cardiovasculaire",
+              "description": "Visualisation détaillée de la structure cardiaque et du flux sanguin pour identifier les obstructions et les maladies cardiaques."
+            },
+            "3": {
+              "title": "Santé des Organes",
+              "description": "Évaluation complète des organes internes, y compris le foie, les reins et les poumons pour la fonction et la pathologie."
+            }
+          }
+        },
+        "procedures": {
+          "title": "Services & Procédures",
+          "subtitle": "Notre Expertise",
+          "items": {
+            "0": {
+              "title": "Radiographie Numérique",
+              "description": "Radiographie numérique haute résolution pour une évaluation rapide et précise des os et du thorax avec une exposition minimale aux radiations."
+            },
+            "1": {
+              "title": "Mammographie 3D",
+              "description": "Technologie de tomosynthèse avancée qui fournit une vue tridimensionnelle du tissu mammaire pour une détection plus précoce du cancer."
+            },
+            "2": {
+              "title": "IRM (Imagerie par Résonance Magnétique)",
+              "description": "Imagerie détaillée des tissus mous, des organes et du système nerveux utilisant des champs magnétiques puissants et des ondes radio."
+            },
+            "3": {
+              "title": "Scanners CT (Tomodensitométrie)",
+              "description": "Images transversales du corps utilisées pour diagnostiquer des conditions complexes, guider les biopsies et surveiller l'efficacité du traitement."
+            }
+          }
+        },
+        "team": {
+          "badge": "Notre Équipe",
+          "title": "Rencontrez nos Radiologues",
+          "viewAll": "Voir tous les médecins",
+          "roles": {
+            "chief": "Radiologue en chef",
+            "interventional": "Radiologue interventionnel",
+            "pediatric": "Radiologue pédiatrique"
+          },
+          "button": "Prendre rendez-vous"
+        },
+        "cta": {
+          "badge": "Diagnostics de Précision",
+          "titlePart1": "Prêt pour votre",
+          "titlePart2": "Examen ?",
+          "description": "Que vous ayez besoin d'un dépistage de routine ou d'une procédure diagnostique complexe, notre équipe de radiologie est là pour vous fournir des soins exceptionnels.",
+          "buttons": {
+            "appointment": "Demander un rendez-vous",
+            "referrals": "Recommandations médicales"
+          }
+        }
+      },
+      "laboratory": {
+        "seo": {
+          "title": "Laboratoire Clinique",
+          "description": "Services de laboratoire de pathologie automatisés 24h/24 et 7j/7. Résultats précis de bilans sanguins, microbiologie et biochimie."
+        },
+        "hero": {
+          "badge": "Diagnostics Avancés",
+          "title": "Services de Laboratoire de Précision en qui Vous Pouvez Avoir Confiance",
+          "description": "Notre laboratoire certifié ISO fonctionne 24h/24 et 7j/7, fournissant des résultats de diagnostic précis avec rapidité et précision. Des analyses de sang de routine aux tests génétiques complexes, votre santé est notre priorité.",
+          "buttons": {
+            "book": "Réserver un test",
+            "homeCollection": "Collecte à domicile"
+          }
+        },
+        "intro": {
+          "title": "Tests Cliniques Complets",
+          "description": "Nous offrons un large éventail de tests de diagnostic dans plusieurs disciplines pour soutenir un diagnostic précis et des plans de traitement efficaces."
+        },
+        "departments": {
+          "biochemistry": {
+            "title": "Biochimie",
+            "description": "Analyse avancée des composants chimiques dans le sang et les fluides corporels. Fonctions hépatiques, bilans rénaux et bilans lipidiques avec une haute précision.",
+            "items": {
+              "0": "Tests de fonction hépatique",
+              "1": "Profils rénaux",
+              "2": "Dépistage du diabète"
+            }
+          },
+          "microbiology": {
+            "title": "Microbiologie",
+            "description": "Identification des agents infectieux, notamment les bactéries, les virus, les champignons et les parasites, afin de guider un traitement antimicrobien approprié.",
+            "items": {
+              "0": "Culture & Sensibilité",
+              "1": "Sérologie virale",
+              "2": "Tests moléculaires"
+            }
+          },
+          "hematology": {
+            "title": "Hématologie",
+            "description": "Étude détaillée du sang et des tissus sang-formateurs pour diagnostiquer l'anémie, les infections, la leucémie et les troubles de la coagulation.",
+            "items": {
+              "0": "Numération Formule Sanguine",
+              "1": "Études de coagulation",
+              "2": "Profil d'anémie"
+            }
+          }
+        },
+        "results": {
+          "title": "Résultats Rapides & Précis",
+          "description": "Le temps est crucial dans les soins de santé. Nos systèmes de laboratoire automatisés fonctionnent 24h/24 et 7j/7 pour garantir que les délais d'exécution sont minimisés sans compromettre la qualité. La plupart des résultats des tests de routine sont disponibles en 4 à 6 heures.",
+          "stats": {
+            "operation": "Heures d'opération",
+            "accuracy": "Taux de précision"
+          }
+        },
+        "homeCollection": {
+          "badge": "La Commodité d'Abord",
+          "title": "Services de Collecte à Domicile",
+          "description": "Vous ne pouvez pas vous rendre au laboratoire ? Nous apportons le laboratoire à votre porte. Nos techniciens qualifiés suivent des protocoles de sécurité stricts pour collecter des échantillons dans le confort de votre maison ou de votre bureau.",
+          "features": {
+            "0": "Réservation facile en ligne ou par téléphone",
+            "1": "Collecte d'échantillons sûre et hygiénique",
+            "2": "Rapports numériques livrés par e-mail/application"
+          },
+          "button": "Réserver une collecte à domicile"
+        },
+        "equipment": {
+          "title": "Équipement de Pointe",
+          "description": "Notre engagement envers la précision motive notre investissement dans les dernières technologies de laboratoire. Nous utilisons des analyseurs entièrement automatisés de fabricants mondiaux de premier plan pour éliminer l'erreur humaine et assurer la cohérence.",
+          "items": {
+            "0": {
+              "name": "Roche Cobas",
+              "description": "Analyseurs d'immunologie à haut débit"
+            },
+            "1": {
+              "name": "Sysmex XN",
+              "description": "Hématologie automatisée avancée"
+            },
+            "2": {
+              "name": "BD Bactec",
+              "description": "Systèmes rapides d'hémoculture"
+            },
+            "3": {
+              "name": "PCR Labs",
+              "description": "Suites de diagnostic moléculaire"
+            }
+          }
+        },
+        "cta": {
+          "badge": "Rapide & Fiable",
+          "title": "Prêt à Prendre en Main Votre Santé ?",
+          "description": "Réservez votre test de laboratoire dès aujourd'hui. Choisissez parmi notre large gamme de tests individuels et de forfaits de bilans de santé.",
+          "buttons": {
+            "request": "Demander un test",
+            "pricing": "Contact pour les tarifs"
+          }
+        }
+      },
+      "pharmacy": {
+        "seo": {
+          "title": "Services de Pharmacie",
+          "description": "Pharmacie hospitalière complète proposant la gestion des ordonnances, des conseils et des services de livraison à domicile."
+        },
+        "hero": {
+          "badge": "Services de Pharmacie Agréés",
+          "title": "Des Soins Experts pour Vos Besoins en Médicaments",
+          "description": "Notre pharmacie hospitalière complète assure une gestion précise, sûre et rapide des médicaments. Des prescriptions pour patients hospitalisés aux conseils en vente libre, nos pharmaciens cliniciens sont là pour soutenir votre rétablissement.",
+          "buttons": {
+            "services": "Voir les services de pharmacie",
+            "consult": "Consulter un pharmacien"
+          }
+        },
+        "intro": {
+          "title": "Soins Pharmaceutiques Complets",
+          "description": "Nous combinons une technologie de pointe avec des soins compatissants pour fournir une large gamme de services de pharmacie adaptés à vos besoins de santé."
+        },
+        "mainServices": {
+          "prescription": {
+            "title": "Gestion des Ordonnances",
+            "description": "Notre système automatisé de traitement des ordonnances garantit une précision et une rapidité élevées. Nous gérons les renouvellements, les transferts et coordonnons avec vos médecins pour gérer efficacement les régimes médicamenteux complexes.",
+            "items": {
+              "0": "Rappels de renouvellement automatique",
+              "1": "Vérification des interactions médicamenteuses"
+            }
+          },
+          "consultation": {
+            "title": "Services de Consultation",
+            "description": "Parlez directement avec nos pharmaciens cliniciens dans des salles de consultation privées. Nous fournissons des conseils détaillés sur les effets secondaires des médicaments, l'utilisation appropriée et les ajustements du mode de vie pour des résultats optimaux.",
+            "items": {
+              "0": "Gestion du traitement médicamenteux",
+              "1": "Conseils personnalisés"
+            }
+          },
+          "delivery": {
+            "title": "Livraison de Médicaments",
+            "description": "Vous ne pouvez pas vous rendre à la pharmacie ? Nous proposons des services de livraison à domicile sécurisés et rapides pour vos ordonnances et vos fournitures médicales dans les limites de la ville, afin que vous ne manquiez jamais une dose.",
+            "items": {
+              "0": "Livraison locale le jour même",
+              "1": "Expédition sous température contrôlée"
+            }
+          },
+          "otc": {
+            "title": "Médicaments en Vente Libre",
+            "description": "Parcourez notre vaste sélection de médicaments sans ordonnance, de vitamines, de suppléments et de fournitures de premiers secours. Notre personnel est toujours disponible pour vous aider à choisir le bon produit.",
+            "items": {
+              "0": "Suppléments nutritionnels",
+              "1": "Équipement de santé à domicile"
+            }
+          }
+        },
+        "commitment": {
+          "badge": "Notre Engagement",
+          "title": "Assurance Sécurité et Qualité",
+          "description": "La sécurité des patients est notre priorité absolue. Nous utilisons des systèmes de distribution robotisés de pointe pour minimiser les erreurs humaines et effectuons des contrôles de qualité rigoureux sur chaque ordonnance délivrée.",
+          "features": {
+            "verification": {
+              "title": "Vérification par Triple Contrôle",
+              "description": "Chaque ordonnance est vérifiée par trois contrôles distincts."
+            },
+            "storage": {
+              "title": "Stockage Sécurisé",
+              "description": "Environnements à température contrôlée pour les médicaments sensibles."
+            }
+          },
+          "accuracy": {
+            "label": "Satisfaction Client",
+            "value": "99,8 % de précision"
+          }
+        },
+        "cta": {
+          "badge": "Besoin d'Assistance ?",
+          "titlePart1": "Des Questions sur",
+          "titlePart2": "Vos Médicaments ?",
+          "description": "Nos pharmaciens sont disponibles 24h/24 et 7j/7 pour répondre à vos questions concernant les interactions médicamenteuses, les dosages ou les effets secondaires.",
+          "buttons": {
+            "call": "Appeler la pharmacie",
+            "visit": "Visiter la pharmacie"
+          },
+          "refill": {
+            "text": "Pour les renouvellements d'ordonnance, veuillez utiliser notre",
+            "form": "Formulaire de demande de renouvellement"
+          }
+        }
+      },
+      "preventiveCheckups": {
+        "seo": {
+          "title": "Bilans de Santé Préventifs",
+          "description": "Forfaits complets de dépistage santé pour tous les âges. Détectez les problèmes de santé tôt grâce à nos bilans exécutifs."
+        },
+        "hero": {
+          "badge": "Soins Préventifs",
+          "title": "Investissez dans Votre Santé avec des Bilans Complets",
+          "description": "La détection précoce est la clé d'une vie longue et saine. Nos forfaits de dépistage personnalisés offrent une image complète de votre état de santé dans un environnement confortable.",
+          "buttons": {
+            "packages": "Voir les forfaits",
+            "contact": "Contactez-nous"
+          }
+        },
+        "importance": {
+          "title": "L'Importance de la Détection Précoce",
+          "description": "De nombreuses maladies chroniques sont silencieuses à leurs débuts. Des bilans de santé réguliers peuvent détecter des problèmes avant qu'ils ne commencent, vous donnant les meilleures chances pour un traitement efficace et un avenir sain.",
+          "areas": {
+            "heart": {
+              "title": "Santé Cardiaque",
+              "description": "Identifiez tôt les facteurs de risque comme l'hypertension et le cholestérol pour prévenir les maladies cardiaques et les accidents vasculaires cérébraux."
+            },
+            "diabetes": {
+              "title": "Dépistage du Diabète",
+              "description": "La détection précoce du pré-diabète permet des changements de mode de vie qui peuvent prévenir ou retarder l'apparition du diabète de type 2."
+            },
+            "cancer": {
+              "title": "Prévention du Cancer",
+              "description": "Les tests de dépistage peuvent détecter certains cancers tôt, au moment où le traitement a le plus de chances de réussir."
+            }
+          }
+        },
+        "packages": {
+          "badge": "Sur Mesure pour Vous",
+          "title": "Forfaits de Dépistage Complets",
+          "description": "Choisissez le forfait qui correspond le mieux à votre âge, votre mode de vie et vos préoccupations de santé.",
+          "basic": {
+            "title": "Bien-être de Base",
+            "description": "Suivi de santé essentiel pour les jeunes adultes.",
+            "price": "199 $",
+            "features": {
+              "0": "Examen physique",
+              "1": "Numération formule sanguine (NFS)",
+              "2": "Glycémie et cholestérol",
+              "3": "Analyse d'urine",
+              "4": "Consultation médicale"
+            },
+            "button": "Sélectionner de base"
+          },
+          "executive": {
+            "title": "Bilan Exécutif",
+            "badge": "POPULAIRE",
+            "description": "Analyse approfondie pour les professionnels occupés.",
+            "price": "399 $",
+            "features": {
+              "all": "Toutes les fonctionnalités de base",
+              "0": "Tests de fonction hépatique et rénale",
+              "1": "ECG (électrocardiogramme)",
+              "2": "Radiographie pulmonaire",
+              "3": "Échographie abdominale",
+              "4": "Consultation diététique"
+            },
+            "button": "Sélectionner exécutif"
+          },
+          "senior": {
+            "title": "Santé des Séniors",
+            "description": "Soins spécialisés pour les 60 ans et plus.",
+            "price": "499 $",
+            "features": {
+              "all": "Toutes les fonctionnalités exécutives",
+              "0": "Scanner de densité osseuse",
+              "1": "Marqueurs du cancer (PSA/CEA)",
+              "2": "Tests de vision et d'audition",
+              "3": "Test d'effort cardiaque"
+            },
+            "button": "Sélectionner sénior"
+          }
+        },
+        "comparison": {
+          "title": "Comparez ce qui est Inclus",
+          "header": {
+            "feature": "Tests / Caractéristiques",
+            "basic": "Base",
+            "executive": "Exécutif",
+            "senior": "Sénior"
+          },
+          "rows": {
+            "0": "Examen physique et consultation",
+            "1": "Analyses de sang (NFS, sucre, cholestérol)",
+            "2": "Laboratoire détaillé (foie, rein, thyroïde)",
+            "3": "Imagerie (radiographie, échographie)",
+            "4": "Marqueurs de dépistage du cancer",
+            "5": "Plan de bien-être personnalisé"
+          }
+        },
+        "wellness": {
+          "title": "Plans de Bien-être Personnalisés",
+          "description": "Les résultats de votre bilan ne sont que le début. Notre équipe médicale travaille avec vous pour créer une feuille de route personnalisée vers une meilleure santé, en se concentrant sur la nutrition, l'exercice et les ajustements de mode de vie adaptés à votre profil biologique unique.",
+          "features": {
+            "nutrition": {
+              "title": "Nutrition Personnalisée",
+              "description": "Recommandations diététiques basées sur vos analyses de sang."
+            },
+            "activity": {
+              "title": "Conseils d'Activité",
+              "description": "Routines d'exercices sûres pour votre niveau de forme physique."
+            }
+          },
+          "success": "Lire les histoires de réussite"
+        },
+        "cta": {
+          "badge": "Santé Proactive",
+          "titlePart1": "Prêt à Prioriser",
+          "titlePart2": "Votre Santé ?",
+          "description": "Faites le premier pas vers un avenir plus sain. Réservez votre bilan préventif dès aujourd'hui grâce à notre outil de planification en ligne simple.",
+          "buttons": {
+            "schedule": "Planifier un bilan",
+            "contact": "Contacter le support"
+          }
+        }
+      }
+    },
+    "departments": {
+      "cardiology": {
+        "seo": {
+          "title": "Département de Cardiologie",
+          "description": "Soins cardiaques et services de cardiologie de classe mondiale. Diagnostic et traitement experts pour les affections cardiovasculaires."
+        },
+        "hero": {
+          "badge": "Département de Cardiologie",
+          "titlePart1": "Soins Cardiaques",
+          "titleHighlight": "de Classe Mondiale",
+          "titlePart2": " & Cardiologie",
+          "description": "Notre département de cardiologie offre des soins complets pour les maladies cardiaques et vasculaires. Des diagnostics avancés aux traitements chirurgicaux, nous nous engageons pour la santé de votre cœur.",
+          "buttons": {
+            "appointment": "Réserver une consultation",
+            "team": "Rencontrez notre équipe"
+          }
+        },
+        "stats": {
+          "surgeries": {
+            "value": "5 000+",
+            "label": "Chirurgies réussies"
+          }
+        },
+        "conditions": {
+          "badge": "Diagnostic et soins",
+          "title": "Conditions que nous traitons",
+          "description": "Nous nous spécialisons dans le diagnostic et le traitement d'une large gamme de maladies cardiovasculaires en utilisant les dernières avancées médicales.",
+          "items": {
+            "0": {
+              "title": "Maladie coronarienne",
+              "description": "Traitement des vaisseaux sanguins rétrécis ou obstrués pouvant entraîner une crise cardiaque."
+            },
+            "1": {
+              "title": "Insuffisance cardiaque",
+              "description": "Plans de gestion complets pour les conditions d'insuffisance cardiaque chronique."
+            },
+            "2": {
+              "title": "Arythmie",
+              "description": "Soins experts pour les battements de cœur irréguliers, y compris la fibrillation auriculaire."
+            },
+            "3": {
+              "title": "Maladie valvulaire",
+              "description": "Thérapies de réparation et de remplacement pour les valves cardiaques endommagées."
+            }
+          }
+        },
+        "team": {
+          "badge": "Notre équipe",
+          "title": "Rencontrez nos spécialistes",
+          "viewAll": "Voir tous les médecins",
+          "members": {
+            "james": {
+              "name": "Dr James Wilson",
+              "role": "Cardiologue en chef"
+            },
+            "bereket": {
+              "name": "Dr Bereket Kinfe",
+              "role": "Chirurgien cardiothoracique"
+            },
+            "michael": {
+              "name": "Dr Michael Chen",
+              "role": "Électrophysiologiste"
+            },
+            "emily": {
+              "name": "Dr Emily Ross",
+              "role": "Cardiologue préventif"
+            }
+          }
+        },
+        "cta": {
+          "badge": "Commencez votre voyage",
+          "titlePart1": "Priorisez votre",
+          "titleHighlight": "santé cardiaque",
+          "titlePart2": " aujourd'hui",
+          "description": "N'attendez pas que les symptômes s'aggravent. Nos cardiologues experts sont là pour vous fournir les soins personnalisés que vous méritez. Planifiez votre consultation maintenant.",
+          "buttons": {
+            "appointment": "Demander un rendez-vous",
+            "call": "Appelez le (555) 123-4567"
+          }
+        }
+      },
+      "dental": {
+        "seo": {
+          "title": "Clinique Dentaire",
+          "description": "Soins dentaires et bucco-dentaires complets. Des nettoyages de routine aux chirurgies buccales complexes et à l'orthodontie."
+        },
+        "hero": {
+          "badge": "Clinique Dentaire",
+          "titlePart1": "Soins Dentaires",
+          "titleHighlight": "& Bucco-dentaires Complets",
+          "description": "Notre clinique dentaire spécialisée combine des technologies avancées avec des soins compatissants pour garantir que votre sourire est sain et beau. Des contrôles de routine aux chirurgies buccales complexes.",
+          "buttons": {
+            "appointment": "Réserver un examen dentaire",
+            "team": "Rencontrez notre équipe"
+          }
+        },
+        "stats": {
+          "painless": {
+            "value": "Sans Douleur",
+            "label": "Dentisterie"
+          }
+        },
+        "conditions": {
+          "title": "Conditions que nous traitons",
+          "description": "Nous fournissons des traitements spécialisés pour une large gamme de problèmes de santé dentaire et bucco-dentaire, restaurant la fonction et l'esthétique.",
+          "items": {
+            "0": {
+              "title": "Caries et décomposition",
+              "description": "Traitement des caries dentaires avec des plombages, incrustations et onlays pour restaurer l'intégrité de la dent."
+            },
+            "1": {
+              "title": "Maladies des gencives",
+              "description": "Thérapie parodontale pour traiter la gingivite et la parodontite, protégeant la santé de vos gencives."
+            },
+            "2": {
+              "title": "Perte de dents",
+              "description": "Options de restauration comprenant des ponts, des prothèses et des implants pour les dents manquantes."
+            },
+            "3": {
+              "title": "Malposition",
+              "description": "Solutions orthodontiques pour corriger les dents croches et les problèmes de morsure pour enfants et adultes."
+            }
+          }
+        },
+        "expertise": {
+          "badge": "Notre Expertise",
+          "title": "Services et procédures",
+          "description": "Nous offrons une suite complète de services dentaires adaptés à vos besoins individuels. Notre objectif est de fournir des traitements efficaces et sans douleur en utilisant les dernières techniques.",
+          "items": {
+            "0": {
+              "title": "Nettoyage de routine",
+              "description": "Détartrage et polissage professionnels pour éliminer l'accumulation de plaque et de tartre, prévenant les maladies des gencives."
+            },
+            "1": {
+              "title": "Blanchiment des dents",
+              "description": "Traitements de blanchiment professionnels pour éclaircir votre sourire en toute sécurité et efficacement."
+            },
+            "2": {
+              "title": "Implants dentaires",
+              "description": "Remplacements permanents et d'aspect naturel pour les dents manquantes qui fonctionnent exactement comme les vôtres."
+            },
+            "3": {
+              "title": "Orthodontie",
+              "description": "Appareils dentaires et aligneurs transparents pour corriger les problèmes de morsure et aligner les dents pour un sourire parfait."
+            }
+          }
+        },
+        "team": {
+          "badge": "Notre Équipe",
+          "title": "Rencontrez nos dentistes",
+          "viewAll": "Voir tous les médecins",
+          "members": {
+            "sarah": {
+              "name": "Dr Sarah Johnson",
+              "role": "Orthodontiste principale"
+            },
+            "mark": {
+              "name": "Dr Mark Williams",
+              "role": "Chirurgien buccal"
+            },
+            "emily": {
+              "name": "Dr Emily Chen",
+              "role": "Dentiste pédiatrique"
+            }
+          }
+        },
+        "technology": {
+          "title": "Technologie de pointe",
+          "description": "Nous investissons dans les dernières technologies dentaires pour fournir des diagnostics précis et des traitements efficaces. Notre établissement moderne est équipé pour répondre à tous vos besoins dentaires avec précision.",
+          "items": {
+            "x-rays": {
+              "title": "Radiographies numériques",
+              "description": "Imagerie à faible rayonnement pour des vues détaillées de la structure des dents et de la mâchoire instantanément."
+            },
+            "cameras": {
+              "title": "Caméras intra-orales",
+              "description": "Caméras haute résolution qui vous permettent de voir ce que le dentiste voit en temps réel."
+            }
+          }
+        },
+        "cta": {
+          "badge": "Votre sourire compte",
+          "titlePart1": "Prêt pour un",
+          "titleHighlight": "sourire éclatant ?",
+          "description": "Votre santé bucco-dentaire est notre priorité. Planifiez votre visite avec notre équipe dentaire experte aujourd'hui et faites la différence.",
+          "buttons": {
+            "appointment": "Demander un rendez-vous",
+            "contact": "Contacter la clinique dentaire"
+          }
+        }
+      },
+      "laboratory": {
+        "seo": {
+          "title": "Département de Laboratoire",
+          "description": "Laboratoire clinique avancé fonctionnant 24h/24 et 7j/7. Tests de diagnostic complets et résultats précis en lesquels vous pouvez avoir confiance."
+        },
+        "hero": {
+          "badge": "Département de Médecine de Laboratoire",
+          "titlePart1": "Diagnostics de Précision &",
+          "titleHighlight": "Services de Laboratoire",
+          "description": "Notre laboratoire certifié ISO fonctionne 24h/24 et 7j/7 pour fournir des résultats de diagnostic rapides et précis. Des analyses de sang de routine aux tests moléculaires avancés, nous soutenons votre parcours de santé avec précision.",
+          "buttons": {
+            "appointment": "Demander un test de laboratoire",
+            "viewTests": "Voir les tests"
+          }
+        },
+        "stats": {
+          "available": {
+            "value": "24/7",
+            "label": "Disponible"
+          }
+        },
+        "intro": {
+          "badge": "Tests Cliniques",
+          "title": "Nos Services de Laboratoire",
+          "description": "Tests de diagnostic complets dans plusieurs disciplines pour soutenir un diagnostic précis et le suivi du traitement."
+        },
+        "disciplines": {
+          "biochemistry": {
+            "title": "Biochimie",
+            "description": "Fonction hépatique, profils rénaux, bilans lipidiques et dépistage métabolique avec une haute précision."
+          },
+          "hematology": {
+            "title": "Hématologie",
+            "description": "Numérations globulaires complètes, études de coagulation et profilage de l'anémie pour les troubles sanguins."
+          },
+          "microbiology": {
+            "title": "Microbiologie",
+            "description": "Culture et sensibilité, sérologie virale et identification des maladies infectieuses."
+          },
+          "molecular": {
+            "title": "Moléculaire",
+            "description": "Tests PCR, dépistage génétique et biomarqueurs du cancer pour une médecine de précision."
+          }
+        },
+        "tests": {
+          "title": "Tests et Bilans Communs",
+          "items": {
+            "0": {
+              "title": "Numération Globulaire Complète (FNS)",
+              "description": "Dépistage essentiel de l'anémie, des infections et des troubles sanguins. Fournit une analyse détaillée des globules rouges, des globules blancs et des plaquettes."
+            },
+            "1": {
+              "title": "Bilan Métabolique Complet",
+              "description": "Évalue la fonction rénale et hépatique, l'équilibre électrolytique et les niveaux de sucre dans le sang pour une évaluation globale de la santé."
+            },
+            "2": {
+              "title": "Profil Lipidique",
+              "description": "Mesure les niveaux de cholestérol (LDL, HDL, triglycérides) pour évaluer le risque de maladie cardiovasculaire."
+            }
+          }
+        },
+        "features": {
+          "title": "Résultats Rapides et Précis",
+          "automated": {
+            "title": "Systèmes Automatisés",
+            "description": "Des analyseurs de pointe provenant des principaux fabricants garantissent des résultats cohérents et sans erreur avec des délais d'exécution rapides."
+          },
+          "home": {
+            "title": "Collecte à Domicile",
+            "description": "Service de phlébotomie professionnel à votre porte. Réservez en ligne et recevez vos rapports numériques directement par e-mail."
+          },
+          "quote": "La plupart des résultats de tests de routine sont disponibles en 4 à 6 heures. Taux de précision de 99,9 % avec certification ISO."
+        },
+        "team": {
+          "badge": "Notre Équipe",
+          "title": "Spécialistes de Laboratoire",
+          "viewAll": "Voir toute l'équipe",
+          "members": {
+            "rachel": {
+              "name": "Dr Rachel Anderson",
+              "role": "Pathologiste en chef"
+            },
+            "michael": {
+              "name": "Dr Michael Torres",
+              "role": "Biochimiste clinique"
+            },
+            "lisa": {
+              "name": "Dr Lisa Chen",
+              "role": "Microbiologiste"
+            }
+          }
+        },
+        "cta": {
+          "badge": "Réservez votre test",
+          "titlePart1": "Besoin d'un test de",
+          "titleHighlight": "Laboratoire ?",
+          "description": "Des résultats rapides et précis en lesquels vous pouvez avoir confiance. Demandez votre test de laboratoire aujourd'hui ou planifiez une collecte à domicile pour votre commodité.",
+          "buttons": {
+            "appointment": "Demander un test de laboratoire",
+            "contact": "Contacter le département"
+          }
+        }
+      },
+      "radiology": {
+        "seo": {
+          "title": "Département de Radiologie",
+          "description": "Excellence en imagerie diagnostique incluant l'IRM, le scanner, l'échographie et les radiographies avec des protocoles de radioprotection."
+        },
+        "hero": {
+          "badge": "Département de Radiologie",
+          "titlePart1": "Imagerie Diagnostique",
+          "titleHighlight": "de Pointe",
+          "description": "Notre département de radiologie utilise une technologie d'imagerie avancée pour fournir des diagnostics précis. Nous priorisons le confort et la sécurité des patients tout en fournissant des données visuelles de haute qualité.",
+          "buttons": {
+            "appointment": "Prendre rendez-vous pour l'imagerie",
+            "specialists": "Rencontrez nos radiologues"
+          }
+        },
+        "stats": {
+          "imaging": {
+            "value": "Haute Résolution",
+            "label": "Imagerie"
+          }
+        },
+        "intro": {
+          "title": "Affections que nous traitons",
+          "description": "Nos capacités d'imagerie nous permettent de détecter et de surveiller un large éventail de conditions médicales avec une clarté exceptionnelle."
+        },
+        "treatments": {
+          "fracture": {
+            "title": "Détection de fracture",
+            "description": "Identification précise des fractures osseuses, des luxations et des anomalies articulaires à l'aide de radiographies haute résolution."
+          },
+          "tumor": {
+            "title": "Dépistage de tumeurs",
+            "description": "Détection précoce et stadification des tumeurs dans les tissus mous et les organes grâce à l'IRM et au scanner avancés."
+          },
+          "cardiovascular": {
+            "title": "Imagerie cardiovasculaire",
+            "description": "Visualisation détaillée de la structure cardiaque et du flux sanguin pour identifier les blocages et les troubles cardiaques."
+          },
+          "organ": {
+            "title": "Santé des organes",
+            "description": "Évaluation complète des organes internes, y compris le foie, les reins et les poumons, pour la fonction et la pathologie."
+          }
+        },
+        "procedures": {
+          "badge": "Notre Expertise",
+          "title": "Services et procédures",
+          "viewAll": "Voir la liste complète des services",
+          "items": {
+            "xray": {
+              "title": "Radiographie numérique",
+              "description": "Radiographie numérique haute résolution pour une évaluation rapide et précise des os et du thorax avec une exposition minimale aux radiations.",
+              "features": {
+                "0": "Résultats instantanés",
+                "1": "Faible dose de radiation"
+              }
+            },
+            "mammography": {
+              "title": "Mammographie 3D",
+              "description": "Technologie de tomosynthèse avancée qui fournit une vue tridimensionnelle du tissu mammaire pour une détection plus précoce du cancer.",
+              "features": {
+                "0": "Précision accrue",
+                "1": "Conception confortable"
+              }
+            },
+            "mri": {
+              "title": "IRM (Imagerie par Résonance Magnétique)",
+              "description": "Imagerie détaillée des tissus mous, des organes et du système nerveux à l'aide de champs magnétiques puissants et d'ondes radio.",
+              "features": {
+                "0": "Options Wide-Bore",
+                "1": "Amélioration par contraste"
+              }
+            },
+            "ct": {
+              "title": "Scanner (Tomodensitométrie)",
+              "description": "Images en coupe transversale du corps utilisées pour diagnostiquer des conditions complexes, guider des biopsies et surveiller l'efficacité du traitement.",
+              "features": {
+                "0": "Technologie 64 barrettes",
+                "1": "Protocoles à faible dose"
+              }
+            }
+          }
+        },
+        "team": {
+          "badge": "Notre équipe",
+          "title": "Rencontrez nos radiologues",
+          "viewAll": "Voir tous les médecins",
+          "members": {
+            "sarah": {
+              "name": "Dr. Sarah Jenkins",
+              "role": "Radiologue Chef"
+            },
+            "michael": {
+              "name": "Dr. Michael Chen",
+              "role": "Radiologue Interventionnel"
+            },
+            "emily": {
+              "name": "Dr. Emily Rodriguez",
+              "role": "Radiologue Pédiatrique"
+            }
+          }
+        },
+        "technology": {
+          "title": "Technologie Avancée",
+          "description": "Nous investissons dans les dernières technologies d'imagerie pour garantir des résultats de la plus haute qualité avec le risque le plus bas possible pour nos patients. Notre établissement est équipé de scanners et de logiciels de nouvelle génération.",
+          "ai": {
+            "title": "Analyse d'imagerie assistée par IA",
+            "description": "Utilisation de l'intelligence artificielle pour aider les radiologues à détecter les anomalies subtiles plus tôt et plus précisément."
+          },
+          "lowRad": {
+            "title": "Équipement à faible dose de radiation",
+            "description": "Nos systèmes CT et de radiographie sont optimisés pour réduire la dose de rayonnement jusqu'à 60 % sans compromettre la qualité de l'image."
+          },
+          "stats": {
+            "emergency": "Imagerie d'urgence",
+            "scans": "Scans mensuels",
+            "archives": "Archives numériques"
+          }
+        },
+        "cta": {
+          "badge": "Diagnostics Précis",
+          "titlePart1": "Prêt pour votre",
+          "titleHighlight": "Scan ?",
+          "description": "Que vous ayez besoin d'un dépistage de routine ou d'une procédure de diagnostic complexe, notre équipe de radiologie est là pour fournir des soins exceptionnels.",
+          "buttons": {
+            "appointment": "Demander un rendez-vous",
+            "referrals": "Orientation médicale"
+          }
+        }
+      },
+      "neurology": {
+        "seo": {
+          "title": "Département de Neurologie",
+          "description": "Soins avancés pour les troubles du cerveau, de la moelle épinière et du système nerveux. Spécialisé dans le traitement des AVC, de l'épilepsie et de la migraine."
+        },
+        "hero": {
+          "badge": "Département de Neurologie",
+          "titlePart1": "Soins Neurologiques Avancés &",
+          "titleHighlight": "Santé Cérébrale",
+          "description": "Notre département de neurologie propose des diagnostics et des traitements de classe mondiale pour les troubles complexes du système nerveux. Nous combinons une technologie de pointe avec des soins compatissants.",
+          "buttons": {
+            "consult": "Consulter un neurologue",
+            "procedures": "Voir les procédures"
+          }
+        },
+        "stats": {
+          "excellence": {
+            "value": "Centre d'",
+            "label": "Excellence"
+          }
+        },
+        "intro": {
+          "badge": "Expertise",
+          "title": "Affections que nous traitons",
+          "description": "Nos spécialistes possèdent une vaste expérience dans le diagnostic et la gestion d'un large éventail de conditions neurologiques."
+        },
+        "conditions": {
+          "stroke": {
+            "title": "AVC (Accident Vasculaire Cérébral)",
+            "description": "Soins d'urgence pour les AVC avec thérapie thrombolytique et programmes de réadaptation complets."
+          },
+          "epilepsy": {
+            "title": "Épilepsie",
+            "description": "Gestion avancée des crises, surveillance EEG et options chirurgicales pour le contrôle de l'épilepsie."
+          },
+          "alzheimer": {
+            "title": "Alzheimer",
+            "description": "Soins compatissants pour les troubles de la mémoire, diagnostic précoce et soutien aux patients et aux familles."
+          },
+          "migraine": {
+            "title": "Migraine",
+            "description": "Clinique spécialisée dans les maux de tête offrant des plans de traitement personnalisés pour les migraines et les céphalées chroniques."
+          }
+        },
+        "procedures": {
+          "title": "Services et procédures",
+          "items": {
+            "eeg": {
+              "title": "EEG (Électroencéphalogramme)",
+              "description": "Un test non invasif qui enregistre l'activité électrique du cerveau, essentiel pour diagnostiquer l'épilepsie et d'autres troubles cérébraux."
+            },
+            "nerve": {
+              "title": "Études de conduction nerveuse",
+              "description": "Tests permettant de mesurer la vitesse à laquelle une impulsion électrique se déplace dans votre nerf, utilisés pour identifier les lésions nerveuses."
+            },
+            "rehab": {
+              "title": "Neuroréadaptation",
+              "description": "Un processus médical complexe visant à faciliter la récupération après une lésion du système nerveux et à minimiser et/ou compenser toute altération fonctionnelle."
+            }
+          }
+        },
+        "technology": {
+          "title": "Technologie Avancée",
+          "item1": {
+            "title": "Scanner IRM 3T",
+            "description": "Offre une qualité d'image exceptionnelle pour l'imagerie détaillée du cerveau et de la colonne vertébrale, permettant des diagnostics plus précoces et plus précis."
+          },
+          "item2": {
+            "title": "Angio-scanner",
+            "description": "Combine un scanner CT avec l'injection d'un colorant pour produire des images des vaisseaux sanguins et des tissus, crucial pour l'évaluation des AVC."
+          },
+          "quote": "Nous investissons dans les dernières technologies pour garantir que nos patients aient accès aux outils de diagnostic les plus précis du marché."
+        },
+        "team": {
+          "badge": "Notre équipe",
+          "title": "Rencontrez nos neurologues",
+          "viewAll": "Voir tous les médecins",
+          "members": {
+            "sarah": {
+              "name": "Dr. Sarah Mitchell",
+              "role": "Chef du Département de Neurologie"
+            },
+            "james": {
+              "name": "Dr. James Wilson",
+              "role": "Épileptologue"
+            },
+            "emily": {
+              "name": "Dr. Emily Chen",
+              "role": "Spécialiste des troubles du mouvement"
+            }
+          }
+        },
+        "cta": {
+          "badge": "Consultation d'expert",
+          "titlePart1": "Prêt pour votre",
+          "titleHighlight": "Consultation en Neurologie ?",
+          "description": "Un diagnostic précoce peut faire une différence significative. Prenez rendez-vous avec nos spécialistes dès aujourd'hui.",
+          "buttons": {
+            "appointment": "Prendre rendez-vous",
+            "contact": "Contacter le département"
+          }
+        }
+      },
+      "pediatrics": {
+        "seo": {
+          "title": "Département de Pédiatrie",
+          "description": "Soins médicaux compatissants pour les nourrissons, les enfants et les adolescents. Environnement adapté aux enfants et pédiatres experts."
+        },
+        "hero": {
+          "badge": "Département de Pédiatrie",
+          "titlePart1": "Des soins compatissants pour",
+          "titleHighlight": "Vos tout-petits",
+          "description": "Des nouveau-nés aux adolescents, notre équipe dévouée de pédiatres fournit des soins médicaux complets dans un environnement chaleureux et adapté aux enfants.",
+          "buttons": {
+            "visit": "Réserver une visite",
+            "team": "Rencontrez notre équipe"
+          }
+        },
+        "stats": {
+          "friendly": {
+            "value": "Adapté aux enfants",
+            "label": "Environnement"
+          }
+        },
+        "intro": {
+          "badge": "Diagnostic et soins",
+          "title": "Affections que nous traitons",
+          "description": "Nous nous spécialisons dans le diagnostic et le traitement d'un large éventail de conditions infantiles, garantissant que votre enfant grandisse en bonne santé et fort. Notre approche est axée sur les soins préventifs et l'intervention précoce."
+        },
+        "conditions": {
+          "illness": {
+            "title": "Maladies infantiles",
+            "description": "Diagnostic et traitement des infections courantes, des fièvres, de la grippe et des maladies chroniques comme l'asthme."
+          },
+          "vaccination": {
+            "title": "Vaccinations",
+            "description": "Programmes de vaccination complets pour protéger votre enfant contre les maladies graves évitables."
+          },
+          "development": {
+            "title": "Retards de développement",
+            "description": "Suivi des étapes de la croissance et intervention précoce pour les problèmes de développement."
+          },
+          "nutrition": {
+            "title": "Nutrition et régime alimentaire",
+            "description": "Conseils d'experts sur l'allaitement, les préparations pour nourrissons, l'introduction des solides et les habitudes alimentaires saines."
+          }
+        },
+        "procedures": {
+          "title": "Services et procédures",
+          "items": {
+            "newborn": {
+              "title": "Soins aux nouveau-nés",
+              "description": "Examens physiques complets, tests de dépistage et soins pour les nouveau-nés immédiatement après l'accouchement et au cours des premières semaines de vie.",
+              "features": {
+                "checkup": "Premier examen dans les 48 heures",
+                "lactation": "Soutien à l'allaitement"
+              }
+            },
+            "wellchild": {
+              "title": "Visites de suivi de l'enfant",
+              "description": "Visites régulières de supervision de la santé pour suivre la croissance, le développement, le comportement et le bien-être général aux âges clés.",
+              "features": {
+                "physicals": "Examens physiques annuels",
+                "school": "Examens physiques scolaires et sportifs"
+              }
+            },
+            "surgery": {
+              "title": "Chirurgie pédiatrique",
+              "description": "Soins chirurgicaux pour enfants allant des interventions mineures aux opérations complexes, réalisées par des chirurgiens pédiatres spécialisés.",
+              "features": {
+                "invasive": "Techniques peu invasives",
+                "recovery": "Soins de récupération post-opératoire"
+              }
+            },
+            "adolescent": {
+              "title": "Médecine de l'adolescent",
+              "description": "Soins spécialisés répondant aux besoins physiques, psychologiques et sociaux des adolescents et des jeunes adultes.",
+              "features": {
+                "mental": "Soutien en santé mentale",
+                "reproductive": "Santé reproductive"
+              }
+            }
+          }
+        },
+        "facility": {
+          "title": "Installation adaptée aux enfants",
+          "subtitle": "Conçu pour le confort",
+          "description": "Notre aile pédiatrique est distincte de l'hôpital principal, avec des couleurs vives, des aires de jeux et des chambres de patients conçues pour réduire l'anxiété. Nous pensons qu'un environnement de guérison est tout aussi important que les soins médicaux que nous prodiguons.",
+          "features": {
+            "playrooms": "Salles de jeux dédiées avec surveillance",
+            "entertainment": "Systèmes de divertissement en chambre",
+            "parents": "Installations pour la nuit pour les parents"
+          }
+        },
+        "team": {
+          "badge": "Notre équipe",
+          "title": "Rencontrez nos pédiatres",
+          "viewAll": "Voir tous les médecins",
+          "members": {
+            "ashley": {
+              "name": "Dr Ashley Johnson",
+              "role": "Pédiatre"
+            },
+            "john": {
+              "name": "Dr John Chen",
+              "role": "Chirurgien Pédiatrique"
+            },
+            "emily": {
+              "name": "Dr Emily Rodriguez",
+              "role": "Spécialiste de l'adolescence"
+            }
+          }
+        },
+        "cta": {
+          "badge": "Nouveaux patients acceptés",
+          "titlePart1": "Planifiez la visite",
+          "titleHighlight": "de votre enfant",
+          "description": "Offrez à votre enfant le cadeau d'une bonne santé. Nos pédiatres experts fournissent des soins compatissants dans un environnement chaleureux et adapté aux enfants. Réservez votre visite dès aujourd'hui.",
+          "buttons": {
+            "appointment": "Réserver un rendez-vous maintenant",
+            "call": "Appeler le (555) 123-4567"
+          }
+        }
+      },
+      "surgery": {
+        "seo": {
+          "title": "Département de Chirurgie",
+          "description": "Soins chirurgicaux de pointe utilisant des techniques peu invasives et la technologie robotique pour une récupération plus rapide."
+        },
+        "hero": {
+          "badge": "Département de Chirurgie",
+          "titlePart1": "Excellence en",
+          "titleHighlight": "Chirurgie de Précision",
+          "description": "Notre service de chirurgie associe des chirurgiens de classe mondiale à une technologie de pointe pour fournir des soins chirurgicaux précis, peu invasifs et efficaces, adaptés à vos besoins.",
+          "buttons": {
+            "consultation": "Réserver une consultation",
+            "team": "Rencontrer nos chirurgiens"
+          }
+        },
+        "stats": {
+          "success": {
+            "value": "Taux de réussite de 99 %",
+            "label": "Dans les procédures peu invasives"
+          }
+        },
+        "conditions": {
+          "intro": {
+            "title": "Affections traitées",
+            "description": "Nous fournissons des solutions chirurgicales complètes pour un large éventail de conditions médicales."
+          },
+          "items": {
+            "appendicitis": {
+              "title": "Appendicite",
+              "description": "Ablation d'urgence ou programmée de l'appendice à l'aide de techniques laparoscopiques."
+            },
+            "hernias": {
+              "title": "Hernies",
+              "description": "Réparation des hernies inguinales, ombilicales et hiatales avec renforcement par filet."
+            },
+            "gallbladder": {
+              "title": "Problèmes de vésicule biliaire",
+              "description": "Traitement des calculs biliaires et de l'inflammation, généralement par cholécystectomie."
+            },
+            "trauma": {
+              "title": "Traumatisme",
+              "description": "Chirurgie de soins critiques pour les blessures résultant d'accidents et d'urgences."
+            }
+          }
+        },
+        "expertise": {
+          "badge": "Notre expertise",
+          "title": "Services et procédures",
+          "description": "Nous nous spécialisons dans un large éventail de procédures chirurgicales, en privilégiant la sécurité des patients et la rapidité de récupération grâce à l'innovation."
+        },
+        "services": {
+          "items": {
+            "minimally": {
+              "title": "Chirurgie mini-invasive",
+              "description": "Utilisation de petites incisions pour réduire la douleur, les cicatrices et le temps de récupération des patients subissant des opérations complexes."
+            },
+            "laparoscopy": {
+              "title": "Laparoscopie",
+              "description": "Procédures diagnostiques et thérapeutiques utilisant une petite caméra pour guider les instruments chirurgicaux avec une grande précision."
+            },
+            "general": {
+              "title": "Chirurgie générale",
+              "description": "Opérations de routine et complexes sur les organes abdominaux, la thyroïde, la peau, les seins et les tissus mous."
+            },
+            "postoperative": {
+              "title": "Soins post-opératoires",
+              "description": "Suivi complet et plans de rééducation pour assurer une guérison optimale et le retour aux activités quotidiennes."
+            }
+          }
+        },
+        "technology": {
+          "badge": "Notre technologie",
+          "title": "Technologie chirurgicale avancée",
+          "description": "Nous investissons dans les dernières innovations chirurgicales pour fournir des traitements plus sûrs, plus précis et moins invasifs à nos patients.",
+          "items": {
+            "robotic": {
+              "title": "Systèmes chirurgicaux robotisés",
+              "description": "Précision et contrôle accrus pour les procédures complexes, réduisant considérablement les temps de récupération."
+            },
+            "imaging": {
+              "title": "Imagerie haute définition",
+              "description": "Visualisation en temps réel et parfaitement claire de l'anatomie interne lors de procédures laparoscopiques."
+            }
+          }
+        },
+        "team": {
+          "badge": "Notre équipe",
+          "title": "Rencontrer nos chirurgiens",
+          "viewAll": "Voir tous les médecins",
+          "members": {
+            "samantha": {
+              "name": "Dr Samantha Johnson",
+              "role": "Spécialiste en chirurgie générale"
+            },
+            "mathew": {
+              "name": "Dr Mathew Chen",
+              "role": "Traumatologie et soins aigus"
+            },
+            "nikita": {
+              "name": "Dr Nikita Davis",
+              "role": "Chirurgie mini-invasive"
+            }
+          }
+        },
+        "cta": {
+          "badge": "Soins chirurgicaux experts",
+          "titlePart1": "Prêt pour votre",
+          "titleHighlight": "consultation ?",
+          "description": "Faites le premier pas vers une meilleure santé. Notre équipe chirurgicale est prête à vous fournir un plan de traitement personnalisé.",
+          "buttons": {
+            "appointment": "Réserver une consultation",
+            "contact": "Contacter le service"
+          }
+        }
+      },
+      "ophthalmology": {
+        "seo": {
+          "title": "Département d'Ophtalmologie",
+          "description": "Soins oculaires avancés et préservation de la vision. Traitement de la cataracte, du glaucome et chirurgie LASIK."
+        },
+        "hero": {
+          "badge": "Département d'Ophtalmologie",
+          "titlePart1": "Soins oculaires avancés et",
+          "titleHighlight": "Préservation de la vision",
+          "description": "Notre équipe d'ophtalmologie de classe mondiale combine expertise et technologie de pointe pour diagnostiquer, traiter et gérer toutes les affections oculaires.",
+          "buttons": {
+            "exam": "Réserver un examen de la vue",
+            "specialists": "Rencontrer les spécialistes"
+          }
+        },
+        "stats": {
+          "vision": {
+            "value": "20/20",
+            "label": "Objectifs de vision"
+          },
+          "items": {
+            "surgeries": {
+              "value": "15k+",
+              "label": "Chirurgies effectuées"
+            },
+            "success": {
+              "value": "98%",
+              "label": "Taux de réussite"
+            },
+            "doctors": {
+              "value": "20+",
+              "label": "Médecins spécialisés"
+            },
+            "emergency": {
+              "value": "24/7",
+              "label": "Soins d'urgence"
+            }
+          }
+        },
+        "conditions": {
+          "badge": "Notre expertise",
+          "title": "Affections traitées",
+          "description": "Nous fournissons un diagnostic et un traitement complets pour un large éventail d'affections oculaires affectant les patients de tous âges.",
+          "items": {
+            "cataracts": {
+              "title": "Cataracte",
+              "description": "Opacification du cristallin naturel de l'œil, entraînant une baisse de la vision. Nous proposons une chirurgie de la cataracte assistée par laser de pointe."
+            },
+            "glaucoma": {
+              "title": "Glaucome",
+              "description": "Un groupe d'affections oculaires qui endommagent le nerf optique. Un dépistage et un traitement précoces sont cruciaux pour prévenir la perte de vision."
+            },
+            "macular": {
+              "title": "Dégénérescence maculaire",
+              "description": "Affection liée à l'âge touchant la partie centrale de la rétine. Nous proposons des thérapies pour ralentir la progression et gérer les symptômes."
+            },
+            "diabetic": {
+              "title": "Rétinopathie diabétique",
+              "description": "Une complication du diabète qui affecte les yeux. Nous proposons des dépistages réguliers et des traitements avancés comme la photocoagulation au laser."
+            }
+          }
+        },
+        "services": {
+          "title": "Services et procédures",
+          "description": "Nous utilisons les dernières techniques et technologies chirurgicales pour garantir les meilleurs résultats possibles à nos patients. Nos installations sont équipées pour les procédures ambulatoires et les chirurgies complexes.",
+          "button": "Réserver un service",
+          "items": {
+            "lasik": {
+              "title": "Chirurgie oculaire au laser (LASIK)",
+              "description": "Correction des problèmes de vision tels que la myopie, l'hypermétropie et l'astigmatisme à l'aide de lasers de précision."
+            },
+            "exams": {
+              "title": "Examens de la vue de routine",
+              "description": "Tests de vision complets et bilans de santé pour maintenir une santé oculaire optimale et détecter les problèmes tôt."
+            },
+            "retinal": {
+              "title": "Procédures rétiniennes",
+              "description": "Traitements avancés pour les décollements de rétine, les déchirures et autres conditions complexes de l'arrière de l'œil."
+            },
+            "corneal": {
+              "title": "Greffes de cornée",
+              "description": "Remplacement chirurgical du tissu cornéen endommagé pour restaurer la vision chez les patients atteints de maladies cornéennes."
+            }
+          }
+        },
+        "technology": {
+          "badge": "Notre technologie",
+          "title": "Systèmes de diagnostic avancés",
+          "description": "La précision est essentielle dans les soins oculaires. Nous investissons dans les dernières technologies optiques pour garantir des diagnostics précis et des résultats de traitement réussis.",
+          "items": {
+            "oct": {
+              "title": "Tomographie en cohérence optique (OCT)",
+              "description": "Imagerie non invasive utilisant des ondes lumineuses pour prendre des photos en coupe de votre rétine, nous permettant de voir chaque couche distincte."
+            },
+            "diagnostic": {
+              "title": "Systèmes de diagnostic laser",
+              "description": "Outils de cartographie laser à la pointe de la technologie qui créent une carte 3D détaillée de la surface de votre œil pour des traitements parfaitement personnalisés."
+            }
+          }
+        },
+        "cta": {
+          "badge": "Réserver votre examen de la vue",
+          "titlePart1": "Voir le monde",
+          "titleHighlight": "à nouveau clairement",
+          "description": "Ne laissez pas les problèmes de vision limiter votre vie. Nos ophtalmologistes experts sont là pour vous fournir les soins personnalisés que vous méritez. Planifiez votre consultation dès maintenant.",
+          "buttons": {
+            "exam": "Planifier un examen de la vue",
+            "call": "Appeler le (555) 123-4567"
+          }
+        }
+      },
+      "rehabilitation": {
+        "seo": {
+          "title": "Réadaptation et physiothérapie",
+          "description": "Aider les patients à retrouver mobilité et indépendance grâce à une thérapie physique et occupationnelle personnalisée."
+        },
+        "hero": {
+          "badge": "Département de Réadaptation",
+          "titlePart1": "Réadaptation experte et",
+          "titleHighlight": "Physiothérapie",
+          "description": "Notre équipe dévouée de thérapeutes et de spécialistes vous aide à retrouver force, mobilité et indépendance. Nous créons des plans de récupération personnalisée adaptés à vos besoins spécifiques.",
+          "buttons": {
+            "specialists": "Rencontrer nos spécialistes",
+            "services": "Voir les services"
+          }
+        },
+        "stats": {
+          "recovery": {
+            "value": "98%",
+            "label": "Taux de récupération"
+          }
+        },
+        "conditions": {
+          "title": "Affections traitées",
+          "description": "Nous nous spécialisons dans le traitement d'un large éventail d'affections pour vous aider à reprendre vos activités quotidiennes sans douleur.",
+          "items": {
+            "sports": {
+              "title": "Blessures sportives",
+              "description": "Réadaptation complète pour les déchirures du LCA, les blessures de la coiffe des rotateurs et les entorses pour ramener les athlètes au jeu en toute sécurité."
+            },
+            "stroke": {
+              "title": "Récupération après un AVC",
+              "description": "Réadaptation neurologique axée sur le réapprentissage des compétences et l'amélioration de la mobilité après un accident vasculaire cérébral."
+            },
+            "surgical": {
+              "title": "Rééducation post-chirurgicale",
+              "description": "Programmes de récupération guidés suite à des remplacements articulaires, des chirurgies de la colonne vertébrale et d'autres procédures majeures."
+            },
+            "chronic": {
+              "title": "Douleur chronique",
+              "description": "Stratégies de gestion et thérapies pour les maux de dos, l'arthrite, la fibromyalgie et d'autres conditions de douleur à long terme."
+            }
+          }
+        },
+        "services": {
+          "badge": "Notre expertise",
+          "title": "Services et procédures",
+          "description": "Notre département est équipé d'installations modernes et d'un personnel expert pour fournir une gamme complète de services de réadaptation conçus pour votre parcours de récupération unique.",
+          "items": {
+            "physical": {
+              "title": "Physiothérapie",
+              "description": "Se concentre sur l'amélioration du mouvement, de la force et de la fonction par l'exercice, la thérapie manuelle et l'éducation."
+            },
+            "occupational": {
+              "title": "Ergothérapie",
+              "description": "Aide les patients à développer, à récupérer ou à maintenir les compétences de la vie quotidienne et du travail assurant l'indépendance."
+            },
+            "pain": {
+              "title": "Gestion de la douleur",
+              "description": "Approche multidisciplinaire pour diagnostiquer, prévenir et traiter la douleur chronique à l'aide de diverses techniques thérapeutiques."
+            }
+          }
+        },
+        "technology": {
+          "title": "Technologie avancée",
+          "description": "Nous utilisons des équipements de pointe pour accélérer votre récupération.",
+          "items": {
+            "mobility": {
+              "title": "Aides à la mobilité avancées",
+              "description": "Exosquelettes robotiques de pointe et entraîneurs de marche informatisés pour aider à la rééducation de la marche."
+            },
+            "therapeutic": {
+              "title": "Équipement thérapeutique",
+              "description": "Piscines d'hydrothérapie spécialisées, dispositifs de stimulation électrique et unités de thérapie par ultrasons."
+            }
+          }
+        },
+        "team": {
+          "badge": "Notre équipe",
+          "title": "Rencontrer nos spécialistes",
+          "viewAll": "Voir tous les médecins",
+          "members": {
+            "maya": {
+              "name": "Dr Maya Lahan",
+              "role": "Physiothérapeute principale"
+            },
+            "raymond": {
+              "name": "Dr Raymond Langston",
+              "role": "Ergothérapeute"
+            },
+            "sandra": {
+              "name": "Dr Sandra Mornay",
+              "role": "Spécialiste de la gestion de la douleur"
+            }
+          },
+          "button": "Prendre rendez-vous"
+        },
+        "cta": {
+          "badge": "Retrouvez votre indépendance",
+          "titlePart1": "Commencez votre",
+          "titleHighlight": "parcours de récupération",
+          "description": "Faites le premier pas vers une vie sans douleur. Planifiez une consultation avec nos experts en réadaptation et reprenez ce que vous aimez.",
+          "buttons": {
+            "consultation": "Réserver une consultation",
+            "contact": "Contacter le service"
+          }
         }
       }
     },

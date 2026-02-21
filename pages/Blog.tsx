@@ -105,19 +105,19 @@ const Blog: React.FC = () => {
               <h1 className="text-4xl lg:text-5xl font-serif font-bold mb-6 leading-tight">
                 {
                   t(
-                    `data.articles.${featuredArticle.id}.title`,
+                    `pages.blog.data.${featuredArticle.id}.title`,
                     featuredArticle.title,
                   ).split(":")[0]
                 }
                 {t(
-                  `data.articles.${featuredArticle.id}.title`,
+                  `pages.blog.data.${featuredArticle.id}.title`,
                   featuredArticle.title,
                 ).includes(":") && (
                   <>
                     :<br />
                     <span className="text-primary">
                       {t(
-                        `data.articles.${featuredArticle.id}.title`,
+                        `pages.blog.data.${featuredArticle.id}.title`,
                         featuredArticle.title,
                       )
                         .split(":")[1]
@@ -130,7 +130,7 @@ const Blog: React.FC = () => {
             <Reveal delay={160}>
               <p className="text-lg text-slate-300 mb-8 leading-relaxed max-w-2xl">
                 {t(
-                  `data.articles.${featuredArticle.id}.excerpt`,
+                  `pages.blog.data.${featuredArticle.id}.excerpt`,
                   featuredArticle.excerpt ?? featuredArticle.subtitle,
                 )}
               </p>
@@ -141,7 +141,7 @@ const Blog: React.FC = () => {
                   <CldImg
                     src={featuredArticle.authorImg}
                     alt={t(
-                      `data.articles.${featuredArticle.id}.author`,
+                      `pages.blog.data.${featuredArticle.id}.author`,
                       featuredArticle.author,
                     )}
                     transform="w_80,q_auto,f_auto,c_fill,g_face"
@@ -150,13 +150,13 @@ const Blog: React.FC = () => {
                   <div>
                     <p className="text-sm font-semibold text-white">
                       {t(
-                        `data.articles.${featuredArticle.id}.author`,
+                        `pages.blog.data.${featuredArticle.id}.author`,
                         featuredArticle.author,
                       )}
                     </p>
                     <p className="text-xs text-slate-400">
                       {t(
-                        `data.articles.${featuredArticle.id}.authorTitle`,
+                        `pages.blog.data.${featuredArticle.id}.authorTitle`,
                         featuredArticle.authorTitle,
                       )}
                     </p>
@@ -168,14 +168,14 @@ const Blog: React.FC = () => {
                     calendar_today
                   </span>
                   {t(
-                    `data.articles.${featuredArticle.id}.date`,
+                    `pages.blog.data.${featuredArticle.id}.date`,
                     featuredArticle.date,
                   )}
                 </div>
                 <div className="text-sm text-slate-400 flex items-center gap-2">
                   <span className="material-icons text-base">schedule</span>
                   {t(
-                    `data.articles.${featuredArticle.id}.read`,
+                    `pages.blog.data.${featuredArticle.id}.read`,
                     featuredArticle.read,
                   )}
                 </div>
@@ -263,7 +263,7 @@ const Blog: React.FC = () => {
               <div className="relative h-56 overflow-hidden">
                 <CldImg
                   src={article.img}
-                  alt={t(`data.articles.${article.id}.title`, article.title)}
+                  alt={t(`pages.blog.data.${article.id}.title`, article.title)}
                   transform="w_600,q_auto,f_auto,c_fill"
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />
@@ -286,18 +286,18 @@ const Blog: React.FC = () => {
                   style={{ color: "var(--color-text-muted)" }}
                 >
                   <span>
-                    {t(`data.articles.${article.id}.date`, article.date)}
+                    {t(`pages.blog.data.${article.id}.date`, article.date)}
                   </span>
                   <span className="w-1 h-1 rounded-full bg-slate-300" />
                   <span>
-                    {t(`data.articles.${article.id}.read`, article.read)}
+                    {t(`pages.blog.data.${article.id}.read`, article.read)}
                   </span>
                 </div>
                 <h3
                   className="text-xl font-bold mb-3 group-hover:text-primary transition-colors line-clamp-2"
                   style={{ color: "var(--color-text)" }}
                 >
-                  {t(`data.articles.${article.id}.title`, article.title)}
+                  {t(`pages.blog.data.${article.id}.title`, article.title)}
                 </h3>
                 <div
                   className="pt-4 mt-auto border-t flex items-center justify-between"
@@ -311,7 +311,7 @@ const Blog: React.FC = () => {
                         color: "var(--color-text-muted)",
                       }}
                     >
-                      {t(`data.articles.${article.id}.author`, article.author)
+                      {t(`pages.blog.data.${article.id}.author`, article.author)
                         .split(" ")
                         .map((n: string) => n[0])
                         .join("")
@@ -321,7 +321,10 @@ const Blog: React.FC = () => {
                       className="text-xs font-medium"
                       style={{ color: "var(--color-text)" }}
                     >
-                      {t(`data.articles.${article.id}.author`, article.author)}
+                      {t(
+                        `pages.blog.data.${article.id}.author`,
+                        article.author,
+                      )}
                     </span>
                   </div>
                   <Link

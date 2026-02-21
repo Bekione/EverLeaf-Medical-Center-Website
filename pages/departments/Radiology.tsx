@@ -1,10 +1,12 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 import { Link, useOutletContext } from "react-router-dom";
 import { OpenAppointmentFunc } from "../../Layout";
 import SEO from "../../components/SEO";
 import Reveal from "../../components/Reveal";
 
 const Radiology: React.FC = () => {
+  const { t } = useTranslation();
   const { openAppointment } = useOutletContext<{
     openAppointment: OpenAppointmentFunc;
   }>();
@@ -20,31 +22,31 @@ const Radiology: React.FC = () => {
   return (
     <div className="animate-fade-in">
       <SEO
-        title="Radiology Department"
-        description="Diagnostic imaging excellence including MRI, CT Scans, Ultrasound, and X-Rays with low-dose radiation protocols."
+        title={t("pages.departments.radiology.seo.title")}
+        description={t("pages.departments.radiology.seo.description")}
         canonical="https://everleaf-medical.com/departments/radiology"
       />
-      <header className="bg-white border-b border-slate-100 py-12 lg:py-16 relative overflow-hidden">
+      <header className="bg-bg border-b border-border py-12 lg:py-16 relative overflow-hidden">
         <div className="absolute right-0 top-0 h-full w-1/3 bg-blue-50/50 skew-x-12 translate-x-12 pointer-events-none"></div>
         <div className="container mx-auto px-6 relative z-10">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="max-w-2xl">
               <Reveal delay={0}>
-                <span className="inline-block px-3 py-1 mb-4 text-xs font-bold tracking-wider text-primary uppercase bg-blue-50 rounded-full">
-                  Department of Radiology
+                <span className="inline-block px-3 py-1 mb-4 text-xs font-bold tracking-wider text-primary uppercase bg-primary-light rounded-full">
+                  {t("pages.departments.radiology.hero.badge")}
                 </span>
               </Reveal>
               <Reveal delay={100}>
-                <h1 className="text-4xl lg:text-5xl font-serif font-bold text-slate-900 mb-6 leading-tight">
-                  State-of-the-Art <br />
-                  <span className="text-primary">Diagnostic Imaging</span>
+                <h1 className="text-4xl lg:text-5xl font-serif font-bold text-txt mb-6 leading-tight">
+                  {t("pages.departments.radiology.hero.titlePart1")} <br />
+                  <span className="text-primary">
+                    {t("pages.departments.radiology.hero.titleHighlight")}
+                  </span>
                 </h1>
               </Reveal>
               <Reveal delay={200}>
-                <p className="text-lg text-slate-600 leading-relaxed mb-8 max-w-lg">
-                  Our Radiology Department utilizes advanced imaging technology
-                  to provide precise diagnoses. We prioritize patient comfort
-                  and safety while delivering high-quality visual data.
+                <p className="text-lg text-muted leading-relaxed mb-8 max-w-lg">
+                  {t("pages.departments.radiology.hero.description")}
                 </p>
               </Reveal>
               <Reveal delay={300}>
@@ -53,13 +55,13 @@ const Radiology: React.FC = () => {
                     onClick={() => openAppointment({ department: "Radiology" })}
                     className="inline-flex items-center justify-center px-6 py-3.5 text-sm font-semibold text-white transition-all duration-200 bg-primary rounded-lg hover:bg-primary-dark shadow-lg shadow-blue-500/30 hover:-translate-y-1"
                   >
-                    Book Imaging Appointment
+                    {t("pages.departments.radiology.hero.buttons.appointment")}
                   </button>
                   <button
                     onClick={(e) => scrollToSection(e, "specialists")}
-                    className="inline-flex items-center justify-center px-6 py-3.5 text-sm font-semibold text-slate-700 bg-white border border-slate-200 rounded-lg hover:bg-slate-50 transition-all"
+                    className="inline-flex items-center justify-center px-6 py-3.5 text-sm font-semibold text-txt bg-bg border border-border rounded-lg hover:bg-bg-alt transition-all"
                   >
-                    Meet Our Radiologists
+                    {t("pages.departments.radiology.hero.buttons.specialists")}
                   </button>
                 </div>
               </Reveal>
@@ -77,17 +79,17 @@ const Radiology: React.FC = () => {
                     className="w-full h-full object-cover"
                   />
                 </div>
-                <div className="absolute -bottom-6 -left-6 z-20 bg-white p-4 rounded-xl shadow-xl border border-slate-100 max-w-xs animate-fade-in hidden lg:block">
+                <div className="absolute -bottom-6 -left-6 z-20 bg-surface p-4 rounded-xl shadow-xl border border-border max-w-xs animate-fade-in hidden lg:block">
                   <div className="flex items-center gap-4">
                     <div className="bg-blue-50 w-12 h-12 flex items-center justify-center rounded-full text-blue-600">
                       <span className="material-icons text-2xl">biotech</span>
                     </div>
                     <div>
-                      <p className="text-xl font-bold text-slate-900">
-                        High-Res
+                      <p className="text-xl font-bold text-txt">
+                        {t("pages.departments.radiology.stats.imaging.value")}
                       </p>
-                      <p className="text-xs text-slate-500 uppercase tracking-wide font-semibold">
-                        Imaging
+                      <p className="text-xs text-muted uppercase tracking-wide font-semibold">
+                        {t("pages.departments.radiology.stats.imaging.label")}
                       </p>
                     </div>
                   </div>
@@ -98,85 +100,90 @@ const Radiology: React.FC = () => {
         </div>
       </header>
 
-      <section className="py-20 bg-slate-50">
+      <section className="py-20 bg-bg-alt">
         <div className="container mx-auto px-6">
           <Reveal threshold={0.1}>
             <div className="text-center max-w-3xl mx-auto mb-16">
-              <h2 className="text-3xl font-serif font-bold text-slate-900 mb-4">
-                Conditions We Treat
+              <h2 className="text-3xl font-serif font-bold text-txt mb-4">
+                {t("pages.departments.radiology.intro.title")}
               </h2>
-              <p className="text-slate-600">
-                Our imaging capabilities allow us to detect and monitor a wide
-                range of medical conditions with exceptional clarity.
+              <p className="text-muted">
+                {t("pages.departments.radiology.intro.description")}
               </p>
             </div>
           </Reveal>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
               {
-                title: "Fracture Detection",
+                key: "fracture",
                 icon: "accessibility",
                 color: "orange",
-                desc: "Precise identification of bone fractures, dislocations, and joint abnormalities using high-resolution X-rays.",
               },
               {
-                title: "Tumor Screening",
+                key: "tumor",
                 icon: "science",
                 color: "purple",
-                desc: "Early detection and staging of tumors in soft tissues and organs through advanced MRI and CT scanning.",
               },
               {
-                title: "Cardiovascular Imaging",
+                key: "cardiovascular",
                 icon: "favorite",
                 color: "red",
-                desc: "Detailed visualization of heart structure and blood flow to identify blockages and heart conditions.",
               },
               {
-                title: "Organ Health",
+                key: "organ",
                 icon: "healing",
                 color: "teal",
-                desc: "Comprehensive assessment of internal organs including liver, kidneys, and lungs for function and pathology.",
               },
-            ].map((item, i) => (
-              <Reveal key={i} delay={i * 100} threshold={0.1}>
-                <div className="bg-white p-6 rounded-2xl shadow-sm hover:shadow-md transition-shadow border border-slate-100 h-full">
-                  <div
-                    className={`w-12 h-12 bg-${item.color}-50 rounded-xl flex items-center justify-center text-${item.color}-500 mb-4`}
-                  >
-                    <span className="material-icons text-2xl">{item.icon}</span>
+            ].map((item, i) => {
+              const treatment = t(
+                `pages.departments.radiology.treatments.${item.key}`,
+                {
+                  returnObjects: true,
+                },
+              ) as { title: string; description: string };
+              return (
+                <Reveal key={i} delay={i * 100} threshold={0.1}>
+                  <div className="bg-surface p-6 rounded-2xl shadow-sm hover:shadow-md transition-shadow border border-border h-full">
+                    <div
+                      className={`w-12 h-12 bg-${item.color}-50 rounded-xl flex items-center justify-center text-${item.color}-500 mb-4`}
+                    >
+                      <span className="material-icons text-2xl">
+                        {item.icon}
+                      </span>
+                    </div>
+                    <h3 className="text-lg font-bold text-txt mb-2">
+                      {treatment.title}
+                    </h3>
+                    <p className="text-sm text-muted leading-relaxed">
+                      {treatment.description}
+                    </p>
                   </div>
-                  <h3 className="text-lg font-bold text-slate-900 mb-2">
-                    {item.title}
-                  </h3>
-                  <p className="text-sm text-slate-500 leading-relaxed">
-                    {item.desc}
-                  </p>
-                </div>
-              </Reveal>
-            ))}
+                </Reveal>
+              );
+            })}
           </div>
         </div>
       </section>
 
       <section className="py-20 bg-white relative overflow-hidden">
-        <div className="absolute top-0 right-0 -mr-20 -mt-20 w-80 h-80 bg-slate-50 rounded-full blur-3xl opacity-50"></div>
-        <div className="absolute bottom-0 left-0 -ml-20 -mb-20 w-80 h-80 bg-blue-50 rounded-full blur-3xl opacity-50"></div>
+        <div className="absolute top-0 right-0 -mr-20 -mt-20 w-80 h-80 bg-bg-alt rounded-full blur-3xl opacity-50"></div>
+        <div className="absolute bottom-0 left-0 -ml-20 -mb-20 w-80 h-80 bg-primary-light/30 rounded-full blur-3xl opacity-50"></div>
         <div className="container mx-auto px-6 relative z-10">
           <Reveal threshold={0.1}>
             <div className="flex flex-col md:flex-row justify-between items-end mb-12">
               <div className="max-w-2xl">
                 <span className="text-primary font-semibold tracking-wider text-sm uppercase">
-                  Our Expertise
+                  {t("pages.departments.radiology.procedures.badge")}
                 </span>
-                <h2 className="text-3xl lg:text-4xl font-serif font-bold text-slate-900 mt-2">
-                  Services & Procedures
+                <h2 className="text-3xl lg:text-4xl font-serif font-bold text-txt mt-2">
+                  {t("pages.departments.radiology.procedures.title")}
                 </h2>
               </div>
               <Link
                 to="/services/imaging"
                 className="hidden md:inline-flex items-center text-primary font-semibold hover:text-primary-dark transition-colors mt-4 md:mt-0"
               >
-                View Full Service List{" "}
+                {t("pages.departments.radiology.procedures.viewAll")}{" "}
                 <span className="material-icons ml-2">arrow_forward</span>
               </Link>
             </div>
@@ -184,149 +191,162 @@ const Radiology: React.FC = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {[
               {
-                title: "Digital X-Ray",
+                key: "xray",
                 icon: "image",
                 color: "primary",
-                desc: "High-resolution digital radiography for quick and accurate assessment of bones and chest with minimal radiation exposure.",
-                features: ["Instant Results", "Low Dose Radiation"],
               },
               {
-                title: "3D Mammography",
+                key: "mammography",
                 icon: "face",
                 color: "pink-500",
-                desc: "Advanced tomosynthesis technology that provides a three-dimensional view of breast tissue for earlier cancer detection.",
-                features: ["Increased Accuracy", "Comfortable Design"],
               },
               {
-                title: "MRI (Magnetic Resonance Imaging)",
+                key: "mri",
                 icon: "donut_large",
                 color: "indigo-500",
-                desc: "Detailed imaging of soft tissues, organs, and the nervous system using strong magnetic fields and radio waves.",
-                features: ["Wide-Bore Options", "Contrast Enhanced"],
               },
               {
-                title: "CT Scans (Computed Tomography)",
+                key: "ct",
                 icon: "data_usage",
                 color: "blue-500",
-                desc: "Cross-sectional images of the body used to diagnose complex conditions, guide biopsies, and monitor treatment effectiveness.",
-                features: ["64-Slice Technology", "Low-Dose Protocols"],
               },
-            ].map((service, i) => (
-              <Reveal key={i} delay={i * 100} threshold={0.1}>
-                <div className="flex gap-6 p-6 rounded-2xl border border-slate-100 hover:border-primary/30 hover:shadow-soft transition-all duration-300 bg-white group h-full">
-                  <div className="flex-shrink-0">
-                    <div
-                      className={`w-16 h-16 bg-white rounded-xl flex items-center justify-center shadow-sm text-${service.color} group-hover:bg-primary group-hover:text-white transition-colors duration-300`}
-                    >
-                      <span className="material-icons text-3xl">
-                        {service.icon}
-                      </span>
+            ].map((item, i) => {
+              const procedure = t(
+                `pages.departments.radiology.procedures.items.${item.key}`,
+                {
+                  returnObjects: true,
+                },
+              ) as {
+                title: string;
+                description: string;
+                features: { [key: string]: string };
+              };
+              return (
+                <Reveal key={i} delay={i * 100} threshold={0.1}>
+                  <div className="flex gap-6 p-6 rounded-2xl border border-border hover:border-primary/30 hover:shadow-soft transition-all duration-300 bg-surface group h-full">
+                    <div className="shrink-0">
+                      <div
+                        className={`w-16 h-16 bg-white rounded-xl flex items-center justify-center shadow-sm text-${item.color} group-hover:bg-primary group-hover:text-white transition-colors duration-300`}
+                      >
+                        <span className="material-icons text-3xl">
+                          {item.icon}
+                        </span>
+                      </div>
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-bold text-txt mb-2">
+                        {procedure.title}
+                      </h3>
+                      <p className="text-muted text-sm mb-4 leading-relaxed">
+                        {procedure.description}
+                      </p>
+                      <ul className="text-sm space-y-1 text-muted">
+                        {Object.values(procedure.features).map(
+                          (feature, idx) => (
+                            <li key={idx} className="flex items-center gap-2">
+                              <span className="material-icons text-green-500 text-xs">
+                                check
+                              </span>{" "}
+                              {feature}
+                            </li>
+                          ),
+                        )}
+                      </ul>
                     </div>
                   </div>
-                  <div>
-                    <h3 className="text-xl font-bold text-slate-900 mb-2">
-                      {service.title}
-                    </h3>
-                    <p className="text-slate-600 text-sm mb-4 leading-relaxed">
-                      {service.desc}
-                    </p>
-                    <ul className="text-sm space-y-1 text-slate-500">
-                      {service.features.map((feature, idx) => (
-                        <li key={idx} className="flex items-center gap-2">
-                          <span className="material-icons text-green-500 text-xs">
-                            check
-                          </span>{" "}
-                          {feature}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
-              </Reveal>
-            ))}
+                </Reveal>
+              );
+            })}
           </div>
         </div>
       </section>
 
-      <section className="py-20 bg-slate-50" id="specialists">
+      <section className="py-20 bg-bg-alt" id="specialists">
         <div className="container mx-auto px-6">
           <Reveal threshold={0.1}>
             <div className="flex justify-between items-end mb-12">
               <div>
                 <span className="text-primary font-semibold tracking-wider text-sm uppercase block mb-2">
-                  Our Team
+                  {t("pages.departments.radiology.team.badge")}
                 </span>
-                <h2 className="text-3xl lg:text-4xl font-serif font-bold text-slate-900">
-                  Meet Our Radiologists
+                <h2 className="text-3xl lg:text-4xl font-serif font-bold text-txt">
+                  {t("pages.departments.radiology.team.title")}
                 </h2>
               </div>
               <Link
                 to="/doctors"
                 className="hidden md:flex items-center gap-2 text-primary font-semibold hover:text-primary-dark transition-colors"
               >
-                View All Doctors{" "}
+                {t("pages.departments.radiology.team.viewAll")}{" "}
                 <span className="material-icons text-sm">arrow_forward</span>
               </Link>
             </div>
           </Reveal>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[
-              {
-                name: "Dr. Sarah Jenkins",
-                role: "Chief Radiologist",
-                img: "/images/doctors/team-dr-sarah-jenkins.jpg",
-              },
-              {
-                name: "Dr. Michael Chen",
-                role: "Interventional Radiologist",
-                img: "/images/doctors/team-dr-mark-williams.jpg",
-              },
-              {
-                name: "Dr. Emily Rodriguez",
-                role: "Pediatric Radiologist",
-                img: "/images/doctors/team-dr-emily-chen.jpg",
-              },
-            ].map((doc, i) => (
-              <Reveal key={i} delay={i * 100} threshold={0.1}>
-                <div className="bg-white rounded-2xl overflow-hidden shadow-card hover:shadow-xl transition-all duration-300 group h-full">
-                  <div className="h-64 overflow-hidden relative">
-                    <img
-                      src={doc.img}
-                      alt={doc.name}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                    />
-                    <div className="absolute inset-0 bg-linear-to-t from-slate-900/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-4">
-                      <button
-                        onClick={() =>
-                          openAppointment({
-                            doctorName: doc.name,
-                            department: "Radiology",
-                          })
-                        }
-                        className="text-white bg-primary hover:bg-primary-dark px-4 py-2 rounded-full text-sm font-medium"
-                      >
-                        Book Appointment
-                      </button>
+            {(
+              [
+                {
+                  key: "sarah",
+                  img: "/images/doctors/team-dr-sarah-jenkins.jpg",
+                },
+                {
+                  key: "michael",
+                  img: "/images/doctors/team-dr-mark-williams.jpg",
+                },
+                {
+                  key: "emily",
+                  img: "/images/doctors/team-dr-emily-chen.jpg",
+                },
+              ] as const
+            ).map((doc, i) => {
+              const member = t(
+                `pages.departments.radiology.team.members.${doc.key}`,
+                {
+                  returnObjects: true,
+                },
+              ) as { name: string; role: string };
+              return (
+                <Reveal key={i} delay={i * 100} threshold={0.1}>
+                  <div className="bg-white rounded-2xl overflow-hidden shadow-card hover:shadow-xl transition-all duration-300 group h-full">
+                    <div className="h-64 overflow-hidden relative">
+                      <img
+                        src={doc.img}
+                        alt={member.name}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      />
+                      <div className="absolute inset-0 bg-linear-to-t from-slate-900/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-4">
+                        <button
+                          onClick={() =>
+                            openAppointment({
+                              doctorName: member.name,
+                              department: "Radiology",
+                            })
+                          }
+                          className="text-white bg-primary hover:bg-primary-dark px-4 py-2 rounded-full text-sm font-medium"
+                        >
+                          {t("common.buttons.bookAppointment")}
+                        </button>
+                      </div>
+                    </div>
+                    <div className="p-6 text-center">
+                      <h3 className="text-xl font-bold text-txt">
+                        {member.name}
+                      </h3>
+                      <p className="text-primary font-medium text-sm mb-3">
+                        {member.role}
+                      </p>
                     </div>
                   </div>
-                  <div className="p-6 text-center">
-                    <h3 className="text-xl font-bold text-slate-900">
-                      {doc.name}
-                    </h3>
-                    <p className="text-primary font-medium text-sm mb-3">
-                      {doc.role}
-                    </p>
-                  </div>
-                </div>
-              </Reveal>
-            ))}
+                </Reveal>
+              );
+            })}
           </div>
         </div>
       </section>
 
       <section className="py-20 bg-slate-900 text-white">
         <div className="container mx-auto px-6">
-          <div className="bg-linear-to-br from-slate-900 to-slate-800 rounded-3xl p-8 md:p-12 text-white overflow-hidden relative shadow-2xl border border-slate-700">
+          <div className="bg-linear-to-br from-cta-from to-cta-to rounded-3xl p-8 md:p-12 text-white overflow-hidden relative shadow-2xl border border-white/10">
             <div
               className="absolute inset-0 opacity-10"
               style={{
@@ -339,13 +359,10 @@ const Radiology: React.FC = () => {
               <Reveal from="left" threshold={0.1} className="lg:w-1/2">
                 <div>
                   <h2 className="text-3xl font-bold mb-6">
-                    Advanced Technology
+                    {t("pages.departments.radiology.technology.title")}
                   </h2>
-                  <p className="text-slate-300 mb-8 leading-relaxed">
-                    We invest in the latest imaging technology to ensure the
-                    highest quality results with the lowest possible risk to our
-                    patients. Our facility is equipped with next-generation
-                    scanners and software.
+                  <p className="text-blue-100 mb-8 leading-relaxed">
+                    {t("pages.departments.radiology.technology.description")}
                   </p>
                   <div className="space-y-6">
                     <div className="flex items-start gap-4">
@@ -356,12 +373,12 @@ const Radiology: React.FC = () => {
                       </div>
                       <div>
                         <h4 className="font-bold text-lg text-white mb-1">
-                          AI-Assisted Imaging Analysis
+                          {t("pages.departments.radiology.technology.ai.title")}
                         </h4>
-                        <p className="text-sm text-slate-400">
-                          Utilizing artificial intelligence to assist
-                          radiologists in detecting subtle abnormalities earlier
-                          and more accurately.
+                        <p className="text-sm text-blue-200">
+                          {t(
+                            "pages.departments.radiology.technology.ai.description",
+                          )}
                         </p>
                       </div>
                     </div>
@@ -373,12 +390,14 @@ const Radiology: React.FC = () => {
                       </div>
                       <div>
                         <h4 className="font-bold text-lg text-white mb-1">
-                          Low-Radiation Equipment
+                          {t(
+                            "pages.departments.radiology.technology.lowRad.title",
+                          )}
                         </h4>
-                        <p className="text-sm text-slate-400">
-                          Our CT and X-ray systems are optimized to reduce
-                          radiation dose by up to 60% without compromising image
-                          quality.
+                        <p className="text-sm text-blue-200">
+                          {t(
+                            "pages.departments.radiology.technology.lowRad.description",
+                          )}
                         </p>
                       </div>
                     </div>
@@ -391,24 +410,28 @@ const Radiology: React.FC = () => {
                     <span className="text-4xl font-bold text-primary block mb-2">
                       24/7
                     </span>
-                    <span className="text-sm text-slate-300">
-                      Emergency Imaging
+                    <span className="text-sm text-blue-100">
+                      {t(
+                        "pages.departments.radiology.technology.stats.emergency",
+                      )}
                     </span>
                   </div>
                   <div className="bg-white/5 backdrop-blur-sm p-6 rounded-2xl border border-white/10 text-center">
                     <span className="text-4xl font-bold text-emerald-400 block mb-2">
                       4k+
                     </span>
-                    <span className="text-sm text-slate-300">
-                      Scans Monthly
+                    <span className="text-sm text-blue-100">
+                      {t("pages.departments.radiology.technology.stats.scans")}
                     </span>
                   </div>
                   <div className="bg-white/5 backdrop-blur-sm p-6 rounded-2xl border border-white/10 text-center col-span-2">
                     <span className="text-4xl font-bold text-purple-400 block mb-2">
                       100%
                     </span>
-                    <span className="text-sm text-slate-300">
-                      Digital Archives
+                    <span className="text-sm text-blue-100">
+                      {t(
+                        "pages.departments.radiology.technology.stats.archives",
+                      )}
                     </span>
                   </div>
                 </div>
@@ -419,7 +442,7 @@ const Radiology: React.FC = () => {
       </section>
 
       <section className="py-24 relative overflow-hidden" id="appointment">
-        <div className="absolute inset-0 bg-linear-to-br from-blue-950 to-slate-900"></div>
+        <div className="absolute inset-0 bg-linear-to-br from-cta-from to-cta-to"></div>
         <div
           className="absolute inset-0 opacity-10"
           style={{
@@ -430,7 +453,7 @@ const Radiology: React.FC = () => {
 
         {/* Decorative Elements */}
         <div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/3 w-96 h-96 bg-white/10 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-0 left-0 translate-y-1/2 -translate-x-1/3 w-96 h-96 bg-blue-500/20 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-0 left-0 translate-y-1/2 -translate-x-1/3 w-96 h-96 bg-primary/20 rounded-full blur-3xl"></div>
 
         {/* Giant Icon */}
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 opacity-[0.03] pointer-events-none">
@@ -443,35 +466,35 @@ const Radiology: React.FC = () => {
           <div className="max-w-4xl mx-auto">
             <Reveal delay={0}>
               <span className="inline-block py-1 px-3 rounded-full bg-white/10 border border-white/20 text-white text-xs font-bold tracking-wider uppercase mb-6 backdrop-blur-md">
-                Precise Diagnostics
+                {t("pages.departments.radiology.cta.badge")}
               </span>
             </Reveal>
             <Reveal delay={100}>
               <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-white mb-6 leading-tight">
-                Ready for Your <br />
-                <span className="text-blue-300">Scan?</span>
+                {t("pages.departments.radiology.cta.titlePart1")} <br />
+                <span className="text-cta-accent">
+                  {t("pages.departments.radiology.cta.titleHighlight")}
+                </span>
               </h2>
             </Reveal>
             <Reveal delay={200}>
               <p className="text-blue-100 text-lg md:text-xl mb-10 leading-relaxed max-w-2xl mx-auto">
-                Whether you need a routine screening or a complex diagnostic
-                procedure, our radiology team is here to provide exceptional
-                care.
+                {t("pages.departments.radiology.cta.description")}
               </p>
             </Reveal>
             <Reveal delay={300}>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <button
                   onClick={() => openAppointment({ department: "Radiology" })}
-                  className="inline-flex items-center justify-center px-8 py-4 text-lg font-bold text-blue-950 bg-white rounded-full hover:bg-blue-50 shadow-xl shadow-blue-900/20 transition-all hover:scale-105"
+                  className="inline-flex items-center justify-center px-8 py-4 text-lg font-bold text-primary bg-white rounded-full hover:bg-white/90 shadow-xl shadow-black/20 transition-all hover:scale-105"
                 >
-                  Request Appointment
+                  {t("pages.departments.radiology.cta.buttons.appointment")}
                 </button>
                 <Link
                   to="/contact"
                   className="inline-flex items-center justify-center px-8 py-4 text-lg font-bold text-white border border-white/30 rounded-full hover:bg-white/10 backdrop-blur-sm transition-all"
                 >
-                  Doctor Referrals
+                  {t("pages.departments.radiology.cta.buttons.referrals")}
                 </Link>
               </div>
             </Reveal>

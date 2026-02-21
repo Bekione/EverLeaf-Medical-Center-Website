@@ -1,10 +1,12 @@
 import React from "react";
 import { Link, useOutletContext } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import { OpenAppointmentFunc } from "../../Layout";
 import SEO from "../../components/SEO";
 import Reveal from "../../components/Reveal";
 
 const Pediatrics: React.FC = () => {
+  const { t } = useTranslation();
   const { openAppointment } = useOutletContext<{
     openAppointment: OpenAppointmentFunc;
   }>();
@@ -20,35 +22,34 @@ const Pediatrics: React.FC = () => {
   return (
     <div className="animate-fade-in">
       <SEO
-        title="Pediatrics Department"
-        description="Compassionate medical care for infants, children, and adolescents. Child-friendly environment and expert pediatricians."
+        title={t("pages.departments.pediatrics.seo.title")}
+        description={t("pages.departments.pediatrics.seo.description")}
         canonical="https://everleaf-medical.com/departments/pediatrics"
       />
-      <header className="relative bg-white border-b border-slate-100 py-12 lg:py-16 overflow-hidden">
-        <div className="absolute right-0 top-0 h-full w-1/3 bg-sky-50/50 skew-x-12 translate-x-12 pointer-events-none"></div>
+      <header className="relative bg-bg border-b border-border py-12 lg:py-16 overflow-hidden">
+        <div className="absolute right-0 top-0 h-full w-1/3 bg-blue-50/50 skew-x-12 translate-x-12 pointer-events-none"></div>
         <div className="absolute top-0 right-0 -mr-20 -mt-20 w-80 h-80 rounded-full bg-blue-50 blur-3xl opacity-60"></div>
 
         <div className="container mx-auto px-6 relative z-10">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
               <Reveal delay={0}>
-                <span className="inline-block px-3 py-1 mb-4 text-xs font-bold tracking-wider text-sky-600 uppercase bg-sky-50 rounded-full">
-                  Department of Pediatrics
+                <span className="inline-block px-3 py-1 mb-4 text-xs font-bold tracking-wider text-primary uppercase bg-primary-light rounded-full">
+                  {t("pages.departments.pediatrics.hero.badge")}
                 </span>
               </Reveal>
               <Reveal delay={100}>
-                <h1 className="text-4xl lg:text-5xl xl:text-6xl font-serif font-bold text-slate-900 mb-6 leading-tight">
-                  Compassionate Care for <br className="hidden md:block" />
-                  <span className="text-transparent bg-clip-text bg-linear-to-r from-sky-500 to-blue-600">
-                    Your Little Ones
+                <h1 className="text-4xl lg:text-5xl xl:text-6xl font-serif font-bold text-txt mb-6 leading-tight">
+                  {t("pages.departments.pediatrics.hero.titlePart1")}{" "}
+                  <br className="hidden md:block" />
+                  <span className="text-transparent bg-clip-text bg-linear-to-r from-primary to-primary-dark">
+                    {t("pages.departments.pediatrics.hero.titleHighlight")}
                   </span>
                 </h1>
               </Reveal>
               <Reveal delay={200}>
-                <p className="text-lg text-slate-600 leading-relaxed mb-8 max-w-lg">
-                  From newborns to adolescents, our dedicated team of
-                  pediatricians provides comprehensive medical care in a warm,
-                  child-friendly environment.
+                <p className="text-lg text-muted leading-relaxed mb-8 max-w-lg">
+                  {t("pages.departments.pediatrics.hero.description")}
                 </p>
               </Reveal>
               <Reveal delay={300}>
@@ -59,13 +60,13 @@ const Pediatrics: React.FC = () => {
                     }
                     className="inline-flex items-center justify-center px-8 py-3.5 text-base font-semibold text-white bg-primary rounded-lg hover:bg-primary-dark transition-all shadow-lg hover:shadow-primary/30"
                   >
-                    Book a Visit
+                    {t("pages.departments.pediatrics.hero.buttons.visit")}
                   </button>
                   <button
                     onClick={(e) => scrollToSection(e, "specialists")}
-                    className="inline-flex items-center justify-center px-8 py-3.5 text-base font-semibold text-slate-700 bg-white border border-slate-200 rounded-lg hover:bg-slate-50 hover:border-slate-300 transition-all"
+                    className="inline-flex items-center justify-center px-8 py-3.5 text-base font-semibold text-txt bg-bg border border-border rounded-lg hover:bg-bg-alt hover:border-muted transition-all"
                   >
-                    Meet Our Team
+                    {t("pages.departments.pediatrics.hero.buttons.team")}
                   </button>
                 </div>
               </Reveal>
@@ -84,17 +85,17 @@ const Pediatrics: React.FC = () => {
                     src="/images/hero/home-hero-4.jpg"
                   />
                 </div>
-                <div className="absolute -bottom-6 -left-6 z-20 bg-white p-4 rounded-xl shadow-xl border border-slate-100 max-w-xs animate-fade-in hidden lg:block">
+                <div className="absolute -bottom-6 -left-6 z-20 bg-surface p-4 rounded-xl shadow-xl border border-border max-w-xs animate-fade-in hidden lg:block">
                   <div className="flex items-center gap-4">
                     <div className="bg-orange-100 w-12 h-12 flex items-center justify-center rounded-full text-orange-600">
                       <span className="material-icons text-2xl">toys</span>
                     </div>
                     <div>
-                      <p className="text-xl font-bold text-slate-900">
-                        Child-Friendly
+                      <p className="text-xl font-bold text-txt">
+                        {t("pages.departments.pediatrics.stats.friendly.value")}
                       </p>
-                      <p className="text-xs text-slate-500 uppercase tracking-wide font-semibold">
-                        Environment
+                      <p className="text-xs text-muted uppercase tracking-wide font-semibold">
+                        {t("pages.departments.pediatrics.stats.friendly.label")}
                       </p>
                     </div>
                   </div>
@@ -105,62 +106,75 @@ const Pediatrics: React.FC = () => {
         </div>
       </header>
 
-      <section className="py-20 bg-slate-50 relative">
+      <section className="py-20 bg-bg-alt relative">
         <div className="container mx-auto px-6 relative z-10">
           <Reveal threshold={0.1}>
             <div className="text-center max-w-3xl mx-auto mb-16">
               <span className="text-primary font-semibold tracking-wider text-sm uppercase block mb-2">
-                Diagnosis & Care
+                {t("pages.departments.pediatrics.intro.badge")}
               </span>
-              <h2 className="text-3xl lg:text-4xl font-serif font-bold text-slate-900 mb-4">
-                Conditions We Treat
+              <h2 className="text-3xl lg:text-4xl font-serif font-bold text-txt mb-4">
+                {t("pages.departments.pediatrics.intro.title")}
               </h2>
-              <p className="text-slate-600">
-                We specialize in diagnosing and treating a wide range of
-                childhood conditions, ensuring your child grows up healthy and
-                strong. Our approach focuses on preventive care and early
-                intervention.
+              <p className="text-muted">
+                {t("pages.departments.pediatrics.intro.description")}
               </p>
             </div>
           </Reveal>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
               {
-                title: "Childhood Illnesses",
+                title: t(
+                  "pages.departments.pediatrics.conditions.illness.title",
+                ),
                 icon: "coronavirus",
                 color: "red",
-                desc: "Diagnosis and treatment of common infections, fevers, flu, and chronic conditions like asthma.",
+                desc: t(
+                  "pages.departments.pediatrics.conditions.illness.description",
+                ),
               },
               {
-                title: "Vaccinations",
+                title: t(
+                  "pages.departments.pediatrics.conditions.vaccination.title",
+                ),
                 icon: "vaccines",
                 color: "blue",
-                desc: "Comprehensive immunization schedules to protect your child from serious preventable diseases.",
+                desc: t(
+                  "pages.departments.pediatrics.conditions.vaccination.description",
+                ),
               },
               {
-                title: "Developmental Delays",
+                title: t(
+                  "pages.departments.pediatrics.conditions.development.title",
+                ),
                 icon: "trending_up",
                 color: "orange",
-                desc: "Monitoring growth milestones and providing early intervention for developmental concerns.",
+                desc: t(
+                  "pages.departments.pediatrics.conditions.development.description",
+                ),
               },
               {
-                title: "Nutrition & Diet",
+                title: t(
+                  "pages.departments.pediatrics.conditions.nutrition.title",
+                ),
                 icon: "restaurant",
                 color: "purple",
-                desc: "Expert guidance on breastfeeding, formula, introduction to solids, and healthy eating habits.",
+                desc: t(
+                  "pages.departments.pediatrics.conditions.nutrition.description",
+                ),
               },
             ].map((item, i) => (
               <Reveal key={i} delay={i * 100} threshold={0.1}>
-                <div className="bg-white p-6 rounded-xl shadow-sm border border-slate-100 hover:shadow-md transition-shadow h-full">
+                <div className="bg-surface p-6 rounded-xl shadow-sm border border-border hover:shadow-md transition-shadow h-full">
                   <div
                     className={`w-12 h-12 bg-${item.color}-100 text-${item.color}-600 rounded-lg flex items-center justify-center mb-4`}
                   >
                     <span className="material-icons text-2xl">{item.icon}</span>
                   </div>
-                  <h3 className="text-xl font-bold text-slate-900 mb-2">
+                  <h3 className="text-xl font-bold text-txt mb-2">
                     {item.title}
                   </h3>
-                  <p className="text-sm text-slate-500">{item.desc}</p>
+                  <p className="text-sm text-muted">{item.desc}</p>
                 </div>
               </Reveal>
             ))}
@@ -168,108 +182,126 @@ const Pediatrics: React.FC = () => {
         </div>
       </section>
 
-      <section className="py-16 bg-white">
+      <section className="py-16 bg-bg">
         <div className="container mx-auto px-6">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
             <div className="lg:col-span-10 lg:col-start-2 space-y-16">
               <section>
                 <Reveal threshold={0.1}>
                   <div className="flex items-center gap-3 mb-6">
-                    <div className="w-10 h-10 rounded-full bg-sky-100 flex items-center justify-center text-sky-600">
+                    <div className="w-10 h-10 rounded-full bg-primary-light flex items-center justify-center text-primary">
                       <span className="material-icons">medical_services</span>
                     </div>
-                    <h2 className="text-2xl font-bold text-slate-900">
-                      Services & Procedures
+                    <h2 className="text-2xl font-bold text-txt">
+                      {t("pages.departments.pediatrics.procedures.title")}
                     </h2>
                   </div>
                 </Reveal>
                 <Reveal threshold={0.1}>
-                  <div className="bg-white rounded-2xl border border-slate-100 overflow-hidden shadow-card">
-                    <div className="grid grid-cols-1 md:grid-cols-2 divide-y md:divide-y-0 md:divide-x divide-slate-100">
-                      <div className="p-6 md:p-8 hover:bg-slate-50 transition-colors">
+                  <div className="bg-surface rounded-2xl border border-border overflow-hidden shadow-card">
+                    <div className="grid grid-cols-1 md:grid-cols-2 divide-y md:divide-y-0 md:divide-x divide-border">
+                      <div className="p-6 md:p-8 hover:bg-bg-alt transition-colors">
                         <div className="flex items-center gap-3 mb-3">
                           <span className="material-icons text-primary text-2xl">
                             child_friendly
                           </span>
-                          <h3 className="text-lg font-bold text-slate-900">
-                            Newborn Care
+                          <h3 className="text-lg font-bold text-txt">
+                            {t(
+                              "pages.departments.pediatrics.procedures.items.newborn.title",
+                            )}
                           </h3>
                         </div>
-                        <p className="text-slate-600 text-sm leading-relaxed mb-4">
-                          Complete physical exams, screening tests, and care for
-                          newborns immediately after delivery and in the first
-                          few weeks of life.
+                        <p className="text-muted text-sm leading-relaxed mb-4">
+                          {t(
+                            "pages.departments.pediatrics.procedures.items.newborn.description",
+                          )}
                         </p>
                         <ul className="space-y-2">
-                          <li className="flex items-center gap-2 text-sm text-slate-500">
+                          <li className="flex items-center gap-2 text-sm text-muted">
                             <span className="material-icons text-green-500 text-xs">
                               check_circle
                             </span>{" "}
-                            First check-up within 48 hours
+                            {t(
+                              "pages.departments.pediatrics.procedures.items.newborn.features.checkup",
+                            )}
                           </li>
-                          <li className="flex items-center gap-2 text-sm text-slate-500">
+                          <li className="flex items-center gap-2 text-sm text-muted">
                             <span className="material-icons text-green-500 text-xs">
                               check_circle
                             </span>{" "}
-                            Lactation support
+                            {t(
+                              "pages.departments.pediatrics.procedures.items.newborn.features.lactation",
+                            )}
                           </li>
                         </ul>
                       </div>
-                      <div className="p-6 md:p-8 hover:bg-slate-50 transition-colors">
+                      <div className="p-6 md:p-8 hover:bg-bg-alt transition-colors">
                         <div className="flex items-center gap-3 mb-3">
                           <span className="material-icons text-primary text-2xl">
                             calendar_month
                           </span>
-                          <h3 className="text-lg font-bold text-slate-900">
-                            Well-Child Visits
+                          <h3 className="text-lg font-bold text-txt">
+                            {t(
+                              "pages.departments.pediatrics.procedures.items.wellchild.title",
+                            )}
                           </h3>
                         </div>
-                        <p className="text-slate-600 text-sm leading-relaxed mb-4">
-                          Regular health supervision visits to track growth,
-                          development, behavior, and general well-being at key
-                          ages.
+                        <p className="text-muted text-sm leading-relaxed mb-4">
+                          {t(
+                            "pages.departments.pediatrics.procedures.items.wellchild.description",
+                          )}
                         </p>
                         <ul className="space-y-2">
-                          <li className="flex items-center gap-2 text-sm text-slate-500">
+                          <li className="flex items-center gap-2 text-sm text-muted">
                             <span className="material-icons text-green-500 text-xs">
                               check_circle
                             </span>{" "}
-                            Annual physicals
+                            {t(
+                              "pages.departments.pediatrics.procedures.items.wellchild.features.physicals",
+                            )}
                           </li>
-                          <li className="flex items-center gap-2 text-sm text-slate-500">
+                          <li className="flex items-center gap-2 text-sm text-muted">
                             <span className="material-icons text-green-500 text-xs">
                               check_circle
                             </span>{" "}
-                            School & sports physicals
+                            {t(
+                              "pages.departments.pediatrics.procedures.items.wellchild.features.school",
+                            )}
                           </li>
                         </ul>
                       </div>
-                      <div className="p-6 md:p-8 hover:bg-slate-50 transition-colors border-t border-slate-100">
+                      <div className="p-6 md:p-8 hover:bg-bg-alt transition-colors border-t border-border">
                         <div className="flex items-center gap-3 mb-3">
                           <span className="material-icons text-primary text-2xl">
                             content_cut
                           </span>
-                          <h3 className="text-lg font-bold text-slate-900">
-                            Pediatric Surgery
+                          <h3 className="text-lg font-bold text-txt">
+                            {t(
+                              "pages.departments.pediatrics.procedures.items.surgery.title",
+                            )}
                           </h3>
                         </div>
-                        <p className="text-slate-600 text-sm leading-relaxed mb-4">
-                          Surgical care for children ranging from minor
-                          procedures to complex operations, performed by
-                          specialized pediatric surgeons.
+                        <p className="text-muted text-sm leading-relaxed mb-4">
+                          {t(
+                            "pages.departments.pediatrics.procedures.items.surgery.description",
+                          )}
                         </p>
                         <ul className="space-y-2">
-                          <li className="flex items-center gap-2 text-sm text-slate-500">
+                          <li className="flex items-center gap-2 text-sm text-muted">
                             <span className="material-icons text-green-500 text-xs">
                               check_circle
                             </span>{" "}
-                            Minimally invasive techniques
+                            {t(
+                              "pages.departments.pediatrics.procedures.items.surgery.features.invasive",
+                            )}
                           </li>
-                          <li className="flex items-center gap-2 text-sm text-slate-500">
+                          <li className="flex items-center gap-2 text-sm text-muted">
                             <span className="material-icons text-green-500 text-xs">
                               check_circle
                             </span>{" "}
-                            Post-op recovery care
+                            {t(
+                              "pages.departments.pediatrics.procedures.items.surgery.features.recovery",
+                            )}
                           </li>
                         </ul>
                       </div>
@@ -279,26 +311,32 @@ const Pediatrics: React.FC = () => {
                             face_3
                           </span>
                           <h3 className="text-lg font-bold text-slate-900">
-                            Adolescent Medicine
+                            {t(
+                              "pages.departments.pediatrics.procedures.items.adolescent.title",
+                            )}
                           </h3>
                         </div>
                         <p className="text-slate-600 text-sm leading-relaxed mb-4">
-                          Specialized care addressing the physical,
-                          psychological, and social needs of teenagers and young
-                          adults.
+                          {t(
+                            "pages.departments.pediatrics.procedures.items.adolescent.description",
+                          )}
                         </p>
                         <ul className="space-y-2">
                           <li className="flex items-center gap-2 text-sm text-slate-500">
                             <span className="material-icons text-green-500 text-xs">
                               check_circle
                             </span>{" "}
-                            Mental health support
+                            {t(
+                              "pages.departments.pediatrics.procedures.items.adolescent.features.mental",
+                            )}
                           </li>
                           <li className="flex items-center gap-2 text-sm text-slate-500">
                             <span className="material-icons text-green-500 text-xs">
                               check_circle
                             </span>{" "}
-                            Reproductive health
+                            {t(
+                              "pages.departments.pediatrics.procedures.items.adolescent.features.reproductive",
+                            )}
                           </li>
                         </ul>
                       </div>
@@ -314,7 +352,7 @@ const Pediatrics: React.FC = () => {
                       <span className="material-icons">toys</span>
                     </div>
                     <h2 className="text-2xl font-bold text-slate-900">
-                      Child-Friendly Facility
+                      {t("pages.departments.pediatrics.facility.title")}
                     </h2>
                   </div>
                 </Reveal>
@@ -329,14 +367,10 @@ const Pediatrics: React.FC = () => {
                     </div>
                     <div className="w-full md:w-1/2">
                       <h3 className="text-xl font-bold text-slate-900 mb-3">
-                        Designed for Comfort
+                        {t("pages.departments.pediatrics.facility.subtitle")}
                       </h3>
                       <p className="text-slate-600 mb-6 leading-relaxed">
-                        Our pediatric wing is distinct from the main hospital,
-                        featuring bright colors, play areas, and patient rooms
-                        designed to reduce anxiety. We believe that a healing
-                        environment is just as important as the medical care we
-                        provide.
+                        {t("pages.departments.pediatrics.facility.description")}
                       </p>
                       <ul className="space-y-3">
                         <li className="flex items-center gap-3 text-slate-700">
@@ -345,7 +379,9 @@ const Pediatrics: React.FC = () => {
                               check
                             </span>
                           </span>
-                          Dedicated playrooms with supervision
+                          {t(
+                            "pages.departments.pediatrics.facility.features.playrooms",
+                          )}
                         </li>
                         <li className="flex items-center gap-3 text-slate-700">
                           <span className="w-6 h-6 rounded-full bg-sky-200 text-sky-700 flex items-center justify-center text-xs">
@@ -353,7 +389,9 @@ const Pediatrics: React.FC = () => {
                               check
                             </span>
                           </span>
-                          In-room entertainment systems
+                          {t(
+                            "pages.departments.pediatrics.facility.features.entertainment",
+                          )}
                         </li>
                         <li className="flex items-center gap-3 text-slate-700">
                           <span className="w-6 h-6 rounded-full bg-sky-200 text-sky-700 flex items-center justify-center text-xs">
@@ -361,7 +399,9 @@ const Pediatrics: React.FC = () => {
                               check
                             </span>
                           </span>
-                          Overnight facilities for parents
+                          {t(
+                            "pages.departments.pediatrics.facility.features.parents",
+                          )}
                         </li>
                       </ul>
                     </div>
@@ -373,23 +413,23 @@ const Pediatrics: React.FC = () => {
         </div>
       </section>
 
-      <section className="py-20 bg-slate-50" id="specialists">
+      <section className="py-20 bg-bg-alt" id="specialists">
         <div className="container mx-auto px-6">
           <Reveal threshold={0.1}>
             <div className="flex justify-between items-end mb-12">
               <div>
                 <span className="text-primary font-semibold tracking-wider text-sm uppercase block mb-2">
-                  Our Team
+                  {t("pages.departments.pediatrics.team.badge")}
                 </span>
-                <h2 className="text-3xl lg:text-4xl font-serif font-bold text-slate-900">
-                  Meet Our Pediatricians
+                <h2 className="text-3xl lg:text-4xl font-serif font-bold text-txt">
+                  {t("pages.departments.pediatrics.team.title")}
                 </h2>
               </div>
               <Link
                 to="/doctors"
                 className="hidden md:flex items-center gap-2 text-primary font-semibold hover:text-primary-dark transition-colors"
               >
-                View All Doctors{" "}
+                {t("pages.departments.pediatrics.team.viewAll")}{" "}
                 <span className="material-icons text-sm">arrow_forward</span>
               </Link>
             </div>
@@ -397,18 +437,15 @@ const Pediatrics: React.FC = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
               {
-                name: "Dr. Ashley Johnson",
-                role: "Pediatrician",
+                id: "ashley",
                 img: "/images/doctors/team-dr-ashley-johnson.jpg",
               },
               {
-                name: "Dr. John Chen",
-                role: "Pediatric Surgeon",
+                id: "john",
                 img: "/images/doctors/team-dr-john-chen.jpg",
               },
               {
-                name: "Dr. Emily Rodriguez",
-                role: "Adolescent Specialist",
+                id: "emily",
                 img: "/images/doctors/team-dr-emily-rodriguez.jpg",
               },
             ].map((doc, i) => (
@@ -417,29 +454,39 @@ const Pediatrics: React.FC = () => {
                   <div className="h-64 overflow-hidden relative">
                     <img
                       src={doc.img}
-                      alt={doc.name}
+                      alt={t(
+                        `pages.departments.pediatrics.team.members.${doc.id}.name`,
+                      )}
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     />
                     <div className="absolute inset-0 bg-linear-to-t from-slate-900/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-4">
                       <button
                         onClick={() =>
                           openAppointment({
-                            doctorName: doc.name,
+                            doctorName: t(
+                              `pages.departments.pediatrics.team.members.${doc.id}.name`,
+                            ),
                             department: "Pediatrics",
                           })
                         }
                         className="text-white bg-primary hover:bg-primary-dark px-4 py-2 rounded-full text-sm font-medium"
                       >
-                        Book Appointment
+                        {t(
+                          "pages.departments.pediatrics.cta.buttons.appointment",
+                        )}
                       </button>
                     </div>
                   </div>
                   <div className="p-6 text-center">
-                    <h3 className="text-xl font-bold text-slate-900">
-                      {doc.name}
+                    <h3 className="text-xl font-bold text-txt">
+                      {t(
+                        `pages.departments.pediatrics.team.members.${doc.id}.name`,
+                      )}
                     </h3>
                     <p className="text-primary font-medium text-sm mb-3">
-                      {doc.role}
+                      {t(
+                        `pages.departments.pediatrics.team.members.${doc.id}.role`,
+                      )}
                     </p>
                   </div>
                 </div>
@@ -450,7 +497,7 @@ const Pediatrics: React.FC = () => {
       </section>
 
       <section className="py-24 relative overflow-hidden">
-        <div className="absolute inset-0 bg-linear-to-br from-slate-900 to-blue-900"></div>
+        <div className="absolute inset-0 bg-linear-to-br from-cta-from to-cta-to"></div>
         <div
           className="absolute inset-0 opacity-10"
           style={{
@@ -461,7 +508,7 @@ const Pediatrics: React.FC = () => {
 
         {/* Decorative Elements */}
         <div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/3 w-96 h-96 bg-white/10 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-0 left-0 translate-y-1/2 -translate-x-1/3 w-96 h-96 bg-blue-500/20 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-0 left-0 translate-y-1/2 -translate-x-1/3 w-96 h-96 bg-primary/20 rounded-full blur-3xl"></div>
 
         {/* Giant Icon */}
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 opacity-[0.03] pointer-events-none">
@@ -474,35 +521,35 @@ const Pediatrics: React.FC = () => {
           <div className="max-w-4xl mx-auto">
             <Reveal delay={0}>
               <span className="inline-block py-1 px-3 rounded-full bg-white/10 border border-white/20 text-white text-xs font-bold tracking-wider uppercase mb-6 backdrop-blur-md">
-                Taking New Patients
+                {t("pages.departments.pediatrics.cta.badge")}
               </span>
             </Reveal>
             <Reveal delay={100}>
               <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-white mb-6 leading-tight">
-                Schedule Your <br />
-                <span className="text-blue-300">Child's Visit</span>
+                {t("pages.departments.pediatrics.cta.titlePart1")} <br />
+                <span className="text-cta-accent">
+                  {t("pages.departments.pediatrics.cta.titleHighlight")}
+                </span>
               </h2>
             </Reveal>
             <Reveal delay={200}>
               <p className="text-blue-100 text-lg md:text-xl mb-10 leading-relaxed max-w-2xl mx-auto">
-                Give your child the gift of good health. Our expert
-                pediatricians provide compassionate care in a warm,
-                child-friendly environment. Book your visit today.
+                {t("pages.departments.pediatrics.cta.description")}
               </p>
             </Reveal>
             <Reveal delay={300}>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <button
                   onClick={() => openAppointment({ department: "Pediatrics" })}
-                  className="inline-flex items-center justify-center px-8 py-4 text-lg font-bold text-primary bg-white rounded-full hover:bg-blue-50 shadow-xl shadow-blue-900/20 transition-all hover:scale-105"
+                  className="inline-flex items-center justify-center px-8 py-4 text-lg font-bold text-primary bg-white rounded-full hover:bg-white/90 shadow-xl shadow-black/20 transition-all hover:scale-105"
                 >
-                  Book Appointment Now
+                  {t("pages.departments.pediatrics.cta.buttons.appointment")}
                 </button>
                 <a
                   href="tel:+15551234567"
                   className="inline-flex items-center justify-center px-8 py-4 text-lg font-bold text-white border border-white/30 rounded-full hover:bg-white/10 backdrop-blur-sm transition-all"
                 >
-                  Call (555) 123-4567
+                  {t("pages.departments.pediatrics.cta.buttons.call")}
                 </a>
               </div>
             </Reveal>

@@ -1,10 +1,12 @@
 import React from "react";
 import { Link, useOutletContext } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import { OpenAppointmentFunc } from "../../Layout";
 import SEO from "../../components/SEO";
 import Reveal from "../../components/Reveal";
 
 const Rehabilitation: React.FC = () => {
+  const { t } = useTranslation();
   const { openAppointment } = useOutletContext<{
     openAppointment: OpenAppointmentFunc;
   }>();
@@ -20,31 +22,32 @@ const Rehabilitation: React.FC = () => {
   return (
     <div className="animate-fade-in">
       <SEO
-        title="Rehabilitation & Physical Therapy"
-        description="Helping patients regain mobility and independence through personalized physical and occupational therapy."
+        title={t("pages.departments.rehabilitation.seo.title")}
+        description={t("pages.departments.rehabilitation.seo.description")}
         canonical="https://everleaf-medical.com/departments/rehabilitation"
       />
-      <header className="relative bg-white border-b border-slate-100 overflow-hidden py-12 lg:py-16">
+      <header className="relative bg-bg border-b border-border overflow-hidden py-12 lg:py-16">
         <div className="absolute right-0 top-0 h-full w-1/3 bg-blue-50/50 skew-x-12 translate-x-12 pointer-events-none"></div>
         <div className="container mx-auto px-6 relative z-10">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="max-w-2xl">
               <Reveal delay={0}>
-                <span className="inline-block px-3 py-1 mb-6 text-xs font-bold tracking-wider text-primary uppercase bg-blue-50 rounded-full">
-                  Department of Rehabilitation
+                <span className="inline-block px-3 py-1 mb-6 text-xs font-bold tracking-wider text-primary uppercase bg-primary-light rounded-full">
+                  {t("pages.departments.rehabilitation.hero.badge")}
                 </span>
               </Reveal>
               <Reveal delay={100}>
-                <h1 className="text-4xl lg:text-5xl font-serif font-bold text-slate-900 mb-6 leading-tight">
-                  Expert Rehabilitation & <br />
-                  Physical Therapy
+                <h1 className="text-4xl lg:text-5xl font-serif font-bold text-txt mb-6 leading-tight">
+                  {t("pages.departments.rehabilitation.hero.titlePart1")}{" "}
+                  <br className="hidden sm:block" />
+                  <span className="text-primary">
+                    {t("pages.departments.rehabilitation.hero.titleHighlight")}
+                  </span>
                 </h1>
               </Reveal>
               <Reveal delay={200}>
-                <p className="text-lg text-slate-600 leading-relaxed max-w-xl mb-8">
-                  Our dedicated team of therapists and specialists help you
-                  regain strength, mobility, and independence. We create
-                  personalized recovery plans tailored to your specific needs.
+                <p className="text-lg text-muted leading-relaxed max-w-xl mb-8">
+                  {t("pages.departments.rehabilitation.hero.description")}
                 </p>
               </Reveal>
               <Reveal delay={300}>
@@ -53,13 +56,17 @@ const Rehabilitation: React.FC = () => {
                     onClick={(e) => scrollToSection(e, "specialists")}
                     className="inline-flex items-center justify-center px-6 py-3 text-sm font-semibold text-white transition-all duration-200 bg-primary rounded-lg hover:bg-primary-dark shadow-soft hover:shadow-lg hover:-translate-y-0.5"
                   >
-                    Meet Our Specialists
+                    {t(
+                      "pages.departments.rehabilitation.hero.buttons.specialists",
+                    )}
                   </button>
                   <button
                     onClick={(e) => scrollToSection(e, "services")}
-                    className="inline-flex items-center justify-center px-6 py-3 text-sm font-semibold text-primary transition-all duration-200 bg-white border border-primary/20 rounded-lg hover:bg-primary/5"
+                    className="inline-flex items-center justify-center px-6 py-3 text-sm font-semibold text-txt transition-all duration-200 bg-bg border border-border rounded-lg hover:bg-bg-alt"
                   >
-                    View Services
+                    {t(
+                      "pages.departments.rehabilitation.hero.buttons.services",
+                    )}
                   </button>
                 </div>
               </Reveal>
@@ -77,15 +84,21 @@ const Rehabilitation: React.FC = () => {
                     className="w-full h-full object-cover"
                   />
                 </div>
-                <div className="absolute -bottom-6 -left-6 z-20 bg-white p-4 rounded-xl shadow-xl border border-slate-100 max-w-xs animate-fade-in hidden lg:block">
+                <div className="absolute -bottom-6 -left-6 z-20 bg-surface p-4 rounded-xl shadow-xl border border-border max-w-xs animate-fade-in hidden lg:block">
                   <div className="flex items-center gap-3">
                     <div className="bg-orange-100 w-12 h-12 flex items-center justify-center rounded-full text-orange-600">
                       <span className="material-icons text-xl">verified</span>
                     </div>
                     <div>
-                      <p className="font-bold text-slate-900 text-xl">98%</p>
-                      <p className="text-xs text-slate-500 uppercase tracking-wide font-semibold">
-                        Recovery Rate
+                      <p className="font-bold text-txt text-xl">
+                        {t(
+                          "pages.departments.rehabilitation.stats.recovery.value",
+                        )}
+                      </p>
+                      <p className="text-xs text-muted uppercase tracking-wide font-semibold">
+                        {t(
+                          "pages.departments.rehabilitation.stats.recovery.label",
+                        )}
                       </p>
                     </div>
                   </div>
@@ -96,57 +109,72 @@ const Rehabilitation: React.FC = () => {
         </div>
       </header>
 
-      <section className="py-20 bg-slate-50">
+      <section className="py-20 bg-bg-alt">
         <div className="container mx-auto px-6">
           <Reveal threshold={0.1}>
             <div className="text-center mb-16">
-              <h2 className="text-3xl font-serif font-bold text-slate-900 mb-4">
-                Conditions We Treat
+              <h2 className="text-3xl font-serif font-bold text-txt mb-4">
+                {t("pages.departments.rehabilitation.conditions.title")}
               </h2>
-              <p className="text-slate-600 max-w-2xl mx-auto">
-                We specialize in treating a wide range of conditions to help you
-                return to your daily activities pain-free.
+              <p className="text-muted max-w-2xl mx-auto">
+                {t("pages.departments.rehabilitation.conditions.description")}
               </p>
             </div>
           </Reveal>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {[
               {
-                title: "Sports Injuries",
+                title: t(
+                  "pages.departments.rehabilitation.conditions.items.sports.title",
+                ),
                 icon: "fitness_center",
                 color: "blue",
-                desc: "Comprehensive rehabilitation for ACL tears, rotator cuff injuries, and sprains to get athletes back in the game safely.",
+                desc: t(
+                  "pages.departments.rehabilitation.conditions.items.sports.description",
+                ),
               },
               {
-                title: "Stroke Recovery",
+                title: t(
+                  "pages.departments.rehabilitation.conditions.items.stroke.title",
+                ),
                 icon: "favorite",
                 color: "red",
-                desc: "Neurological rehabilitation focused on relearning skills and improving mobility after a stroke event.",
+                desc: t(
+                  "pages.departments.rehabilitation.conditions.items.stroke.description",
+                ),
               },
               {
-                title: "Post-Surgical Rehab",
+                title: t(
+                  "pages.departments.rehabilitation.conditions.items.surgical.title",
+                ),
                 icon: "healing",
                 color: "teal",
-                desc: "Guided recovery programs following joint replacements, spinal surgeries, and other major procedures.",
+                desc: t(
+                  "pages.departments.rehabilitation.conditions.items.surgical.description",
+                ),
               },
               {
-                title: "Chronic Pain",
+                title: t(
+                  "pages.departments.rehabilitation.conditions.items.chronic.title",
+                ),
                 icon: "spa",
                 color: "purple",
-                desc: "Management strategies and therapies for back pain, arthritis, fibromyalgia, and other long-term pain conditions.",
+                desc: t(
+                  "pages.departments.rehabilitation.conditions.items.chronic.description",
+                ),
               },
             ].map((item, i) => (
               <Reveal key={i} delay={i * 100} threshold={0.1}>
-                <div className="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 hover:shadow-card transition-all duration-300 group h-full">
+                <div className="bg-surface p-8 rounded-2xl shadow-sm border border-border hover:shadow-card transition-all duration-300 group h-full">
                   <div
                     className={`w-14 h-14 bg-${item.color}-50 rounded-xl flex items-center justify-center text-${item.color}-500 mb-6 group-hover:bg-${item.color}-500 group-hover:text-white transition-colors duration-300`}
                   >
                     <span className="material-icons text-2xl">{item.icon}</span>
                   </div>
-                  <h3 className="text-xl font-bold text-slate-900 mb-3">
+                  <h3 className="text-xl font-bold text-txt mb-3">
                     {item.title}
                   </h3>
-                  <p className="text-sm text-slate-500 leading-relaxed">
+                  <p className="text-sm text-muted leading-relaxed">
                     {item.desc}
                   </p>
                 </div>
@@ -156,21 +184,19 @@ const Rehabilitation: React.FC = () => {
         </div>
       </section>
 
-      <section className="py-20 bg-white" id="services">
+      <section className="py-20 bg-bg" id="services">
         <div className="container mx-auto px-6">
           <div className="flex flex-col md:flex-row gap-16 items-start">
             <Reveal from="left" threshold={0.1} className="w-full md:w-1/3">
               <div>
                 <span className="text-primary font-bold tracking-wider uppercase text-sm mb-2 block">
-                  Our Expertise
+                  {t("pages.departments.rehabilitation.services.badge")}
                 </span>
-                <h2 className="text-3xl font-serif font-bold text-slate-900 mb-6">
-                  Services & Procedures
+                <h2 className="text-3xl font-serif font-bold text-txt mb-6">
+                  {t("pages.departments.rehabilitation.services.title")}
                 </h2>
-                <p className="text-slate-600 mb-8 leading-relaxed">
-                  Our department is equipped with modern facilities and expert
-                  staff to provide a full spectrum of rehabilitation services
-                  designed for your unique recovery journey.
+                <p className="text-muted mb-8 leading-relaxed">
+                  {t("pages.departments.rehabilitation.services.description")}
                 </p>
               </div>
             </Reveal>
@@ -178,36 +204,48 @@ const Rehabilitation: React.FC = () => {
               <div className="space-y-6">
                 {[
                   {
-                    title: "Physical Therapy",
-                    desc: "Focuses on improving movement, strength, and function through exercise, manual therapy, and education.",
+                    title: t(
+                      "pages.departments.rehabilitation.services.items.physical.title",
+                    ),
+                    desc: t(
+                      "pages.departments.rehabilitation.services.items.physical.description",
+                    ),
                     icon: "directions_walk",
                     color: "orange",
                   },
                   {
-                    title: "Occupational Therapy",
-                    desc: "Helps patients develop, recover, or maintain the daily living and work skills ensuring independence.",
+                    title: t(
+                      "pages.departments.rehabilitation.services.items.occupational.title",
+                    ),
+                    desc: t(
+                      "pages.departments.rehabilitation.services.items.occupational.description",
+                    ),
                     icon: "accessibility_new",
                     color: "green",
                   },
                   {
-                    title: "Pain Management",
-                    desc: "Multidisciplinary approach to diagnose, prevent, and treat chronic pain using various therapeutic techniques.",
+                    title: t(
+                      "pages.departments.rehabilitation.services.items.pain.title",
+                    ),
+                    desc: t(
+                      "pages.departments.rehabilitation.services.items.pain.description",
+                    ),
                     icon: "sentiment_satisfied",
                     color: "blue",
                   },
                 ].map((service, i) => (
                   <Reveal key={i} delay={i * 100} threshold={0.1}>
-                    <div className="flex gap-6 p-6 rounded-xl hover:bg-slate-50 transition-colors border border-transparent hover:border-slate-100 group">
+                    <div className="flex gap-6 p-6 rounded-xl hover:bg-bg-alt transition-colors border border-transparent hover:border-border group">
                       <div
                         className={`shrink-0 w-12 h-12 rounded-full bg-${service.color}-100 text-${service.color}-600 flex items-center justify-center group-hover:bg-${service.color}-500 group-hover:text-white transition-colors duration-300`}
                       >
                         <span className="material-icons">{service.icon}</span>
                       </div>
                       <div>
-                        <h3 className="text-xl font-bold text-slate-900 mb-2">
+                        <h3 className="text-xl font-bold text-txt mb-2">
                           {service.title}
                         </h3>
-                        <p className="text-slate-600 text-sm">{service.desc}</p>
+                        <p className="text-muted text-sm">{service.desc}</p>
                       </div>
                     </div>
                   </Reveal>
@@ -218,16 +256,16 @@ const Rehabilitation: React.FC = () => {
         </div>
       </section>
 
-      <section className="py-20 bg-slate-50 relative">
-        <div className="absolute inset-0 bg-slate-900/5 skew-y-3 transform origin-bottom-right translate-y-20 z-0"></div>
+      <section className="py-20 bg-bg-alt relative">
+        <div className="absolute inset-0 bg-primary/5 skew-y-3 transform origin-bottom-right translate-y-20 z-0"></div>
         <div className="container mx-auto px-6 relative z-10">
           <Reveal threshold={0.1}>
             <div className="text-center mb-16">
-              <h2 className="text-3xl font-serif font-bold text-slate-900 mb-4">
-                Advanced Technology
+              <h2 className="text-3xl font-serif font-bold text-txt mb-4">
+                {t("pages.departments.rehabilitation.technology.title")}
               </h2>
-              <p className="text-slate-600 max-w-2xl mx-auto">
-                We utilize cutting-edge equipment to accelerate your recovery.
+              <p className="text-muted max-w-2xl mx-auto">
+                {t("pages.departments.rehabilitation.technology.description")}
               </p>
             </div>
           </Reveal>
@@ -243,12 +281,15 @@ const Rehabilitation: React.FC = () => {
                   />
                 </div>
                 <div className="p-8">
-                  <h3 className="text-xl font-bold text-slate-900 mb-3">
-                    Advanced Mobility Aids
+                  <h3 className="text-xl font-bold text-txt mb-3">
+                    {t(
+                      "pages.departments.rehabilitation.technology.items.mobility.title",
+                    )}
                   </h3>
-                  <p className="text-slate-600 text-sm">
-                    State-of-the-art robotic exoskeletons and computerized gait
-                    trainers to assist in walking re-education.
+                  <p className="text-muted text-sm">
+                    {t(
+                      "pages.departments.rehabilitation.technology.items.mobility.description",
+                    )}
                   </p>
                 </div>
               </div>
@@ -265,11 +306,14 @@ const Rehabilitation: React.FC = () => {
                 </div>
                 <div className="p-8">
                   <h3 className="text-xl font-bold text-slate-900 mb-3">
-                    Therapeutic Equipment
+                    {t(
+                      "pages.departments.rehabilitation.technology.items.therapeutic.title",
+                    )}
                   </h3>
                   <p className="text-slate-600 text-sm">
-                    Specialized hydrotherapy pools, electrical stimulation
-                    devices, and ultrasound therapy units.
+                    {t(
+                      "pages.departments.rehabilitation.technology.items.therapeutic.description",
+                    )}
                   </p>
                 </div>
               </div>
@@ -284,17 +328,17 @@ const Rehabilitation: React.FC = () => {
             <div className="flex justify-between items-end mb-12">
               <div>
                 <span className="text-primary font-semibold tracking-wider text-sm uppercase block mb-2">
-                  Our Team
+                  {t("pages.departments.rehabilitation.team.badge")}
                 </span>
-                <h2 className="text-3xl lg:text-4xl font-serif font-bold text-slate-900">
-                  Meet Our Specialists
+                <h2 className="text-3xl lg:text-4xl font-serif font-bold text-txt">
+                  {t("pages.departments.rehabilitation.team.title")}
                 </h2>
               </div>
               <Link
                 to="/doctors"
                 className="hidden md:flex items-center gap-2 text-primary font-semibold hover:text-primary-dark transition-colors"
               >
-                View All Doctors{" "}
+                {t("pages.departments.rehabilitation.team.viewAll")}{" "}
                 <span className="material-icons text-sm">arrow_forward</span>
               </Link>
             </div>
@@ -302,18 +346,33 @@ const Rehabilitation: React.FC = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
               {
-                name: "Dr. Maya Lahan",
-                role: "Lead Physical Therapist",
+                id: "maya",
+                name: t(
+                  "pages.departments.rehabilitation.team.members.maya.name",
+                ),
+                role: t(
+                  "pages.departments.rehabilitation.team.members.maya.role",
+                ),
                 img: "/images/doctors/team-dr-maya-lahan.jpg",
               },
               {
-                name: "Dr. Raymond Langston",
-                role: "Occupational Therapist",
+                id: "raymond",
+                name: t(
+                  "pages.departments.rehabilitation.team.members.raymond.name",
+                ),
+                role: t(
+                  "pages.departments.rehabilitation.team.members.raymond.role",
+                ),
                 img: "/images/doctors/team-dr-raymond-langston.jpg",
               },
               {
-                name: "Dr. Sandra Mornay",
-                role: "Pain Management Specialist",
+                id: "sandra",
+                name: t(
+                  "pages.departments.rehabilitation.team.members.sandra.name",
+                ),
+                role: t(
+                  "pages.departments.rehabilitation.team.members.sandra.role",
+                ),
                 img: "/images/doctors/team-dr-sandra-mornay.jpg",
               },
             ].map((doc, i) => (
@@ -335,14 +394,12 @@ const Rehabilitation: React.FC = () => {
                         }
                         className="text-white bg-primary hover:bg-primary-dark px-4 py-2 rounded-full text-sm font-medium"
                       >
-                        Book Appointment
+                        {t("pages.departments.rehabilitation.team.button")}
                       </button>
                     </div>
                   </div>
                   <div className="p-6 text-center">
-                    <h3 className="text-xl font-bold text-slate-900">
-                      {doc.name}
-                    </h3>
+                    <h3 className="text-xl font-bold text-txt">{doc.name}</h3>
                     <p className="text-primary font-medium text-sm mb-3">
                       {doc.role}
                     </p>
@@ -355,7 +412,7 @@ const Rehabilitation: React.FC = () => {
       </section>
 
       <section className="py-24 relative overflow-hidden">
-        <div className="absolute inset-0 bg-linear-to-br from-teal-900 to-slate-900"></div>
+        <div className="absolute inset-0 bg-linear-to-br from-cta-from to-cta-to"></div>
         <div
           className="absolute inset-0 opacity-10"
           style={{
@@ -366,7 +423,7 @@ const Rehabilitation: React.FC = () => {
 
         {/* Decorative Elements */}
         <div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/3 w-96 h-96 bg-white/10 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-0 left-0 translate-y-1/2 -translate-x-1/3 w-96 h-96 bg-teal-500/20 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-0 left-0 translate-y-1/2 -translate-x-1/3 w-96 h-96 bg-primary/20 rounded-full blur-3xl"></div>
 
         {/* Giant Icon */}
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 opacity-[0.03] pointer-events-none">
@@ -379,20 +436,20 @@ const Rehabilitation: React.FC = () => {
           <div className="max-w-4xl mx-auto">
             <Reveal delay={0}>
               <span className="inline-block py-1 px-3 rounded-full bg-white/10 border border-white/20 text-white text-xs font-bold tracking-wider uppercase mb-6 backdrop-blur-md">
-                Regain Your Independence
+                {t("pages.departments.rehabilitation.cta.badge")}
               </span>
             </Reveal>
             <Reveal delay={100}>
               <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-white mb-6 leading-tight">
-                Start Your <br />
-                <span className="text-teal-300">Recovery Journey</span> Today
+                {t("pages.departments.rehabilitation.cta.titlePart1")} <br />
+                <span className="text-cta-accent">
+                  {t("pages.departments.rehabilitation.cta.titleHighlight")}
+                </span>
               </h2>
             </Reveal>
             <Reveal delay={200}>
-              <p className="text-teal-100 text-lg md:text-xl mb-10 leading-relaxed max-w-2xl mx-auto">
-                Take the first step towards a pain-free life. Schedule a
-                consultation with our rehabilitation experts and get back to
-                doing what you love.
+              <p className="text-blue-100 text-lg md:text-xl mb-10 leading-relaxed max-w-2xl mx-auto">
+                {t("pages.departments.rehabilitation.cta.description")}
               </p>
             </Reveal>
             <Reveal delay={300}>
@@ -401,15 +458,17 @@ const Rehabilitation: React.FC = () => {
                   onClick={() =>
                     openAppointment({ department: "Rehabilitation" })
                   }
-                  className="inline-flex items-center justify-center px-8 py-4 text-lg font-bold text-teal-900 bg-white rounded-full hover:bg-teal-50 shadow-xl shadow-teal-900/20 transition-all hover:scale-105"
+                  className="inline-flex items-center justify-center px-8 py-4 text-lg font-bold text-primary bg-white rounded-full hover:bg-white/90 shadow-xl shadow-black/20 transition-all hover:scale-105"
                 >
-                  Book Consultation
+                  {t(
+                    "pages.departments.rehabilitation.cta.buttons.consultation",
+                  )}
                 </button>
                 <Link
                   to="/contact"
                   className="inline-flex items-center justify-center px-8 py-4 text-lg font-bold text-white border border-white/30 rounded-full hover:bg-white/10 backdrop-blur-sm transition-all"
                 >
-                  Contact Department
+                  {t("pages.departments.rehabilitation.cta.buttons.contact")}
                 </Link>
               </div>
             </Reveal>

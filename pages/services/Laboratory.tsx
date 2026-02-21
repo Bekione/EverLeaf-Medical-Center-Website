@@ -1,10 +1,12 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 import { Link, useOutletContext } from "react-router-dom";
 import { OpenAppointmentFunc } from "../../Layout";
 import SEO from "../../components/SEO";
 import Reveal from "../../components/Reveal";
 
 const Laboratory: React.FC = () => {
+  const { t } = useTranslation();
   const { openAppointment } = useOutletContext<{
     openAppointment: OpenAppointmentFunc;
   }>();
@@ -20,8 +22,8 @@ const Laboratory: React.FC = () => {
   return (
     <div className="animate-fade-in">
       <SEO
-        title="Clinical Laboratory"
-        description="24/7 automated pathology lab services. Accurate blood work, microbiology, and biochemistry results."
+        title={t("pages.services.laboratory.seo.title")}
+        description={t("pages.services.laboratory.seo.description")}
         canonical="https://everleaf-medical.com/services/laboratory"
       />
       <header className="relative bg-slate-900 text-white overflow-hidden">
@@ -38,20 +40,17 @@ const Laboratory: React.FC = () => {
             <Reveal delay={0}>
               <div className="flex items-center gap-2 mb-4 text-blue-300 font-semibold tracking-wide uppercase text-sm">
                 <span className="material-icons text-lg">biotech</span>
-                <span>Advanced Diagnostics</span>
+                <span>{t("pages.services.laboratory.hero.badge")}</span>
               </div>
             </Reveal>
             <Reveal delay={100}>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold mb-6 leading-tight">
-                Precision Laboratory <br />
-                Services You Can Trust
+                {t("pages.services.laboratory.hero.title")}
               </h1>
             </Reveal>
             <Reveal delay={200}>
               <p className="text-lg md:text-xl text-slate-300 mb-8 max-w-2xl leading-relaxed">
-                Our ISO-certified laboratory operates 24/7, delivering accurate
-                diagnostic results with speed and precision. From routine blood
-                work to complex genetic testing, your health is our priority.
+                {t("pages.services.laboratory.hero.description")}
               </p>
             </Reveal>
             <Reveal delay={300}>
@@ -60,13 +59,13 @@ const Laboratory: React.FC = () => {
                   onClick={() => openAppointment({ department: "Laboratory" })}
                   className="inline-flex items-center justify-center px-8 py-3.5 text-base font-bold text-white bg-primary rounded-lg hover:bg-primary-dark shadow-lg shadow-primary/30 hover:shadow-primary/50 transition-all transform hover:-translate-y-0.5"
                 >
-                  Book a Test
+                  {t("pages.services.laboratory.hero.buttons.book")}
                 </button>
                 <button
                   onClick={(e) => scrollToSection(e, "collection")}
                   className="inline-flex items-center justify-center px-8 py-3.5 text-base font-bold text-white bg-white/10 border border-white/20 backdrop-blur-sm rounded-lg hover:bg-white/20 transition-all"
                 >
-                  Home Collection
+                  {t("pages.services.laboratory.hero.buttons.homeCollection")}
                 </button>
               </div>
             </Reveal>
@@ -85,51 +84,73 @@ const Laboratory: React.FC = () => {
                 className="text-3xl font-serif font-bold mb-4"
                 style={{ color: "var(--color-text)" }}
               >
-                Comprehensive Clinical Testing
+                {t("pages.services.laboratory.intro.title")}
               </h2>
               <p className="text-slate-600">
-                We offer a wide spectrum of diagnostic tests across multiple
-                disciplines to support accurate diagnosis and effective
-                treatment plans.
+                {t("pages.services.laboratory.intro.description")}
               </p>
             </div>
           </Reveal>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
               {
-                title: "Biochemistry",
+                title: t(
+                  "pages.services.laboratory.departments.biochemistry.title",
+                ),
                 icon: "biotech",
                 iconColor: "text-primary",
                 iconBg: "bg-blue-50",
-                desc: "Advanced analysis of chemical components in blood and body fluids. Liver function, kidney profiles, and lipid panels with high precision.",
+                desc: t(
+                  "pages.services.laboratory.departments.biochemistry.description",
+                ),
                 items: [
-                  "Liver Function Tests",
-                  "Kidney Profiles",
-                  "Diabetic Screening",
+                  t(
+                    "pages.services.laboratory.departments.biochemistry.items.0",
+                  ),
+                  t(
+                    "pages.services.laboratory.departments.biochemistry.items.1",
+                  ),
+                  t(
+                    "pages.services.laboratory.departments.biochemistry.items.2",
+                  ),
                 ],
               },
               {
-                title: "Microbiology",
+                title: t(
+                  "pages.services.laboratory.departments.microbiology.title",
+                ),
                 icon: "coronavirus",
                 iconColor: "text-teal-500",
                 iconBg: "bg-teal-50",
-                desc: "Identification of infectious agents including bacteria, viruses, fungi, and parasites to guide appropriate antimicrobial therapy.",
+                desc: t(
+                  "pages.services.laboratory.departments.microbiology.description",
+                ),
                 items: [
-                  "Culture & Sensitivity",
-                  "Viral Serology",
-                  "Molecular Testing",
+                  t(
+                    "pages.services.laboratory.departments.microbiology.items.0",
+                  ),
+                  t(
+                    "pages.services.laboratory.departments.microbiology.items.1",
+                  ),
+                  t(
+                    "pages.services.laboratory.departments.microbiology.items.2",
+                  ),
                 ],
               },
               {
-                title: "Hematology",
+                title: t(
+                  "pages.services.laboratory.departments.hematology.title",
+                ),
                 icon: "bloodtype",
                 iconColor: "text-red-500",
                 iconBg: "bg-red-50",
-                desc: "Detailed study of blood and blood-forming tissues to diagnose anemia, infections, leukemia, and clotting disorders.",
+                desc: t(
+                  "pages.services.laboratory.departments.hematology.description",
+                ),
                 items: [
-                  "Complete Blood Count",
-                  "Coagulation Studies",
-                  "Anemia Profile",
+                  t("pages.services.laboratory.departments.hematology.items.0"),
+                  t("pages.services.laboratory.departments.hematology.items.1"),
+                  t("pages.services.laboratory.departments.hematology.items.2"),
                 ],
               },
             ].map((service, i) => (
@@ -200,14 +221,11 @@ const Laboratory: React.FC = () => {
                         className="text-2xl font-bold"
                         style={{ color: "var(--color-text)" }}
                       >
-                        Fast & Accurate Results
+                        {t("pages.services.laboratory.results.title")}
                       </h3>
                     </div>
                     <p className="text-slate-600 mb-6 leading-relaxed">
-                      Time is critical in healthcare. Our automated laboratory
-                      systems operate 24/7 to ensure turnaround times are
-                      minimized without compromising quality. Most routine test
-                      results are available within 4-6 hours.
+                      {t("pages.services.laboratory.results.description")}
                     </p>
                     <div className="flex flex-col sm:flex-row gap-6">
                       <div className="flex items-center gap-3">
@@ -215,9 +233,9 @@ const Laboratory: React.FC = () => {
                           24/7
                         </span>
                         <span className="text-sm text-slate-500 leading-tight">
-                          Operation
-                          <br />
-                          Hours
+                          {t(
+                            "pages.services.laboratory.results.stats.operation",
+                          )}
                         </span>
                       </div>
                       <div className="w-px h-10 bg-slate-200 hidden sm:block"></div>
@@ -226,9 +244,9 @@ const Laboratory: React.FC = () => {
                           99.9%
                         </span>
                         <span className="text-sm text-slate-500 leading-tight">
-                          Accuracy
-                          <br />
-                          Rate
+                          {t(
+                            "pages.services.laboratory.results.stats.accuracy",
+                          )}
                         </span>
                       </div>
                     </div>
@@ -240,25 +258,24 @@ const Laboratory: React.FC = () => {
               <div className="flex flex-col justify-center">
                 <div className="inline-flex items-center gap-2 mb-4 text-primary font-semibold">
                   <span className="material-icons text-lg">home_work</span>
-                  <span>Convenience First</span>
+                  <span>
+                    {t("pages.services.laboratory.homeCollection.badge")}
+                  </span>
                 </div>
                 <h2
                   className="text-3xl md:text-4xl font-serif font-bold mb-6"
                   style={{ color: "var(--color-text)" }}
                 >
-                  Home Collection Services
+                  {t("pages.services.laboratory.homeCollection.title")}
                 </h2>
                 <p className="text-lg text-slate-600 mb-8 leading-relaxed">
-                  Can't make it to the lab? We bring the laboratory to your
-                  doorstep. Our trained phlebotomists follow strict safety
-                  protocols to collect samples from the comfort of your home or
-                  office.
+                  {t("pages.services.laboratory.homeCollection.description")}
                 </p>
                 <ul className="space-y-4 mb-8">
                   {[
-                    "Easy online or phone booking",
-                    "Safe, hygienic sample collection",
-                    "Digital reports delivered to your email/app",
+                    t("pages.services.laboratory.homeCollection.features.0"),
+                    t("pages.services.laboratory.homeCollection.features.1"),
+                    t("pages.services.laboratory.homeCollection.features.2"),
                   ].map((text, i) => (
                     <li key={i} className="flex items-start gap-3">
                       <div className="w-6 h-6 rounded-full bg-green-100 text-green-600 flex items-center justify-center mt-0.5">
@@ -277,7 +294,7 @@ const Laboratory: React.FC = () => {
                   }
                   className="text-primary font-bold hover:text-primary-dark inline-flex items-center gap-2 group text-left"
                 >
-                  Book Home Collection
+                  {t("pages.services.laboratory.homeCollection.button")}
                   <span className="material-icons text-sm group-hover:translate-x-1 transition-transform">
                     arrow_forward
                   </span>
@@ -309,26 +326,45 @@ const Laboratory: React.FC = () => {
                   className="text-3xl font-serif font-bold mb-6"
                   style={{ color: "var(--color-text)" }}
                 >
-                  State-of-the-art Equipment
+                  {t("pages.services.laboratory.equipment.title")}
                 </h2>
                 <p className="text-slate-600 mb-6 leading-relaxed">
-                  Our commitment to accuracy drives our investment in the latest
-                  laboratory technology. We utilize fully automated analyzers
-                  from world-leading manufacturers to eliminate human error and
-                  ensure consistency.
+                  {t("pages.services.laboratory.equipment.description")}
                 </p>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   {[
                     {
-                      name: "Roche Cobas",
-                      desc: "High-throughput immunology analyzers",
+                      name: t(
+                        "pages.services.laboratory.equipment.items.0.name",
+                      ),
+                      desc: t(
+                        "pages.services.laboratory.equipment.items.0.description",
+                      ),
                     },
                     {
-                      name: "Sysmex XN",
-                      desc: "Advanced automated hematology",
+                      name: t(
+                        "pages.services.laboratory.equipment.items.1.name",
+                      ),
+                      desc: t(
+                        "pages.services.laboratory.equipment.items.1.description",
+                      ),
                     },
-                    { name: "BD Bactec", desc: "Rapid blood culture systems" },
-                    { name: "PCR Labs", desc: "Molecular diagnostic suites" },
+                    {
+                      name: t(
+                        "pages.services.laboratory.equipment.items.2.name",
+                      ),
+                      desc: t(
+                        "pages.services.laboratory.equipment.items.2.description",
+                      ),
+                    },
+                    {
+                      name: t(
+                        "pages.services.laboratory.equipment.items.3.name",
+                      ),
+                      desc: t(
+                        "pages.services.laboratory.equipment.items.3.description",
+                      ),
+                    },
                   ].map((item, i) => (
                     <div
                       key={i}
@@ -385,21 +421,20 @@ const Laboratory: React.FC = () => {
           <div className="max-w-4xl mx-auto">
             <Reveal delay={0}>
               <span className="inline-block py-1 px-3 rounded-full bg-white/10 border border-white/20 text-white text-xs font-bold tracking-wider uppercase mb-6 backdrop-blur-md">
-                Fast & Reliable
+                {t("pages.services.laboratory.cta.badge")}
               </span>
             </Reveal>
             <Reveal delay={100}>
               <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-white mb-6 leading-tight">
-                Ready to Take Charge <br />
+                {t("pages.services.laboratory.cta.titlePart1")} <br />
                 <span style={{ color: "var(--color-cta-accent)" }}>
-                  of Your Health?
+                  {t("pages.services.laboratory.cta.titlePart2")}
                 </span>
               </h2>
             </Reveal>
             <Reveal delay={200}>
               <p className="text-white/80 text-lg md:text-xl mb-10 leading-relaxed max-w-2xl mx-auto">
-                Book your lab test today. Choose from our wide range of
-                individual tests and health checkup packages.
+                {t("pages.services.laboratory.cta.description")}
               </p>
             </Reveal>
             <Reveal delay={300}>
@@ -409,13 +444,13 @@ const Laboratory: React.FC = () => {
                   className="inline-flex items-center justify-center px-8 py-4 text-lg font-bold bg-white rounded-full shadow-xl transition-all hover:scale-105"
                   style={{ color: "var(--color-cta-from)" }}
                 >
-                  Request a Test
+                  {t("pages.services.laboratory.cta.buttons.request")}
                 </button>
                 <Link
                   to="/contact"
                   className="inline-flex items-center justify-center px-8 py-4 text-lg font-bold text-white border border-white/30 rounded-full hover:bg-white/10 backdrop-blur-sm transition-all"
                 >
-                  Contact for Pricing
+                  {t("pages.services.laboratory.cta.buttons.pricing")}
                 </Link>
               </div>
             </Reveal>

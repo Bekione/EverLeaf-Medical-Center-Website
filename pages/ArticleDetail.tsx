@@ -48,7 +48,7 @@ const renderBlock = (
   articleId: string,
   t: any,
 ): React.ReactNode => {
-  const baseKey = `data.articles.${articleId}.content.${index}`;
+  const baseKey = `pages.blog.data.${articleId}.content.${index}`;
   switch (block.type) {
     case "paragraph":
       return <p key={index}>{t(`${baseKey}.text`, block.text)}</p>;
@@ -70,7 +70,7 @@ const renderBlock = (
             <li key={i} className="flex items-start gap-3">
               {item.icon && (
                 <span
-                  className={`material-icons mt-1 text-base flex-shrink-0 ${item.iconColor ?? "text-primary"}`}
+                  className={`material-icons mt-1 text-base shrink-0 ${item.iconColor ?? "text-primary"}`}
                 >
                   {item.icon}
                 </span>
@@ -181,9 +181,9 @@ const ArticleDetail: React.FC = () => {
   return (
     <div className="animate-fade-in bg-white min-h-screen">
       <SEO
-        title={t(`data.articles.${article.id}.seoTitle`, article.seoTitle)}
+        title={t(`pages.blog.data.${article.id}.seoTitle`, article.seoTitle)}
         description={t(
-          `data.articles.${article.id}.seoDescription`,
+          `pages.blog.data.${article.id}.seoDescription`,
           article.seoDescription,
         )}
         type="article"
@@ -224,13 +224,13 @@ const ArticleDetail: React.FC = () => {
                     chevron_right
                   </span>
                   <span className="ml-1 md:ml-2 text-slate-700 font-medium truncate max-w-[200px]">
-                    {t(`data.articles.${article.id}.title`, article.title)
+                    {t(`pages.blog.data.${article.id}.title`, article.title)
                       .length > 30
                       ? t(
-                          `data.articles.${article.id}.title`,
+                          `pages.blog.data.${article.id}.title`,
                           article.title,
                         ).slice(0, 30) + "…"
-                      : t(`data.articles.${article.id}.title`, article.title)}
+                      : t(`pages.blog.data.${article.id}.title`, article.title)}
                   </span>
                 </div>
               </li>
@@ -259,12 +259,12 @@ const ArticleDetail: React.FC = () => {
                   </span>
                   <span className="text-sm text-slate-500 flex items-center gap-1">
                     <span className="material-icons text-sm">schedule</span>
-                    {t(`data.articles.${article.id}.read`, article.read)}
+                    {t(`pages.blog.data.${article.id}.read`, article.read)}
                   </span>
                 </div>
                 <button
                   onClick={handleShare}
-                  className="flex items-center gap-2 text-slate-500 hover:text-primary transition-colors"
+                  className="flex items-center gap-2 text-muted hover:text-primary transition-colors cursor-pointer"
                 >
                   <span className="material-icons text-lg">share</span>
                   <span className="text-sm font-medium hidden sm:inline">
@@ -274,10 +274,10 @@ const ArticleDetail: React.FC = () => {
               </div>
 
               <h1 className="text-4xl md:text-5xl font-serif font-bold text-slate-900 mb-6 leading-tight">
-                {t(`data.articles.${article.id}.title`, article.title)}
+                {t(`pages.blog.data.${article.id}.title`, article.title)}
               </h1>
               <p className="text-xl text-slate-600 leading-relaxed font-serif italic">
-                {t(`data.articles.${article.id}.excerpt`, article.subtitle)}
+                {t(`pages.blog.data.${article.id}.excerpt`, article.subtitle)}
               </p>
 
               {/* Author + Date meta */}
@@ -290,10 +290,10 @@ const ArticleDetail: React.FC = () => {
                 />
                 <div>
                   <p className="text-sm font-semibold text-slate-800">
-                    {t(`data.articles.${article.id}.author`, article.author)}
+                    {t(`pages.blog.data.${article.id}.author`, article.author)}
                   </p>
                   <p className="text-xs text-slate-500">
-                    {t(`data.articles.${article.id}.date`, article.date)}
+                    {t(`pages.blog.data.${article.id}.date`, article.date)}
                   </p>
                 </div>
               </div>
@@ -323,21 +323,21 @@ const ArticleDetail: React.FC = () => {
                 src={article.authorImg}
                 alt={article.author}
                 transform="w_200,q_auto,f_auto,c_fill,g_face"
-                className="w-24 h-24 rounded-full object-cover shadow-lg border-2 border-white flex-shrink-0"
+                className="w-24 h-24 rounded-full object-cover shadow-lg border-2 border-white shrink-0"
               />
               <div>
                 <h3 className="text-xl font-bold text-slate-900 mb-2">
-                  {t(`data.articles.${article.id}.author`, article.author)}
+                  {t(`pages.blog.data.${article.id}.author`, article.author)}
                 </h3>
                 <p className="text-primary font-medium text-sm mb-3">
                   {t(
-                    `data.articles.${article.id}.authorTitle`,
+                    `pages.blog.data.${article.id}.authorTitle`,
                     article.authorTitle,
                   )}
                 </p>
                 <p className="text-slate-600 text-sm leading-relaxed mb-4">
                   {t(
-                    `data.articles.${article.id}.authorBio`,
+                    `pages.blog.data.${article.id}.authorBio`,
                     article.authorBio,
                   )}
                 </p>

@@ -210,7 +210,7 @@ const Home: React.FC = () => {
                 className="absolute -bottom-6 -left-6 p-4 rounded-xl shadow-xl z-20 flex items-center gap-4 max-w-xs animate-[bounce_3s_infinite]"
                 style={{ backgroundColor: "var(--color-surface)" }}
               >
-                <div className="bg-green-100 p-3 rounded-lg text-green-600">
+                <div className="bg-primary/10 p-3 rounded-lg text-primary">
                   <span className="material-icons text-2xl">verified_user</span>
                 </div>
                 <div>
@@ -243,7 +243,7 @@ const Home: React.FC = () => {
           }}
         >
           <div className="flex items-start gap-4 p-4 rounded-xl transition-colors cursor-pointer group hover:opacity-80">
-            <div className="bg-red-50 p-3 rounded-lg text-red-500 group-hover:scale-110 transition-transform">
+            <div className="bg-bg-alt p-3 rounded-lg text-primary group-hover:scale-110 transition-transform">
               <span className="material-icons text-3xl">emergency</span>
             </div>
             <div>
@@ -684,9 +684,9 @@ const Home: React.FC = () => {
             {testimonials.map((testimonial, i) => (
               <div
                 key={i}
-                className="min-w-[100%] md:min-w-[50%] lg:min-w-[33.33%] snap-center"
+                className="min-w-full md:min-w-[50%] lg:min-w-[33.33%] snap-center"
               >
-                <div className="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 h-full relative flex flex-col hover:shadow-md transition-all duration-300">
+                <div className="bg-surface p-8 rounded-2xl shadow-sm border border-border h-full relative flex flex-col hover:shadow-md transition-all duration-300">
                   <a
                     href="#"
                     className="absolute top-6 right-6 text-slate-300 hover:text-primary transition-colors"
@@ -762,7 +762,7 @@ const Home: React.FC = () => {
               ].map((partner, idx) => (
                 <div
                   key={idx}
-                  className="flex-shrink-0 flex items-center gap-2 text-2xl font-bold text-slate-700 opacity-75 grayscale hover:grayscale-0 hover:opacity-100 hover:text-primary transition-all duration-300 cursor-pointer hover:scale-105"
+                  className="shrink-0 flex items-center gap-2 text-2xl font-bold text-slate-700 opacity-75 grayscale hover:grayscale-0 hover:opacity-100 hover:text-primary transition-all duration-300 cursor-pointer hover:scale-105"
                 >
                   <span className="material-icons text-3xl">
                     {partner.icon}

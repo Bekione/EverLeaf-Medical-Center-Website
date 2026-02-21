@@ -1,10 +1,12 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 import { Link, useOutletContext } from "react-router-dom";
 import { OpenAppointmentFunc } from "../../Layout";
 import SEO from "../../components/SEO";
 import Reveal from "../../components/Reveal";
 
 const PreventiveCheckups: React.FC = () => {
+  const { t } = useTranslation();
   const { openAppointment } = useOutletContext<{
     openAppointment: OpenAppointmentFunc;
   }>();
@@ -20,8 +22,8 @@ const PreventiveCheckups: React.FC = () => {
   return (
     <div className="animate-fade-in">
       <SEO
-        title="Preventive Health Checkups"
-        description="Comprehensive health screening packages for all ages. Detect health issues early with our executive checkups."
+        title={t("pages.services.preventiveCheckups.seo.title")}
+        description={t("pages.services.preventiveCheckups.seo.description")}
         canonical="https://everleaf-medical.com/services/preventive-checkups"
       />
       <header className="relative bg-slate-900 text-white overflow-hidden">
@@ -40,20 +42,17 @@ const PreventiveCheckups: React.FC = () => {
                 <span className="material-icons text-lg">
                   health_and_safety
                 </span>
-                <span>Preventive Care</span>
+                <span>{t("pages.services.preventiveCheckups.hero.badge")}</span>
               </div>
             </Reveal>
             <Reveal delay={100}>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold mb-6 leading-tight">
-                Invest in Your Health with <br />
-                Comprehensive Checkups
+                {t("pages.services.preventiveCheckups.hero.title")}
               </h1>
             </Reveal>
             <Reveal delay={200}>
               <p className="text-lg md:text-xl text-slate-300 mb-8 max-w-2xl leading-relaxed">
-                Early detection is key to a long, healthy life. Our personalized
-                screening packages provide a complete picture of your health
-                status in a comfortable environment.
+                {t("pages.services.preventiveCheckups.hero.description")}
               </p>
             </Reveal>
             <Reveal delay={300}>
@@ -62,13 +61,13 @@ const PreventiveCheckups: React.FC = () => {
                   onClick={(e) => scrollToSection(e, "packages")}
                   className="inline-flex items-center justify-center px-8 py-3.5 text-base font-bold text-white bg-primary rounded-lg hover:bg-primary-dark shadow-lg shadow-primary/30 hover:shadow-primary/50 transition-all transform hover:-translate-y-0.5"
                 >
-                  View Packages
+                  {t("pages.services.preventiveCheckups.hero.buttons.packages")}
                 </button>
                 <Link
                   to="/contact"
                   className="inline-flex items-center justify-center px-8 py-3.5 text-base font-bold text-white bg-white/10 border border-white/20 backdrop-blur-sm rounded-lg hover:bg-white/20 transition-all"
                 >
-                  Contact Us
+                  {t("pages.services.preventiveCheckups.hero.buttons.contact")}
                 </Link>
               </div>
             </Reveal>
@@ -87,37 +86,30 @@ const PreventiveCheckups: React.FC = () => {
                 className="text-3xl font-serif font-bold mb-4"
                 style={{ color: "var(--color-text)" }}
               >
-                The Importance of Early Detection
+                {t("pages.services.preventiveCheckups.importance.title")}
               </h2>
               <p className="text-slate-600 leading-relaxed">
-                Many chronic diseases are silent in their early stages. Regular
-                health screenings can detect problems before they start, giving
-                you the best chance for effective treatment and a healthy
-                future.
+                {t("pages.services.preventiveCheckups.importance.description")}
               </p>
             </div>
           </Reveal>
-          <div className="grid md:grid-cols-3 gap-8">
-            {[
-              {
-                icon: "monitor_heart",
-                title: "Heart Health",
-                desc: "Identify risk factors like high blood pressure and cholesterol early to prevent heart disease and stroke.",
-                color: "red",
-              },
-              {
-                icon: "water_drop",
-                title: "Diabetes Screening",
-                desc: "Early detection of pre-diabetes allows for lifestyle changes that can prevent or delay the onset of Type 2 diabetes.",
-                color: "blue",
-              },
-              {
-                icon: "healing",
-                title: "Cancer Prevention",
-                desc: "Screening tests can find some cancers early, when treatment is most likely to be successful.",
-                color: "purple",
-              },
-            ].map((item, i) => (
+          {Object.entries(
+            t("pages.services.preventiveCheckups.importance.areas", {
+              returnObjects: true,
+            }),
+          ).map(([key, item]: [string, any], i) => {
+            const icons: Record<string, string> = {
+              heart: "monitor_heart",
+              diabetes: "water_drop",
+              cancer: "healing",
+            };
+            const colors: Record<string, string> = {
+              heart: "red",
+              diabetes: "blue",
+              cancer: "purple",
+            };
+
+            return (
               <Reveal key={i} delay={i * 100} threshold={0.1}>
                 <div
                   className="p-8 rounded-2xl shadow-card border h-full"
@@ -127,9 +119,11 @@ const PreventiveCheckups: React.FC = () => {
                   }}
                 >
                   <div
-                    className={`w-12 h-12 bg-${item.color}-50 rounded-xl flex items-center justify-center text-${item.color}-500 mb-6`}
+                    className={`w-12 h-12 bg-${colors[key]}-50 rounded-xl flex items-center justify-center text-${colors[key]}-500 mb-6`}
                   >
-                    <span className="material-icons text-2xl">{item.icon}</span>
+                    <span className="material-icons text-2xl">
+                      {icons[key]}
+                    </span>
                   </div>
                   <h3
                     className="text-xl font-bold mb-3"
@@ -138,12 +132,12 @@ const PreventiveCheckups: React.FC = () => {
                     {item.title}
                   </h3>
                   <p className="text-sm text-slate-500 leading-relaxed">
-                    {item.desc}
+                    {item.description}
                   </p>
                 </div>
               </Reveal>
-            ))}
-          </div>
+            );
+          })}
         </div>
       </section>
 
@@ -165,17 +159,16 @@ const PreventiveCheckups: React.FC = () => {
           <Reveal threshold={0.1}>
             <div className="text-center mb-16">
               <span className="text-primary font-semibold tracking-wider text-sm uppercase">
-                Tailored for You
+                {t("pages.services.preventiveCheckups.packages.badge")}
               </span>
               <h2
                 className="text-3xl md:text-4xl font-serif font-bold mt-2 mb-4"
                 style={{ color: "var(--color-text)" }}
               >
-                Comprehensive Screening Packages
+                {t("pages.services.preventiveCheckups.packages.title")}
               </h2>
               <p className="text-slate-600 max-w-2xl mx-auto">
-                Choose the package that best fits your age, lifestyle, and
-                health concerns.
+                {t("pages.services.preventiveCheckups.packages.description")}
               </p>
             </div>
           </Reveal>
@@ -199,29 +192,36 @@ const PreventiveCheckups: React.FC = () => {
                     className="text-2xl font-bold mb-2"
                     style={{ color: "var(--color-text)" }}
                   >
-                    Basic Wellness
+                    {t(
+                      "pages.services.preventiveCheckups.packages.basic.title",
+                    )}
                   </h3>
                   <p className="text-slate-500 text-sm mb-4">
-                    Essential health monitoring for young adults.
+                    {t(
+                      "pages.services.preventiveCheckups.packages.basic.description",
+                    )}
                   </p>
                   <div className="flex items-baseline">
                     <span
                       className="text-4xl font-bold"
                       style={{ color: "var(--color-text)" }}
                     >
-                      $199
+                      {t(
+                        "pages.services.preventiveCheckups.packages.basic.price",
+                      )}
                     </span>
                   </div>
                 </div>
                 <div className="p-8 grow">
                   <ul className="space-y-4">
-                    {[
-                      "Physical Examination",
-                      "Complete Blood Count (CBC)",
-                      "Blood Sugar & Cholesterol",
-                      "Urinalysis",
-                      "Doctor Consultation",
-                    ].map((feat, i) => (
+                    {Object.values(
+                      t(
+                        "pages.services.preventiveCheckups.packages.basic.features",
+                        {
+                          returnObjects: true,
+                        },
+                      ),
+                    ).map((feat: any, i) => (
                       <li
                         key={i}
                         className="flex items-start gap-3 text-sm text-slate-600"
@@ -244,7 +244,9 @@ const PreventiveCheckups: React.FC = () => {
                     }
                     className="block w-full py-3 px-4 bg-white border-2 border-primary text-primary font-bold text-center rounded-lg hover:bg-blue-50 transition-colors"
                   >
-                    Select Basic
+                    {t(
+                      "pages.services.preventiveCheckups.packages.basic.button",
+                    )}
                   </button>
                 </div>
               </div>
@@ -256,7 +258,9 @@ const PreventiveCheckups: React.FC = () => {
                 style={{ backgroundColor: "var(--color-surface)" }}
               >
                 <div className="absolute top-0 right-0 bg-primary text-white text-xs font-bold px-3 py-1 rounded-bl-lg">
-                  POPULAR
+                  {t(
+                    "pages.services.preventiveCheckups.packages.executive.badge",
+                  )}
                 </div>
                 <div
                   className="p-8 border-b"
@@ -270,17 +274,23 @@ const PreventiveCheckups: React.FC = () => {
                     className="text-2xl font-bold mb-2"
                     style={{ color: "var(--color-text)" }}
                   >
-                    Executive Checkup
+                    {t(
+                      "pages.services.preventiveCheckups.packages.executive.title",
+                    )}
                   </h3>
                   <p className="text-slate-500 text-sm mb-4">
-                    In-depth analysis for busy professionals.
+                    {t(
+                      "pages.services.preventiveCheckups.packages.executive.description",
+                    )}
                   </p>
                   <div className="flex items-baseline">
                     <span
                       className="text-4xl font-bold"
                       style={{ color: "var(--color-text)" }}
                     >
-                      $399
+                      {t(
+                        "pages.services.preventiveCheckups.packages.executive.price",
+                      )}
                     </span>
                   </div>
                 </div>
@@ -290,25 +300,32 @@ const PreventiveCheckups: React.FC = () => {
                       <span className="material-icons text-green-500 text-lg">
                         check_circle
                       </span>
-                      <span className="font-semibold">All Basic Features</span>
+                      <span className="font-semibold">
+                        {t(
+                          "pages.services.preventiveCheckups.packages.executive.features.all",
+                        )}
+                      </span>
                     </li>
-                    {[
-                      "Liver & Kidney Function Tests",
-                      "ECG (Electrocardiogram)",
-                      "Chest X-Ray",
-                      "Abdominal Ultrasound",
-                      "Dietary Consultation",
-                    ].map((feat, i) => (
-                      <li
-                        key={i}
-                        className="flex items-start gap-3 text-sm text-slate-600"
-                      >
-                        <span className="material-icons text-green-500 text-lg">
-                          check_circle
-                        </span>
-                        <span>{feat}</span>
-                      </li>
-                    ))}
+                    {Object.entries(
+                      t(
+                        "pages.services.preventiveCheckups.packages.executive.features",
+                        {
+                          returnObjects: true,
+                        },
+                      ),
+                    )
+                      .filter(([key]) => key !== "all")
+                      .map(([_, feat]: [string, any], i) => (
+                        <li
+                          key={i}
+                          className="flex items-start gap-3 text-sm text-slate-600"
+                        >
+                          <span className="material-icons text-green-500 text-lg">
+                            check_circle
+                          </span>
+                          <span>{feat}</span>
+                        </li>
+                      ))}
                   </ul>
                 </div>
                 <div className="p-8 pt-0 mt-auto">
@@ -321,7 +338,9 @@ const PreventiveCheckups: React.FC = () => {
                     }
                     className="block w-full py-3 px-4 bg-primary text-white font-bold text-center rounded-lg hover:bg-primary-dark transition-colors shadow-lg shadow-primary/30"
                   >
-                    Select Executive
+                    {t(
+                      "pages.services.preventiveCheckups.packages.executive.button",
+                    )}
                   </button>
                 </div>
               </div>
@@ -346,17 +365,23 @@ const PreventiveCheckups: React.FC = () => {
                     className="text-2xl font-bold mb-2"
                     style={{ color: "var(--color-text)" }}
                   >
-                    Senior Health
+                    {t(
+                      "pages.services.preventiveCheckups.packages.senior.title",
+                    )}
                   </h3>
                   <p className="text-slate-500 text-sm mb-4">
-                    Specialized care for age 60+.
+                    {t(
+                      "pages.services.preventiveCheckups.packages.senior.description",
+                    )}
                   </p>
                   <div className="flex items-baseline">
                     <span
                       className="text-4xl font-bold"
                       style={{ color: "var(--color-text)" }}
                     >
-                      $499
+                      {t(
+                        "pages.services.preventiveCheckups.packages.senior.price",
+                      )}
                     </span>
                   </div>
                 </div>
@@ -367,25 +392,31 @@ const PreventiveCheckups: React.FC = () => {
                         check_circle
                       </span>
                       <span className="font-semibold">
-                        All Executive Features
+                        {t(
+                          "pages.services.preventiveCheckups.packages.senior.features.all",
+                        )}
                       </span>
                     </li>
-                    {[
-                      "Bone Density Scan",
-                      "Cancer Markers (PSA/CEA)",
-                      "Vision & Hearing Test",
-                      "Cardiac Stress Test",
-                    ].map((feat, i) => (
-                      <li
-                        key={i}
-                        className="flex items-start gap-3 text-sm text-slate-600"
-                      >
-                        <span className="material-icons text-green-500 text-lg">
-                          check_circle
-                        </span>
-                        <span>{feat}</span>
-                      </li>
-                    ))}
+                    {Object.entries(
+                      t(
+                        "pages.services.preventiveCheckups.packages.senior.features",
+                        {
+                          returnObjects: true,
+                        },
+                      ),
+                    )
+                      .filter(([key]) => key !== "all")
+                      .map(([_, feat]: [string, any], i) => (
+                        <li
+                          key={i}
+                          className="flex items-start gap-3 text-sm text-slate-600"
+                        >
+                          <span className="material-icons text-green-500 text-lg">
+                            check_circle
+                          </span>
+                          <span>{feat}</span>
+                        </li>
+                      ))}
                   </ul>
                 </div>
                 <div className="p-8 pt-0 mt-auto">
@@ -398,7 +429,9 @@ const PreventiveCheckups: React.FC = () => {
                     }
                     className="block w-full py-3 px-4 bg-white border-2 border-primary text-primary font-bold text-center rounded-lg hover:bg-blue-50 transition-colors"
                   >
-                    Select Senior
+                    {t(
+                      "pages.services.preventiveCheckups.packages.senior.button",
+                    )}
                   </button>
                 </div>
               </div>
@@ -416,7 +449,7 @@ const PreventiveCheckups: React.FC = () => {
             className="text-2xl font-bold text-center mb-10"
             style={{ color: "var(--color-text)" }}
           >
-            Compare What's Included
+            {t("pages.services.preventiveCheckups.comparison.title")}
           </h2>
           <Reveal threshold={0.1}>
             <div
@@ -436,97 +469,84 @@ const PreventiveCheckups: React.FC = () => {
                     }}
                   >
                     <th className="p-4 md:p-6 text-sm font-semibold text-slate-500">
-                      Tests / Features
+                      {t(
+                        "pages.services.preventiveCheckups.comparison.header.feature",
+                      )}
                     </th>
                     <th
                       className="p-4 md:p-6 text-sm font-bold text-center w-1/5"
                       style={{ color: "var(--color-text)" }}
                     >
-                      Basic
+                      {t(
+                        "pages.services.preventiveCheckups.comparison.header.basic",
+                      )}
                     </th>
                     <th className="p-4 md:p-6 text-sm font-bold text-center text-primary w-1/5">
-                      Executive
+                      {t(
+                        "pages.services.preventiveCheckups.comparison.header.executive",
+                      )}
                     </th>
                     <th
                       className="p-4 md:p-6 text-sm font-bold text-center w-1/5"
                       style={{ color: "var(--color-text)" }}
                     >
-                      Senior
+                      {t(
+                        "pages.services.preventiveCheckups.comparison.header.senior",
+                      )}
                     </th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-slate-100">
-                  {[
-                    {
-                      name: "Physical Exam & Consultation",
-                      basic: true,
-                      exec: true,
-                      senior: true,
-                    },
-                    {
-                      name: "Blood Work (CBC, Sugar, Cholesterol)",
-                      basic: true,
-                      exec: true,
-                      senior: true,
-                    },
-                    {
-                      name: "Detailed Lab (Liver, Kidney, Thyroid)",
-                      basic: false,
-                      exec: true,
-                      senior: true,
-                    },
-                    {
-                      name: "Imaging (X-Ray, Ultrasound)",
-                      basic: false,
-                      exec: true,
-                      senior: true,
-                    },
-                    {
-                      name: "Cancer Screening Markers",
-                      basic: false,
-                      exec: false,
-                      senior: true,
-                    },
-                    {
-                      name: "Customized Wellness Plan",
-                      basic: false,
-                      exec: true,
-                      senior: true,
-                    },
-                  ].map((row, i) => (
-                    <tr key={i}>
-                      <td className="p-4 md:p-6 text-sm text-slate-700 font-medium">
-                        {row.name}
-                      </td>
-                      <td className="p-4 md:p-6 text-center">
-                        {row.basic ? (
-                          <span className="material-icons text-green-500 text-base">
-                            check_circle
-                          </span>
-                        ) : (
-                          <span className="w-2 h-2 rounded-full bg-slate-200 inline-block"></span>
-                        )}
-                      </td>
-                      <td className="p-4 md:p-6 text-center">
-                        {row.exec ? (
-                          <span className="material-icons text-green-500 text-base">
-                            check_circle
-                          </span>
-                        ) : (
-                          <span className="w-2 h-2 rounded-full bg-slate-200 inline-block"></span>
-                        )}
-                      </td>
-                      <td className="p-4 md:p-6 text-center">
-                        {row.senior ? (
-                          <span className="material-icons text-green-500 text-base">
-                            check_circle
-                          </span>
-                        ) : (
-                          <span className="w-2 h-2 rounded-full bg-slate-200 inline-block"></span>
-                        )}
-                      </td>
-                    </tr>
-                  ))}
+                  {Object.entries(
+                    t("pages.services.preventiveCheckups.comparison.rows", {
+                      returnObjects: true,
+                    }),
+                  ).map(([key, name]: [string, any], i) => {
+                    const rowData = [
+                      { basic: true, exec: true, senior: true },
+                      { basic: true, exec: true, senior: true },
+                      { basic: false, exec: true, senior: true },
+                      { basic: false, exec: true, senior: true },
+                      { basic: false, exec: false, senior: true },
+                      { basic: false, exec: true, senior: true },
+                    ];
+                    const row = rowData[parseInt(key)];
+
+                    return (
+                      <tr key={i}>
+                        <td className="p-4 md:p-6 text-sm text-slate-700 font-medium">
+                          {name}
+                        </td>
+                        <td className="p-4 md:p-6 text-center">
+                          {row.basic ? (
+                            <span className="material-icons text-green-500 text-base">
+                              check_circle
+                            </span>
+                          ) : (
+                            <span className="w-2 h-2 rounded-full bg-slate-200 inline-block"></span>
+                          )}
+                        </td>
+                        <td className="p-4 md:p-6 text-center">
+                          {row.exec ? (
+                            <span className="material-icons text-green-500 text-base">
+                              check_circle
+                            </span>
+                          ) : (
+                            <span className="w-2 h-2 rounded-full bg-slate-200 inline-block"></span>
+                          )}
+                        </td>
+                        <td className="p-4 md:p-6 text-center">
+                          {row.senior ? (
+                            <span className="material-icons text-green-500 text-base">
+                              check_circle
+                            </span>
+                          ) : (
+                            <span className="w-2 h-2 rounded-full bg-slate-200 inline-block"></span>
+                          )}
+                        </td>
+                      </tr>
+                    );
+                  })}
                 </tbody>
               </table>
             </div>
@@ -552,13 +572,10 @@ const PreventiveCheckups: React.FC = () => {
                 className="text-3xl font-serif font-bold mb-6"
                 style={{ color: "var(--color-text)" }}
               >
-                Customized Wellness Plans
+                {t("pages.services.preventiveCheckups.wellness.title")}
               </h2>
               <p className="text-lg text-slate-600 mb-6 leading-relaxed">
-                Your checkup results are just the beginning. Our medical team
-                works with you to create a personalized roadmap to better
-                health, focusing on nutrition, exercise, and lifestyle
-                adjustments tailored to your unique biological profile.
+                {t("pages.services.preventiveCheckups.wellness.description")}
               </p>
               <ul className="space-y-4 mb-8">
                 <li className="flex items-start gap-3">
@@ -578,10 +595,14 @@ const PreventiveCheckups: React.FC = () => {
                       className="font-bold text-sm"
                       style={{ color: "var(--color-text)" }}
                     >
-                      Personalized Nutrition
+                      {t(
+                        "pages.services.preventiveCheckups.wellness.features.nutrition.title",
+                      )}
                     </h4>
                     <p className="text-sm text-slate-500">
-                      Dietary recommendations based on your blood work.
+                      {t(
+                        "pages.services.preventiveCheckups.wellness.features.nutrition.description",
+                      )}
                     </p>
                   </div>
                 </li>
@@ -602,10 +623,14 @@ const PreventiveCheckups: React.FC = () => {
                       className="font-bold text-sm"
                       style={{ color: "var(--color-text)" }}
                     >
-                      Activity Guidance
+                      {t(
+                        "pages.services.preventiveCheckups.wellness.features.activity.title",
+                      )}
                     </h4>
                     <p className="text-sm text-slate-500">
-                      Safe exercise routines for your fitness level.
+                      {t(
+                        "pages.services.preventiveCheckups.wellness.features.activity.description",
+                      )}
                     </p>
                   </div>
                 </li>
@@ -614,7 +639,7 @@ const PreventiveCheckups: React.FC = () => {
                 to="/blog"
                 className="inline-flex items-center font-semibold text-primary hover:text-primary-dark transition-colors"
               >
-                Read success stories{" "}
+                {t("pages.services.preventiveCheckups.wellness.success")}{" "}
                 <span className="material-icons text-sm ml-1">
                   arrow_forward
                 </span>
@@ -655,17 +680,16 @@ const PreventiveCheckups: React.FC = () => {
           <Reveal threshold={0.1}>
             <div className="max-w-4xl mx-auto">
               <span className="inline-block py-1 px-3 rounded-full bg-white/10 border border-white/20 text-white text-xs font-bold tracking-wider uppercase mb-6 backdrop-blur-md">
-                Proactive Healthcare
+                {t("pages.services.preventiveCheckups.cta.badge")}
               </span>
               <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-white mb-6 leading-tight">
-                Ready to Prioritize <br />
+                {t("pages.services.preventiveCheckups.cta.titlePart1")} <br />
                 <span style={{ color: "var(--color-cta-accent)" }}>
-                  Your Health?
+                  {t("pages.services.preventiveCheckups.cta.titlePart2")}
                 </span>
               </h2>
               <p className="text-white/80 text-lg md:text-xl mb-10 leading-relaxed max-w-2xl mx-auto">
-                Take the first step towards a healthier future. Book your
-                preventive checkup today with our simple online scheduling tool.
+                {t("pages.services.preventiveCheckups.cta.description")}
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <button
@@ -675,13 +699,13 @@ const PreventiveCheckups: React.FC = () => {
                   className="inline-flex items-center justify-center px-8 py-4 text-lg font-bold bg-white rounded-full shadow-xl transition-all hover:scale-105"
                   style={{ color: "var(--color-cta-from)" }}
                 >
-                  Schedule a Checkup
+                  {t("pages.services.preventiveCheckups.cta.buttons.schedule")}
                 </button>
                 <Link
                   to="/contact"
                   className="inline-flex items-center justify-center px-8 py-4 text-lg font-bold text-white border border-white/30 rounded-full hover:bg-white/10 backdrop-blur-sm transition-all"
                 >
-                  Contact Support
+                  {t("pages.services.preventiveCheckups.cta.buttons.contact")}
                 </Link>
               </div>
             </div>

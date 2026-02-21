@@ -2,15 +2,23 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import SEO from "../../components/SEO";
 import Reveal from "../../components/Reveal";
+import { useTranslation } from "react-i18next";
 
 const Emergency: React.FC = () => {
+  const { t } = useTranslation();
   const [showGuidelineModal, setShowGuidelineModal] = useState(false);
 
   return (
     <div className="animate-fade-in">
       <SEO
-        title="Emergency Department (ER)"
-        description="24/7 Level I Trauma Center providing immediate critical care. Call 911 for life-threatening emergencies."
+        title={t(
+          "pages.services.emergency.seo.title",
+          "Emergency Department (ER)",
+        )}
+        description={t(
+          "pages.services.emergency.seo.description",
+          "24/7 Level I Trauma Center providing immediate critical care. Call 911 for life-threatening emergencies.",
+        )}
         canonical="https://everleaf-medical.com/services/emergency"
       />
       <header className="relative bg-slate-900 text-white overflow-hidden">
@@ -27,25 +35,38 @@ const Emergency: React.FC = () => {
             <Reveal delay={0}>
               <div className="flex items-center gap-2 mb-6">
                 <span className="inline-block px-3 py-1 text-xs font-bold tracking-wider text-red-100 uppercase bg-red-600/80 rounded-full border border-red-500/50 shadow-sm">
-                  Critical Care Unit
+                  {t(
+                    "pages.services.emergency.hero.badge",
+                    "Critical Care Unit",
+                  )}
                 </span>
                 <span className="inline-flex items-center text-xs font-medium text-red-200">
                   <span className="w-2 h-2 rounded-full bg-red-500 mr-2 animate-pulse"></span>{" "}
-                  Open 24 Hours
+                  {t("pages.services.emergency.hero.status", "Open 24 Hours")}
                 </span>
               </div>
             </Reveal>
             <Reveal delay={100}>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold mb-6 leading-tight">
-                Emergency Care <br />
-                <span className="text-white">When Seconds Count.</span>
+                {t(
+                  "pages.services.emergency.hero.titlePart1",
+                  "Emergency Care",
+                )}{" "}
+                <br />
+                <span className="text-white">
+                  {t(
+                    "pages.services.emergency.hero.titlePart2",
+                    "When Seconds Count.",
+                  )}
+                </span>
               </h1>
             </Reveal>
             <Reveal delay={200}>
               <p className="text-lg md:text-xl text-slate-300 mb-8 max-w-2xl leading-relaxed">
-                Our Level I Trauma Center is staffed 24/7 by board-certified
-                emergency physicians and specialized nurses, ready to handle any
-                medical crisis with expertise, speed, and compassion.
+                {t(
+                  "pages.services.emergency.hero.description",
+                  "Our Level I Trauma Center is staffed 24/7 by board-certified emergency physicians and specialized nurses, ready to handle any medical crisis with expertise, speed, and compassion.",
+                )}
               </p>
             </Reveal>
             <Reveal delay={300}>
@@ -54,7 +75,10 @@ const Emergency: React.FC = () => {
                   href="tel:911"
                   className="inline-flex items-center justify-center px-8 py-4 text-base font-bold text-white transition-all duration-200 bg-red-600 rounded-lg hover:bg-red-700 shadow-glow hover:shadow-lg hover:-translate-y-0.5"
                 >
-                  Call Emergency
+                  {t(
+                    "pages.services.emergency.hero.buttons.call",
+                    "Call Emergency",
+                  )}
                   <span className="material-icons text-lg ml-2">
                     phone_in_talk
                   </span>
@@ -63,7 +87,10 @@ const Emergency: React.FC = () => {
                   to="/contact"
                   className="inline-flex items-center justify-center px-8 py-4 text-base font-bold text-white bg-white/10 border border-white/20 backdrop-blur-sm rounded-lg hover:bg-white/20 transition-colors shadow-sm"
                 >
-                  Get Directions
+                  {t(
+                    "pages.services.emergency.hero.buttons.directions",
+                    "Get Directions",
+                  )}
                   <span className="material-icons text-lg ml-2">
                     directions
                   </span>
@@ -81,29 +108,59 @@ const Emergency: React.FC = () => {
             <Reveal from="left" threshold={0.1}>
               <div>
                 <h2 className="text-3xl lg:text-4xl font-serif font-bold text-slate-900 mb-6">
-                  24/7 Trauma & Critical Care
+                  {t(
+                    "pages.services.emergency.intro.title",
+                    "24/7 Trauma & Critical Care",
+                  )}
                 </h2>
                 <div className="space-y-6 text-slate-600 leading-relaxed">
                   <p>
-                    Everleaf's Emergency Department is a state-of-the-art
-                    facility designed to provide comprehensive emergency
-                    services to patients of all ages. From minor injuries to
-                    life-threatening conditions, our team is prepared for
-                    everything.
+                    {t(
+                      "pages.services.emergency.intro.description1",
+                      "Everleaf's Emergency Department is a state-of-the-art facility designed to provide comprehensive emergency services to patients of all ages. From minor injuries to life-threatening conditions, our team is prepared for everything.",
+                    )}
                   </p>
                   <p>
-                    We utilize the latest in medical technology, including
-                    advanced imaging (CT, MRI) located directly within the ED
-                    for immediate diagnostics, ensuring that treatment decisions
-                    are made rapidly and accurately.
+                    {t(
+                      "pages.services.emergency.intro.description2",
+                      "We utilize the latest in medical technology, including advanced imaging (CT, MRI) located directly within the ED for immediate diagnostics, ensuring that treatment decisions are made rapidly and accurately.",
+                    )}
                   </p>
                 </div>
                 <div className="grid grid-cols-2 gap-6 mt-10">
                   {[
-                    { val: "0", unit: "min", sub: "Wait for Critical Cases" },
-                    { val: "50+", unit: "", sub: "Trauma Specialists" },
-                    { val: "24/7", unit: "", sub: "Lab & Pharmacy" },
-                    { val: "Level 1", unit: "", sub: "Trauma Center" },
+                    {
+                      val: "0",
+                      unit: "min",
+                      sub: t(
+                        "pages.services.emergency.intro.stats.wait",
+                        "Wait for Critical Cases",
+                      ),
+                    },
+                    {
+                      val: "50+",
+                      unit: "",
+                      sub: t(
+                        "pages.services.emergency.intro.stats.specialists",
+                        "Trauma Specialists",
+                      ),
+                    },
+                    {
+                      val: "24/7",
+                      unit: "",
+                      sub: t(
+                        "pages.services.emergency.intro.stats.support",
+                        "Lab & Pharmacy",
+                      ),
+                    },
+                    {
+                      val: "Level 1",
+                      unit: "",
+                      sub: t(
+                        "pages.services.emergency.intro.stats.rating",
+                        "Trauma Center",
+                      ),
+                    },
                   ].map((stat, i) => (
                     <Reveal key={i} delay={400 + i * 100} threshold={0.1}>
                       <div
@@ -155,12 +212,16 @@ const Emergency: React.FC = () => {
                         className="font-bold"
                         style={{ color: "var(--color-text)" }}
                       >
-                        Ambulance Services
+                        {t(
+                          "pages.services.emergency.intro.ambulance.title",
+                          "Ambulance Services",
+                        )}
                       </h4>
                       <p className="text-sm text-slate-500 mt-1">
-                        Our fleet of advanced life support ambulances is
-                        strategically positioned to ensure the fastest response
-                        times in the region.
+                        {t(
+                          "pages.services.emergency.intro.ambulance.description",
+                          "Our fleet of advanced life support ambulances is strategically positioned to ensure the fastest response times in the region.",
+                        )}
                       </p>
                     </div>
                   </div>
@@ -182,38 +243,60 @@ const Emergency: React.FC = () => {
           <Reveal threshold={0.1}>
             <div className="text-center max-w-3xl mx-auto mb-16">
               <span className="text-primary font-bold tracking-wider uppercase text-sm mb-2 block">
-                Patient Flow
+                {t("pages.services.emergency.triage.badge", "Patient Flow")}
               </span>
               <h2
                 className="text-3xl font-serif font-bold mb-4"
                 style={{ color: "var(--color-text)" }}
               >
-                Our Triage Process
+                {t(
+                  "pages.services.emergency.triage.title",
+                  "Our Triage Process",
+                )}
               </h2>
               <p className="text-slate-600">
-                We use a standardized triage system to ensure that patients with
-                the most severe conditions receive immediate attention. Here is
-                what to expect upon arrival.
+                {t(
+                  "pages.services.emergency.triage.description",
+                  "We use a standardized triage system to ensure that patients with the most severe conditions receive immediate attention. Here is what to expect upon arrival.",
+                )}
               </p>
             </div>
           </Reveal>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 relative">
-            <div className="hidden md:block absolute top-12 left-0 w-full h-0.5 bg-gradient-to-r from-transparent via-slate-200 to-transparent z-0"></div>
+            <div className="hidden md:block absolute top-12 left-0 w-full h-0.5 bg-linear-to-r from-transparent via-slate-200 to-transparent z-0"></div>
             {[
               {
                 step: "01",
-                title: "Arrival & Registration",
-                desc: "Upon arrival, check in at the reception desk. If the condition is life-threatening, you will be taken immediately to a treatment room.",
+                title: t(
+                  "pages.services.emergency.triage.steps.0.title",
+                  "Arrival & Registration",
+                ),
+                desc: t(
+                  "pages.services.emergency.triage.steps.0.description",
+                  "Upon arrival, check in at the reception desk. If the condition is life-threatening, you will be taken immediately to a treatment room.",
+                ),
               },
               {
                 step: "02",
-                title: "Triage Assessment",
-                desc: "A specialized nurse will assess your vitals and the severity of your condition to prioritize your care based on medical urgency.",
+                title: t(
+                  "pages.services.emergency.triage.steps.1.title",
+                  "Triage Assessment",
+                ),
+                desc: t(
+                  "pages.services.emergency.triage.steps.1.description",
+                  "A specialized nurse will assess your vitals and the severity of your condition to prioritize your care based on medical urgency.",
+                ),
               },
               {
                 step: "03",
-                title: "Diagnosis & Treatment",
-                desc: "You will be seen by an emergency physician for examination, testing, and treatment. We aim to discharge or admit you as efficiently as possible.",
+                title: t(
+                  "pages.services.emergency.triage.steps.2.title",
+                  "Diagnosis & Treatment",
+                ),
+                desc: t(
+                  "pages.services.emergency.triage.steps.2.description",
+                  "You will be seen by an emergency physician for examination, testing, and treatment. We aim to discharge or admit you as efficiently as possible.",
+                ),
               },
             ].map((item, i) => (
               <Reveal key={i} delay={i * 200} threshold={0.1}>
@@ -254,34 +337,82 @@ const Emergency: React.FC = () => {
         <div className="container mx-auto px-6">
           <Reveal threshold={0.1}>
             <h2 className="text-3xl font-serif font-bold text-slate-900 mb-12 text-center">
-              Specialized Emergency Teams
+              {t(
+                "pages.services.emergency.teams.title",
+                "Specialized Emergency Teams",
+              )}
             </h2>
           </Reveal>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
               {
-                title: "Cardiac Care Team",
+                title: t(
+                  "pages.services.emergency.teams.items.0.title",
+                  "Cardiac Care Team",
+                ),
                 icon: "favorite",
                 color: "red-500",
                 bgColor: "red-50",
-                desc: 'Rapid response for heart attacks with 24/7 catheterization lab availability. Our "Door-to-Balloon" time is consistently below national averages.',
-                items: ["Chest Pain Center", "Advanced Cardiac Life Support"],
+                desc: t(
+                  "pages.services.emergency.teams.items.0.description",
+                  'Rapid response for heart attacks with 24/7 catheterization lab availability. Our "Door-to-Balloon" time is consistently below national averages.',
+                ),
+                items: [
+                  t(
+                    "pages.services.emergency.teams.items.0.services.0",
+                    "Chest Pain Center",
+                  ),
+                  t(
+                    "pages.services.emergency.teams.items.0.services.1",
+                    "Advanced Cardiac Life Support",
+                  ),
+                ],
               },
               {
-                title: "Stroke Center",
+                title: t(
+                  "pages.services.emergency.teams.items.1.title",
+                  "Stroke Center",
+                ),
                 icon: "psychology",
                 color: "primary",
                 bgColor: "var(--color-primary-light)",
-                desc: "Certified Primary Stroke Center providing immediate clot-busting therapies and neuro-interventional procedures to minimize brain damage.",
-                items: ["Rapid CT/MRI access", "Tele-neurology support"],
+                desc: t(
+                  "pages.services.emergency.teams.items.1.description",
+                  "Certified Primary Stroke Center providing immediate clot-busting therapies and neuro-interventional procedures to minimize brain damage.",
+                ),
+                items: [
+                  t(
+                    "pages.services.emergency.teams.items.1.services.0",
+                    "Rapid CT/MRI access",
+                  ),
+                  t(
+                    "pages.services.emergency.teams.items.1.services.1",
+                    "Tele-neurology support",
+                  ),
+                ],
               },
               {
-                title: "Pediatric Emergency",
+                title: t(
+                  "pages.services.emergency.teams.items.2.title",
+                  "Pediatric Emergency",
+                ),
                 icon: "child_care",
                 color: "yellow-500",
                 bgColor: "yellow-50",
-                desc: "A separate, child-friendly emergency area staffed by pediatric specialists dedicated to making children feel safe and comfortable during crises.",
-                items: ["Child Life Specialists", "Pediatric Sedation"],
+                desc: t(
+                  "pages.services.emergency.teams.items.2.description",
+                  "A separate, child-friendly emergency area staffed by pediatric specialists dedicated to making children feel safe and comfortable during crises.",
+                ),
+                items: [
+                  t(
+                    "pages.services.emergency.teams.items.2.services.0",
+                    "Child Life Specialists",
+                  ),
+                  t(
+                    "pages.services.emergency.teams.items.2.services.1",
+                    "Pediatric Sedation",
+                  ),
+                ],
               },
             ].map((team, i) => (
               <Reveal key={i} delay={i * 100} threshold={0.1}>
@@ -353,12 +484,16 @@ const Emergency: React.FC = () => {
             <div className="flex flex-col lg:flex-row items-center justify-between gap-12 bg-white/5 border border-white/10 rounded-3xl p-10 lg:p-16 backdrop-blur-sm">
               <div className="flex-1">
                 <h2 className="text-3xl lg:text-4xl font-bold mb-6">
-                  Emergency Contact Information
+                  {t(
+                    "pages.services.emergency.contact.title",
+                    "Emergency Contact Information",
+                  )}
                 </h2>
                 <p className="text-slate-300 text-lg mb-8 leading-relaxed">
-                  If you are experiencing a medical emergency, please call 911
-                  immediately. For inquiries regarding a patient currently in
-                  our Emergency Department, use the main hospital line.
+                  {t(
+                    "pages.services.emergency.contact.description",
+                    "If you are experiencing a medical emergency, please call 911 immediately. For inquiries regarding a patient currently in our Emergency Department, use the main hospital line.",
+                  )}
                 </p>
                 <div className="space-y-4">
                   <div className="flex items-center gap-4">
@@ -369,7 +504,10 @@ const Emergency: React.FC = () => {
                     </div>
                     <div>
                       <span className="block text-sm text-slate-400 uppercase tracking-wider">
-                        Emergency Hotline
+                        {t(
+                          "pages.services.emergency.contact.hotline.label",
+                          "Emergency Hotline",
+                        )}
                       </span>
                       <span className="text-2xl font-bold">911</span>
                     </div>
@@ -380,7 +518,10 @@ const Emergency: React.FC = () => {
                     </div>
                     <div>
                       <span className="block text-sm text-slate-400 uppercase tracking-wider">
-                        Main Hospital Line
+                        {t(
+                          "pages.services.emergency.contact.mainLine.label",
+                          "Main Hospital Line",
+                        )}
                       </span>
                       <span className="text-xl font-semibold">
                         +1 (555) 123-4567
@@ -393,7 +534,10 @@ const Emergency: React.FC = () => {
                     </div>
                     <div>
                       <span className="block text-sm text-slate-400 uppercase tracking-wider">
-                        Poison Control
+                        {t(
+                          "pages.services.emergency.contact.poisonControl.label",
+                          "Poison Control",
+                        )}
                       </span>
                       <span className="text-xl font-semibold">
                         1-800-222-1222
@@ -407,17 +551,25 @@ const Emergency: React.FC = () => {
                   notification_important
                 </span>
                 <h3 className="text-xl font-bold mb-2">
-                  When to come to the ER?
+                  {t(
+                    "pages.services.emergency.contact.box.title",
+                    "When to come to the ER?",
+                  )}
                 </h3>
                 <p className="text-slate-300 text-sm mb-6">
-                  Chest pain, difficulty breathing, severe bleeding, head
-                  injury, loss of consciousness, or severe abdominal pain.
+                  {t(
+                    "pages.services.emergency.contact.box.description",
+                    "Chest pain, difficulty breathing, severe bleeding, head injury, loss of consciousness, or severe abdominal pain.",
+                  )}
                 </p>
                 <button
                   onClick={() => setShowGuidelineModal(true)}
                   className="w-full py-3 bg-white text-slate-900 font-bold rounded-lg hover:bg-slate-200 transition-colors"
                 >
-                  View Full Guideline
+                  {t(
+                    "pages.services.emergency.contact.box.button",
+                    "View Full Guideline",
+                  )}
                 </button>
               </div>
             </div>
@@ -450,7 +602,10 @@ const Emergency: React.FC = () => {
                   className="text-2xl font-bold"
                   style={{ color: "var(--color-text)" }}
                 >
-                  ER Visitor Guidelines
+                  {t(
+                    "pages.services.emergency.modal.title",
+                    "ER Visitor Guidelines",
+                  )}
                 </h3>
               </div>
 
@@ -460,16 +615,54 @@ const Emergency: React.FC = () => {
                     <span className="material-icons text-primary text-sm">
                       priority_high
                     </span>
-                    When to call 911
+                    {t(
+                      "pages.services.emergency.modal.sections.call911.title",
+                      "When to call 911",
+                    )}
                   </h4>
                   <ul className="list-disc pl-5 space-y-1 text-sm text-slate-600">
-                    <li>Difficulty breathing or shortness of breath</li>
-                    <li>Chest pain or upper abdominal pain or pressure</li>
-                    <li>Fainting, sudden dizziness, or weakness</li>
-                    <li>Changes in vision</li>
-                    <li>Confusion or changes in mental status</li>
-                    <li>Any sudden or severe pain</li>
-                    <li>Uncontrolled bleeding</li>
+                    <li>
+                      {t(
+                        "pages.services.emergency.modal.sections.call911.items.0",
+                        "Difficulty breathing or shortness of breath",
+                      )}
+                    </li>
+                    <li>
+                      {t(
+                        "pages.services.emergency.modal.sections.call911.items.1",
+                        "Chest pain or upper abdominal pain or pressure",
+                      )}
+                    </li>
+                    <li>
+                      {t(
+                        "pages.services.emergency.modal.sections.call911.items.2",
+                        "Fainting, sudden dizziness, or weakness",
+                      )}
+                    </li>
+                    <li>
+                      {t(
+                        "pages.services.emergency.modal.sections.call911.items.3",
+                        "Changes in vision",
+                      )}
+                    </li>
+                    <li>
+                      {t(
+                        "pages.services.emergency.modal.sections.call911.items.4",
+                        "Confusion or changes in mental status",
+                      )}
+                    </li>
+                    <li>
+                      {t(
+                        "pages.services.emergency.modal.sections.call911.items.5",
+                        "Any sudden or severe pain",
+                      )}
+                    </li>
+                    <li>
+                      {t(
+                        "pages.services.emergency.modal.sections.call911.items.6",
+                        "Uncontrolled bleeding",
+                      )}
+                    </li>
                   </ul>
                 </div>
 
@@ -481,38 +674,60 @@ const Emergency: React.FC = () => {
                     className="font-bold mb-2 text-sm"
                     style={{ color: "var(--color-text)" }}
                   >
-                    What to Bring
+                    {t(
+                      "pages.services.emergency.modal.sections.whatToBring.title",
+                      "What to Bring",
+                    )}
                   </h4>
                   <ul className="space-y-2 text-sm text-slate-600">
                     <li className="flex items-start gap-2">
                       <span className="material-icons text-blue-500 text-xs mt-0.5">
                         check
                       </span>
-                      <span>Photo ID and health insurance card</span>
+                      <span>
+                        {t(
+                          "pages.services.emergency.modal.sections.whatToBring.items.0",
+                          "Photo ID and health insurance card",
+                        )}
+                      </span>
                     </li>
                     <li className="flex items-start gap-2">
                       <span className="material-icons text-blue-500 text-xs mt-0.5">
                         check
                       </span>
-                      <span>List of current medications and allergies</span>
+                      <span>
+                        {t(
+                          "pages.services.emergency.modal.sections.whatToBring.items.1",
+                          "List of current medications and allergies",
+                        )}
+                      </span>
                     </li>
                     <li className="flex items-start gap-2">
                       <span className="material-icons text-blue-500 text-xs mt-0.5">
                         check
                       </span>
-                      <span>Emergency contact information</span>
+                      <span>
+                        {t(
+                          "pages.services.emergency.modal.sections.whatToBring.items.2",
+                          "Emergency contact information",
+                        )}
+                      </span>
                     </li>
                   </ul>
                 </div>
 
                 <div>
                   <h4 className="font-bold text-slate-900 mb-2 text-sm">
-                    Visitor Policy
+                    {t(
+                      "pages.services.emergency.modal.sections.visitorPolicy.title",
+                      "Visitor Policy",
+                    )}
                   </h4>
                   <p className="text-sm text-slate-600">
-                    To ensure the safety of our patients and staff, we currently
-                    allow one visitor per patient in the ER. Masks are mandatory
-                    in all clinical areas.
+                    {t(
+                      "pages.services.emergency.modal.sections.visitorPolicy.description",
+                      "To ensure the safety of our patients and staff, we currently allow one visitor per patient in the ER. Masks are mandatory in all clinical areas.",
+                    )}
                   </p>
                 </div>
               </div>
@@ -529,7 +744,10 @@ const Emergency: React.FC = () => {
                     color: "var(--color-surface)",
                   }}
                 >
-                  Close Guidelines
+                  {t(
+                    "pages.services.emergency.modal.button",
+                    "Close Guidelines",
+                  )}
                 </button>
               </div>
             </div>

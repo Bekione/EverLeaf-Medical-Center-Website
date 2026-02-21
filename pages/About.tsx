@@ -84,8 +84,8 @@ const About: React.FC = () => {
         }}
       >
         {/* Abstract Background Elements */}
-        <div className="absolute top-0 right-0 -translate-y-1/4 translate-x-1/4 w-[600px] h-[600px] bg-blue-100/40 rounded-full blur-[100px] pointer-events-none"></div>
-        <div className="absolute bottom-0 left-0 translate-y-1/4 -translate-x-1/4 w-[500px] h-[500px] bg-teal-50/60 rounded-full blur-[80px] pointer-events-none"></div>
+        <div className="absolute top-0 right-0 -translate-y-1/4 translate-x-1/4 w-[600px] h-[600px] bg-primary/10 rounded-full blur-[100px] pointer-events-none"></div>
+        <div className="absolute bottom-0 left-0 translate-y-1/4 -translate-x-1/4 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[80px] pointer-events-none"></div>
 
         <div className="container mx-auto px-6 relative z-10">
           <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
@@ -228,7 +228,7 @@ const About: React.FC = () => {
                 </div>
 
                 {/* Decorative Elements */}
-                <div className="absolute -top-6 -right-6 w-24 h-24 bg-yellow-400/20 rounded-full blur-2xl"></div>
+                <div className="absolute -top-6 -right-6 w-24 h-24 bg-primary/20 rounded-full blur-2xl"></div>
                 <div
                   className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full rounded-2xl -z-10 transform rotate-3 scale-105 border"
                   style={{ borderColor: "var(--color-border)" }}
@@ -240,7 +240,7 @@ const About: React.FC = () => {
       </header>
 
       {/* Mission & Story Section */}
-      <section className="py-20 bg-white relative overflow-hidden">
+      <section className="py-20 bg-bg relative overflow-hidden">
         <div className="container mx-auto px-6 relative z-10">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <Reveal
@@ -282,7 +282,7 @@ const About: React.FC = () => {
                 </p>
                 <div className="grid sm:grid-cols-2 gap-6">
                   <div
-                    className="flex items-start gap-4 p-4 rounded-xl border"
+                    className="flex items-start gap-4 p-4 rounded-xl border border-border"
                     style={{
                       backgroundColor: "var(--color-bg-alt)",
                       borderColor: "var(--color-border)",
@@ -345,7 +345,6 @@ const About: React.FC = () => {
           style={{
             backgroundImage:
               "url('https://www.transparenttextures.com/patterns/cubes.png')",
-          
           }}
         ></div>
         <div className="container mx-auto px-6 relative z-10">
@@ -437,7 +436,7 @@ const About: React.FC = () => {
       </section>
 
       {/* Values Section */}
-      <section className="py-20 bg-slate-50">
+      <section className="py-20 bg-bg-alt">
         <div className="container mx-auto px-6">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <Reveal delay={0}>
@@ -515,7 +514,7 @@ const About: React.FC = () => {
       </section>
 
       {/* Leadership Section */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-bg">
         <div className="container mx-auto px-6">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <Reveal delay={0}>
@@ -578,7 +577,7 @@ const About: React.FC = () => {
                       {member.role}
                     </p>
                     <div className="h-0 group-hover:h-auto overflow-hidden transition-all duration-300">
-                      <p className="text-slate-300 text-xs mt-3 opacity-0 group-hover:opacity-100 transition-opacity delay-100 duration-300">
+                      <p className="text-white/70 text-xs mt-3 opacity-0 group-hover:opacity-100 transition-opacity delay-100 duration-300">
                         {t("pages.about.leadership.desc")}
                       </p>
                     </div>
@@ -591,7 +590,7 @@ const About: React.FC = () => {
       </section>
 
       {/* Facilities Section */}
-      <section className="py-20 bg-slate-50">
+      <section className="py-20 bg-bg-alt">
         <div className="container mx-auto px-6">
           <div className="flex flex-col md:flex-row justify-between items-end mb-12">
             <Reveal delay={0}>
@@ -647,7 +646,7 @@ const About: React.FC = () => {
                   </p>
                 </div>
               </div>
-              <div className="rounded-2xl overflow-hidden relative group cursor-pointer shadow-lg bg-slate-900">
+              <div className="rounded-2xl overflow-hidden relative group cursor-pointer shadow-lg bg-surface">
                 <img
                   src="/images/gallery/gallery-14-icu.jpg"
                   alt="ICU"
@@ -700,7 +699,7 @@ const About: React.FC = () => {
             <Reveal delay={80}>
               <h2 className="text-3xl md:text-5xl lg:text-6xl font-serif font-bold text-white mb-6 leading-tight">
                 {t("pages.about.cta.titleStart")} <br />
-                <span className="text-blue-300">
+                <span className="text-cta-accent">
                   {t("pages.about.cta.titleHighlight")}
                 </span>
               </h2>

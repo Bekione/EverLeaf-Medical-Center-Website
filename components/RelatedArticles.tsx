@@ -48,25 +48,30 @@ const RelatedArticles: React.FC<RelatedArticlesProps> = ({
             className="group flex gap-4 items-start"
           >
             <div
-              className="w-20 h-20 flex-shrink-0 rounded-lg overflow-hidden"
+              className="w-20 h-20 shrink-0 rounded-lg overflow-hidden"
               style={{ backgroundColor: "var(--color-bg-alt)" }}
             >
               <CldImg
                 src={article.img}
-                alt={article.title}
+                alt={t(`pages.blog.data.${article.id}.title`, article.title)}
                 transform="w_160,q_auto,f_auto,c_fill"
                 className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
               />
             </div>
             <div>
               <span className="text-xs text-primary font-semibold uppercase tracking-wider mb-1 block">
-                {article.category}
+                {t(
+                  `pages.blog.articles.categories.${article.category
+                    .toLowerCase()
+                    .replace(/\s+/g, "")}`,
+                  article.category,
+                )}
               </span>
               <h4
                 className="font-bold leading-snug group-hover:text-primary transition-colors text-sm font-serif line-clamp-2"
                 style={{ color: "var(--color-text)" }}
               >
-                {article.title}
+                {t(`pages.blog.data.${article.id}.title`, article.title)}
               </h4>
             </div>
           </Link>

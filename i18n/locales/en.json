@@ -913,6 +913,1699 @@
         }
       }
     },
+    "services": {
+      "emergency": {
+        "seo": {
+          "title": "Emergency Department (ER)",
+          "description": "24/7 Level I Trauma Center providing immediate critical care. Call 911 for life-threatening emergencies."
+        },
+        "hero": {
+          "badge": "Critical Care Unit",
+          "status": "Open 24 Hours",
+          "titlePart1": "Emergency Care",
+          "titlePart2": "When Seconds Count.",
+          "description": "Our Level I Trauma Center is staffed 24/7 by board-certified emergency physicians and specialized nurses, ready to handle any medical crisis with expertise, speed, and compassion.",
+          "buttons": {
+            "call": "Call Emergency",
+            "directions": "Get Directions"
+          }
+        },
+        "intro": {
+          "title": "24/7 Trauma & Critical Care",
+          "description1": "Everleaf's Emergency Department is a state-of-the-art facility designed to provide comprehensive emergency services to patients of all ages. From minor injuries to life-threatening conditions, our team is prepared for everything.",
+          "description2": "We utilize the latest in medical technology, including advanced imaging (CT, MRI) located directly within the ED for immediate diagnostics, ensuring that treatment decisions are made rapidly and accurately.",
+          "stats": {
+            "wait": "Wait for Critical Cases",
+            "specialists": "Trauma Specialists",
+            "support": "Lab & Pharmacy",
+            "rating": "Trauma Center"
+          },
+          "ambulance": {
+            "title": "Ambulance Services",
+            "description": "Our fleet of advanced life support ambulances is strategically positioned to ensure the fastest response times in the region."
+          }
+        },
+        "triage": {
+          "badge": "Patient Flow",
+          "title": "Our Triage Process",
+          "description": "We use a standardized triage system to ensure that patients with the most severe conditions receive immediate attention. Here is what to expect upon arrival.",
+          "steps": {
+            "0": {
+              "title": "Arrival & Registration",
+              "description": "Upon arrival, check in at the reception desk. If the condition is life-threatening, you will be taken immediately to a treatment room."
+            },
+            "1": {
+              "title": "Triage Assessment",
+              "description": "A specialized nurse will assess your vitals and the severity of your condition to prioritize your care based on medical urgency."
+            },
+            "2": {
+              "title": "Diagnosis & Treatment",
+              "description": "You will be seen by an emergency physician for examination, testing, and treatment. We aim to discharge or admit you as efficiently as possible."
+            }
+          }
+        },
+        "teams": {
+          "title": "Specialized Emergency Teams",
+          "items": {
+            "0": {
+              "title": "Cardiac Care Team",
+              "description": "Rapid response for heart attacks with 24/7 catheterization lab availability. Our \"Door-to-Balloon\" time is consistently below national averages.",
+              "services": {
+                "0": "Chest Pain Center",
+                "1": "Advanced Cardiac Life Support"
+              }
+            },
+            "1": {
+              "title": "Stroke Center",
+              "description": "Certified Primary Stroke Center providing immediate clot-busting therapies and neuro-interventional procedures to minimize brain damage.",
+              "services": {
+                "0": "Rapid CT/MRI access",
+                "1": "Tele-neurology support"
+              }
+            },
+            "2": {
+              "title": "Pediatric Emergency",
+              "description": "A separate, child-friendly emergency area staffed by pediatric specialists dedicated to making children feel safe and comfortable during crises.",
+              "services": {
+                "0": "Child Life Specialists",
+                "1": "Pediatric Sedation"
+              }
+            }
+          }
+        },
+        "contact": {
+          "title": "Emergency Contact Information",
+          "description": "If you are experiencing a medical emergency, please call 911 immediately. For inquiries regarding a patient currently in our Emergency Department, use the main hospital line.",
+          "hotline": {
+            "label": "Emergency Hotline"
+          },
+          "mainLine": {
+            "label": "Main Hospital Line"
+          },
+          "poisonControl": {
+            "label": "Poison Control"
+          },
+          "box": {
+            "title": "When to come to the ER?",
+            "description": "Chest pain, difficulty breathing, severe bleeding, head injury, loss of consciousness, or severe abdominal pain.",
+            "button": "View Full Guideline"
+          }
+        },
+        "modal": {
+          "title": "ER Visitor Guidelines",
+          "button": "Close Guidelines",
+          "sections": {
+            "call911": {
+              "title": "When to call 911",
+              "items": {
+                "0": "Difficulty breathing or shortness of breath",
+                "1": "Chest pain or upper abdominal pain or pressure",
+                "2": "Fainting, sudden dizziness, or weakness",
+                "3": "Changes in vision",
+                "4": "Confusion or changes in mental status",
+                "5": "Any sudden or severe pain",
+                "6": "Uncontrolled bleeding"
+              }
+            },
+            "whatToBring": {
+              "title": "What to Bring",
+              "items": {
+                "0": "Photo ID and health insurance card",
+                "1": "List of current medications and allergies",
+                "2": "Emergency contact information"
+              }
+            },
+            "visitorPolicy": {
+              "title": "Visitor Policy",
+              "description": "To ensure the safety of our patients and staff, we currently allow one visitor per patient in the ER. Masks are mandatory in all clinical areas."
+            }
+          }
+        }
+      },
+      "diagnostics": {
+        "seo": {
+          "title": "Advanced Diagnostics",
+          "description": "Precision diagnostic services ensuring accurate medical assessments for effective treatment plans."
+        },
+        "hero": {
+          "badge": "Center of Excellence",
+          "titlePart1": "Advanced Diagnostic",
+          "titlePart2": "Services for Precise Care",
+          "description": "Accurate diagnosis is the cornerstone of effective treatment. At Everleaf, we combine world-class expertise with cutting-edge technology to provide rapid, reliable results you can trust.",
+          "buttons": {
+            "schedule": "Schedule a Test",
+            "explore": "Explore Capabilities"
+          }
+        },
+        "intro": {
+          "title": "Why Precise Diagnostics Matter",
+          "description": "Before any treatment plan begins, understanding the root cause is essential. Our Diagnostic Center operates with a philosophy of \"Precision First,\" ensuring that every scan, test, and analysis contributes to a clear path forward for your health journey."
+        },
+        "capabilities": {
+          "badge": "Our Services",
+          "title": "Diagnostic Capabilities",
+          "description": "Comprehensive testing facilities under one roof, from routine blood work to advanced neurological imaging.",
+          "items": {
+            "0": {
+              "title": "Advanced Imaging",
+              "description": "High-definition MRI (3T), 64-slice CT Scans, and Digital X-Rays for detailed anatomical views.",
+              "services": {
+                "0": "MRI & CT Scan",
+                "1": "Ultrasound",
+                "2": "Mammography"
+              }
+            },
+            "1": {
+              "title": "Pathology Lab",
+              "description": "Fully automated laboratory providing accurate results for hematology, biochemistry, and microbiology.",
+              "services": {
+                "0": "Blood Analysis",
+                "1": "Hormone Testing",
+                "2": "Biopsy Services"
+              }
+            },
+            "2": {
+              "title": "Cardiac Diagnostics",
+              "description": "Specialized testing to monitor heart health and detect cardiovascular issues early.",
+              "services": {
+                "0": "ECG & Echo",
+                "1": "Stress Testing",
+                "2": "Holter Monitoring"
+              }
+            },
+            "3": {
+              "title": "Neurodiagnostics",
+              "description": "Evaluation of the nervous system function to assist in diagnosing neurological disorders.",
+              "services": {
+                "0": "EEG (Brain Wave)",
+                "1": "EMG / NCS",
+                "2": "Sleep Studies"
+              }
+            }
+          }
+        },
+        "technology": {
+          "badge": "Innovation",
+          "title": "State-of-the-Art Technology",
+          "description": "We continuously invest in the latest medical technology to ensure the lowest radiation doses, fastest scan times, and clearest images possible. Our new 3T MRI creates exceptionally detailed images of soft tissues, bone, and blood vessels.",
+          "newest": {
+            "title": "Newest Addition",
+            "description": "Siemens Somatom Definition Edge CT Scanner installed in 2023."
+          },
+          "items": {
+            "0": "Faster scanning times for patient comfort",
+            "1": "Reduced radiation exposure protocols",
+            "2": "Digital results integrated with Patient Portal instantly"
+          }
+        },
+        "preparation": {
+          "title": "Preparation for Your Visit",
+          "sections": {
+            "0": {
+              "title": "What to Bring",
+              "items": {
+                "0": "Photo ID & Insurance Card",
+                "1": "Doctor's Referral Form",
+                "2": "List of current medications"
+              }
+            },
+            "1": {
+              "title": "Fasting Instructions",
+              "items": {
+                "0": "Ultrasound (Abdomen): Fast for 6-8 hrs",
+                "1": "Cholesterol Tests: Fast for 12 hrs",
+                "2": "CT Scans: Avoid food 4 hrs prior"
+              }
+            },
+            "2": {
+              "title": "Clothing & Arrival",
+              "items": {
+                "0": "Wear loose, comfortable clothing",
+                "1": "Remove jewelry/metal objects",
+                "2": "Arrive 15 minutes early"
+              }
+            }
+          }
+        },
+        "whyChoose": {
+          "title": "Why Choose Everleaf Diagnostics?",
+          "items": {
+            "0": {
+              "title": "Expert Radiologists",
+              "description": "Our team includes board-certified radiologists with sub-specialty training in neuro, body, and musculoskeletal imaging."
+            },
+            "1": {
+              "title": "Rapid Results",
+              "description": "Most imaging reports are available to your referring physician within 24 hours."
+            },
+            "2": {
+              "title": "Patient-Centric Care",
+              "description": "We prioritize your comfort and understanding, explaining every step of the procedure."
+            }
+          }
+        },
+        "cta": {
+          "badge": "Start Your Diagnosis",
+          "titlePart1": "Ready to schedule",
+          "titlePart2": "your test?",
+          "description": "Call us directly or use our online portal to book your appointment. Ensure you have your doctor's referral ready.",
+          "buttons": {
+            "request": "Request Appointment"
+          },
+          "emergency": "For emergencies, please dial 911 immediately."
+        }
+      },
+      "imaging": {
+        "seo": {
+          "title": "Diagnostic Imaging Center",
+          "description": "High-resolution medical imaging including MRI, CT, and Ultrasound with rapid reporting."
+        },
+        "hero": {
+          "badge": "Medical Imaging Services",
+          "titlePart1": "Advanced Imaging &",
+          "titlePart2": "Diagnostics",
+          "description": "Utilizing state-of-the-art technology to provide crystal-clear insights for precise diagnoses. From routine X-rays to advanced MRI scans, your health is our focus.",
+          "buttons": {
+            "schedule": "Schedule a Scan",
+            "procedures": "View Procedures"
+          }
+        },
+        "intro": {
+          "title": "High-Resolution Medical Imaging",
+          "description": "Our center is equipped with the latest generation of imaging technology, ensuring high fidelity results and patient comfort."
+        },
+        "mainProcedures": {
+          "0": {
+            "title": "MRI Scans",
+            "description": "Detailed imaging of organs and soft tissues without radiation. Ideal for neurological and musculoskeletal conditions.",
+            "tag": "3T MRI"
+          },
+          "1": {
+            "title": "CT Scans",
+            "description": "Fast, high-resolution cross-sectional images. Essential for trauma assessment, oncology, and vascular analysis.",
+            "tag": "64-Slice CT"
+          },
+          "2": {
+            "title": "Ultrasound",
+            "description": "Real-time imaging using sound waves. Used extensively for pregnancy, cardiac health, and abdominal exams.",
+            "tag": "4D Ultrasound"
+          },
+          "3": {
+            "title": "Digital X-Ray",
+            "description": "Advanced digital radiography for quick bone assessments and chest imaging with significantly reduced radiation.",
+            "tag": "Low Dose"
+          }
+        },
+        "specialized": {
+          "title": "Specialized Radiology",
+          "interventional": {
+            "title": "Interventional Radiology",
+            "description": "Minimally invasive image-guided procedures to diagnose and treat diseases in nearly every organ system.",
+            "items": {
+              "0": "Biopsies",
+              "1": "Angiography"
+            }
+          },
+          "women": {
+            "title": "Women's Imaging",
+            "description": "Dedicated suite for mammography, breast ultrasound, and bone density scanning (DEXA) in a private setting.",
+            "items": {
+              "0": "3D Mammography",
+              "1": "DEXA Scans"
+            }
+          },
+          "quote": "Our radiologists are board-certified and sub-specialty trained, ensuring the highest level of expertise for your interpretation."
+        },
+        "safety": {
+          "title": "Safety First",
+          "subtitle": "Low-Radiation Protocols",
+          "description": "We adhere to the ALARA principle (As Low As Reasonably Achievable). Our equipment uses dose-reduction software to ensure you receive the lowest radiation possible without compromising image quality.",
+          "accredited": "ACR Accredited",
+          "accreditedFull": "American College of Radiology"
+        },
+        "results": {
+          "title": "Accessing Your Results",
+          "description": "Your imaging results and radiologist reports are available securely online. Please contact our reception for access details.",
+          "items": {
+            "0": "Secure & Private Access",
+            "1": "View Exam History",
+            "2": "Share with Specialists"
+          },
+          "button": "Request Results"
+        },
+        "conditions": {
+          "title": "Conditions We Treat",
+          "description": "Our imaging capabilities allow us to detect and monitor a wide range of medical conditions with exceptional clarity.",
+          "items": {
+            "0": {
+              "title": "Fracture Detection",
+              "description": "Precise identification of bone fractures, dislocations, and joint abnormalities using high-resolution X-rays."
+            },
+            "1": {
+              "title": "Tumor Screening",
+              "description": "Early detection and staging of tumors in soft tissues and organs through advanced MRI and CT scanning."
+            },
+            "2": {
+              "title": "Cardiovascular Imaging",
+              "description": "Detailed visualization of heart structure and blood flow to identify blockages and heart conditions."
+            },
+            "3": {
+              "title": "Organ Health",
+              "description": "Comprehensive assessment of internal organs including liver, kidneys, and lungs for function and pathology."
+            }
+          }
+        },
+        "procedures": {
+          "title": "Services & Procedures",
+          "subtitle": "Our Expertise",
+          "items": {
+            "0": {
+              "title": "Digital X-Ray",
+              "description": "High-resolution digital radiography for quick and accurate assessment of bones and chest with minimal radiation exposure."
+            },
+            "1": {
+              "title": "3D Mammography",
+              "description": "Advanced tomosynthesis technology that provides a three-dimensional view of breast tissue for earlier cancer detection."
+            },
+            "2": {
+              "title": "MRI (Magnetic Resonance Imaging)",
+              "description": "Detailed imaging of soft tissues, organs, and the nervous system using strong magnetic fields and radio waves."
+            },
+            "3": {
+              "title": "CT Scans (Computed Tomography)",
+              "description": "Cross-sectional images of the body used to diagnose complex conditions, guide biopsies, and monitor treatment effectiveness."
+            }
+          }
+        },
+        "team": {
+          "badge": "Our Team",
+          "title": "Meet Our Radiologists",
+          "viewAll": "View All Doctors",
+          "roles": {
+            "chief": "Chief Radiologist",
+            "interventional": "Interventional Radiologist",
+            "pediatric": "Pediatric Radiologist"
+          },
+          "button": "Book Appointment"
+        },
+        "cta": {
+          "badge": "Precise Diagnostics",
+          "titlePart1": "Ready for Your",
+          "titlePart2": "Scan?",
+          "description": "Whether you need a routine screening or a complex diagnostic procedure, our radiology team is here to provide exceptional care.",
+          "buttons": {
+            "appointment": "Request Appointment",
+            "referrals": "Doctor Referrals"
+          }
+        }
+      },
+      "laboratory": {
+        "seo": {
+          "title": "Clinical Laboratory",
+          "description": "24/7 automated pathology lab services. Accurate blood work, microbiology, and biochemistry results."
+        },
+        "hero": {
+          "badge": "Advanced Diagnostics",
+          "title": "Precision Laboratory Services You Can Trust",
+          "description": "Our ISO-certified laboratory operates 24/7, delivering accurate diagnostic results with speed and precision. From routine blood work to complex genetic testing, your health is our priority.",
+          "buttons": {
+            "book": "Book a Test",
+            "homeCollection": "Home Collection"
+          }
+        },
+        "intro": {
+          "title": "Comprehensive Clinical Testing",
+          "description": "We offer a wide spectrum of diagnostic tests across multiple disciplines to support accurate diagnosis and effective treatment plans."
+        },
+        "departments": {
+          "biochemistry": {
+            "title": "Biochemistry",
+            "description": "Advanced analysis of chemical components in blood and body fluids. Liver function, kidney profiles, and lipid panels with high precision.",
+            "items": {
+              "0": "Liver Function Tests",
+              "1": "Kidney Profiles",
+              "2": "Diabetic Screening"
+            }
+          },
+          "microbiology": {
+            "title": "Microbiology",
+            "description": "Identification of infectious agents including bacteria, viruses, fungi, and parasites to guide appropriate antimicrobial therapy.",
+            "items": {
+              "0": "Culture & Sensitivity",
+              "1": "Viral Serology",
+              "2": "Molecular Testing"
+            }
+          },
+          "hematology": {
+            "title": "Hematology",
+            "description": "Detailed study of blood and blood-forming tissues to diagnose anemia, infections, leukemia, and clotting disorders.",
+            "items": {
+              "0": "Complete Blood Count",
+              "1": "Coagulation Studies",
+              "2": "Anemia Profile"
+            }
+          }
+        },
+        "results": {
+          "title": "Fast & Accurate Results",
+          "description": "Time is critical in healthcare. Our automated laboratory systems operate 24/7 to ensure turnaround times are minimized without compromising quality. Most routine test results are available within 4-6 hours.",
+          "stats": {
+            "operation": "Operation Hours",
+            "accuracy": "Accuracy Rate"
+          }
+        },
+        "homeCollection": {
+          "badge": "Convenience First",
+          "title": "Home Collection Services",
+          "description": "Can't make it to the lab? We bring the laboratory to your doorstep. Our trained phlebotomists follow strict safety protocols to collect samples from the comfort of your home or office.",
+          "features": {
+            "0": "Easy online or phone booking",
+            "1": "Safe, hygienic sample collection",
+            "2": "Digital reports delivered to your email/app"
+          },
+          "button": "Book Home Collection"
+        },
+        "equipment": {
+          "title": "State-of-the-art Equipment",
+          "description": "Our commitment to accuracy drives our investment in the latest laboratory technology. We utilize fully automated analyzers from world-leading manufacturers to eliminate human error and ensure consistency.",
+          "items": {
+            "0": {
+              "name": "Roche Cobas",
+              "description": "High-throughput immunology analyzers"
+            },
+            "1": {
+              "name": "Sysmex XN",
+              "description": "Advanced automated hematology"
+            },
+            "2": {
+              "name": "BD Bactec",
+              "description": "Rapid blood culture systems"
+            },
+            "3": {
+              "name": "PCR Labs",
+              "description": "Molecular diagnostic suites"
+            }
+          }
+        },
+        "cta": {
+          "badge": "Fast & Reliable",
+          "title": "Ready to Take Charge of Your Health?",
+          "description": "Book your lab test today. Choose from our wide range of individual tests and health checkup packages.",
+          "buttons": {
+            "request": "Request a Test",
+            "pricing": "Contact for Pricing"
+          }
+        }
+      },
+      "pharmacy": {
+        "seo": {
+          "title": "Pharmacy Services",
+          "description": "Full-service hospital pharmacy providing prescription management, counseling, and home delivery services."
+        },
+        "hero": {
+          "badge": "Accredited Pharmacy Services",
+          "title": "Expert Care for Your Medication Needs",
+          "description": "Our full-service hospital pharmacy ensures accurate, safe, and timely medication management. From inpatient prescriptions to over-the-counter advice, our clinical pharmacists are here to support your recovery.",
+          "buttons": {
+            "services": "View Pharmacy Services",
+            "consult": "Consult a Pharmacist"
+          }
+        },
+        "intro": {
+          "title": "Comprehensive Pharmaceutical Care",
+          "description": "We combine advanced technology with compassionate care to provide a wide range of pharmacy services tailored to your health needs."
+        },
+        "mainServices": {
+          "prescription": {
+            "title": "Prescription Management",
+            "description": "Our automated prescription processing system ensures high accuracy and speed. We handle refills, transfers, and coordinate with your physicians to manage complex medication regimens efficiently.",
+            "items": {
+              "0": "Automatic Refill Reminders",
+              "1": "Drug Interaction Checks"
+            }
+          },
+          "consultation": {
+            "title": "Consultation Services",
+            "description": "Speak directly with our clinical pharmacists in private consultation rooms. We provide detailed counseling on medication side effects, proper usage, and lifestyle adjustments for optimal results.",
+            "items": {
+              "0": "Medication Therapy Management",
+              "1": "One-on-One Counseling"
+            }
+          },
+          "delivery": {
+            "title": "Medicine Delivery",
+            "description": "Cannot make it to the pharmacy? We offer secure and prompt home delivery services for your prescriptions and medical supplies within the city limits, ensuring you never miss a dose.",
+            "items": {
+              "0": "Same-Day Local Delivery",
+              "1": "Temperature-Controlled Shipping"
+            }
+          },
+          "otc": {
+            "title": "Over-the-Counter Medications",
+            "description": "Browse our extensive selection of non-prescription medications, vitamins, supplements, and first-aid supplies. Our staff is always available to help you choose the right product.",
+            "items": {
+              "0": "Nutritional Supplements",
+              "1": "Home Health Equipment"
+            }
+          }
+        },
+        "commitment": {
+          "badge": "Our Commitment",
+          "title": "Safety and Quality Assurance",
+          "description": "Patient safety is our absolute priority. We utilize state-of-the-art robotic dispensing systems to minimize human error and conduct rigorous quality checks on every prescription dispensed.",
+          "features": {
+            "verification": {
+              "title": "Triple-Check Verification",
+              "description": "Every prescription is verified by three separate checks."
+            },
+            "storage": {
+              "title": "Secure Storage",
+              "description": "Climate-controlled environments for sensitive medications."
+            }
+          },
+          "accuracy": {
+            "label": "Customer Satisfaction",
+            "value": "99.8% Accuracy"
+          }
+        },
+        "cta": {
+          "badge": "Need Assistance?",
+          "titlePart1": "Have Questions About",
+          "titlePart2": "Your Medication?",
+          "description": "Our pharmacists are available 24/7 to answer your questions regarding drug interactions, dosages, or side effects.",
+          "buttons": {
+            "call": "Call Pharmacy",
+            "visit": "Visit Pharmacy"
+          },
+          "refill": {
+            "text": "For prescription refills, please use our",
+            "form": "Refill Request Form"
+          }
+        }
+      },
+      "preventiveCheckups": {
+        "seo": {
+          "title": "Preventive Health Checkups",
+          "description": "Comprehensive health screening packages for all ages. Detect health issues early with our executive checkups."
+        },
+        "hero": {
+          "badge": "Preventive Care",
+          "title": "Invest in Your Health with Comprehensive Checkups",
+          "description": "Early detection is key to a long, healthy life. Our personalized screening packages provide a complete picture of your health status in a comfortable environment.",
+          "buttons": {
+            "packages": "View Packages",
+            "contact": "Contact Us"
+          }
+        },
+        "importance": {
+          "title": "The Importance of Early Detection",
+          "description": "Many chronic diseases are silent in their early stages. Regular health screenings can detect problems before they start, giving you the best chance for effective treatment and a healthy future.",
+          "areas": {
+            "heart": {
+              "title": "Heart Health",
+              "description": "Identify risk factors like high blood pressure and cholesterol early to prevent heart disease and stroke."
+            },
+            "diabetes": {
+              "title": "Diabetes Screening",
+              "description": "Early detection of pre-diabetes allows for lifestyle changes that can prevent or delay the onset of Type 2 diabetes."
+            },
+            "cancer": {
+              "title": "Cancer Prevention",
+              "description": "Screening tests can find some cancers early, when treatment is most likely to be successful."
+            }
+          }
+        },
+        "packages": {
+          "badge": "Tailored for You",
+          "title": "Comprehensive Screening Packages",
+          "description": "Choose the package that best fits your age, lifestyle, and health concerns.",
+          "basic": {
+            "title": "Basic Wellness",
+            "description": "Essential health monitoring for young adults.",
+            "price": "$199",
+            "features": {
+              "0": "Physical Examination",
+              "1": "Complete Blood Count (CBC)",
+              "2": "Blood Sugar & Cholesterol",
+              "3": "Urinalysis",
+              "4": "Doctor Consultation"
+            },
+            "button": "Select Basic"
+          },
+          "executive": {
+            "title": "Executive Checkup",
+            "badge": "POPULAR",
+            "description": "In-depth analysis for busy professionals.",
+            "price": "$399",
+            "features": {
+              "all": "All Basic Features",
+              "0": "Liver & Kidney Function Tests",
+              "1": "ECG (Electrocardiogram)",
+              "2": "Chest X-Ray",
+              "3": "Abdominal Ultrasound",
+              "4": "Dietary Consultation"
+            },
+            "button": "Select Executive"
+          },
+          "senior": {
+            "title": "Senior Health",
+            "description": "Specialized care for age 60+.",
+            "price": "$499",
+            "features": {
+              "all": "All Executive Features",
+              "0": "Bone Density Scan",
+              "1": "Cancer Markers (PSA/CEA)",
+              "2": "Vision & Hearing Test",
+              "3": "Cardiac Stress Test"
+            },
+            "button": "Select Senior"
+          }
+        },
+        "comparison": {
+          "title": "Compare What's Included",
+          "header": {
+            "feature": "Tests / Features",
+            "basic": "Basic",
+            "executive": "Executive",
+            "senior": "Senior"
+          },
+          "rows": {
+            "0": "Physical Exam & Consultation",
+            "1": "Blood Work (CBC, Sugar, Cholesterol)",
+            "2": "Detailed Lab (Liver, Kidney, Thyroid)",
+            "3": "Imaging (X-Ray, Ultrasound)",
+            "4": "Cancer Screening Markers",
+            "5": "Customized Wellness Plan"
+          }
+        },
+        "wellness": {
+          "title": "Customized Wellness Plans",
+          "description": "Your checkup results are just the beginning. Our medical team works with you to create a personalized roadmap to better health, focusing on nutrition, exercise, and lifestyle adjustments tailored to your unique biological profile.",
+          "features": {
+            "nutrition": {
+              "title": "Personalized Nutrition",
+              "description": "Dietary recommendations based on your blood work."
+            },
+            "activity": {
+              "title": "Activity Guidance",
+              "description": "Safe exercise routines for your fitness level."
+            }
+          },
+          "success": "Read success stories"
+        },
+        "cta": {
+          "badge": "Proactive Healthcare",
+          "titlePart1": "Ready to Prioritize",
+          "titlePart2": "Your Health?",
+          "description": "Take the first step towards a healthier future. Book your preventive checkup today with our simple online scheduling tool.",
+          "buttons": {
+            "schedule": "Schedule a Checkup",
+            "contact": "Contact Support"
+          }
+        }
+      }
+    },
+    "departments": {
+      "cardiology": {
+        "seo": {
+          "title": "Cardiology Department",
+          "description": "World-class heart care and cardiology services. Expert diagnosis and treatment for cardiovascular conditions."
+        },
+        "hero": {
+          "badge": "Department of Cardiology",
+          "titlePart1": "World-Class",
+          "titleHighlight": "Heart Care",
+          "titlePart2": " & Cardiology",
+          "description": "Our Cardiology Department provides comprehensive care for heart and vascular conditions. From advanced diagnostics to surgical treatments, we are committed to your heart health.",
+          "buttons": {
+            "appointment": "Book Consultation",
+            "team": "Meet Our Team"
+          }
+        },
+        "stats": {
+          "surgeries": {
+            "value": "5,000+",
+            "label": "Surgeries Successful"
+          }
+        },
+        "conditions": {
+          "badge": "Diagnosis & Care",
+          "title": "Conditions We Treat",
+          "description": "We specialize in diagnosing and treating a wide range of cardiovascular conditions using the latest medical advancements.",
+          "items": {
+            "0": {
+              "title": "Coronary Artery Disease",
+              "description": "Treatment for narrowed or blocked blood vessels that can lead to heart attack."
+            },
+            "1": {
+              "title": "Heart Failure",
+              "description": "Comprehensive management plans for chronic heart failure conditions."
+            },
+            "2": {
+              "title": "Arrhythmia",
+              "description": "Expert care for irregular heartbeats, including atrial fibrillation."
+            },
+            "3": {
+              "title": "Valvular Heart Disease",
+              "description": "Repair and replacement therapies for damaged heart valves."
+            }
+          }
+        },
+        "team": {
+          "badge": "Our Team",
+          "title": "Meet Our Specialists",
+          "viewAll": "View All Doctors",
+          "members": {
+            "james": {
+              "name": "Dr. James Wilson",
+              "role": "Chief Cardiologist"
+            },
+            "bereket": {
+              "name": "Dr. Bereket Kinfe",
+              "role": "Cardiothoracic Surgeon"
+            },
+            "michael": {
+              "name": "Dr. Michael Chen",
+              "role": "Electrophysiologist"
+            },
+            "emily": {
+              "name": "Dr. Emily Ross",
+              "role": "Preventive Cardiologist"
+            }
+          }
+        },
+        "cta": {
+          "badge": "Start Your Journey",
+          "titlePart1": "Prioritize Your",
+          "titleHighlight": "Heart Health",
+          "titlePart2": "Today",
+          "description": "Don't wait for symptoms to worsen. Our expert cardiologists are here to provide the personalized care you deserve. Schedule your consultation now.",
+          "buttons": {
+            "appointment": "Request an Appointment",
+            "call": "Call (555) 123-4567"
+          }
+        }
+      },
+      "dental": {
+        "seo": {
+          "title": "Dental Clinic",
+          "description": "Comprehensive dental and oral healthcare. From routine cleanings to complex oral surgeries and orthodontics."
+        },
+        "hero": {
+          "badge": "Dental Clinic",
+          "titlePart1": "Comprehensive Dental",
+          "titleHighlight": "& Oral Healthcare",
+          "description": "Our specialized dental clinic combines advanced technology with compassionate care to ensure your smile is healthy and beautiful. From routine check-ups to complex oral surgeries.",
+          "buttons": {
+            "appointment": "Book Dental Exam",
+            "team": "Meet Our Dentists"
+          }
+        },
+        "stats": {
+          "painless": {
+            "value": "Painless",
+            "label": "Dentistry"
+          }
+        },
+        "conditions": {
+          "title": "Conditions We Treat",
+          "description": "We provide specialized treatments for a wide range of dental and oral health issues, restoring function and aesthetics.",
+          "items": {
+            "0": {
+              "title": "Cavities & Decay",
+              "description": "Treatment of tooth decay with fillings, inlays, and onlays to restore tooth integrity."
+            },
+            "1": {
+              "title": "Gum Disease",
+              "description": "Periodontal therapy to treat gingivitis and periodontitis, protecting your gum health."
+            },
+            "2": {
+              "title": "Tooth Loss",
+              "description": "Restoration options including bridges, dentures, and implants for missing teeth."
+            },
+            "3": {
+              "title": "Misalignment",
+              "description": "Orthodontic solutions to correct crooked teeth and bite issues for children and adults."
+            }
+          }
+        },
+        "expertise": {
+          "badge": "Our Expertise",
+          "title": "Services & Procedures",
+          "description": "We offer a comprehensive suite of dental services tailored to your individual needs. Our goal is to provide pain-free, effective treatments using the latest techniques.",
+          "items": {
+            "0": {
+              "title": "Routine Cleaning",
+              "description": "Professional scaling and polishing to remove plaque and tartar buildup, preventing gum disease."
+            },
+            "1": {
+              "title": "Teeth Whitening",
+              "description": "Professional bleaching treatments to brighten your smile safely and effectively."
+            },
+            "2": {
+              "title": "Dental Implants",
+              "description": "Permanent, natural-looking replacements for missing teeth that function just like your own."
+            },
+            "3": {
+              "title": "Orthodontics",
+              "description": "Braces and clear aligners to correct bite issues and align teeth for a perfect smile."
+            }
+          }
+        },
+        "team": {
+          "badge": "Our Team",
+          "title": "Meet Our Dentists",
+          "viewAll": "View All Doctors",
+          "members": {
+            "sarah": {
+              "name": "Dr. Sarah Johnson",
+              "role": "Senior Orthodontist"
+            },
+            "mark": {
+              "name": "Dr. Mark Williams",
+              "role": "Oral Surgeon"
+            },
+            "emily": {
+              "name": "Dr. Emily Chen",
+              "role": "Pediatric Dentist"
+            }
+          }
+        },
+        "technology": {
+          "title": "Cutting-Edge Technology",
+          "description": "We invest in the latest dental technologies to provide accurate diagnoses and effective treatments. Our modern facility is equipped to handle all your dental needs with precision.",
+          "items": {
+            "x-rays": {
+              "title": "Digital X-Rays",
+              "description": "Low-radiation imaging for detailed views of teeth and jaw structure instantly."
+            },
+            "cameras": {
+              "title": "Intraoral Cameras",
+              "description": "High-resolution cameras that allow you to see what the dentist sees in real-time."
+            }
+          }
+        },
+        "cta": {
+          "badge": "Your Smile Matters",
+          "titlePart1": "Ready for a",
+          "titleHighlight": "Brighter Smile?",
+          "description": "Your oral health is our priority. Schedule your visit with our expert dental team today and experience the difference.",
+          "buttons": {
+            "appointment": "Request Appointment",
+            "contact": "Contact Dental Clinic"
+          }
+        }
+      },
+      "laboratory": {
+        "seo": {
+          "title": "Laboratory Department",
+          "description": "Advanced clinical laboratory with 24/7 operation. Comprehensive diagnostic testing and accurate results you can trust."
+        },
+        "hero": {
+          "badge": "Department of Laboratory Medicine",
+          "titlePart1": "Precision Diagnostics &",
+          "titleHighlight": "Laboratory Services",
+          "description": "Our ISO-certified laboratory operates 24/7 to deliver fast, accurate diagnostic results. From routine blood work to advanced molecular testing, we support your health journey with precision.",
+          "buttons": {
+            "appointment": "Request Lab Test",
+            "viewTests": "View Tests"
+          }
+        },
+        "stats": {
+          "available": {
+            "value": "24/7",
+            "label": "Available"
+          }
+        },
+        "intro": {
+          "badge": "Clinical Testing",
+          "title": "Our Laboratory Services",
+          "description": "Comprehensive diagnostic testing across multiple disciplines to support accurate diagnosis and treatment monitoring."
+        },
+        "disciplines": {
+          "biochemistry": {
+            "title": "Biochemistry",
+            "description": "Liver function, kidney profiles, lipid panels, and metabolic screening with high precision."
+          },
+          "hematology": {
+            "title": "Hematology",
+            "description": "Complete blood counts, coagulation studies, and anemia profiling for blood disorders."
+          },
+          "microbiology": {
+            "title": "Microbiology",
+            "description": "Culture & sensitivity, viral serology, and infectious disease identification."
+          },
+          "molecular": {
+            "title": "Molecular",
+            "description": "PCR testing, genetic screening, and cancer biomarkers for precision medicine."
+          }
+        },
+        "tests": {
+          "title": "Common Tests & Panels",
+          "items": {
+            "0": {
+              "title": "Complete Blood Count (CBC)",
+              "description": "Essential screening for anemia, infections, and blood disorders. Provides detailed analysis of red cells, white cells, and platelets."
+            },
+            "1": {
+              "title": "Comprehensive Metabolic Panel",
+              "description": "Evaluates kidney and liver function, electrolyte balance, and blood sugar levels for overall health assessment."
+            },
+            "2": {
+              "title": "Lipid Profile",
+              "description": "Measures cholesterol levels (LDL, HDL, triglycerides) to assess cardiovascular disease risk."
+            }
+          }
+        },
+        "features": {
+          "title": "Fast & Accurate Results",
+          "automated": {
+            "title": "Automated Systems",
+            "description": "State-of-the-art analyzers from leading manufacturers ensure consistent, error-free results with rapid turnaround times."
+          },
+          "home": {
+            "title": "Home Collection",
+            "description": "Professional phlebotomy service at your doorstep. Book online and receive digital reports directly to your email."
+          },
+          "quote": "Most routine test results available within 4-6 hours. 99.9% accuracy rate with ISO certification."
+        },
+        "team": {
+          "badge": "Our Team",
+          "title": "Laboratory Specialists",
+          "viewAll": "View All Team",
+          "members": {
+            "rachel": {
+              "name": "Dr. Rachel Anderson",
+              "role": "Chief Pathologist"
+            },
+            "michael": {
+              "name": "Dr. Michael Torres",
+              "role": "Clinical Biochemist"
+            },
+            "lisa": {
+              "name": "Dr. Lisa Chen",
+              "role": "Microbiologist"
+            }
+          }
+        },
+        "cta": {
+          "badge": "Book Your Test",
+          "titlePart1": "Need Laboratory",
+          "titleHighlight": "Testing?",
+          "description": "Fast, accurate results you can trust. Request your lab test today or schedule a home collection for your convenience.",
+          "buttons": {
+            "appointment": "Request Lab Test",
+            "contact": "Contact Department"
+          }
+        }
+      },
+      "radiology": {
+        "seo": {
+          "title": "Radiology Department",
+          "description": "Diagnostic imaging excellence including MRI, CT Scans, Ultrasound, and X-Rays with low-dose radiation protocols."
+        },
+        "hero": {
+          "badge": "Department of Radiology",
+          "titlePart1": "State-of-the-Art",
+          "titleHighlight": "Diagnostic Imaging",
+          "description": "Our Radiology Department utilizes advanced imaging technology to provide precise diagnoses. We prioritize patient comfort and safety while delivering high-quality visual data.",
+          "buttons": {
+            "appointment": "Book Imaging Appointment",
+            "specialists": "Meet Our Radiologists"
+          }
+        },
+        "stats": {
+          "imaging": {
+            "value": "High-Res",
+            "label": "Imaging"
+          }
+        },
+        "intro": {
+          "title": "Conditions We Treat",
+          "description": "Our imaging capabilities allow us to detect and monitor a wide range of medical conditions with exceptional clarity."
+        },
+        "treatments": {
+          "fracture": {
+            "title": "Fracture Detection",
+            "description": "Precise identification of bone fractures, dislocations, and joint abnormalities using high-resolution X-rays."
+          },
+          "tumor": {
+            "title": "Tumor Screening",
+            "description": "Early detection and staging of tumors in soft tissues and organs through advanced MRI and CT scanning."
+          },
+          "cardiovascular": {
+            "title": "Cardiovascular Imaging",
+            "description": "Detailed visualization of heart structure and blood flow to identify blockages and heart conditions."
+          },
+          "organ": {
+            "title": "Organ Health",
+            "description": "Comprehensive assessment of internal organs including liver, kidneys, and lungs for function and pathology."
+          }
+        },
+        "procedures": {
+          "badge": "Our Expertise",
+          "title": "Services & Procedures",
+          "viewAll": "View Full Service List",
+          "items": {
+            "xray": {
+              "title": "Digital X-Ray",
+              "description": "High-resolution digital radiography for quick and accurate assessment of bones and chest with minimal radiation exposure.",
+              "features": {
+                "0": "Instant Results",
+                "1": "Low Dose Radiation"
+              }
+            },
+            "mammography": {
+              "title": "3D Mammography",
+              "description": "Advanced tomosynthesis technology that provides a three-dimensional view of breast tissue for earlier cancer detection.",
+              "features": {
+                "0": "Increased Accuracy",
+                "1": "Comfortable Design"
+              }
+            },
+            "mri": {
+              "title": "MRI (Magnetic Resonance Imaging)",
+              "description": "Detailed imaging of soft tissues, organs, and the nervous system using strong magnetic fields and radio waves.",
+              "features": {
+                "0": "Wide-Bore Options",
+                "1": "Contrast Enhanced"
+              }
+            },
+            "ct": {
+              "title": "CT Scans (Computed Tomography)",
+              "description": "Cross-sectional images of the body used to diagnose complex conditions, guide biopsies, and monitor treatment effectiveness.",
+              "features": {
+                "0": "64-Slice Technology",
+                "1": "Low-Dose Protocols"
+              }
+            }
+          }
+        },
+        "team": {
+          "badge": "Our Team",
+          "title": "Meet Our Radiologists",
+          "viewAll": "View All Doctors",
+          "members": {
+            "sarah": {
+              "name": "Dr. Sarah Jenkins",
+              "role": "Chief Radiologist"
+            },
+            "michael": {
+              "name": "Dr. Michael Chen",
+              "role": "Interventional Radiologist"
+            },
+            "emily": {
+              "name": "Dr. Emily Rodriguez",
+              "role": "Pediatric Radiologist"
+            }
+          }
+        },
+        "technology": {
+          "title": "Advanced Technology",
+          "description": "We invest in the latest imaging technology to ensure the highest quality results with the lowest possible risk to our patients. Our facility is equipped with next-generation scanners and software.",
+          "ai": {
+            "title": "AI-Assisted Imaging Analysis",
+            "description": "Utilizing artificial intelligence to assist radiologists in detecting subtle abnormalities earlier and more accurately."
+          },
+          "lowRad": {
+            "title": "Low-Radiation Equipment",
+            "description": "Our CT and X-ray systems are optimized to reduce radiation dose by up to 60% without compromising image quality."
+          },
+          "stats": {
+            "emergency": "Emergency Imaging",
+            "scans": "Scans Monthly",
+            "archives": "Digital Archives"
+          }
+        },
+        "cta": {
+          "badge": "Precise Diagnostics",
+          "titlePart1": "Ready for Your",
+          "titleHighlight": "Scan?",
+          "description": "Whether you need a routine screening or a complex diagnostic procedure, our radiology team is here to provide exceptional care.",
+          "buttons": {
+            "appointment": "Request Appointment",
+            "referrals": "Doctor Referrals"
+          }
+        }
+      },
+      "neurology": {
+        "seo": {
+          "title": "Neurology Department",
+          "description": "Advanced care for brain, spine, and nervous system disorders. Specialized in stroke, epilepsy, and migraine treatment."
+        },
+        "hero": {
+          "badge": "Department of Neurology",
+          "titlePart1": "Advanced Neurological Care &",
+          "titleHighlight": "Brain Health",
+          "description": "Our Neurology Department provides world-class diagnosis and treatment for complex disorders of the nervous system. We combine cutting-edge technology with compassionate care.",
+          "buttons": {
+            "consult": "Consult a Neurologist",
+            "procedures": "View Procedures"
+          }
+        },
+        "stats": {
+          "excellence": {
+            "value": "Center of",
+            "label": "Excellence"
+          }
+        },
+        "intro": {
+          "badge": "Expertise",
+          "title": "Conditions We Treat",
+          "description": "Our specialists have extensive experience in diagnosing and managing a wide range of neurological conditions."
+        },
+        "conditions": {
+          "stroke": {
+            "title": "Stroke",
+            "description": "Rapid response stroke care with thrombolytic therapy and comprehensive rehabilitation programs."
+          },
+          "epilepsy": {
+            "title": "Epilepsy",
+            "description": "Advanced seizure management, EEG monitoring, and surgical options for epilepsy control."
+          },
+          "alzheimer": {
+            "title": "Alzheimer's",
+            "description": "Compassionate care for memory disorders, early diagnosis, and support for patients and families."
+          },
+          "migraine": {
+            "title": "Migraine",
+            "description": "Specialized headache clinic offering personalized treatment plans for chronic migraines and headaches."
+          }
+        },
+        "procedures": {
+          "title": "Services & Procedures",
+          "items": {
+            "eeg": {
+              "title": "EEG (Electroencephalogram)",
+              "description": "A non-invasive test that records electrical patterns of the brain, essential for diagnosing epilepsy and other brain disorders."
+            },
+            "nerve": {
+              "title": "Nerve Conduction Studies",
+              "description": "Tests to measure how fast an electrical impulse moves through your nerve, used to identify nerve damage."
+            },
+            "rehab": {
+              "title": "Neurorehabilitation",
+              "description": "A complex medical process which aims to aid recovery from a nervous system injury, and to minimize and/or compensate for any functional alterations."
+            }
+          }
+        },
+        "technology": {
+          "title": "Advanced Technology",
+          "item1": {
+            "title": "3T MRI Scanner",
+            "description": "Provides exceptional image quality for detailed brain and spine imaging, allowing for earlier and more accurate diagnoses of neurological conditions."
+          },
+          "item2": {
+            "title": "CT Angiography",
+            "description": "Combines a CT scan with an injection of dye to produce pictures of blood vessels and tissues, crucial for stroke assessment."
+          },
+          "quote": "We invest in the latest technology to ensure our patients have access to the most precise diagnostic tools available."
+        },
+        "team": {
+          "badge": "Our Team",
+          "title": "Meet Our Neurologists",
+          "viewAll": "View All Doctors",
+          "members": {
+            "sarah": {
+              "name": "Dr. Sarah Mitchell",
+              "role": "Chief of Neurology"
+            },
+            "james": {
+              "name": "Dr. James Wilson",
+              "role": "Epileptologist"
+            },
+            "emily": {
+              "name": "Dr. Emily Chen",
+              "role": "Movement Disorders"
+            }
+          }
+        },
+        "cta": {
+          "badge": "Expert Consultation",
+          "titlePart1": "Ready for Your",
+          "titleHighlight": "Neurology Consultation?",
+          "description": "Early diagnosis can make a significant difference. Schedule an appointment with our specialists today.",
+          "buttons": {
+            "appointment": "Schedule Appointment",
+            "contact": "Contact Department"
+          }
+        }
+      },
+      "pediatrics": {
+        "seo": {
+          "title": "Pediatrics Department",
+          "description": "Compassionate medical care for infants, children, and adolescents. Child-friendly environment and expert pediatricians."
+        },
+        "hero": {
+          "badge": "Department of Pediatrics",
+          "titlePart1": "Compassionate Care for",
+          "titleHighlight": "Your Little Ones",
+          "description": "From newborns to adolescents, our dedicated team of pediatricians provides comprehensive medical care in a warm, child-friendly environment.",
+          "buttons": {
+            "visit": "Book a Visit",
+            "team": "Meet Our Team"
+          }
+        },
+        "stats": {
+          "friendly": {
+            "value": "Child-Friendly",
+            "label": "Environment"
+          }
+        },
+        "intro": {
+          "badge": "Diagnosis & Care",
+          "title": "Conditions We Treat",
+          "description": "We specialize in diagnosing and treating a wide range of childhood conditions, ensuring your child grows up healthy and strong. Our approach focuses on preventive care and early intervention."
+        },
+        "conditions": {
+          "illness": {
+            "title": "Childhood Illnesses",
+            "description": "Diagnosis and treatment of common infections, fevers, flu, and chronic conditions like asthma."
+          },
+          "vaccination": {
+            "title": "Vaccinations",
+            "description": "Comprehensive immunization schedules to protect your child from serious preventable diseases."
+          },
+          "development": {
+            "title": "Developmental Delays",
+            "description": "Monitoring growth milestones and providing early intervention for developmental concerns."
+          },
+          "nutrition": {
+            "title": "Nutrition & Diet",
+            "description": "Expert guidance on breastfeeding, formula, introduction to solids, and healthy eating habits."
+          }
+        },
+        "procedures": {
+          "title": "Services & Procedures",
+          "items": {
+            "newborn": {
+              "title": "Newborn Care",
+              "description": "Complete physical exams, screening tests, and care for newborns immediately after delivery and in the first few weeks of life.",
+              "features": {
+                "checkup": "First check-up within 48 hours",
+                "lactation": "Lactation support"
+              }
+            },
+            "wellchild": {
+              "title": "Well-Child Visits",
+              "description": "Regular health supervision visits to track growth, development, behavior, and general well-being at key ages.",
+              "features": {
+                "physicals": "Annual physicals",
+                "school": "School & sports physicals"
+              }
+            },
+            "surgery": {
+              "title": "Pediatric Surgery",
+              "description": "Surgical care for children ranging from minor procedures to complex operations, performed by specialized pediatric surgeons.",
+              "features": {
+                "invasive": "Minimally invasive techniques",
+                "recovery": "Post-op recovery care"
+              }
+            },
+            "adolescent": {
+              "title": "Adolescent Medicine",
+              "description": "Specialized care addressing the physical, psychological, and social needs of teenagers and young adults.",
+              "features": {
+                "mental": "Mental health support",
+                "reproductive": "Reproductive health"
+              }
+            }
+          }
+        },
+        "facility": {
+          "title": "Child-Friendly Facility",
+          "subtitle": "Designed for Comfort",
+          "description": "Our pediatric wing is distinct from the main hospital, featuring bright colors, play areas, and patient rooms designed to reduce anxiety. We believe that a healing environment is just as important as the medical care we provide.",
+          "features": {
+            "playrooms": "Dedicated playrooms with supervision",
+            "entertainment": "In-room entertainment systems",
+            "parents": "Overnight facilities for parents"
+          }
+        },
+        "team": {
+          "badge": "Our Team",
+          "title": "Meet Our Pediatricians",
+          "viewAll": "View All Doctors",
+          "members": {
+            "ashley": {
+              "name": "Dr. Ashley Johnson",
+              "role": "Pediatrician"
+            },
+            "john": {
+              "name": "Dr. John Chen",
+              "role": "Pediatric Surgeon"
+            },
+            "emily": {
+              "name": "Dr. Emily Rodriguez",
+              "role": "Adolescent Specialist"
+            }
+          }
+        },
+        "cta": {
+          "badge": "Taking New Patients",
+          "titlePart1": "Schedule Your",
+          "titleHighlight": "Child's Visit",
+          "description": "Give your child the gift of good health. Our expert pediatricians provide compassionate care in a warm, child-friendly environment. Book your visit today.",
+          "buttons": {
+            "appointment": "Book Appointment Now",
+            "call": "Call (555) 123-4567"
+          }
+        }
+      },
+      "surgery": {
+        "seo": {
+          "title": "Surgery Department",
+          "description": "State-of-the-art surgical care utilizing minimally invasive techniques and robotic technology for faster recovery."
+        },
+        "hero": {
+          "badge": "Surgery Department",
+          "titlePart1": "Precision Surgical",
+          "titleHighlight": "Excellence",
+          "description": "Our Surgery Department combines world-class surgeons with cutting-edge technology to deliver precise, minimally invasive, and effective surgical care tailored to your needs.",
+          "buttons": {
+            "consultation": "Book Consultation",
+            "team": "Meet Our Surgeons"
+          }
+        },
+        "stats": {
+          "success": {
+            "value": "99% Success Rate",
+            "label": "In Minimally Invasive Procedures"
+          }
+        },
+        "conditions": {
+          "intro": {
+            "title": "Conditions We Treat",
+            "description": "We provide comprehensive surgical solutions for a wide range of medical conditions."
+          },
+          "items": {
+            "appendicitis": {
+              "title": "Appendicitis",
+              "description": "Emergency and planned removal of the appendix using laparoscopic techniques."
+            },
+            "hernias": {
+              "title": "Hernias",
+              "description": "Repair of inguinal, umbilical, and hiatal hernias with mesh reinforcement."
+            },
+            "gallbladder": {
+              "title": "Gallbladder Issues",
+              "description": "Treatment for gallstones and inflammation, typically via cholecystectomy."
+            },
+            "trauma": {
+              "title": "Trauma",
+              "description": "Critical care surgery for injuries resulting from accidents and emergencies."
+            }
+          }
+        },
+        "expertise": {
+          "badge": "Our Expertise",
+          "title": "Services & Procedures",
+          "description": "We specialize in a broad spectrum of surgical procedures, prioritizing patient safety and recovery speed through innovation."
+        },
+        "services": {
+          "items": {
+            "minimally": {
+              "title": "Minimally Invasive Surgery",
+              "description": "Utilizing small incisions to reduce pain, scarring, and recovery time for patients undergoing complex operations."
+            },
+            "laparoscopy": {
+              "title": "Laparoscopy",
+              "description": "Diagnostic and therapeutic procedures using a small camera to guide surgical instruments with high precision."
+            },
+            "general": {
+              "title": "General Surgery",
+              "description": "Routine and complex operations on abdominal organs, thyroid, skin, breast, and soft tissues."
+            },
+            "postoperative": {
+              "title": "Post-Operative Care",
+              "description": "Comprehensive monitoring and rehabilitation plans to ensure optimal healing and return to daily activities."
+            }
+          }
+        },
+        "technology": {
+          "badge": "Our Technology",
+          "title": "Advanced Surgical Technology",
+          "description": "We invest in the latest surgical innovations to provide safer, more accurate, and less invasive treatments for our patients.",
+          "items": {
+            "robotic": {
+              "title": "Robotic Surgical Systems",
+              "description": "Enhanced precision and control for complex procedures, reducing recovery times significantly."
+            },
+            "imaging": {
+              "title": "High-Definition Imaging",
+              "description": "Real-time, crystal-clear visualization of internal anatomy during laparoscopic procedures."
+            }
+          }
+        },
+        "team": {
+          "badge": "Our Team",
+          "title": "Meet Our Surgeons",
+          "viewAll": "View All Doctors",
+          "members": {
+            "samantha": {
+              "name": "Dr. Samantha Johnson",
+              "role": "General Surgery Specialist"
+            },
+            "mathew": {
+              "name": "Dr. Mathew Chen",
+              "role": "Trauma & Acute Care"
+            },
+            "nikita": {
+              "name": "Dr. Nikita Davis",
+              "role": "Minimally Invasive Surgery"
+            }
+          }
+        },
+        "cta": {
+          "badge": "Expert Surgical Care",
+          "titlePart1": "Ready for Your",
+          "titleHighlight": "Consultation?",
+          "description": "Take the first step towards better health. Our surgical team is ready to provide you with a personalized treatment plan.",
+          "buttons": {
+            "appointment": "Book Consultation",
+            "contact": "Contact Department"
+          }
+        }
+      },
+      "ophthalmology": {
+        "seo": {
+          "title": "Ophthalmology Department",
+          "description": "Advanced eye care and vision preservation. Treating cataracts, glaucoma, and offering LASIK surgery."
+        },
+        "hero": {
+          "badge": "Ophthalmology Department",
+          "titlePart1": "Advanced Eye Care &",
+          "titleHighlight": "Vision Preservation",
+          "description": "Our world-class ophthalmology team combines expertise with cutting-edge technology to diagnose, treat, and manage all conditions of the eye.",
+          "buttons": {
+            "exam": "Book Eye Exam",
+            "specialists": "Meet Specialists"
+          }
+        },
+        "stats": {
+          "vision": {
+            "value": "20/20",
+            "label": "Vision Goals"
+          },
+          "items": {
+            "surgeries": {
+              "value": "15k+",
+              "label": "Surgeries Performed"
+            },
+            "success": {
+              "value": "98%",
+              "label": "Success Rate"
+            },
+            "doctors": {
+              "value": "20+",
+              "label": "Specialized Doctors"
+            },
+            "emergency": {
+              "value": "24/7",
+              "label": "Emergency Care"
+            }
+          }
+        },
+        "conditions": {
+          "badge": "Our Expertise",
+          "title": "Conditions We Treat",
+          "description": "We provide comprehensive diagnosis and treatment for a wide range of ocular conditions affecting patients of all ages.",
+          "items": {
+            "cataracts": {
+              "title": "Cataracts",
+              "description": "Clouding of the eye's natural lens, leading to decreased vision. We offer advanced laser-assisted cataract surgery."
+            },
+            "glaucoma": {
+              "title": "Glaucoma",
+              "description": "A group of eye conditions that damage the optic nerve. Early detection and treatment are crucial to prevent vision loss."
+            },
+            "macular": {
+              "title": "Macular Degeneration",
+              "description": "Age-related condition affecting the central part of the retina. We provide therapies to slow progression and manage symptoms."
+            },
+            "diabetic": {
+              "title": "Diabetic Retinopathy",
+              "description": "A complication of diabetes that affects the eyes. We offer regular screenings and advanced treatments like laser photocoagulation."
+            }
+          }
+        },
+        "services": {
+          "title": "Services & Procedures",
+          "description": "We utilize the latest surgical techniques and technology to ensure the best possible outcomes for our patients. Our facilities are equipped for both outpatient procedures and complex surgeries.",
+          "button": "Book a Service",
+          "items": {
+            "lasik": {
+              "title": "Laser Eye Surgery (LASIK)",
+              "description": "Correct vision problems such as nearsightedness, farsightedness, and astigmatism using precision lasers."
+            },
+            "exams": {
+              "title": "Routine Eye Exams",
+              "description": "Comprehensive vision testing and health checks to maintain optimal eye health and detect issues early."
+            },
+            "retinal": {
+              "title": "Retinal Procedures",
+              "description": "Advanced treatments for retinal detachments, tears, and other complex back-of-the-eye conditions."
+            },
+            "corneal": {
+              "title": "Corneal Transplants",
+              "description": "Surgical replacement of damaged corneal tissue to restore vision in patients with corneal disease."
+            }
+          }
+        },
+        "technology": {
+          "badge": "Our Technology",
+          "title": "Advanced Diagnostic Systems",
+          "description": "Precision is everything in eye care. We invest in the latest optical technologies to ensure accurate diagnoses and successful treatment outcomes.",
+          "items": {
+            "oct": {
+              "title": "Optical Coherence Tomography (OCT)",
+              "description": "Non-invasive imaging that uses light waves to take cross-section pictures of your retina, allowing us to see each distinct layer."
+            },
+            "diagnostic": {
+              "title": "Laser Diagnostic Systems",
+              "description": "State-of-the-art laser mapping tools that create a detailed 3D map of your eye's surface for perfectly customized treatments."
+            }
+          }
+        },
+        "cta": {
+          "badge": "Book Your Eye Exam",
+          "titlePart1": "See the World",
+          "titleHighlight": "Clearly Again",
+          "description": "Don't let vision problems limit your life. Our expert ophthalmologists are here to provide the personalized care you deserve. Schedule your consultation now.",
+          "buttons": {
+            "exam": "Plan Eye Exam",
+            "call": "Call (555) 123-4567"
+          }
+        }
+      },
+      "rehabilitation": {
+        "seo": {
+          "title": "Rehabilitation & Physical Therapy",
+          "description": "Helping patients regain mobility and independence through personalized physical and occupational therapy."
+        },
+        "hero": {
+          "badge": "Department of Rehabilitation",
+          "titlePart1": "Expert Rehabilitation &",
+          "titleHighlight": "Physical Therapy",
+          "description": "Our dedicated team of therapists and specialists help you regain strength, mobility, and independence. We create personalized recovery plans tailored to your specific needs.",
+          "buttons": {
+            "specialists": "Meet Our Specialists",
+            "services": "View Services"
+          }
+        },
+        "stats": {
+          "recovery": {
+            "value": "98%",
+            "label": "Recovery Rate"
+          }
+        },
+        "conditions": {
+          "title": "Conditions We Treat",
+          "description": "We specialize in treating a wide range of conditions to help you return to your daily activities pain-free.",
+          "items": {
+            "sports": {
+              "title": "Sports Injuries",
+              "description": "Comprehensive rehabilitation for ACL tears, rotator cuff injuries, and sprains to get athletes back in the game safely."
+            },
+            "stroke": {
+              "title": "Stroke Recovery",
+              "description": "Neurological rehabilitation focused on relearning skills and improving mobility after a stroke event."
+            },
+            "surgical": {
+              "title": "Post-Surgical Rehab",
+              "description": "Guided recovery programs following joint replacements, spinal surgeries, and other major procedures."
+            },
+            "chronic": {
+              "title": "Chronic Pain",
+              "description": "Management strategies and therapies for back pain, arthritis, fibromyalgia, and other long-term pain conditions."
+            }
+          }
+        },
+        "services": {
+          "badge": "Our Expertise",
+          "title": "Services & Procedures",
+          "description": "Our department is equipped with modern facilities and expert staff to provide a full spectrum of rehabilitation services designed for your unique recovery journey.",
+          "items": {
+            "physical": {
+              "title": "Physical Therapy",
+              "description": "Focuses on improving movement, strength, and function through exercise, manual therapy, and education."
+            },
+            "occupational": {
+              "title": "Occupational Therapy",
+              "description": "Helps patients develop, recover, or maintain the daily living and work skills ensuring independence."
+            },
+            "pain": {
+              "title": "Pain Management",
+              "description": "Multidisciplinary approach to diagnose, prevent, and treat chronic pain using various therapeutic techniques."
+            }
+          }
+        },
+        "technology": {
+          "title": "Advanced Technology",
+          "description": "We utilize cutting-edge equipment to accelerate your recovery.",
+          "items": {
+            "mobility": {
+              "title": "Advanced Mobility Aids",
+              "description": "State-of-the-art robotic exoskeletons and computerized gait trainers to assist in walking re-education."
+            },
+            "therapeutic": {
+              "title": "Therapeutic Equipment",
+              "description": "Specialized hydrotherapy pools, electrical stimulation devices, and ultrasound therapy units."
+            }
+          }
+        },
+        "team": {
+          "badge": "Our Team",
+          "title": "Meet Our Specialists",
+          "viewAll": "View All Doctors",
+          "members": {
+            "maya": {
+              "name": "Dr. Maya Lahan",
+              "role": "Lead Physical Therapist"
+            },
+            "raymond": {
+              "name": "Dr. Raymond Langston",
+              "role": "Occupational Therapist"
+            },
+            "sandra": {
+              "name": "Dr. Sandra Mornay",
+              "role": "Pain Management Specialist"
+            }
+          },
+          "button": "Book Appointment"
+        },
+        "cta": {
+          "badge": "Regain Your Independence",
+          "titlePart1": "Start Your",
+          "titleHighlight": "Recovery Journey",
+          "description": "Take the first step towards a pain-free life. Schedule a consultation with our rehabilitation experts and get back to doing what you love.",
+          "buttons": {
+            "consultation": "Book Consultation",
+            "contact": "Contact Department"
+          }
+        }
+      }
+    },
     "contact": {
       "hero": {
         "title": "Get in Touch with Everleaf Medical Center",

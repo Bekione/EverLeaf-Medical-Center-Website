@@ -98,7 +98,7 @@ export const ThemeSwitcher: React.FC<{ inline?: boolean }> = ({
                   >
                     {/* Color swatch */}
                     <span
-                      className="w-8 h-8 rounded-full flex-shrink-0 flex items-center justify-center shadow-sm"
+                      className="w-8 h-8 rounded-full shrink-0 flex items-center justify-center shadow-sm"
                       style={{ backgroundColor: t.swatch }}
                       aria-hidden="true"
                     >
@@ -131,7 +131,7 @@ export const ThemeSwitcher: React.FC<{ inline?: boolean }> = ({
 
                     {/* Icon */}
                     <span
-                      className="material-icons text-base flex-shrink-0"
+                      className="material-icons text-base shrink-0"
                       style={{
                         color: isActive
                           ? "var(--color-primary)"
