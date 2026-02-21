@@ -1,0 +1,1129 @@
+{
+  "common": {
+    "buttons": {
+      "bookAppointment": "Prendre rendez-vous",
+      "learnMore": "En savoir plus",
+      "contactUs": "Contactez-nous",
+      "viewAll": "Voir tout",
+      "emergency": "Urgence",
+      "submit": "Soumettre",
+      "book": "Réserver",
+      "viewAllDoctors": "Voir tous les médecins"
+    },
+    "labels": {
+      "loading": "Chargement...",
+      "error": "Erreur",
+      "success": "Succès",
+      "experience": "{{count}} ans d'expérience"
+    },
+    "roles": {
+      "chiefMedicalDirector": "Directeur médical en chef",
+      "headOfSurgery": "Chef de chirurgie",
+      "directorOfNursing": "Directrice des soins infirmiers",
+      "chiefFinancialOfficer": "Directeur financier"
+    }
+  },
+  "components": {
+    "appointmentModal": {
+      "title": "Demander un rendez-vous",
+      "subtitle": "Remplissez le formulaire ci-dessous et notre équipe vous contactera pour confirmer votre créneau.",
+      "fields": {
+        "fullName": {
+          "label": "Nom complet",
+          "placeholder": "Jean Dupont"
+        },
+        "email": {
+          "label": "Adresse e-mail",
+          "placeholder": "vous@exemple.com"
+        },
+        "phone": {
+          "label": "Numéro de téléphone",
+          "placeholder": "(555) 000-0000"
+        },
+        "department": {
+          "label": "Département",
+          "placeholder": "Choisissez un département..."
+        },
+        "message": {
+          "label": "Message (optionnel)",
+          "placeholder": "Décrivez brièvement vos symptômes ou le motif de votre visite..."
+        }
+      },
+      "validation": {
+        "error": "Veuillez corriger les erreurs surlignées ci-dessous.",
+        "submitError": "Échec de l'envoi de la demande de rendez-vous. Veuillez réessayer."
+      },
+      "status": {
+        "processing": "Traitement en cours...",
+        "submit": "Envoyer la demande"
+      },
+      "footer": {
+        "terms": "En envoyant, vous acceptez nos <1>Conditions et Politique de confidentialité</1>.",
+        "preMessage": {
+          "service": "Je suis intéressé par la réservation de {{serviceName}}.",
+          "doctor": "Je souhaite prendre rendez-vous avec {{doctorName}}."
+        }
+      }
+    },
+    "errorBoundary": {
+      "title": "Quelque chose s'est mal passé",
+      "description": "Nous avons rencontré une erreur inattendue. Notre équipe technique a été prévenue. Veuillez essayer de rafraîchir la page ou revenir à l'accueil.",
+      "refresh": "Rafraîchir la page",
+      "returnHome": "Retour à l'accueil"
+    },
+    "relatedArticles": {
+      "title": "Articles connexes"
+    },
+    "seo": {
+      "siteName": "Centre Médical Everleaf"
+    },
+    "themeSwitcher": {
+      "title": "Choisir un thème",
+      "aria": {
+        "selector": "Sélecteur de thème",
+        "list": "Thèmes disponibles",
+        "close": "Fermer le sélecteur de thème",
+        "open": "Ouvrir le sélecteur de thème"
+      }
+    },
+    "galleryModal": {
+      "aria": {
+        "viewer": "Visionneuse de galerie d'images"
+      },
+      "thumbnails": {
+        "alt": "vignette"
+      }
+    }
+  },
+  "nav": {
+    "home": "Accueil",
+    "about": "À propos",
+    "departments": "Départements",
+    "services": "Services",
+    "doctors": "Médecins",
+    "gallery": "Galerie",
+    "blog": "Articles",
+    "contact": "Contact",
+    "emergency": "Urgence",
+    "schedule": "Lun - Dim: 24 heures",
+    "media": "Presse & Média",
+    "brand": "Everleaf",
+    "brandSub": "Centre Médical"
+  },
+  "data": {
+    "doctors": {
+      "1": {
+        "name": "Dr Sarah Johnson",
+        "specialty": "Neurologue senior",
+        "bio": "Spécialisée dans les troubles neurologiques complexes avec plus de 15 ans d'expérience dans le traitement du cerveau et de la colonne vertébrale.",
+        "education": "MD de l'Université Johns Hopkins, PhD en neurologie",
+        "educationShort": "MD, PhD (Neurologie)"
+      },
+      "2": {
+        "name": "Dr Mark Williams",
+        "specialty": "Chef de cardiologie",
+        "bio": "Cardiologue dévoué se concentrant sur les soins cardiaques préventifs et les procédures chirurgicales peu invasives.",
+        "education": "MD de la Harvard Medical School, Fellowship à la Mayo Clinic",
+        "educationShort": "MD, Fellowship (Mayo)"
+      },
+      "3": {
+        "name": "Dr Emily Chen",
+        "specialty": "Pédiatre senior",
+        "bio": "Pédiatre passionnée connue pour son approche douce et son expertise dans le développement de la petite enfance.",
+        "education": "MD de l'Université de Stanford, Résidence au Boston Children's Hospital",
+        "educationShort": "MD, Résidence"
+      },
+      "4": {
+        "name": "Dr Leo Spaceman",
+        "specialty": "Chirurgien orthopédique",
+        "bio": "Chirurgien orthopédiste expert spécialisé dans les blessures sportives et les thérapies de remplacement articulaire.",
+        "education": "MD de la Yale School of Medicine",
+        "educationShort": "MD (Yale)"
+      },
+      "5": {
+        "name": "Dr Anita Patel",
+        "specialty": "Oncologue consultant",
+        "bio": "Oncologue de premier plan se concentrant sur des plans de traitement personnalisés du cancer et l'immunothérapie.",
+        "education": "MD de l'Université de Columbia, certifiée par le conseil d'oncologie",
+        "educationShort": "MD (Columbia)"
+      },
+      "6": {
+        "name": "Dr Ken Hurt",
+        "specialty": "Dermatologue senior",
+        "bio": "Dermatologue avec une vaste expérience dans les procédures de dermatologie esthétique et médicale.",
+        "education": "MD de l'UCLA Medical Center",
+        "educationShort": "MD (UCLA)"
+      },
+      "7": {
+        "name": "Dr David Kim",
+        "specialty": "Chirurgien général",
+        "bio": "Spécialiste des chirurgies laparoscopiques peu invasives et des procédures abdominales.",
+        "education": "MD de la Duke University School of Medicine",
+        "educationShort": "MD (Duke)"
+      },
+      "8": {
+        "name": "Dr Lisa Wong",
+        "specialty": "Ophtalmologue",
+        "bio": "Experte en chirurgie de la cataracte et en correction de la vue au laser avec une approche centrée sur le patient.",
+        "education": "MD de l'UCSF School of Medicine",
+        "educationShort": "MD (UCSF)"
+      },
+      "9": {
+        "name": "Dr Michael Stevens",
+        "specialty": "Chirurgien traumatologue",
+        "bio": "Chirurgien traumatologue expérimenté dédié à fournir des soins critiques dans des situations d'urgence.",
+        "education": "MD de l'Université de Chicago",
+        "educationShort": "MD (Chicago)"
+      },
+      "10": {
+        "name": "Dr Rachel Green",
+        "specialty": "Psychologue clinicienne",
+        "bio": "Spécialisée dans la thérapie cognitivo-comportementale et le soutien en santé mentale pour les patients atteints de maladies chroniques.",
+        "education": "PhD en psychologie de la NYU",
+        "educationShort": "PhD (NYU)"
+      },
+      "11": {
+        "name": "Dr Alan Grant",
+        "specialty": "Chirurgien pédiatrique",
+        "bio": "Axé sur les soins chirurgicaux pour les nourrissons, les enfants et les adolescents souffrant de pathologies congénitales.",
+        "education": "MD du Baylor College of Medicine",
+        "educationShort": "MD (Baylor)"
+      },
+      "12": {
+        "name": "Dr Olivia Martinez",
+        "specialty": "Cardiologue interventionnelle",
+        "bio": "Experte en santé cardiaque des femmes et en imagerie cardiovasculaire non invasive.",
+        "education": "MD de l'Université de Pennsylvanie",
+        "educationShort": "MD (UPenn)"
+      },
+      "13": {
+        "name": "Dr Michael Torres",
+        "specialty": "Biochimiste clinicien",
+        "bio": "Spécialisé dans la médecine de laboratoire diagnostique avec une expertise en diagnostic moléculaire.",
+        "education": "MD de l'Université du Michigan, PhD en chimie clinique",
+        "educationShort": "MD, PhD"
+      },
+      "14": {
+        "name": "Dr Sandra Mornay",
+        "specialty": "Spécialiste de la gestion de la douleur",
+        "bio": "Experte en gestion de la douleur chronique et en médecine de réadaptation avec une approche holistique.",
+        "education": "MD de l'Université Northwestern",
+        "educationShort": "MD (NWU)"
+      },
+      "15": {
+        "name": "Dr William Chen",
+        "specialty": "Anesthésiste",
+        "bio": "Assurer la sécurité des patients et la gestion de la douleur lors d'interventions chirurgicales complexes.",
+        "education": "MD de l'Université de Washington à St. Louis",
+        "educationShort": "MD (WUSTL)"
+      },
+      "16": {
+        "name": "Dr Emma Thompson",
+        "specialty": "Rhumatologue",
+        "bio": "Diagnostiquer et traiter l'arthrite et d'autres maladies des articulations, des muscles et des os.",
+        "education": "MD de l'Université Emory",
+        "educationShort": "MD (Emory)"
+      },
+      "17": {
+        "name": "Dr Samantha Johnson",
+        "specialty": "Spécialiste en chirurgie générale",
+        "bio": "Chirurgienne de premier plan spécialisée dans les interventions chirurgicales générales et d'urgence.",
+        "education": "MD de l'Université Johns Hopkins",
+        "educationShort": "MD (Johns Hopkins)"
+      },
+      "18": {
+        "name": "Dr Mathew Chen",
+        "specialty": "Chirurgien traumatologue et de soins aigus",
+        "bio": "Spécialisé en chirurgie traumatologique et en soins critiques pour les blessures mortelles.",
+        "education": "MD de l'Université de Pennsylvanie",
+        "educationShort": "MD (UPenn)"
+      },
+      "19": {
+        "name": "Dr Nikita Davis",
+        "specialty": "Chirurgie peu invasive",
+        "bio": "Pionnière des techniques chirurgicales laparoscopiques et assistées par robot.",
+        "education": "MD de l'Université de Stanford",
+        "educationShort": "MD (Stanford)"
+      },
+      "20": {
+        "name": "Dr Rachel Anderson",
+        "specialty": "Chef pathologiste",
+        "bio": "Experte en pathologie anatomique et clinique avec plus de 20 ans d'expérience en diagnostic.",
+        "education": "MD de l'Université de Columbia, Fellowship en pathologie",
+        "educationShort": "MD, Fellowship"
+      },
+      "21": {
+        "name": "Dr Lisa Chen",
+        "specialty": "Microbiologiste",
+        "bio": "Spécialisée dans les diagnostics de maladies infectieuses et les tests de résistance aux antimicrobiens.",
+        "education": "MD de l'UCSF, PhD en microbiologie",
+        "educationShort": "MD, PhD"
+      },
+      "22": {
+        "name": "Dr Sarah Jenkins",
+        "specialty": "Chef radiologue",
+        "bio": "Experte de premier plan en imagerie diagnostique et en procédures de radiologie interventionnelle.",
+        "education": "MD de la Yale School of Medicine",
+        "educationShort": "MD (Yale)"
+      },
+      "23": {
+        "name": "Dr Maya Lahan",
+        "specialty": "Kinésithérapeute principale",
+        "bio": "Spécialisée dans la rééducation sportive et la physiothérapie post-chirurgicale.",
+        "education": "DPT de l'Université de Californie du Sud",
+        "educationShort": "DPT (USC)"
+      },
+      "24": {
+        "name": "Dr Raymond Langston",
+        "specialty": "Ergothérapeute",
+        "bio": "Aider les patients à retrouver leur indépendance grâce à des programmes d'ergothérapie personnalisés.",
+        "education": "OTD de l'Université de Boston",
+        "educationShort": "OTD (Boston U)"
+      },
+      "25": {
+        "name": "Dr Emily Rodriguez",
+        "specialty": "Endocrinologue",
+        "bio": "Traitement des troubles hormonaux, y compris le diabète, les affections thyroïdiennes et le syndrome métabolique.",
+        "education": "MD de l'Université du Texas Southwestern",
+        "educationShort": "MD (UTSW)"
+      },
+      "26": {
+        "name": "Dr Emily Ross",
+        "specialty": "Pneumologue",
+        "bio": "Experte en médecine respiratoire et en soins critiques pour les maladies pulmonaires.",
+        "education": "MD de l'Université Cornell",
+        "educationShort": "MD (Cornell)"
+      },
+      "27": {
+        "name": "Dr James Wilson",
+        "specialty": "Gastro-entérologue",
+        "bio": "Spécialisé dans les troubles du système digestif et les procédures endoscopiques avancées.",
+        "education": "MD de l'Université de Chicago",
+        "educationShort": "MD (Chicago)"
+      },
+      "28": {
+        "name": "Dr John Chen",
+        "specialty": "Néphrologue",
+        "bio": "Spécialiste des maladies rénales avec une expertise en dialyse et en médecine de transplantation.",
+        "education": "MD de l'Université Duke",
+        "educationShort": "MD (Duke)"
+      },
+      "29": {
+        "name": "Dr Michael Chen",
+        "specialty": "Médecin d'urgence",
+        "bio": "Médecin urgentiste certifié avec une vaste expérience en traumatologie et en soins critiques.",
+        "education": "MD de l'Université de Georgetown",
+        "educationShort": "MD (Georgetown)"
+      },
+      "30": {
+        "name": "Dr Ashley Johnson",
+        "specialty": "Médecin de famille",
+        "bio": "Fournir des soins primaires complets aux patients de tous âges.",
+        "education": "MD de l'Université du Michigan",
+        "educationShort": "MD (U-Mich)"
+      },
+      "31": {
+        "name": "Dr Bereket Kinfe",
+        "specialty": "Spécialiste des maladies infectieuses",
+        "bio": "Expert dans le diagnostic et le traitement des maladies infectieuses complexes et de la médecine tropicale.",
+        "education": "MD de l'Université d'Addis-Abeba, Fellowship au CDC",
+        "educationShort": "MD, Fellowship"
+      },
+      "32": {
+        "name": "Dr Danel Mekonnen",
+        "specialty": "Hématologue",
+        "bio": "Spécialisé dans les troubles sanguins et la transplantation de moelle osseuse.",
+        "education": "MD de la Harvard Medical School",
+        "educationShort": "MD (Harvard)"
+      },
+      "33": {
+        "name": "Dr Eleanor Rigby",
+        "specialty": "Directrice médicale en chef",
+        "bio": "Fondatrice et directrice médicale en chef du Centre Médical Everleaf avec plus de 35 ans de leadership en santé.",
+        "education": "MD de l'Université Johns Hopkins, MBA de Wharton",
+        "educationShort": "MD, MBA"
+      },
+      "34": {
+        "name": "Dr Sarah Mitchell",
+        "specialty": "Néonatologue",
+        "bio": "Spécialisée dans les soins aux nouveau-nés gravement malades et aux nourrissons prématurés.",
+        "education": "MD de l'Université Yale, Fellowship en néonatologie",
+        "educationShort": "MD, Fellowship"
+      }
+    },
+    "departments": {
+      "all": {
+        "name": "Tous les départements",
+        "desc": "Explorez nos unités médicales spécialisées."
+      },
+      "cardiology": {
+        "name": "Cardiologie",
+        "desc": "Soins complets pour les affections cardiaques et vasculaires, y compris les tests de diagnostic et la chirurgie."
+      },
+      "neurology": {
+        "name": "Neurologie",
+        "desc": "Expertise en diagnostic et traitement des troubles du cerveau, de la moelle épinière et des nerfs."
+      },
+      "pediatrics": {
+        "name": "Pédiatrie",
+        "desc": "Soins dédiés aux nourrissons, enfants et adolescents dans un environnement convivial."
+      },
+      "surgery": {
+        "name": "Chirurgie",
+        "desc": "Procédures chirurgicales avancées utilisant des techniques mini-invasives pour une récupération plus rapide."
+      },
+      "dental": {
+        "name": "Clinique dentaire",
+        "desc": "Soins bucco-dentaires complets, du nettoyage de routine aux chirurgies dentaires complexes."
+      },
+      "ophthalmology": {
+        "name": "Ophtalmologie",
+        "desc": "Services de soins oculaires de pointe, y compris les tests de vision et la chirurgie de la cataracte."
+      },
+      "laboratory": {
+        "name": "Laboratoire",
+        "desc": "Services de tests diagnostiques précis garantissant des résultats exacts pour de meilleurs plans de traitement."
+      },
+      "radiology": {
+        "name": "Radiologie",
+        "desc": "Services d'imagerie avancés comprenant l'IRM, le scanner, les rayons X et l'échographie."
+      },
+      "rehabilitation": {
+        "name": "Rééducation",
+        "desc": "Aider les patients à retrouver leur indépendance après une blessure ou une chirurgie grâce à la physiothérapie."
+      },
+      "orthopedics": {
+        "name": "Orthopédie",
+        "desc": "Soins experts pour les affections musculo-squelettiques, y compris les articulations, les os et les blessures sportives."
+      },
+      "oncology": {
+        "name": "Oncologie",
+        "desc": "Soins complets contre le cancer et options de traitement avancées."
+      },
+      "dermatology": {
+        "name": "Dermatologie",
+        "desc": "Soins experts de la peau, des cheveux et des ongles pour les préoccupations médicales et esthétiques."
+      },
+      "medicine": {
+        "name": "Médecine interne",
+        "desc": "Soins spécialisés pour les maladies des adultes, axés sur la prévention et la gestion à long terme."
+      },
+      "emergency": {
+        "name": "Médecine d'urgence",
+        "desc": "Soins critiques 24h/24 et 7j/7 pour les pathologies engageant le pronostic vital et les besoins médicaux urgents."
+      },
+      "administration": {
+        "name": "Administration",
+        "desc": "Direction de l'hôpital et gestion administrative assurant l'excellence opérationnelle."
+      }
+    },
+    "categories": {
+      "all": "Tout",
+      "facilities": "Installations",
+      "rooms": "Chambres",
+      "equipment": "Équipement",
+      "staff": "Personnel",
+      "healthTips": "Conseils santé",
+      "announcements": "Annonces",
+      "research": "Recherche",
+      "medicalAwareness": "Sensibilisation médicale"
+    },
+    "services": {
+      "all": "Voir tous les services",
+      "diagnostics": {
+        "title": "Services de diagnostic",
+        "desc": "Un diagnostic précis et opportun est la première étape d'un traitement efficace. Notre établissement est équipé des derniers outils de diagnostic."
+      },
+      "laboratory": {
+        "title": "Laboratoire",
+        "desc": "Notre laboratoire clinique complet fonctionne 24h/24, 7j/7, fournissant des tests approfondis en hématologie, chimie, microbiologie et plus."
+      },
+      "imaging": {
+        "title": "Imagerie",
+        "desc": "Nous proposons des services d'imagerie médicale haute résolution, notamment l'IRM, le scanner, l'échographie et la radiographie numérique."
+      },
+      "pharmacy": {
+        "title": "Pharmacie",
+        "desc": "Notre pharmacie interne garantit aux patients un accès immédiat aux médicaments nécessaires, offrant des conseils sur ordonnance."
+      },
+      "emergency": {
+        "title": "Soins d'urgence",
+        "desc": "Ouvert 24h/24, 7j/7, notre service d'urgence est composé de spécialistes prêts à gérer les situations critiques avec rapidité."
+      },
+      "preventive": {
+        "title": "Bilans préventifs",
+        "desc": "Anticipez les problèmes de santé potentiels grâce à nos forfaits complets de dépistage de santé, adaptés à tous les âges et styles de vie."
+      }
+    },
+    "testimonials": {
+      "1": {
+        "name": "James Anderson",
+        "role": "Patient rétabli",
+        "text": "Les soins et l'attention que j'ai reçus à Everleaf étaient exceptionnels. Les médecins ont pris le temps d'expliquer ma condition."
+      },
+      "2": {
+        "name": "Sarah Lewis",
+        "role": "Patient en chirurgie",
+        "text": "Les installations sont de premier ordre et impeccablement propres. Je me suis senti en sécurité tout au long de mon séjour."
+      },
+      "3": {
+        "name": "Michael Chen",
+        "role": "Contrôle régulier",
+        "text": "De la réception aux spécialistes, tout le monde était incroyablement professionnel et gentil. Merci pour votre service incroyable."
+      },
+      "4": {
+        "name": "Emily Davis",
+        "role": "Soins de maternité",
+        "text": "Accoucher à Everleaf a été une belle expérience. Les infirmières étaient d'un grand soutien et l'équipe néonatale est de classe mondiale."
+      },
+      "5": {
+        "name": "Robert Wilson",
+        "role": "Patient cardiaque",
+        "text": "Le Dr Williams m'a sauvé la vie. La rapidité et l'efficacité de l'unité cardiaque pendant mon urgence ont été miraculeuses."
+      },
+      "6": {
+        "name": "Jennifer Lopez",
+        "role": "Parent en pédiatrie",
+        "text": "Mes enfants aiment maintenant aller chez le médecin. Le Dr Chen est fantastique avec les enfants et rend tout le processus rassurant."
+      }
+    },
+    "gallery": {
+      "atrium": {
+        "title": "Atrium principal et réception",
+        "desc": "Notre hall principal spacieux et accueillant conçu pour le confort des patients."
+      },
+      "laboratory": {
+        "title": "Laboratoire de diagnostic",
+        "desc": "Laboratoire de pointe équipé de machines de diagnostic avancées."
+      },
+      "recovery-suite": {
+        "title": "Suite de récupération privée",
+        "desc": "Chambres privées conçues pour offrir un environnement de repos et de guérison."
+      },
+      "consultation": {
+        "title": "Équipe de consultation experte",
+        "desc": "Notre équipe multidisciplinaire collaborant sur des cas de patients complexes."
+      },
+      "operation": {
+        "title": "Bloc opératoire moderne",
+        "desc": "Suites chirurgicales avancées dotées des dernières technologies médicales."
+      },
+      "waiting-area": {
+        "title": "Zones d'attente confortables",
+        "desc": "Zones d'attente calmes et confortables pour les familles et les visiteurs."
+      },
+      "mri": {
+        "title": "Suite d'imagerie IRM",
+        "desc": "Scanner IRM à haut champ offrant une qualité d'image exceptionnelle pour un diagnostic précis."
+      },
+      "rehabilitation": {
+        "title": "Centre de rééducation",
+        "desc": "Salle de physiothérapie entièrement équipée pour la rééducation et le rétablissement des patients."
+      },
+      "pharmacy": {
+        "title": "Services de pharmacie",
+        "desc": "Pharmacie sur place approvisionnée en une large gamme de médicaments et de fournitures de santé."
+      },
+      "pediatric": {
+        "title": "Service de pédiatrie",
+        "desc": "Environnement coloré et sûr conçu pour nos plus jeunes patients."
+      },
+      "emergency-dept": {
+        "title": "Service des urgences",
+        "desc": "Entrée des urgences 24h/24 et 7j/7 équipée pour une réponse rapide et des soins de traumatologie."
+      },
+      "neonatal-icu": {
+        "title": "USI néonatale",
+        "desc": "Unités de soins intensifs spécialisées pour les nouveau-nés nécessitant une attention critique."
+      }
+    },
+    "themes": {
+      "default": {
+        "label": "Bleu clinique",
+        "description": "Bleu médical propre et professionnel"
+      },
+      "dark": {
+        "label": "Mode sombre",
+        "description": "Facile pour les yeux, bleu marine profond"
+      },
+      "forest": {
+        "label": "Vert forêt",
+        "description": "Vert de guérison naturel et calme"
+      },
+      "warm": {
+        "label": "Ambre chaud",
+        "description": "Sensation de clinique privée accueillante"
+      },
+      "high-contrast": {
+        "label": "Contraste élevé",
+        "description": "Accessibilité WCAG AAA"
+      }
+    }
+  },
+  "footer": {
+    "tagline": "Des soins qui grandissent avec vous. Engagés pour le bien-être tout au long de la vie grâce à des soins compatissants, à l'innovation et à la confiance.",
+    "links": "Liens importants",
+    "contact": "Contactez-nous",
+    "address": {
+      "street": "123 Health Avenue, Medical District,",
+      "cityStateZip": "Addis-Abeba, AA 10012"
+    },
+    "newsletter": {
+      "title": "Newsletter",
+      "description": "Abonnez-vous à notre newsletter pour recevoir les dernières nouvelles et mises à jour.",
+      "placeholder": "Votre email",
+      "button": "S'abonner",
+      "subscribing": "Abonnement...",
+      "success": "Abonné avec succès !",
+      "successDesc": "Surveillez votre boîte de réception pour nos dernières mises à jour.",
+      "subscribeAnother": "S'abonner avec un autre e-mail",
+      "invalidEmail": "Email invalide",
+      "error": "Échec de l'abonnement. Veuillez réessayer."
+    },
+    "rights": "Tous droits réservés.",
+    "privacy": "Politique de confidentialité",
+    "terms": "Conditions d'utilisation"
+  },
+  "pages": {
+    "home": {
+      "hero": {
+        "badge": "Centre Médical Everleaf",
+        "title": "Des soins qui grandissent avec vous.",
+        "titleStart": "Des soins qui grandissent ",
+        "titleHighlight": "avec vous.",
+        "subtitle": "Engagés pour le bien-être tout au long de la vie grâce à des soins compatissants, à l'innovation et à la confiance. Découvrez des soins de classe mondiale dans un environnement serein.",
+        "appointment": "Demander un rendez-vous",
+        "patientsRecovered": "Patients heureux guéris cette année.",
+        "stats": {
+          "recoveredCount": "{{count}}k+"
+        },
+        "satisfaction": "98% de satisfaction",
+        "satisfactionSub": "Basé sur les avis des patients"
+      },
+      "infoCards": {
+        "emergency": {
+          "title": "Urgence",
+          "desc": "Soins immédiats pour les situations critiques.",
+          "call": "Appelez le 911"
+        },
+        "specialist": {
+          "title": "Trouver un spécialiste",
+          "desc": "Recherchez dans notre répertoire de médecins experts.",
+          "search": "Rechercher des médecins"
+        },
+        "departments": {
+          "title": "Nos départements",
+          "desc": "Explorez nos unités médicales spécialisées.",
+          "view": "Voir les départements"
+        }
+      },
+      "services": {
+        "badge": "Excellence médicale",
+        "title": "Nos services spécialisés",
+        "subtitle": "Nous offrons une large gamme de services médicaux pour répondre à tous les besoins de votre famille, des bilans de routine aux chirurgies complexes.",
+        "cardiologyDesc": "Soins cardiaques experts comprenant le diagnostic, le traitement et les services de cardiologie préventive.",
+        "neurologyDesc": "Diagnostic et traitement avancés pour les troubles affectant le cerveau, la colonne vertébrale et les nerfs.",
+        "pediatricsDesc": "Soins compatissants pour les nourrissons, les enfants et les adolescents dans un environnement adapté aux enfants.",
+        "laboratoryDesc": "Services de laboratoire de pointe fournissant des résultats de diagnostic précis et rapides."
+      },
+      "experts": {
+        "badge": "Nos experts",
+        "title": "Rencontrez nos meilleurs spécialistes",
+        "overlayTitle": "Soins experts",
+        "overlayDesc": "Engagés à fournir les plus hauts standards d'excellence médicale et de soins compatissants aux patients.",
+        "bookNow": "Réserver maintenant",
+        "exp": "Exp."
+      },
+      "cta": {
+        "badge": "Commencez votre voyage",
+        "title": "Prêt à donner la priorité à votre santé ?",
+        "titleStart": "Prêt à donner la priorité ",
+        "titleHighlight": "à votre santé ?",
+        "subtitle": "Prenez rendez-vous aujourd'hui pour consulter nos experts. Nous nous engageons à vous aider à mener une vie plus saine et plus heureuse.",
+        "button": "Prendre rendez-vous maintenant"
+      },
+      "testimonials": {
+        "badge": "Témoignages",
+        "title": "Histoires de patients",
+        "subtitle": "Écoutez ceux qui ont fait l'expérience de nos soins de première main.",
+        "readOnGoogle": "Lire sur Google"
+      },
+      "partners": {
+        "title": "Fait confiance par nos partenaires d'assurance"
+      }
+    },
+    "about": {
+      "hero": {
+        "badge": "Depuis 1988",
+        "titleStart": "Un héritage de soins,",
+        "titleHighlight": "Un avenir de guérison.",
+        "subtitle": "Depuis plus de 35 ans, le Centre Médical Everleaf est un phare d'espoir. Nous allions des soins compatissants à l'innovation médicale de pointe pour améliorer la vie de notre communauté.",
+        "meetTeam": "Rencontrez notre équipe",
+        "viewFacilities": "Voir nos installations"
+      },
+      "stats": {
+        "years": "Années de service",
+        "patients": "Patients guéris",
+        "specialists": "Spécialistes"
+      },
+      "story": {
+        "badge": "Notre histoire",
+        "title": "De humbles débuts à l'excellence médicale",
+        "p1": "Fondé en 1988 par le Dr Eleanor Rigby avec une petite équipe d'infirmières dévouées, le Centre Médical Everleaf a commencé avec une mission simple : fournir des soins de santé accessibles et de haute qualité à la communauté locale.",
+        "p2": "Aujourd'hui, nous sommes devenus un hôpital de soins quaternaires multi-spécialités de 500 lits. Malgré notre expansion, notre philosophie de base reste inchangée : donner la priorité au patient.",
+        "patientCentric": {
+          "title": "Centré sur le patient",
+          "desc": "Chaque décision que nous prenons est centrée sur le bien-être et le confort du patient."
+        },
+        "innovation": {
+          "title": "Innovation",
+          "desc": "Adopter continuellement les dernières technologies et recherches médicales."
+        }
+      },
+      "quality": {
+        "badge": "Normes internationales",
+        "title": "Qualité et sécurité sans compromis",
+        "subtitle": "Chez Everleaf, la sécurité des patients est notre priorité absolue. Nous adhérons à des normes et protocoles internationaux rigoureux pour assurer un environnement sûr pour la guérison.",
+        "item1": "Installation accréditée JCI",
+        "item2": "Certifié ISO 9001:2015 pour la gestion de la qualité",
+        "item3": "Gagnant du Prix national de la sécurité des patients 2023",
+        "stats": {
+          "safety": "Conformité de sécurité",
+          "infection": "Contrôle des infections",
+          "awards": "Prix remportés",
+          "staff": "Personnel médical"
+        }
+      },
+      "values": {
+        "badge": "Nos principes fondamentaux",
+        "title": "Les valeurs qui nous animent",
+        "subtitle": "Notre culture repose sur un socle de confiance, d'intégrité et un engagement inébranlable envers nos patients.",
+        "compassion": {
+          "title": "Compassion",
+          "desc": "Nous traitons tout le monde avec gentillesse, empathie et compréhension."
+        },
+        "excellence": {
+          "title": "Excellence",
+          "desc": "Nous visons les normes les plus élevées dans tout ce que nous faisons."
+        },
+        "integrity": {
+          "title": "Intégrité",
+          "desc": "Nous adhérons à des principes éthiques élevés et à des normes professionnelles."
+        }
+      },
+      "leadership": {
+        "badge": "Notre leadership",
+        "title": "Conseil d'administration",
+        "subtitle": "Guider notre vision avec des décennies d'expertise médicale et administrative combinée.",
+        "members": {
+          "eleanor": { "name": "Dr Eleanor Rigby" },
+          "james": { "name": "Dr James Wilson" },
+          "sarah": { "name": "Mme Sarah Connor" },
+          "danel": { "name": "M. Daniel Mekonnen" }
+        },
+        "desc": "Directeur dévoué engagé dans l'excellence de l'administration des soins de santé."
+      },
+      "infrastructure": {
+        "badge": "Infrastructures",
+        "title": "Installations modernes",
+        "viewGallery": "Voir toute la galerie",
+        "operating": {
+          "title": "Salles d'opération avancées",
+          "desc": "Équipées de capacités de chirurgie robotique."
+        },
+        "recovery": {
+          "title": "Suites de récupération privées",
+          "desc": "Conçues pour l'intimité et le confort."
+        },
+        "icu": {
+          "title": "Unités de soins intensifs",
+          "desc": "Surveillance et soutien 24h/24, 7j/7."
+        }
+      },
+      "cta": {
+        "badge": "Faites partie de notre voyage",
+        "titleStart": "Prêt à vivre une",
+        "titleHighlight": "Meilleurs soins de santé ?",
+        "subtitle": "Que vous recherchiez un traitement de classe mondiale ou que vous souhaitiez rejoindre notre équipe, Everleaf vous souhaite la bienvenue.",
+        "visitUs": "Visitez-nous aujourd'hui",
+        "contactAdmin": "Contacter l'administration"
+      }
+    },
+    "doctors": {
+      "hero": {
+        "title": "Trouver un médecin",
+        "subtitle": "Consultez notre répertoire de professionnels de la santé et de spécialistes distingués."
+      },
+      "filters": {
+        "searchPlaceholder": "Rechercher par nom de médecin...",
+        "clear": "Effacer les filtres",
+        "noResults": "Aucun médecin trouvé",
+        "noResultsDesc": "Essayez d'ajuster votre recherche.",
+        "allDepts": "Tous les départements",
+        "allSpecialties": "Toutes les spécialités",
+        "allGenders": "Tous les genres",
+        "genders": {
+          "male": "Homme",
+          "female": "Femme"
+        },
+        "specialties": {
+          "surgeon": "Chirurgien",
+          "senior": "Consultant senior",
+          "chief": "Chef de département",
+          "specialist": "Spécialiste"
+        }
+      },
+      "card": {
+        "about": "À propos",
+        "education": "Éducation",
+        "deptPrefix": "Département de ",
+        "requestAppointment": "Demander un rendez-vous"
+      }
+    },
+    "blog": {
+      "hero": {
+        "title": "Blog santé et actualités",
+        "subtitle": "Lisez les dernières informations médicales."
+      },
+      "articles": {
+        "title": "Dernières informations",
+        "all": "Tous les articles",
+        "noResults": "Aucun article trouvé.",
+        "viewAll": "Voir tout",
+        "categories": {
+          "all": "Tout",
+          "healthtips": "Conseils santé",
+          "announcements": "Annonces",
+          "research": "Recherche",
+          "medicalawareness": "Sensibilisation médicale"
+        }
+      },
+      "article": {
+        "back": "Retour aux articles",
+        "share": "Partager l'article",
+        "related": "Articles connexes",
+        "readNext": "Lire la suite"
+      },
+      "newsletter": {
+        "badge": "Restez connecté",
+        "title": "L'actualité santé livrée chez vous",
+        "subtitle": "Rejoignez plus de 50 000 abonnés.",
+        "subtitleSidebar": "Recevez des conseils de santé et des nouvelles dans votre boîte de réception.",
+        "privacy": "Nous respectons votre vie privée."
+      },
+      "data": {
+        "preventive-cardiology": {
+          "title": "5 conseils essentiels pour la santé cardiaque préventive",
+          "excerpt": "Les maladies cardiaques restent la principale cause de décès dans le monde.",
+          "seoTitle": "Cardiologie préventive : 5 conseils essentiels",
+          "seoDescription": "Conseils d'experts sur la prévention des maladies cardiaques.",
+          "author": "Dr Mark Williams",
+          "authorTitle": "Chef du service de cardiologie",
+          "authorBio": "Le Dr Williams est un cardiologue dévoué qui se concentre sur les soins cardiaques préventifs et les interventions chirurgicales mini-invasives. Il dirige notre programme complet de bien-être cardiovasculaire.",
+          "date": "14 fév. 2026",
+          "read": "6 min de lecture",
+          "content": {
+            "0": {
+              "text": "Les maladies cardiaques restent la principale cause de décès dans le monde."
+            },
+            "1": {
+              "text": "\"Le meilleur moment pour s'occuper de son cœur était il y a 20 ans.\""
+            },
+            "2": {
+              "text": "1. Connaître vos chiffres"
+            },
+            "3": {
+              "text": "Les dépistages réguliers sont la base."
+            },
+            "4": {
+              "title": "Indicateurs essentiels :",
+              "items": {
+                "0": {
+                  "metric": "Pression artérielle",
+                  "target": "Moins de 120/80 mmHg"
+                },
+                "1": {
+                  "metric": "Cholestérol total",
+                  "target": "Moins de 200 mg/dL"
+                },
+                "2": { "metric": "Glycémie", "target": "Moins de 100 mg/dL" },
+                "3": { "metric": "IMC", "target": "18.5 – 24.9" }
+              }
+            }
+          }
+        },
+        "diabetes-management": {
+          "title": "Nouvelle percée dans la gestion du diabète grâce à l'IA",
+          "excerpt": "Le dernier essai clinique d'EverLeaf montre que la gestion du diabète assistée par l'IA peut réduire les taux d'A1C de 2,5 %.",
+          "author": "Dr Mark Williams",
+          "authorTitle": "Chef du service de cardiologie",
+          "authorBio": "Le Dr Williams est également un chercheur de premier plan dans le domaine de l'endocrinologie, explorant les intersections entre la santé cardiaque et les troubles métaboliques comme le diabète.",
+          "date": "12 janv. 2026",
+          "read": "7 min de lecture"
+        },
+        "immune-system": {
+          "title": "5 superaliments pour booster votre système immunitaire cet hiver",
+          "excerpt": "À l'approche de l'hiver, ces cinq superaliments peuvent donner à votre système immunitaire les vitamines et antioxydants dont il a besoin.",
+          "author": "Dr Emily Rodriguez",
+          "authorTitle": "Endocrinologue",
+          "authorBio": "Le Dr Rodriguez traite les troubles hormonaux, notamment le diabète, les affections thyroïdiennes et le syndrome métabolique. Elle est passionnée par la nutrition fonctionnelle et son rôle dans la santé immunitaire.",
+          "date": "08 nov. 2025",
+          "read": "4 min de lecture"
+        },
+        "pediatric-wing": {
+          "title": "EverLeaf ouvre une nouvelle aile pédiatrique dans l'aile ouest",
+          "excerpt": "La nouvelle aile pédiatrique du Centre Médical EverLeaf comprend 50 chambres privées et un service d'urgence pédiatrique dédié.",
+          "author": "Dr Emily Chen",
+          "authorTitle": "Pédiatre senior",
+          "authorBio": "Le Dr Chen est une pédiatre passionnée connue pour son approche douce et son expertise dans le développement de la petite enfance. Elle a supervisé la conception et la mise en œuvre de la nouvelle aile pédiatrique.",
+          "date": "01 nov. 2025",
+          "read": "2 min de lecture"
+        },
+        "anxiety-in-teens": {
+          "title": "Reconnaître les premiers signes d'anxiété chez les adolescents",
+          "excerpt": "Les troubles anxieux sont de plus en plus fréquents chez les adolescents. Identifier les symptômes tôt peut mener à de meilleurs résultats.",
+          "author": "Dr Rachel Green",
+          "authorTitle": "Psychologue clinicienne",
+          "authorBio": "Le Dr Green est spécialisée dans la thérapie cognitivo-comportementale et le soutien en santé mentale pour les patients atteints de maladies chroniques. Elle travaille en étroite collaboration avec les familles pour créer des environnements favorables aux adolescents confrontés à l'anxiété et à la dépression.",
+          "date": "28 oct. 2025",
+          "read": "6 min de lecture"
+        },
+        "flu-season": {
+          "title": "Saison de la grippe 2025 : Pourquoi le vaccin est plus important que jamais",
+          "excerpt": "Avec le relâchement des précautions, les virus circulent plus librement. Voici pourquoi se faire vacciner cette saison est crucial.",
+          "author": "Dr Bereket Kinfe",
+          "authorTitle": "Spécialiste des maladies infectieuses",
+          "authorBio": "Le Dr Kinfe est un expert dans le diagnostic et le traitement des maladies infectieuses complexes. Il dirige le programme annuel de vaccination communautaire d'EverLeaf et conseille sur les stratégies de prévention de la grippe saisonnière.",
+          "date": "15 oct. 2025",
+          "read": "3 min de lecture"
+        },
+        "senior-mobility": {
+          "title": "Mobilité chez les seniors : le lien entre la marche et la santé cognitive",
+          "excerpt": "Une nouvelle étude montre que les seniors maintenant une marche rapide ont 40 % de risques en moins de développer des troubles cognitifs.",
+          "author": "Dr Sarah Johnson",
+          "authorTitle": "Neurologue senior",
+          "authorBio": "Le Dr Johnson est spécialisée dans les troubles neurologiques complexes avec plus de 15 ans d'expérience. Ses recherches portent sur le lien entre la mobilité physique et la santé cognitive chez les personnes âgées.",
+          "date": "10 oct. 2025",
+          "read": "7 min de lecture"
+        }
+      }
+    },
+    "contact": {
+      "hero": {
+        "title": "Contactez le centre médical Everleaf",
+        "titleStart": "Contactez le centre médical",
+        "titleHighlight": "Everleaf",
+        "subtitle": "Nous sommes là pour vous aider. Que vous ayez besoin de prendre rendez-vous, que vous ayez des questions sur nos services ou que vous ayez besoin d'une assistance d'urgence, notre équipe est prête à répondre."
+      },
+      "emergency": {
+        "title": "Cas d'urgence",
+        "subtitle": "Pour les urgences vitales, appelez immédiatement.",
+        "phone": "911"
+      },
+      "inquiries": {
+        "title": "Demandes générales",
+        "phone": "+251 954 123-456",
+        "email": "info@everleaf.com"
+      },
+      "hours": {
+        "title": "Heures de travail",
+        "monFri": "Lun - Ven",
+        "sat": "Samedi",
+        "sun": "Dimanche"
+      },
+      "form": {
+        "title": "Envoyez-nous un message",
+        "success": "Message envoyé !",
+        "successDesc": "Merci de nous avoir contactés. Notre équipe de support vous répondra dans les 24 heures.",
+        "sendAnother": "Envoyer un autre message",
+        "error": "Échec de l'envoi du message. Veuillez réessayer plus tard.",
+        "labels": {
+          "fullName": "Nom complet",
+          "email": "Adresse e-mail",
+          "subject": "Sujet",
+          "message": "Message"
+        },
+        "placeholders": {
+          "fullName": "Jean Dupont",
+          "email": "jean@example.com",
+          "subject": "Sélectionnez un sujet",
+          "message": "Comment pouvons-nous vous aider ?"
+        },
+        "subjects": {
+          "general": "Demande générale",
+          "appointment": "Demande de rendez-vous",
+          "feedback": "Commentaire",
+          "billing": "Question de facturation",
+          "other": "Autre"
+        },
+        "submit": "Envoyer le message",
+        "submitting": "Envoi du message..."
+      },
+      "directions": {
+        "title": "Accès et transports",
+        "transit": {
+          "title": "Transports en commun",
+          "desc": "Les lignes de bus M15, M22 s'arrêtent directement devant l'entrée principale."
+        },
+        "parking": {
+          "title": "Parking",
+          "desc": "Un parking pour les visiteurs est disponible sur la 4ème avenue (5 Br/h). Service de voiturier disponible à l'entrée principale."
+        }
+      }
+    },
+    "appointmentConfirmation": {
+      "hero": {
+        "title": "Merci, {{name}} !",
+        "subtitle": "Votre demande de rendez-vous a été reçue. Notre équipe examinera vos coordonnées et vous contactera à <1>{{email}}</1> ou <1>{{phone}}</1> dans les 24 heures pour confirmer votre rendez-vous."
+      },
+      "summary": {
+        "title": "Résumé de la demande",
+        "labels": {
+          "patientName": "Nom du patient",
+          "department": "Département",
+          "doctor": "Médecin demandé",
+          "submittedOn": "Soumis le",
+          "email": "E-mail",
+          "phone": "Téléphone",
+          "referenceId": "ID de référence",
+          "notes": "Notes complémentaires"
+        }
+      },
+      "actions": {
+        "returnHome": "Retour à l'accueil",
+        "exploreBlog": "Explorer les articles de santé"
+      },
+      "footer": {
+        "secure": "Vos informations de santé sont sécurisées et protégées."
+      }
+    },
+    "gallery": {
+      "hero": {
+        "badge": "Notre environnement",
+        "title": "Galerie de l'hôpital",
+        "subtitle": "Explorez nos installations de pointe, nos chambres de patients confortables et l'environnement dédié que nous avons construit pour la guérison et le rétablissement."
+      },
+      "filters": {
+        "all": "Toutes les photos",
+        "facilities": "Installations",
+        "rooms": "Chambres",
+        "equipment": "Équipement",
+        "staff": "Personnel"
+      },
+      "card": {
+        "viewLarger": "Agrandir"
+      },
+      "loadMore": "Charger plus de photos"
+    },
+    "notFound": {
+      "hero": {
+        "badge": "Erreur 404",
+        "title": "Page non trouvée",
+        "subtitle": "Nous ne semblons pas trouver la page que vous recherchez. Elle a peut-être été supprimée, renommée ou est temporairement indisponible."
+      },
+      "actions": {
+        "returnHome": "Retour à l'accueil",
+        "contactSupport": "Contacter le support"
+      }
+    },
+    "privacy": {
+      "hero": {
+        "badge": "Documentation légale",
+        "title": "Politique de confidentialité et conditions d'utilisation",
+        "subtitle": "Nous nous engageons à protéger votre vie privée et à assurer la transparence dans la manière dont nous traitons vos données. Veuillez lire attentivement nos conditions et politiques.",
+        "lastUpdated": "Dernière mise à jour : 13 février 2026"
+      },
+      "toc": {
+        "title": "Table des matières",
+        "items": {
+          "terms": "Conditions d'utilisation",
+          "disclaimer": "Avis médical",
+          "protection": "Protection des données",
+          "collection": "Collecte d'informations",
+          "rights": "Droits du patient",
+          "cookies": "Politique de cookies",
+          "contact": "Informations de contact"
+        }
+      },
+      "sections": {
+        "intro": {
+          "title": "Introduction",
+          "content": "Bienvenue au Centre Médical Everleaf (\"nous\", \"notre\" ou \"nos\"). Cette page contient nos conditions d'utilisation et notre politique de confidentialité. En accédant à notre site Web, en prenant des rendez-vous ou en utilisant nos services, vous acceptez de vous conformer à ces conditions et consentez à nos pratiques en matière de données."
+        },
+        "terms": {
+          "title": "Conditions d'utilisation",
+          "content": "En accédant à ce site Web, vous acceptez ces conditions d'utilisation dans leur intégralité. Ne continuez pas à utiliser le site Web du Centre Médical Everleaf si vous n'acceptez pas toutes les conditions d'utilisation énoncées sur cette page.",
+          "list": {
+            "license": "Licence : Sauf indication contraire, le Centre Médical Everleaf et/ou ses concédants de licence détiennent les droits de propriété intellectuelle pour tout le matériel sur ce site Web. Tous les droits de propriété intellectuelle sont réservés.",
+            "conduct": "Conduite de l'utilisateur : Vous ne devez pas utiliser ce site Web d'une manière qui cause ou pourrait causer des dommages au site Web ou une altération de la disponibilité ou de l'accessibilité du site Web.",
+            "security": "Sécurité du compte : Si vous créez un compte ou réservez un rendez-vous, vous êtes responsable du maintien de la confidentialité de vos informations personnelles et des détails de votre réservation."
+          }
+        },
+        "disclaimer": {
+          "title": "Avis médical",
+          "subtitle": "Pas de conseils médicaux",
+          "content": "Le contenu fourni sur ce site Web, y compris les articles de blog, les descriptions de services et d'autres documents, est à titre informatif uniquement. Il n'est <1>pas destiné à remplacer un avis médical professionnel, un diagnostic ou un traitement</1>. Demandez toujours l'avis de votre médecin ou d'un autre professionnel de la santé qualifié pour toute question que vous pourriez avoir concernant une condition médicale. Ne négligez jamais un avis médical professionnel ou ne tardez pas à le solliciter en raison de quelque chose que vous avez lu sur ce site Web.",
+          "emergency": "En cas d'urgence médicale, appelez immédiatement le 911."
+        },
+        "protection": {
+          "title": "Principes de protection des données",
+          "content": "Nous adhérons aux principes de protection des données tels qu'énoncés dans le Règlement Général sur la Protection des Données (RGPD) et les directives HIPAA. Vos données seront :",
+          "list": [
+            "Traitées de manière licite, loyale et transparente.",
+            "Collectées à des fins spécifiées, explicites et légitimes.",
+            "Adéquates, pertinentes et limitées à ce qui est nécessaire.",
+            "Tenues à jour et exactes."
+          ]
+        },
+        "collection": {
+          "title": "Collecte d'informations",
+          "content": "Nous collectons plusieurs types d'informations à diverses fins pour fournir et améliorer notre service pour vous.",
+          "personal": {
+            "title": "Données personnelles",
+            "content": "Lors de l'utilisation de notre service, nous pouvons vous demander de nous fournir certaines informations d'identification personnelle qui peuvent être utilisées pour vous contacter ou vous identifier (\"Données personnelles\"). Celles-ci peuvent inclure, mais sans s'y limiter : l'adresse e-mail, le prénom et le nom, le numéro de téléphone, l'adresse, l'état, la province, le code postal, la ville."
+          },
+          "medical": {
+            "title": "Données médicales",
+            "content": "Lorsque vous prenez rendez-vous ou visitez notre établissement, nous collectons les informations de santé nécessaires à vos soins. Celles-ci sont protégées par des lois strictes sur la confidentialité médicale (HIPAA/RGPD)."
+          },
+          "usage": {
+            "title": "Données d'utilisation",
+            "content": "Nous pouvons également collecter des informations sur la manière dont le service est accédé et utilisé (\"Données d'utilisation\"). Ces données d'utilisation peuvent inclure des informations telles que l'adresse de protocole Internet de votre ordinateur (par exemple, l'adresse IP), le type de navigateur, la version du navigateur, les pages de notre service que vous visitez, l'heure et la date de votre visite, le temps passé sur ces pages, les identifiants uniques de l'appareil et d'autres données de diagnostic."
+          }
+        },
+        "rights": {
+          "title": "Vos droits en tant que patient",
+          "content": "En vertu de la loi sur la protection des données, vous avez des droits comprenant :",
+          "items": {
+            "access": {
+              "title": "Droit d'accès",
+              "content": "Vous avez le droit de nous demander des copies de vos informations médicales personnelles."
+            },
+            "rectification": {
+              "title": "Droit de rectification",
+              "content": "Vous avez le droit de nous demander de rectifier les informations personnelles que vous jugez inexactes."
+            },
+            "erasure": {
+              "title": "Droit à l'effacement",
+              "content": "Vous avez le droit de nous demander d'effacer vos informations personnelles dans certaines circonstances."
+            },
+            "restriction": {
+              "title": "Droit à la restriction",
+              "content": "Vous avez le droit de nous demander de restreindre le traitement de vos informations personnelles."
+            }
+          }
+        },
+        "cookies": {
+          "title": "Politique de cookies",
+          "content": "Nous utilisons des cookies et des technologies de suivi similaires pour suivre l'activité sur notre service et conserver certaines informations. Vous pouvez demander à votre navigateur de refuser tous les cookies ou de vous indiquer quand un cookie est envoyé. Cependant, si vous n'acceptez pas les cookies, vous ne pourrez peut-être pas utiliser certaines parties de notre service."
+        }
+      },
+      "contact": {
+        "title": "Des questions sur notre politique de confidentialité ?",
+        "subtitle": "Si vous avez des questions sur cette politique de confidentialité, veuillez nous contacter. Notre délégué à la protection des données se fera un plaisir de vous aider.",
+        "email": "privacy@everleaf.com",
+        "phone": "+251 954 123-456"
+      }
+    }
+  }
+}

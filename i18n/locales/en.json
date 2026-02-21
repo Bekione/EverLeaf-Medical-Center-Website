@@ -1,0 +1,1134 @@
+{
+  "common": {
+    "buttons": {
+      "bookAppointment": "Book Appointment",
+      "learnMore": "Learn More",
+      "contactUs": "Contact Us",
+      "viewAll": "View All",
+      "emergency": "Emergency",
+      "submit": "Submit",
+      "book": "Book",
+      "viewAllDoctors": "View All Doctors"
+    },
+    "labels": {
+      "loading": "Loading...",
+      "error": "Error",
+      "success": "Success",
+      "experience": "{{count}} Years Experience"
+    },
+    "roles": {
+      "chiefMedicalDirector": "Chief Medical Director",
+      "headOfSurgery": "Head of Surgery",
+      "directorOfNursing": "Director of Nursing",
+      "chiefFinancialOfficer": "Chief Medical Officer"
+    }
+  },
+  "components": {
+    "appointmentModal": {
+      "title": "Request an Appointment",
+      "subtitle": "Fill out the form below and our team will contact you to confirm your slot.",
+      "fields": {
+        "fullName": {
+          "label": "Full Name",
+          "placeholder": "John Doe"
+        },
+        "email": {
+          "label": "Email Address",
+          "placeholder": "you@example.com"
+        },
+        "phone": {
+          "label": "Phone Number",
+          "placeholder": "(555) 000-0000"
+        },
+        "department": {
+          "label": "Department",
+          "placeholder": "Choose a department..."
+        },
+        "message": {
+          "label": "Message (Optional)",
+          "placeholder": "Briefly describe your symptoms or reason for visit..."
+        }
+      },
+      "validation": {
+        "error": "Please correct the errors highlighted below.",
+        "submitError": "Failed to submit appointment request. Please try again."
+      },
+      "status": {
+        "processing": "Processing...",
+        "submit": "Submit Request"
+      },
+      "footer": {
+        "terms": "By submitting, you agree to our <1>Terms and Privacy Policy.</1>",
+        "preMessage": {
+          "service": "I am interested in booking the {{serviceName}}.",
+          "doctor": "I would like to book an appointment with {{doctorName}}."
+        }
+      }
+    },
+    "errorBoundary": {
+      "title": "Something went wrong",
+      "description": "We encountered an unexpected error. Our technical team has been notified. Please try refreshing the page or return home.",
+      "refresh": "Refresh Page",
+      "returnHome": "Return Home"
+    },
+    "relatedArticles": {
+      "title": "Related Articles"
+    },
+    "seo": {
+      "siteName": "Everleaf Medical Center"
+    },
+    "themeSwitcher": {
+      "title": "Choose Theme",
+      "aria": {
+        "selector": "Theme selector",
+        "list": "Available themes",
+        "close": "Close theme switcher",
+        "open": "Open theme switcher"
+      }
+    },
+    "galleryModal": {
+      "aria": {
+        "viewer": "Image gallery viewer"
+      },
+      "thumbnails": {
+        "alt": "thumbnail"
+      }
+    }
+  },
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "departments": "Departments",
+    "services": "Services",
+    "doctors": "Doctors",
+    "gallery": "Gallery",
+    "blog": "Articles",
+    "contact": "Contact",
+    "emergency": "Emergency",
+    "schedule": "Mon - Sun: 24 Hours",
+    "media": "News & Media",
+    "brand": "Everleaf",
+    "brandSub": "Medical Center"
+  },
+  "data": {
+    "doctors": {
+      "1": {
+        "name": "Dr. Sarah Johnson",
+        "specialty": "Senior Neurologist",
+        "bio": "Specializing in complex neurological disorders with over 15 years of experience treating cases involving the brain and spine.",
+        "education": "MD from Johns Hopkins University, PhD in Neurology",
+        "educationShort": "MD, PhD (Neurology)"
+      },
+      "2": {
+        "name": "Dr. Mark Williams",
+        "specialty": "Chief of Cardiology",
+        "bio": "Dedicated cardiologist focusing on preventive heart care and minimally invasive surgical procedures.",
+        "education": "MD from Harvard Medical School, Fellowship at Mayo Clinic",
+        "educationShort": "MD, Fellowship (Mayo)"
+      },
+      "3": {
+        "name": "Dr. Emily Chen",
+        "specialty": "Senior Pediatrician",
+        "bio": "Passionate pediatrician known for her gentle approach and expertise in early childhood development.",
+        "education": "MD from Stanford University, Residency at Boston Children's Hospital",
+        "educationShort": "MD, Residency"
+      },
+      "4": {
+        "name": "Dr. Leo Spaceman",
+        "specialty": "Orthopedic Surgeon",
+        "bio": "Expert orthopedic surgeon specializing in sports injuries and joint replacement therapies.",
+        "education": "MD from Yale School of Medicine",
+        "educationShort": "MD (Yale)"
+      },
+      "5": {
+        "name": "Dr. Anita Patel",
+        "specialty": "Consultant Oncologist",
+        "bio": "Leading oncologist with a focus on personalized cancer treatment plans and immunotherapy.",
+        "education": "MD from Columbia University, Oncology Board Certified",
+        "educationShort": "MD (Columbia)"
+      },
+      "6": {
+        "name": "Dr. Ken Hurt",
+        "specialty": "Senior Dermatologist",
+        "bio": "Dermatologist with extensive experience in both cosmetic and medical dermatology procedures.",
+        "education": "MD from UCLA Medical Center",
+        "educationShort": "MD (UCLA)"
+      },
+      "7": {
+        "name": "Dr. David Kim",
+        "specialty": "General Surgeon",
+        "bio": "Specialist in minimally invasive laparoscopic surgeries and abdominal procedures.",
+        "education": "MD from Duke University School of Medicine",
+        "educationShort": "MD (Duke)"
+      },
+      "8": {
+        "name": "Dr. Lisa Wong",
+        "specialty": "Ophthalmologist",
+        "bio": "Expert in cataract surgery and laser vision correction with a patient-first approach.",
+        "education": "MD from UCSF School of Medicine",
+        "educationShort": "MD (UCSF)"
+      },
+      "9": {
+        "name": "Dr. Michael Stevens",
+        "specialty": "Trauma Surgeon",
+        "bio": "Experienced trauma surgeon dedicated to providing critical care in emergency situations.",
+        "education": "MD from University of Chicago",
+        "educationShort": "MD (Chicago)"
+      },
+      "10": {
+        "name": "Dr. Rachel Green",
+        "specialty": "Clinical Psychologist",
+        "bio": "Specializes in cognitive behavioral therapy and mental health support for chronic illness patients.",
+        "education": "PhD in Psychology from NYU",
+        "educationShort": "PhD (NYU)"
+      },
+      "11": {
+        "name": "Dr. Alan Grant",
+        "specialty": "Pediatric Surgeon",
+        "bio": "Focused on surgical care for infants, children, and adolescents with congenital conditions.",
+        "education": "MD from Baylor College of Medicine",
+        "educationShort": "MD (Baylor)"
+      },
+      "12": {
+        "name": "Dr. Olivia Martinez",
+        "specialty": "Interventional Cardiologist",
+        "bio": "Expert in women's heart health and non-invasive cardiovascular imaging.",
+        "education": "MD from University of Pennsylvania",
+        "educationShort": "MD (UPenn)"
+      },
+      "13": {
+        "name": "Dr. Michael Torres",
+        "specialty": "Clinical Biochemist",
+        "bio": "Specializing in diagnostic laboratory medicine with expertise in molecular diagnostics.",
+        "education": "MD from University of Michigan, PhD in Clinical Chemistry",
+        "educationShort": "MD, PhD"
+      },
+      "14": {
+        "name": "Dr. Sandra Mornay",
+        "specialty": "Pain Management Specialist",
+        "bio": "Expert in chronic pain management and rehabilitation medicine with a holistic approach.",
+        "education": "MD from Northwestern University",
+        "educationShort": "MD (NWU)"
+      },
+      "15": {
+        "name": "Dr. William Chen",
+        "specialty": "Anesthesiologist",
+        "bio": "Ensuring patient safety and pain management during complex surgical procedures.",
+        "education": "MD from Washington University in St. Louis",
+        "educationShort": "MD (WUSTL)"
+      },
+      "16": {
+        "name": "Dr. Emma Thompson",
+        "specialty": "Rheumatologist",
+        "bio": "Diagnosing and treating arthritis and other diseases of the joints, muscles, and bones.",
+        "education": "MD from Emory University",
+        "educationShort": "MD (Emory)"
+      },
+      "17": {
+        "name": "Dr. Samantha Johnson",
+        "specialty": "General Surgery Specialist",
+        "bio": "Leading surgeon with expertise in general and emergency surgical procedures.",
+        "education": "MD from Johns Hopkins University",
+        "educationShort": "MD (Johns Hopkins)"
+      },
+      "18": {
+        "name": "Dr. Mathew Chen",
+        "specialty": "Trauma & Acute Care Surgeon",
+        "bio": "Specialized in trauma surgery and critical care for life-threatening injuries.",
+        "education": "MD from University of Pennsylvania",
+        "educationShort": "MD (UPenn)"
+      },
+      "19": {
+        "name": "Dr. Nikita Davis",
+        "specialty": "Minimally Invasive Surgery",
+        "bio": "Pioneer in laparoscopic and robotic-assisted surgical techniques.",
+        "education": "MD from Stanford University",
+        "educationShort": "MD (Stanford)"
+      },
+      "20": {
+        "name": "Dr. Rachel Anderson",
+        "specialty": "Chief Pathologist",
+        "bio": "Expert in anatomical and clinical pathology with over 20 years of diagnostic experience.",
+        "education": "MD from Columbia University, Fellowship in Pathology",
+        "educationShort": "MD, Fellowship"
+      },
+      "21": {
+        "name": "Dr. Lisa Chen",
+        "specialty": "Microbiologist",
+        "bio": "Specializing in infectious disease diagnostics and antimicrobial resistance testing.",
+        "education": "MD from UCSF, PhD in Microbiology",
+        "educationShort": "MD, PhD"
+      },
+      "22": {
+        "name": "Dr. Sarah Jenkins",
+        "specialty": "Chief Radiologist",
+        "bio": "Leading expert in diagnostic imaging and interventional radiology procedures.",
+        "education": "MD from Yale School of Medicine",
+        "educationShort": "MD (Yale)"
+      },
+      "23": {
+        "name": "Dr. Maya Lahan",
+        "specialty": "Lead Physical Therapist",
+        "bio": "Specialized in sports rehabilitation and post-surgical physical therapy.",
+        "education": "DPT from University of Southern California",
+        "educationShort": "DPT (USC)"
+      },
+      "24": {
+        "name": "Dr. Raymond Langston",
+        "specialty": "Occupational Therapist",
+        "bio": "Helping patients regain independence through personalized occupational therapy programs.",
+        "education": "OTD from Boston University",
+        "educationShort": "OTD (Boston U)"
+      },
+      "25": {
+        "name": "Dr. Emily Rodriguez",
+        "specialty": "Endocrinologist",
+        "bio": "Treating hormonal disorders including diabetes, thyroid conditions, and metabolic syndrome.",
+        "education": "MD from University of Texas Southwestern",
+        "educationShort": "MD (UTSW)"
+      },
+      "26": {
+        "name": "Dr. Emily Ross",
+        "specialty": "Pulmonologist",
+        "bio": "Expert in respiratory medicine and critical care for lung diseases.",
+        "education": "MD from Cornell University",
+        "educationShort": "MD (Cornell)"
+      },
+      "27": {
+        "name": "Dr. James Wilson",
+        "specialty": "Gastroenterologist",
+        "bio": "Specializing in digestive system disorders and advanced endoscopic procedures.",
+        "education": "MD from University of Chicago",
+        "educationShort": "MD (Chicago)"
+      },
+      "28": {
+        "name": "Dr. John Chen",
+        "specialty": "Nephrologist",
+        "bio": "Kidney disease specialist with expertise in dialysis and transplant medicine.",
+        "education": "MD from Duke University",
+        "educationShort": "MD (Duke)"
+      },
+      "29": {
+        "name": "Dr. Michael Chen",
+        "specialty": "Emergency Medicine Physician",
+        "bio": "Board-certified emergency physician with extensive trauma and critical care experience.",
+        "education": "MD from Georgetown University",
+        "educationShort": "MD (Georgetown)"
+      },
+      "30": {
+        "name": "Dr. Ashley Johnson",
+        "specialty": "Family Medicine Physician",
+        "bio": "Providing comprehensive primary care for patients of all ages.",
+        "education": "MD from University of Michigan",
+        "educationShort": "MD (U-Mich)"
+      },
+      "31": {
+        "name": "Dr. Bereket Kinfe",
+        "specialty": "Infectious Disease Specialist",
+        "bio": "Expert in diagnosing and treating complex infectious diseases and tropical medicine.",
+        "education": "MD from Addis Ababa University, Fellowship at CDC",
+        "educationShort": "MD, Fellowship"
+      },
+      "32": {
+        "name": "Dr. Danel Mekonnen",
+        "specialty": "Hematologist",
+        "bio": "Specializing in blood disorders and bone marrow transplantation.",
+        "education": "MD from Harvard Medical School",
+        "educationShort": "MD (Harvard)"
+      },
+      "33": {
+        "name": "Dr. Eleanor Rigby",
+        "specialty": "Chief Medical Director",
+        "bio": "Founder and Chief Medical Director of Everleaf Medical Center with 35+ years of healthcare leadership.",
+        "education": "MD from Johns Hopkins University, MBA from Wharton",
+        "educationShort": "MD, MBA"
+      },
+      "34": {
+        "name": "Dr. Sarah Mitchell",
+        "specialty": "Neonatologist",
+        "bio": "Specialized in caring for critically ill newborns and premature infants.",
+        "education": "MD from Yale University, Fellowship in Neonatology",
+        "educationShort": "MD, Fellowship"
+      }
+    },
+    "departments": {
+      "all": {
+        "name": "All Departments",
+        "desc": "Explore all our medical units."
+      },
+      "cardiology": {
+        "name": "Cardiology",
+        "desc": "Comprehensive care for heart and vascular conditions including diagnostic testing and surgery."
+      },
+      "neurology": {
+        "name": "Neurology",
+        "desc": "Expert diagnosis and treatment for disorders of the brain, spinal cord, and nerves."
+      },
+      "pediatrics": {
+        "name": "Pediatrics",
+        "desc": "Dedicated care for infants, children, and adolescents in a friendly environment."
+      },
+      "surgery": {
+        "name": "Surgery",
+        "desc": "Advanced surgical procedures using minimally invasive techniques for faster recovery."
+      },
+      "dental": {
+        "name": "Dental Clinic",
+        "desc": "Complete oral health care from routine cleanings to complex dental surgeries."
+      },
+      "ophthalmology": {
+        "name": "Ophthalmology",
+        "desc": "State-of-the-art eye care services including vision testing and cataract surgery."
+      },
+      "laboratory": {
+        "name": "Laboratory",
+        "desc": "Precise diagnostic testing services ensuring accurate results for better treatment plans."
+      },
+      "radiology": {
+        "name": "Radiology",
+        "desc": "Advanced imaging services including MRI, CT scans, X-rays, and ultrasound."
+      },
+      "rehabilitation": {
+        "name": "Rehabilitation",
+        "desc": "Helping patients regain independence after injury or surgery through physical therapy."
+      },
+      "orthopedics": {
+        "name": "Orthopedics",
+        "desc": "Expert care for musculoskeletal conditions, including joints, bones, and sports injuries."
+      },
+      "oncology": {
+        "name": "Oncology",
+        "desc": "Comprehensive cancer care and advanced treatment options."
+      },
+      "dermatology": {
+        "name": "Dermatology",
+        "desc": "Expert skin, hair, and nail care for both medical and cosmetic concerns."
+      },
+      "medicine": {
+        "name": "Internal Medicine",
+        "desc": "Specialized care for adult diseases, focusing on prevention and long-term management."
+      },
+      "emergency": {
+        "name": "Emergency Medicine",
+        "desc": "24/7 critical care for life-threatening conditions and urgent medical needs."
+      },
+      "administration": {
+        "name": "Administration",
+        "desc": "Hospital leadership and administrative management ensuring operational excellence."
+      }
+    },
+    "categories": {
+      "all": "All",
+      "facilities": "Facilities",
+      "rooms": "Rooms",
+      "equipment": "Equipment",
+      "staff": "Staff",
+      "healthTips": "Health Tips",
+      "announcements": "Announcements",
+      "research": "Research",
+      "medicalAwareness": "Medical Awareness"
+    },
+    "services": {
+      "all": "View All Services",
+      "diagnostics": {
+        "title": "Diagnostic Services",
+        "desc": "Accurate and timely diagnosis is the first step to effective treatment. Our facility is equipped with the latest diagnostic tools."
+      },
+      "laboratory": {
+        "title": "Laboratory",
+        "desc": "Our full-service clinical laboratory operates 24/7, providing comprehensive testing in hematology, chemistry, microbiology, and more."
+      },
+      "imaging": {
+        "title": "Imaging",
+        "desc": "We offer high-resolution medical imaging services including MRI, CT scans, ultrasound, and digital X-rays to support precise diagnoses."
+      },
+      "pharmacy": {
+        "title": "Pharmacy",
+        "desc": "Our in-house pharmacy ensures patients have immediate access to necessary medications, offering prescription counseling."
+      },
+      "emergency": {
+        "title": "Emergency Care",
+        "desc": "Open 24/7, our emergency department is staffed by trauma specialists ready to handle critical situations with speed and expertise."
+      },
+      "preventive": {
+        "title": "Preventive Checkups",
+        "desc": "Stay ahead of potential health issues with our comprehensive health screening packages, tailored for all ages and lifestyles."
+      }
+    },
+    "testimonials": {
+      "1": {
+        "name": "James Anderson",
+        "role": "Recovered Patient",
+        "text": "The care and attention I received at Everleaf was outstanding. The doctors were patient in explaining my condition and the treatment plan."
+      },
+      "2": {
+        "name": "Sarah Lewis",
+        "role": "Surgery Patient",
+        "text": "The facilities are top-notch and spotlessly clean. I felt safe and comfortable throughout my entire stay. Highly recommended!"
+      },
+      "3": {
+        "name": "Michael Chen",
+        "role": "Regular Checkup",
+        "text": "From the front desk staff to the specialists, everyone was incredibly professional and kind. Thank you for your amazing service."
+      },
+      "4": {
+        "name": "Emily Davis",
+        "role": "Maternity Care",
+        "text": "Giving birth at Everleaf was a beautiful experience. The nurses were supportive and the neonatal care team is world-class."
+      },
+      "5": {
+        "name": "Robert Wilson",
+        "role": "Cardiac Patient",
+        "text": "Dr. Williams saved my life. The cardiac unit's speed and efficiency during my emergency were miraculous. Forever grateful."
+      },
+      "6": {
+        "name": "Jennifer Lopez",
+        "role": "Pediatrics Parent",
+        "text": "My kids actually enjoy going to the doctor now. Dr. Chen is fantastic with children and makes the whole process scary-free."
+      }
+    },
+    "gallery": {
+      "atrium": {
+        "title": "Main Atrium & Reception",
+        "desc": "Our spacious and welcoming main lobby designed for patient comfort."
+      },
+      "laboratory": {
+        "title": "Diagnostic Laboratory",
+        "desc": "State-of-the-art laboratory equipped with advanced diagnostic machinery."
+      },
+      "recovery-suite": {
+        "title": "Private Recovery Suite",
+        "desc": "Private rooms designed to provide a restful and healing environment."
+      },
+      "consultation": {
+        "title": "Expert Consultation Team",
+        "desc": "Our multidisciplinary team collaborating on complex patient cases."
+      },
+      "operation": {
+        "title": "Modern Operating Theatre",
+        "desc": "Advanced surgical suites featuring the latest medical technology."
+      },
+      "waiting-area": {
+        "title": "Comfortable Waiting Areas",
+        "desc": "Quiet and comfortable waiting zones for families and visitors."
+      },
+      "mri": {
+        "title": "MRI Scanning Suite",
+        "desc": "High-field MRI scanner providing exceptional image quality for accurate diagnosis."
+      },
+      "rehabilitation": {
+        "title": "Rehabilitation Center",
+        "desc": "Fully equipped physiotherapy gym for patient rehabilitation and recovery."
+      },
+      "pharmacy": {
+        "title": "Pharmacy Services",
+        "desc": "On-site pharmacy stocked with a wide range of medications and health supplies."
+      },
+      "pediatric": {
+        "title": "Pediatric Ward",
+        "desc": "Colorful and safe environment tailored for our youngest patients."
+      },
+      "emergency-dept": {
+        "title": "Emergency Department",
+        "desc": "24/7 emergency entrance equipped for rapid response and trauma care."
+      },
+      "neonatal-icu": {
+        "title": "Neonatal ICU",
+        "desc": "Specialized intensive care units for newborns requiring critical attention."
+      }
+    },
+    "themes": {
+      "default": {
+        "label": "Clinical Blue",
+        "description": "Clean, professional medical blue"
+      },
+      "dark": {
+        "label": "Dark Mode",
+        "description": "Easy on the eyes, deep navy"
+      },
+      "forest": {
+        "label": "Forest Green",
+        "description": "Calm, natural healing green"
+      },
+      "warm": {
+        "label": "Warm Amber",
+        "description": "Welcoming private clinic feel"
+      },
+      "high-contrast": {
+        "label": "High Contrast",
+        "description": "WCAG AAA accessibility"
+      }
+    }
+  },
+  "footer": {
+    "tagline": "Care That Grows With You. Committed to lifelong wellness through compassionate care, innovation, and trust.",
+    "links": "Important Links",
+    "contact": "Contact Us",
+    "address": {
+      "street": "123 Health Avenue, Medical District,",
+      "cityStateZip": "Addis Abeba, AA 10012"
+    },
+    "newsletter": {
+      "title": "Newsletter",
+      "description": "Subscribe to our newsletter to get the latest news and updates.",
+      "placeholder": "Your Email",
+      "button": "Subscribe",
+      "subscribing": "Subscribing...",
+      "success": "Subscribed successfully!",
+      "successDesc": "Watch your inbox for our latest updates.",
+      "subscribeAnother": "Subscribe another email",
+      "invalidEmail": "Invalid email",
+      "error": "Failed to subscribe. Please try again."
+    },
+    "rights": "All rights reserved.",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service"
+  },
+  "pages": {
+    "home": {
+      "hero": {
+        "badge": "Everleaf Medical Center",
+        "title": "Care That Grows With You.",
+        "titleStart": "Care That Grows ",
+        "titleHighlight": "With You.",
+        "subtitle": "Committed to lifelong wellness through compassionate care, innovation, and trust. Experience world-class healthcare in a serene environment.",
+        "appointment": "Request an Appointment",
+        "patientsRecovered": "Happy patients recovered this year.",
+        "stats": {
+          "recoveredCount": "{{count}}k+"
+        },
+        "satisfaction": "98% Satisfaction",
+        "satisfactionSub": "Based on patient reviews"
+      },
+      "infoCards": {
+        "emergency": {
+          "title": "Emergency",
+          "desc": "Immediate care for critical situations.",
+          "call": "Call 911"
+        },
+        "specialist": {
+          "title": "Find a Specialist",
+          "desc": "Search our directory of expert doctors.",
+          "search": "Search Doctors"
+        },
+        "departments": {
+          "title": "Our Departments",
+          "desc": "Explore our specialized medical units.",
+          "view": "View Departments"
+        }
+      },
+      "services": {
+        "badge": "Medical Excellence",
+        "title": "Our Specialized Services",
+        "subtitle": "We provide a wide range of medical services to meet every need of your family, from routine checkups to complex surgeries.",
+        "cardiologyDesc": "Expert heart care including diagnostics, treatment, and preventive cardiology services.",
+        "neurologyDesc": "Advanced diagnosis and treatment for disorders affecting the brain, spine, and nerves.",
+        "pediatricsDesc": "Compassionate care for infants, children, and adolescents in a kid-friendly environment.",
+        "laboratoryDesc": "State-of-the-art laboratory services providing accurate and timely diagnostic results."
+      },
+      "experts": {
+        "badge": "Our Experts",
+        "title": "Meet Our Leading Specialists",
+        "overlayTitle": "Expert Care",
+        "overlayDesc": "Committed to providing the highest standard of medical excellence and compassionate patient care.",
+        "bookNow": "Book Now",
+        "exp": "Exp."
+      },
+      "cta": {
+        "badge": "Start Your Journey",
+        "title": "Ready to Prioritize Your Health?",
+        "titleStart": "Ready to Prioritize ",
+        "titleHighlight": "Your Health?",
+        "subtitle": "Schedule an appointment today to consult with our experts. We are committed to helping you lead a healthier, happier life.",
+        "button": "Book Appointment Now"
+      },
+      "testimonials": {
+        "badge": "Testimonials",
+        "title": "Patient Stories",
+        "subtitle": "Hear from those who have experienced our care firsthand.",
+        "readOnGoogle": "Read on Google"
+      },
+      "partners": {
+        "title": "Trusted by Insurance Partners"
+      }
+    },
+    "about": {
+      "hero": {
+        "badge": "Since 1988",
+        "titleStart": "A Legacy of Caring,",
+        "titleHighlight": "A Future of Healing.",
+        "subtitle": "For over 35 years, Everleaf Medical Center has been a beacon of hope. We blend compassionate care with cutting-edge medical innovation to improve the lives of our community.",
+        "meetTeam": "Meet Our Team",
+        "viewFacilities": "View Our Facilities"
+      },
+      "stats": {
+        "years": "Years Serving",
+        "patients": "Patients Healed",
+        "specialists": "Specialists"
+      },
+      "story": {
+        "badge": "Our Story",
+        "title": "From Humble Beginnings to Medical Excellence",
+        "p1": "Founded in 1988 by Dr. Eleanor Rigby with a small team of dedicated nurses, Everleaf Medical Center started with a simple mission: to provide accessible, high-quality healthcare to the local community.",
+        "p2": "Today, we have grown into a 500-bed multi-specialty quaternary care hospital. Despite our expansion, our core philosophy remains unchanged—putting the patient first. We are driven by the belief that healthcare is not just about treating diseases, but about healing people.",
+        "patientCentric": {
+          "title": "Patient Centric",
+          "desc": "Every decision we make is centered around patient well-being and comfort."
+        },
+        "innovation": {
+          "title": "Innovation",
+          "desc": "Continuously adopting the latest medical technologies and research."
+        }
+      },
+      "quality": {
+        "badge": "International Standards",
+        "title": "Uncompromising Quality & Safety",
+        "subtitle": "At Everleaf, patient safety is our top priority. We adhere to rigorous international standards and protocols to ensure a safe environment for healing. Our commitment to quality is recognized by leading healthcare accreditation bodies.",
+        "item1": "JCI Accredited Facility",
+        "item2": "ISO 9001:2015 Certified for Quality Management",
+        "item3": "Winner of National Patient Safety Award 2023",
+        "stats": {
+          "safety": "Safety Compliance",
+          "infection": "Infection Control",
+          "awards": "Awards Won",
+          "staff": "Medical Staff"
+        }
+      },
+      "values": {
+        "badge": "Our Core Principles",
+        "title": "Values That Drive Us",
+        "subtitle": "Our culture is built on a foundation of trust, integrity, and an unwavering commitment to our patients.",
+        "compassion": {
+          "title": "Compassion",
+          "desc": "We treat everyone with kindness, empathy, and understanding. We listen to our patients and support them through their healing journey."
+        },
+        "excellence": {
+          "title": "Excellence",
+          "desc": "We strive for the highest standards in everything we do. From medical procedures to patient service, we are committed to continuous improvement."
+        },
+        "integrity": {
+          "title": "Integrity",
+          "desc": "We adhere to high ethical principles and professional standards. We are honest, transparent, and accountable in our actions."
+        }
+      },
+      "leadership": {
+        "badge": "Our Leadership",
+        "title": "Board of Directors",
+        "subtitle": "Guiding our vision with decades of combined medical and administrative expertise.",
+        "members": {
+          "eleanor": { "name": "Dr. Eleanor Rigby" },
+          "james": { "name": "Dr. James Wilson" },
+          "sarah": { "name": "Ms. Sarah Connor" },
+          "danel": { "name": "Mr. Daniel Mekonnen" }
+        },
+        "desc": "Dedicated leader committed to excellence in healthcare administration and patient outcomes."
+      },
+      "infrastructure": {
+        "badge": "Infrastructure",
+        "title": "Modern Facilities",
+        "viewGallery": "View Full Gallery",
+        "operating": {
+          "title": "Advanced Operating Theatres",
+          "desc": "Equipped with robotic surgery capabilities and high-definition imaging systems."
+        },
+        "recovery": {
+          "title": "Private Recovery Suites",
+          "desc": "Designed for privacy and comfort."
+        },
+        "icu": {
+          "title": "Intensive Care Units",
+          "desc": "24/7 Monitoring & Support."
+        }
+      },
+      "cta": {
+        "badge": "Be Part of Our Journey",
+        "titleStart": "Ready to Experience",
+        "titleHighlight": "Better Healthcare?",
+        "subtitle": "Whether you are looking for world-class treatment or want to join our team of dedicated professionals, Everleaf welcomes you.",
+        "visitUs": "Visit Us Today",
+        "contactAdmin": "Contact Administration"
+      }
+    },
+    "doctors": {
+      "hero": {
+        "title": "Find a Doctor",
+        "subtitle": "Browse our directory of distinguished medical professionals. Use the filters below to find the specialist best suited for your needs."
+      },
+      "filters": {
+        "searchPlaceholder": "Search by doctor name or keyword...",
+        "clear": "Clear Filters",
+        "noResults": "No doctors found",
+        "noResultsDesc": "Try adjusting your search or filters to find what you're looking for.",
+        "allDepts": "All Departments",
+        "allSpecialties": "All Specialties",
+        "allGenders": "All Genders",
+        "genders": {
+          "male": "Male",
+          "female": "Female"
+        },
+        "specialties": {
+          "surgeon": "Surgeon",
+          "senior": "Senior Consultant",
+          "chief": "Department Chief",
+          "specialist": "Specialist"
+        }
+      },
+      "card": {
+        "about": "About",
+        "education": "Education",
+        "deptPrefix": "Department of ",
+        "requestAppointment": "Request Appointment"
+      }
+    },
+    "blog": {
+      "hero": {
+        "title": "Health Blog & News",
+        "subtitle": "Read the latest medical insights, health tips, and hospital announcements from the experts at Everleaf Medical Center.",
+        "featured": "Featured Article",
+        "readMore": "Read Full Article"
+      },
+      "articles": {
+        "title": "Latest Health Insights",
+        "all": "All Articles",
+        "noResults": "No articles found in this category.",
+        "viewAll": "View All",
+        "categories": {
+          "all": "All",
+          "healthtips": "Health Tips",
+          "announcements": "Announcements",
+          "research": "Research",
+          "medicalawareness": "Medical Awareness"
+        }
+      },
+      "article": {
+        "back": "Back to Articles",
+        "share": "Share Article",
+        "related": "Related Articles",
+        "readNext": "Read Next"
+      },
+      "newsletter": {
+        "badge": "Stay Connected",
+        "title": "Health Insights Delivered to You",
+        "subtitle": "Join over 50,000 subscribers who receive our latest medical news, health tips, and exclusive event invitations directly in their inbox.",
+        "subtitleSidebar": "Get health tips and news delivered to your inbox.",
+        "privacy": "We respect your privacy. Unsubscribe at any time."
+      },
+      "data": {
+        "preventive-cardiology": {
+          "title": "5 Essential Tips for Preventive Heart Health",
+          "excerpt": "Heart disease remains the leading cause of death globally, yet up to 80% of cardiovascular diseases are preventable. Learn the five evidence-based strategies our cardiologists recommend.",
+          "seoTitle": "Preventive Cardiology: 5 Essential Tips for Heart Health",
+          "seoDescription": "Expert cardiologist advice on preventing heart disease through lifestyle changes, regular screenings, and proactive care.",
+          "author": "Dr. Mark Williams",
+          "authorTitle": "Chief of Cardiology",
+          "authorBio": "Dr. Williams is a dedicated cardiologist focusing on preventive heart care and minimally invasive surgical procedures. He leads our comprehensive cardiovascular wellness program.",
+          "date": "Feb 14, 2026",
+          "read": "6 min read",
+          "content": {
+            "0": {
+              "text": "Heart disease remains the leading cause of death globally, yet up to 80% of cardiovascular diseases are preventable through lifestyle modifications and early intervention. At EverLeaf Medical Center, our cardiology department emphasizes proactive care to help you maintain a healthy heart for life."
+            },
+            "1": {
+              "text": "\"The best time to start caring for your heart was 20 years ago. The second best time is now,\" says Dr. Mark Williams, Chief of Cardiology. Here are five evidence-based strategies to protect your cardiovascular health."
+            },
+            "2": {
+              "text": "1. Know Your Numbers"
+            },
+            "3": {
+              "text": "Regular health screenings are the foundation of preventive cardiology. Understanding your key health metrics enables early detection and intervention."
+            },
+            "4": {
+              "title": "Essential Metrics to Monitor:",
+              "items": {
+                "0": {
+                  "metric": "Blood Pressure",
+                  "target": "Below 120/80 mmHg"
+                },
+                "1": {
+                  "metric": "Total Cholesterol",
+                  "target": "Below 200 mg/dL"
+                },
+                "2": {
+                  "metric": "Blood Sugar",
+                  "target": "Below 100 mg/dL (fasting)"
+                },
+                "3": { "metric": "BMI", "target": "18.5 – 24.9" }
+              }
+            }
+          }
+        },
+        "diabetes-management": {
+          "title": "New Breakthrough in Diabetes Management Using AI Technology",
+          "excerpt": "EverLeaf's latest clinical trial shows AI-driven diabetes management can reduce A1C levels by 2.5% and increase time-in-range from 55% to 78%.",
+          "author": "Dr. Mark Williams",
+          "authorTitle": "Chief of Cardiology",
+          "authorBio": "Dr. Williams is also a leading researcher in the field of endocrinology, exploring the intersections between heart health and metabolic disorders like diabetes.",
+          "date": "Jan 12, 2026",
+          "read": "7 min read"
+        },
+        "immune-system": {
+          "title": "5 Superfoods to Boost Your Immune System This Winter",
+          "excerpt": "As winter approaches, these five superfoods can give your immune system the vitamins, minerals, and antioxidants it needs to stay strong.",
+          "author": "Dr. Emily Rodriguez",
+          "authorTitle": "Endocrinologist",
+          "authorBio": "Dr. Rodriguez treats hormonal disorders including diabetes, thyroid conditions, and metabolic syndrome. She is passionate about functional nutrition and its role in immune health.",
+          "date": "Nov 08, 2025",
+          "read": "4 min read"
+        },
+        "pediatric-wing": {
+          "title": "EverLeaf Opens New Pediatric Wing in West Wing",
+          "excerpt": "EverLeaf Medical Center's new Pediatric Wing features 50 private rooms, a dedicated pediatric emergency department, and specialized play therapy zones.",
+          "author": "Dr. Emily Chen",
+          "authorTitle": "Senior Pediatrician",
+          "authorBio": "Dr. Chen is a passionate pediatrician known for her gentle approach and expertise in early childhood development. She oversaw the design and implementation of the new pediatric wing.",
+          "date": "Nov 01, 2025",
+          "read": "2 min read"
+        },
+        "anxiety-in-teens": {
+          "title": "Recognizing the Early Signs of Anxiety in Teenagers",
+          "excerpt": "Anxiety disorders are increasingly common among teenagers. Identifying the symptoms early can lead to better outcomes and prevent long-term struggles.",
+          "author": "Dr. Rachel Green",
+          "authorTitle": "Clinical Psychologist",
+          "authorBio": "Dr. Green specializes in cognitive behavioral therapy and mental health support for chronic illness patients. She works closely with families to create supportive environments for teens facing anxiety and depression.",
+          "date": "Oct 28, 2025",
+          "read": "6 min read"
+        },
+        "flu-season": {
+          "title": "Flu Season 2025: Why the Vaccine is More Important Than Ever",
+          "excerpt": "With pandemic-era precautions relaxed, viruses are circulating more freely. Here's why getting your flu shot this season is more critical than ever.",
+          "author": "Dr. Bereket Kinfe",
+          "authorTitle": "Infectious Disease Specialist",
+          "authorBio": "Dr. Kinfe is an expert in diagnosing and treating complex infectious diseases. He leads EverLeaf's annual community vaccination program and advises on seasonal flu prevention strategies.",
+          "date": "Oct 15, 2025",
+          "read": "3 min read"
+        },
+        "senior-mobility": {
+          "title": "Mobility in Seniors: The Link Between Walking and Cognitive Health",
+          "excerpt": "A new study found that seniors who maintained a brisk walking pace were 40% less likely to develop cognitive impairment. Here's what you can do.",
+          "author": "Dr. Sarah Johnson",
+          "authorTitle": "Senior Neurologist",
+          "authorBio": "Dr. Johnson specializes in complex neurological disorders with over 15 years of experience. Her research focuses on the connection between physical mobility and cognitive health in aging adults.",
+          "date": "Oct 10, 2025",
+          "read": "7 min read"
+        }
+      }
+    },
+    "contact": {
+      "hero": {
+        "title": "Get in Touch with Everleaf Medical Center",
+        "titleStart": "Get in Touch with",
+        "titleHighlight": "Everleaf Medical Center",
+        "subtitle": "We are here to help. Whether you need to schedule an appointment, have questions about our services, or need emergency assistance, our team is ready to respond."
+      },
+      "emergency": {
+        "title": "Emergency Cases",
+        "subtitle": "For life-threatening emergencies, call immediately.",
+        "phone": "911"
+      },
+      "inquiries": {
+        "title": "General Inquiries",
+        "phone": "+251 954 123-456",
+        "email": "info@everleaf.com"
+      },
+      "hours": {
+        "title": "Working Hours",
+        "monFri": "Mon - Fri",
+        "sat": "Saturday",
+        "sun": "Sunday"
+      },
+      "form": {
+        "title": "Send us a Message",
+        "success": "Message Sent!",
+        "successDesc": "Thank you for reaching out. Our support team will get back to you within 24 hours.",
+        "sendAnother": "Send Another Message",
+        "error": "Failed to send message. Please try again later.",
+        "labels": {
+          "fullName": "Full Name",
+          "email": "Email Address",
+          "subject": "Subject",
+          "message": "Message"
+        },
+        "placeholders": {
+          "fullName": "John Doe",
+          "email": "john@example.com",
+          "subject": "Select a subject",
+          "message": "How can we help you?"
+        },
+        "subjects": {
+          "general": "General Inquiry",
+          "appointment": "Appointment Request",
+          "feedback": "Feedback",
+          "billing": "Billing Question",
+          "other": "Other"
+        },
+        "submit": "Send Message",
+        "submitting": "Sending Message..."
+      },
+      "directions": {
+        "title": "Directions & Transportation",
+        "transit": {
+          "title": "Public Transit",
+          "desc": "Bus lines M15, M22 stop directly in front of the main entrance."
+        },
+        "parking": {
+          "title": "Parking",
+          "desc": "Visitor parking garage is available on 4th Ave (5 Br/hr). Valet service available at main entrance."
+        }
+      }
+    },
+    "appointmentConfirmation": {
+      "hero": {
+        "title": "Thank You, {{name}}!",
+        "subtitle": "Your appointment request has been received. Our team will review your details and contact you at <1>{{email}}</1> or <1>{{phone}}</1> within 24 hours to confirm your appointment."
+      },
+      "summary": {
+        "title": "Request Summary",
+        "labels": {
+          "patientName": "Patient Name",
+          "department": "Department",
+          "doctor": "Requested Doctor",
+          "submittedOn": "Submitted On",
+          "email": "Email",
+          "phone": "Phone",
+          "referenceId": "Reference ID",
+          "notes": "Additional Notes"
+        }
+      },
+      "actions": {
+        "returnHome": "Return to Home",
+        "exploreBlog": "Explore Health Articles"
+      },
+      "footer": {
+        "secure": "Your health information is secure and protected."
+      }
+    },
+    "gallery": {
+      "hero": {
+        "badge": "Our Environment",
+        "title": "Hospital Gallery",
+        "subtitle": "Explore our state-of-the-art facilities, comfortable patient rooms, and the dedicated environment we've built for healing and recovery."
+      },
+      "filters": {
+        "all": "All Photos",
+        "facilities": "Facilities",
+        "rooms": "Rooms",
+        "equipment": "Equipment",
+        "staff": "Staff"
+      },
+      "card": {
+        "viewLarger": "View Larger"
+      },
+      "loadMore": "Load More Photos"
+    },
+    "notFound": {
+      "hero": {
+        "badge": "Error 404",
+        "title": "Page Not Found",
+        "subtitle": "We can't seem to find the page you're looking for, but we can help you get back on track. It might have been removed, renamed, or is temporarily unavailable."
+      },
+      "actions": {
+        "returnHome": "Return to Home",
+        "contactSupport": "Contact Support"
+      }
+    },
+    "privacy": {
+      "hero": {
+        "badge": "Legal Documentation",
+        "title": "Privacy Policy & Terms of Service",
+        "subtitle": "We are committed to protecting your privacy and ensuring transparency in how we handle your data. Please read our terms and policies carefully.",
+        "lastUpdated": "Last updated: February 13, 2026"
+      },
+      "toc": {
+        "title": "Table of Contents",
+        "items": {
+          "terms": "Terms of Use",
+          "disclaimer": "Medical Disclaimer",
+          "protection": "Data Protection",
+          "collection": "Information Collection",
+          "rights": "Patient Rights",
+          "cookies": "Cookies Policy",
+          "contact": "Contact Information"
+        }
+      },
+      "sections": {
+        "intro": {
+          "title": "Introduction",
+          "content": "Welcome to Everleaf Medical Center (\"we,\" \"our,\" or \"us\"). This page contains our Terms of Service and Privacy Policy. By accessing our website, booking appointments, or using our services, you agree to comply with these terms and consent to our data practices."
+        },
+        "terms": {
+          "title": "Terms of Use",
+          "content": "By accessing this website, you accept these terms and conditions in full. Do not continue to use Everleaf Medical Center's website if you do not accept all of the terms and conditions stated on this page.",
+          "list": {
+            "license": "License: Unless otherwise stated, Everleaf Medical Center and/or its licensors own the intellectual property rights for all material on this website. All intellectual property rights are reserved.",
+            "conduct": "User Conduct: You must not use this website in any way that causes, or may cause, damage to the website or impairment of the availability or accessibility of the website.",
+            "security": "Account Security: If you create an account or book an appointment, you are responsible for maintaining the confidentiality of your personal information and booking details."
+          }
+        },
+        "disclaimer": {
+          "title": "Medical Disclaimer",
+          "subtitle": "Not Medical Advice",
+          "content": "The content provided on this website, including blog articles, service descriptions, and other materials, is for informational purposes only. It is <1>not intended to be a substitute for professional medical advice, diagnosis, or treatment.</1> Always seek the advice of your physician or other qualified health provider with any questions you may have regarding a medical condition. Never disregard professional medical advice or delay in seeking it because of something you have read on this website.",
+          "emergency": "In case of a medical emergency, call 911 immediately."
+        },
+        "protection": {
+          "title": "Data Protection Principles",
+          "content": "We adhere to the principles of data protection as set out in the General Data Protection Regulation (GDPR) and HIPAA guidelines. Your data will be:",
+          "list": [
+            "Processed lawfully, fairly, and in a transparent manner.",
+            "Collected for specified, explicit, and legitimate purposes.",
+            "Adequate, relevant, and limited to what is necessary.",
+            "Kept accurate and up to date."
+          ]
+        },
+        "collection": {
+          "title": "Information Collection",
+          "content": "We collect several different types of information for various purposes to provide and improve our Service to you.",
+          "personal": {
+            "title": "Personal Data",
+            "content": "While using our Service, we may ask you to provide us with certain personally identifiable information that can be used to contact or identify you (\"Personal Data\"). This may include, but is not limited to: Email address, First name and last name, Phone number, Address, State, Province, ZIP/Postal code, City."
+          },
+          "medical": {
+            "title": "Medical Data",
+            "content": "When you book an appointment or visit our facility, we collect health information necessary for your care. This is protected under strict medical privacy laws (HIPAA/GDPR)."
+          },
+          "usage": {
+            "title": "Usage Data",
+            "content": "We may also collect information how the Service is accessed and used (\"Usage Data\"). This Usage Data may include information such as your computer's Internet Protocol address (e.g. IP address), browser type, browser version, the pages of our Service that you visit, the time and date of your visit, the time spent on those pages, unique device identifiers and other diagnostic data."
+          }
+        },
+        "rights": {
+          "title": "Your Rights as a Patient",
+          "content": "Under data protection law, you have rights including:",
+          "items": {
+            "access": {
+              "title": "Right of Access",
+              "content": "You have the right to ask us for copies of your personal medical information."
+            },
+            "rectification": {
+              "title": "Right to Rectification",
+              "content": "You have the right to ask us to rectify personal information you think is inaccurate."
+            },
+            "erasure": {
+              "title": "Right to Erasure",
+              "content": "You have the right to ask us to erase your personal information in certain circumstances."
+            },
+            "restriction": {
+              "title": "Right to Restriction",
+              "content": "You have the right to ask us to restrict the processing of your personal information."
+            }
+          }
+        },
+        "cookies": {
+          "title": "Cookies Policy",
+          "content": "We use cookies and similar tracking technologies to track the activity on our Service and hold certain information. You can instruct your browser to refuse all cookies or to indicate when a cookie is being sent. However, if you do not accept cookies, you may not be able to use some portions of our Service."
+        }
+      },
+      "contact": {
+        "title": "Questions about our Privacy Policy?",
+        "subtitle": "If you have any questions about this Privacy Policy, please contact us. Our dedicated data protection officer will be happy to assist you.",
+        "email": "privacy@everleaf.com",
+        "phone": "+251 954 123-456"
+      }
+    }
+  }
+}
