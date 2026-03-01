@@ -1,5 +1,6 @@
 {
   "common": {
+    "hospitalName": "EverLeaf Medical Center",
     "buttons": {
       "bookAppointment": "Book Appointment",
       "learnMore": "Learn More",
@@ -485,6 +486,53 @@
         "name": "Jennifer Lopez",
         "role": "Pediatrics Parent",
         "text": "My kids actually enjoy going to the doctor now. Dr. Chen is fantastic with children and makes the whole process scary-free."
+      }
+    },
+    "branches": {
+      "bole_branch": {
+        "name": "Bole Branch",
+        "address": "Bole Road, Near Edna Mall, Addis Ababa",
+        "phone": "+251 115 570 011",
+        "hours": [
+          { "days": "Mon – Fri", "hours": "7:30 AM – 7:00 PM" },
+          { "days": "Saturday", "hours": "8:00 AM – 5:00 PM" },
+          { "days": "Sunday", "hours": "9:00 AM – 2:00 PM" }
+        ],
+        "parking": "Free dedicated parking on premises.",
+        "notes": "Main branch. Emergency services available 24/7."
+      },
+      "eca_branch": {
+        "name": "ECA Branch",
+        "address": "ECA Compound Road, Addis Ababa",
+        "phone": "+251 115 570 022",
+        "hours": [
+          { "days": "Mon – Fri", "hours": "8:00 AM – 6:00 PM" },
+          { "days": "Saturday", "hours": "8:00 AM – 4:00 PM" },
+          { "days": "Sunday", "hours": "Closed" }
+        ],
+        "parking": "Street parking available along ECA Road."
+      },
+      "namiba_branch": {
+        "name": "Namiba Branch",
+        "address": "Menelik II Ave, Namiba, Addis Ababa",
+        "phone": "+251 115 570 033",
+        "hours": [
+          { "days": "Mon – Fri", "hours": "8:00 AM – 7:00 PM" },
+          { "days": "Saturday", "hours": "9:00 AM – 5:00 PM" },
+          { "days": "Sunday", "hours": "Closed" }
+        ],
+        "parking": "Shared parking garage 50 m from entrance."
+      },
+      "kotebe_branch": {
+        "name": "Kotebe Branch",
+        "address": "Kotebe, Yeka Sub-city, Addis Ababa",
+        "phone": "+251 115 570 044",
+        "hours": [
+          { "days": "Mon – Fri", "hours": "8:00 AM – 6:00 PM" },
+          { "days": "Saturday", "hours": "9:00 AM – 4:00 PM" },
+          { "days": "Sunday", "hours": "Closed" }
+        ],
+        "parking": "Free parking available inside the compound."
       }
     },
     "gallery": {
@@ -1254,6 +1302,7 @@
           "button": "Request Results"
         },
         "conditions": {
+          "badge": "Clinical Diagnosis",
           "title": "Conditions We Treat",
           "description": "Our imaging capabilities allow us to detect and monitor a wide range of medical conditions with exceptional clarity.",
           "items": {
@@ -1326,7 +1375,8 @@
         },
         "hero": {
           "badge": "Advanced Diagnostics",
-          "title": "Precision Laboratory Services You Can Trust",
+          "titlePart1": "Precision Laboratory",
+          "titlePart2": "Services You Can Trust",
           "description": "Our ISO-certified laboratory operates 24/7, delivering accurate diagnostic results with speed and precision. From routine blood work to complex genetic testing, your health is our priority.",
           "buttons": {
             "book": "Book a Test",
@@ -1334,6 +1384,7 @@
           }
         },
         "intro": {
+          "badge": "Clinical Expertise",
           "title": "Comprehensive Clinical Testing",
           "description": "We offer a wide spectrum of diagnostic tests across multiple disciplines to support accurate diagnosis and effective treatment plans."
         },
@@ -1409,7 +1460,8 @@
         },
         "cta": {
           "badge": "Fast & Reliable",
-          "title": "Ready to Take Charge of Your Health?",
+          "titlePart1": "Ready to Take Charge of",
+          "titlePart2": "Your Health?",
           "description": "Book your lab test today. Choose from our wide range of individual tests and health checkup packages.",
           "buttons": {
             "request": "Request a Test",
@@ -1648,6 +1700,11 @@
             "label": "Surgeries Successful"
           }
         },
+        "expertise": {
+          "badge": "Heart Health Excellence",
+          "title": "Services & Procedures",
+          "description": "Our cardiology department offers a full spectrum of heart care services, from advanced non-invasive diagnostics to complex surgical interventions."
+        },
         "conditions": {
           "badge": "Diagnosis & Care",
           "title": "Conditions We Treat",
@@ -1728,6 +1785,7 @@
           }
         },
         "conditions": {
+          "badge": "Oral Health Care",
           "title": "Conditions We Treat",
           "description": "We provide specialized treatments for a wide range of dental and oral health issues, restoring function and aesthetics.",
           "items": {
@@ -1861,6 +1919,7 @@
           }
         },
         "tests": {
+          "badge": "Diagnostic Testing",
           "title": "Common Tests & Panels",
           "items": {
             "0": {
@@ -1941,6 +2000,7 @@
           }
         },
         "intro": {
+          "badge": "Diagnosis & Monitoring",
           "title": "Conditions We Treat",
           "description": "Our imaging capabilities allow us to detect and monitor a wide range of medical conditions with exceptional clarity."
         },
@@ -1965,6 +2025,7 @@
         "procedures": {
           "badge": "Our Expertise",
           "title": "Services & Procedures",
+          "description": "State-of-the-art diagnostic imaging excellence for precise medical insights.",
           "viewAll": "View Full Service List",
           "items": {
             "xray": {
@@ -2093,7 +2154,9 @@
           }
         },
         "procedures": {
+          "badge": "Neurological Services",
           "title": "Services & Procedures",
+          "description": "Specialized diagnostic and therapeutic procedures for nervous system disorders.",
           "items": {
             "eeg": {
               "title": "EEG (Electroencephalogram)",
@@ -2196,7 +2259,9 @@
           }
         },
         "procedures": {
+          "badge": "Child Health Experts",
           "title": "Services & Procedures",
+          "description": "Specialized pediatric care and procedures tailored to the unique needs of children.",
           "items": {
             "newborn": {
               "title": "Newborn Care",
@@ -2295,6 +2360,7 @@
         },
         "conditions": {
           "intro": {
+            "badge": "Surgical Care",
             "title": "Conditions We Treat",
             "description": "We provide comprehensive surgical solutions for a wide range of medical conditions."
           },
@@ -2520,6 +2586,7 @@
           }
         },
         "conditions": {
+          "badge": "Recovery & Recovery",
           "title": "Conditions We Treat",
           "description": "We specialize in treating a wide range of conditions to help you return to your daily activities pain-free.",
           "items": {
@@ -2634,6 +2701,7 @@
         "success": "Message Sent!",
         "successDesc": "Thank you for reaching out. Our support team will get back to you within 24 hours.",
         "sendAnother": "Send Another Message",
+        "errorNotice": "Please correct the errors below.",
         "error": "Failed to send message. Please try again later.",
         "labels": {
           "fullName": "Full Name",
@@ -2659,14 +2727,16 @@
       },
       "directions": {
         "title": "Directions & Transportation",
-        "transit": {
-          "title": "Public Transit",
-          "desc": "Bus lines M15, M22 stop directly in front of the main entrance."
-        },
-        "parking": {
-          "title": "Parking",
-          "desc": "Visitor parking garage is available on 4th Ave (5 Br/hr). Valet service available at main entrance."
-        }
+        "hours": "Opening Hours",
+        "getDirections": "Get Directions",
+        "showGeneral": "← All branches",
+        "selectHint": "Select a branch pin on the map or use the dropdown above to see directions."
+      },
+      "map": {
+        "selectBranch": "Select Branch",
+        "zoomHint": "Hold CTRL + Scroll to zoom",
+        "standard": "Standard View",
+        "satellite": "Satellite View"
       }
     },
     "appointmentConfirmation": {
@@ -2822,6 +2892,37 @@
         "email": "privacy@everleaf.com",
         "phone": "+251 954 123-456"
       }
+    }
+  },
+  "validation": {
+    "fullName": {
+      "required": "Full name is required",
+      "min": "Full name must be at least 2 characters",
+      "max": "Full name must be less than 100 characters",
+      "invalid": "Full name must start and end with letters, and only contain letters, spaces, hyphens, and apostrophes"
+    },
+    "email": {
+      "required": "Email is required",
+      "invalid": "Please enter a valid email address"
+    },
+    "phone": {
+      "required": "Phone number is required",
+      "invalid": "Phone number contains invalid characters. Only digits, spaces, and + - ( ) are allowed.",
+      "digits": "Phone number must contain between 10 and 20 digits"
+    },
+    "subject": {
+      "required": "Please select a subject"
+    },
+    "department": {
+      "required": "Please select a department"
+    },
+    "message": {
+      "required": "Message is required",
+      "min": "Message must be at least 10 characters",
+      "max": "Message must be less than 1000 characters",
+      "invalid": "Message must contain at least some letters or numbers",
+      "appointmentMin": "Please provide details about your appointment (minimum 10 characters)",
+      "appointmentMax": "Message must be less than 500 characters"
     }
   }
 }

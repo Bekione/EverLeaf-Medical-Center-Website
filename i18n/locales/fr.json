@@ -1,5 +1,6 @@
 {
   "common": {
+    "hospitalName": "Centre Médical EverLeaf",
     "buttons": {
       "bookAppointment": "Prendre rendez-vous",
       "learnMore": "En savoir plus",
@@ -485,6 +486,53 @@
         "name": "Jennifer Lopez",
         "role": "Parent en pédiatrie",
         "text": "Mes enfants aiment maintenant aller chez le médecin. Le Dr Chen est fantastique avec les enfants et rend tout le processus rassurant."
+      }
+    },
+    "branches": {
+      "bole_branch": {
+        "name": "Succursale de Bole",
+        "address": "Bole Road, près d'Edna Mall, Addis-Abeba",
+        "phone": "+251 115 570 011",
+        "hours": [
+          { "days": "Lun – Ven", "hours": "07h30 – 19h00" },
+          { "days": "Samedi", "hours": "08h00 – 17h00" },
+          { "days": "Dimanche", "hours": "09h00 – 14h00" }
+        ],
+        "parking": "Parking dédié gratuit sur place.",
+        "notes": "Succursale principale. Services d'urgence disponibles 24h/24, 7j/7."
+      },
+      "eca_branch": {
+        "name": "Succursale de l'ECA",
+        "address": "ECA Compound Road, Addis-Abeba",
+        "phone": "+251 115 570 022",
+        "hours": [
+          { "days": "Lun – Ven", "hours": "08h00 – 18h00" },
+          { "days": "Samedi", "hours": "08h00 – 16h00" },
+          { "days": "Dimanche", "hours": "Fermé" }
+        ],
+        "parking": "Parking dans la rue disponible le long d'ECA Road."
+      },
+      "namiba_branch": {
+        "name": "Succursale de Namiba",
+        "address": "Menelik II Ave, Namiba, Addis-Abeba",
+        "phone": "+251 115 570 033",
+        "hours": [
+          { "days": "Lun – Ven", "hours": "08h00 – 19h00" },
+          { "days": "Samedi", "hours": "09h00 – 17h00" },
+          { "days": "Dimanche", "hours": "Fermé" }
+        ],
+        "parking": "Parking partagé à 50 m de l'entrée."
+      },
+      "kotebe_branch": {
+        "name": "Succursale de Kotebe",
+        "address": "Kotebe, sous-ville de Yeka, Addis-Abeba",
+        "phone": "+251 115 570 044",
+        "hours": [
+          { "days": "Lun – Ven", "hours": "08h00 – 18h00" },
+          { "days": "Samedi", "hours": "08h00 – 16h00" },
+          { "days": "Dimanche", "hours": "Fermé" }
+        ],
+        "parking": "Parking gratuit disponible à l'intérieur du complexe."
       }
     },
     "gallery": {
@@ -1741,7 +1789,8 @@
         },
         "cta": {
           "badge": "Rapide & Fiable",
-          "title": "Prêt à Prendre en Main Votre Santé ?",
+          "titlePart1": "Prêt à Prendre en Main",
+          "titlePart2": "Votre Santé ?",
           "description": "Réservez votre test de laboratoire dès aujourd'hui. Choisissez parmi notre large gamme de tests individuels et de forfaits de bilans de santé.",
           "buttons": {
             "request": "Demander un test",
@@ -2966,6 +3015,7 @@
         "success": "Message envoyé !",
         "successDesc": "Merci de nous avoir contactés. Notre équipe de support vous répondra dans les 24 heures.",
         "sendAnother": "Envoyer un autre message",
+        "errorNotice": "Veuillez corriger les erreurs ci-dessous.",
         "error": "Échec de l'envoi du message. Veuillez réessayer plus tard.",
         "labels": {
           "fullName": "Nom complet",
@@ -2990,15 +3040,17 @@
         "submitting": "Envoi du message..."
       },
       "directions": {
-        "title": "Accès et transports",
-        "transit": {
-          "title": "Transports en commun",
-          "desc": "Les lignes de bus M15, M22 s'arrêtent directement devant l'entrée principale."
-        },
-        "parking": {
-          "title": "Parking",
-          "desc": "Un parking pour les visiteurs est disponible sur la 4ème avenue (5 Br/h). Service de voiturier disponible à l'entrée principale."
-        }
+        "title": "Directions & Transport",
+        "hours": "Heures d'ouverture",
+        "getDirections": "Obtenir des directions",
+        "showGeneral": "← Toutes les succursales",
+        "selectHint": "Sélectionnez une succursale sur la carte ou utilisez le menu déroulant ci-dessus pour voir les directions."
+      },
+      "map": {
+        "selectBranch": "Sélectionner une succursale",
+        "zoomHint": "Maintenez CTRL + Défilement pour zoomer",
+        "standard": "Vue standard",
+        "satellite": "Vue satellite"
       }
     },
     "appointmentConfirmation": {
@@ -3154,6 +3206,37 @@
         "email": "privacy@everleaf.com",
         "phone": "+251 954 123-456"
       }
+    }
+  },
+  "validation": {
+    "fullName": {
+      "required": "Le nom complet est requis",
+      "min": "Le nom complet doit comporter au moins 2 caractères",
+      "max": "Le nom complet doit comporter moins de 100 caractères",
+      "invalid": "Le nom complet doit commencer et se terminer par des lettres, et ne contenir que des lettres, des espaces, des traits d'union et des apostrophes"
+    },
+    "email": {
+      "required": "L'e-mail est requis",
+      "invalid": "Veuillez entrer une adresse e-mail valide"
+    },
+    "phone": {
+      "required": "Le numéro de téléphone est requis",
+      "invalid": "Le numéro de téléphone contient des caractères non valides. Seuls les chiffres, les espaces et + - ( ) sont autorisés.",
+      "digits": "Le numéro de téléphone doit contenir entre 10 et 20 chiffres"
+    },
+    "subject": {
+      "required": "Veuillez sélectionner un sujet"
+    },
+    "department": {
+      "required": "Veuillez sélectionner un département"
+    },
+    "message": {
+      "required": "Le message est requis",
+      "min": "Le message doit comporter au moins 10 caractères",
+      "max": "Le message doit comporter moins de 1000 caractères",
+      "invalid": "Le message doit contenir au moins quelques lettres ou chiffres",
+      "appointmentMin": "Veuillez fournir des détails sur votre rendez-vous (minimum 10 caractères)",
+      "appointmentMax": "Le message doit comporter moins de 500 caractères"
     }
   }
 }

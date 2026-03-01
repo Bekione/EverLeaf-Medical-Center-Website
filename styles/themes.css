@@ -15,12 +15,17 @@
   --color-primary-light: var(--color-primary-light);
   --color-secondary: var(--color-secondary);
   --color-dark: var(--color-dark);
+  --color-bg: var(--color-bg);
+  --color-bg-alt: var(--color-bg-alt);
   --color-light: var(--color-bg-alt);
+  --color-text: var(--color-text);
+  --color-text-muted: var(--color-text-muted);
   --color-txt: var(--color-text);
   --color-muted: var(--color-text-muted);
   --color-border: var(--color-border);
   --color-surface: var(--color-surface);
   --color-footer: var(--color-footer-bg);
+  --color-footer-bg: var(--color-footer-bg);
   --color-cta-from: var(--color-cta-from);
   --color-cta-to: var(--color-cta-to);
   --color-cta-accent: var(--color-cta-accent);
@@ -45,6 +50,17 @@
     100% {
       opacity: 1;
       transform: translateY(0);
+    }
+  }
+
+  @keyframes mapCardIn {
+    0% {
+      opacity: 0;
+      transform: translateX(-20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateX(0);
     }
   }
 }
@@ -289,22 +305,9 @@ body {
   background: var(--color-primary);
 }
 
-/* Scrollbar Buttons (Carats) */
-::-webkit-scrollbar-button:single-button {
-  display: block;
-  height: 12px;
-  width: 12px;
-  background-color: var(--color-bg-alt);
-  background-repeat: no-repeat;
-  background-position: center;
-}
-
-::-webkit-scrollbar-button:single-button:vertical:decrement {
-  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='10'><path d='M5 2L1 7h8z' fill='%2364748b'/></svg>");
-}
-
-::-webkit-scrollbar-button:single-button:vertical:increment {
-  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='10'><path d='M5 8L1 3h8z' fill='%2364748b'/></svg>");
+/* Scrollbar Buttons (Disabled for cleaner design) */
+::-webkit-scrollbar-button {
+  display: none;
 }
 
 /* Firefox Support */
@@ -1676,4 +1679,84 @@ button.asw-menu-reset svg.asw-spinning {
     transparent
   ) !important;
   border-radius: 10px !important;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════
+    CONTACT MAP & LEAFLET OVERRIDES
+═══════════════════════════════════════════════════════════════════════ */
+.everleaf-marker {
+  background: transparent !important;
+  border: none !important;
+}
+.everleaf-marker svg {
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+}
+.leaflet-tile-container img {
+  outline: 1px solid transparent;
+  image-rendering: -webkit-optimize-contrast;
+}
+.leaflet-container {
+  background-color: transparent !important;
+}
+
+/* Theme-aware zoom and layer controls */
+.leaflet-bar a,
+.leaflet-control-layers {
+  background-color: var(--color-surface) !important;
+  color: var(--color-text) !important;
+  border-color: var(--color-border) !important;
+}
+.leaflet-bar a:hover,
+.leaflet-control-layers-toggle:hover {
+  background-color: var(--color-bg-alt) !important;
+}
+.leaflet-control-layers-separator {
+  border-color: var(--color-border) !important;
+}
+.leaflet-control-layers label {
+  color: var(--color-text) !important;
+}
+.leaflet-bar a.leaflet-disabled {
+  background-color: var(--color-bg-alt) !important;
+  color: var(--color-text-muted) !important;
+}
+
+/* Themed radio buttons */
+.leaflet-control-layers-selector {
+  accent-color: var(--color-primary);
+  cursor: pointer;
+}
+
+/* Themed zoom icons (+ and -) */
+.leaflet-control-zoom-in span,
+.leaflet-control-zoom-out span {
+  color: var(--color-primary) !important;
+}
+
+.leaflet-bar {
+  border: 2px solid var(--color-border) !important;
+}
+
+/* Invert layer toggle icon for dark/contrast themes */
+[data-theme="dark"] .leaflet-control-layers-toggle,
+[data-theme="high-contrast"] .leaflet-control-layers-toggle {
+  filter: invert(1) brightness(2);
+}
+
+/* Fully theme-aware Popups */
+.leaflet-popup-content-wrapper,
+.leaflet-popup-tip {
+  background-color: var(--color-surface) !important;
+  color: var(--color-text) !important;
+  box-shadow: 0 3px 14px rgba(0, 0, 0, 0.4);
+}
+.leaflet-popup-content {
+  color: var(--color-text) !important;
+  font-family: inherit;
+}
+.leaflet-popup-close-button {
+  color: var(--color-text-muted) !important;
+}
+.leaflet-popup-close-button:hover {
+  color: var(--color-text) !important;
 }
