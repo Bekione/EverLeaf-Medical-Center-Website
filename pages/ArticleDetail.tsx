@@ -6,6 +6,7 @@ import RelatedArticles from "../components/RelatedArticles";
 import { CldImg } from "../components/CldImg";
 import { articles, ContentBlock } from "../data/articles";
 import { useTranslation } from "react-i18next";
+import Button from "../components/Button";
 
 // ─── Category Styling ────────────────────────────────────────────────────────
 
@@ -262,15 +263,17 @@ const ArticleDetail: React.FC = () => {
                     {t(`pages.blog.data.${article.id}.read`, article.read)}
                   </span>
                 </div>
-                <button
+                <Button
+                  variant="ghost"
+                  size="sm"
                   onClick={handleShare}
-                  className="flex items-center gap-2 text-muted hover:text-primary transition-colors cursor-pointer"
+                  className="text-muted hover:text-primary h-auto p-0 shadow-none hover:shadow-none font-medium text-sm"
+                  icon="share"
                 >
-                  <span className="material-icons text-lg">share</span>
-                  <span className="text-sm font-medium hidden sm:inline">
+                  <span className="hidden sm:inline">
                     {t("pages.blog.article.share")}
                   </span>
-                </button>
+                </Button>
               </div>
 
               <h1 className="text-4xl md:text-5xl font-serif font-bold text-slate-900 mb-6 leading-tight">
