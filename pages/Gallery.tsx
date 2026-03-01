@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import GalleryModal from "../components/GalleryModal";
-import ImageSkeleton from "../components/ImageSkeleton";
+import GalleryCard from "../components/GalleryCard";
 import SEO from "../components/SEO";
+import HeroSection from "../components/HeroSection";
 import Reveal from "../components/Reveal";
 import {
   useFilterTransition,
@@ -9,6 +10,8 @@ import {
 } from "../hooks/useFilterTransition";
 import { galleryImages as allImages } from "../data/gallery";
 import { useTranslation } from "react-i18next";
+import { FilterTabs } from "../components/FilterTabs";
+import Button from "../components/Button";
 
 const ITEMS_PER_PAGE = 6;
 
@@ -18,6 +21,9 @@ const Gallery: React.FC = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [filter, setFilter] = useState("all");
   const [visibleCount, setVisibleCount] = useState(ITEMS_PER_PAGE);
+  // Track how many cards were visible BEFORE the last Load More so we
+  // can skip the animation on already-shown cards.
+  const [prevVisibleCount, setPrevVisibleCount] = useState(0);
   const [phase, animateFilter] = useFilterTransition(180, 40);
 
   const filteredImages =
@@ -25,14 +31,22 @@ const Gallery: React.FC = () => {
       ? allImages
       : allImages.filter((img) => img.category === filter);
 
+  // Reset both counts when filter changes
   useEffect(() => {
+    setPrevVisibleCount(0);
     setVisibleCount(ITEMS_PER_PAGE);
   }, [filter]);
 
   const visibleImages = filteredImages.slice(0, visibleCount);
 
-  const openModal = (index: number) => {
-    setCurrentIndex(index);
+  // visibleImages[idx] corresponds to filteredImages[idx] since visibleImages
+  // is just a slice of filteredImages — so the index is directly usable.
+  // We pass filteredImages (not visibleImages) to the modal so prev/next
+  // can cycle through ALL filtered images, not just the loaded ones.
+  const openModal = (visibleIdx: number) => {
+    // Because visibleImages = filteredImages.slice(0, visibleCount),
+    // the index in visibleImages IS the same index in filteredImages.
+    setCurrentIndex(visibleIdx);
     setModalOpen(true);
   };
 
@@ -44,10 +58,13 @@ const Gallery: React.FC = () => {
       (prev) => (prev - 1 + filteredImages.length) % filteredImages.length,
     );
 
-  const loadMore = () =>
+  const loadMore = () => {
+    // Record current count before expanding so already-visible cards don't re-animate
+    setPrevVisibleCount(visibleCount);
     animateFilter(() =>
       setVisibleCount((prev) => Math.min(prev + 6, filteredImages.length)),
     );
+  };
 
   const handleFilter = (cat: string) => {
     if (cat === filter) return;
@@ -65,119 +82,40 @@ const Gallery: React.FC = () => {
         canonical="https://everleaf-medical.com/gallery"
       />
 
-      {/* Page Header */}
-      <header
-        className="border-b py-16"
-        style={{
-          backgroundColor: "var(--color-surface)",
-          borderColor: "var(--color-border)",
-        }}
-      >
-        <div className="container mx-auto px-6 text-center">
-          <Reveal delay={0}>
-            <span
-              className="inline-block px-3 py-1 mb-4 text-xs font-semibold tracking-wider uppercase rounded-full"
-              style={{
-                color: "var(--color-primary-dark)",
-                backgroundColor: "var(--color-primary-light)",
-              }}
-            >
-              {t("pages.gallery.hero.badge")}
-            </span>
-          </Reveal>
-          <Reveal delay={80}>
-            <h1
-              className="text-4xl lg:text-5xl font-serif font-bold mb-6"
-              style={{ color: "var(--color-text)" }}
-            >
-              {t("pages.gallery.hero.title")}
-            </h1>
-          </Reveal>
-          <Reveal delay={160}>
-            <p
-              className="text-lg leading-relaxed max-w-2xl mx-auto"
-              style={{ color: "var(--color-text-muted)" }}
-            >
-              {t("pages.gallery.hero.subtitle")}
-            </p>
-          </Reveal>
-        </div>
-      </header>
+      <HeroSection
+        variant="centered"
+        badge={t("pages.gallery.hero.badge")}
+        title={t("pages.gallery.hero.title")}
+        description={t("pages.gallery.hero.subtitle")}
+      />
 
       <section className="py-12 container mx-auto px-6">
-        {/* Filter buttons */}
         <Reveal delay={0} threshold={0.05}>
-          <div
-            className="flex flex-wrap justify-center gap-3 mb-12"
-            role="group"
-            aria-label="Gallery category filter"
-          >
-            {["all", "facilities", "rooms", "equipment", "staff"].map((cat) => {
-              const active = filter === cat;
-              return (
-                <button
-                  key={cat}
-                  onClick={() => handleFilter(cat)}
-                  aria-pressed={active}
-                  className={`px-6 py-2.5 rounded-full text-sm font-semibold transition-all duration-250 shadow-sm ${
-                    active
-                      ? "bg-primary text-white shadow-md ring-2 ring-primary ring-offset-2"
-                      : "border hover:border-primary hover:text-primary"
-                  }`}
-                  style={
-                    !active
-                      ? {
-                          backgroundColor: "var(--color-surface)",
-                          color: "var(--color-text-muted)",
-                          borderColor: "var(--color-border)",
-                        }
-                      : {}
-                  }
-                >
-                  {t(`pages.gallery.filters.${cat}`)}
-                </button>
-              );
-            })}
-          </div>
+          <FilterTabs
+            categories={["all", "facilities", "rooms", "equipment", "staff"]}
+            activeCategory={filter}
+            onCategoryChange={handleFilter}
+            getLabel={(cat) => t(`pages.gallery.filters.${cat}`)}
+            ariaLabel="Gallery category filter"
+            className="mb-12"
+          />
         </Reveal>
 
         {/* Image grid — phase-animated */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {visibleImages.map((img, idx) => (
-            <div
+            <GalleryCard
               key={`${filter}-${img.src}`}
-              className="group relative overflow-hidden rounded-2xl cursor-pointer h-72"
-              style={{
-                backgroundColor: "var(--color-surface)",
-                boxShadow: "var(--shadow-card)",
-                ...cardAnimStyle(idx, phase),
-              }}
+              {...img}
+              // Only animate cards that are newly added (idx >= prevVisibleCount)
+              // Already-visible cards get no animation style so they don't re-animate
+              style={
+                idx >= prevVisibleCount
+                  ? cardAnimStyle(idx - prevVisibleCount, phase)
+                  : undefined
+              }
               onClick={() => openModal(idx)}
-            >
-              <ImageSkeleton
-                src={img.src}
-                alt={t(`data.gallery.${img.id}.title`)}
-                className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700 ease-out"
-                containerClassName="w-full h-full"
-              />
-
-              {/* Slide-up Overlay */}
-              <div className="absolute inset-0 bg-linear-to-t from-slate-900 via-primary/80 to-transparent backdrop-blur-[2px] translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-in-out p-6 flex flex-col justify-end text-white text-left">
-                <span className="text-xs font-bold tracking-wider uppercase text-blue-200 mb-2">
-                  {t(`data.categories.${img.category}`)}
-                </span>
-                <h3 className="text-xl font-bold font-serif mb-2">
-                  {t(`data.gallery.${img.id}.title`)}
-                </h3>
-                <p className="text-sm text-slate-100 line-clamp-2 mb-4">
-                  {t(`data.gallery.${img.id}.desc`)}
-                </p>
-                <div className="flex items-center text-xs font-semibold text-white/90 group-hover:text-white transition-colors">
-                  <span className="material-icons text-sm mr-1">zoom_in</span>{" "}
-                  {t("pages.gallery.card.viewLarger")}
-                </div>
-              </div>
-            </div>
+            />
           ))}
         </div>
 
@@ -185,18 +123,14 @@ const Gallery: React.FC = () => {
         {visibleCount < filteredImages.length && (
           <Reveal delay={200} threshold={0.05}>
             <div className="mt-12 text-center">
-              <button
+              <Button
+                variant="secondary"
                 onClick={loadMore}
-                className="inline-flex items-center justify-center px-8 py-3 text-sm font-bold rounded-full border hover:shadow-md transition-all"
-                style={{
-                  color: "var(--color-primary)",
-                  backgroundColor: "var(--color-surface)",
-                  borderColor: "var(--color-border)",
-                }}
+                className="rounded-full shadow-none border-border"
+                icon="expand_more"
               >
                 {t("pages.gallery.loadMore")}
-                <span className="material-icons text-sm ml-2">expand_more</span>
-              </button>
+              </Button>
             </div>
           </Reveal>
         )}

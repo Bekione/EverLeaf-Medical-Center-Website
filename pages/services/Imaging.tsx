@@ -4,6 +4,10 @@ import { Link, useOutletContext } from "react-router-dom";
 import { OpenAppointmentFunc } from "../../Layout";
 import SEO from "../../components/SEO";
 import Reveal from "../../components/Reveal";
+import Button from "../../components/Button";
+import CTASection from "../../components/CTASection";
+import HeroSection from "../../components/HeroSection";
+import FeaturesSection from "../../components/FeaturesSection";
 
 const Imaging: React.FC = () => {
   const { t } = useTranslation();
@@ -26,54 +30,26 @@ const Imaging: React.FC = () => {
         description={t("pages.services.imaging.seo.description")}
         canonical="https://everleaf-medical.com/services/imaging"
       />
-      <header className="relative bg-slate-900 text-white overflow-hidden">
-        <div className="absolute inset-0">
-          <img
-            src="/images/hero/imaging-hero.jpg"
-            alt="Advanced MRI Scanner Room"
-            className="w-full h-full object-cover opacity-30"
-          />
-          <div className="absolute inset-0 bg-linear-to-r from-slate-900 via-slate-900/80 to-transparent"></div>
-        </div>
-        <div className="container mx-auto px-6 py-24 md:py-32 relative z-10">
-          <div className="max-w-3xl">
-            <Reveal delay={0}>
-              <div className="flex items-center gap-2 mb-4 text-blue-300 font-semibold tracking-wide uppercase text-sm">
-                <span className="material-icons text-lg">scanner</span>
-                <span>{t("pages.services.imaging.hero.badge")}</span>
-              </div>
-            </Reveal>
-            <Reveal delay={100}>
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold mb-6 leading-tight">
-                {t("pages.services.imaging.hero.titlePart1")}
-                <br />
-                {t("pages.services.imaging.hero.titlePart2")}
-              </h1>
-            </Reveal>
-            <Reveal delay={200}>
-              <p className="text-lg md:text-xl text-slate-300 mb-8 max-w-2xl leading-relaxed">
-                {t("pages.services.imaging.hero.description")}
-              </p>
-            </Reveal>
-            <Reveal delay={300}>
-              <div className="flex flex-col sm:flex-row gap-4">
-                <button
-                  onClick={() => openAppointment({ department: "Radiology" })}
-                  className="inline-flex items-center justify-center px-8 py-3.5 text-base font-bold text-white bg-primary rounded-lg hover:bg-primary-dark shadow-lg shadow-primary/30 hover:shadow-primary/50 transition-all transform hover:-translate-y-0.5"
-                >
-                  {t("pages.services.imaging.hero.buttons.schedule")}
-                </button>
-                <button
-                  onClick={(e) => scrollToSection(e, "procedures")}
-                  className="inline-flex items-center justify-center px-8 py-3.5 text-base font-bold text-white bg-white/10 border border-white/20 backdrop-blur-sm rounded-lg hover:bg-white/20 transition-all"
-                >
-                  {t("pages.services.imaging.hero.buttons.procedures")}
-                </button>
-              </div>
-            </Reveal>
-          </div>
-        </div>
-      </header>
+      <HeroSection
+        variant="impact"
+        badge={t("pages.services.imaging.hero.badge")}
+        badgeIcon="scanner"
+        titlePart1={t("pages.services.imaging.hero.titlePart1")}
+        titleHighlight={t("pages.services.imaging.hero.titlePart2")}
+        description={t("pages.services.imaging.hero.description")}
+        image="/images/hero/imaging-hero.jpg"
+        primaryButton={{
+          label: t("pages.services.imaging.hero.buttons.schedule"),
+          onClick: () => openAppointment({ department: "Imaging" }),
+          icon: "calendar_today",
+        }}
+        secondaryButton={{
+          label: t("pages.services.imaging.hero.buttons.procedures"),
+          onClick: (e: any) => scrollToSection(e, "procedures"),
+          variant: "secondary",
+          icon: "visibility",
+        }}
+      />
 
       <section className="py-16 md:py-24 bg-slate-50 relative">
         <div className="container mx-auto px-6">
@@ -341,12 +317,9 @@ const Imaging: React.FC = () => {
                       <span>{t("pages.services.imaging.results.items.2")}</span>
                     </li>
                   </ul>
-                  <Link
-                    to="/contact"
-                    className="inline-flex items-center px-6 py-3 bg-white text-primary font-bold rounded-lg hover:bg-blue-50 transition-colors"
-                  >
+                  <Button variant="white" to="/contact">
                     {t("pages.services.imaging.results.button")}
-                  </Link>
+                  </Button>
                 </div>
                 <div className="h-64 md:h-full relative bg-slate-800">
                   <img
@@ -362,78 +335,46 @@ const Imaging: React.FC = () => {
         </div>
       </section>
 
-      <section className="py-20 bg-slate-50">
-        <div className="container mx-auto px-6">
-          <Reveal threshold={0.1}>
-            <div className="text-center max-w-3xl mx-auto mb-16">
-              <h2 className="text-3xl font-serif font-bold text-slate-900 mb-4">
-                {t("pages.services.imaging.conditions.title")}
-              </h2>
-              <p className="text-slate-600">
-                {t("pages.services.imaging.conditions.description")}
-              </p>
-            </div>
-          </Reveal>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {[
-              {
-                title: t("pages.services.imaging.conditions.items.0.title"),
-                icon: "accessibility_new",
-                color: "orange",
-                desc: t(
-                  "pages.services.imaging.conditions.items.0.description",
-                ),
-              },
-              {
-                title: t("pages.services.imaging.conditions.items.1.title"),
-                icon: "biotech",
-                color: "purple",
-                desc: t(
-                  "pages.services.imaging.conditions.items.1.description",
-                ),
-              },
-              {
-                title: t("pages.services.imaging.conditions.items.2.title"),
-                icon: "favorite",
-                color: "red",
-                desc: t(
-                  "pages.services.imaging.conditions.items.2.description",
-                ),
-              },
-              {
-                title: t("pages.services.imaging.conditions.items.3.title"),
-                icon: "teal",
-                color: "teal",
-                desc: t(
-                  "pages.services.imaging.conditions.items.3.description",
-                ),
-              },
-            ].map((item, i) => (
-              <Reveal key={i} delay={i * 100} threshold={0.1}>
-                <div
-                  className="p-6 rounded-2xl shadow-sm hover:shadow-md transition-shadow border h-full"
-                  style={{
-                    backgroundColor: "var(--color-surface)",
-                    borderColor: "var(--color-border)",
-                  }}
-                >
-                  <div
-                    className={`w-12 h-12 bg-${item.color}-50 rounded-xl flex items-center justify-center text-${item.color}-500 mb-4`}
-                  >
-                    <span className="material-icons text-2xl">{item.icon}</span>
-                  </div>
-                  <h3 className="text-lg font-bold text-slate-900 mb-2">
-                    {item.title}
-                  </h3>
-                  <p className="text-sm text-slate-500 leading-relaxed">
-                    {item.desc}
-                  </p>
-                </div>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
+      <FeaturesSection
+        className="py-20 bg-bg-alt"
+        badge={t("pages.services.imaging.conditions.badge")}
+        title={t("pages.services.imaging.conditions.title")}
+        description={t("pages.services.imaging.conditions.description")}
+        items={[
+          {
+            title: t("pages.services.imaging.conditions.items.0.title"),
+            icon: "accessibility_new",
+            color: "orange",
+            description: t(
+              "pages.services.imaging.conditions.items.0.description",
+            ),
+          },
+          {
+            title: t("pages.services.imaging.conditions.items.1.title"),
+            icon: "biotech",
+            color: "purple",
+            description: t(
+              "pages.services.imaging.conditions.items.1.description",
+            ),
+          },
+          {
+            title: t("pages.services.imaging.conditions.items.2.title"),
+            icon: "favorite",
+            color: "red",
+            description: t(
+              "pages.services.imaging.conditions.items.2.description",
+            ),
+          },
+          {
+            title: t("pages.services.imaging.conditions.items.3.title"),
+            icon: "monitor_heart",
+            color: "teal",
+            description: t(
+              "pages.services.imaging.conditions.items.3.description",
+            ),
+          },
+        ]}
+      />
 
       <section
         className="py-20 relative overflow-hidden"
@@ -563,13 +504,10 @@ const Imaging: React.FC = () => {
                 {t("pages.services.imaging.team.title")}
               </h2>
             </div>
-            <Link
-              to="/doctors"
-              className="hidden md:flex items-center gap-2 text-primary font-semibold hover:text-primary-dark transition-colors"
-            >
-              {t("pages.services.imaging.team.viewAll")}{" "}
-              <span className="material-icons text-sm">arrow_forward</span>
-            </Link>
+            <Button to="/doctors" variant="action" size="sm">
+              {t("pages.services.imaging.team.viewAll")}
+              <span className="material-icons text-sm ml-2">arrow_forward</span>
+            </Button>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
@@ -600,18 +538,19 @@ const Imaging: React.FC = () => {
                       alt={doc.name}
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     />
-                    <div className="absolute inset-0 bg-linear-to-t from-slate-900/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-4">
-                      <button
+                    <div className="absolute inset-0 bg-linear-to-t from-slate-900/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-6">
+                      <Button
                         onClick={() =>
                           openAppointment({
                             doctorName: doc.name,
                             department: "Radiology",
                           })
                         }
-                        className="text-white bg-primary hover:bg-primary-dark px-4 py-2 rounded-full text-sm font-medium"
+                        size="sm"
+                        className="rounded-full"
                       >
                         {t("pages.services.imaging.team.button")}
-                      </button>
+                      </Button>
                     </div>
                   </div>
                   <div className="p-6 text-center">
@@ -632,67 +571,21 @@ const Imaging: React.FC = () => {
         </div>
       </section>
 
-      <section className="py-24 relative overflow-hidden" id="appointment">
-        <div
-          className="absolute inset-0"
-          style={{
-            background:
-              "linear-gradient(135deg, var(--color-cta-from), var(--color-cta-to))",
-          }}
-        ></div>
-        <div
-          className="absolute inset-0 opacity-10"
-          style={{
-            backgroundImage:
-              "url('https://www.transparenttextures.com/patterns/cubes.png')",
-          }}
-        ></div>
-
-        {/* Decorative Elements */}
-        <div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/3 w-96 h-96 bg-white/10 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-0 left-0 translate-y-1/2 -translate-x-1/3 w-96 h-96 bg-blue-500/20 rounded-full blur-3xl"></div>
-
-        {/* Giant Icon */}
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 opacity-[0.03] pointer-events-none">
-          <span className="material-icons text-[20rem] text-white">
-            scanner
-          </span>
-        </div>
-
-        <div className="container mx-auto px-6 relative z-10 text-center">
-          <Reveal threshold={0.1}>
-            <div className="max-w-4xl mx-auto">
-              <span className="inline-block py-1 px-3 rounded-full bg-white/10 border border-white/20 text-white text-xs font-bold tracking-wider uppercase mb-6 backdrop-blur-md">
-                {t("pages.services.imaging.cta.badge")}
-              </span>
-              <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-white mb-6 leading-tight">
-                {t("pages.services.imaging.cta.titlePart1")} <br />
-                <span style={{ color: "var(--color-cta-accent)" }}>
-                  {t("pages.services.imaging.cta.titlePart2")}
-                </span>
-              </h2>
-              <p className="text-white/80 text-lg md:text-xl mb-10 leading-relaxed max-w-2xl mx-auto">
-                {t("pages.services.imaging.cta.description")}
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <button
-                  onClick={() => openAppointment({ department: "Radiology" })}
-                  className="inline-flex items-center justify-center px-8 py-4 text-lg font-bold bg-white rounded-full shadow-xl transition-all hover:scale-105"
-                  style={{ color: "var(--color-cta-from)" }}
-                >
-                  {t("pages.services.imaging.cta.buttons.appointment")}
-                </button>
-                <Link
-                  to="/contact"
-                  className="inline-flex items-center justify-center px-8 py-4 text-lg font-bold text-white border border-white/30 rounded-full hover:bg-white/10 backdrop-blur-sm transition-all"
-                >
-                  {t("pages.services.imaging.cta.buttons.referrals")}
-                </Link>
-              </div>
-            </div>
-          </Reveal>
-        </div>
-      </section>
+      <CTASection
+        badge={t("pages.services.imaging.cta.badge")}
+        titlePart1={t("pages.services.imaging.cta.titlePart1")}
+        titleHighlight={t("pages.services.imaging.cta.titlePart2")}
+        description={t("pages.services.imaging.cta.description")}
+        primaryButton={{
+          label: t("pages.services.imaging.cta.buttons.appointment"),
+          onClick: () => openAppointment({ department: "Radiology" }),
+        }}
+        secondaryButton={{
+          label: t("pages.services.imaging.cta.buttons.referrals"),
+          to: "/contact",
+        }}
+        iconName="scanner"
+      />
     </div>
   );
 };

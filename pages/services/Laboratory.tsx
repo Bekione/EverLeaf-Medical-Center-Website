@@ -1,23 +1,19 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
-import { Link, useOutletContext } from "react-router-dom";
+import { useOutletContext } from "react-router-dom";
 import { OpenAppointmentFunc } from "../../Layout";
 import SEO from "../../components/SEO";
 import Reveal from "../../components/Reveal";
+import Button from "../../components/Button";
+import CTASection from "../../components/CTASection";
+import HeroSection from "../../components/HeroSection";
+import FeaturesSection from "../../components/FeaturesSection";
 
 const Laboratory: React.FC = () => {
   const { t } = useTranslation();
   const { openAppointment } = useOutletContext<{
     openAppointment: OpenAppointmentFunc;
   }>();
-
-  const scrollToSection = (e: React.MouseEvent, id: string) => {
-    e.preventDefault();
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
-  };
 
   return (
     <div className="animate-fade-in">
@@ -26,177 +22,83 @@ const Laboratory: React.FC = () => {
         description={t("pages.services.laboratory.seo.description")}
         canonical="https://everleaf-medical.com/services/laboratory"
       />
-      <header className="relative bg-slate-900 text-white overflow-hidden">
-        <div className="absolute inset-0">
-          <img
-            src="/images/hero/laboratory-hero-1.jpg"
-            alt="Modern medical laboratory environment"
-            className="w-full h-full object-cover opacity-30"
-          />
-          <div className="absolute inset-0 bg-linear-to-r from-slate-900 via-slate-900/80 to-transparent"></div>
-        </div>
-        <div className="container mx-auto px-6 py-24 md:py-32 relative z-10">
-          <div className="max-w-3xl">
-            <Reveal delay={0}>
-              <div className="flex items-center gap-2 mb-4 text-blue-300 font-semibold tracking-wide uppercase text-sm">
-                <span className="material-icons text-lg">biotech</span>
-                <span>{t("pages.services.laboratory.hero.badge")}</span>
-              </div>
-            </Reveal>
-            <Reveal delay={100}>
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold mb-6 leading-tight">
-                {t("pages.services.laboratory.hero.title")}
-              </h1>
-            </Reveal>
-            <Reveal delay={200}>
-              <p className="text-lg md:text-xl text-slate-300 mb-8 max-w-2xl leading-relaxed">
-                {t("pages.services.laboratory.hero.description")}
-              </p>
-            </Reveal>
-            <Reveal delay={300}>
-              <div className="flex flex-col sm:flex-row gap-4">
-                <button
-                  onClick={() => openAppointment({ department: "Laboratory" })}
-                  className="inline-flex items-center justify-center px-8 py-3.5 text-base font-bold text-white bg-primary rounded-lg hover:bg-primary-dark shadow-lg shadow-primary/30 hover:shadow-primary/50 transition-all transform hover:-translate-y-0.5"
-                >
-                  {t("pages.services.laboratory.hero.buttons.book")}
-                </button>
-                <button
-                  onClick={(e) => scrollToSection(e, "collection")}
-                  className="inline-flex items-center justify-center px-8 py-3.5 text-base font-bold text-white bg-white/10 border border-white/20 backdrop-blur-sm rounded-lg hover:bg-white/20 transition-all"
-                >
-                  {t("pages.services.laboratory.hero.buttons.homeCollection")}
-                </button>
-              </div>
-            </Reveal>
-          </div>
-        </div>
-      </header>
+      <HeroSection
+        variant="impact"
+        badge={t("pages.services.laboratory.hero.badge")}
+        badgeIcon="science"
+        titlePart1={t("pages.services.laboratory.hero.titlePart1")}
+        titleHighlight={t("pages.services.laboratory.hero.titlePart2")}
+        description={t("pages.services.laboratory.hero.description")}
+        image="/images/hero/laboratory-hero-1.jpg"
+        primaryButton={{
+          label: t("pages.services.laboratory.hero.buttons.book"),
+          onClick: () => openAppointment({ department: "Laboratory" }),
+          icon: "calendar_today",
+        }}
+        secondaryButton={{
+          label: t("pages.services.laboratory.hero.buttons.homeCollection"),
+          onClick: () =>
+            openAppointment({
+              department: "Laboratory",
+              serviceName: "Home Collection",
+            }),
+          variant: "secondary",
+          icon: "home_work",
+        }}
+      />
 
-      <section
-        className="py-20 relative"
-        style={{ backgroundColor: "var(--color-bg-alt)" }}
-      >
-        <div className="container mx-auto px-6">
-          <Reveal threshold={0.1}>
-            <div className="text-center max-w-3xl mx-auto mb-16">
-              <h2
-                className="text-3xl font-serif font-bold mb-4"
-                style={{ color: "var(--color-text)" }}
-              >
-                {t("pages.services.laboratory.intro.title")}
-              </h2>
-              <p className="text-slate-600">
-                {t("pages.services.laboratory.intro.description")}
-              </p>
-            </div>
-          </Reveal>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[
-              {
-                title: t(
-                  "pages.services.laboratory.departments.biochemistry.title",
-                ),
-                icon: "biotech",
-                iconColor: "text-primary",
-                iconBg: "bg-blue-50",
-                desc: t(
-                  "pages.services.laboratory.departments.biochemistry.description",
-                ),
-                items: [
-                  t(
-                    "pages.services.laboratory.departments.biochemistry.items.0",
-                  ),
-                  t(
-                    "pages.services.laboratory.departments.biochemistry.items.1",
-                  ),
-                  t(
-                    "pages.services.laboratory.departments.biochemistry.items.2",
-                  ),
-                ],
-              },
-              {
-                title: t(
-                  "pages.services.laboratory.departments.microbiology.title",
-                ),
-                icon: "coronavirus",
-                iconColor: "text-teal-500",
-                iconBg: "bg-teal-50",
-                desc: t(
-                  "pages.services.laboratory.departments.microbiology.description",
-                ),
-                items: [
-                  t(
-                    "pages.services.laboratory.departments.microbiology.items.0",
-                  ),
-                  t(
-                    "pages.services.laboratory.departments.microbiology.items.1",
-                  ),
-                  t(
-                    "pages.services.laboratory.departments.microbiology.items.2",
-                  ),
-                ],
-              },
-              {
-                title: t(
-                  "pages.services.laboratory.departments.hematology.title",
-                ),
-                icon: "bloodtype",
-                iconColor: "text-red-500",
-                iconBg: "bg-red-50",
-                desc: t(
-                  "pages.services.laboratory.departments.hematology.description",
-                ),
-                items: [
-                  t("pages.services.laboratory.departments.hematology.items.0"),
-                  t("pages.services.laboratory.departments.hematology.items.1"),
-                  t("pages.services.laboratory.departments.hematology.items.2"),
-                ],
-              },
-            ].map((service, i) => (
-              <Reveal key={i} delay={i * 100} threshold={0.1}>
-                <div
-                  className="p-8 rounded-2xl shadow-card border group hover:-translate-y-1 transition-all duration-300 h-full"
-                  style={{
-                    backgroundColor: "var(--color-surface)",
-                    borderColor: "var(--color-border)",
-                  }}
-                >
-                  <div
-                    className={`w-14 h-14 ${service.iconBg} rounded-xl flex items-center justify-center ${service.iconColor} mb-6 group-hover:scale-110 transition-transform`}
-                  >
-                    <span className="material-icons text-3xl">
-                      {service.icon}
-                    </span>
-                  </div>
-                  <h3
-                    className="text-xl font-bold mb-3"
-                    style={{ color: "var(--color-text)" }}
-                  >
-                    {service.title}
-                  </h3>
-                  <p className="text-slate-500 mb-4 leading-relaxed">
-                    {service.desc}
-                  </p>
-                  <ul className="space-y-2 mb-6">
-                    {service.items.map((item, j) => (
-                      <li
-                        key={j}
-                        className="flex items-center gap-2 text-sm text-slate-600"
-                      >
-                        <span
-                          className={`w-1.5 h-1.5 rounded-full ${service.iconColor.replace("text-", "bg-")}`}
-                        ></span>{" "}
-                        {item}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
+      <FeaturesSection
+        className="py-20 bg-bg-alt"
+        badge={t("pages.services.laboratory.intro.badge")}
+        title={t("pages.services.laboratory.intro.title")}
+        description={t("pages.services.laboratory.intro.description")}
+        columns={3}
+        items={[
+          {
+            title: t(
+              "pages.services.laboratory.departments.biochemistry.title",
+            ),
+            icon: "biotech",
+            color: "blue",
+            description: t(
+              "pages.services.laboratory.departments.biochemistry.description",
+            ),
+            items: [
+              t("pages.services.laboratory.departments.biochemistry.items.0"),
+              t("pages.services.laboratory.departments.biochemistry.items.1"),
+              t("pages.services.laboratory.departments.biochemistry.items.2"),
+            ],
+          },
+          {
+            title: t(
+              "pages.services.laboratory.departments.microbiology.title",
+            ),
+            icon: "coronavirus",
+            color: "teal",
+            description: t(
+              "pages.services.laboratory.departments.microbiology.description",
+            ),
+            items: [
+              t("pages.services.laboratory.departments.microbiology.items.0"),
+              t("pages.services.laboratory.departments.microbiology.items.1"),
+              t("pages.services.laboratory.departments.microbiology.items.2"),
+            ],
+          },
+          {
+            title: t("pages.services.laboratory.departments.hematology.title"),
+            icon: "bloodtype",
+            color: "red",
+            description: t(
+              "pages.services.laboratory.departments.hematology.description",
+            ),
+            items: [
+              t("pages.services.laboratory.departments.hematology.items.0"),
+              t("pages.services.laboratory.departments.hematology.items.1"),
+              t("pages.services.laboratory.departments.hematology.items.2"),
+            ],
+          },
+        ]}
+      />
 
       <section
         className="py-20"
@@ -285,20 +187,21 @@ const Laboratory: React.FC = () => {
                     </li>
                   ))}
                 </ul>
-                <button
+                <Button
                   onClick={() =>
                     openAppointment({
                       department: "Laboratory",
                       doctorName: "Home Collection Service",
                     })
                   }
-                  className="text-primary font-bold hover:text-primary-dark inline-flex items-center gap-2 group text-left"
+                  variant="action"
+                  size="sm"
                 >
                   {t("pages.services.laboratory.homeCollection.button")}
-                  <span className="material-icons text-sm group-hover:translate-x-1 transition-transform">
+                  <span className="material-icons text-sm ml-2 group-hover:translate-x-1 transition-transform">
                     arrow_forward
                   </span>
-                </button>
+                </Button>
               </div>
             </Reveal>
           </div>
@@ -390,73 +293,21 @@ const Laboratory: React.FC = () => {
         </div>
       </section>
 
-      <section className="py-24 relative overflow-hidden">
-        <div
-          className="absolute inset-0"
-          style={{
-            background:
-              "linear-gradient(135deg, var(--color-cta-from), var(--color-cta-to))",
-          }}
-        ></div>
-        <div
-          className="absolute inset-0 opacity-10"
-          style={{
-            backgroundImage:
-              "url('https://www.transparenttextures.com/patterns/cubes.png')",
-          }}
-        ></div>
-
-        {/* Decorative Elements */}
-        <div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/3 w-96 h-96 bg-white/10 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-0 left-0 translate-y-1/2 -translate-x-1/3 w-96 h-96 bg-blue-500/20 rounded-full blur-3xl"></div>
-
-        {/* Giant Icon */}
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 opacity-[0.03] pointer-events-none">
-          <span className="material-icons text-[20rem] text-white">
-            science
-          </span>
-        </div>
-
-        <div className="container mx-auto px-6 relative z-10 text-center">
-          <div className="max-w-4xl mx-auto">
-            <Reveal delay={0}>
-              <span className="inline-block py-1 px-3 rounded-full bg-white/10 border border-white/20 text-white text-xs font-bold tracking-wider uppercase mb-6 backdrop-blur-md">
-                {t("pages.services.laboratory.cta.badge")}
-              </span>
-            </Reveal>
-            <Reveal delay={100}>
-              <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-white mb-6 leading-tight">
-                {t("pages.services.laboratory.cta.titlePart1")} <br />
-                <span style={{ color: "var(--color-cta-accent)" }}>
-                  {t("pages.services.laboratory.cta.titlePart2")}
-                </span>
-              </h2>
-            </Reveal>
-            <Reveal delay={200}>
-              <p className="text-white/80 text-lg md:text-xl mb-10 leading-relaxed max-w-2xl mx-auto">
-                {t("pages.services.laboratory.cta.description")}
-              </p>
-            </Reveal>
-            <Reveal delay={300}>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <button
-                  onClick={() => openAppointment({ department: "Laboratory" })}
-                  className="inline-flex items-center justify-center px-8 py-4 text-lg font-bold bg-white rounded-full shadow-xl transition-all hover:scale-105"
-                  style={{ color: "var(--color-cta-from)" }}
-                >
-                  {t("pages.services.laboratory.cta.buttons.request")}
-                </button>
-                <Link
-                  to="/contact"
-                  className="inline-flex items-center justify-center px-8 py-4 text-lg font-bold text-white border border-white/30 rounded-full hover:bg-white/10 backdrop-blur-sm transition-all"
-                >
-                  {t("pages.services.laboratory.cta.buttons.pricing")}
-                </Link>
-              </div>
-            </Reveal>
-          </div>
-        </div>
-      </section>
+      <CTASection
+        badge={t("pages.services.laboratory.cta.badge")}
+        titlePart1={t("pages.services.laboratory.cta.titlePart1")}
+        titleHighlight={t("pages.services.laboratory.cta.titlePart2")}
+        description={t("pages.services.laboratory.cta.description")}
+        primaryButton={{
+          label: t("pages.services.laboratory.cta.buttons.request"),
+          onClick: () => openAppointment({ department: "Laboratory" }),
+        }}
+        secondaryButton={{
+          label: t("pages.services.laboratory.cta.buttons.pricing"),
+          to: "/contact",
+        }}
+        iconName="science"
+      />
     </div>
   );
 };

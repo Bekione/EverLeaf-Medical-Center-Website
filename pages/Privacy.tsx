@@ -1,27 +1,24 @@
 import React from "react";
 import SEO from "../components/SEO";
 import { useTranslation, Trans } from "react-i18next";
+import TOCSidebar from "../components/TOCSidebar";
+import LegalSection from "../components/LegalSection";
 
 const Privacy: React.FC = () => {
   const { t } = useTranslation();
-  const scrollToSection = (
-    e: React.MouseEvent<HTMLAnchorElement>,
-    id: string,
-  ) => {
-    e.preventDefault();
-    const element = document.getElementById(id);
-    if (element) {
-      const headerOffset = 120;
-      const elementPosition = element.getBoundingClientRect().top;
-      const offsetPosition =
-        elementPosition + window.pageYOffset - headerOffset;
 
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: "smooth",
-      });
-    }
-  };
+  const tocItems = [
+    { id: "terms-of-use", label: t("pages.privacy.toc.items.terms") },
+    {
+      id: "medical-disclaimer",
+      label: t("pages.privacy.toc.items.disclaimer"),
+    },
+    { id: "data-protection", label: t("pages.privacy.toc.items.protection") },
+    { id: "info-collection", label: t("pages.privacy.toc.items.collection") },
+    { id: "patient-rights", label: t("pages.privacy.toc.items.rights") },
+    { id: "cookies", label: t("pages.privacy.toc.items.cookies") },
+    { id: "contact", label: t("pages.privacy.toc.items.contact") },
+  ];
 
   return (
     <div className="animate-fade-in bg-slate-50 min-h-screen">
@@ -54,65 +51,10 @@ const Privacy: React.FC = () => {
         <div className="container mx-auto px-6">
           <div className="flex flex-col lg:flex-row gap-12">
             <aside className="w-full lg:w-1/4">
-              <div className="sticky top-32 bg-white rounded-xl shadow-sm border border-slate-100 p-6">
-                <h3 className="text-lg font-bold text-slate-900 mb-4 flex items-center gap-2">
-                  <span className="material-icons text-primary text-xl">
-                    toc
-                  </span>{" "}
-                  {t("pages.privacy.toc.title")}
-                </h3>
-                <nav className="space-y-1">
-                  <a
-                    href="#terms-of-use"
-                    onClick={(e) => scrollToSection(e, "terms-of-use")}
-                    className="flex items-center justify-between px-3 py-2 text-sm font-medium text-slate-600 hover:bg-slate-50 hover:text-primary rounded-md transition-colors"
-                  >
-                    {t("pages.privacy.toc.items.terms")}
-                  </a>
-                  <a
-                    href="#medical-disclaimer"
-                    onClick={(e) => scrollToSection(e, "medical-disclaimer")}
-                    className="flex items-center justify-between px-3 py-2 text-sm font-medium text-slate-600 hover:bg-slate-50 hover:text-primary rounded-md transition-colors"
-                  >
-                    {t("pages.privacy.toc.items.disclaimer")}
-                  </a>
-                  <a
-                    href="#data-protection"
-                    onClick={(e) => scrollToSection(e, "data-protection")}
-                    className="flex items-center justify-between px-3 py-2 text-sm font-medium text-slate-600 hover:bg-slate-50 hover:text-primary rounded-md transition-colors"
-                  >
-                    {t("pages.privacy.toc.items.protection")}
-                  </a>
-                  <a
-                    href="#info-collection"
-                    onClick={(e) => scrollToSection(e, "info-collection")}
-                    className="flex items-center justify-between px-3 py-2 text-sm font-medium text-slate-600 hover:bg-slate-50 hover:text-primary rounded-md transition-colors"
-                  >
-                    {t("pages.privacy.toc.items.collection")}
-                  </a>
-                  <a
-                    href="#patient-rights"
-                    onClick={(e) => scrollToSection(e, "patient-rights")}
-                    className="flex items-center justify-between px-3 py-2 text-sm font-medium text-slate-600 hover:bg-slate-50 hover:text-primary rounded-md transition-colors"
-                  >
-                    {t("pages.privacy.toc.items.rights")}
-                  </a>
-                  <a
-                    href="#cookies"
-                    onClick={(e) => scrollToSection(e, "cookies")}
-                    className="flex items-center justify-between px-3 py-2 text-sm font-medium text-slate-600 hover:bg-slate-50 hover:text-primary rounded-md transition-colors"
-                  >
-                    {t("pages.privacy.toc.items.cookies")}
-                  </a>
-                  <a
-                    href="#contact"
-                    onClick={(e) => scrollToSection(e, "contact")}
-                    className="flex items-center justify-between px-3 py-2 text-sm font-medium text-slate-600 hover:bg-slate-50 hover:text-primary rounded-md transition-colors"
-                  >
-                    {t("pages.privacy.toc.items.contact")}
-                  </a>
-                </nav>
-              </div>
+              <TOCSidebar
+                title={t("pages.privacy.toc.title")}
+                items={tocItems}
+              />
             </aside>
 
             <main className="w-full lg:w-3/4">
@@ -126,17 +68,12 @@ const Privacy: React.FC = () => {
                   </p>
                 </div>
 
-                <hr className="border-slate-100 mb-12" />
-
-                <div id="terms-of-use" className="mb-12 scroll-mt-32">
-                  <div className="flex items-center gap-3 mb-6">
-                    <div className="p-2 bg-slate-100 rounded-lg text-slate-700">
-                      <span className="material-icons">gavel</span>
-                    </div>
-                    <h2 className="text-2xl font-bold text-slate-900">
-                      {t("pages.privacy.sections.terms.title")}
-                    </h2>
-                  </div>
+                <LegalSection
+                  id="terms-of-use"
+                  title={t("pages.privacy.sections.terms.title")}
+                  icon="gavel"
+                  showDivider
+                >
                   <p className="text-slate-600 leading-relaxed mb-4">
                     {t("pages.privacy.sections.terms.content")}
                   </p>
@@ -160,17 +97,15 @@ const Privacy: React.FC = () => {
                       />
                     </li>
                   </ul>
-                </div>
+                </LegalSection>
 
-                <div id="medical-disclaimer" className="mb-12 scroll-mt-32">
-                  <div className="flex items-center gap-3 mb-6">
-                    <div className="p-2 bg-red-50 rounded-lg text-red-600">
-                      <span className="material-icons">warning</span>
-                    </div>
-                    <h2 className="text-2xl font-bold text-slate-900">
-                      {t("pages.privacy.sections.disclaimer.title")}
-                    </h2>
-                  </div>
+                <LegalSection
+                  id="medical-disclaimer"
+                  title={t("pages.privacy.sections.disclaimer.title")}
+                  icon="warning"
+                  iconBgColor="bg-red-50"
+                  iconTextColor="text-red-600"
+                >
                   <div className="bg-red-50 border-l-4 border-red-500 p-6 rounded-r-xl">
                     <p className="text-slate-700 font-medium mb-2">
                       {t("pages.privacy.sections.disclaimer.subtitle")}
@@ -187,19 +122,16 @@ const Privacy: React.FC = () => {
                       </strong>
                     </p>
                   </div>
-                </div>
+                </LegalSection>
 
-                <hr className="border-slate-100 mb-12" />
-
-                <div id="data-protection" className="mb-12 scroll-mt-32">
-                  <div className="flex items-center gap-3 mb-6">
-                    <div className="p-2 bg-blue-50 rounded-lg text-primary">
-                      <span className="material-icons">shield</span>
-                    </div>
-                    <h2 className="text-2xl font-bold text-slate-900">
-                      {t("pages.privacy.sections.protection.title")}
-                    </h2>
-                  </div>
+                <LegalSection
+                  id="data-protection"
+                  title={t("pages.privacy.sections.protection.title")}
+                  icon="shield"
+                  iconBgColor="bg-blue-50"
+                  iconTextColor="text-primary"
+                  showDivider
+                >
                   <p className="text-slate-600 leading-relaxed mb-6">
                     {t("pages.privacy.sections.protection.content")}
                   </p>
@@ -217,17 +149,15 @@ const Privacy: React.FC = () => {
                       </li>
                     ))}
                   </ul>
-                </div>
+                </LegalSection>
 
-                <div id="info-collection" className="mb-12 scroll-mt-32">
-                  <div className="flex items-center gap-3 mb-6">
-                    <div className="p-2 bg-teal-50 rounded-lg text-teal-600">
-                      <span className="material-icons">folder_shared</span>
-                    </div>
-                    <h2 className="text-2xl font-bold text-slate-900">
-                      {t("pages.privacy.sections.collection.title")}
-                    </h2>
-                  </div>
+                <LegalSection
+                  id="info-collection"
+                  title={t("pages.privacy.sections.collection.title")}
+                  icon="folder_shared"
+                  iconBgColor="bg-teal-50"
+                  iconTextColor="text-teal-600"
+                >
                   <p className="text-slate-600 leading-relaxed mb-4">
                     {t("pages.privacy.sections.collection.content")}
                   </p>
@@ -259,17 +189,15 @@ const Privacy: React.FC = () => {
                       </p>
                     </div>
                   </div>
-                </div>
+                </LegalSection>
 
-                <div id="patient-rights" className="mb-12 scroll-mt-32">
-                  <div className="flex items-center gap-3 mb-6">
-                    <div className="p-2 bg-purple-50 rounded-lg text-purple-600">
-                      <span className="material-icons">accessibility_new</span>
-                    </div>
-                    <h2 className="text-2xl font-bold text-slate-900">
-                      {t("pages.privacy.sections.rights.title")}
-                    </h2>
-                  </div>
+                <LegalSection
+                  id="patient-rights"
+                  title={t("pages.privacy.sections.rights.title")}
+                  icon="accessibility_new"
+                  iconBgColor="bg-purple-50"
+                  iconTextColor="text-purple-600"
+                >
                   <p className="text-slate-600 leading-relaxed mb-6">
                     {t("pages.privacy.sections.rights.content")}
                   </p>
@@ -319,21 +247,19 @@ const Privacy: React.FC = () => {
                       </p>
                     </div>
                   </div>
-                </div>
+                </LegalSection>
 
-                <div id="cookies" className="mb-12 scroll-mt-32">
-                  <div className="flex items-center gap-3 mb-6">
-                    <div className="p-2 bg-yellow-50 rounded-lg text-yellow-600">
-                      <span className="material-icons">cookie</span>
-                    </div>
-                    <h2 className="text-2xl font-bold text-slate-900">
-                      {t("pages.privacy.sections.cookies.title")}
-                    </h2>
-                  </div>
+                <LegalSection
+                  id="cookies"
+                  title={t("pages.privacy.sections.cookies.title")}
+                  icon="cookie"
+                  iconBgColor="bg-yellow-50"
+                  iconTextColor="text-yellow-600"
+                >
                   <p className="text-slate-600 leading-relaxed mb-6">
                     {t("pages.privacy.sections.cookies.content")}
                   </p>
-                </div>
+                </LegalSection>
 
                 <div
                   id="contact"

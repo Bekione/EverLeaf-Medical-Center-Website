@@ -3,8 +3,12 @@ import { Link, useOutletContext } from "react-router-dom";
 import { OpenAppointmentFunc } from "../Layout";
 import SEO from "../components/SEO";
 import Reveal from "../components/Reveal";
+import HeroSection from "../components/HeroSection";
+import ServiceCard from "../components/ServiceCard";
 import { useTranslation } from "react-i18next";
 import { departments } from "../data/departments";
+import CTASection from "../components/CTASection";
+import Button from "../components/Button";
 
 const Departments: React.FC = () => {
   const { t } = useTranslation();
@@ -20,50 +24,15 @@ const Departments: React.FC = () => {
         canonical="https://everleaf-medical.com/departments"
       />
 
-      {/* Page Header */}
-      <header
-        className="border-b py-16"
-        style={{
-          backgroundColor: "var(--color-surface)",
-          borderColor: "var(--color-border)",
-        }}
-      >
-        <div className="container mx-auto px-6 text-center">
-          <Reveal delay={0}>
-            <span
-              className="inline-block px-3 py-1 mb-4 text-xs font-semibold tracking-wider uppercase rounded-full"
-              style={{
-                color: "var(--color-primary-dark)",
-                backgroundColor: "var(--color-primary-light)",
-              }}
-            >
-              {t("pages.home.services.badge")}
-            </span>
-          </Reveal>
-          <Reveal delay={80}>
-            <h1
-              className="text-4xl lg:text-5xl font-serif font-bold mb-6"
-              style={{ color: "var(--color-text)" }}
-            >
-              {t("pages.home.infoCards.departments.title")}
-            </h1>
-          </Reveal>
-          <Reveal delay={160}>
-            <p
-              className="text-lg leading-relaxed max-w-2xl mx-auto"
-              style={{ color: "var(--color-text-muted)" }}
-            >
-              {t("pages.home.infoCards.departments.desc")}
-            </p>
-          </Reveal>
-        </div>
-      </header>
+      <HeroSection
+        variant="centered"
+        badge={t("pages.home.services.badge")}
+        title={t("pages.home.infoCards.departments.title")}
+        description={t("pages.home.infoCards.departments.desc")}
+      />
 
-      {/* Departments Grid */}
-      <section
-        className="py-20 relative overflow-hidden"
-        style={{ backgroundColor: "var(--color-bg-alt)" }}
-      >
+      {/* Departments Grid Section */}
+      <section className="py-20 relative overflow-hidden">
         <div
           className="absolute inset-0 opacity-5"
           style={{
@@ -76,106 +45,36 @@ const Departments: React.FC = () => {
         <div className="container mx-auto px-6 relative z-10">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {departments.map((dept, idx) => (
-              <Reveal key={dept.id} delay={idx * 70}>
-                <div
-                  className="rounded-2xl p-8 shadow-card border hover:-translate-y-2 transition-all duration-300 group h-full"
-                  style={{
-                    backgroundColor: "var(--color-surface)",
-                    borderColor: "var(--color-border)",
-                  }}
-                >
-                  <div
-                    className={`w-16 h-16 bg-${dept.color}-50 rounded-2xl flex items-center justify-center text-${dept.color}-500 mb-6 group-hover:scale-110 transition-transform duration-300`}
-                  >
-                    <span className="material-icons text-3xl">{dept.icon}</span>
-                  </div>
-                  <h3
-                    className="text-2xl font-bold mb-3 group-hover:text-primary transition-colors"
-                    style={{ color: "var(--color-text)" }}
-                  >
-                    {t(`data.departments.${dept.id}.name`)}
-                  </h3>
-                  <p
-                    className="mb-6 leading-relaxed"
-                    style={{ color: "var(--color-text-muted)" }}
-                  >
-                    {t(`data.departments.${dept.id}.desc`)}
-                  </p>
-                  <Link
-                    to={`/departments/${dept.id}`}
-                    className="inline-flex items-center font-semibold text-primary hover:text-primary-dark transition-colors group/link"
-                  >
-                    {t("common.buttons.learnMore")}{" "}
-                    <span className="material-icons text-sm ml-1 group-hover/link:translate-x-1 transition-transform">
-                      arrow_forward
-                    </span>
-                  </Link>
-                </div>
-              </Reveal>
+              <ServiceCard
+                key={dept.id}
+                title={t(`data.departments.${dept.id}.name`)}
+                description={t(`data.departments.${dept.id}.desc`)}
+                icon={dept.icon}
+                color={dept.color}
+                to={`/departments/${dept.id}`}
+                delay={idx * 70}
+              />
             ))}
           </div>
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className="py-24 relative overflow-hidden">
-        <div
-          className="absolute inset-0"
-          style={{
-            background:
-              "linear-gradient(135deg, var(--color-cta-from), var(--color-cta-to))",
-          }}
-        />
-        <div
-          className="absolute inset-0 opacity-10"
-          style={{
-            backgroundImage:
-              "url('https://www.transparenttextures.com/patterns/cubes.png')",
-          }}
-        />
-        <div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/3 w-96 h-96 bg-primary/20 rounded-full blur-3xl" />
-        <div className="absolute bottom-0 left-0 translate-y-1/2 -translate-x-1/3 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl" />
-
-        <div className="container mx-auto px-6 relative z-10 text-center">
-          <div className="max-w-4xl mx-auto">
-            <Reveal delay={0}>
-              <span className="inline-block py-1 px-3 rounded-full bg-white/10 border border-white/20 text-white text-xs font-bold tracking-wider uppercase mb-6 backdrop-blur-md">
-                {t("pages.about.hero.badge")}
-              </span>
-            </Reveal>
-            <Reveal delay={80}>
-              <h2 className="text-3xl md:text-5xl lg:text-6xl font-serif font-bold text-white mb-6 leading-tight">
-                {t("pages.home.cta.titleStart")} <br />
-                <span className="text-blue-300">
-                  {t("pages.home.cta.titleHighlight")}
-                </span>
-              </h2>
-            </Reveal>
-            <Reveal delay={160}>
-              <p className="text-slate-300 text-lg md:text-xl mb-10 leading-relaxed max-w-2xl mx-auto">
-                {t("pages.home.cta.subtitle")}
-              </p>
-            </Reveal>
-            <Reveal delay={240}>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                <button
-                  onClick={() => openAppointment()}
-                  className="px-8 py-4 bg-primary text-white font-bold rounded-full hover:bg-primary-dark transition-all shadow-xl shadow-primary/30 hover:scale-105 flex items-center gap-2"
-                >
-                  {t("common.buttons.bookAppointment")}{" "}
-                  <span className="material-icons">event</span>
-                </button>
-                <Link
-                  to="/doctors"
-                  className="px-8 py-4 bg-transparent border-2 border-white/30 text-white font-bold rounded-full hover:bg-white/10 transition-all backdrop-blur-sm"
-                >
-                  {t("pages.home.infoCards.specialist.search")}
-                </Link>
-              </div>
-            </Reveal>
-          </div>
-        </div>
-      </section>
+      <CTASection
+        badge={t("pages.about.hero.badge")}
+        titlePart1={t("pages.home.cta.titleStart")}
+        titleHighlight={t("pages.home.cta.titleHighlight")}
+        description={t("pages.home.cta.subtitle")}
+        primaryButton={{
+          label: t("common.buttons.bookAppointment"),
+          onClick: () => openAppointment(),
+        }}
+        secondaryButton={{
+          label: t("pages.home.infoCards.specialist.search"),
+          to: "/doctors",
+        }}
+        iconName="event"
+      />
     </div>
   );
 };

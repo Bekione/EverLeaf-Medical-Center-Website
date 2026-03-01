@@ -4,9 +4,15 @@ import { Link, useOutletContext } from "react-router-dom";
 import { OpenAppointmentFunc } from "../../Layout";
 import SEO from "../../components/SEO";
 import Reveal from "../../components/Reveal";
+import Button from "../../components/Button";
+import CTASection from "../../components/CTASection";
+import HeroSection from "../../components/HeroSection";
 
 const Pharmacy: React.FC = () => {
   const { t } = useTranslation();
+  // The openAppointment context and scrollToSection function are no longer directly used by the HeroSection buttons.
+  // If they are not used elsewhere in this component, they can be removed.
+  // For now, keeping them as the instruction only specified replacing the header.
   const { openAppointment } = useOutletContext<{
     openAppointment: OpenAppointmentFunc;
   }>();
@@ -18,7 +24,7 @@ const Pharmacy: React.FC = () => {
       element.scrollIntoView({ behavior: "smooth" });
     }
   };
-
+  
   return (
     <div className="animate-fade-in">
       <SEO
@@ -26,52 +32,25 @@ const Pharmacy: React.FC = () => {
         description={t("pages.services.pharmacy.seo.description")}
         canonical="https://everleaf-medical.com/services/pharmacy"
       />
-      <header className="relative bg-slate-900 text-white overflow-hidden">
-        <div className="absolute inset-0">
-          <img
-            src="/images/hero/pharmacy-hero.jpg"
-            alt="Modern Pharmacy"
-            className="w-full h-full object-cover opacity-40"
-          />
-          <div className="absolute inset-0 bg-linear-to-r from-slate-900 via-slate-900/80 to-transparent"></div>
-        </div>
-        <div className="container mx-auto px-6 py-24 md:py-32 relative z-10">
-          <div className="max-w-3xl">
-            <Reveal delay={0}>
-              <div className="flex items-center gap-2 mb-4 text-green-300 font-semibold tracking-wide uppercase text-sm">
-                <span className="material-icons text-lg">local_pharmacy</span>
-                <span>{t("pages.services.pharmacy.hero.badge")}</span>
-              </div>
-            </Reveal>
-            <Reveal delay={100}>
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold mb-6 leading-tight">
-                {t("pages.services.pharmacy.hero.title")}
-              </h1>
-            </Reveal>
-            <Reveal delay={200}>
-              <p className="text-lg md:text-xl text-slate-300 mb-8 max-w-2xl leading-relaxed">
-                {t("pages.services.pharmacy.hero.description")}
-              </p>
-            </Reveal>
-            <Reveal delay={300}>
-              <div className="flex flex-col sm:flex-row gap-4">
-                <button
-                  onClick={(e) => scrollToSection(e, "services")}
-                  className="inline-flex items-center justify-center px-8 py-3.5 text-base font-semibold text-white bg-secondary hover:bg-green-600 rounded-lg shadow-lg hover:shadow-xl transition-all hover:-translate-y-0.5"
-                >
-                  {t("pages.services.pharmacy.hero.buttons.services")}
-                </button>
-                <button
-                  onClick={() => openAppointment({ department: "Pharmacy" })}
-                  className="inline-flex items-center justify-center px-8 py-3.5 text-base font-semibold text-white bg-white/10 border border-white/20 backdrop-blur-sm rounded-lg hover:bg-white/20 transition-all"
-                >
-                  {t("pages.services.pharmacy.hero.buttons.consult")}
-                </button>
-              </div>
-            </Reveal>
-          </div>
-        </div>
-      </header>
+      <HeroSection
+        variant="impact"
+        badge={t("pages.services.pharmacy.hero.badge")}
+        badgeIcon="medication"
+        titlePart1={t("pages.services.pharmacy.hero.title")}
+        description={t("pages.services.pharmacy.hero.description")}
+        image="/images/hero/pharmacy-hero.jpg"
+        primaryButton={{
+          label: t("pages.services.pharmacy.hero.buttons.services"),
+          onClick: (e: any) => scrollToSection(e, "services"),
+          icon: "medical_services",
+        }}
+        secondaryButton={{
+          label: t("pages.services.pharmacy.hero.buttons.consult"),
+          to: "/contact",
+          variant: "secondary",
+          icon: "chat",
+        }}
+      />
 
       <section className="py-20 bg-slate-50 relative" id="services">
         <div className="absolute inset-0 hero-pattern pointer-events-none"></div>
@@ -289,77 +268,21 @@ const Pharmacy: React.FC = () => {
         </div>
       </section>
 
-      <section className="py-24 relative overflow-hidden">
-        <div
-          className="absolute inset-0"
-          style={{
-            background:
-              "linear-gradient(135deg, var(--color-cta-from), var(--color-cta-to))",
-          }}
-        ></div>
-        <div
-          className="absolute inset-0 opacity-10"
-          style={{
-            backgroundImage:
-              "url('https://www.transparenttextures.com/patterns/cubes.png')",
-          }}
-        ></div>
-
-        {/* Decorative Elements */}
-        <div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/3 w-96 h-96 bg-white/10 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-0 left-0 translate-y-1/2 -translate-x-1/3 w-96 h-96 bg-green-500/20 rounded-full blur-3xl"></div>
-
-        {/* Giant Icon */}
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 opacity-[0.03] pointer-events-none">
-          <span className="material-icons text-[20rem] text-white">
-            medication
-          </span>
-        </div>
-
-        <div className="container mx-auto px-6 relative z-10 text-center">
-          <Reveal threshold={0.1}>
-            <div className="max-w-4xl mx-auto">
-              <span className="inline-block py-1 px-3 rounded-full bg-white/10 border border-white/20 text-white text-xs font-bold tracking-wider uppercase mb-6 backdrop-blur-md">
-                {t("pages.services.pharmacy.cta.badge")}
-              </span>
-              <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-white mb-6 leading-tight">
-                {t("pages.services.pharmacy.cta.titlePart1")} <br />
-                <span style={{ color: "var(--color-cta-accent)" }}>
-                  {t("pages.services.pharmacy.cta.titlePart2")}
-                </span>
-              </h2>
-              <p className="text-white/80 text-lg md:text-xl mb-10 leading-relaxed max-w-2xl mx-auto">
-                {t("pages.services.pharmacy.cta.description")}
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <a
-                  href="tel:5551234567"
-                  className="inline-flex items-center justify-center px-8 py-4 text-lg font-bold bg-white rounded-full shadow-xl transition-all hover:scale-105"
-                  style={{ color: "var(--color-cta-from)" }}
-                >
-                  {t("pages.services.pharmacy.cta.buttons.call")}
-                </a>
-                <Link
-                  to="/contact"
-                  className="inline-flex items-center justify-center px-8 py-4 text-lg font-bold text-white border border-white/30 rounded-full hover:bg-white/10 backdrop-blur-sm transition-all"
-                >
-                  {t("pages.services.pharmacy.cta.buttons.visit")}
-                </Link>
-              </div>
-              <p className="mt-8 text-sm text-white/60">
-                {t("pages.services.pharmacy.cta.refill.text")}{" "}
-                <Link
-                  to="/contact"
-                  className="text-white font-semibold hover:underline"
-                >
-                  {t("pages.services.pharmacy.cta.refill.form")}
-                </Link>
-                .
-              </p>
-            </div>
-          </Reveal>
-        </div>
-      </section>
+      <CTASection
+        badge={t("pages.services.pharmacy.cta.badge")}
+        titlePart1={t("pages.services.pharmacy.cta.titlePart1")}
+        titleHighlight={t("pages.services.pharmacy.cta.titlePart2")}
+        description={t("pages.services.pharmacy.cta.description")}
+        primaryButton={{
+          label: t("pages.services.pharmacy.cta.buttons.call"),
+          href: "tel:5551234567",
+        }}
+        secondaryButton={{
+          label: t("pages.services.pharmacy.cta.buttons.visit"),
+          to: "/contact",
+        }}
+        iconName="medication"
+      />
     </div>
   );
 };

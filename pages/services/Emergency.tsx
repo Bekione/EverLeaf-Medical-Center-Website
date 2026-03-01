@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import SEO from "../../components/SEO";
 import Reveal from "../../components/Reveal";
 import { useTranslation } from "react-i18next";
+import Button from "../../components/Button";
+import HeroSection from "../../components/HeroSection";
 
 const Emergency: React.FC = () => {
   const { t } = useTranslation();
@@ -21,85 +23,27 @@ const Emergency: React.FC = () => {
         )}
         canonical="https://everleaf-medical.com/services/emergency"
       />
-      <header className="relative bg-slate-900 text-white overflow-hidden">
-        <div className="absolute inset-0">
-          <img
-            src="/images/hero/emergency-hero.jpg"
-            alt="Emergency Room"
-            className="w-full h-full object-cover opacity-40"
-          />
-          <div className="absolute inset-0 bg-linear-to-r from-slate-900 via-slate-900/80 to-transparent"></div>
-        </div>
-        <div className="container mx-auto px-6 py-24 md:py-32 relative z-10">
-          <div className="max-w-3xl">
-            <Reveal delay={0}>
-              <div className="flex items-center gap-2 mb-6">
-                <span className="inline-block px-3 py-1 text-xs font-bold tracking-wider text-red-100 uppercase bg-red-600/80 rounded-full border border-red-500/50 shadow-sm">
-                  {t(
-                    "pages.services.emergency.hero.badge",
-                    "Critical Care Unit",
-                  )}
-                </span>
-                <span className="inline-flex items-center text-xs font-medium text-red-200">
-                  <span className="w-2 h-2 rounded-full bg-red-500 mr-2 animate-pulse"></span>{" "}
-                  {t("pages.services.emergency.hero.status", "Open 24 Hours")}
-                </span>
-              </div>
-            </Reveal>
-            <Reveal delay={100}>
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold mb-6 leading-tight">
-                {t(
-                  "pages.services.emergency.hero.titlePart1",
-                  "Emergency Care",
-                )}{" "}
-                <br />
-                <span className="text-white">
-                  {t(
-                    "pages.services.emergency.hero.titlePart2",
-                    "When Seconds Count.",
-                  )}
-                </span>
-              </h1>
-            </Reveal>
-            <Reveal delay={200}>
-              <p className="text-lg md:text-xl text-slate-300 mb-8 max-w-2xl leading-relaxed">
-                {t(
-                  "pages.services.emergency.hero.description",
-                  "Our Level I Trauma Center is staffed 24/7 by board-certified emergency physicians and specialized nurses, ready to handle any medical crisis with expertise, speed, and compassion.",
-                )}
-              </p>
-            </Reveal>
-            <Reveal delay={300}>
-              <div className="flex flex-col sm:flex-row gap-4">
-                <a
-                  href="tel:911"
-                  className="inline-flex items-center justify-center px-8 py-4 text-base font-bold text-white transition-all duration-200 bg-red-600 rounded-lg hover:bg-red-700 shadow-glow hover:shadow-lg hover:-translate-y-0.5"
-                >
-                  {t(
-                    "pages.services.emergency.hero.buttons.call",
-                    "Call Emergency",
-                  )}
-                  <span className="material-icons text-lg ml-2">
-                    phone_in_talk
-                  </span>
-                </a>
-                <Link
-                  to="/contact"
-                  className="inline-flex items-center justify-center px-8 py-4 text-base font-bold text-white bg-white/10 border border-white/20 backdrop-blur-sm rounded-lg hover:bg-white/20 transition-colors shadow-sm"
-                >
-                  {t(
-                    "pages.services.emergency.hero.buttons.directions",
-                    "Get Directions",
-                  )}
-                  <span className="material-icons text-lg ml-2">
-                    directions
-                  </span>
-                </Link>
-              </div>
-            </Reveal>
-          </div>
-        </div>
-      </header>
+      <HeroSection
+        variant="impact"
+        badge={t("pages.services.emergency.hero.badge")}
+        badgeIcon="notification_important"
+        status={t("pages.services.emergency.hero.status")}
+        titlePart1={t("pages.services.emergency.hero.titlePart1")}
+        titleHighlight={t("pages.services.emergency.hero.titlePart2")}
+        description={t("pages.services.emergency.hero.description")}
+        image="/images/hero/emergency-hero.jpg"
+        primaryButton={{
+          label: t("pages.services.emergency.hero.buttons.call"),
+          href: "tel:911",
+          className: "bg-red-600 hover:bg-red-700 shadow-glow",
+          icon: "phone_in_talk",
+        }}
+        secondaryButton={{
+          label: t("pages.services.emergency.hero.buttons.directions"),
+          to: "/contact",
+          icon: "directions",
+        }}
+      />
 
       <section className="py-16 bg-slate-50 relative">
         <div className="absolute inset-0 hero-pattern pointer-events-none"></div>
@@ -562,15 +506,16 @@ const Emergency: React.FC = () => {
                     "Chest pain, difficulty breathing, severe bleeding, head injury, loss of consciousness, or severe abdominal pain.",
                   )}
                 </p>
-                <button
+                <Button
                   onClick={() => setShowGuidelineModal(true)}
-                  className="w-full py-3 bg-white text-slate-900 font-bold rounded-lg hover:bg-slate-200 transition-colors"
+                  variant="white"
+                  className="w-full"
                 >
                   {t(
                     "pages.services.emergency.contact.box.button",
                     "View Full Guideline",
                   )}
-                </button>
+                </Button>
               </div>
             </div>
           </Reveal>
@@ -584,12 +529,12 @@ const Emergency: React.FC = () => {
             className="bg-white rounded-2xl shadow-2xl max-w-lg w-full max-h-[90vh] overflow-y-auto animate-fade-in relative"
             style={{ backgroundColor: "var(--color-surface)" }}
           >
-            <button
+            <Button
+              variant="ghost"
               onClick={() => setShowGuidelineModal(false)}
-              className="absolute top-4 right-4 p-2 text-slate-400 hover:text-slate-600 transition-colors"
-            >
-              <span className="material-icons text-2xl">close</span>
-            </button>
+              className="absolute top-4 right-4 p-2 h-auto min-w-0 rounded-full shadow-none hover:shadow-none"
+              icon="close"
+            ></Button>
 
             <div className="p-8">
               <div className="flex items-center gap-3 mb-6">
@@ -736,19 +681,15 @@ const Emergency: React.FC = () => {
                 className="mt-8 pt-6 border-t"
                 style={{ borderColor: "var(--color-border)" }}
               >
-                <button
+                <Button
                   onClick={() => setShowGuidelineModal(false)}
-                  className="w-full py-3 font-bold rounded-lg transition-colors"
-                  style={{
-                    backgroundColor: "var(--color-text)",
-                    color: "var(--color-surface)",
-                  }}
+                  className="w-full bg-slate-900 text-white hover:bg-slate-800"
                 >
                   {t(
                     "pages.services.emergency.modal.button",
                     "Close Guidelines",
                   )}
-                </button>
+                </Button>
               </div>
             </div>
           </div>

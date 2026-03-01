@@ -4,6 +4,9 @@ import { Link, useOutletContext } from "react-router-dom";
 import { OpenAppointmentFunc } from "../../Layout";
 import SEO from "../../components/SEO";
 import Reveal from "../../components/Reveal";
+import Button from "../../components/Button";
+import CTASection from "../../components/CTASection";
+import HeroSection from "../../components/HeroSection";
 
 const PreventiveCheckups: React.FC = () => {
   const { t } = useTranslation();
@@ -22,58 +25,29 @@ const PreventiveCheckups: React.FC = () => {
   return (
     <div className="animate-fade-in">
       <SEO
-        title={t("pages.services.preventiveCheckups.seo.title")}
-        description={t("pages.services.preventiveCheckups.seo.description")}
+        title={t("pages.services.preventive.seo.title")}
+        description={t("pages.services.preventive.seo.description")}
         canonical="https://everleaf-medical.com/services/preventive-checkups"
       />
-      <header className="relative bg-slate-900 text-white overflow-hidden">
-        <div className="absolute inset-0">
-          <img
-            src="/images/hero/preventive-checkup-hero.jpg"
-            alt="Preventive Health Checkup"
-            className="w-full h-full object-cover opacity-40"
-          />
-          <div className="absolute inset-0 bg-linear-to-r from-slate-900 via-slate-900/80 to-transparent"></div>
-        </div>
-        <div className="container mx-auto px-6 py-24 md:py-32 relative z-10">
-          <div className="max-w-3xl">
-            <Reveal delay={0}>
-              <div className="flex items-center gap-2 mb-4 text-blue-300 font-semibold tracking-wide uppercase text-sm">
-                <span className="material-icons text-lg">
-                  health_and_safety
-                </span>
-                <span>{t("pages.services.preventiveCheckups.hero.badge")}</span>
-              </div>
-            </Reveal>
-            <Reveal delay={100}>
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold mb-6 leading-tight">
-                {t("pages.services.preventiveCheckups.hero.title")}
-              </h1>
-            </Reveal>
-            <Reveal delay={200}>
-              <p className="text-lg md:text-xl text-slate-300 mb-8 max-w-2xl leading-relaxed">
-                {t("pages.services.preventiveCheckups.hero.description")}
-              </p>
-            </Reveal>
-            <Reveal delay={300}>
-              <div className="flex flex-col sm:flex-row gap-4">
-                <button
-                  onClick={(e) => scrollToSection(e, "packages")}
-                  className="inline-flex items-center justify-center px-8 py-3.5 text-base font-bold text-white bg-primary rounded-lg hover:bg-primary-dark shadow-lg shadow-primary/30 hover:shadow-primary/50 transition-all transform hover:-translate-y-0.5"
-                >
-                  {t("pages.services.preventiveCheckups.hero.buttons.packages")}
-                </button>
-                <Link
-                  to="/contact"
-                  className="inline-flex items-center justify-center px-8 py-3.5 text-base font-bold text-white bg-white/10 border border-white/20 backdrop-blur-sm rounded-lg hover:bg-white/20 transition-all"
-                >
-                  {t("pages.services.preventiveCheckups.hero.buttons.contact")}
-                </Link>
-              </div>
-            </Reveal>
-          </div>
-        </div>
-      </header>
+      <HeroSection
+        variant="impact"
+        badge={t("pages.services.preventiveCheckups.hero.badge")}
+        badgeIcon="health_and_safety"
+        titlePart1={t("pages.services.preventiveCheckups.hero.title")}
+        description={t("pages.services.preventiveCheckups.hero.description")}
+        image="/images/hero/preventive-checkup-hero.jpg"
+        primaryButton={{
+          label: t("pages.services.preventiveCheckups.hero.buttons.contact"),
+          onClick: () => openAppointment({ department: "Preventive Care" }),
+          icon: "calendar_today",
+        }}
+        secondaryButton={{
+          label: t("pages.services.preventiveCheckups.hero.buttons.packages"),
+          onClick: (e: any) => scrollToSection(e, "packages"),
+          variant: "secondary",
+          icon: "explore",
+        }}
+      />
 
       <section
         className="py-20"
@@ -110,7 +84,12 @@ const PreventiveCheckups: React.FC = () => {
             };
 
             return (
-              <Reveal key={i} delay={i * 100} threshold={0.1}>
+              <Reveal
+                key={i}
+                delay={i * 100}
+                threshold={0.1}
+                className="h-full"
+              >
                 <div
                   className="p-8 rounded-2xl shadow-card border h-full"
                   style={{
@@ -235,19 +214,20 @@ const PreventiveCheckups: React.FC = () => {
                   </ul>
                 </div>
                 <div className="p-8 pt-0 mt-auto">
-                  <button
+                  <Button
                     onClick={() =>
                       openAppointment({
                         department: "Preventive Checkups",
                         serviceName: "Basic Wellness Package",
                       })
                     }
-                    className="block w-full py-3 px-4 bg-white border-2 border-primary text-primary font-bold text-center rounded-lg hover:bg-blue-50 transition-colors"
+                    variant="outline"
+                    className="w-full"
                   >
                     {t(
                       "pages.services.preventiveCheckups.packages.basic.button",
                     )}
-                  </button>
+                  </Button>
                 </div>
               </div>
             </Reveal>
@@ -329,19 +309,20 @@ const PreventiveCheckups: React.FC = () => {
                   </ul>
                 </div>
                 <div className="p-8 pt-0 mt-auto">
-                  <button
+                  <Button
                     onClick={() =>
                       openAppointment({
                         department: "Preventive Checkups",
                         serviceName: "Executive Checkup Package",
                       })
                     }
-                    className="block w-full py-3 px-4 bg-primary text-white font-bold text-center rounded-lg hover:bg-primary-dark transition-colors shadow-lg shadow-primary/30"
+                    variant="white"
+                    className="w-full"
                   >
                     {t(
                       "pages.services.preventiveCheckups.packages.executive.button",
                     )}
-                  </button>
+                  </Button>
                 </div>
               </div>
             </Reveal>
@@ -420,19 +401,20 @@ const PreventiveCheckups: React.FC = () => {
                   </ul>
                 </div>
                 <div className="p-8 pt-0 mt-auto">
-                  <button
+                  <Button
                     onClick={() =>
                       openAppointment({
                         department: "Preventive Checkups",
                         serviceName: "Senior Health Package",
                       })
                     }
-                    className="block w-full py-3 px-4 bg-white border-2 border-primary text-primary font-bold text-center rounded-lg hover:bg-blue-50 transition-colors"
+                    variant="outline"
+                    className="w-full"
                   >
                     {t(
                       "pages.services.preventiveCheckups.packages.senior.button",
                     )}
-                  </button>
+                  </Button>
                 </div>
               </div>
             </Reveal>
@@ -635,83 +617,32 @@ const PreventiveCheckups: React.FC = () => {
                   </div>
                 </li>
               </ul>
-              <Link
-                to="/blog"
-                className="inline-flex items-center font-semibold text-primary hover:text-primary-dark transition-colors"
-              >
-                {t("pages.services.preventiveCheckups.wellness.success")}{" "}
-                <span className="material-icons text-sm ml-1">
+              <Button to="/blog" variant="action" size="sm">
+                {t("pages.services.preventiveCheckups.wellness.success")}
+                <span className="material-icons text-sm ml-2 transition-transform group-hover:translate-x-1">
                   arrow_forward
                 </span>
-              </Link>
+              </Button>
             </Reveal>
           </div>
         </div>
       </section>
 
-      <section className="py-24 relative overflow-hidden">
-        <div
-          className="absolute inset-0"
-          style={{
-            background:
-              "linear-gradient(135deg, var(--color-cta-from), var(--color-cta-to))",
-          }}
-        ></div>
-        <div
-          className="absolute inset-0 opacity-10"
-          style={{
-            backgroundImage:
-              "url('https://www.transparenttextures.com/patterns/cubes.png')",
-          }}
-        ></div>
-
-        {/* Decorative Elements */}
-        <div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/3 w-96 h-96 bg-white/10 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-0 left-0 translate-y-1/2 -translate-x-1/3 w-96 h-96 bg-emerald-500/20 rounded-full blur-3xl"></div>
-
-        {/* Giant Icon */}
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 opacity-[0.03] pointer-events-none">
-          <span className="material-icons text-[20rem] text-white">
-            health_and_safety
-          </span>
-        </div>
-
-        <div className="container mx-auto px-6 relative z-10 text-center">
-          <Reveal threshold={0.1}>
-            <div className="max-w-4xl mx-auto">
-              <span className="inline-block py-1 px-3 rounded-full bg-white/10 border border-white/20 text-white text-xs font-bold tracking-wider uppercase mb-6 backdrop-blur-md">
-                {t("pages.services.preventiveCheckups.cta.badge")}
-              </span>
-              <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-white mb-6 leading-tight">
-                {t("pages.services.preventiveCheckups.cta.titlePart1")} <br />
-                <span style={{ color: "var(--color-cta-accent)" }}>
-                  {t("pages.services.preventiveCheckups.cta.titlePart2")}
-                </span>
-              </h2>
-              <p className="text-white/80 text-lg md:text-xl mb-10 leading-relaxed max-w-2xl mx-auto">
-                {t("pages.services.preventiveCheckups.cta.description")}
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <button
-                  onClick={() =>
-                    openAppointment({ department: "Preventive Checkups" })
-                  }
-                  className="inline-flex items-center justify-center px-8 py-4 text-lg font-bold bg-white rounded-full shadow-xl transition-all hover:scale-105"
-                  style={{ color: "var(--color-cta-from)" }}
-                >
-                  {t("pages.services.preventiveCheckups.cta.buttons.schedule")}
-                </button>
-                <Link
-                  to="/contact"
-                  className="inline-flex items-center justify-center px-8 py-4 text-lg font-bold text-white border border-white/30 rounded-full hover:bg-white/10 backdrop-blur-sm transition-all"
-                >
-                  {t("pages.services.preventiveCheckups.cta.buttons.contact")}
-                </Link>
-              </div>
-            </div>
-          </Reveal>
-        </div>
-      </section>
+      <CTASection
+        badge={t("pages.services.preventiveCheckups.cta.badge")}
+        titlePart1={t("pages.services.preventiveCheckups.cta.titlePart1")}
+        titleHighlight={t("pages.services.preventiveCheckups.cta.titlePart2")}
+        description={t("pages.services.preventiveCheckups.cta.description")}
+        primaryButton={{
+          label: t("pages.services.preventiveCheckups.cta.buttons.schedule"),
+          onClick: () => openAppointment({ department: "Preventive Checkups" }),
+        }}
+        secondaryButton={{
+          label: t("pages.services.preventiveCheckups.cta.buttons.contact"),
+          to: "/contact",
+        }}
+        iconName="health_and_safety"
+      />
     </div>
   );
 };
