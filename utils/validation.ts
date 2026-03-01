@@ -13,31 +13,31 @@ import { z } from "zod";
 export const contactFormSchema = z.object({
   fullName: z
     .string()
-    .min(2, "Full name must be at least 2 characters")
-    .max(100, "Full name must be less than 100 characters")
+    .trim()
+    .min(1, "validation.fullName.required")
+    .min(2, "validation.fullName.min")
+    .max(100, "validation.fullName.max")
     .regex(
       /^[a-zA-Z]+([a-zA-Z\s'-]*[a-zA-Z]+)?$/,
-      "Full name must start and end with letters, and only contain letters, spaces, hyphens, and apostrophes",
+      "validation.fullName.invalid",
     ),
 
   email: z
     .string()
-    .min(1, "Email is required")
-    .email("Please enter a valid email address")
-    .toLowerCase()
-    .trim(),
+    .trim()
+    .min(1, "validation.email.required")
+    .email("validation.email.invalid")
+    .toLowerCase(),
 
-  subject: z.string().min(1, "Please select a subject"),
+  subject: z.string().min(1, "validation.subject.required"),
 
   message: z
     .string()
-    .min(10, "Message must be at least 10 characters")
-    .max(1000, "Message must be less than 1000 characters")
-    .regex(
-      /^.*[a-zA-Z0-9]+.*$/,
-      "Message must contain at least some letters or numbers",
-    )
-    .trim(),
+    .trim()
+    .min(1, "validation.message.required")
+    .min(10, "validation.message.min")
+    .max(1000, "validation.message.max")
+    .regex(/^.*[a-zA-Z0-9]+.*$/, "validation.message.invalid"),
 });
 
 export type ContactFormData = z.infer<typeof contactFormSchema>;
@@ -49,47 +49,41 @@ export type ContactFormData = z.infer<typeof contactFormSchema>;
 export const appointmentFormSchema = z.object({
   fullName: z
     .string()
-    .min(2, "Full name must be at least 2 characters")
-    .max(100, "Full name must be less than 100 characters")
+    .trim()
+    .min(1, "validation.fullName.required")
+    .min(2, "validation.fullName.min")
+    .max(100, "validation.fullName.max")
     .regex(
       /^[a-zA-Z]+([a-zA-Z\s'-]*[a-zA-Z]+)?$/,
-      "Full name must start and end with letters, and only contain letters, spaces, hyphens, and apostrophes",
+      "validation.fullName.invalid",
     ),
 
   email: z
     .string()
-    .min(1, "Email is required")
-    .email("Please enter a valid email address")
-    .toLowerCase()
-    .trim(),
+    .trim()
+    .min(1, "validation.email.required")
+    .email("validation.email.invalid")
+    .toLowerCase(),
 
   phone: z
     .string()
-    .min(1, "Phone number is required")
-    .regex(
-      /^[0-9+\s()-]+$/,
-      "Phone number contains invalid characters. Only digits, spaces, and + - ( ) are allowed.",
-    )
+    .min(1, "validation.phone.required")
+    .regex(/^[0-9+\s()-]+$/, "validation.phone.invalid")
     .refine((val) => {
       const digitsOnly = val.replace(/\D/g, "");
       return digitsOnly.length >= 10 && digitsOnly.length <= 20;
-    }, "Phone number must contain between 10 and 20 digits")
+    }, "validation.phone.digits")
     .transform((val) => val.replace(/\s/g, "")), // Remove spaces for storage
 
-  department: z.string().min(1, "Please select a department"),
+  department: z.string().min(1, "validation.department.required"),
 
   message: z
     .string()
-    .min(
-      10,
-      "Please provide details about your appointment (minimum 10 characters)",
-    )
-    .max(500, "Message must be less than 500 characters")
-    .regex(
-      /^.*[a-zA-Z0-9]+.*$/,
-      "Message must contain at least some letters or numbers",
-    )
-    .trim(),
+    .trim()
+    .min(1, "validation.message.required")
+    .min(10, "validation.message.appointmentMin")
+    .max(500, "validation.message.appointmentMax")
+    .regex(/^.*[a-zA-Z0-9]+.*$/, "validation.message.invalid"),
 });
 
 export type AppointmentFormData = z.infer<typeof appointmentFormSchema>;
@@ -101,8 +95,8 @@ export type AppointmentFormData = z.infer<typeof appointmentFormSchema>;
 export const newsletterFormSchema = z.object({
   email: z
     .string()
-    .min(1, "Email is required")
-    .email("Please enter a valid email address")
+    .min(1, "validation.email.required")
+    .email("validation.email.invalid")
     .toLowerCase()
     .trim(),
 });
