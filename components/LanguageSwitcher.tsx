@@ -80,8 +80,14 @@ const LANGUAGES = [
   },
 ];
 
-const LanguageSwitcher: React.FC = () => {
-  const { i18n } = useTranslation();
+interface LanguageSwitcherProps {
+  variant?: "navbar" | "menu";
+}
+
+const LanguageSwitcher: React.FC<LanguageSwitcherProps> = ({
+  variant = "navbar",
+}) => {
+  const { i18n, t } = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
@@ -108,30 +114,44 @@ const LanguageSwitcher: React.FC = () => {
     document.documentElement.lang = lng;
   };
 
+  const isNavbar = variant === "navbar";
+
   return (
-    <div className="relative" ref={dropdownRef}>
+    <div
+      className={`z-99999 ${isNavbar ? "relative" : "w-full"}`}
+      ref={dropdownRef}
+    >
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="flex items-center gap-2 px-3 py-1.5 rounded-lg transition-all text-sm font-medium"
-        style={{
-          backgroundColor: "rgba(var(--color-surface-rgb), 0.1)",
-        }}
+        className={`flex items-center gap-3 px-3 py-2 rounded-lg transition-all text-sm font-semibold w-full sm:w-auto ${
+          isNavbar
+            ? "bg-white/10 hover:bg-white/20 text-white"
+            : "bg-bg-alt text-text border border-border"
+        }`}
       >
-        <span className="text-base leading-none">{currentLanguage.flag}</span>
-        <span className="hidden sm:inline">{currentLanguage.name}</span>
+        <span className="text-base leading-none flex items-center">
+          {currentLanguage.flag}
+        </span>
+        <span className={isNavbar ? "hidden sm:inline" : "inline"}>
+          {currentLanguage.name}
+        </span>
         <span
-          className={`material-icons text-xs transition-transform ${
+          className={`material-icons text-xs transition-transform ml-auto sm:ml-0 ${
             isOpen ? "rotate-180" : ""
           }`}
-          style={{ color: "var(--color-surface)" }}
+          style={{ color: isNavbar ? "white" : "var(--color-text-muted)" }}
         >
-          expand_more
+          {isNavbar ? "expand_more" : "keyboard_arrow_down"}
         </span>
       </button>
 
       {isOpen && (
         <div
-          className="absolute right-0 mt-2 w-48 py-2 rounded-xl shadow-2xl z-50 animate-in fade-in slide-in-from-top-2 duration-200 border"
+          className={`${
+            isNavbar
+              ? "absolute right-0 mt-2 w-48 shadow-2xl"
+              : "relative mt-2 w-full shadow-sm"
+          } py-2 rounded-xl border z-99999 animate-in fade-in slide-in-from-top-2 duration-200`}
           style={{
             backgroundColor: "var(--color-surface)",
             borderColor: "var(--color-border)",
@@ -141,7 +161,7 @@ const LanguageSwitcher: React.FC = () => {
             <button
               key={lang.code}
               onClick={() => changeLanguage(lang.code)}
-              className={`w-full flex items-center gap-3 px-4 py-2.5 text-sm transition-colors relative group`}
+              className="w-full flex items-center gap-3 px-4 py-3 text-sm transition-colors relative group"
               style={{
                 color:
                   i18n.language === lang.code
@@ -150,12 +170,16 @@ const LanguageSwitcher: React.FC = () => {
               }}
             >
               <span className="text-lg leading-none">{lang.flag}</span>
-              <span className={i18n.language === lang.code ? "font-bold" : ""}>
+              <span
+                className={`flex-1 text-left ${
+                  i18n.language === lang.code ? "font-bold" : ""
+                }`}
+              >
                 {lang.name}
               </span>
               {i18n.language === lang.code && (
                 <span
-                  className="material-icons text-xs ml-auto"
+                  className="material-icons text-xs"
                   style={{ color: "var(--color-primary)" }}
                 >
                   check
@@ -165,7 +189,7 @@ const LanguageSwitcher: React.FC = () => {
               {/* Hover highlight */}
               <div
                 className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity -z-10"
-                style={{ backgroundColor: "var(--color-primary-light)" }}
+                style={{ backgroundColor: "var(--color-bg-alt)" }}
               ></div>
             </button>
           ))}

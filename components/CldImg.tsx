@@ -13,9 +13,10 @@ export function rawSrc(path: string): string {
 }
 
 function getDefaultTransform(path: string): string {
-  /* Hero: container is 480px tall × half-screen wide (≈750px on 1440 desktop).
-     We serve 1200×800 for 1.6× retina coverage — ~80% smaller than 1920px original. */
-  if (path.includes("/hero/")) return "w_760,h_540,q_auto,f_auto,c_fill,g_auto";
+  /* Hero: container is ~512px wide with 4:3 aspect ratio.
+     Serve 1024x768 (2x retina) — ~70% smaller than 1920px original. */
+  if (path.includes("/hero/"))
+    return "w_1024,h_768,q_auto,f_auto,c_fill,g_auto";
   if (path.includes("/gallery/")) return "w_1200,q_auto,f_auto,c_fill";
   if (path.includes("/articles/")) return "w_1000,q_auto,f_auto,c_fit";
   if (path.includes("/doctors/")) return "w_400,q_auto,f_auto,c_fill,g_face";
@@ -45,27 +46,34 @@ interface CldImgProps extends React.ImgHTMLAttributes<HTMLImageElement> {
 export const CldImg: React.FC<CldImgProps> = ({ src, transform, ...rest }) => {
   let resolvedSrc = src;
 
+  // Destructure fetchPriority so we can re-emit it as the lowercase HTML attribute.
+  // Passing camelCase `fetchPriority` via ...rest triggers a React unknown-prop warning.
+  const { fetchPriority, ...imgRest } = rest as typeof rest & {
+    fetchPriority?: string;
+  };
+
   if (IS_CLOUDINARY) {
     const alreadyCloudinary = src.includes("res.cloudinary.com");
 
     if (alreadyCloudinary) {
       if (transform) {
-        // Swap the existing transform segment with the desired one.
-        // Cloudinary URLs look like: .../image/upload/<transform>/<folder>/images/...
-        // Replace everything between /upload/ and /<folder>/ with the new transform.
         resolvedSrc = src.replace(
           /\/image\/upload\/[^/]+\//,
           `/image/upload/${transform}/`,
         );
       }
-      // else: already correct URL with default transform, use as-is
     } else {
-      // Raw local path — build Cloudinary URL from scratch
       const t = transform ?? getDefaultTransform(src);
       const clean = src.startsWith("/") ? src.slice(1) : src;
       resolvedSrc = `https://res.cloudinary.com/${CLOUD_NAME}/image/upload/${t}/${FOLDER}/${clean}`;
     }
   }
 
-  return <img src={resolvedSrc} {...rest} />;
+  return (
+    <img
+      src={resolvedSrc}
+      {...imgRest}
+      {...(fetchPriority ? { fetchpriority: fetchPriority } : {})}
+    />
+  );
 };

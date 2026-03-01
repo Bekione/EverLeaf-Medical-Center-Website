@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
+import { useTranslation } from "react-i18next";
 
 interface Option {
   value: string;
@@ -28,6 +29,7 @@ export const CustomSelect: React.FC<CustomSelectProps> = ({
   icon,
   error,
 }) => {
+  const { t } = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -69,7 +71,7 @@ export const CustomSelect: React.FC<CustomSelectProps> = ({
         }`}
         style={{
           backgroundColor: "var(--color-surface)",
-          borderColor: error ? "#fca5a5" : "var(--color-border)",
+          borderColor: error ? "#ef4444" : "var(--color-border)",
           color: selectedOption
             ? "var(--color-text)"
             : "var(--color-text-muted)",
@@ -99,13 +101,16 @@ export const CustomSelect: React.FC<CustomSelectProps> = ({
       {/* Options Dropdown */}
       {isOpen && (
         <div
-          className="absolute z-50 w-full mt-2 py-2 rounded-xl border shadow-2xl animate-in fade-in zoom-in-95 duration-200 origin-top overflow-hidden"
+          className="absolute z-9999 w-full mt-2 py-2 rounded-xl border shadow-2xl animate-in fade-in zoom-in-95 duration-200 origin-top overflow-hidden"
           style={{
             backgroundColor: "var(--color-surface)",
             borderColor: "var(--color-border)",
           }}
         >
-          <div className="overflow-y-auto custom-scrollbar" style={{maxHeight: `${maxHeight}rem`}}>
+          <div
+            className="overflow-y-auto custom-scrollbar"
+            style={{ maxHeight: `${maxHeight}rem` }}
+          >
             {options.map((option) => (
               <div
                 key={option.value}
@@ -148,7 +153,10 @@ export const CustomSelect: React.FC<CustomSelectProps> = ({
       )}
 
       {error && (
-        <p className="mt-1 text-xs text-red-500 font-medium">{error}</p>
+        <p className="mt-1 text-xs text-red-600 flex items-center gap-1">
+          <span className="material-icons text-xs">error</span>
+          <span>{t(error)}</span>
+        </p>
       )}
     </div>
   );

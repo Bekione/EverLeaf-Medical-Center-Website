@@ -3,6 +3,8 @@ import { Link, useLocation } from "react-router-dom";
 import { EverleafLogo } from "./Logo";
 import { useTranslation } from "react-i18next";
 import LanguageSwitcher from "./LanguageSwitcher";
+import { ThemeSwitcher } from "./ThemeSwitcher";
+import Button from "./Button";
 
 interface HeaderProps {
   onBookAppointment: () => void;
@@ -64,7 +66,7 @@ const Header: React.FC<HeaderProps> = ({ onBookAppointment }) => {
             </span>
           </div>
           <div className="flex items-center space-x-6">
-            <LanguageSwitcher />
+            <LanguageSwitcher variant="navbar" />
             <div className="flex items-center space-x-4">
               <Link
                 to="/gallery"
@@ -86,7 +88,7 @@ const Header: React.FC<HeaderProps> = ({ onBookAppointment }) => {
 
       {/* Main Nav */}
       <nav
-        className="sticky top-0 z-40 backdrop-blur-md border-b transition-all duration-300"
+        className="sticky top-0 z-9999 backdrop-blur-md border-b transition-all duration-300"
         style={{
           backgroundColor:
             "color-mix(in srgb, var(--color-surface) 92%, transparent)",
@@ -149,7 +151,7 @@ const Header: React.FC<HeaderProps> = ({ onBookAppointment }) => {
                 {/* Invisible hover bridge — fills the mt-2 gap so hover state isn't lost */}
                 <div className="absolute top-full left-0 right-0 h-3" />
                 <div
-                  className="absolute top-full left-0 mt-2 w-56 rounded-lg shadow-xl border opacity-0 invisible group-hover/menu:opacity-100 group-hover/menu:visible transition-all duration-200 transform translate-y-2 group-hover/menu:translate-y-0 z-[9999] py-2"
+                  className="absolute top-full left-0 mt-2 w-56 rounded-lg shadow-xl border opacity-0 invisible group-hover/menu:opacity-100 group-hover/menu:visible transition-all duration-200 transform translate-y-2 group-hover/menu:translate-y-0 z-9999 py-2"
                   style={{
                     backgroundColor: "var(--color-surface)",
                     borderColor: "var(--color-border)",
@@ -240,7 +242,7 @@ const Header: React.FC<HeaderProps> = ({ onBookAppointment }) => {
                 {/* Invisible hover bridge — fills the mt-2 gap so hover state isn't lost */}
                 <div className="absolute top-full left-0 right-0 h-3" />
                 <div
-                  className="absolute top-full left-0 mt-2 w-56 rounded-lg shadow-xl border opacity-0 invisible group-hover/menu:opacity-100 group-hover/menu:visible transition-all duration-200 transform translate-y-2 group-hover/menu:translate-y-0 z-[9999] py-2"
+                  className="absolute top-full left-0 mt-2 w-56 rounded-lg shadow-xl border opacity-0 invisible group-hover/menu:opacity-100 group-hover/menu:visible transition-all duration-200 transform translate-y-2 group-hover/menu:translate-y-0 z-9999 py-2"
                   style={{
                     backgroundColor: "var(--color-surface)",
                     borderColor: "var(--color-border)",
@@ -354,10 +356,7 @@ const Header: React.FC<HeaderProps> = ({ onBookAppointment }) => {
             </div>
 
             <div className="hidden lg:block">
-              <button
-                onClick={onBookAppointment}
-                className="inline-flex items-center justify-center px-4 py-2 xl:px-6 xl:py-2.5 text-sm font-semibold text-white transition-all duration-200 bg-primary rounded-lg hover:bg-primary-dark shadow-lg hover:-translate-y-0.5"
-              >
+              <Button onClick={onBookAppointment} className="xl:px-6 xl:py-2.5">
                 <span className="hidden xl:inline">
                   {t("common.buttons.bookAppointment")}
                 </span>
@@ -365,20 +364,18 @@ const Header: React.FC<HeaderProps> = ({ onBookAppointment }) => {
                 <span className="material-icons text-sm ml-2">
                   arrow_forward
                 </span>
-              </button>
+              </Button>
             </div>
 
             {/* Mobile Menu Button */}
             <div className="lg:hidden">
-              <button
+              <Button
+                variant="ghost"
+                size="sm"
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
-                className="hover:text-primary p-2"
-                style={{ color: "var(--color-text-muted)" }}
-              >
-                <span className="material-icons text-3xl">
-                  {isMenuOpen ? "close" : "menu"}
-                </span>
-              </button>
+                className="p-2 h-auto min-w-0"
+                icon={isMenuOpen ? "close" : "menu"}
+              ></Button>
             </div>
           </div>
         </div>
@@ -635,18 +632,26 @@ const Header: React.FC<HeaderProps> = ({ onBookAppointment }) => {
               >
                 {t("nav.contact")}
               </Link>
-              <div className="py-4 border-t border-white/10">
-                <LanguageSwitcher />
+              <div className="py-4 border-t border-border space-y-4">
+                <div className="flex items-center justify-between">
+                  <span className="text-sm font-semibold text-text-muted">
+                    {t("components.themeSwitcher.title")}
+                  </span>
+                  <ThemeSwitcher inline />
+                </div>
+                <div className="pt-2">
+                  <LanguageSwitcher variant="menu" />
+                </div>
               </div>
-              <button
+              <Button
                 onClick={() => {
                   onBookAppointment();
                   setIsMenuOpen(false);
                 }}
-                className="w-full text-center py-3 mt-4 text-white bg-primary rounded-lg font-bold"
+                className="w-full mt-4"
               >
                 {t("common.buttons.bookAppointment")}
-              </button>
+              </Button>
             </div>
           </div>
         )}
