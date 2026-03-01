@@ -4,6 +4,7 @@ import { submitForm } from "../utils/formService";
 import { appointmentFormSchema, validateField } from "../utils/validation";
 import { CustomSelect } from "./CustomSelect";
 import { useTranslation, Trans } from "react-i18next";
+import Button from "./Button";
 
 interface AppointmentModalProps {
   isOpen: boolean;
@@ -184,8 +185,9 @@ const AppointmentModal: React.FC<AppointmentModalProps> = ({
     if (!validation.success) {
       const fieldErrors: Record<string, string> = {};
       validation.error.issues.forEach((issue) => {
-        if (issue.path[0]) {
-          fieldErrors[issue.path[0].toString()] = issue.message;
+        const path = issue.path[0]?.toString();
+        if (path && !fieldErrors[path]) {
+          fieldErrors[path] = issue.message;
         }
       });
       setErrors(fieldErrors);
@@ -242,7 +244,7 @@ const AppointmentModal: React.FC<AppointmentModalProps> = ({
 
   return (
     <div
-      className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6"
+      className="fixed inset-0 z-100 flex items-center justify-center p-4 sm:p-6"
       role="dialog"
       aria-modal="true"
     >
@@ -250,73 +252,236 @@ const AppointmentModal: React.FC<AppointmentModalProps> = ({
         className="fixed inset-0 bg-slate-900/60 backdrop-blur-sm transition-opacity"
         onClick={onClose}
       ></div>
-      {/* Added max-h and overflow-y-auto for better scroll handling on small screens */}
       <div
-        className="relative w-full max-w-lg max-h-[90vh] overflow-y-auto transform rounded-2xl p-8 shadow-2xl transition-all animate-fade-in flex flex-col"
+        className="relative w-full max-w-lg max-h-[90vh] transform rounded-2xl shadow-2xl transition-all animate-fade-in flex flex-col overflow-hidden"
         style={{
           backgroundColor: "var(--color-surface)",
           color: "var(--color-text)",
         }}
       >
-        <button
-          onClick={onClose}
-          className="absolute top-5 right-5 transition-colors focus:outline-none z-10"
-          style={{ color: "var(--color-text-muted)" }}
-        >
-          <span className="material-icons text-2xl">close</span>
-        </button>
+        {/* Fixed Header */}
+        <div className="shrink-0 p-8 pb-4 relative z-20">
+          <Button
+            variant="ghost"
+            size="sm"
+            onClick={onClose}
+            className="absolute top-6 right-6 p-2 rounded-full h-auto min-w-0"
+            icon="close"
+          ></Button>
 
-        <div className="mb-8 text-center sm:text-left shrink-0">
-          <div
-            className="inline-flex items-center justify-center w-12 h-12 rounded-full text-primary mb-4"
-            style={{ backgroundColor: "var(--color-primary-light)" }}
-          >
-            <span className="material-icons text-2xl">calendar_today</span>
-          </div>
-          <h3
-            className="text-2xl font-bold leading-6"
-            style={{ color: "var(--color-text)" }}
-          >
-            {t("components.appointmentModal.title")}
-          </h3>
-          <p
-            className="mt-2 text-sm"
-            style={{ color: "var(--color-text-muted)" }}
-          >
-            {t("components.appointmentModal.subtitle")}
-          </p>
-        </div>
-
-        {status === "error" && (
-          <div className="mb-6 bg-red-50 border border-red-200 text-red-600 px-4 py-3 rounded-lg text-sm flex items-start gap-2">
-            <span className="material-icons text-lg mt-0.5">error_outline</span>
-            <span>{errorMessage}</span>
-          </div>
-        )}
-
-        <form onSubmit={handleSubmit} className="space-y-5 grow">
-          <div>
-            <label
-              htmlFor="fullName"
-              className="block text-sm font-medium mb-1"
+          <div className="text-center sm:text-left">
+            <div
+              className="inline-flex items-center justify-center w-12 h-12 rounded-full text-primary mb-4"
+              style={{ backgroundColor: "var(--color-primary-light)" }}
+            >
+              <span className="material-icons text-2xl">calendar_today</span>
+            </div>
+            <h3
+              className="text-2xl font-bold leading-6"
               style={{ color: "var(--color-text)" }}
             >
-              {t("components.appointmentModal.fields.fullName.label")}
-            </label>
-            <div className="relative">
-              <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400">
-                <span className="material-icons text-lg">person</span>
+              {t("components.appointmentModal.title")}
+            </h3>
+            <p
+              className="mt-2 text-sm"
+              style={{ color: "var(--color-text-muted)" }}
+            >
+              {t("components.appointmentModal.subtitle")}
+            </p>
+          </div>
+        </div>
+
+        {/* Scrollable Body */}
+        <div className="flex-1 overflow-y-auto p-8 pt-0 custom-scrollbar relative z-10">
+          {status === "error" && (
+            <div className="mb-6 bg-red-50 border border-red-200 text-red-600 px-4 py-3 rounded-lg text-sm flex items-start gap-2">
+              <span className="material-icons text-lg mt-0.5">
+                error_outline
+              </span>
+              <span>{errorMessage}</span>
+            </div>
+          )}
+
+          <form onSubmit={handleSubmit} className="space-y-5">
+            <div>
+              <label
+                htmlFor="fullName"
+                className="block text-sm font-medium mb-1"
+                style={{ color: "var(--color-text)" }}
+              >
+                {t("components.appointmentModal.fields.fullName.label")}
+              </label>
+              <div className="relative">
+                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400">
+                  <span className="material-icons text-lg">person</span>
+                </div>
+                <input
+                  type="text"
+                  id="fullName"
+                  value={formData.fullName}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  disabled={status === "submitting"}
+                  className={`block w-full pl-10 rounded-lg border focus:outline-none focus:ring-2 focus:border-primary sm:text-sm py-2.5 placeholder-slate-400 disabled:opacity-70 disabled:cursor-not-allowed transition-all ${errors.fullName ? "border-red-300 bg-red-50 focus:ring-red-500/50 text-red-900" : "focus:ring-primary/50"}`}
+                  style={
+                    errors.fullName
+                      ? {}
+                      : {
+                          backgroundColor: "var(--color-bg-alt)",
+                          borderColor: "var(--color-border)",
+                          color: "var(--color-text)",
+                        }
+                  }
+                  placeholder={t(
+                    "components.appointmentModal.fields.fullName.placeholder",
+                  )}
+                />
               </div>
-              <input
-                type="text"
-                id="fullName"
-                value={formData.fullName}
+              {errors.fullName && (touched.fullName || hasSubmitted) && (
+                <p className="mt-1 text-xs text-red-600 flex items-center gap-1">
+                  <span className="material-icons text-xs">error</span>
+                  {t(errors.fullName)}
+                </p>
+              )}
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+              <div>
+                <label
+                  htmlFor="email"
+                  className="block text-sm font-medium mb-1"
+                  style={{ color: "var(--color-text)" }}
+                >
+                  {t("components.appointmentModal.fields.email.label")}
+                </label>
+                <div className="relative">
+                  <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400">
+                    <span className="material-icons text-lg">email</span>
+                  </div>
+                  <input
+                    type="email"
+                    id="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    disabled={status === "submitting"}
+                    className={`block w-full pl-10 rounded-lg border focus:outline-none focus:ring-2 focus:border-primary sm:text-sm py-2.5 placeholder-slate-400 disabled:opacity-70 disabled:cursor-not-allowed transition-all ${errors.email ? "border-red-300 bg-red-50 focus:ring-red-500/50 text-red-900" : "focus:ring-primary/50"}`}
+                    style={
+                      errors.email
+                        ? {}
+                        : {
+                            backgroundColor: "var(--color-bg-alt)",
+                            borderColor: "var(--color-border)",
+                            color: "var(--color-text)",
+                          }
+                    }
+                    placeholder={t(
+                      "components.appointmentModal.fields.email.placeholder",
+                    )}
+                  />
+                </div>
+                {errors.email && (touched.email || hasSubmitted) && (
+                  <p className="mt-1 text-xs text-red-600 flex items-center gap-1">
+                    <span className="material-icons text-xs">error</span>
+                    {t(errors.email)}
+                  </p>
+                )}
+              </div>
+              <div>
+                <label
+                  htmlFor="phone"
+                  className="block text-sm font-medium mb-1"
+                  style={{ color: "var(--color-text)" }}
+                >
+                  {t("components.appointmentModal.fields.phone.label")}
+                </label>
+                <div className="relative">
+                  <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400">
+                    <span className="material-icons text-lg">phone</span>
+                  </div>
+                  <input
+                    type="tel"
+                    id="phone"
+                    value={formData.phone}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    disabled={status === "submitting"}
+                    className={`block w-full pl-10 rounded-lg border focus:outline-none focus:ring-2 focus:border-primary sm:text-sm py-2.5 placeholder-slate-400 disabled:opacity-70 disabled:cursor-not-allowed transition-all ${errors.phone ? "border-red-300 bg-red-50 focus:ring-red-500/50 text-red-900" : "focus:ring-primary/50"}`}
+                    style={
+                      errors.phone
+                        ? {}
+                        : {
+                            backgroundColor: "var(--color-bg-alt)",
+                            borderColor: "var(--color-border)",
+                            color: "var(--color-text)",
+                          }
+                    }
+                    placeholder={t(
+                      "components.appointmentModal.fields.phone.placeholder",
+                    )}
+                  />
+                </div>
+                {errors.phone && (touched.phone || hasSubmitted) && (
+                  <p className="mt-1 text-xs text-red-600 flex items-center gap-1">
+                    <span className="material-icons text-xs">error</span>
+                    {t(errors.phone)}
+                  </p>
+                )}
+              </div>
+            </div>
+
+            <div>
+              <CustomSelect
+                options={[
+                  { value: "Cardiology", label: "Cardiology" },
+                  { value: "Neurology", label: "Neurology" },
+                  { value: "Pediatrics", label: "Pediatrics" },
+                  { value: "Surgery", label: "General Surgery" },
+                  { value: "Dental", label: "Dental" },
+                  { value: "Orthopedics", label: "Orthopedics" },
+                  { value: "Dermatology", label: "Dermatology" },
+                  { value: "Oncology", label: "Oncology" },
+                  { value: "Laboratory", label: "Laboratory" },
+                  { value: "Radiology", label: "Radiology" },
+                  { value: "Pharmacy", label: "Pharmacy" },
+                  {
+                    value: "Preventive Checkups",
+                    label: "Preventive Checkups",
+                  },
+                ]}
+                value={formData.department}
+                onChange={handleDepartmentChange}
+                placeholder={t(
+                  "components.appointmentModal.fields.department.placeholder",
+                )}
+                icon="local_hospital"
+                maxHeight={13}
+                error={
+                  errors.department && (touched.department || hasSubmitted)
+                    ? errors.department
+                    : undefined
+                }
+              />
+            </div>
+
+            <div>
+              <label
+                htmlFor="message"
+                className="block text-sm font-medium mb-1"
+                style={{ color: "var(--color-text)" }}
+              >
+                {t("components.appointmentModal.fields.message.label")}
+              </label>
+              <textarea
+                id="message"
+                rows={3}
+                value={formData.message}
                 onChange={handleChange}
                 onBlur={handleBlur}
                 disabled={status === "submitting"}
-                className={`block w-full pl-10 rounded-lg border focus:outline-none focus:ring-2 focus:border-primary sm:text-sm py-2.5 placeholder-slate-400 disabled:opacity-70 disabled:cursor-not-allowed transition-all ${errors.fullName ? "border-red-300 bg-red-50 focus:ring-red-500/50 text-red-900" : "focus:ring-primary/50"}`}
+                className={`block w-full max-h-[170px] rounded-lg border focus:outline-none focus:ring-2 focus:border-primary sm:text-sm p-3 placeholder-slate-400 disabled:opacity-70 disabled:cursor-not-allowed transition-all ${errors.message ? "border-red-300 bg-red-50 focus:ring-red-500/50 text-red-900" : "focus:ring-primary/50"}`}
                 style={
-                  errors.fullName
+                  errors.message
                     ? {}
                     : {
                         backgroundColor: "var(--color-bg-alt)",
@@ -325,211 +490,52 @@ const AppointmentModal: React.FC<AppointmentModalProps> = ({
                       }
                 }
                 placeholder={t(
-                  "components.appointmentModal.fields.fullName.placeholder",
+                  "components.appointmentModal.fields.message.placeholder",
                 )}
-              />
-            </div>
-            {errors.fullName && (touched.fullName || hasSubmitted) && (
-              <p className="mt-1 text-xs text-red-600 flex items-center gap-1">
-                <span className="material-icons text-xs">error</span>
-                {errors.fullName}
-              </p>
-            )}
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-            <div>
-              <label
-                htmlFor="email"
-                className="block text-sm font-medium mb-1"
-                style={{ color: "var(--color-text)" }}
-              >
-                {t("components.appointmentModal.fields.email.label")}
-              </label>
-              <div className="relative">
-                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400">
-                  <span className="material-icons text-lg">email</span>
-                </div>
-                <input
-                  type="email"
-                  id="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  disabled={status === "submitting"}
-                  className={`block w-full pl-10 rounded-lg border focus:outline-none focus:ring-2 focus:border-primary sm:text-sm py-2.5 placeholder-slate-400 disabled:opacity-70 disabled:cursor-not-allowed transition-all ${errors.email ? "border-red-300 bg-red-50 focus:ring-red-500/50 text-red-900" : "focus:ring-primary/50"}`}
-                  style={
-                    errors.email
-                      ? {}
-                      : {
-                          backgroundColor: "var(--color-bg-alt)",
-                          borderColor: "var(--color-border)",
-                          color: "var(--color-text)",
-                        }
-                  }
-                  placeholder={t(
-                    "components.appointmentModal.fields.email.placeholder",
-                  )}
-                />
-              </div>
-              {errors.email && (touched.email || hasSubmitted) && (
+              ></textarea>
+              {errors.message && (touched.message || hasSubmitted) && (
                 <p className="mt-1 text-xs text-red-600 flex items-center gap-1">
                   <span className="material-icons text-xs">error</span>
-                  {errors.email}
+                  {t(errors.message)}
                 </p>
               )}
             </div>
-            <div>
-              <label
-                htmlFor="phone"
-                className="block text-sm font-medium mb-1"
-                style={{ color: "var(--color-text)" }}
+
+            <div className="pt-2">
+              <Button
+                type="submit"
+                disabled={status === "submitting"}
+                className="w-full"
               >
-                {t("components.appointmentModal.fields.phone.label")}
-              </label>
-              <div className="relative">
-                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400">
-                  <span className="material-icons text-lg">phone</span>
-                </div>
-                <input
-                  type="tel"
-                  id="phone"
-                  value={formData.phone}
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  disabled={status === "submitting"}
-                  className={`block w-full pl-10 rounded-lg border focus:outline-none focus:ring-2 focus:border-primary sm:text-sm py-2.5 placeholder-slate-400 disabled:opacity-70 disabled:cursor-not-allowed transition-all ${errors.phone ? "border-red-300 bg-red-50 focus:ring-red-500/50 text-red-900" : "focus:ring-primary/50"}`}
-                  style={
-                    errors.phone
-                      ? {}
-                      : {
-                          backgroundColor: "var(--color-bg-alt)",
-                          borderColor: "var(--color-border)",
-                          color: "var(--color-text)",
-                        }
-                  }
-                  placeholder={t(
-                    "components.appointmentModal.fields.phone.placeholder",
-                  )}
+                {status === "submitting" ? (
+                  <>
+                    <span className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin mr-2"></span>
+                    {t("components.appointmentModal.status.processing")}
+                  </>
+                ) : (
+                  t("components.appointmentModal.status.submit")
+                )}
+              </Button>
+              <p
+                className="mt-3 text-center text-xs"
+                style={{ color: "var(--color-text-muted)" }}
+              >
+                <Trans
+                  i18nKey="components.appointmentModal.footer.terms"
+                  components={{
+                    1: (
+                      <Link
+                        to="/privacy"
+                        className="text-primary"
+                        target="_blank"
+                      />
+                    ),
+                  }}
                 />
-              </div>
-              {errors.phone && (touched.phone || hasSubmitted) && (
-                <p className="mt-1 text-xs text-red-600 flex items-center gap-1">
-                  <span className="material-icons text-xs">error</span>
-                  {errors.phone}
-                </p>
-              )}
+              </p>
             </div>
-          </div>
-
-          <div>
-            <CustomSelect
-              options={[
-                { value: "Cardiology", label: "Cardiology" },
-                { value: "Neurology", label: "Neurology" },
-                { value: "Pediatrics", label: "Pediatrics" },
-                { value: "Surgery", label: "General Surgery" },
-                { value: "Dental", label: "Dental" },
-                { value: "Orthopedics", label: "Orthopedics" },
-                { value: "Dermatology", label: "Dermatology" },
-                { value: "Oncology", label: "Oncology" },
-                { value: "Laboratory", label: "Laboratory" },
-                { value: "Radiology", label: "Radiology" },
-                { value: "Pharmacy", label: "Pharmacy" },
-                { value: "Preventive Checkups", label: "Preventive Checkups" },
-              ]}
-              value={formData.department}
-              onChange={handleDepartmentChange}
-              placeholder={t(
-                "components.appointmentModal.fields.department.placeholder",
-              )}
-              icon="local_hospital"
-              maxHeight={13}
-              error={
-                errors.department && (touched.department || hasSubmitted)
-                  ? errors.department
-                  : undefined
-              }
-            />
-            {errors.department && (touched.department || hasSubmitted) && (
-              <p className="mt-1 text-xs text-red-600 flex items-center gap-1">
-                <span className="material-icons text-xs">error</span>
-                {errors.department}
-              </p>
-            )}
-          </div>
-
-          <div>
-            <label
-              htmlFor="message"
-              className="block text-sm font-medium mb-1"
-              style={{ color: "var(--color-text)" }}
-            >
-              {t("components.appointmentModal.fields.message.label")}
-            </label>
-            <textarea
-              id="message"
-              rows={3}
-              value={formData.message}
-              onChange={handleChange}
-              onBlur={handleBlur}
-              disabled={status === "submitting"}
-              className={`block w-full max-h-[170px] rounded-lg border focus:outline-none focus:ring-2 focus:border-primary sm:text-sm p-3 placeholder-slate-400 disabled:opacity-70 disabled:cursor-not-allowed transition-all ${errors.message ? "border-red-300 bg-red-50 focus:ring-red-500/50 text-red-900" : "focus:ring-primary/50"}`}
-              style={
-                errors.message
-                  ? {}
-                  : {
-                      backgroundColor: "var(--color-bg-alt)",
-                      borderColor: "var(--color-border)",
-                      color: "var(--color-text)",
-                    }
-              }
-              placeholder={t(
-                "components.appointmentModal.fields.message.placeholder",
-              )}
-            ></textarea>
-            {errors.message && (touched.message || hasSubmitted) && (
-              <p className="mt-1 text-xs text-red-600 flex items-center gap-1">
-                <span className="material-icons text-xs">error</span>
-                {errors.message}
-              </p>
-            )}
-          </div>
-
-          <div className="pt-2">
-            <button
-              type="submit"
-              disabled={status === "submitting"}
-              className="w-full flex justify-center items-center py-3 px-4 border border-transparent rounded-lg shadow-sm text-sm font-bold text-white bg-primary hover:bg-primary-dark focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary transition-all disabled:opacity-80 disabled:cursor-wait"
-            >
-              {status === "submitting" ? (
-                <>
-                  <span className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin mr-2"></span>
-                  {t("components.appointmentModal.status.processing")}
-                </>
-              ) : (
-                t("components.appointmentModal.status.submit")
-              )}
-            </button>
-            <p
-              className="mt-3 text-center text-xs"
-              style={{ color: "var(--color-text-muted)" }}
-            >
-              <Trans
-                i18nKey="components.appointmentModal.footer.terms"
-                components={{
-                  1: (
-                    <Link
-                      to="/privacy"
-                      className="text-primary"
-                      target="_blank"
-                    />
-                  ),
-                }}
-              />
-            </p>
-          </div>
-        </form>
+          </form>
+        </div>
       </div>
     </div>
   );

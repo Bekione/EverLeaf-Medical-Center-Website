@@ -1,10 +1,12 @@
 import React, { useState, useRef, useEffect } from "react";
 import { THEMES, useTheme, type ThemeId } from "../contexts/ThemeContext";
 import { useTranslation } from "react-i18next";
+import Button from "./Button";
 
-export const ThemeSwitcher: React.FC<{ inline?: boolean }> = ({
-  inline = false,
-}) => {
+export const ThemeSwitcher: React.FC<{
+  inline?: boolean;
+  className?: string;
+}> = ({ inline = false, className = "" }) => {
   const { theme, setTheme } = useTheme();
   const { t: translate } = useTranslation();
   const [open, setOpen] = useState(false);
@@ -26,8 +28,8 @@ export const ThemeSwitcher: React.FC<{ inline?: boolean }> = ({
       ref={ref}
       className={
         inline
-          ? "relative"
-          : "fixed bottom-6 left-6 z-50 flex flex-col items-start gap-3"
+          ? `relative ${className}`
+          : `hidden md:flex fixed bottom-8 left-6 z-50 flex-col items-start gap-3 ${className}`
       }
     >
       {/* Theme Menu */}
@@ -149,20 +151,17 @@ export const ThemeSwitcher: React.FC<{ inline?: boolean }> = ({
       )}
 
       {/* Toggle Button */}
-      <button
+      <Button
         onClick={() => setOpen((v) => !v)}
-        aria-label={
-          open
-            ? translate("components.themeSwitcher.aria.close")
-            : translate("components.themeSwitcher.aria.open")
-        }
-        aria-expanded={open}
-        className={`flex items-center gap-2 rounded-full text-white font-semibold text-sm transition-all hover:scale-105 active:scale-95 shadow-lg ${
+        rounded="full"
+        animate={false}
+        variant="primary"
+        size="sm"
+        className={`gap-2 text-white! font-semibold shadow-lg ${
           inline ? "px-3 py-2" : "px-4 py-2.5"
         }`}
-        style={{ backgroundColor: theme.swatch }}
+        icon="palette"
       >
-        <span className="material-icons text-base">palette</span>
         {!inline && (
           <span className="hidden sm:inline">{translate(theme.label)}</span>
         )}
@@ -172,7 +171,7 @@ export const ThemeSwitcher: React.FC<{ inline?: boolean }> = ({
         >
           expand_less
         </span>
-      </button>
+      </Button>
     </div>
   );
 };

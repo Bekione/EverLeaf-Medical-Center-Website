@@ -1,5 +1,6 @@
 import React, { Component, ErrorInfo, ReactNode } from "react";
 import { withTranslation, WithTranslation } from "react-i18next";
+import Button from "./Button";
 
 interface Props extends WithTranslation {
   children: ReactNode;
@@ -56,24 +57,12 @@ class ErrorBoundary extends Component<Props, State> {
               {t("components.errorBoundary.description")}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button
-                onClick={() => window.location.reload()}
-                className="inline-flex items-center justify-center px-6 py-3 text-sm font-bold text-white bg-primary rounded-lg hover:bg-primary-dark transition-colors"
-              >
-                <span className="material-icons text-sm mr-2">refresh</span>
+              <Button onClick={() => window.location.reload()} icon="refresh">
                 {t("components.errorBoundary.refresh")}
-              </button>
-              <a
-                href="/"
-                className="inline-flex items-center justify-center px-6 py-3 text-sm font-bold rounded-lg border transition-colors"
-                style={{
-                  color: "var(--color-text)",
-                  backgroundColor: "var(--color-surface)",
-                  borderColor: "var(--color-border)",
-                }}
-              >
+              </Button>
+              <Button to="/" variant="secondary">
                 {t("components.errorBoundary.returnHome")}
-              </a>
+              </Button>
             </div>
           </div>
         </div>

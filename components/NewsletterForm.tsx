@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { submitForm } from "../utils/formService";
 import { newsletterFormSchema } from "../utils/validation";
 import { useTranslation } from "react-i18next";
+import Button from "./Button";
+import SendIcon from "./SendIcon";
 
 interface NewsletterFormProps {
   variant?: "sidebar" | "section";
@@ -21,7 +23,6 @@ const NewsletterForm: React.FC<NewsletterFormProps> = ({
     e.preventDefault();
     setError("");
 
-    // Validate with Zod
     const validation = newsletterFormSchema.safeParse({ email });
 
     if (!validation.success) {
@@ -56,34 +57,22 @@ const NewsletterForm: React.FC<NewsletterFormProps> = ({
         <p className="text-xs text-blue-100 opacity-90">
           {t("footer.newsletter.successDesc")}
         </p>
-        <button
+        <Button
+          variant="ghost"
+          size="sm"
           onClick={() => setStatus("idle")}
-          className="text-xs text-white underline mt-2 hover:opacity-80"
+          className="mt-2 text-white hover:text-white hover:bg-white/10"
         >
           {t("footer.newsletter.subscribeAnother")}
-        </button>
+        </Button>
       </div>
     );
   }
 
-  const inputClasses =
-    variant === "section"
-      ? `w-full rounded-lg border-0 backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-white mb-0 px-6 py-4 text-slate-900 shadow-xl placeholder:text-slate-400 bg-white/95 focus:ring-blue-500/30 transition-all ${error ? "ring-2 ring-red-500" : ""}`
-      : `w-full rounded-lg border-0 bg-white/10 backdrop-blur-sm text-white placeholder-blue-200 focus:outline-none focus:ring-2 focus:ring-white mb-3 px-4 py-2 transition-all ${error ? "ring-2 ring-red-400" : ""}`;
-
-  const buttonClasses =
-    variant === "section"
-      ? "px-8 py-4 bg-primary text-white font-bold rounded-full hover:bg-primary-dark transition-all shadow-xl shadow-black/20 whitespace-nowrap hover:scale-105 disabled:opacity-70 disabled:cursor-wait"
-      : "w-full bg-white text-primary font-bold py-2 rounded-lg hover:bg-white/80 transition-colors disabled:opacity-70 disabled:cursor-wait";
-
-  const containerClasses =
-    variant === "section"
-      ? "max-w-lg mx-auto flex flex-col sm:flex-row gap-4 relative z-10"
-      : "relative z-10";
-
-  return (
-    <form onSubmit={handleSubmit} className={containerClasses}>
-      <div className="flex-1">
+  /* ── sidebar variant (used in Footer, Article sidebar) ─── */
+  if (variant === "sidebar") {
+    return (
+      <form onSubmit={handleSubmit} className="relative z-10">
         <input
           type="email"
           id="newsletter-email"
@@ -93,29 +82,77 @@ const NewsletterForm: React.FC<NewsletterFormProps> = ({
           value={email}
           onChange={(e) => {
             setEmail(e.target.value);
-            if (error) setError(""); // Clear error on change
+            if (error) setError("");
           }}
           disabled={status === "submitting"}
-          className={inputClasses}
+          className={`w-full rounded-lg border-0 bg-white/10 backdrop-blur-sm text-white placeholder-blue-200 focus:outline-none focus:ring-2 focus:ring-white mb-3 px-4 py-2.5 transition-all ${error ? "ring-2 ring-red-400" : ""}`}
         />
         {error && (
-          <p
-            className={`text-xs mt-1 flex items-center gap-1 ${variant === "section" ? "text-red-600" : "text-red-200"}`}
-          >
+          <p className="text-xs mb-2 flex items-center gap-1 text-red-200">
+            <span className="material-icons text-xs">error</span>
+            {error}
+          </p>
+        )}
+        <Button
+          type="submit"
+          disabled={status === "submitting"}
+          rounded="lg"
+          animate={false}
+          size="md"
+          className="w-full py-2.5 uppercase tracking-wide text-xs gap-1.5 group/btn"
+        >
+          {status === "submitting"
+            ? t("footer.newsletter.subscribing")
+            : t("footer.newsletter.button")}
+          {status !== "submitting" && <SendIcon className="w-3.5 h-3.5 transition-transform duration-300 group-hover/btn:translate-x-1" />}
+        </Button>
+      </form>
+    );
+  }
+
+  /* ── section variant (used in Blog CTA hero) ────────────── */
+  return (
+    <form
+      onSubmit={handleSubmit}
+      className="max-w-lg mx-auto flex flex-col sm:flex-row gap-4 relative z-10"
+    >
+      <div className="flex-1">
+        {/* py-4 matches the Button lg size padding below */}
+        <input
+          type="email"
+          id="newsletter-email-section"
+          name="email"
+          autoComplete="email"
+          placeholder={t("footer.newsletter.placeholder")}
+          value={email}
+          onChange={(e) => {
+            setEmail(e.target.value);
+            if (error) setError("");
+          }}
+          disabled={status === "submitting"}
+          className={`w-full rounded-lg border-0 backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-blue-500/30 px-6 py-4 text-slate-900 shadow-xl placeholder:text-slate-400 bg-white/95 transition-all ${error ? "ring-2 ring-red-500" : ""}`}
+        />
+        {error && (
+          <p className="text-xs mt-1 flex items-center gap-1 text-red-300">
             <span className="material-icons text-xs">error</span>
             {error}
           </p>
         )}
       </div>
-      <button
+      {/* size="lg" → py-4 text-lg matches input's py-4 */}
+      <Button
         type="submit"
         disabled={status === "submitting"}
-        className={buttonClasses}
+        size="md"
+        rounded="lg"
+        animate={false}
+        className="sm:w-auto w-full whitespace-nowrap gap-3 group/btn"
       >
         {status === "submitting"
           ? t("footer.newsletter.subscribing")
           : t("footer.newsletter.button")}
-      </button>
+        {status !== "submitting" && <SendIcon className="w-5 h-5 transition-transform duration-300 group-hover/btn:translate-x-1" />}
+      </Button>
     </form>
   );
 };
