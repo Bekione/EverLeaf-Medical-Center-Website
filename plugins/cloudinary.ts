@@ -15,9 +15,10 @@ import type { Plugin } from "vite";
 /** Returns the default Cloudinary transformation for a given image path.
  *  IMPORTANT: keep in sync with CldImg.tsx → getDefaultTransform() */
 function getTransform(path: string): string {
-  /* Hero: displayed at ~480px tall × half-screen wide.
-     Serve 1200×800 (≈1.6× retina) — ~80% smaller than the 1920px original. */
-  if (path.includes("/hero/")) return "w_760,h_540,q_auto,f_auto,c_fill,g_auto";
+  /* Hero: container is ~512px wide with 4:3 aspect ratio.
+     Serve 1024x768 (2x retina) — ~70% smaller than 1920px original. */
+  if (path.includes("/hero/"))
+    return "w_1024,h_768,q_auto,f_auto,c_fill,g_auto";
   if (path.includes("/gallery/")) return "w_1200,q_auto,f_auto,c_fill";
   if (path.includes("/articles/")) return "w_1000,q_auto,f_auto,c_fit";
   if (path.includes("/doctors/")) return "w_400,q_auto,f_auto,c_fill,g_face";
