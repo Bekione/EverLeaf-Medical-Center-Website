@@ -2,6 +2,7 @@ import React from "react";
 import Reveal from "./Reveal";
 import Button from "./Button";
 import { useTranslation } from "react-i18next";
+import { colorMap } from "../data/colorMap";
 
 interface HeroButtonProps {
   label: string;
@@ -291,40 +292,6 @@ const HeroSection: React.FC<HeroSectionProps> = ({
     );
   }
 
-  // Info Variant (Department style)
-  const skewColors: Record<string, string> = {
-    blue: "bg-blue-50/50",
-    red: "bg-red-50/50",
-    teal: "bg-teal-50/50",
-    emerald: "bg-emerald-50/50",
-    purple: "bg-purple-50/50",
-    amber: "bg-amber-50/50",
-    cyan: "bg-cyan-50/50",
-    indigo: "bg-indigo-50/50",
-  };
-
-  const accentTextColors: Record<string, string> = {
-    blue: "text-blue-600",
-    red: "text-red-600",
-    teal: "text-teal-600",
-    emerald: "text-emerald-600",
-    purple: "text-purple-600",
-    amber: "text-amber-600",
-    cyan: "text-cyan-600",
-    indigo: "text-indigo-600",
-  };
-
-  const accentBgColors: Record<string, string> = {
-    blue: "bg-blue-100",
-    red: "bg-red-100",
-    teal: "bg-teal-100",
-    emerald: "bg-emerald-100",
-    purple: "bg-purple-100",
-    amber: "bg-amber-100",
-    cyan: "bg-cyan-100",
-    indigo: "bg-indigo-100",
-  };
-
   return (
     <header
       className={`relative overflow-hidden ${
@@ -343,10 +310,11 @@ const HeroSection: React.FC<HeroSectionProps> = ({
       )}
       {!backgroundClassName?.includes("bg-alt") && (
         <div
-          className={`absolute right-0 top-0 h-full w-1/3 ${
-            skewColors[accentColor] || skewColors.blue
-          } skew-x-12 translate-x-12 pointer-events-none transition-colors duration-500`}
-        ></div>
+          className={`absolute right-0 top-0 h-full w-1/3 skew-x-12 translate-x-12 pointer-events-none transition-colors duration-500`}
+          style={{
+            backgroundColor: `color-mix(in srgb, var(--color-primary) 6%, transparent)`,
+          }}
+        />
       )}
       <div className="container mx-auto px-6 relative z-10">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
@@ -369,7 +337,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
               </div>
             </Reveal>
             <Reveal delay={100}>
-              <h1 className="text-4xl lg:text-6xl font-serif font-bold text-slate-900 mb-6 leading-tight">
+              <h1 className="text-4xl lg:text-6xl font-serif font-bold text-text mb-6 leading-tight">
                 {title || titlePart1}
                 {(titleHighlight || titlePart2) && <br />}
                 {titleHighlight && (
@@ -400,7 +368,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
               </h1>
             </Reveal>
             <Reveal delay={200}>
-              <p className="text-lg text-slate-600 leading-relaxed max-w-2xl mb-10">
+              <p className="text-lg text-muted leading-relaxed max-w-2xl mb-10">
                 {description}
               </p>
             </Reveal>
@@ -477,7 +445,9 @@ const HeroSection: React.FC<HeroSectionProps> = ({
 
                 {/* Decorative elements */}
                 <div
-                  className={`absolute -top-6 -right-6 w-32 h-32 ${accentBgColors[accentColor] || accentBgColors.blue} rounded-full blur-3xl opacity-50 -z-10`}
+                  className={`absolute -top-6 -right-6 w-32 h-32 ${
+                    (colorMap[accentColor] || colorMap.blue).bg
+                  } rounded-full blur-3xl opacity-50 -z-10`}
                 ></div>
 
                 {statsCard && (
