@@ -5,10 +5,100 @@ import { useTranslation } from "react-i18next";
 import LanguageSwitcher from "./LanguageSwitcher";
 import { ThemeSwitcher } from "./ThemeSwitcher";
 import Button from "./Button";
+import {
+  topLevelLinks,
+  trailingLinks,
+  servicesDropdown,
+  departmentsDropdown,
+  mobileServicesItems,
+  mobileDepartmentsItems,
+  type DropdownNavGroup,
+} from "../data/navigation";
 
 interface HeaderProps {
   onBookAppointment: () => void;
 }
+
+// ─── sub-components ──────────────────────────────────────────
+
+interface DesktopDropdownProps {
+  group: DropdownNavGroup;
+  currentPath: string;
+}
+
+const DesktopDropdown: React.FC<DesktopDropdownProps> = ({
+  group,
+  currentPath,
+}) => {
+  const { t } = useTranslation();
+  const isGroupActive = currentPath.startsWith(group.basePath);
+
+  return (
+    <div className="relative group/menu">
+      <Link
+        to={group.basePath}
+        className={`flex items-center gap-1 cursor-pointer text-sm xl:text-base font-medium transition-colors ${isGroupActive ? "text-primary" : "hover:text-primary"}`}
+        style={
+          isGroupActive
+            ? { color: "var(--color-primary)" }
+            : { color: "var(--color-text)" }
+        }
+      >
+        {t(group.labelKey)}{" "}
+        <span className="material-icons text-sm transition-transform duration-300 group-hover/menu:rotate-180">
+          expand_more
+        </span>
+      </Link>
+      {/* Invisible hover bridge — prevents gap between trigger and panel */}
+      <div className="absolute top-full left-0 right-0 h-3" />
+      <div
+        className="absolute top-full left-0 mt-2 w-56 rounded-lg shadow-xl border opacity-0 invisible group-hover/menu:opacity-100 group-hover/menu:visible transition-all duration-200 transform translate-y-2 group-hover/menu:translate-y-0 z-9999 py-2"
+        style={{
+          backgroundColor: "var(--color-surface)",
+          borderColor: "var(--color-border)",
+        }}
+      >
+        {group.items.map((item) => {
+          const isActive = currentPath === item.to;
+          return (
+            <Link
+              key={item.to}
+              to={item.to}
+              className="block px-4 py-2.5 text-sm transition-all mx-1.5 rounded-md mb-0.5 last:mb-0 group/item"
+              style={{
+                color: isActive ? "var(--color-primary)" : "var(--color-text)",
+                backgroundColor: isActive
+                  ? "color-mix(in srgb, var(--color-primary) 12%, transparent)"
+                  : undefined,
+              }}
+              onMouseEnter={(e) => {
+                if (!isActive)
+                  e.currentTarget.style.backgroundColor =
+                    "color-mix(in srgb, var(--color-primary) 8%, transparent)";
+              }}
+              onMouseLeave={(e) => {
+                if (!isActive)
+                  e.currentTarget.style.backgroundColor = "transparent";
+              }}
+            >
+              <span
+                className={`inline-block transition-transform duration-300 ${
+                  isActive
+                    ? "translate-x-1.5 font-semibold"
+                    : "group-hover/item:translate-x-1.5"
+                }`}
+              >
+                {t(item.labelKey)}
+              </span>
+            </Link>
+          );
+        })}
+      </div>
+    </div>
+  );
+};
+
+// ─── main component ──────────────────────────────────────────
 
 const Header: React.FC<HeaderProps> = ({ onBookAppointment }) => {
   const { t } = useTranslation();
@@ -26,14 +116,11 @@ const Header: React.FC<HeaderProps> = ({ onBookAppointment }) => {
       ? { color: "var(--color-primary)" }
       : { color: "var(--color-text)" };
 
-  const toggleMobileSubmenu = (menu: string) => {
+  const toggleMobileSubmenu = (menu: string) =>
     setExpandedMobileMenu(expandedMobileMenu === menu ? null : menu);
-  };
 
   const getMobileLinkClass = (path: string) =>
-    `block py-2 font-medium transition-colors ${
-      location.pathname === path ? "text-primary font-bold" : ""
-    }`;
+    `block py-2 font-medium transition-colors ${location.pathname === path ? "text-primary font-bold" : ""}`;
 
   const getMobileSubLinkClass = (path: string) =>
     `block text-sm transition-colors py-1 ${
@@ -47,10 +134,7 @@ const Header: React.FC<HeaderProps> = ({ onBookAppointment }) => {
       {/* Top Bar */}
       <div
         className="py-2 text-sm hidden md:block"
-        style={{
-          backgroundColor: "var(--color-footer-bg)",
-          color: "white",
-        }}
+        style={{ backgroundColor: "var(--color-footer-bg)", color: "white" }}
       >
         <div className="container mx-auto px-6 flex justify-between items-center">
           <div className="flex items-center space-x-6">
@@ -97,6 +181,7 @@ const Header: React.FC<HeaderProps> = ({ onBookAppointment }) => {
       >
         <div className="container mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
+            {/* Logo */}
             <Link to="/" className="flex items-center gap-3 group">
               <EverleafLogo className="w-8 h-8 lg:w-10 lg:h-10 group-hover:scale-105 transition-transform duration-300" />
               <div className="flex flex-col">
@@ -117,244 +202,39 @@ const Header: React.FC<HeaderProps> = ({ onBookAppointment }) => {
 
             {/* Desktop Menu */}
             <div className="hidden lg:flex items-center space-x-4 xl:space-x-8">
-              <Link
-                className={`${isActive("/")} text-sm xl:text-base font-medium transition-colors`}
-                style={getNavLinkStyle("/")}
-                to="/"
-              >
-                {t("nav.home")}
-              </Link>
-              <Link
-                className={`${isActive("/about")} text-sm xl:text-base font-medium transition-colors`}
-                style={getNavLinkStyle("/about")}
-                to="/about"
-              >
-                {t("nav.about")}
-              </Link>
-
-              {/* Services Dropdown */}
-              <div className="relative group/menu">
+              {topLevelLinks.map((link) => (
                 <Link
-                  to="/services"
-                  className={`flex items-center gap-1 cursor-pointer text-sm xl:text-base font-medium transition-colors ${location.pathname.startsWith("/services") ? "text-primary" : "hover:text-primary"}`}
-                  style={
-                    location.pathname.startsWith("/services")
-                      ? { color: "var(--color-primary)" }
-                      : { color: "var(--color-text)" }
-                  }
+                  key={link.to}
+                  className={`${isActive(link.to)} text-sm xl:text-base font-medium transition-colors`}
+                  style={getNavLinkStyle(link.to)}
+                  to={link.to}
                 >
-                  {t("nav.services")}{" "}
-                  <span className="material-icons text-sm transition-transform duration-300 group-hover/menu:rotate-180">
-                    expand_more
-                  </span>
+                  {t(link.labelKey)}
                 </Link>
-                {/* Invisible hover bridge — fills the mt-2 gap so hover state isn't lost */}
-                <div className="absolute top-full left-0 right-0 h-3" />
-                <div
-                  className="absolute top-full left-0 mt-2 w-56 rounded-lg shadow-xl border opacity-0 invisible group-hover/menu:opacity-100 group-hover/menu:visible transition-all duration-200 transform translate-y-2 group-hover/menu:translate-y-0 z-9999 py-2"
-                  style={{
-                    backgroundColor: "var(--color-surface)",
-                    borderColor: "var(--color-border)",
-                  }}
-                >
-                  {[
-                    {
-                      to: "/services/diagnostics",
-                      label: t("data.services.diagnostics.title"),
-                    },
-                    {
-                      to: "/services/laboratory",
-                      label: t("data.services.laboratory.title"),
-                    },
-                    {
-                      to: "/services/imaging",
-                      label: t("data.services.imaging.title"),
-                    },
-                    {
-                      to: "/services/pharmacy",
-                      label: t("data.services.pharmacy.title"),
-                    },
-                    {
-                      to: "/services/emergency",
-                      label: t("data.services.emergency.title"),
-                    },
-                    {
-                      to: "/services/preventive-checkups",
-                      label: t("data.services.preventive.title"),
-                    },
-                  ].map((item) => (
-                    <Link
-                      key={item.to}
-                      to={item.to}
-                      className="block px-4 py-2.5 text-sm transition-all mx-1.5 rounded-md mb-0.5 last:mb-0 group/item"
-                      style={{
-                        color:
-                          location.pathname === item.to
-                            ? "var(--color-primary)"
-                            : "var(--color-text)",
-                        backgroundColor:
-                          location.pathname === item.to
-                            ? "color-mix(in srgb, var(--color-primary) 12%, transparent)"
-                            : undefined,
-                      }}
-                      onMouseEnter={(e) => {
-                        if (location.pathname !== item.to) {
-                          e.currentTarget.style.backgroundColor =
-                            "color-mix(in srgb, var(--color-primary) 8%, transparent)";
-                        }
-                      }}
-                      onMouseLeave={(e) => {
-                        if (location.pathname !== item.to) {
-                          e.currentTarget.style.backgroundColor = "transparent";
-                        }
-                      }}
-                    >
-                      <span
-                        className={`inline-block transition-transform duration-300 ${
-                          location.pathname === item.to
-                            ? "translate-x-1.5 font-semibold"
-                            : "group-hover/item:translate-x-1.5"
-                        }`}
-                      >
-                        {item.label}
-                      </span>
-                    </Link>
-                  ))}
-                </div>
-              </div>
+              ))}
 
-              {/* Departments Dropdown */}
-              <div className="relative group/menu">
+              <DesktopDropdown
+                group={servicesDropdown}
+                currentPath={location.pathname}
+              />
+              <DesktopDropdown
+                group={departmentsDropdown}
+                currentPath={location.pathname}
+              />
+
+              {trailingLinks.map((link) => (
                 <Link
-                  to="/departments"
-                  className={`flex items-center gap-1 cursor-pointer text-sm xl:text-base font-medium transition-colors ${location.pathname.startsWith("/departments") ? "text-primary" : "hover:text-primary"}`}
-                  style={
-                    location.pathname.startsWith("/departments")
-                      ? { color: "var(--color-primary)" }
-                      : { color: "var(--color-text)" }
-                  }
+                  key={link.to}
+                  className={`${isActive(link.to)} text-sm xl:text-base font-medium transition-colors`}
+                  style={getNavLinkStyle(link.to)}
+                  to={link.to}
                 >
-                  {t("nav.departments")}{" "}
-                  <span className="material-icons text-sm transition-transform duration-300 group-hover/menu:rotate-180">
-                    expand_more
-                  </span>
+                  {t(link.labelKey)}
                 </Link>
-                {/* Invisible hover bridge — fills the mt-2 gap so hover state isn't lost */}
-                <div className="absolute top-full left-0 right-0 h-3" />
-                <div
-                  className="absolute top-full left-0 mt-2 w-56 rounded-lg shadow-xl border opacity-0 invisible group-hover/menu:opacity-100 group-hover/menu:visible transition-all duration-200 transform translate-y-2 group-hover/menu:translate-y-0 z-9999 py-2"
-                  style={{
-                    backgroundColor: "var(--color-surface)",
-                    borderColor: "var(--color-border)",
-                  }}
-                >
-                  {[
-                    {
-                      to: "/departments/cardiology",
-                      label: t("data.departments.cardiology.name"),
-                    },
-                    {
-                      to: "/departments/neurology",
-                      label: t("data.departments.neurology.name"),
-                    },
-                    {
-                      to: "/departments/pediatrics",
-                      label: t("data.departments.pediatrics.name"),
-                    },
-                    {
-                      to: "/departments/surgery",
-                      label: t("data.departments.surgery.name"),
-                    },
-                    {
-                      to: "/departments/dental",
-                      label: t("data.departments.dental.name"),
-                    },
-                    {
-                      to: "/departments/ophthalmology",
-                      label: t("data.departments.ophthalmology.name"),
-                    },
-                    {
-                      to: "/departments/laboratory",
-                      label: t("data.departments.laboratory.name"),
-                    },
-                    {
-                      to: "/departments/radiology",
-                      label: t("data.departments.radiology.name"),
-                    },
-                    {
-                      to: "/departments/rehabilitation",
-                      label: t("data.departments.rehabilitation.name"),
-                    },
-                  ].map((item) => (
-                    <Link
-                      key={item.to}
-                      to={item.to}
-                      className="block px-4 py-2.5 text-sm transition-all mx-1.5 rounded-md mb-0.5 last:mb-0 group/item"
-                      style={{
-                        color:
-                          location.pathname === item.to
-                            ? "var(--color-primary)"
-                            : "var(--color-text)",
-                        backgroundColor:
-                          location.pathname === item.to
-                            ? "color-mix(in srgb, var(--color-primary) 12%, transparent)"
-                            : undefined,
-                      }}
-                      onMouseEnter={(e) => {
-                        if (location.pathname !== item.to) {
-                          e.currentTarget.style.backgroundColor =
-                            "color-mix(in srgb, var(--color-primary) 8%, transparent)";
-                        }
-                      }}
-                      onMouseLeave={(e) => {
-                        if (location.pathname !== item.to) {
-                          e.currentTarget.style.backgroundColor = "transparent";
-                        }
-                      }}
-                    >
-                      <span
-                        className={`inline-block transition-transform duration-300 ${
-                          location.pathname === item.to
-                            ? "translate-x-1.5 font-semibold"
-                            : "group-hover/item:translate-x-1.5"
-                        }`}
-                      >
-                        {item.label}
-                      </span>
-                    </Link>
-                  ))}
-                </div>
-              </div>
-              <Link
-                className={`${isActive("/doctors")} text-sm xl:text-base font-medium transition-colors`}
-                style={getNavLinkStyle("/doctors")}
-                to="/doctors"
-              >
-                {t("nav.doctors")}
-              </Link>
-              <Link
-                className={`${isActive("/blog")} text-sm xl:text-base font-medium transition-colors`}
-                style={getNavLinkStyle("/blog")}
-                to="/blog"
-              >
-                {t("nav.blog")}
-              </Link>
-              <Link
-                className={`${isActive("/gallery")} text-sm xl:text-base font-medium transition-colors`}
-                style={getNavLinkStyle("/gallery")}
-                to="/gallery"
-              >
-                {t("nav.gallery")}
-              </Link>
-              <Link
-                className={`${isActive("/contact")} text-sm xl:text-base font-medium transition-colors`}
-                style={getNavLinkStyle("/contact")}
-                to="/contact"
-              >
-                {t("nav.contact")}
-              </Link>
+              ))}
             </div>
 
+            {/* Book Appointment Button (desktop) */}
             <div className="hidden lg:block">
               <Button onClick={onBookAppointment} className="xl:px-6 xl:py-2.5">
                 <span className="hidden xl:inline">
@@ -375,7 +255,7 @@ const Header: React.FC<HeaderProps> = ({ onBookAppointment }) => {
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
                 className="p-2 h-auto min-w-0"
                 icon={isMenuOpen ? "close" : "menu"}
-              ></Button>
+              />
             </div>
           </div>
         </div>
@@ -390,248 +270,95 @@ const Header: React.FC<HeaderProps> = ({ onBookAppointment }) => {
             }}
           >
             <div className="flex flex-col space-y-2">
-              <Link
-                onClick={() => setIsMenuOpen(false)}
-                className={getMobileLinkClass("/")}
-                to="/"
-              >
-                {t("nav.home")}
-              </Link>
-              <Link
-                onClick={() => setIsMenuOpen(false)}
-                className={getMobileLinkClass("/about")}
-                to="/about"
-              >
-                {t("nav.about")}
-              </Link>
-
-              {/* Expandable Services Menu */}
-              <div
-                className="border-b py-2"
-                style={{ borderColor: "var(--color-border)" }}
-              >
-                <div
-                  className={`flex justify-between items-center font-medium cursor-pointer ${location.pathname.startsWith("/services") ? "text-primary" : ""}`}
-                  style={
-                    !location.pathname.startsWith("/services")
-                      ? { color: "var(--color-text)" }
-                      : {}
-                  }
-                  onClick={() => toggleMobileSubmenu("services")}
+              {topLevelLinks.map((link) => (
+                <Link
+                  key={link.to}
+                  onClick={() => setIsMenuOpen(false)}
+                  className={getMobileLinkClass(link.to)}
+                  to={link.to}
                 >
-                  <span>{t("nav.services")}</span>
-                  <span
-                    className={`material-icons text-sm transition-transform duration-300 ${expandedMobileMenu === "services" ? "rotate-180" : ""}`}
-                  >
-                    expand_more
-                  </span>
-                </div>
+                  {t(link.labelKey)}
+                </Link>
+              ))}
 
+              {/* Mobile expandable dropdowns */}
+              {[
+                {
+                  key: "services",
+                  group: servicesDropdown,
+                  items: mobileServicesItems,
+                },
+                {
+                  key: "departments",
+                  group: departmentsDropdown,
+                  items: mobileDepartmentsItems,
+                },
+              ].map(({ key, group, items }) => (
                 <div
-                  className={`overflow-hidden transition-all duration-300 ${expandedMobileMenu === "services" ? "max-h-96 opacity-100 mt-2" : "max-h-0 opacity-0"}`}
+                  key={key}
+                  className="border-b py-2"
+                  style={{ borderColor: "var(--color-border)" }}
                 >
                   <div
-                    className="pl-4 border-l-2 space-y-2 mb-2"
-                    style={{ borderColor: "var(--color-border)" }}
+                    className={`flex justify-between items-center font-medium cursor-pointer ${
+                      location.pathname.startsWith(group.basePath)
+                        ? "text-primary"
+                        : ""
+                    }`}
+                    style={
+                      !location.pathname.startsWith(group.basePath)
+                        ? { color: "var(--color-text)" }
+                        : {}
+                    }
+                    onClick={() => toggleMobileSubmenu(key)}
                   >
-                    <Link
-                      onClick={() => setIsMenuOpen(false)}
-                      className={getMobileSubLinkClass("/services")}
-                      to="/services"
+                    <span>{t(group.labelKey)}</span>
+                    <span
+                      className={`material-icons text-sm transition-transform duration-300 ${
+                        expandedMobileMenu === key ? "rotate-180" : ""
+                      }`}
                     >
-                      {t("data.services.all")}
-                    </Link>
-                    <Link
-                      onClick={() => setIsMenuOpen(false)}
-                      className={getMobileSubLinkClass("/services/diagnostics")}
-                      to="/services/diagnostics"
-                    >
-                      {t("data.services.diagnostics.title")}
-                    </Link>
-                    <Link
-                      onClick={() => setIsMenuOpen(false)}
-                      className={getMobileSubLinkClass("/services/laboratory")}
-                      to="/services/laboratory"
-                    >
-                      {t("data.services.laboratory.title")}
-                    </Link>
-                    <Link
-                      onClick={() => setIsMenuOpen(false)}
-                      className={getMobileSubLinkClass("/services/imaging")}
-                      to="/services/imaging"
-                    >
-                      {t("data.services.imaging.title")}
-                    </Link>
-                    <Link
-                      onClick={() => setIsMenuOpen(false)}
-                      className={getMobileSubLinkClass("/services/pharmacy")}
-                      to="/services/pharmacy"
-                    >
-                      {t("data.services.pharmacy.title")}
-                    </Link>
-                    <Link
-                      onClick={() => setIsMenuOpen(false)}
-                      className={getMobileSubLinkClass("/services/emergency")}
-                      to="/services/emergency"
-                    >
-                      {t("data.services.emergency.title")}
-                    </Link>
-                    <Link
-                      onClick={() => setIsMenuOpen(false)}
-                      className={getMobileSubLinkClass(
-                        "/services/preventive-checkups",
-                      )}
-                      to="/services/preventive-checkups"
-                    >
-                      {t("data.services.preventive.title")}
-                    </Link>
+                      expand_more
+                    </span>
                   </div>
-                </div>
-              </div>
 
-              {/* Expandable Departments Menu */}
-              <div
-                className="border-b py-2"
-                style={{ borderColor: "var(--color-border)" }}
-              >
-                <div
-                  className={`flex justify-between items-center font-medium cursor-pointer ${location.pathname.startsWith("/departments") ? "text-primary" : ""}`}
-                  style={
-                    !location.pathname.startsWith("/departments")
-                      ? { color: "var(--color-text)" }
-                      : {}
-                  }
-                  onClick={() => toggleMobileSubmenu("departments")}
-                >
-                  <span>{t("nav.departments")}</span>
-                  <span
-                    className={`material-icons text-sm transition-transform duration-300 ${expandedMobileMenu === "departments" ? "rotate-180" : ""}`}
-                  >
-                    expand_more
-                  </span>
-                </div>
-
-                <div
-                  className={`overflow-hidden transition-all duration-300 ${expandedMobileMenu === "departments" ? "max-h-96 opacity-100 mt-2" : "max-h-0 opacity-0"}`}
-                >
                   <div
-                    className="pl-4 border-l-2 space-y-2 mb-2"
-                    style={{ borderColor: "var(--color-border)" }}
+                    className={`overflow-hidden transition-all duration-300 ${
+                      expandedMobileMenu === key
+                        ? "max-h-96 opacity-100 mt-2"
+                        : "max-h-0 opacity-0"
+                    }`}
                   >
-                    <Link
-                      onClick={() => setIsMenuOpen(false)}
-                      className={getMobileSubLinkClass("/departments")}
-                      to="/departments"
+                    <div
+                      className="pl-4 border-l-2 space-y-2 mb-2"
+                      style={{ borderColor: "var(--color-border)" }}
                     >
-                      {t("data.departments.all.name")}
-                    </Link>
-                    <Link
-                      onClick={() => setIsMenuOpen(false)}
-                      className={getMobileSubLinkClass(
-                        "/departments/cardiology",
-                      )}
-                      to="/departments/cardiology"
-                    >
-                      {t("data.departments.cardiology.name")}
-                    </Link>
-                    <Link
-                      onClick={() => setIsMenuOpen(false)}
-                      className={getMobileSubLinkClass(
-                        "/departments/neurology",
-                      )}
-                      to="/departments/neurology"
-                    >
-                      {t("data.departments.neurology.name")}
-                    </Link>
-                    <Link
-                      onClick={() => setIsMenuOpen(false)}
-                      className={getMobileSubLinkClass(
-                        "/departments/pediatrics",
-                      )}
-                      to="/departments/pediatrics"
-                    >
-                      {t("data.departments.pediatrics.name")}
-                    </Link>
-                    <Link
-                      onClick={() => setIsMenuOpen(false)}
-                      className={getMobileSubLinkClass("/departments/surgery")}
-                      to="/departments/surgery"
-                    >
-                      {t("data.departments.surgery.name")}
-                    </Link>
-                    <Link
-                      onClick={() => setIsMenuOpen(false)}
-                      className={getMobileSubLinkClass("/departments/dental")}
-                      to="/departments/dental"
-                    >
-                      {t("data.departments.dental.name")}
-                    </Link>
-                    <Link
-                      onClick={() => setIsMenuOpen(false)}
-                      className={getMobileSubLinkClass(
-                        "/departments/ophthalmology",
-                      )}
-                      to="/departments/ophthalmology"
-                    >
-                      {t("data.departments.ophthalmology.name")}
-                    </Link>
-                    <Link
-                      onClick={() => setIsMenuOpen(false)}
-                      className={getMobileSubLinkClass("/services/laboratory")}
-                      to="/services/laboratory"
-                    >
-                      {t("data.departments.laboratory.name")}
-                    </Link>
-                    <Link
-                      onClick={() => setIsMenuOpen(false)}
-                      className={getMobileSubLinkClass(
-                        "/departments/radiology",
-                      )}
-                      to="/departments/radiology"
-                    >
-                      {t("data.departments.radiology.name")}
-                    </Link>
-                    <Link
-                      onClick={() => setIsMenuOpen(false)}
-                      className={getMobileSubLinkClass(
-                        "/departments/rehabilitation",
-                      )}
-                      to="/departments/rehabilitation"
-                    >
-                      {t("data.departments.rehabilitation.name")}
-                    </Link>
+                      {items.map((item) => (
+                        <Link
+                          key={item.to}
+                          onClick={() => setIsMenuOpen(false)}
+                          className={getMobileSubLinkClass(item.to)}
+                          to={item.to}
+                        >
+                          {t(item.labelKey)}
+                        </Link>
+                      ))}
+                    </div>
                   </div>
                 </div>
-              </div>
+              ))}
 
-              <Link
-                onClick={() => setIsMenuOpen(false)}
-                className={getMobileLinkClass("/doctors")}
-                to="/doctors"
-              >
-                {t("nav.doctors")}
-              </Link>
-              <Link
-                onClick={() => setIsMenuOpen(false)}
-                className={getMobileLinkClass("/blog")}
-                to="/blog"
-              >
-                {t("nav.blog")}
-              </Link>
-              <Link
-                onClick={() => setIsMenuOpen(false)}
-                className={getMobileLinkClass("/gallery")}
-                to="/gallery"
-              >
-                {t("nav.gallery")}
-              </Link>
-              <Link
-                onClick={() => setIsMenuOpen(false)}
-                className={getMobileLinkClass("/contact")}
-                to="/contact"
-              >
-                {t("nav.contact")}
-              </Link>
+              {trailingLinks.map((link) => (
+                <Link
+                  key={link.to}
+                  onClick={() => setIsMenuOpen(false)}
+                  className={getMobileLinkClass(link.to)}
+                  to={link.to}
+                >
+                  {t(link.labelKey)}
+                </Link>
+              ))}
+
               <div className="py-4 border-t border-border space-y-4">
                 <div className="flex items-center justify-between">
                   <span className="text-sm font-semibold text-text-muted">
@@ -643,6 +370,7 @@ const Header: React.FC<HeaderProps> = ({ onBookAppointment }) => {
                   <LanguageSwitcher variant="menu" />
                 </div>
               </div>
+
               <Button
                 onClick={() => {
                   onBookAppointment();
