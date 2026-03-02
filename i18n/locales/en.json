@@ -15,7 +15,8 @@
       "loading": "Loading...",
       "error": "Error",
       "success": "Success",
-      "experience": "{{count}} Years Experience"
+      "experience": "{{count}} Years Experience",
+      "copied": "Copied!"
     },
     "roles": {
       "chiefMedicalDirector": "Chief Medical Director",
@@ -349,7 +350,12 @@
         "specialty": "Neonatologist",
         "bio": "Specialized in caring for critically ill newborns and premature infants.",
         "education": "MD from Yale University, Fellowship in Neonatology",
-        "educationShort": "MD, Fellowship"
+        "educationShort": "MD, Fellowship",
+        "social": {
+          "email": "Send Email",
+          "share": "Share",
+          "copy": "Copy Link"
+        }
       }
     },
     "departments": {

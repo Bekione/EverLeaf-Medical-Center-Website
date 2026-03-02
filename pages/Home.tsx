@@ -184,7 +184,13 @@ const Home: React.FC = () => {
               >
                 {t("pages.home.infoCards.specialist.desc")}
               </p>
-              <Button to="/doctors" variant="action" size="sm" animate={false} className="group/btn">
+              <Button
+                to="/doctors"
+                variant="action"
+                size="sm"
+                animate={false}
+                className="group/btn"
+              >
                 {t("pages.home.infoCards.specialist.search")}
                 <span className="material-icons text-sm ml-2 transition-transform duration-300 group-hover/btn:translate-x-1">
                   arrow_forward
@@ -209,7 +215,13 @@ const Home: React.FC = () => {
               >
                 {t("pages.home.infoCards.departments.desc")}
               </p>
-              <Button to="/departments" variant="action" size="sm" animate={false} className="group/btn">
+              <Button
+                to="/departments"
+                variant="action"
+                size="sm"
+                animate={false}
+                className="group/btn"
+              >
                 {t("pages.home.infoCards.departments.view")}
                 <span className="material-icons text-sm ml-2 transition-transform duration-300 group-hover/btn:translate-x-1">
                   arrow_forward
@@ -251,9 +263,15 @@ const Home: React.FC = () => {
           },
         ]}
       >
-        <Button to="/services" variant="primary" className="shadow-md group/btn">
+        <Button
+          to="/services"
+          variant="primary"
+          className="shadow-md group/btn"
+        >
           {t("data.services.all")}
-          <span className="material-icons text-sm ml-2 transition-transform duration-300 group-hover/btn:translate-x-1">arrow_forward</span>
+          <span className="material-icons text-sm ml-2 transition-transform duration-300 group-hover/btn:translate-x-1">
+            arrow_forward
+          </span>
         </Button>
       </FeaturesSection>
 
@@ -270,6 +288,7 @@ const Home: React.FC = () => {
           role: t(`data.doctors.${doc.id}.specialty`),
           experience: 15,
           educationShort: t(`data.doctors.${doc.id}.educationShort`),
+          socialLinks: { email: doc.email },
         }))}
         onBookAppointment={(name) => openAppointment({ doctorName: name })}
         className="py-24 bg-bg-alt"

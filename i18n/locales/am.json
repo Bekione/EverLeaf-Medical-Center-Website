@@ -15,7 +15,8 @@
       "loading": "በመጫን ላይ...",
       "error": "ስህተት",
       "success": "ተሳክቷል",
-      "experience": "{{count}} ዓመት ልምድ"
+      "experience": "{{count}} ዓመት ልምድ",
+      "copied": "ተገልብጧል!"
     },
     "roles": {
       "chiefMedicalDirector": "ዋና የሕክምና ዳይሬክተር",
@@ -349,7 +350,12 @@
         "specialty": "ኒዮናቶሎጂስት",
         "bio": "በጽኑ የታመሙ አዲስ የተወለዱ ሕፃናትን እና ያለጊዜያቸው የተወለዱ ሕፃናትን በመንከባከብ ላይ ያተኮሩ።",
         "education": "ከዬል ዩኒቨርሲቲ MD፣ በኒዮናቶሎጂ ፌሎውሺፕ",
-        "educationShort": "MD, ፌሎውሺፕ"
+        "educationShort": "MD, ፌሎውሺፕ",
+        "social": {
+          "email": "ኢሜይል ይላኩ",
+          "share": "ያጋሩ",
+          "copy": "ሊንኩን ይቅዱ"
+        }
       }
     },
     "departments": {

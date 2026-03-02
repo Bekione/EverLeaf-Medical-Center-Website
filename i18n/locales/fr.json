@@ -15,7 +15,8 @@
       "loading": "Chargement...",
       "error": "Erreur",
       "success": "Succès",
-      "experience": "{{count}} ans d'expérience"
+      "experience": "{{count}} ans d'expérience",
+      "copied": "Copié !"
     },
     "roles": {
       "chiefMedicalDirector": "Directeur médical en chef",
@@ -349,7 +350,12 @@
         "specialty": "Néonatologue",
         "bio": "Spécialisée dans les soins aux nouveau-nés gravement malades et aux nourrissons prématurés.",
         "education": "MD de l'Université Yale, Fellowship en néonatologie",
-        "educationShort": "MD, Fellowship"
+        "educationShort": "MD, Fellowship",
+        "social": {
+          "email": "Envoyer un e-mail",
+          "share": "Partager",
+          "copy": "Copier le lien"
+        }
       }
     },
     "departments": {

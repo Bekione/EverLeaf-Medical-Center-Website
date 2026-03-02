@@ -42,6 +42,37 @@ const DoctorCard: React.FC<DoctorCardProps> = ({
   style,
 }) => {
   const { t } = useTranslation();
+  const [copied, setCopied] = React.useState(false);
+
+  const shareUrl =
+    typeof window !== "undefined"
+      ? `${window.location.origin}/doctors?search=${encodeURIComponent(name)}`
+      : "";
+
+  const handleShare = async (e: React.MouseEvent) => {
+    e.preventDefault();
+    if (navigator.share) {
+      try {
+        await navigator.share({
+          title: `EverLeaf Medical Center - ${name}`,
+          text: bio || role,
+          url: shareUrl,
+        });
+      } catch (err) {
+        console.error("Error sharing:", err);
+      }
+    } else {
+      handleCopyLink(e);
+    }
+  };
+
+  const handleCopyLink = (e: React.MouseEvent) => {
+    e.preventDefault();
+    navigator.clipboard.writeText(shareUrl).then(() => {
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    });
+  };
 
   if (variant === "detailed") {
     return (
@@ -78,23 +109,33 @@ const DoctorCard: React.FC<DoctorCardProps> = ({
 
               <div className="pt-2 border-t border-slate-700 flex gap-4 justify-center">
                 <a
-                  href={socialLinks?.email || "#"}
+                  href={`mailto:${socialLinks?.email || ""}`}
                   className="w-10 h-10 rounded-full bg-slate-800/80 flex items-center justify-center hover:bg-primary transition-colors text-white"
+                  title={t("pages.doctors.card.social.email", "Send Email")}
                 >
                   <span className="material-icons text-sm">email</span>
                 </a>
-                <a
-                  href={socialLinks?.share || "#"}
-                  className="w-10 h-10 rounded-full bg-slate-800/80 flex items-center justify-center hover:bg-primary transition-colors text-white"
+                <button
+                  onClick={handleShare}
+                  className="w-10 h-10 rounded-full bg-slate-800/80 flex items-center justify-center hover:bg-primary transition-colors text-white cursor-pointer"
+                  title={t("pages.doctors.card.social.share", "Share")}
                 >
                   <span className="material-icons text-sm">share</span>
-                </a>
-                <a
-                  href={socialLinks?.link || "#"}
-                  className="w-10 h-10 rounded-full bg-slate-800/80 flex items-center justify-center hover:bg-primary transition-colors text-white"
+                </button>
+                <button
+                  onClick={handleCopyLink}
+                  className="w-10 h-10 rounded-full bg-slate-800/80 flex items-center justify-center hover:bg-primary transition-colors text-white cursor-pointer relative"
+                  title={t("pages.doctors.card.social.copy", "Copy Link")}
                 >
-                  <span className="material-icons text-sm">link</span>
-                </a>
+                  <span className="material-icons text-sm">
+                    {copied ? "check" : "link"}
+                  </span>
+                  {copied && (
+                    <span className="absolute -top-8 bg-slate-800 text-white text-[10px] px-2 py-1 rounded">
+                      {t("common.labels.copied", "Copied!")}
+                    </span>
+                  )}
+                </button>
               </div>
             </div>
           </div>

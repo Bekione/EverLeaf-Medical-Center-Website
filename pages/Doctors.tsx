@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useTranslation } from "react-i18next";
-import { useOutletContext } from "react-router-dom";
+import { useOutletContext, useSearchParams } from "react-router-dom";
 import { OpenAppointmentFunc } from "../Layout";
 import ImageSkeleton from "../components/ImageSkeleton";
 import Reveal from "../components/Reveal";
@@ -19,8 +19,11 @@ const ITEMS_PER_PAGE = 12;
 
 const Doctors: React.FC = () => {
   const { t } = useTranslation();
-  const [searchInput, setSearchInput] = useState(""); // bound to <input>
-  const [searchTerm, setSearchTerm] = useState(""); // applied to filter
+  const [searchParams, setSearchParams] = useSearchParams();
+  const initialSearch = searchParams.get("search") || "";
+
+  const [searchInput, setSearchInput] = useState(initialSearch); // bound to <input>
+  const [searchTerm, setSearchTerm] = useState(initialSearch); // applied to filter
   const searchTimer = useRef<ReturnType<typeof setTimeout>>();
   const [deptFilter, setDeptFilter] = useState("");
   const [specialtyFilter, setSpecialtyFilter] = useState("");
@@ -79,10 +82,15 @@ const Doctors: React.FC = () => {
     currentPage * ITEMS_PER_PAGE,
   );
 
-  // Reset to page 1 when filters change
+  // Reset to page 1 when filters change and sync with URL
   useEffect(() => {
     setCurrentPage(1);
-  }, [searchTerm, deptFilter, specialtyFilter, genderFilter]);
+
+    // Sync search term with URL params
+    const params: Record<string, string> = {};
+    if (searchTerm) params.search = searchTerm;
+    setSearchParams(params, { replace: true });
+  }, [searchTerm, deptFilter, specialtyFilter, genderFilter, setSearchParams]);
 
   const handlePageChange = (page: number) => {
     if (page >= 1 && page <= totalPages) {
@@ -154,8 +162,10 @@ const Doctors: React.FC = () => {
                 variant="ghost"
                 size="sm"
                 onClick={clearSearch}
+                animate={false}
                 className="absolute right-3 top-1/2 -translate-y-1/2 p-0.5 rounded-full h-8 w-8 min-w-0 shadow-none hover:shadow-none"
                 icon="close"
+                rounded="full"
               ></Button>
             )}
           </div>
@@ -277,6 +287,7 @@ const Doctors: React.FC = () => {
                     department: doc.dept,
                   })
                 }
+                socialLinks={{ email: doc.email }}
                 style={cardAnimStyle(idx, phase)}
               />
             ))}
