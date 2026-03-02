@@ -8,6 +8,8 @@ import Button from "../../components/Button";
 import CTASection from "../../components/CTASection";
 import HeroSection from "../../components/HeroSection";
 import FeaturesSection from "../../components/FeaturesSection";
+import ServicesSection from "../../components/ServicesSection";
+import TeamSection from "../../components/TeamSection";
 
 const Imaging: React.FC = () => {
   const { t } = useTranslation();
@@ -376,200 +378,90 @@ const Imaging: React.FC = () => {
         ]}
       />
 
-      <section
-        className="py-20 relative overflow-hidden"
-        style={{ backgroundColor: "var(--color-bg)" }}
-      >
-        <div className="absolute top-0 right-0 -mr-20 -mt-20 w-80 h-80 bg-slate-50 rounded-full blur-3xl opacity-50"></div>
-        <div className="absolute bottom-0 left-0 -ml-20 -mb-20 w-80 h-80 bg-blue-50 rounded-full blur-3xl opacity-50"></div>
-        <div className="container mx-auto px-6 relative z-10">
-          <div className="flex flex-col md:flex-row justify-between items-end mb-12">
-            <div className="max-w-2xl">
-              <span className="text-primary font-semibold tracking-wider text-sm uppercase">
-                {t("pages.services.imaging.procedures.subtitle")}
-              </span>
-              <h2
-                className="text-3xl lg:text-4xl font-serif font-bold mt-2"
-                style={{ color: "var(--color-text)" }}
-              >
-                {t("pages.services.imaging.procedures.title")}
-              </h2>
-            </div>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {[
-              {
-                title: t("pages.services.imaging.procedures.items.0.title"),
-                icon: "image",
-                color: "primary",
-                desc: t(
-                  "pages.services.imaging.procedures.items.0.description",
-                ),
-                items: [
-                  t("common.labels.instantResults"),
-                  t("common.labels.lowDose"),
-                ],
-              },
-              {
-                title: t("pages.services.imaging.procedures.items.1.title"),
-                icon: "female",
-                color: "pink-500",
-                desc: t(
-                  "pages.services.imaging.procedures.items.1.description",
-                ),
-                items: [
-                  t("common.labels.increasedAccuracy"),
-                  t("common.labels.comfortableDesign"),
-                ],
-              },
-              {
-                title: t("pages.services.imaging.procedures.items.2.title"),
-                icon: "all_inclusive",
-                color: "indigo-500",
-                desc: t(
-                  "pages.services.imaging.procedures.items.2.description",
-                ),
-                items: [
-                  t("common.labels.wideBore"),
-                  t("common.labels.contrastEnhanced"),
-                ],
-              },
-              {
-                title: t("pages.services.imaging.procedures.items.3.title"),
-                icon: "donut_large",
-                color: "blue-500",
-                desc: t(
-                  "pages.services.imaging.procedures.items.3.description",
-                ),
-                items: [
-                  t("common.labels.64SliceTech"),
-                  t("common.labels.lowDoseProtocols"),
-                ],
-              },
-            ].map((service, i) => (
-              <Reveal key={i} delay={i * 100} threshold={0.1}>
-                <div
-                  className="flex gap-6 p-6 rounded-2xl border hover:border-primary/30 hover:shadow-soft transition-all duration-300 group h-full"
-                  style={{
-                    backgroundColor: "var(--color-surface)",
-                    borderColor: "var(--color-border)",
-                  }}
-                >
-                  <div className="shrink-0">
-                    <div
-                      className={`w-16 h-16 rounded-xl flex items-center justify-center shadow-sm text-${service.color === "primary" ? "primary" : service.color} group-hover:bg-primary group-hover:text-white transition-colors duration-300`}
-                      style={{ backgroundColor: "var(--color-surface)" }}
-                    >
-                      <span className="material-icons text-3xl">
-                        {service.icon}
-                      </span>
-                    </div>
-                  </div>
-                  <div>
-                    <h3
-                      className="text-xl font-bold mb-2"
-                      style={{ color: "var(--color-text)" }}
-                    >
-                      {service.title}
-                    </h3>
-                    <p className="text-slate-600 text-sm mb-4 leading-relaxed">
-                      {service.desc}
-                    </p>
-                    <ul className="text-sm space-y-1 text-slate-500">
-                      {service.items.map((item, idx) => (
-                        <li key={idx} className="flex items-center gap-2">
-                          <span className="material-icons text-green-500 text-xs">
-                            check
-                          </span>{" "}
-                          {item}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
+      <ServicesSection
+        className="py-20 bg-bg"
+        badge={t("pages.services.imaging.procedures.subtitle")}
+        title={t("pages.services.imaging.procedures.title")}
+        variant="split"
+        services={[
+          {
+            title: t("pages.services.imaging.procedures.items.0.title"),
+            icon: "image",
+            color: "primary",
+            description: t(
+              "pages.services.imaging.procedures.items.0.description",
+            ),
+            features: [
+              t("common.labels.instantResults"),
+              t("common.labels.lowDose"),
+            ],
+          },
+          {
+            title: t("pages.services.imaging.procedures.items.1.title"),
+            icon: "female",
+            color: "pink",
+            description: t(
+              "pages.services.imaging.procedures.items.1.description",
+            ),
+            features: [
+              t("common.labels.increasedAccuracy"),
+              t("common.labels.comfortableDesign"),
+            ],
+          },
+          {
+            title: t("pages.services.imaging.procedures.items.2.title"),
+            icon: "all_inclusive",
+            color: "indigo",
+            description: t(
+              "pages.services.imaging.procedures.items.2.description",
+            ),
+            features: [
+              t("common.labels.wideBore"),
+              t("common.labels.contrastEnhanced"),
+            ],
+          },
+          {
+            title: t("pages.services.imaging.procedures.items.3.title"),
+            icon: "donut_large",
+            color: "blue",
+            description: t(
+              "pages.services.imaging.procedures.items.3.description",
+            ),
+            features: [
+              t("common.labels.64SliceTech"),
+              t("common.labels.lowDoseProtocols"),
+            ],
+          },
+        ]}
+      />
 
-      <section className="py-20 bg-slate-50" id="specialists">
-        <div className="container mx-auto px-6">
-          <div className="flex justify-between items-end mb-12">
-            <div>
-              <span className="text-primary font-semibold tracking-wider text-sm uppercase block mb-2">
-                {t("pages.services.imaging.team.badge")}
-              </span>
-              <h2 className="text-3xl lg:text-4xl font-serif font-bold text-slate-900">
-                {t("pages.services.imaging.team.title")}
-              </h2>
-            </div>
-            <Button to="/doctors" variant="action" size="sm">
-              {t("pages.services.imaging.team.viewAll")}
-              <span className="material-icons text-sm ml-2">arrow_forward</span>
-            </Button>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[
-              {
-                name: "Dr. Sarah Jenkins",
-                role: "Chief Radiologist",
-                img: "/images/doctors/team-dr-sarah-jenkins.jpg",
-              },
-              {
-                name: "Dr. Michael Chen",
-                role: "Interventional Radiologist",
-                img: "/images/doctors/team-dr-mark-williams.jpg",
-              },
-              {
-                name: "Dr. Emily Rodriguez",
-                role: "Pediatric Radiologist",
-                img: "/images/doctors/team-dr-emily-chen.jpg",
-              },
-            ].map((doc, i) => (
-              <Reveal key={i} delay={i * 100} threshold={0.1}>
-                <div
-                  className="rounded-2xl overflow-hidden shadow-card hover:shadow-xl transition-all duration-300 group h-full"
-                  style={{ backgroundColor: "var(--color-surface)" }}
-                >
-                  <div className="h-64 overflow-hidden relative">
-                    <img
-                      src={doc.img}
-                      alt={doc.name}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                    />
-                    <div className="absolute inset-0 bg-linear-to-t from-slate-900/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-6">
-                      <Button
-                        onClick={() =>
-                          openAppointment({
-                            doctorName: doc.name,
-                            department: "Radiology",
-                          })
-                        }
-                        size="sm"
-                        className="rounded-full"
-                      >
-                        {t("pages.services.imaging.team.button")}
-                      </Button>
-                    </div>
-                  </div>
-                  <div className="p-6 text-center">
-                    <h3
-                      className="text-xl font-bold"
-                      style={{ color: "var(--color-text)" }}
-                    >
-                      {doc.name}
-                    </h3>
-                    <p className="text-primary font-medium text-sm mb-3">
-                      {doc.role}
-                    </p>
-                  </div>
-                </div>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
+      <TeamSection
+        className="py-20 bg-surface"
+        badge={t("pages.services.imaging.team.badge")}
+        title={t("pages.services.imaging.team.title")}
+        viewAllLink="/doctors"
+        viewAllLabel={t("pages.services.imaging.team.viewAll")}
+        onBookAppointment={(doctorName) =>
+          openAppointment({ doctorName, department: "Radiology" })
+        }
+        members={[
+          {
+            name: "Dr. Sarah Jenkins",
+            role: "Chief Radiologist",
+            img: "/images/doctors/team-dr-sarah-jenkins.jpg",
+          },
+          {
+            name: "Dr. Michael Chen",
+            role: "Interventional Radiologist",
+            img: "/images/doctors/team-dr-mark-williams.jpg",
+          },
+          {
+            name: "Dr. Emily Rodriguez",
+            role: "Pediatric Radiologist",
+            img: "/images/doctors/team-dr-emily-chen.jpg",
+          },
+        ]}
+      />
 
       <CTASection
         badge={t("pages.services.imaging.cta.badge")}
