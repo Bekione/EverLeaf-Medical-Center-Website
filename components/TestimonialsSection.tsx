@@ -53,7 +53,7 @@ const TestimonialsSection: React.FC<TestimonialsSectionProps> = ({
           <div className="max-w-3xl">
             {badge && (
               <Reveal delay={0}>
-                <span className="text-primary font-semibold tracking-wider uppercase text-sm">
+                <span className="inline-block px-3 py-1 mb-2 text-xs font-semibold tracking-wider text-primary uppercase bg-primary-light rounded-full">
                   {badge}
                 </span>
               </Reveal>
@@ -86,7 +86,11 @@ const TestimonialsSection: React.FC<TestimonialsSectionProps> = ({
               className="w-10 h-10 p-0 rounded-full min-w-0"
               icon="arrow_forward"
               rounded="full"
-              disabled={scrollContainerRef.current?.scrollLeft === scrollContainerRef.current?.scrollWidth - scrollContainerRef.current?.clientWidth}
+              disabled={
+                scrollContainerRef.current?.scrollLeft ===
+                scrollContainerRef.current?.scrollWidth -
+                  scrollContainerRef.current?.clientWidth
+              }
             ></Button>
           </div>
         </div>

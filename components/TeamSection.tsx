@@ -50,7 +50,7 @@ const TeamSection: React.FC<TeamSectionProps> = ({
           <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-4 md:mb-12 gap-6 px-0">
             <div className="w-full md:max-w-3xl">
               {badge && (
-                <span className="text-primary font-semibold tracking-wider text-sm uppercase block mb-2">
+                <span className="inline-block px-3 py-1 mb-2 text-xs font-semibold tracking-wider text-primary uppercase bg-primary-light rounded-full">
                   {badge}
                 </span>
               )}

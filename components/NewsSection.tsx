@@ -22,7 +22,7 @@ const NewsSection: React.FC = () => {
         <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
           <div className="max-w-2xl">
             <Reveal delay={0}>
-              <span className="text-primary font-semibold tracking-wider uppercase text-sm block mb-2">
+              <span className="inline-block px-3 py-1 mb-2 text-xs font-semibold tracking-wider text-primary uppercase bg-primary-light rounded-full">
                 {t("pages.blog.hero.featured")}
               </span>
             </Reveal>

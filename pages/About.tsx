@@ -94,7 +94,7 @@ const About: React.FC = () => {
         showBadgeDot={true}
         titlePart1={t("pages.about.hero.titleStart")}
         titleHighlight={t("pages.about.hero.titleHighlight")}
-        titleHighlightClassName="text-transparent bg-clip-text bg-linear-to-r from-primary to-blue-600"
+        titleHighlightClassName="text-transparent bg-clip-text bg-linear-to-r from-primary to-secondary"
         description={t("pages.about.hero.subtitle")}
         primaryButton={{
           label: t("pages.about.hero.meetTeam"),
@@ -174,6 +174,7 @@ const About: React.FC = () => {
               <CldImg
                 src={rawSrc("/images/hero/about-hero-1.jpg")}
                 alt="Medical Team"
+                transform="w_600,q_auto,f_auto,c_fill"
                 className="rounded-2xl shadow-2xl w-full object-cover aspect-4/3 border-4 border-white transition-transform duration-500 group-hover:scale-[1.01]"
               />
 
@@ -182,7 +183,7 @@ const About: React.FC = () => {
                 <CldImg
                   src={rawSrc("/images/hero/home-hero-1.jpg")}
                   alt="Hospital Building"
-                  transform="w_800,q_auto,f_auto,c_fill"
+                  transform="w_400,q_auto,f_auto,c_fill"
                   className="rounded-xl shadow-xl border-4 border-white w-full object-cover aspect-3/2 transition-transform duration-500 group-hover:-translate-y-2"
                 />
               </div>
@@ -219,7 +220,7 @@ const About: React.FC = () => {
             </Reveal>
             <Reveal from="right" threshold={0.1} className="order-1 lg:order-2">
               <div>
-                <span className="text-primary font-bold tracking-wider uppercase text-sm mb-2 block">
+                <span className="inline-block px-3 py-1 mb-2 text-xs font-semibold tracking-wider text-primary uppercase bg-primary-light rounded-full">
                   {t("pages.about.story.badge")}
                 </span>
                 <h2
@@ -464,7 +465,7 @@ const About: React.FC = () => {
           <div className="flex flex-col md:flex-row justify-between items-end mb-12">
             <Reveal delay={0}>
               <div>
-                <span className="text-primary font-semibold tracking-wider uppercase text-sm">
+                <span className="inline-block px-3 py-1 mb-2 text-xs font-semibold tracking-wider text-primary uppercase bg-primary-light rounded-full">
                   {t("pages.about.infrastructure.badge")}
                 </span>
                 <h2

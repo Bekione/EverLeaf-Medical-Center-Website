@@ -109,7 +109,7 @@ const PreventiveCheckups: React.FC = () => {
         <div className="container mx-auto px-6 relative z-10">
           <Reveal threshold={0.1}>
             <div className="text-center mb-16">
-              <span className="text-primary font-semibold tracking-wider text-sm uppercase">
+              <span className="inline-block px-3 py-1 mb-2 text-xs font-semibold tracking-wider text-primary uppercase bg-primary-light rounded-full">
                 {t("pages.services.preventiveCheckups.packages.badge")}
               </span>
               <h2
