@@ -249,13 +249,14 @@ const Header: React.FC<HeaderProps> = ({ onBookAppointment }) => {
 
             {/* Mobile Menu Button */}
             <div className="lg:hidden">
-              <Button
-                variant="ghost"
-                size="sm"
+              <button
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
                 className="p-2 h-auto min-w-0"
-                icon={isMenuOpen ? "close" : "menu"}
-              />
+              >
+                <span className="material-icons text-[1.2em] ml-2 hover:text-primary transition-colors cursor-pointer">
+                  {isMenuOpen ? "close" : "menu"}
+                </span>
+              </button>
             </div>
           </div>
         </div>

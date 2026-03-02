@@ -161,7 +161,11 @@ const LanguageSwitcher: React.FC<LanguageSwitcherProps> = ({
             <button
               key={lang.code}
               onClick={() => changeLanguage(lang.code)}
-              className="w-full flex items-center gap-3 px-4 py-3 text-sm transition-colors relative group"
+              className={`w-11/12 mx-auto flex items-center gap-3 px-4 py-3 text-sm rounded-lg overflow-hidden transition-colors relative group ${
+                i18n.language === lang.code
+                  ? "bg-primary/10"
+                  : "hover:bg-primary/10"
+              }`}
               style={{
                 color:
                   i18n.language === lang.code
@@ -187,10 +191,7 @@ const LanguageSwitcher: React.FC<LanguageSwitcherProps> = ({
               )}
 
               {/* Hover highlight */}
-              <div
-                className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity -z-10"
-                style={{ backgroundColor: "var(--color-bg-alt)" }}
-              ></div>
+              <div className="absolute inset-0 bg-primary/10 opacity-0 group-hover:opacity-100 transition-opacity -z-10" />
             </button>
           ))}
         </div>
