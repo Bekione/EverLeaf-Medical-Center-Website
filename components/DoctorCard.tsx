@@ -185,7 +185,6 @@ const DoctorCard: React.FC<DoctorCardProps> = ({
           <CldImg
             src={img}
             alt={name}
-            transform="w_600,q_auto,f_auto,c_fill,g_face"
             className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
           />
           <div className="absolute inset-0 bg-linear-to-t from-slate-900/90 via-slate-900/40 to-transparent flex flex-col justify-end p-6">
