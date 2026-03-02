@@ -5,8 +5,9 @@ import Button from "./Button";
 
 export const ThemeSwitcher: React.FC<{
   inline?: boolean;
+  variant?: "desktop" | "menu";
   className?: string;
-}> = ({ inline = false, className = "" }) => {
+}> = ({ inline = false, variant = "desktop", className = "" }) => {
   const { theme, setTheme } = useTheme();
   const { t: translate } = useTranslation();
   const [open, setOpen] = useState(false);
@@ -23,6 +24,98 @@ export const ThemeSwitcher: React.FC<{
     return () => document.removeEventListener("mousedown", handler);
   }, []);
 
+  // ─── Mobile / Menu Variant ──────────────────────────────────────────────────
+  if (variant === "menu") {
+    return (
+      <div className={`w-full ${className}`} ref={ref}>
+        {/* Trigger — mirrors LanguageSwitcher menu button */}
+        <button
+          onClick={() => setOpen((v) => !v)}
+          className="flex items-center gap-3 px-3 py-2 rounded-lg transition-all text-sm font-semibold w-full bg-bg-alt text-text border border-border"
+        >
+          {/* Current theme swatch */}
+          <span
+            className="w-5 h-5 rounded-full shrink-0 shadow-sm"
+            style={{ backgroundColor: theme.swatch }}
+          />
+          <span className="flex-1 text-left">{translate(theme.label)}</span>
+          <span
+            className={`material-icons text-xs transition-transform ml-auto ${open ? "rotate-180" : ""}`}
+            style={{ color: "var(--color-text-muted)" }}
+          >
+            keyboard_arrow_down
+          </span>
+        </button>
+
+        {/* Dropdown — opens downward, same style as LanguageSwitcher */}
+        {open && (
+          <div
+            className="relative mt-2 w-full py-2 rounded-xl border shadow-sm z-50 animate-in fade-in slide-in-from-top-2 duration-200"
+            style={{
+              backgroundColor: "var(--color-surface)",
+              borderColor: "var(--color-border)",
+            }}
+            role="listbox"
+            aria-label={translate("components.themeSwitcher.aria.list")}
+          >
+            {THEMES.map((t) => {
+              const isActive = t.id === theme.id;
+              return (
+                <button
+                  key={t.id}
+                  role="option"
+                  aria-selected={isActive}
+                  onClick={() => {
+                    setTheme(t.id as ThemeId);
+                    setOpen(false);
+                  }}
+                  className={`w-11/12 mx-auto flex items-center gap-3 px-4 py-3 text-sm rounded-lg transition-colors relative group ${
+                    isActive ? "bg-primary/10" : "hover:bg-primary/10"
+                  }`}
+                  style={{
+                    color: isActive
+                      ? "var(--color-primary)"
+                      : "var(--color-text)",
+                  }}
+                >
+                  {/* Color swatch */}
+                  <span
+                    className="w-5 h-5 rounded-full shrink-0 shadow-sm flex items-center justify-center"
+                    style={{ backgroundColor: t.swatch }}
+                    aria-hidden="true"
+                  />
+
+                  {/* Label */}
+                  <span
+                    className={`flex-1 text-left ${isActive ? "font-bold" : ""}`}
+                  >
+                    {translate(t.label)}
+                  </span>
+
+                  {/* Theme icon */}
+                  <span
+                    className="material-icons text-sm shrink-0"
+                    style={{
+                      color: isActive
+                        ? "var(--color-primary)"
+                        : "var(--color-text-muted)",
+                    }}
+                  >
+                    {t.icon}
+                  </span>
+
+                  {/* Hover highlight */}
+                  <div className="absolute inset-0 bg-primary/10 opacity-0 group-hover:opacity-100 transition-opacity -z-10 rounded-lg" />
+                </button>
+              );
+            })}
+          </div>
+        )}
+      </div>
+    );
+  }
+
+  // ─── Desktop Variant (default) ──────────────────────────────────────────────
   return (
     <div
       ref={ref}

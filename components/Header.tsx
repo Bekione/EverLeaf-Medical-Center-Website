@@ -361,13 +361,10 @@ const Header: React.FC<HeaderProps> = ({ onBookAppointment }) => {
               ))}
 
               <div className="py-4 border-t border-border space-y-4">
-                <div className="flex items-center justify-between">
-                  <span className="text-sm font-semibold text-text-muted">
-                    {t("components.themeSwitcher.title")}
-                  </span>
-                  <ThemeSwitcher inline />
+                <div>
+                  <ThemeSwitcher variant="menu" />
                 </div>
-                <div className="pt-2">
+                <div>
                   <LanguageSwitcher variant="menu" />
                 </div>
               </div>
