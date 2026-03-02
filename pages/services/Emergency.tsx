@@ -5,6 +5,7 @@ import Reveal from "../../components/Reveal";
 import { useTranslation } from "react-i18next";
 import Button from "../../components/Button";
 import HeroSection from "../../components/HeroSection";
+import Modal from "../../components/Modal";
 
 const Emergency: React.FC = () => {
   const { t } = useTranslation();
@@ -44,7 +45,6 @@ const Emergency: React.FC = () => {
           icon: "directions",
         }}
       />
-
       <section className="py-16 bg-slate-50 relative">
         <div className="absolute inset-0 hero-pattern pointer-events-none"></div>
         <div className="container mx-auto px-6 relative z-10">
@@ -175,7 +175,6 @@ const Emergency: React.FC = () => {
           </div>
         </div>
       </section>
-
       <section
         className="py-20 border-y"
         style={{
@@ -276,7 +275,6 @@ const Emergency: React.FC = () => {
           </div>
         </div>
       </section>
-
       <section className="py-20 bg-slate-50">
         <div className="container mx-auto px-6">
           <Reveal threshold={0.1}>
@@ -410,7 +408,6 @@ const Emergency: React.FC = () => {
           </div>
         </div>
       </section>
-
       <section
         className="py-20 bg-slate-900 text-white relative overflow-hidden"
         id="contact"
@@ -521,180 +518,147 @@ const Emergency: React.FC = () => {
           </Reveal>
         </div>
       </section>
-
       {/* Guideline Modal */}
-      {showGuidelineModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/80 backdrop-blur-sm">
-          <div
-            className="bg-white rounded-2xl shadow-2xl max-w-lg w-full max-h-[90vh] overflow-y-auto animate-fade-in relative"
-            style={{ backgroundColor: "var(--color-surface)" }}
+      <Modal
+        isOpen={showGuidelineModal}
+        onClose={() => setShowGuidelineModal(false)}
+        title={t(
+          "pages.services.emergency.modal.title",
+          "ER Visitor Guidelines",
+        )}
+        icon="calendar_today"
+        footer={
+          <Button
+            onClick={() => setShowGuidelineModal(false)}
+            className="w-full bg-slate-900 text-white hover:bg-slate-800"
           >
-            <Button
-              variant="ghost"
-              onClick={() => setShowGuidelineModal(false)}
-              className="absolute top-4 right-4 p-2 h-auto min-w-0 rounded-full shadow-none hover:shadow-none"
-              icon="close"
-            ></Button>
+            {t("pages.services.emergency.modal.button", "Close Guidelines")}
+          </Button>
+        }
+      >
+        <div className="space-y-6">
+          <div>
+            <h4 className="font-bold text-slate-900 mb-2 flex items-center gap-2">
+              <span className="material-icons text-primary text-sm">
+                priority_high
+              </span>
+              {t(
+                "pages.services.emergency.modal.sections.call911.title",
+                "When to call 911",
+              )}
+            </h4>
+            <ul className="list-disc pl-5 space-y-1 text-sm text-slate-600">
+              <li>
+                {t(
+                  "pages.services.emergency.modal.sections.call911.items.0",
+                  "Difficulty breathing or shortness of breath",
+                )}
+              </li>
+              <li>
+                {t(
+                  "pages.services.emergency.modal.sections.call911.items.1",
+                  "Chest pain or upper abdominal pain or pressure",
+                )}
+              </li>
+              <li>
+                {t(
+                  "pages.services.emergency.modal.sections.call911.items.2",
+                  "Fainting, sudden dizziness, or weakness",
+                )}
+              </li>
+              <li>
+                {t(
+                  "pages.services.emergency.modal.sections.call911.items.3",
+                  "Changes in vision",
+                )}
+              </li>
+              <li>
+                {t(
+                  "pages.services.emergency.modal.sections.call911.items.4",
+                  "Confusion or changes in mental status",
+                )}
+              </li>
+              <li>
+                {t(
+                  "pages.services.emergency.modal.sections.call911.items.5",
+                  "Any sudden or severe pain",
+                )}
+              </li>
+              <li>
+                {t(
+                  "pages.services.emergency.modal.sections.call911.items.6",
+                  "Uncontrolled bleeding",
+                )}
+              </li>
+            </ul>
+          </div>
 
-            <div className="p-8">
-              <div className="flex items-center gap-3 mb-6">
-                <div className="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center text-red-600">
-                  <span className="material-icons text-2xl">
-                    local_hospital
-                  </span>
-                </div>
-                <h3
-                  className="text-2xl font-bold"
-                  style={{ color: "var(--color-text)" }}
-                >
+          <div
+            className="p-4 rounded-lg"
+            style={{ backgroundColor: "var(--color-primary-light)" }}
+          >
+            <h4
+              className="font-bold mb-2 text-sm"
+              style={{ color: "var(--color-text)" }}
+            >
+              {t(
+                "pages.services.emergency.modal.sections.whatToBring.title",
+                "What to Bring",
+              )}
+            </h4>
+            <ul className="space-y-2 text-sm text-slate-600">
+              <li className="flex items-start gap-2">
+                <span className="material-icons text-blue-500 text-xs mt-0.5">
+                  check
+                </span>
+                <span>
                   {t(
-                    "pages.services.emergency.modal.title",
-                    "ER Visitor Guidelines",
+                    "pages.services.emergency.modal.sections.whatToBring.items.0",
+                    "Photo ID and health insurance card",
                   )}
-                </h3>
-              </div>
-
-              <div className="space-y-6">
-                <div>
-                  <h4 className="font-bold text-slate-900 mb-2 flex items-center gap-2">
-                    <span className="material-icons text-primary text-sm">
-                      priority_high
-                    </span>
-                    {t(
-                      "pages.services.emergency.modal.sections.call911.title",
-                      "When to call 911",
-                    )}
-                  </h4>
-                  <ul className="list-disc pl-5 space-y-1 text-sm text-slate-600">
-                    <li>
-                      {t(
-                        "pages.services.emergency.modal.sections.call911.items.0",
-                        "Difficulty breathing or shortness of breath",
-                      )}
-                    </li>
-                    <li>
-                      {t(
-                        "pages.services.emergency.modal.sections.call911.items.1",
-                        "Chest pain or upper abdominal pain or pressure",
-                      )}
-                    </li>
-                    <li>
-                      {t(
-                        "pages.services.emergency.modal.sections.call911.items.2",
-                        "Fainting, sudden dizziness, or weakness",
-                      )}
-                    </li>
-                    <li>
-                      {t(
-                        "pages.services.emergency.modal.sections.call911.items.3",
-                        "Changes in vision",
-                      )}
-                    </li>
-                    <li>
-                      {t(
-                        "pages.services.emergency.modal.sections.call911.items.4",
-                        "Confusion or changes in mental status",
-                      )}
-                    </li>
-                    <li>
-                      {t(
-                        "pages.services.emergency.modal.sections.call911.items.5",
-                        "Any sudden or severe pain",
-                      )}
-                    </li>
-                    <li>
-                      {t(
-                        "pages.services.emergency.modal.sections.call911.items.6",
-                        "Uncontrolled bleeding",
-                      )}
-                    </li>
-                  </ul>
-                </div>
-
-                <div
-                  className="p-4 rounded-lg"
-                  style={{ backgroundColor: "var(--color-primary-light)" }}
-                >
-                  <h4
-                    className="font-bold mb-2 text-sm"
-                    style={{ color: "var(--color-text)" }}
-                  >
-                    {t(
-                      "pages.services.emergency.modal.sections.whatToBring.title",
-                      "What to Bring",
-                    )}
-                  </h4>
-                  <ul className="space-y-2 text-sm text-slate-600">
-                    <li className="flex items-start gap-2">
-                      <span className="material-icons text-blue-500 text-xs mt-0.5">
-                        check
-                      </span>
-                      <span>
-                        {t(
-                          "pages.services.emergency.modal.sections.whatToBring.items.0",
-                          "Photo ID and health insurance card",
-                        )}
-                      </span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="material-icons text-blue-500 text-xs mt-0.5">
-                        check
-                      </span>
-                      <span>
-                        {t(
-                          "pages.services.emergency.modal.sections.whatToBring.items.1",
-                          "List of current medications and allergies",
-                        )}
-                      </span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="material-icons text-blue-500 text-xs mt-0.5">
-                        check
-                      </span>
-                      <span>
-                        {t(
-                          "pages.services.emergency.modal.sections.whatToBring.items.2",
-                          "Emergency contact information",
-                        )}
-                      </span>
-                    </li>
-                  </ul>
-                </div>
-
-                <div>
-                  <h4 className="font-bold text-slate-900 mb-2 text-sm">
-                    {t(
-                      "pages.services.emergency.modal.sections.visitorPolicy.title",
-                      "Visitor Policy",
-                    )}
-                  </h4>
-                  <p className="text-sm text-slate-600">
-                    {t(
-                      "pages.services.emergency.modal.sections.visitorPolicy.description",
-                      "To ensure the safety of our patients and staff, we currently allow one visitor per patient in the ER. Masks are mandatory in all clinical areas.",
-                    )}
-                  </p>
-                </div>
-              </div>
-
-              <div
-                className="mt-8 pt-6 border-t"
-                style={{ borderColor: "var(--color-border)" }}
-              >
-                <Button
-                  onClick={() => setShowGuidelineModal(false)}
-                  className="w-full bg-slate-900 text-white hover:bg-slate-800"
-                >
+                </span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="material-icons text-blue-500 text-xs mt-0.5">
+                  check
+                </span>
+                <span>
                   {t(
-                    "pages.services.emergency.modal.button",
-                    "Close Guidelines",
+                    "pages.services.emergency.modal.sections.whatToBring.items.1",
+                    "List of current medications and allergies",
                   )}
-                </Button>
-              </div>
-            </div>
+                </span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="material-icons text-blue-500 text-xs mt-0.5">
+                  check
+                </span>
+                <span>
+                  {t(
+                    "pages.services.emergency.modal.sections.whatToBring.items.2",
+                    "Emergency contact information",
+                  )}
+                </span>
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 className="font-bold text-slate-900 mb-2 text-sm">
+              {t(
+                "pages.services.emergency.modal.sections.visitorPolicy.title",
+                "Visitor Policy",
+              )}
+            </h4>
+            <p className="text-sm text-slate-600">
+              {t(
+                "pages.services.emergency.modal.sections.visitorPolicy.description",
+                "To ensure the safety of our patients and staff, we currently allow one visitor per patient in the ER. Masks are mandatory in all clinical areas.",
+              )}
+            </p>
           </div>
         </div>
-      )}
+      </Modal>{" "}
     </div>
   );
 };
