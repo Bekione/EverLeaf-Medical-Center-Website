@@ -11,6 +11,7 @@ import HeroSection from "../../components/HeroSection";
 import TeamSection from "../../components/TeamSection";
 import FeaturesSection from "../../components/FeaturesSection";
 import ServicesSection from "../../components/ServicesSection";
+import { CldImg } from "../../components/CldImg";
 
 const Laboratory: React.FC = () => {
   const { t } = useTranslation();
@@ -167,9 +168,10 @@ const Laboratory: React.FC = () => {
           <div className="relative group h-full min-h-[400px]">
             <div className="absolute inset-0 bg-primary/20 rounded-3xl blur-3xl group-hover:bg-primary/30 transition-all"></div>
             <div className="relative h-full rounded-3xl overflow-hidden border border-white/10 shadow-2xl">
-              <img
+              <CldImg
                 src="/images/hero/laboratory-dept-hero.jpg"
                 alt="Laboratory Technology"
+                transform="w_900,q_auto,f_auto,c_fill"
                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
               />
               <div className="absolute inset-0 bg-linear-to-t from-slate-900/80 via-slate-900/20 to-transparent"></div>

@@ -8,6 +8,7 @@ import Button from "../../components/Button";
 import CTASection from "../../components/CTASection";
 import HeroSection from "../../components/HeroSection";
 import FeaturesSection from "../../components/FeaturesSection";
+import { CldImg } from "../../components/CldImg";
 
 const Laboratory: React.FC = () => {
   const { t } = useTranslation();
@@ -216,9 +217,10 @@ const Laboratory: React.FC = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <Reveal from="left" threshold={0.1}>
               <div className="order-2 lg:order-1">
-                <img
+                <CldImg
                   src="/images/laboratory-body-image-1.jpg"
                   alt="Advanced laboratory equipment microscope"
+                  transform="w_1000,h_400,q_auto,f_auto,c_fill"
                   className="rounded-2xl shadow-xl w-full object-cover h-[400px]"
                 />
               </div>

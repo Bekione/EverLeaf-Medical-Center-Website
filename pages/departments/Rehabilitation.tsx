@@ -11,6 +11,7 @@ import HeroSection from "../../components/HeroSection";
 import TeamSection from "../../components/TeamSection";
 import FeaturesSection from "../../components/FeaturesSection";
 import ServicesSection from "../../components/ServicesSection";
+import { CldImg } from "../../components/CldImg";
 
 const Rehabilitation: React.FC = () => {
   const { t } = useTranslation();
@@ -177,17 +178,19 @@ const Rehabilitation: React.FC = () => {
         rightContent={
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div className="relative h-64 rounded-2xl overflow-hidden shadow-lg border border-white/10 group">
-              <img
+              <CldImg
                 src="/images/rehabilitation-body-1.jpg"
                 alt="Mobility Technology"
+                transform="w_800,h_256,q_auto,f_auto,c_fill"
                 className="w-full h-full object-cover group-hover:scale-105 transition-all duration-700"
               />
               <div className="absolute inset-0 bg-linear-to-t from-slate-900/60 to-transparent"></div>
             </div>
             <div className="relative h-64 rounded-2xl overflow-hidden shadow-lg border border-white/10 group mt-8 sm:mt-12">
-              <img
+              <CldImg
                 src="/images/rehabilitation-body-2.jpg"
                 alt="Therapeutic Equipment"
+                transform="w_800,h_256,q_auto,f_auto,c_fill"
                 className="w-full h-full object-cover group-hover:scale-105 transition-all duration-700"
               />
               <div className="absolute inset-0 bg-linear-to-t from-slate-900/60 to-transparent"></div>

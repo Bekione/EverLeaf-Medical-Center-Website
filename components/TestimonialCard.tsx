@@ -1,6 +1,7 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
 import Reveal from "./Reveal";
+import { CldImg } from "./CldImg";
 
 export interface TestimonialCardProps {
   id: string;
@@ -42,7 +43,7 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({
           "{text}"
         </p>
         <div className="flex items-center gap-4 mt-auto">
-          <img
+          <CldImg
             src={img}
             alt={name}
             className="w-12 h-12 rounded-full object-cover shadow-sm transition-transform duration-300"

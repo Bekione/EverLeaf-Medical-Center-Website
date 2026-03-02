@@ -209,9 +209,10 @@ const About: React.FC = () => {
             >
               <div className="relative">
                 <div className="absolute -inset-4 bg-primary/5 rounded-3xl -rotate-2" />
-                <img
+                <CldImg
                   src="/images/about-body-1.jpg"
                   alt="Hospital Exterior"
+                  transform="w_1200,h_500,q_auto,f_auto,c_fill"
                   className="relative rounded-2xl shadow-2xl w-full h-[500px] object-cover"
                 />
               </div>
@@ -487,7 +488,7 @@ const About: React.FC = () => {
           <Reveal delay={80} threshold={0.05}>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-[250px]">
               <div className="md:col-span-2 md:row-span-2 rounded-2xl overflow-hidden relative group cursor-pointer shadow-lg">
-                <img
+                <CldImg
                   src="/images/gallery/gallery-9-operation.jpg"
                   alt="Operating Theatre"
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
@@ -502,7 +503,7 @@ const About: React.FC = () => {
                 </div>
               </div>
               <div className="rounded-2xl overflow-hidden relative group cursor-pointer shadow-lg bg-slate-900">
-                <img
+                <CldImg
                   src="/images/gallery/gallery-10-recovery-suite.jpg"
                   alt="Patient Room"
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-90 group-hover:opacity-100"
@@ -517,7 +518,7 @@ const About: React.FC = () => {
                 </div>
               </div>
               <div className="rounded-2xl overflow-hidden relative group cursor-pointer shadow-lg bg-surface">
-                <img
+                <CldImg
                   src="/images/gallery/gallery-14-icu.jpg"
                   alt="ICU"
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-90 group-hover:opacity-100"

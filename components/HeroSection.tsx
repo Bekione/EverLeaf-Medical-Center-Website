@@ -1,5 +1,6 @@
 import React from "react";
 import Reveal from "./Reveal";
+import { CldImg } from "./CldImg";
 import Button from "./Button";
 import { useTranslation } from "react-i18next";
 import { colorMap } from "../data/colorMap";
@@ -90,7 +91,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
       >
         <div className="absolute inset-0">
           {image && (
-            <img
+            <CldImg
               src={image}
               alt={imageAlt || titlePart1}
               className="w-full h-full object-cover opacity-25 scale-105 animate-slow-zoom"
@@ -434,7 +435,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
               <div className="relative group">
                 <div className="relative z-10 rounded-3xl overflow-hidden shadow-2xl border-8 border-white transform rotate-1 group-hover:rotate-0 transition-all duration-700 w-full max-w-lg aspect-4/3">
                   {image && (
-                    <img
+                    <CldImg
                       src={image}
                       alt={imageAlt || titlePart1}
                       className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"

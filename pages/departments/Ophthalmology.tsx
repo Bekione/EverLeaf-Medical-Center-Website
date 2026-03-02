@@ -11,6 +11,7 @@ import Button from "../../components/Button";
 import HeroSection from "../../components/HeroSection";
 import FeaturesSection from "../../components/FeaturesSection";
 import ServicesSection from "../../components/ServicesSection";
+import { CldImg } from "../../components/CldImg";
 
 const Ophthalmology: React.FC = () => {
   const { t } = useTranslation();
@@ -243,9 +244,10 @@ const Ophthalmology: React.FC = () => {
         ]}
         rightContent={
           <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-slate-100">
-            <img
+            <CldImg
               alt="Advanced Eye Scanning Technology"
               className="w-full h-auto"
+              transform="w_1000,q_auto,f_auto,c_fill"
               src="/images/imaging-body-2.jpg"
             />
           </div>

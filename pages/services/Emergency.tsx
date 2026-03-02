@@ -6,6 +6,7 @@ import { useTranslation } from "react-i18next";
 import Button from "../../components/Button";
 import HeroSection from "../../components/HeroSection";
 import Modal from "../../components/Modal";
+import { CldImg } from "../../components/CldImg";
 
 const Emergency: React.FC = () => {
   const { t } = useTranslation();
@@ -132,9 +133,10 @@ const Emergency: React.FC = () => {
             <Reveal from="right" threshold={0.1} className="relative">
               <div>
                 <div className="absolute -inset-4 bg-blue-100 rounded-full blur-3xl opacity-50 pointer-events-none"></div>
-                <img
+                <CldImg
                   src="/images/emergency-body-1.jpg"
                   alt="Emergency Medical Team"
+                  transform="w_1200,h_600,q_auto,f_auto,c_fill"
                   className="relative rounded-2xl shadow-2xl border-4 border-white z-10 w-full object-cover h-[600px]"
                 />
                 <div

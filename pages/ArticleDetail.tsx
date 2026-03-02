@@ -109,7 +109,7 @@ const renderBlock = (
           className="my-10 grid grid-cols-1 md:grid-cols-2 gap-6"
         >
           {block.images.map((img, i) => (
-            <img
+            <CldImg
               key={i}
               src={img.src}
               alt={img.alt}
@@ -316,9 +316,10 @@ const ArticleDetail: React.FC = () => {
 
             {/* Hero Image */}
             <div className="rounded-2xl overflow-hidden mb-12 shadow-card">
-              <img
+              <CldImg
                 src={article.img}
                 alt={article.title}
+                transform="w_1400,h_400,q_auto,f_auto,c_fill"
                 className="w-full h-[400px] object-cover hover:scale-105 transition-transform duration-700"
               />
             </div>
@@ -365,7 +366,10 @@ const ArticleDetail: React.FC = () => {
                         : undefined
                     }
                     className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center hover:bg-primary hover:text-white text-muted transition-colors"
-                    title={t("pages.blog.article.emailAuthor", "Send email to author")}
+                    title={t(
+                      "pages.blog.article.emailAuthor",
+                      "Send email to author",
+                    )}
                     aria-label="Email author"
                   >
                     <span className="material-icons text-sm">email</span>
@@ -375,7 +379,11 @@ const ArticleDetail: React.FC = () => {
                   <button
                     onClick={handleCopyLink}
                     className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center hover:bg-primary hover:text-white text-muted transition-colors relative"
-                    title={copied ? t("common.labels.copied", "Copied!") : t("pages.blog.article.copyLink", "Copy article link")}
+                    title={
+                      copied
+                        ? t("common.labels.copied", "Copied!")
+                        : t("pages.blog.article.copyLink", "Copy article link")
+                    }
                     aria-label="Copy article link"
                   >
                     <span className="material-icons text-sm">

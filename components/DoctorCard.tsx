@@ -1,6 +1,7 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
 import Reveal from "./Reveal";
+import { CldImg } from "./CldImg";
 import Button from "./Button";
 import ImageSkeleton from "./ImageSkeleton";
 
@@ -181,9 +182,10 @@ const DoctorCard: React.FC<DoctorCardProps> = ({
           className={`group relative rounded-2xl overflow-hidden shadow-lg h-96 cursor-pointer ${className}`}
           style={style}
         >
-          <img
+          <CldImg
             src={img}
             alt={name}
+            transform="w_600,q_auto,f_auto,c_fill,g_face"
             className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
           />
           <div className="absolute inset-0 bg-linear-to-t from-slate-900/90 via-slate-900/40 to-transparent flex flex-col justify-end p-6">

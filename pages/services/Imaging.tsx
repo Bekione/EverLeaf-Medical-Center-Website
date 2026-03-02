@@ -8,6 +8,7 @@ import Button from "../../components/Button";
 import CTASection from "../../components/CTASection";
 import HeroSection from "../../components/HeroSection";
 import FeaturesSection from "../../components/FeaturesSection";
+import { CldImg } from "../../components/CldImg";
 import ServicesSection from "../../components/ServicesSection";
 import TeamSection from "../../components/TeamSection";
 
@@ -111,9 +112,10 @@ const Imaging: React.FC = () => {
                     style={{ backgroundColor: "var(--color-surface)" }}
                   >
                     <div className="h-48 overflow-hidden relative">
-                      <img
+                      <CldImg
                         src={item.img}
                         alt={item.title}
+                        transform="w_600,h_192,q_auto,f_auto,c_fill"
                         className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                       />
                       <div
@@ -324,9 +326,10 @@ const Imaging: React.FC = () => {
                   </Button>
                 </div>
                 <div className="h-64 md:h-full relative bg-slate-800">
-                  <img
+                  <CldImg
                     src="/images/imaging-body-5.jpg"
                     alt="Doctor reviewing digital scan"
+                    transform="w_1400,q_auto,f_auto,c_fill"
                     className="absolute inset-0 w-full h-full object-cover opacity-80 mix-blend-overlay"
                   />
                   <div className="absolute inset-0 bg-linear-to-l from-transparent to-primary/80 md:to-primary"></div>

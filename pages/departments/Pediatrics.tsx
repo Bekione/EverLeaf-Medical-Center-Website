@@ -11,6 +11,7 @@ import HeroSection from "../../components/HeroSection";
 import TeamSection from "../../components/TeamSection";
 import FeaturesSection from "../../components/FeaturesSection";
 import ServicesSection from "../../components/ServicesSection";
+import { CldImg } from "../../components/CldImg";
 
 const Pediatrics: React.FC = () => {
   const { t } = useTranslation();
@@ -209,9 +210,10 @@ const Pediatrics: React.FC = () => {
         ]}
         rightContent={
           <div className="relative h-full min-h-[350px] rounded-3xl overflow-hidden shadow-2xl border-4 border-white/20">
-            <img
+            <CldImg
               src="/images/pediatrics-body-1.jpg"
               alt="Child Friendly Facility"
+              transform="w_900,q_auto,f_auto,c_fill"
               className="w-full h-full object-cover"
             />
             <div className="absolute inset-0 bg-linear-to-t from-slate-900/40 to-transparent"></div>

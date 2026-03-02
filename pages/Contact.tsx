@@ -4,6 +4,7 @@ const ContactMap = lazy(() => import("../components/ContactMap"));
 import SEO from "../components/SEO";
 import Reveal from "../components/Reveal";
 import ContactForm from "../components/ContactForm";
+import { CldImg } from "../components/CldImg";
 
 const Contact: React.FC = () => {
   const { t } = useTranslation();
@@ -17,7 +18,7 @@ const Contact: React.FC = () => {
       />
       <header className="relative border-b min-h-[500px] flex items-center overflow-hidden bg-surface border-border">
         <div className="absolute inset-0 z-0">
-          <img
+          <CldImg
             src="/images/gallery/gallery-1-atrium.jpg"
             alt="Hospital Building"
             className="w-full h-full object-cover opacity-30"

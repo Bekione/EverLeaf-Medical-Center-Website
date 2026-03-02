@@ -11,6 +11,7 @@ import HeroSection from "../../components/HeroSection";
 import TeamSection from "../../components/TeamSection";
 import FeaturesSection from "../../components/FeaturesSection";
 import ServicesSection from "../../components/ServicesSection";
+import { CldImg } from "../../components/CldImg";
 
 const Dental: React.FC = () => {
   const { t } = useTranslation();
@@ -202,9 +203,10 @@ const Dental: React.FC = () => {
         ]}
         rightContent={
           <div className="relative h-full min-h-[300px] rounded-2xl overflow-hidden shadow-2xl border-4 border-white/20 transform lg:rotate-2 hover:rotate-0 transition-all duration-500">
-            <img
+            <CldImg
               src="/images/hero/dental-hero.jpg"
               alt="Dental Technology"
+              transform="w_900,q_auto,f_auto,c_fill"
               className="w-full h-full object-cover"
             />
             <div className="absolute inset-0 bg-linear-to-t from-slate-900/40 to-transparent"></div>

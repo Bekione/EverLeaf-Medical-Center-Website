@@ -8,6 +8,7 @@ import Button from "../../components/Button";
 import CTASection from "../../components/CTASection";
 import HeroSection from "../../components/HeroSection";
 import TechnologySection from "../../components/TechnologySection";
+import { CldImg } from "../../components/CldImg";
 
 const Pharmacy: React.FC = () => {
   const { t } = useTranslation();
@@ -171,9 +172,10 @@ const Pharmacy: React.FC = () => {
             ]}
             rightContent={
               <div className="relative">
-                <img
+                <CldImg
                   src="/images/pharmacy-body-1.jpg"
                   alt="Pharmacist checking quality"
+                  transform="w_800,h_320,q_auto,f_auto,c_fill"
                   className="rounded-2xl shadow-xl w-full object-cover h-80"
                 />
                 <div

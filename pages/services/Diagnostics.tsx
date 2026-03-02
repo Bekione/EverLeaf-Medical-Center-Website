@@ -9,6 +9,7 @@ import HeroSection from "../../components/HeroSection";
 import FeaturesSection from "../../components/FeaturesSection";
 import { useOutletContext } from "react-router-dom";
 import { OpenAppointmentFunc } from "../../Layout";
+import { CldImg } from "../../components/CldImg";
 
 const Diagnostics: React.FC = () => {
   const { t } = useTranslation();
@@ -158,9 +159,10 @@ const Diagnostics: React.FC = () => {
             >
               <div className="relative">
                 <div className="absolute -top-10 -left-10 w-40 h-40 bg-primary/10 rounded-full blur-3xl"></div>
-                <img
+                <CldImg
                   alt="Advanced CT Scanner"
                   className="relative rounded-2xl shadow-2xl z-10 w-full object-cover"
+                  transform="w_1200,q_auto,f_auto,c_fill"
                   src="/images/diagnostics-body-image-1.jpg"
                 />
                 <div
@@ -472,9 +474,10 @@ const Diagnostics: React.FC = () => {
               </div>
             </div>
             <div className="relative h-96 rounded-2xl overflow-hidden shadow-2xl">
-              <img
+              <CldImg
                 alt="Medical staff reviewing diagnostic results"
                 className="absolute inset-0 w-full h-full object-cover"
+                transform="w_1200,h_384,q_auto,f_auto,c_fill"
                 src="/images/diagnostics-body-image-2.jpg"
               />
             </div>

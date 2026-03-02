@@ -8,6 +8,7 @@ import Button from "../../components/Button";
 import CTASection from "../../components/CTASection";
 import HeroSection from "../../components/HeroSection";
 import FeaturesSection from "../../components/FeaturesSection";
+import { CldImg } from "../../components/CldImg";
 
 const PreventiveCheckups: React.FC = () => {
   const { t } = useTranslation();
@@ -514,9 +515,10 @@ const PreventiveCheckups: React.FC = () => {
         <div className="container mx-auto px-6">
           <div className="flex flex-col lg:flex-row gap-12 items-center">
             <Reveal from="left" threshold={0.1} className="lg:w-1/2">
-              <img
+              <CldImg
                 src="/images/preventive-checkup-body-2.jpg"
                 alt="Wellness Planning"
+                transform="w_900,q_auto,f_auto,c_fill"
                 className="rounded-2xl shadow-xl w-full h-auto object-cover border border-slate-100"
               />
             </Reveal>

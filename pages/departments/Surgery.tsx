@@ -10,6 +10,7 @@ import HeroSection from "../../components/HeroSection";
 import TeamSection from "../../components/TeamSection";
 import FeaturesSection from "../../components/FeaturesSection";
 import ServicesSection from "../../components/ServicesSection";
+import { CldImg } from "../../components/CldImg";
 
 import { useTranslation } from "react-i18next";
 
@@ -181,9 +182,10 @@ const Surgery: React.FC = () => {
         ]}
         rightContent={
           <div className="relative rounded-2xl overflow-hidden shadow-2xl border-4 border-white/10">
-            <img
+            <CldImg
               src="/images/surgery-body-1.jpg"
               alt="Robotic Surgery"
+              transform="w_900,q_auto,f_auto,c_fill"
               className="w-full h-full object-cover"
             />
             <div className="absolute inset-0 bg-linear-to-t from-slate-900/40 to-transparent"></div>
