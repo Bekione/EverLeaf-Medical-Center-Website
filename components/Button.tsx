@@ -93,7 +93,7 @@ const Button: React.FC<ButtonProps> = ({
     <>
       {icon && (
         <span
-          className={`material-icons text-[1.2em]${hasChildren ? " mr-2" : ""}`}
+          className={`material-icons text-[1.2em]! ${hasChildren ? " mr-2" : ""}`}
         >
           {icon}
         </span>

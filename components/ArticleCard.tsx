@@ -94,7 +94,7 @@ const ArticleCard: React.FC<ArticleCardProps> = ({
             })}
             className="w-10 h-10 flex items-center justify-center bg-primary/5 text-primary hover:bg-primary hover:text-white rounded-full transition-all duration-300 shadow-sm group/btn"
           >
-            <span className="material-icons text-xl transition-all duration-300 group-hover/btn:translate-x-2 group-hover/btn:-translate-y-0.5 group-hover/btn:-skew-y-12 group-hover/btn:scale-110">
+            <span className="material-icons text-xl transition-all duration-300 group-hover/btn:-translate-y-0.5 group-hover/btn:-skew-y-12 group-hover/btn:scale-110">
               arrow_forward
             </span>
           </Link>
