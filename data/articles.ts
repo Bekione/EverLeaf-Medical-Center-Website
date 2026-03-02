@@ -39,6 +39,7 @@ export interface Article {
   authorImg: string;
   authorTitle: string;
   authorBio: string;
+  authorEmail?: string;
   seoTitle: string;
   seoDescription: string;
   featured?: boolean;
@@ -62,6 +63,7 @@ export const articles: Article[] = [
     author: "Dr. Mark Williams",
     authorImg: rawSrc("/images/doctors/team-dr-mark-williams.jpg"),
     authorTitle: "Chief of Cardiology",
+    authorEmail: "mark.williams@everleaf-medical.com",
     authorBio:
       "Dr. Williams is a dedicated cardiologist focusing on preventive heart care and minimally invasive surgical procedures. He leads our comprehensive cardiovascular wellness program.",
     seoTitle: "Preventive Cardiology: 5 Essential Tips for Heart Health",
@@ -190,6 +192,7 @@ export const articles: Article[] = [
     author: "Dr. Mark Williams",
     authorImg: rawSrc("/images/doctors/team-dr-mark-williams.jpg"),
     authorTitle: "Chief of Cardiology",
+    authorEmail: "mark.williams@everleaf-medical.com",
     authorBio:
       "Dr. Williams is also a leading researcher in the field of endocrinology, exploring the intersections between heart health and metabolic disorders like diabetes.",
     seoTitle: "Breakthrough in Diabetes Management",
@@ -282,6 +285,7 @@ export const articles: Article[] = [
     author: "Dr. Emily Rodriguez",
     authorImg: rawSrc("/images/doctors/team-dr-emily-rodriguez.jpg"),
     authorTitle: "Endocrinologist",
+    authorEmail: "emily.rodriguez@everleaf-medical.com",
     authorBio:
       "Dr. Rodriguez treats hormonal disorders including diabetes, thyroid conditions, and metabolic syndrome. She is passionate about functional nutrition and its role in immune health.",
     seoTitle: "5 Superfoods to Boost Immunity",
@@ -394,6 +398,7 @@ export const articles: Article[] = [
     author: "Dr. Emily Chen",
     authorImg: rawSrc("/images/doctors/team-dr-emily-chen.jpg"),
     authorTitle: "Senior Pediatrician",
+    authorEmail: "emily.chen@everleaf-medical.com",
     authorBio:
       "Dr. Chen is a passionate pediatrician known for her gentle approach and expertise in early childhood development. She oversaw the design and implementation of the new pediatric wing.",
     seoTitle: "New Pediatric Wing Opening",
@@ -460,6 +465,7 @@ export const articles: Article[] = [
     author: "Dr. Rachel Green",
     authorImg: rawSrc("/images/doctors/team-dr-rachel-green.jpg"),
     authorTitle: "Clinical Psychologist",
+    authorEmail: "rachel.green@everleaf-medical.com",
     authorBio:
       "Dr. Green specializes in cognitive behavioral therapy and mental health support for chronic illness patients. She works closely with families to create supportive environments for teens facing anxiety and depression.",
     seoTitle: "Recognizing Anxiety in Teenagers",
@@ -545,6 +551,7 @@ export const articles: Article[] = [
     author: "Dr. Bereket Kinfe",
     authorImg: rawSrc("/images/doctors/team-dr-bereket-kinfe.jpg"),
     authorTitle: "Infectious Disease Specialist",
+    authorEmail: "bereket.kinfe@everleaf-medical.com",
     authorBio:
       "Dr. Kinfe is an expert in diagnosing and treating complex infectious diseases. He leads EverLeaf's annual community vaccination program and advises on seasonal flu prevention strategies.",
     seoTitle: "Flu Season 2025 Guide",
@@ -604,6 +611,7 @@ export const articles: Article[] = [
     author: "Dr. Sarah Johnson",
     authorImg: rawSrc("/images/doctors/team-dr-sarah-johnson.jpg"),
     authorTitle: "Senior Neurologist",
+    authorEmail: "sarah.johnson@everleaf-medical.com",
     authorBio:
       "Dr. Johnson specializes in complex neurological disorders with over 15 years of experience. Her research focuses on the connection between physical mobility and cognitive health in aging adults.",
     seoTitle: "Mobility & Cognitive Health in Seniors",

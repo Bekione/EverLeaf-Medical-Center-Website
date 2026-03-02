@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link, useParams, Navigate } from "react-router-dom";
 import NewsletterForm from "../components/NewsletterForm";
 import SEO from "../components/SEO";
@@ -157,10 +157,13 @@ const ArticleDetail: React.FC = () => {
   const { id } = useParams<{ id: string }>();
   const { t, i18n } = useTranslation();
   const article = articles.find((a) => a.id === id);
+  const [copied, setCopied] = useState(false);
 
   if (!article) {
     return <Navigate to="/blog" replace />;
   }
+
+  const articleUrl = window.location.href;
 
   const handleShare = async () => {
     if (navigator.share) {
@@ -168,15 +171,23 @@ const ArticleDetail: React.FC = () => {
         await navigator.share({
           title: article.title,
           text: article.subtitle,
-          url: window.location.href,
+          url: articleUrl,
         });
       } catch (err) {
         console.error("Error sharing:", err);
       }
     } else {
-      navigator.clipboard.writeText(window.location.href);
+      navigator.clipboard.writeText(articleUrl);
       alert("Link copied to clipboard!");
     }
+  };
+
+  const handleCopyLink = (e: React.MouseEvent) => {
+    e.preventDefault();
+    navigator.clipboard.writeText(articleUrl).then(() => {
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    });
   };
 
   return (
@@ -269,6 +280,7 @@ const ArticleDetail: React.FC = () => {
                   onClick={handleShare}
                   className="text-muted hover:text-primary h-auto p-0 shadow-none hover:shadow-none font-medium text-sm"
                   icon="share"
+                  animate={false}
                 >
                   <span className="hidden sm:inline">
                     {t("pages.blog.article.share")}
@@ -345,18 +357,36 @@ const ArticleDetail: React.FC = () => {
                   )}
                 </p>
                 <div className="flex gap-3 justify-center sm:justify-start">
+                  {/* Email author */}
                   <a
-                    href="#"
-                    className="text-slate-400 hover:text-primary transition-colors"
+                    href={
+                      article.authorEmail
+                        ? `mailto:${article.authorEmail}`
+                        : undefined
+                    }
+                    className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center hover:bg-primary hover:text-white text-muted transition-colors"
+                    title={t("pages.blog.article.emailAuthor", "Send email to author")}
+                    aria-label="Email author"
                   >
                     <span className="material-icons text-sm">email</span>
                   </a>
-                  <a
-                    href="#"
-                    className="text-slate-400 hover:text-primary transition-colors"
+
+                  {/* Copy article link */}
+                  <button
+                    onClick={handleCopyLink}
+                    className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center hover:bg-primary hover:text-white text-muted transition-colors relative"
+                    title={copied ? t("common.labels.copied", "Copied!") : t("pages.blog.article.copyLink", "Copy article link")}
+                    aria-label="Copy article link"
                   >
-                    <span className="material-icons text-sm">link</span>
-                  </a>
+                    <span className="material-icons text-sm">
+                      {copied ? "check" : "link"}
+                    </span>
+                    {copied && (
+                      <span className="absolute -top-8 left-1/2 -translate-x-1/2 bg-slate-800 text-white text-[10px] px-2 py-1 rounded whitespace-nowrap">
+                        {t("common.labels.copied", "Copied!")}
+                      </span>
+                    )}
+                  </button>
                 </div>
               </div>
             </div>
@@ -369,7 +399,7 @@ const ArticleDetail: React.FC = () => {
               currentCategory={article.category}
             />
 
-            <div className="bg-gradient-to-br from-slate-900 to-blue-900 rounded-2xl p-8 text-white shadow-lg relative overflow-hidden">
+            <div className="bg-linear-to-br from-slate-900 to-blue-900 rounded-2xl p-8 text-white shadow-lg relative overflow-hidden">
               <div className="absolute top-0 right-0 w-32 h-32 bg-white opacity-10 rounded-full blur-2xl translate-x-1/2 -translate-y-1/2 pointer-events-none" />
               <h3 className="text-xl font-bold mb-3 relative z-10">
                 {t("pages.blog.newsletter.title")}

@@ -858,7 +858,9 @@
         "back": "ወደ ጽሑፎች ይመለሱ",
         "share": "ጽሑፉን ያጋሩ",
         "related": "ተዛማጅ ጽሑፎች",
-        "readNext": "ቀጥሎ ያንብቡ"
+        "readNext": "ቀጥሎ ያንብቡ",
+        "emailAuthor": "ለደራሲው ኢሜይል ይላኩ",
+        "copyLink": "የጽሑፉን ሊንክ ቅዳ"
       },
       "newsletter": {
         "badge": "እንደተገናኙ ይቆዩ",

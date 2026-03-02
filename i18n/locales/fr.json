@@ -856,7 +856,9 @@
         "back": "Retour aux articles",
         "share": "Partager l'article",
         "related": "Articles connexes",
-        "readNext": "Lire la suite"
+        "readNext": "Lire la suite",
+        "emailAuthor": "Envoyer un e-mail à l'auteur",
+        "copyLink": "Copier le lien de l'article"
       },
       "newsletter": {
         "badge": "Restez connecté",

@@ -16,7 +16,7 @@
       "error": "Error",
       "success": "Success",
       "experience": "{{count}} Years Experience",
-      "copied": "Copied!"
+      "copdied": "Copied!"
     },
     "roles": {
       "chiefMedicalDirector": "Chief Medical Director",
@@ -858,7 +858,9 @@
         "back": "Back to Articles",
         "share": "Share Article",
         "related": "Related Articles",
-        "readNext": "Read Next"
+        "readNext": "Read Next",
+        "emailAuthor": "Send email to author",
+        "copyLink": "Copy article link"
       },
       "newsletter": {
         "badge": "Stay Connected",
