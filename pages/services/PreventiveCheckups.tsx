@@ -7,6 +7,7 @@ import Reveal from "../../components/Reveal";
 import Button from "../../components/Button";
 import CTASection from "../../components/CTASection";
 import HeroSection from "../../components/HeroSection";
+import FeaturesSection from "../../components/FeaturesSection";
 
 const PreventiveCheckups: React.FC = () => {
   const { t } = useTranslation();
@@ -49,76 +50,46 @@ const PreventiveCheckups: React.FC = () => {
         }}
       />
 
-      <section
-        className="py-20"
-        style={{ backgroundColor: "var(--color-bg-alt)" }}
-      >
-        <div className="container mx-auto px-6">
-          <Reveal threshold={0.1}>
-            <div className="max-w-3xl mx-auto text-center mb-16">
-              <h2
-                className="text-3xl font-serif font-bold mb-4"
-                style={{ color: "var(--color-text)" }}
-              >
-                {t("pages.services.preventiveCheckups.importance.title")}
-              </h2>
-              <p className="text-slate-600 leading-relaxed">
-                {t("pages.services.preventiveCheckups.importance.description")}
-              </p>
-            </div>
-          </Reveal>
-          {Object.entries(
-            t("pages.services.preventiveCheckups.importance.areas", {
-              returnObjects: true,
-            }),
-          ).map(([key, item]: [string, any], i) => {
-            const icons: Record<string, string> = {
-              heart: "monitor_heart",
-              diabetes: "water_drop",
-              cancer: "healing",
-            };
-            const colors: Record<string, string> = {
-              heart: "red",
-              diabetes: "blue",
-              cancer: "purple",
-            };
-
-            return (
-              <Reveal
-                key={i}
-                delay={i * 100}
-                threshold={0.1}
-                className="h-full"
-              >
-                <div
-                  className="p-8 rounded-2xl shadow-card border h-full"
-                  style={{
-                    backgroundColor: "var(--color-surface)",
-                    borderColor: "var(--color-border)",
-                  }}
-                >
-                  <div
-                    className={`w-12 h-12 bg-${colors[key]}-50 rounded-xl flex items-center justify-center text-${colors[key]}-500 mb-6`}
-                  >
-                    <span className="material-icons text-2xl">
-                      {icons[key]}
-                    </span>
-                  </div>
-                  <h3
-                    className="text-xl font-bold mb-3"
-                    style={{ color: "var(--color-text)" }}
-                  >
-                    {item.title}
-                  </h3>
-                  <p className="text-sm text-slate-500 leading-relaxed">
-                    {item.description}
-                  </p>
-                </div>
-              </Reveal>
-            );
-          })}
-        </div>
-      </section>
+      <FeaturesSection
+        className="py-20 bg-bg-alt"
+        title={t("pages.services.preventiveCheckups.importance.title")}
+        description={t(
+          "pages.services.preventiveCheckups.importance.description",
+        )}
+        columns={3}
+        items={[
+          {
+            title: t(
+              "pages.services.preventiveCheckups.importance.areas.heart.title",
+            ),
+            icon: "monitor_heart",
+            color: "red",
+            description: t(
+              "pages.services.preventiveCheckups.importance.areas.heart.description",
+            ),
+          },
+          {
+            title: t(
+              "pages.services.preventiveCheckups.importance.areas.diabetes.title",
+            ),
+            icon: "water_drop",
+            color: "blue",
+            description: t(
+              "pages.services.preventiveCheckups.importance.areas.diabetes.description",
+            ),
+          },
+          {
+            title: t(
+              "pages.services.preventiveCheckups.importance.areas.cancer.title",
+            ),
+            icon: "healing",
+            color: "purple",
+            description: t(
+              "pages.services.preventiveCheckups.importance.areas.cancer.description",
+            ),
+          },
+        ]}
+      />
 
       <section
         className="py-20 relative"
