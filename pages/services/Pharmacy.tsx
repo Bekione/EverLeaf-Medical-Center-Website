@@ -7,6 +7,7 @@ import Reveal from "../../components/Reveal";
 import Button from "../../components/Button";
 import CTASection from "../../components/CTASection";
 import HeroSection from "../../components/HeroSection";
+import TechnologySection from "../../components/TechnologySection";
 
 const Pharmacy: React.FC = () => {
   const { t } = useTranslation();
@@ -24,7 +25,7 @@ const Pharmacy: React.FC = () => {
       element.scrollIntoView({ behavior: "smooth" });
     }
   };
-  
+
   return (
     <div className="animate-fade-in">
       <SEO
@@ -142,129 +143,68 @@ const Pharmacy: React.FC = () => {
             })}
           </div>
 
-          <Reveal threshold={0.1}>
-            <div
-              className="rounded-3xl p-8 md:p-12 border overflow-hidden relative"
-              style={{
-                background:
-                  "linear-gradient(to right, var(--color-bg-alt), var(--color-surface))",
-                borderColor: "var(--color-border)",
-              }}
-            >
-              <div className="absolute top-0 right-0 -mt-10 -mr-10 w-64 h-64 bg-green-100 rounded-full blur-3xl opacity-50 pointer-events-none"></div>
-              <div className="grid md:grid-cols-2 gap-12 items-center relative z-10">
-                <div>
-                  <div
-                    className="inline-flex items-center gap-2 px-3 py-1 mb-4 text-xs font-bold tracking-wider uppercase rounded-full"
-                    style={{
-                      color: "var(--color-text)",
-                      backgroundColor: "var(--color-bg-alt)",
-                    }}
-                  >
-                    {t("pages.services.pharmacy.commitment.badge")}
-                  </div>
-                  <h3
-                    className="text-3xl font-serif font-bold mb-6"
-                    style={{ color: "var(--color-text)" }}
-                  >
-                    {t("pages.services.pharmacy.commitment.title")}
-                  </h3>
-                  <p className="text-slate-600 mb-6 leading-relaxed">
-                    {t("pages.services.pharmacy.commitment.description")}
-                  </p>
-                  <div className="space-y-4">
-                    <div className="flex items-start gap-4">
-                      <div
-                        className="p-2 rounded-lg shadow-sm"
-                        style={{ backgroundColor: "var(--color-surface)" }}
-                      >
-                        <span className="material-icons text-secondary">
-                          verified_user
-                        </span>
-                      </div>
-                      <div>
-                        <h4
-                          className="font-bold"
-                          style={{ color: "var(--color-text)" }}
-                        >
-                          {t(
-                            "pages.services.pharmacy.commitment.features.verification.title",
-                          )}
-                        </h4>
-                        <p className="text-sm text-slate-500">
-                          {t(
-                            "pages.services.pharmacy.commitment.features.verification.description",
-                          )}
-                        </p>
-                      </div>
+          <TechnologySection
+            variant="surface"
+            badge={t("pages.services.pharmacy.commitment.badge")}
+            title={t("pages.services.pharmacy.commitment.title")}
+            description={t("pages.services.pharmacy.commitment.description")}
+            sectionClassName="py-0"
+            items={[
+              {
+                icon: "verified_user",
+                title: t(
+                  "pages.services.pharmacy.commitment.features.verification.title",
+                ),
+                description: t(
+                  "pages.services.pharmacy.commitment.features.verification.description",
+                ),
+              },
+              {
+                icon: "inventory_2",
+                title: t(
+                  "pages.services.pharmacy.commitment.features.storage.title",
+                ),
+                description: t(
+                  "pages.services.pharmacy.commitment.features.storage.description",
+                ),
+              },
+            ]}
+            rightContent={
+              <div className="relative">
+                <img
+                  src="/images/pharmacy-body-1.jpg"
+                  alt="Pharmacist checking quality"
+                  className="rounded-2xl shadow-xl w-full object-cover h-80"
+                />
+                <div
+                  className="absolute -bottom-6 -left-6 p-4 rounded-xl shadow-lg border max-w-xs hidden md:block"
+                  style={{
+                    backgroundColor: "var(--color-surface)",
+                    borderColor: "var(--color-border)",
+                  }}
+                >
+                  <div className="flex items-center gap-3">
+                    <div className="bg-green-100 w-12 h-12 p-2 flex items-center justify-center rounded-full">
+                      <span className="material-icons text-secondary">
+                        thumb_up
+                      </span>
                     </div>
-                    <div className="flex items-start gap-4">
-                      <div
-                        className="p-2 rounded-lg shadow-sm"
-                        style={{ backgroundColor: "var(--color-surface)" }}
+                    <div>
+                      <p className="text-xs text-slate-500 uppercase font-semibold">
+                        {t("pages.services.pharmacy.commitment.accuracy.label")}
+                      </p>
+                      <p
+                        className="text-lg font-bold"
+                        style={{ color: "var(--color-text)" }}
                       >
-                        <span className="material-icons text-secondary">
-                          inventory_2
-                        </span>
-                      </div>
-                      <div>
-                        <h4
-                          className="font-bold"
-                          style={{ color: "var(--color-text)" }}
-                        >
-                          {t(
-                            "pages.services.pharmacy.commitment.features.storage.title",
-                          )}
-                        </h4>
-                        <p className="text-sm text-slate-500">
-                          {t(
-                            "pages.services.pharmacy.commitment.features.storage.description",
-                          )}
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div className="relative">
-                  <img
-                    src="/images/pharmacy-body-1.jpg"
-                    alt="Pharmacist checking quality"
-                    className="rounded-2xl shadow-xl w-full object-cover h-80"
-                  />
-                  <div
-                    className="absolute -bottom-6 -left-6 p-4 rounded-xl shadow-lg border max-w-xs hidden md:block"
-                    style={{
-                      backgroundColor: "var(--color-surface)",
-                      borderColor: "var(--color-border)",
-                    }}
-                  >
-                    <div className="flex items-center gap-3">
-                      <div className="bg-green-100 p-2 rounded-full">
-                        <span className="material-icons text-secondary">
-                          thumb_up
-                        </span>
-                      </div>
-                      <div>
-                        <p className="text-xs text-slate-500 uppercase font-semibold">
-                          {t(
-                            "pages.services.pharmacy.commitment.accuracy.label",
-                          )}
-                        </p>
-                        <p
-                          className="text-lg font-bold"
-                          style={{ color: "var(--color-text)" }}
-                        >
-                          {t(
-                            "pages.services.pharmacy.commitment.accuracy.value",
-                          )}
-                        </p>
-                      </div>
+                        {t("pages.services.pharmacy.commitment.accuracy.value")}
+                      </p>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
-          </Reveal>
+            }
+          />
         </div>
       </section>
 

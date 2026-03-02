@@ -17,6 +17,7 @@ interface TechnologySectionProps {
   badge?: string;
   reverseLayout?: boolean;
   sectionClassName?: string;
+  variant?: "primary" | "surface";
 }
 
 const TechnologySection: React.FC<TechnologySectionProps> = ({
@@ -26,17 +27,38 @@ const TechnologySection: React.FC<TechnologySectionProps> = ({
   rightContent,
   badge,
   reverseLayout = false,
-  sectionClassName = "py-20 text-white",
+  sectionClassName = "py-20",
+  variant = "primary",
 }) => {
+  const isPrimary = variant === "primary";
+
   return (
-    <section className={sectionClassName}>
+    <section
+      className={sectionClassName}
+      style={{ color: isPrimary ? "white" : "var(--color-text)" }}
+    >
       <div className="container mx-auto px-6">
-        <div className="bg-linear-to-br from-cta-from to-cta-to rounded-3xl p-8 md:p-12 text-white overflow-hidden relative shadow-2xl border border-white/10">
+        <div
+          className={`rounded-3xl p-8 md:p-12 overflow-hidden relative shadow-2xl border ${
+            isPrimary
+              ? "bg-linear-to-br from-cta-from to-cta-to border-white/10 text-white"
+              : "border-slate-200"
+          }`}
+          style={
+            !isPrimary
+              ? {
+                  background:
+                    "linear-gradient(to right, var(--color-bg-alt), var(--color-surface))",
+                  borderColor: "var(--color-border)",
+                }
+              : {}
+          }
+        >
           {/* Decorative Grid Pattern */}
           <div
-            className="absolute inset-0 opacity-10"
+            className={`absolute inset-0 ${isPrimary ? "opacity-10" : "opacity-30"}`}
             style={{
-              backgroundImage: "radial-gradient(#ffffff 1px, transparent 1px)",
+              backgroundImage: `radial-gradient(${isPrimary ? "#ffffff" : "var(--color-primary)"} 1px, transparent 1px)`,
               backgroundSize: "24px 24px",
             }}
           ></div>
@@ -54,12 +76,31 @@ const TechnologySection: React.FC<TechnologySectionProps> = ({
             >
               <div>
                 {badge && (
-                  <span className="text-primary-light font-bold tracking-wider uppercase text-sm mb-2 block">
+                  <span
+                    className="font-bold tracking-wider uppercase text-sm mb-2 block"
+                    style={{
+                      color: isPrimary
+                        ? "var(--color-primary-light)"
+                        : "var(--color-primary)",
+                    }}
+                  >
                     {badge}
                   </span>
                 )}
-                <h2 className="text-3xl font-bold mb-6">{title}</h2>
-                <p className="text-blue-100 mb-8 leading-relaxed">
+                <h2
+                  className="text-3xl font-bold mb-6"
+                  style={{ color: isPrimary ? "white" : "var(--color-text)" }}
+                >
+                  {title}
+                </h2>
+                <p
+                  className="mb-8 leading-relaxed"
+                  style={{
+                    color: isPrimary
+                      ? "rgba(255,255,255,0.8)"
+                      : "var(--color-text-muted)",
+                  }}
+                >
                   {description}
                 </p>
                 <div className="space-y-6">
@@ -67,22 +108,41 @@ const TechnologySection: React.FC<TechnologySectionProps> = ({
                     <div key={idx} className="flex items-start gap-4">
                       <div
                         className={`${
-                          item.iconBgColor || "bg-primary/20"
+                          item.iconBgColor ||
+                          (isPrimary ? "bg-primary/20" : "bg-primary/10")
                         } p-3 rounded-lg flex items-center justify-center shrink-0`}
+                        style={
+                          !isPrimary && !item.iconBgColor
+                            ? { backgroundColor: "var(--color-surface)" }
+                            : {}
+                        }
                       >
                         <span
                           className={`material-icons text-2xl ${
-                            item.iconTextColor || "text-blue-400"
+                            item.iconTextColor ||
+                            (isPrimary ? "text-blue-400" : "text-primary")
                           }`}
                         >
                           {item.icon}
                         </span>
                       </div>
                       <div>
-                        <h4 className="font-bold text-lg text-white mb-1">
+                        <h4
+                          className="font-bold text-lg mb-1"
+                          style={{
+                            color: isPrimary ? "white" : "var(--color-text)",
+                          }}
+                        >
                           {item.title}
                         </h4>
-                        <p className="text-sm text-blue-200">
+                        <p
+                          className="text-sm"
+                          style={{
+                            color: isPrimary
+                              ? "rgba(255,255,255,0.7)"
+                              : "var(--color-text-muted)",
+                          }}
+                        >
                           {item.description}
                         </p>
                       </div>
