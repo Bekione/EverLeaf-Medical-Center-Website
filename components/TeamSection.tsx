@@ -1,7 +1,7 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import Button from "./Button";
 import Reveal from "./Reveal";
+import ScrollFade from "./ScrollFade";
 import DoctorCard, { DoctorCardProps } from "./DoctorCard";
 
 interface TeamSectionProps {
@@ -47,10 +47,8 @@ const TeamSection: React.FC<TeamSectionProps> = ({
     <section className={className} id="specialists">
       <div className="container mx-auto px-6">
         <Reveal threshold={0.1}>
-          <div
-            className={`flex flex-col md:flex-row justify-between items-end mb-12`}
-          >
-            <div className={layout === "grid" ? "max-w-3xl" : "max-w-2xl"}>
+          <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-4 md:mb-12 gap-6 px-0">
+            <div className="w-full md:max-w-3xl">
               {badge && (
                 <span className="text-primary font-semibold tracking-wider text-sm uppercase block mb-2">
                   {badge}
@@ -63,7 +61,7 @@ const TeamSection: React.FC<TeamSectionProps> = ({
                 <p className="mt-4 text-lg text-muted">{description}</p>
               )}
             </div>
-            <div className="flex items-center gap-4 mt-6 md:mt-0">
+            <div className="flex items-center gap-4 self-end md:self-auto">
               {layout === "slider" && members.length > 3 && (
                 <div className="hidden md:flex gap-2 mr-4">
                   <button
@@ -85,41 +83,40 @@ const TeamSection: React.FC<TeamSectionProps> = ({
                 </div>
               )}
               {viewAllLink && viewAllLabel && (
-                <Button
-                  to={viewAllLink}
-                  variant="action"
-                  size="sm"
-                  className="hidden md:flex"
-                >
-                  {viewAllLabel}
-                  <span className="material-icons text-sm ml-2">
-                    arrow_forward
-                  </span>
-                </Button>
+                <div className="hidden md:block shrink-0">
+                  <Button to={viewAllLink} variant="action" size="sm">
+                    {viewAllLabel}
+                    <span className="material-icons text-sm ml-2">
+                      arrow_forward
+                    </span>
+                  </Button>
+                </div>
               )}
             </div>
           </div>
         </Reveal>
 
         {layout === "slider" ? (
-          <div
-            ref={scrollRef}
-            className="flex gap-6 lg:gap-8 overflow-x-auto py-4 -my-4 scrollbar-hide snap-x snap-mandatory -mx-6 px-6 md:mx-0 md:px-0"
-          >
-            {members.map((member, i) => (
-              <div
-                key={i}
-                className="w-[280px] sm:w-[320px] md:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1.333rem)] shrink-0 snap-center"
-              >
-                <DoctorCard
-                  {...member}
-                  variant={variant}
-                  onBookAppointment={onBookAppointment}
-                  delay={i * 100}
-                />
-              </div>
-            ))}
-          </div>
+          <ScrollFade className="-mx-6 md:mx-0">
+            <div
+              ref={scrollRef}
+              className="flex gap-6 lg:gap-8 overflow-x-auto py-10 md:py-12 px-6 md:px-0 scrollbar-hide snap-x snap-mandatory scroll-smooth"
+            >
+              {members.map((member, i) => (
+                <div
+                  key={i}
+                  className="w-[280px] sm:w-[320px] md:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1.333rem)] shrink-0 snap-center"
+                >
+                  <DoctorCard
+                    {...member}
+                    variant={variant}
+                    onBookAppointment={onBookAppointment}
+                    delay={i * 100}
+                  />
+                </div>
+              ))}
+            </div>
+          </ScrollFade>
         ) : (
           <div
             className={`grid grid-cols-1 md:grid-cols-2 ${
@@ -139,14 +136,16 @@ const TeamSection: React.FC<TeamSectionProps> = ({
         )}
 
         {viewAllLink && viewAllLabel && (
-          <div className="mt-12 text-center md:hidden">
-            <Link
+          <div className="mt-0 md:hidden pb-8 text-center">
+            <Button
               to={viewAllLink}
-              className="inline-flex items-center gap-2 px-6 py-3 bg-surface border border-border rounded-xl font-semibold text-primary hover:bg-bg-alt transition-all"
+              variant="action"
+              size="md"
+              className="w-full sm:w-auto"
             >
               {viewAllLabel}
-              <span className="material-icons text-sm">arrow_forward</span>
-            </Link>
+              <span className="material-icons text-sm ml-2">arrow_forward</span>
+            </Button>
           </div>
         )}
       </div>
