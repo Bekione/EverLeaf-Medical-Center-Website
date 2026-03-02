@@ -350,12 +350,7 @@
         "specialty": "Neonatologist",
         "bio": "Specialized in caring for critically ill newborns and premature infants.",
         "education": "MD from Yale University, Fellowship in Neonatology",
-        "educationShort": "MD, Fellowship",
-        "social": {
-          "email": "Send Email",
-          "share": "Share",
-          "copy": "Copy Link"
-        }
+        "educationShort": "MD, Fellowship"
       }
     },
     "departments": {
@@ -831,7 +826,12 @@
         "about": "About",
         "education": "Education",
         "deptPrefix": "Department of ",
-        "requestAppointment": "Request Appointment"
+        "requestAppointment": "Request Appointment",
+        "social": {
+          "email": "Send Email",
+          "share": "Share",
+          "copy": "Copy Link"
+        }
       }
     },
     "blog": {

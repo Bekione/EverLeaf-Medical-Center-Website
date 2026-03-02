@@ -350,12 +350,7 @@
         "specialty": "ኒዮናቶሎጂስት",
         "bio": "በጽኑ የታመሙ አዲስ የተወለዱ ሕፃናትን እና ያለጊዜያቸው የተወለዱ ሕፃናትን በመንከባከብ ላይ ያተኮሩ።",
         "education": "ከዬል ዩኒቨርሲቲ MD፣ በኒዮናቶሎጂ ፌሎውሺፕ",
-        "educationShort": "MD, ፌሎውሺፕ",
-        "social": {
-          "email": "ኢሜይል ይላኩ",
-          "share": "ያጋሩ",
-          "copy": "ሊንኩን ይቅዱ"
-        }
+        "educationShort": "MD, ፌሎውሺፕ"
       }
     },
     "departments": {
@@ -831,7 +826,12 @@
         "about": "ስለ",
         "education": "ትምህርት",
         "deptPrefix": "ክፍል፡ ",
-        "requestAppointment": "ቀጠሮ ይጠይቁ"
+        "requestAppointment": "ቀጠሮ ይጠይቁ",
+        "social": {
+          "email": "ኢሜይል ይላኩ",
+          "share": "ያጋሩ",
+          "copy": "ሊንኩን ይቅዱ"
+        }
       }
     },
     "blog": {

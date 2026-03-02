@@ -350,12 +350,7 @@
         "specialty": "Néonatologue",
         "bio": "Spécialisée dans les soins aux nouveau-nés gravement malades et aux nourrissons prématurés.",
         "education": "MD de l'Université Yale, Fellowship en néonatologie",
-        "educationShort": "MD, Fellowship",
-        "social": {
-          "email": "Envoyer un e-mail",
-          "share": "Partager",
-          "copy": "Copier le lien"
-        }
+        "educationShort": "MD, Fellowship"
       }
     },
     "departments": {
@@ -831,7 +826,12 @@
         "about": "À propos",
         "education": "Éducation",
         "deptPrefix": "Département de ",
-        "requestAppointment": "Demander un rendez-vous"
+        "requestAppointment": "Demander un rendez-vous",
+        "social": {
+          "email": "Envoyer un e-mail",
+          "share": "Partager",
+          "copy": "Copier le lien"
+        }
       }
     },
     "blog": {
