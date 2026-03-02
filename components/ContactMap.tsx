@@ -275,7 +275,7 @@ const ContactMap: React.FC<ContactMapProps> = ({
 
         {/* ── HUD layer (Selector & Zoom Hint) ── */}
         <div className="absolute inset-0 pointer-events-none z-1000">
-          <div className="absolute top-2 right-2 md:right-auto md:left-14 pointer-events-auto">
+          <div className="absolute top-2.5 right-2 md:right-auto md:left-14 pointer-events-auto">
             <CustomSelect
               options={[
                 { value: "", label: t("pages.contact.map.selectBranch") },
