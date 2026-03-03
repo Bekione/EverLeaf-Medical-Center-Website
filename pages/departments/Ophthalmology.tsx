@@ -245,7 +245,7 @@ const Ophthalmology: React.FC = () => {
         rightContent={
           <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-slate-100">
             <CldImg
-              alt="Advanced Eye Scanning Technology"
+              alt={t("common.imgAlt.advancedEyeScanning")}
               className="w-full h-auto"
               transform="w_1000,q_auto,f_auto,c_fill"
               src="/images/imaging-body-2.jpg"

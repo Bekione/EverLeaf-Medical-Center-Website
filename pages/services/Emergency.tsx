@@ -135,7 +135,7 @@ const Emergency: React.FC = () => {
                 <div className="absolute -inset-4 bg-blue-100 rounded-full blur-3xl opacity-50 pointer-events-none"></div>
                 <CldImg
                   src="/images/emergency-body-1.jpg"
-                  alt="Emergency Medical Team"
+                  alt={t("common.imgAlt.emergencyMedicalTeam")}
                   transform="w_1200,h_600,q_auto,f_auto,c_fill"
                   className="relative rounded-2xl shadow-2xl border-4 border-white z-10 w-full object-cover h-[600px]"
                 />

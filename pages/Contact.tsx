@@ -20,7 +20,7 @@ const Contact: React.FC = () => {
         <div className="absolute inset-0 z-0">
           <CldImg
             src="/images/gallery/gallery-1-atrium.jpg"
-            alt="Hospital Building"
+            alt={t("common.imgAlt.hospitalBuilding")}
             className="w-full h-full object-cover opacity-30"
           />
           <div

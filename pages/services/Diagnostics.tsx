@@ -10,6 +10,7 @@ import FeaturesSection from "../../components/FeaturesSection";
 import { useOutletContext } from "react-router-dom";
 import { OpenAppointmentFunc } from "../../Layout";
 import { CldImg } from "../../components/CldImg";
+import TechnologySection from "../../components/TechnologySection";
 
 const Diagnostics: React.FC = () => {
   const { t } = useTranslation();
@@ -145,117 +146,79 @@ const Diagnostics: React.FC = () => {
         ]}
       />
 
-      {/* Technology Section */}
-      <section
-        className="py-20 overflow-hidden"
-        style={{ backgroundColor: "var(--color-bg-alt)" }}
-      >
-        <div className="container mx-auto px-6">
-          <div className="flex flex-col lg:flex-row items-center gap-16">
-            <Reveal
-              from="left"
-              threshold={0.1}
-              className="lg:w-1/2 relative order-2 lg:order-1"
+      <TechnologySection
+        variant="surface"
+        badge={t("pages.services.diagnostics.technology.badge", "Innovation")}
+        title={t(
+          "pages.services.diagnostics.technology.title",
+          "State-of-the-Art Technology",
+        )}
+        description={t(
+          "pages.services.diagnostics.technology.description",
+          "We continuously invest in the latest medical technology to ensure the lowest radiation doses, fastest scan times, and clearest images possible. Our new 3T MRI creates exceptionally detailed images of soft tissues, bone, and blood vessels.",
+        )}
+        items={[
+          {
+            icon: "bolt",
+            title: t(
+              "pages.services.diagnostics.technology.items.0",
+              "Faster scanning times for patient comfort",
+            ),
+            description: "",
+          },
+          {
+            icon: "shield",
+            title: t(
+              "pages.services.diagnostics.technology.items.1",
+              "Reduced radiation exposure protocols",
+            ),
+            description: "",
+          },
+          {
+            icon: "cloud_upload",
+            title: t(
+              "pages.services.diagnostics.technology.items.2",
+              "Digital results integrated with Patient Portal instantly",
+            ),
+            description: "",
+          },
+        ]}
+        reverseLayout
+        rightContent={
+          <div className="relative">
+            <div className="absolute -top-10 -left-10 w-40 h-40 bg-primary/10 rounded-full blur-3xl" />
+            <CldImg
+              alt={t("common.imgAlt.advancedCtScanner")}
+              className="relative rounded-2xl shadow-2xl z-10 w-full h-auto object-cover"
+              transform="w_1200,q_auto,f_auto,c_fill"
+              src="/images/diagnostics-body-image-1.jpg"
+            />
+            <div
+              className="absolute bottom-6 right-6 z-20 p-4 rounded-lg shadow-xl border-l-4 border-primary max-w-xs"
+              style={{ backgroundColor: "var(--color-surface)" }}
             >
-              <div className="relative">
-                <div className="absolute -top-10 -left-10 w-40 h-40 bg-primary/10 rounded-full blur-3xl"></div>
-                <CldImg
-                  alt="Advanced CT Scanner"
-                  className="relative rounded-2xl shadow-2xl z-10 w-full object-cover"
-                  transform="w_1200,q_auto,f_auto,c_fill"
-                  src="/images/diagnostics-body-image-1.jpg"
-                />
-                <div
-                  className="absolute bottom-6 right-6 z-20 p-4 rounded-lg shadow-xl border-l-4 border-primary max-w-xs"
-                  style={{ backgroundColor: "var(--color-surface)" }}
-                >
-                  <p
-                    className="text-sm font-semibold"
-                    style={{ color: "var(--color-text)" }}
-                  >
-                    {t(
-                      "pages.services.diagnostics.technology.newest.title",
-                      "Newest Addition",
-                    )}
-                  </p>
-                  <p
-                    className="text-xs"
-                    style={{ color: "var(--color-text-muted)" }}
-                  >
-                    {t(
-                      "pages.services.diagnostics.technology.newest.description",
-                      "Siemens Somatom Definition Edge CT Scanner installed in 2023.",
-                    )}
-                  </p>
-                </div>
-              </div>
-            </Reveal>
-            <Reveal
-              from="right"
-              threshold={0.1}
-              className="lg:w-1/2 order-1 lg:order-2"
-            >
-              <div>
-                <div className="inline-block px-3 py-1 mb-4 text-xs font-semibold tracking-wider text-secondary uppercase bg-blue-50 rounded-full">
-                  {t(
-                    "pages.services.diagnostics.technology.badge",
-                    "Innovation",
-                  )}
-                </div>
-                <h2
-                  className="text-3xl lg:text-4xl font-serif font-bold mb-6"
-                  style={{ color: "var(--color-text)" }}
-                >
-                  {t(
-                    "pages.services.diagnostics.technology.title",
-                    "State-of-the-Art Technology",
-                  )}
-                </h2>
-                <p className="text-slate-600 text-lg leading-relaxed mb-6">
-                  {t(
-                    "pages.services.diagnostics.technology.description",
-                    "We continuously invest in the latest medical technology to ensure the lowest radiation doses, fastest scan times, and clearest images possible. Our new 3T MRI creates exceptionally detailed images of soft tissues, bone, and blood vessels.",
-                  )}
-                </p>
-                <ul className="space-y-4 mb-8">
-                  {[
-                    {
-                      icon: "bolt",
-                      text: t(
-                        "pages.services.diagnostics.technology.items.0",
-                        "Faster scanning times for patient comfort",
-                      ),
-                    },
-                    {
-                      icon: "shield",
-                      text: t(
-                        "pages.services.diagnostics.technology.items.1",
-                        "Reduced radiation exposure protocols",
-                      ),
-                    },
-                    {
-                      icon: "cloud_upload",
-                      text: t(
-                        "pages.services.diagnostics.technology.items.2",
-                        "Digital results integrated with Patient Portal instantly",
-                      ),
-                    },
-                  ].map((item, i) => (
-                    <li key={i} className="flex items-start gap-3">
-                      <div className="w-6 h-6 rounded-full bg-blue-100 flex items-center justify-center shrink-0 mt-0.5">
-                        <span className="material-icons text-primary text-sm">
-                          {item.icon}
-                        </span>
-                      </div>
-                      <span className="text-slate-700">{item.text}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </Reveal>
+              <p
+                className="text-sm font-semibold"
+                style={{ color: "var(--color-text)" }}
+              >
+                {t(
+                  "pages.services.diagnostics.technology.newest.title",
+                  "Newest Addition",
+                )}
+              </p>
+              <p
+                className="text-xs"
+                style={{ color: "var(--color-text-muted)" }}
+              >
+                {t(
+                  "pages.services.diagnostics.technology.newest.description",
+                  "Siemens Somatom Definition Edge CT Scanner installed in 2023.",
+                )}
+              </p>
+            </div>
           </div>
-        </div>
-      </section>
+        }
+      />
 
       {/* Preparation Section */}
       <section
@@ -475,7 +438,7 @@ const Diagnostics: React.FC = () => {
             </div>
             <div className="relative h-96 rounded-2xl overflow-hidden shadow-2xl">
               <CldImg
-                alt="Medical staff reviewing diagnostic results"
+                alt={t("common.imgAlt.diagnosticResults")}
                 className="absolute inset-0 w-full h-full object-cover"
                 transform="w_1200,h_384,q_auto,f_auto,c_fill"
                 src="/images/diagnostics-body-image-2.jpg"

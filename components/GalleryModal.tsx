@@ -193,7 +193,7 @@ const GalleryModal: React.FC<GalleryModalProps> = ({
               src={imageSrc}
               alt={displayedTitle}
               transform="w_1920,q_auto,f_auto,c_fit"
-              className={`max-h-[70vh] w-auto object-contain ${
+              className={`max-h-[70vh] min-w-[min(60vw,600px)] min-h-[30vh] w-auto object-contain ${
                 imageLoaded
                   ? "opacity-100 transition-opacity duration-500"
                   : "opacity-0 transition-none"

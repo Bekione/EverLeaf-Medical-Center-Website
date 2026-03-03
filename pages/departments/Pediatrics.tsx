@@ -212,7 +212,7 @@ const Pediatrics: React.FC = () => {
           <div className="relative h-full min-h-[350px] rounded-3xl overflow-hidden shadow-2xl border-4 border-white/20">
             <CldImg
               src="/images/pediatrics-body-1.jpg"
-              alt="Child Friendly Facility"
+              alt={t("common.imgAlt.childFriendlyFacility")}
               transform="w_900,q_auto,f_auto,c_fill"
               className="w-full h-full object-cover"
             />

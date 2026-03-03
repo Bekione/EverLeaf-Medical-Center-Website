@@ -180,7 +180,7 @@ const Rehabilitation: React.FC = () => {
             <div className="relative h-64 rounded-2xl overflow-hidden shadow-lg border border-white/10 group">
               <CldImg
                 src="/images/rehabilitation-body-1.jpg"
-                alt="Mobility Technology"
+                alt={t("common.imgAlt.mobilityTechnology")}
                 transform="w_800,h_256,q_auto,f_auto,c_fill"
                 className="w-full h-full object-cover group-hover:scale-105 transition-all duration-700"
               />
@@ -189,7 +189,7 @@ const Rehabilitation: React.FC = () => {
             <div className="relative h-64 rounded-2xl overflow-hidden shadow-lg border border-white/10 group mt-8 sm:mt-12">
               <CldImg
                 src="/images/rehabilitation-body-2.jpg"
-                alt="Therapeutic Equipment"
+                alt={t("common.imgAlt.therapeuticEquipment")}
                 transform="w_800,h_256,q_auto,f_auto,c_fill"
                 className="w-full h-full object-cover group-hover:scale-105 transition-all duration-700"
               />

@@ -23,6 +23,29 @@
       "headOfSurgery": "Head of Surgery",
       "directorOfNursing": "Director of Nursing",
       "chiefFinancialOfficer": "Chief Medical Officer"
+    },
+    "imgAlt": {
+      "medicalTeam": "Medical Team",
+      "hospitalBuilding": "Hospital Building",
+      "hospitalExterior": "Hospital Exterior",
+      "operatingTheatre": "Operating Theatre",
+      "patientRoom": "Patient Room",
+      "icu": "ICU",
+      "happyPatient": "Happy Patient",
+      "roboticSurgery": "Robotic Surgery",
+      "mobilityTechnology": "Mobility Technology",
+      "therapeuticEquipment": "Therapeutic Equipment",
+      "childFriendlyFacility": "Child Friendly Facility",
+      "advancedEyeScanning": "Advanced Eye Scanning Technology",
+      "laboratoryTechnology": "Laboratory Technology",
+      "dentalTechnology": "Dental Technology",
+      "emergencyMedicalTeam": "Emergency Medical Team",
+      "advancedCtScanner": "Advanced CT Scanner",
+      "diagnosticResults": "Medical staff reviewing diagnostic results",
+      "doctorReviewingDigitalScan": "Doctor reviewing digital scan",
+      "laboratoryMicroscope": "Advanced laboratory equipment microscope",
+      "pharmacistCheckingQuality": "Pharmacist checking quality",
+      "wellnessPlanning": "Wellness Planning"
     }
   },
   "components": {

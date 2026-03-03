@@ -174,7 +174,7 @@ const Pharmacy: React.FC = () => {
               <div className="relative">
                 <CldImg
                   src="/images/pharmacy-body-1.jpg"
-                  alt="Pharmacist checking quality"
+                  alt={t("common.imgAlt.pharmacistCheckingQuality")}
                   transform="w_800,h_320,q_auto,f_auto,c_fill"
                   className="rounded-2xl shadow-xl w-full object-cover h-80"
                 />

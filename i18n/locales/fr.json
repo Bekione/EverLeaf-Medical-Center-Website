@@ -23,6 +23,29 @@
       "headOfSurgery": "Chef de chirurgie",
       "directorOfNursing": "Directrice des soins infirmiers",
       "chiefFinancialOfficer": "Directeur financier"
+    },
+    "imgAlt": {
+      "medicalTeam": "Équipe médicale",
+      "hospitalBuilding": "Bâtiment de l'hôpital",
+      "hospitalExterior": "Extérieur de l'hôpital",
+      "operatingTheatre": "Bloc opératoire",
+      "patientRoom": "Chambre patient",
+      "icu": "Unité de soins intensifs",
+      "happyPatient": "Patient satisfait",
+      "roboticSurgery": "Chirurgie robotique",
+      "mobilityTechnology": "Technologie de mobilité",
+      "therapeuticEquipment": "Équipement thérapeutique",
+      "childFriendlyFacility": "Établissement adapté aux enfants",
+      "advancedEyeScanning": "Technologie avancée de scan oculaire",
+      "laboratoryTechnology": "Technologie de laboratoire",
+      "dentalTechnology": "Technologie dentaire",
+      "emergencyMedicalTeam": "Équipe médicale d'urgence",
+      "advancedCtScanner": "Scanner CT avancé",
+      "diagnosticResults": "Personnel médical examinant les résultats diagnostiques",
+      "doctorReviewingDigitalScan": "Médecin examinant un scan numérique",
+      "laboratoryMicroscope": "Microscope de laboratoire avancé",
+      "pharmacistCheckingQuality": "Pharmacien vérifiant la qualité",
+      "wellnessPlanning": "Planification du bien-être"
     }
   },
   "components": {

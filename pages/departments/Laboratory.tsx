@@ -170,7 +170,7 @@ const Laboratory: React.FC = () => {
             <div className="relative h-full rounded-3xl overflow-hidden border border-white/10 shadow-2xl">
               <CldImg
                 src="/images/hero/laboratory-dept-hero.jpg"
-                alt="Laboratory Technology"
+                alt={t("common.imgAlt.laboratoryTechnology")}
                 transform="w_900,q_auto,f_auto,c_fill"
                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
               />

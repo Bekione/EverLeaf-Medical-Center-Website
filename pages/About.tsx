@@ -173,18 +173,18 @@ const About: React.FC = () => {
               {/* Main Image */}
               <CldImg
                 src={rawSrc("/images/hero/about-hero-1.jpg")}
-                alt="Medical Team"
+                alt={t("common.imgAlt.medicalTeam")}
                 transform="w_600,q_auto,f_auto,c_fill"
-                className="rounded-2xl shadow-2xl w-full object-cover aspect-4/3 border-4 border-white transition-transform duration-500 group-hover:scale-[1.01]"
+                className="rounded-2xl shadow-2xl w-full object-cover aspect-[4/3] min-h-[300px] border-4 border-white transition-transform duration-500 group-hover:scale-[1.01]"
               />
 
               {/* Floating Secondary Image */}
               <div className="absolute -bottom-12 -left-12 w-2/3 hidden md:block">
                 <CldImg
                   src={rawSrc("/images/hero/home-hero-1.jpg")}
-                  alt="Hospital Building"
+                  alt={t("common.imgAlt.hospitalBuilding")}
                   transform="w_400,q_auto,f_auto,c_fill"
-                  className="rounded-xl shadow-xl border-4 border-white w-full object-cover aspect-3/2 transition-transform duration-500 group-hover:-translate-y-2"
+                  className="rounded-xl shadow-xl border-4 border-white w-full object-cover aspect-[3/2] min-h-[200px] transition-transform duration-500 group-hover:-translate-y-2"
                 />
               </div>
 
@@ -212,7 +212,7 @@ const About: React.FC = () => {
                 <div className="absolute -inset-4 bg-primary/5 rounded-3xl -rotate-2" />
                 <CldImg
                   src="/images/about-body-1.jpg"
-                  alt="Hospital Exterior"
+                  alt={t("common.imgAlt.hospitalExterior")}
                   transform="w_1200,h_500,q_auto,f_auto,c_fill"
                   className="relative rounded-2xl shadow-2xl w-full h-[500px] object-cover"
                 />
@@ -491,7 +491,7 @@ const About: React.FC = () => {
               <div className="md:col-span-2 md:row-span-2 rounded-2xl overflow-hidden relative group cursor-pointer shadow-lg">
                 <CldImg
                   src="/images/gallery/gallery-9-operation.jpg"
-                  alt="Operating Theatre"
+                  alt={t("common.imgAlt.operatingTheatre")}
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                 />
                 <div className="absolute inset-0 bg-linear-to-t from-slate-900/90 via-transparent to-transparent flex flex-col justify-end p-8">
@@ -506,7 +506,7 @@ const About: React.FC = () => {
               <div className="rounded-2xl overflow-hidden relative group cursor-pointer shadow-lg bg-slate-900">
                 <CldImg
                   src="/images/gallery/gallery-10-recovery-suite.jpg"
-                  alt="Patient Room"
+                  alt={t("common.imgAlt.patientRoom")}
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-90 group-hover:opacity-100"
                 />
                 <div className="absolute inset-0 bg-linear-to-t from-slate-900/90 to-transparent flex flex-col justify-end p-6">
@@ -521,7 +521,7 @@ const About: React.FC = () => {
               <div className="rounded-2xl overflow-hidden relative group cursor-pointer shadow-lg bg-surface">
                 <CldImg
                   src="/images/gallery/gallery-14-icu.jpg"
-                  alt="ICU"
+                  alt={t("common.imgAlt.icu")}
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-90 group-hover:opacity-100"
                 />
                 <div className="absolute inset-0 bg-linear-to-t from-slate-900/90 to-transparent flex flex-col justify-end p-6">

@@ -30,7 +30,7 @@ const HomeCarousel: React.FC = () => {
           >
             <CldImg
               src={src}
-              alt={`Hospital Highlight ${index + 1}`}
+              alt={t("common.imgAlt.hospitalBuilding")}
               className="rounded-2xl shadow-2xl object-cover w-full h-full"
               {...(index === 0
                 ? { fetchPriority: "high", loading: "eager" }

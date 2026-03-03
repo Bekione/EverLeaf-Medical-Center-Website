@@ -101,7 +101,7 @@ const Home: React.FC = () => {
                 >
                   <CldImg
                     src={`/images/happy-patient-${i}.jpg`}
-                    alt="Happy Patient"
+                    alt={t("common.imgAlt.happyPatient")}
                     transform="w_80,q_auto,f_auto,c_fill,g_face"
                     className="w-full h-full object-cover"
                   />

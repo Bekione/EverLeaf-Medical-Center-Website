@@ -517,7 +517,7 @@ const PreventiveCheckups: React.FC = () => {
             <Reveal from="left" threshold={0.1} className="lg:w-1/2">
               <CldImg
                 src="/images/preventive-checkup-body-2.jpg"
-                alt="Wellness Planning"
+                alt={t("common.imgAlt.wellnessPlanning")}
                 transform="w_900,q_auto,f_auto,c_fill"
                 className="rounded-2xl shadow-xl w-full h-auto object-cover border border-slate-100"
               />

@@ -184,7 +184,7 @@ const Surgery: React.FC = () => {
           <div className="relative rounded-2xl overflow-hidden shadow-2xl border-4 border-white/10">
             <CldImg
               src="/images/surgery-body-1.jpg"
-              alt="Robotic Surgery"
+              alt={t("common.imgAlt.roboticSurgery")}
               transform="w_900,q_auto,f_auto,c_fill"
               className="w-full h-full object-cover"
             />

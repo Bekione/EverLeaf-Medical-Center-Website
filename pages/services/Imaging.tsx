@@ -328,7 +328,7 @@ const Imaging: React.FC = () => {
                 <div className="h-64 md:h-full relative bg-slate-800">
                   <CldImg
                     src="/images/imaging-body-5.jpg"
-                    alt="Doctor reviewing digital scan"
+                    alt={t("common.imgAlt.doctorReviewingDigitalScan")}
                     transform="w_1400,q_auto,f_auto,c_fill"
                     className="absolute inset-0 w-full h-full object-cover opacity-80 mix-blend-overlay"
                   />

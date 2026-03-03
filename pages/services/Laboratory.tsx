@@ -219,7 +219,7 @@ const Laboratory: React.FC = () => {
               <div className="order-2 lg:order-1">
                 <CldImg
                   src="/images/laboratory-body-image-1.jpg"
-                  alt="Advanced laboratory equipment microscope"
+                  alt={t("common.imgAlt.laboratoryMicroscope")}
                   transform="w_1000,h_400,q_auto,f_auto,c_fill"
                   className="rounded-2xl shadow-xl w-full object-cover h-[400px]"
                 />

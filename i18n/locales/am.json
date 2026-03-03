@@ -23,6 +23,29 @@
       "headOfSurgery": "የቀዶ ጥገና ክፍል ኃላፊ",
       "directorOfNursing": "የነርሲንግ ዳይሬክተር",
       "chiefFinancialOfficer": "ዋና የፋይናንስ ኃላፊ"
+    },
+    "imgAlt": {
+      "medicalTeam": "የሕክምና ቡድን",
+      "hospitalBuilding": "የሆስፒታሉ ሕንፃ",
+      "hospitalExterior": "ሆስፒታሉ ከውጭ",
+      "operatingTheatre": "የቀዶ ጥገና ክፍል",
+      "patientRoom": "የታካሚ ክፍል",
+      "icu": "ጽኑ እንክብካቤ ክፍል",
+      "happyPatient": "ደስተኛ ታካሚ",
+      "roboticSurgery": "ሮቦቲክ ቀዶ ጥገና",
+      "mobilityTechnology": "የእንቅስቃሴ ቴክኖሎጂ",
+      "therapeuticEquipment": "የሕክምና መሳሪያዎች",
+      "childFriendlyFacility": "ለህፃናት ምቹ ተቋም",
+      "advancedEyeScanning": "የላቀ የዓይን ምስሌ ቴክኖሎጂ",
+      "laboratoryTechnology": "የላቦራቶሪ ቴክኖሎጂ",
+      "dentalTechnology": "የጥርስ ሕክምና ቴክኖሎጂ",
+      "emergencyMedicalTeam": "የድንገተኛ ሕክምና ቡድን",
+      "advancedCtScanner": "የላቀ ሲቲ ስካነር",
+      "diagnosticResults": "ሐኪም የምርመራ ውጤቶችን እየገመገሙ",
+      "doctorReviewingDigitalScan": "ሐኪም ዲጂታል ስካን እያጠናቸ",
+      "laboratoryMicroscope": "የላቀ የላቦራቶሪ መሳሪያ ማይክሮስኮፕ",
+      "pharmacistCheckingQuality": "ፋርማሲስት ጥራት እየፈተሸ",
+      "wellnessPlanning": "የጤና እቅድ"
     }
   },
   "components": {
