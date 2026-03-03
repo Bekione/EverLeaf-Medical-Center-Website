@@ -175,7 +175,7 @@ const About: React.FC = () => {
                 src={rawSrc("/images/hero/about-hero-1.jpg")}
                 alt={t("common.imgAlt.medicalTeam")}
                 transform="w_600,q_auto,f_auto,c_fill"
-                className="rounded-2xl shadow-2xl w-full object-cover aspect-[4/3] min-h-[300px] border-4 border-white transition-transform duration-500 group-hover:scale-[1.01]"
+                className="rounded-2xl shadow-2xl w-full object-cover aspect-4/3 min-h-[300px] border-4 border-white transition-transform duration-500 group-hover:scale-[1.01]"
               />
 
               {/* Floating Secondary Image */}
@@ -184,7 +184,7 @@ const About: React.FC = () => {
                   src={rawSrc("/images/hero/home-hero-1.jpg")}
                   alt={t("common.imgAlt.hospitalBuilding")}
                   transform="w_400,q_auto,f_auto,c_fill"
-                  className="rounded-xl shadow-xl border-4 border-white w-full object-cover aspect-[3/2] min-h-[200px] transition-transform duration-500 group-hover:-translate-y-2"
+                  className="rounded-xl shadow-xl border-4 border-white w-full object-cover aspect-3/2 min-h-[200px] transition-transform duration-500 group-hover:-translate-y-2"
                 />
               </div>
 
