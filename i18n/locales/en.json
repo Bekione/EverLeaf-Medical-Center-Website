@@ -1031,15 +1031,15 @@
           "steps": {
             "0": {
               "title": "Arrival & Registration",
-              "description": "Upon arrival, check in at the reception desk. If the condition is life-threatening, you will be taken immediately to a treatment room."
+              "desc": "Upon arrival, check in at the reception desk. If the condition is life-threatening, you will be taken immediately to a treatment room."
             },
             "1": {
               "title": "Triage Assessment",
-              "description": "A specialized nurse will assess your vitals and the severity of your condition to prioritize your care based on medical urgency."
+              "desc": "A specialized nurse will assess your vitals and the severity of your condition to prioritize your care based on medical urgency."
             },
             "2": {
               "title": "Diagnosis & Treatment",
-              "description": "You will be seen by an emergency physician for examination, testing, and treatment. We aim to discharge or admit you as efficiently as possible."
+              "desc": "You will be seen by an emergency physician for examination, testing, and treatment. We aim to discharge or admit you as efficiently as possible."
             }
           }
         },

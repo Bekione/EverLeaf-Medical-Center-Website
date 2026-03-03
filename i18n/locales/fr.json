@@ -1361,46 +1361,32 @@
             }
           }
         },
-        "capabilities": {
-          "badge": "Expertise",
-          "title": "Services d'Urgence Spécialisés",
-          "description": "Notre équipe est équipée pour gérer les urgences médicales les plus complexes avec une précision de haut niveau.",
+        "teams": {
+          "title": "Équipes d'urgence spécialisées",
           "items": {
             "0": {
-              "title": "Centre de Traumatologie de Niveau I",
-              "description": "Chirurgie de haut niveau et soins intensifs pour les patients souffrant de blessures graves."
-            },
-            "1": {
-              "title": "Urgence Cardiaque",
-              "description": "Intervention rapide pour les crises cardiaques et autres urgences cardiovasculaires."
-            },
-            "2": {
-              "title": "Centre de l'AVC",
-              "description": "Traitement spécialisé fourni dans les premières minutes critiques suivant les symptômes d'un AVC."
-            },
-            "3": {
-              "title": "Urgence Pédiatrique",
-              "description": "Soins spécialisés et compatissants fournis par des spécialistes en pédiatrie pour nos plus jeunes patients."
-            }
-          }
-        },
-        "preparation": {
-          "title": "Préparation de votre visite",
-          "sections": {
-            "top": {
-              "content": "Se préparer à une urgence peut être difficile. Si possible, avoir ces informations prêtes peut accélérer le processus de soin."
-            },
-            "whatToBring": {
-              "title": "Ce qu'il faut apporter",
-              "items": {
-                "0": "Pièce d'identité avec photo et carte d'assurance maladie",
-                "1": "Liste des médicaments actuels et allergies",
-                "2": "Coordonnées des personnes à contacter en cas d'urgence"
+              "title": "Équipe de soins cardiaques",
+              "description": "Intervention rapide pour les crises cardiaques avec une disponibilité 24h/24 et 7j/7 du laboratoire de cathétérisme. Notre temps « porte-ballon » est constamment inférieur aux moyennes nationales.",
+              "services": {
+                "0": "Centre de douleur thoracique",
+                "1": "Soins avancés de réanimation cardiaque"
               }
             },
-            "visitorPolicy": {
-              "title": "Politique de visite",
-              "description": "Pour assurer la sécurité de nos patients et de notre personnel, nous autorisons actuellement un visiteur par patient aux urgences."
+            "1": {
+              "title": "Centre de l'AVC",
+              "description": "Centre primaire certifié pour les AVC fournissant des thérapies immédiates de dissolution des caillots et des procédures neuro-interventionnelles pour minimiser les dommages cérébraux.",
+              "services": {
+                "0": "Accès rapide CT/IRM",
+                "1": "Soutien par télé-neurologie"
+              }
+            },
+            "2": {
+              "title": "Urgences pédiatriques",
+              "description": "Une zone d'urgence séparée et adaptée aux enfants, dotée de spécialistes en pédiatrie dévoués à faire en sorte que les enfants se sentent en sécurité et à l'aise pendant les crises.",
+              "services": {
+                "0": "Spécialistes de la vie de l'enfant",
+                "1": "Sédation pédiatrique"
+              }
             }
           }
         },

@@ -177,6 +177,8 @@ const Emergency: React.FC = () => {
           </div>
         </div>
       </section>
+
+
       <section
         className="py-20 border-y"
         style={{
@@ -217,7 +219,7 @@ const Emergency: React.FC = () => {
                   "Arrival & Registration",
                 ),
                 desc: t(
-                  "pages.services.emergency.triage.steps.0.description",
+                  "pages.services.emergency.triage.steps.0.desc",
                   "Upon arrival, check in at the reception desk. If the condition is life-threatening, you will be taken immediately to a treatment room.",
                 ),
               },
@@ -228,7 +230,7 @@ const Emergency: React.FC = () => {
                   "Triage Assessment",
                 ),
                 desc: t(
-                  "pages.services.emergency.triage.steps.1.description",
+                  "pages.services.emergency.triage.steps.1.desc",
                   "A specialized nurse will assess your vitals and the severity of your condition to prioritize your care based on medical urgency.",
                 ),
               },
@@ -239,7 +241,7 @@ const Emergency: React.FC = () => {
                   "Diagnosis & Treatment",
                 ),
                 desc: t(
-                  "pages.services.emergency.triage.steps.2.description",
+                  "pages.services.emergency.triage.steps.2.desc",
                   "You will be seen by an emergency physician for examination, testing, and treatment. We aim to discharge or admit you as efficiently as possible.",
                 ),
               },
@@ -277,6 +279,8 @@ const Emergency: React.FC = () => {
           </div>
         </div>
       </section>
+
+
       <section className="py-20 bg-slate-50">
         <div className="container mx-auto px-6">
           <Reveal threshold={0.1}>
@@ -410,6 +414,8 @@ const Emergency: React.FC = () => {
           </div>
         </div>
       </section>
+
+
       <section
         className="py-20 bg-slate-900 text-white relative overflow-hidden"
         id="contact"
