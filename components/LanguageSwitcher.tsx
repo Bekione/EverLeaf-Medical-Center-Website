@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import { useTranslation } from "react-i18next";
+import { useLangNavigate } from "../hooks/useLang";
 
 const LANGUAGES = [
   {
@@ -90,6 +91,7 @@ const LanguageSwitcher: React.FC<LanguageSwitcherProps> = ({
   const { i18n, t } = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
+  const switchLang = useLangNavigate();
 
   const currentLanguage =
     LANGUAGES.find((lang) => lang.code === i18n.language) || LANGUAGES[0];
@@ -108,10 +110,8 @@ const LanguageSwitcher: React.FC<LanguageSwitcherProps> = ({
   }, []);
 
   const changeLanguage = (lng: string) => {
-    i18n.changeLanguage(lng);
+    switchLang(lng);
     setIsOpen(false);
-    // Update HTML lang attribute for SEO
-    document.documentElement.lang = lng;
   };
 
   const isNavbar = variant === "navbar";

@@ -6,9 +6,11 @@ import { useTranslation } from "react-i18next";
 import NewsletterForm from "./NewsletterForm";
 import { socialLinks } from "../data/socialLinks";
 import { footerLinks } from "../data/navigation";
+import { useLangPath } from "../hooks/useLang";
 
 const Footer: React.FC = () => {
   const { t } = useTranslation();
+  const buildPath = useLangPath();
 
   return (
     <footer className="pt-20 pb-10 border-t bg-footer text-white/70 border-white/10">
@@ -16,7 +18,10 @@ const Footer: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
           {/* Brand + Social */}
           <div>
-            <Link to="/" className="flex items-center gap-3 mb-6 group">
+            <Link
+              to={buildPath("/")}
+              className="flex items-center gap-3 mb-6 group"
+            >
               <div className="bg-white/10 p-2 rounded-lg group-hover:bg-white/20 transition-colors">
                 <EverleafLogo className="w-8 h-8 " />
               </div>
@@ -65,7 +70,7 @@ const Footer: React.FC = () => {
               {footerLinks.map((item) => (
                 <li key={item.to}>
                   <Link
-                    to={item.to}
+                    to={buildPath(item.to)}
                     className="hover:text-primary transition-colors flex items-center gap-2 group/flink"
                   >
                     <span className="material-icons text-xs transition-all duration-300 group-hover/flink:text-primary group-hover/flink:translate-x-1">
@@ -127,10 +132,16 @@ const Footer: React.FC = () => {
           </p>
           <div className="flex items-center gap-6 mt-4 md:mt-0">
             <ThemeSwitcher inline className="hidden md:inline-flex" />
-            <Link to="/privacy" className="hover:text-white transition-colors">
+            <Link
+              to={buildPath("/privacy")}
+              className="hover:text-white transition-colors"
+            >
               {t("footer.privacy")}
             </Link>
-            <Link to="/privacy" className="hover:text-white transition-colors">
+            <Link
+              to={buildPath("/privacy")}
+              className="hover:text-white transition-colors"
+            >
               {t("footer.terms")}
             </Link>
           </div>

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
+import { useLangPath, useLang } from "../hooks/useLang";
 import { EverleafLogo } from "./Logo";
 import { useTranslation } from "react-i18next";
 import LanguageSwitcher from "./LanguageSwitcher";
@@ -31,12 +32,15 @@ const DesktopDropdown: React.FC<DesktopDropdownProps> = ({
   currentPath,
 }) => {
   const { t } = useTranslation();
-  const isGroupActive = currentPath.startsWith(group.basePath);
+  const buildPath = useLangPath();
+  // currentPath includes the lang prefix — strip it for comparison
+  const pathWithoutLang = currentPath.replace(/^\/[a-z]{2}/, "") || "/";
+  const isGroupActive = pathWithoutLang.startsWith(group.basePath);
 
   return (
     <div className="relative group/menu">
       <Link
-        to={group.basePath}
+        to={buildPath(group.basePath)}
         className={`flex items-center gap-1 cursor-pointer text-sm xl:text-base font-medium transition-colors ${isGroupActive ? "text-primary" : "hover:text-primary"}`}
         style={
           isGroupActive
@@ -59,11 +63,11 @@ const DesktopDropdown: React.FC<DesktopDropdownProps> = ({
         }}
       >
         {group.items.map((item) => {
-          const isActive = currentPath === item.to;
+          const isActive = pathWithoutLang === item.to;
           return (
             <Link
               key={item.to}
-              to={item.to}
+              to={buildPath(item.to)}
               className="block px-4 py-2.5 text-sm transition-all mx-1.5 rounded-md mb-0.5 last:mb-0 group/item"
               style={{
                 color: isActive ? "var(--color-primary)" : "var(--color-text)",
@@ -107,12 +111,18 @@ const Header: React.FC<HeaderProps> = ({ onBookAppointment }) => {
     null,
   );
   const location = useLocation();
+  const buildPath = useLangPath();
+  const lang = useLang();
+
+  // Strip the lang prefix from pathname for comparison with navigation.ts paths
+  const plainPath =
+    location.pathname.replace(new RegExp(`^/${lang}`), "") || "/";
 
   const isActive = (path: string) =>
-    location.pathname === path ? "text-primary" : "hover:text-primary";
+    plainPath === path ? "text-primary" : "hover:text-primary";
 
   const getNavLinkStyle = (path: string) =>
-    location.pathname === path
+    plainPath === path
       ? { color: "var(--color-primary)" }
       : { color: "var(--color-text)" };
 
@@ -120,13 +130,11 @@ const Header: React.FC<HeaderProps> = ({ onBookAppointment }) => {
     setExpandedMobileMenu(expandedMobileMenu === menu ? null : menu);
 
   const getMobileLinkClass = (path: string) =>
-    `block py-2 font-medium transition-colors ${location.pathname === path ? "text-primary font-bold" : ""}`;
+    `block py-2 font-medium transition-colors ${plainPath === path ? "text-primary font-bold" : ""}`;
 
   const getMobileSubLinkClass = (path: string) =>
     `block text-sm transition-colors py-1 ${
-      location.pathname === path
-        ? "text-primary font-semibold"
-        : "hover:text-primary"
+      plainPath === path ? "text-primary font-semibold" : "hover:text-primary"
     }`;
 
   return (
@@ -153,14 +161,14 @@ const Header: React.FC<HeaderProps> = ({ onBookAppointment }) => {
             <LanguageSwitcher variant="navbar" />
             <div className="flex items-center space-x-4">
               <Link
-                to="/gallery"
+                to={buildPath("/gallery")}
                 className="opacity-80 hover:opacity-100 transition-opacity"
               >
                 {t("nav.gallery")}
               </Link>
               <span className="opacity-30">|</span>
               <Link
-                to="/blog"
+                to={buildPath("/blog")}
                 className="opacity-80 hover:opacity-100 transition-opacity"
               >
                 {t("nav.media")}
@@ -182,7 +190,7 @@ const Header: React.FC<HeaderProps> = ({ onBookAppointment }) => {
         <div className="container mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
             {/* Logo */}
-            <Link to="/" className="flex items-center gap-3 group">
+            <Link to={buildPath("/")} className="flex items-center gap-3 group">
               <EverleafLogo className="w-8 h-8 lg:w-10 lg:h-10 group-hover:scale-105 transition-transform duration-300" />
               <div className="flex flex-col">
                 <span
@@ -207,7 +215,7 @@ const Header: React.FC<HeaderProps> = ({ onBookAppointment }) => {
                   key={link.to}
                   className={`${isActive(link.to)} text-sm xl:text-base font-medium transition-colors`}
                   style={getNavLinkStyle(link.to)}
-                  to={link.to}
+                  to={buildPath(link.to)}
                 >
                   {t(link.labelKey)}
                 </Link>
@@ -227,7 +235,7 @@ const Header: React.FC<HeaderProps> = ({ onBookAppointment }) => {
                   key={link.to}
                   className={`${isActive(link.to)} text-sm xl:text-base font-medium transition-colors`}
                   style={getNavLinkStyle(link.to)}
-                  to={link.to}
+                  to={buildPath(link.to)}
                 >
                   {t(link.labelKey)}
                 </Link>
@@ -278,7 +286,7 @@ const Header: React.FC<HeaderProps> = ({ onBookAppointment }) => {
                   key={link.to}
                   onClick={() => setIsMenuOpen(false)}
                   className={getMobileLinkClass(link.to)}
-                  to={link.to}
+                  to={buildPath(link.to)}
                 >
                   {t(link.labelKey)}
                 </Link>
@@ -304,12 +312,10 @@ const Header: React.FC<HeaderProps> = ({ onBookAppointment }) => {
                 >
                   <div
                     className={`flex justify-between items-center font-medium cursor-pointer ${
-                      location.pathname.startsWith(group.basePath)
-                        ? "text-primary"
-                        : ""
+                      plainPath.startsWith(group.basePath) ? "text-primary" : ""
                     }`}
                     style={
-                      !location.pathname.startsWith(group.basePath)
+                      !plainPath.startsWith(group.basePath)
                         ? { color: "var(--color-text)" }
                         : {}
                     }
@@ -341,7 +347,7 @@ const Header: React.FC<HeaderProps> = ({ onBookAppointment }) => {
                           key={item.to}
                           onClick={() => setIsMenuOpen(false)}
                           className={getMobileSubLinkClass(item.to)}
-                          to={item.to}
+                          to={buildPath(item.to)}
                         >
                           {t(item.labelKey)}
                         </Link>
@@ -356,7 +362,7 @@ const Header: React.FC<HeaderProps> = ({ onBookAppointment }) => {
                   key={link.to}
                   onClick={() => setIsMenuOpen(false)}
                   className={getMobileLinkClass(link.to)}
-                  to={link.to}
+                  to={buildPath(link.to)}
                 >
                   {t(link.labelKey)}
                 </Link>
