@@ -1724,6 +1724,8 @@
         "hero": {
           "badge": "Diagnostics Avancés",
           "title": "Services de Laboratoire de Précision en qui Vous Pouvez Avoir Confiance",
+          "titlePart1": "Laboratoire de Précision",
+          "titlePart2": "en qui Vous Pouvez Avoir Confiance",
           "description": "Notre laboratoire certifié ISO fonctionne 24h/24 et 7j/7, fournissant des résultats de diagnostic précis avec rapidité et précision. Des analyses de sang de routine aux tests génétiques complexes, votre santé est notre priorité.",
           "buttons": {
             "book": "Réserver un test",
