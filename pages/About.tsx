@@ -6,9 +6,10 @@ import { CldImg, rawSrc } from "@/components/CldImg";
 import { useTranslation } from "react-i18next";
 import CTASection from "../components/CTASection";
 import Button from "../components/Button";
-import FeaturesSection from "../components/FeaturesSection";
 import HeroSection from "../components/HeroSection";
 import TeamSection from "../components/TeamSection";
+import FeaturesSection from "../components/FeaturesSection";
+import { useLangPath } from "../hooks/useLang";
 
 // Counter Component for animation
 const CountUp = ({
@@ -72,6 +73,7 @@ const CountUp = ({
 
 const About: React.FC = () => {
   const { t } = useTranslation();
+  const buildPath = useLangPath();
   return (
     <div
       className="animate-fade-in min-h-screen"
@@ -98,11 +100,11 @@ const About: React.FC = () => {
         description={t("pages.about.hero.subtitle")}
         primaryButton={{
           label: t("pages.about.hero.meetTeam"),
-          to: "/doctors",
+          to: buildPath("/doctors"),
         }}
         secondaryButton={{
           label: t("pages.about.hero.viewFacilities"),
-          to: "/gallery",
+          to: buildPath("/gallery"),
           variant: "secondary",
         }}
         footerContent={
@@ -175,7 +177,7 @@ const About: React.FC = () => {
                 src={rawSrc("/images/hero/about-hero-1.jpg")}
                 alt={t("common.imgAlt.medicalTeam")}
                 transform="w_600,q_auto,f_auto,c_fill"
-                className="rounded-2xl shadow-2xl w-full object-cover aspect-4/3 min-h-[300px] border-4 border-white transition-transform duration-500 group-hover:scale-[1.01]"
+                className="rounded-2xl shadow-2xl w-full object-cover aspect-4/3 min-h-[300px] border-4 border-border transition-transform duration-500 group-hover:scale-[1.01]"
               />
 
               {/* Floating Secondary Image */}
@@ -184,7 +186,7 @@ const About: React.FC = () => {
                   src={rawSrc("/images/hero/home-hero-1.jpg")}
                   alt={t("common.imgAlt.hospitalBuilding")}
                   transform="w_400,q_auto,f_auto,c_fill"
-                  className="rounded-xl shadow-xl border-4 border-white w-full object-cover aspect-3/2 min-h-[200px] transition-transform duration-500 group-hover:-translate-y-2"
+                  className="rounded-xl shadow-xl border-4 border-border w-full object-cover aspect-3/2 min-h-[200px] transition-transform duration-500 group-hover:-translate-y-2"
                 />
               </div>
 
@@ -477,13 +479,13 @@ const About: React.FC = () => {
               </div>
             </Reveal>
             <Button
-              to="/gallery"
+              to={buildPath("/gallery")}
               variant="action"
               size="sm"
-              className="hidden md:flex transform-none"
+              className="hidden md:flex transform-none group/btn"
             >
               {t("pages.about.infrastructure.viewGallery")}
-              <span className="material-icons text-sm ml-2">arrow_forward</span>
+              <span className="material-icons text-sm ml-2 transition-transform duration-300 group-hover/btn:translate-x-1">arrow_forward</span>
             </Button>
           </div>
           <Reveal delay={80} threshold={0.05}>
@@ -494,7 +496,7 @@ const About: React.FC = () => {
                   alt={t("common.imgAlt.operatingTheatre")}
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-linear-to-t from-slate-900/90 via-transparent to-transparent flex flex-col justify-end p-8">
+                <div className="absolute inset-0 bg-linear-to-t from-primary/90 via-transparent to-transparent flex flex-col justify-end p-8">
                   <h3 className="text-white text-2xl font-bold mb-1">
                     {t("pages.about.infrastructure.operating.title")}
                   </h3>
@@ -509,7 +511,7 @@ const About: React.FC = () => {
                   alt={t("common.imgAlt.patientRoom")}
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-90 group-hover:opacity-100"
                 />
-                <div className="absolute inset-0 bg-linear-to-t from-slate-900/90 to-transparent flex flex-col justify-end p-6">
+                <div className="absolute inset-0 bg-linear-to-t from-primary/90 to-transparent flex flex-col justify-end p-6">
                   <h3 className="text-white text-xl font-bold">
                     {t("pages.about.infrastructure.recovery.title")}
                   </h3>
@@ -524,7 +526,7 @@ const About: React.FC = () => {
                   alt={t("common.imgAlt.icu")}
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-90 group-hover:opacity-100"
                 />
-                <div className="absolute inset-0 bg-linear-to-t from-slate-900/90 to-transparent flex flex-col justify-end p-6">
+                <div className="absolute inset-0 bg-linear-to-t from-primary/90 to-transparent flex flex-col justify-end p-6">
                   <h3 className="text-white text-xl font-bold">
                     {t("pages.about.infrastructure.icu.title")}
                   </h3>
@@ -546,11 +548,11 @@ const About: React.FC = () => {
         description={t("pages.about.cta.subtitle")}
         primaryButton={{
           label: t("pages.about.cta.visitUs"),
-          to: "/contact",
+          to: buildPath("/contact"),
         }}
         secondaryButton={{
           label: t("pages.about.cta.contactAdmin"),
-          to: "/contact",
+          to: buildPath("/contact"),
         }}
         iconName="near_me"
       />

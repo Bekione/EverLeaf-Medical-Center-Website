@@ -42,20 +42,6 @@
     format("woff2");
 }
 
-/* Force icons to a square container to prevent "ghost width" while font is loading.
-   Overflow: hidden ensures long icon names like "arrow_forward" don't stretch the layout
-   even while they are invisible (display: block). */
-.material-icons,
-.material-icons-outlined {
-  display: inline-flex !important;
-  align-items: center;
-  justify-content: center;
-  width: 1em;
-  height: 1em;
-  overflow: hidden;
-  vertical-align: middle;
-}
-
 /* Tailwind v4 — the @tailwindcss/vite plugin processes this import at build time.
    Tree-shakes all unused utilities → production CSS is typically < 10 KB. */
 
@@ -139,10 +125,19 @@
    unlayered so source order doesn't matter — specificity wins.
    These live OUTSIDE any @layer so they also beat @layer utilities.
 ──────────────────────────────────────────────────────────────────────────── */
+
+/* Force icons to a square container to prevent "ghost width" while font is loading.
+   Overflow: hidden ensures long icon names like "arrow_forward" don't stretch the layout
+   even while they are invisible (display: block). */
 .material-icons,
 .material-icons-outlined {
-  display: inline-block; /* Isolates transforms (rotate) from parent line box */
-  line-height: 1;
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  width: 1em;
+  height: 1em;
+  overflow: hidden;
+  vertical-align: middle;
 }
 
 /* Each size variant: specificity (0,2,0) beats Material Icons (0,1,0) */

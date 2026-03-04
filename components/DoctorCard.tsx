@@ -42,12 +42,12 @@ const DoctorCard: React.FC<DoctorCardProps> = ({
   className = "",
   style,
 }) => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const [copied, setCopied] = React.useState(false);
 
   const shareUrl =
     typeof window !== "undefined"
-      ? `${window.location.origin}/doctors?search=${encodeURIComponent(name)}`
+      ? `${window.location.origin}${i18n.language === "en" ? "" : `/${i18n.language}`}/doctors?search=${encodeURIComponent(name)}`
       : "";
 
   const handleShare = async (e: React.MouseEvent) => {
@@ -187,20 +187,20 @@ const DoctorCard: React.FC<DoctorCardProps> = ({
             alt={name}
             className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
           />
-          <div className="absolute inset-0 bg-linear-to-t from-slate-900/90 via-slate-900/40 to-transparent flex flex-col justify-end p-6">
-            <h3 className="text-xl font-bold text-white mb-1 font-serif">
-              {name}
-            </h3>
-            <p className="text-sm text-primary-light font-medium uppercase tracking-wide">
-              {role}
-            </p>
-            {bio && (
-              <div className="h-0 group-hover:h-auto overflow-hidden transition-all duration-300">
-                <p className="text-white/70 text-xs mt-3 opacity-0 group-hover:opacity-100 transition-opacity delay-100 duration-300">
+          <div className="absolute inset-0 bg-linear-to-t from-slate-900 via-slate-900/40 to-transparent p-6 flex flex-col justify-end transition-all duration-700 group-hover:bg-slate-900/60">
+            <div className="transform transition-transform duration-500 ease-out translate-y-18 group-hover:translate-y-0">
+              <h3 className="text-xl font-bold text-white mb-1 font-serif">
+                {name}
+              </h3>
+              <p className="text-sm text-cta-accent font-bold uppercase tracking-wider drop-shadow-sm">
+                {role}
+              </p>
+              {bio && (
+                <p className="text-white/80 text-xs mt-4 opacity-0 group-hover:opacity-100 transition-all duration-500 delay-100 leading-relaxed">
                   {bio}
                 </p>
-              </div>
-            )}
+              )}
+            </div>
           </div>
         </div>
       </Reveal>

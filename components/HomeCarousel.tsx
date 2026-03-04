@@ -18,20 +18,19 @@ const HomeCarousel: React.FC = () => {
   return (
     <Reveal from="right" threshold={0.05} className="-mt-10">
       <div className="relative hidden lg:block h-[480px] w-full">
-        <div className="absolute -inset-4 bg-primary/20 rounded-full blur-3xl opacity-30 animate-pulse"></div>
+        <div className="absolute -inset-8 bg-primary/40 rounded-full blur-3xl opacity-50 animate-pulse z-0 hidden dark:block"></div>
+        <div className="absolute -inset-8 bg-primary-light/40 rounded-full blur-3xl opacity-50 animate-pulse z-0 dark:hidden"></div>
         {heroImages.map((src, index) => (
           <div
             key={index}
-            className={`absolute inset-0 transition-all duration-1500 ease-in-out ${
-              index === currentHeroImage
-                ? "opacity-100 z-10 blur-0"
-                : "opacity-70 z-0 blur-sm"
+            className={`absolute inset-0 z-1 transition-all duration-1500 ease-in-out ${
+              index === currentHeroImage ? "opacity-100 z-10" : "opacity-0 z-0"
             }`}
           >
             <CldImg
               src={src}
               alt={t("common.imgAlt.hospitalBuilding")}
-              className="rounded-2xl shadow-2xl object-cover w-full h-full"
+              className="rounded-2xl object-cover w-full h-full"
               {...(index === 0
                 ? { fetchPriority: "high", loading: "eager" }
                 : { loading: "lazy" })}
