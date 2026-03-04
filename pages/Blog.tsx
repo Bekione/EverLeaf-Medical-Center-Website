@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
+import { useLangPath } from "../hooks/useLang";
 import NewsletterForm from "../components/NewsletterForm";
 import SEO from "../components/SEO";
 import Reveal from "../components/Reveal";
@@ -33,6 +34,7 @@ import HeroSection from "../components/HeroSection";
 
 const Blog: React.FC = () => {
   const { t } = useTranslation();
+  const buildPath = useLangPath();
   const [filter, setFilter] = useState("All");
   const [currentPage, setCurrentPage] = useState(1);
   const [phase, animateFilter] = useFilterTransition(180, 40);
@@ -158,7 +160,7 @@ const Blog: React.FC = () => {
         }
         secondaryButton={{
           label: t("pages.blog.hero.readMore"),
-          to: `/blog/${featuredArticle.id}`,
+          to: buildPath(`/blog/${featuredArticle.id}`),
           variant: "glass",
           icon: "arrow_forward",
         }}

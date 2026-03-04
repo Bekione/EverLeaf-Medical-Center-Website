@@ -9,9 +9,11 @@ import { useTranslation } from "react-i18next";
 import { departments } from "../data/departments";
 import CTASection from "../components/CTASection";
 import Button from "../components/Button";
+import { useLangPath } from "../hooks/useLang";
 
 const Departments: React.FC = () => {
   const { t } = useTranslation();
+  const buildPath = useLangPath();
   const { openAppointment } = useOutletContext<{
     openAppointment: OpenAppointmentFunc;
   }>();
@@ -51,7 +53,7 @@ const Departments: React.FC = () => {
                 description={t(`data.departments.${dept.id}.desc`)}
                 icon={dept.icon}
                 color={dept.color}
-                to={`/departments/${dept.id}`}
+                to={buildPath(`/departments/${dept.id}`)}
                 delay={idx * 70}
               />
             ))}
@@ -71,7 +73,7 @@ const Departments: React.FC = () => {
         }}
         secondaryButton={{
           label: t("pages.home.infoCards.specialist.search"),
-          to: "/doctors",
+          to: buildPath("/doctors"),
         }}
         iconName="event"
       />

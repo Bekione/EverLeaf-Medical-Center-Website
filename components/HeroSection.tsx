@@ -94,7 +94,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
             <CldImg
               src={image}
               alt={imageAlt || titlePart1}
-              className="w-full h-full object-cover opacity-25 scale-105 animate-slow-zoom"
+              className="w-full h-full object-cover object-center opacity-25 scale-105 animate-slow-zoom"
             />
           )}
           <div className="absolute inset-0 bg-linear-to-r from-slate-900 via-slate-900/95 to-transparent"></div>
@@ -433,7 +433,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
               className="relative hidden lg:flex w-full justify-center"
             >
               <div className="relative group">
-                <div className="relative z-10 rounded-3xl overflow-hidden shadow-2xl border-8 border-white transform rotate-1 group-hover:rotate-0 transition-all duration-700 w-full max-w-lg min-h-[300px] sm:min-h-[400px] aspect-4/3">
+                <div className="relative z-10 rounded-3xl overflow-hidden shadow-2xl border-8 border-border transform rotate-1 group-hover:rotate-0 transition-all duration-700 w-full max-w-lg min-h-[300px] sm:min-h-[400px] aspect-4/3">
                   {image && (
                     <CldImg
                       src={image}

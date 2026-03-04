@@ -4,6 +4,7 @@ import { articles } from "../data/articles";
 import { CldImg } from "./CldImg";
 
 import { useTranslation } from "react-i18next";
+import { useLangPath } from "../hooks/useLang";
 
 interface RelatedArticlesProps {
   currentId: string;
@@ -15,6 +16,7 @@ const RelatedArticles: React.FC<RelatedArticlesProps> = ({
   currentCategory,
 }) => {
   const { t } = useTranslation();
+  const buildPath = useLangPath();
   const sameCategory = articles.filter(
     (a) => a.id !== currentId && a.category === currentCategory,
   );
@@ -24,27 +26,15 @@ const RelatedArticles: React.FC<RelatedArticlesProps> = ({
   const related = [...sameCategory, ...otherCategory].slice(0, 3);
 
   return (
-    <div
-      className="rounded-2xl shadow-card p-6 border sticky top-28"
-      style={{
-        backgroundColor: "var(--color-surface)",
-        borderColor: "var(--color-border)",
-      }}
-    >
-      <h3
-        className="text-lg font-bold mb-6 border-b pb-2"
-        style={{
-          color: "var(--color-text)",
-          borderColor: "var(--color-border)",
-        }}
-      >
+    <div className="rounded-2xl shadow-card p-6 border sticky top-28 bg-surface border-border">
+      <h3 className="text-lg font-bold mb-6 border-b pb-2 text-text border-border">
         {t("components.relatedArticles.title")}
       </h3>
       <div className="space-y-6">
         {related.map((article) => (
           <Link
             key={article.id}
-            to={`/blog/${article.id}`}
+            to={buildPath(`/blog/${article.id}`)}
             className="group flex gap-4 items-start"
           >
             <div

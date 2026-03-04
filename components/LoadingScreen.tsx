@@ -11,7 +11,7 @@ const LoadingScreen: React.FC = () => {
   return (
     <div
       className="fixed inset-0 z-100 flex flex-col justify-center items-center p-4 transition-colors"
-      style={{ backgroundColor: "var(--color-bg)" }}
+      style={{ backgroundColor: "var(--color-bg-alt)" }}
     >
       {/* Logo + brand name */}
       <div className="flex flex-col items-center mb-10 animate-fade-in">

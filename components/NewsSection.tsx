@@ -5,9 +5,11 @@ import Button from "./Button";
 import Reveal from "./Reveal";
 import ArticleCard from "./ArticleCard";
 import { articles } from "../data/articles";
+import { useLangPath } from "../hooks/useLang";
 
 const NewsSection: React.FC = () => {
   const { t } = useTranslation();
+  const buildPath = useLangPath();
 
   // Get the latest 3 articles
   const latestArticles = articles.slice(0, 3);
@@ -22,7 +24,7 @@ const NewsSection: React.FC = () => {
         <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
           <div className="max-w-2xl">
             <Reveal delay={0}>
-              <span className="inline-block px-3 py-1 mb-2 text-xs font-semibold tracking-wider text-primary uppercase bg-primary-light rounded-full">
+              <span className="inline-block px-3 py-1 mb-2 text-xs font-semibold tracking-wider text-primary uppercase bg-bg-alt rounded-full">
                 {t("pages.blog.hero.featured")}
               </span>
             </Reveal>
@@ -34,7 +36,7 @@ const NewsSection: React.FC = () => {
           </div>
           <Reveal delay={200}>
             <Button
-              to="/blog"
+              to={buildPath("/blog")}
               variant="action"
               size="sm"
               className="hidden md:flex transform-none"
@@ -54,7 +56,11 @@ const NewsSection: React.FC = () => {
         </div>
 
         <div className="mt-12 text-center md:hidden">
-          <Button to="/blog" variant="secondary" className="w-full sm:w-auto">
+          <Button
+            to={buildPath("/blog")}
+            variant="secondary"
+            className="w-full sm:w-auto"
+          >
             {t("pages.blog.articles.viewAll")}
             <span className="material-icons text-sm ml-2">arrow_forward</span>
           </Button>

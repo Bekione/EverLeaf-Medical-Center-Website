@@ -137,7 +137,7 @@ const Emergency: React.FC = () => {
                   src="/images/emergency-body-1.jpg"
                   alt={t("common.imgAlt.emergencyMedicalTeam")}
                   transform="w_1200,h_600,q_auto,f_auto,c_fill"
-                  className="relative rounded-2xl shadow-2xl border-4 border-white z-10 w-full object-cover h-[600px]"
+                  className="relative rounded-2xl shadow-2xl border-4 border-border z-10 w-full object-cover h-[600px]"
                 />
                 <div
                   className="absolute bottom-8 left-8 right-8 backdrop-blur p-6 rounded-xl shadow-lg z-20 border"
@@ -177,8 +177,6 @@ const Emergency: React.FC = () => {
           </div>
         </div>
       </section>
-
-
       <section
         className="py-20 border-y"
         style={{
@@ -279,8 +277,6 @@ const Emergency: React.FC = () => {
           </div>
         </div>
       </section>
-
-
       <section className="py-20 bg-slate-50">
         <div className="container mx-auto px-6">
           <Reveal threshold={0.1}>
@@ -414,8 +410,6 @@ const Emergency: React.FC = () => {
           </div>
         </div>
       </section>
-
-
       <section
         className="py-20 bg-slate-900 text-white relative overflow-hidden"
         id="contact"

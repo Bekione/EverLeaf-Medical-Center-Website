@@ -17,9 +17,11 @@ import TestimonialsSection from "../components/TestimonialsSection";
 import TeamSection from "../components/TeamSection";
 import NewsSection from "../components/NewsSection";
 import HomeCarousel from "../components/HomeCarousel";
+import { useLangPath } from "../hooks/useLang";
 
 const Home: React.FC = () => {
   const { t } = useTranslation();
+  const buildPath = useLangPath();
   const { openAppointment } = useOutletContext<{
     openAppointment: OpenAppointmentFunc;
   }>();
@@ -97,7 +99,7 @@ const Home: React.FC = () => {
               {[1, 2, 3].map((i) => (
                 <div
                   key={i}
-                  className="w-10 h-10 rounded-full border-2 border-white overflow-hidden shadow-sm bg-slate-100"
+                  className="w-10 h-10 rounded-full border-2 border-border overflow-hidden shadow-sm bg-bg-alt"
                 >
                   <CldImg
                     src={`/images/happy-patient-${i}.jpg`}
@@ -151,7 +153,7 @@ const Home: React.FC = () => {
                 {t("pages.home.infoCards.emergency.desc")}
               </p>
               <Button
-                to="/services/emergency"
+                to={buildPath("/services/emergency")}
                 variant="action"
                 size="sm"
                 animate={false}
@@ -185,7 +187,7 @@ const Home: React.FC = () => {
                 {t("pages.home.infoCards.specialist.desc")}
               </p>
               <Button
-                to="/doctors"
+                to={buildPath("/doctors")}
                 variant="action"
                 size="sm"
                 animate={false}
@@ -216,7 +218,7 @@ const Home: React.FC = () => {
                 {t("pages.home.infoCards.departments.desc")}
               </p>
               <Button
-                to="/departments"
+                to={buildPath("/departments")}
                 variant="action"
                 size="sm"
                 animate={false}
@@ -241,30 +243,30 @@ const Home: React.FC = () => {
             icon: "favorite",
             title: t("data.departments.cardiology.name"),
             description: t("pages.home.services.cardiologyDesc"),
-            to: "/departments/cardiology",
+            to: buildPath("/departments/cardiology"),
           },
           {
             icon: "psychology",
             title: t("data.departments.neurology.name"),
             description: t("pages.home.services.neurologyDesc"),
-            to: "/departments/neurology",
+            to: buildPath("/departments/neurology"),
           },
           {
             icon: "child_care",
             title: t("data.departments.pediatrics.name"),
             description: t("pages.home.services.pediatricsDesc"),
-            to: "/departments/pediatrics",
+            to: buildPath("/departments/pediatrics"),
           },
           {
             icon: "science",
             title: t("data.departments.laboratory.name"),
             description: t("pages.home.services.laboratoryDesc"),
-            to: "/services/laboratory",
+            to: buildPath("/services/laboratory"),
           },
         ]}
       >
         <Button
-          to="/services"
+          to={buildPath("/services")}
           variant="primary"
           className="shadow-md group/btn"
         >
@@ -281,7 +283,7 @@ const Home: React.FC = () => {
         layout="grid"
         columns={3}
         viewAllLabel={t("nav.doctors")}
-        viewAllLink="/doctors"
+        viewAllLink={buildPath("/doctors")}
         members={doctors.slice(0, 3).map((doc) => ({
           ...doc,
           name: t(`data.doctors.${doc.id}.name`),
@@ -306,7 +308,7 @@ const Home: React.FC = () => {
         }}
         secondaryButton={{
           label: t("common.buttons.contactUs"),
-          to: "/contact",
+          to: buildPath("/contact"),
         }}
         iconName="calendar_today"
       />

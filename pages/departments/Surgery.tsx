@@ -181,7 +181,7 @@ const Surgery: React.FC = () => {
           },
         ]}
         rightContent={
-          <div className="relative rounded-2xl overflow-hidden shadow-2xl border-4 border-white/10">
+          <div className="relative rounded-2xl overflow-hidden shadow-2xl border-4 border-border/20">
             <CldImg
               src="/images/surgery-body-1.jpg"
               alt={t("common.imgAlt.roboticSurgery")}

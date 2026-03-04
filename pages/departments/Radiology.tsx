@@ -193,7 +193,7 @@ const Radiology: React.FC = () => {
         ]}
         rightContent={
           <div className="grid grid-cols-2 gap-4">
-            <div className="bg-white/5 backdrop-blur-sm p-6 rounded-2xl border border-white/10 text-center">
+            <div className="bg-surface/5 backdrop-blur-sm p-6 rounded-2xl border border-border/20 text-center">
               <span className="text-4xl font-bold text-primary block mb-2">
                 24/7
               </span>
@@ -201,7 +201,7 @@ const Radiology: React.FC = () => {
                 {t("pages.departments.radiology.technology.stats.emergency")}
               </span>
             </div>
-            <div className="bg-white/5 backdrop-blur-sm p-6 rounded-2xl border border-white/10 text-center">
+            <div className="bg-surface/5 backdrop-blur-sm p-6 rounded-2xl border border-border/20 text-center">
               <span className="text-4xl font-bold text-emerald-400 block mb-2">
                 4k+
               </span>
@@ -209,7 +209,7 @@ const Radiology: React.FC = () => {
                 {t("pages.departments.radiology.technology.stats.scans")}
               </span>
             </div>
-            <div className="bg-white/5 backdrop-blur-sm p-6 rounded-2xl border border-white/10 text-center col-span-2">
+            <div className="bg-surface/5 backdrop-blur-sm p-6 rounded-2xl border border-border/20 text-center col-span-2">
               <span className="text-4xl font-bold text-purple-400 block mb-2">
                 100%
               </span>

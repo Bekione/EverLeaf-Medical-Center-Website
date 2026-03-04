@@ -202,7 +202,7 @@ const Dental: React.FC = () => {
           },
         ]}
         rightContent={
-          <div className="relative h-full min-h-[300px] rounded-2xl overflow-hidden shadow-2xl border-4 border-white/20 transform lg:rotate-2 hover:rotate-0 transition-all duration-500">
+          <div className="relative h-full min-h-[300px] rounded-2xl overflow-hidden shadow-2xl border-4 border-border transform lg:rotate-2 hover:rotate-0 transition-all duration-500">
             <CldImg
               src="/images/hero/dental-hero.jpg"
               alt={t("common.imgAlt.dentalTechnology")}

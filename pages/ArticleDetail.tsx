@@ -7,6 +7,7 @@ import { CldImg } from "../components/CldImg";
 import { articles, ContentBlock } from "../data/articles";
 import { useTranslation } from "react-i18next";
 import Button from "../components/Button";
+import { useLangPath } from "../hooks/useLang";
 
 // ─── Category Styling ────────────────────────────────────────────────────────
 
@@ -156,11 +157,12 @@ const renderBlock = (
 const ArticleDetail: React.FC = () => {
   const { id } = useParams<{ id: string }>();
   const { t, i18n } = useTranslation();
+  const buildPath = useLangPath();
   const article = articles.find((a) => a.id === id);
   const [copied, setCopied] = useState(false);
 
   if (!article) {
-    return <Navigate to="/blog" replace />;
+    return <Navigate to={buildPath("/blog")} replace />;
   }
 
   const articleUrl = window.location.href;
@@ -191,7 +193,7 @@ const ArticleDetail: React.FC = () => {
   };
 
   return (
-    <div className="animate-fade-in bg-white min-h-screen">
+    <div className="animate-fade-in bg-bg min-h-screen">
       <SEO
         title={t(`pages.blog.data.${article.id}.seoTitle`, article.seoTitle)}
         description={t(
@@ -204,13 +206,13 @@ const ArticleDetail: React.FC = () => {
       />
 
       {/* Breadcrumb */}
-      <div className="bg-slate-50 border-b border-slate-200">
+      <div className="bg-bg-alt border-b border-border">
         <div className="container mx-auto px-6 py-4">
           <nav aria-label="Breadcrumb" className="flex text-sm text-slate-500">
             <ol className="inline-flex items-center space-x-1 md:space-x-3">
               <li className="inline-flex items-center">
                 <Link
-                  to="/"
+                  to={buildPath("/")}
                   className="inline-flex items-center hover:text-primary transition-colors"
                 >
                   <span className="material-icons text-sm mr-1">home</span>
@@ -223,7 +225,7 @@ const ArticleDetail: React.FC = () => {
                     chevron_right
                   </span>
                   <Link
-                    to="/blog"
+                    to={buildPath("/blog")}
                     className="ml-1 md:ml-2 hover:text-primary transition-colors"
                   >
                     {t("nav.blog")}
@@ -301,7 +303,7 @@ const ArticleDetail: React.FC = () => {
                   src={article.authorImg}
                   alt={article.author}
                   transform="w_80,q_auto,f_auto,c_fill,g_face"
-                  className="w-10 h-10 rounded-full object-cover border-2 border-white shadow"
+                  className="w-10 h-10 rounded-full object-cover border-2 border-border shadow"
                 />
                 <div>
                   <p className="text-sm font-semibold text-slate-800">
@@ -334,12 +336,12 @@ const ArticleDetail: React.FC = () => {
             <hr className="border-slate-200 my-12" />
 
             {/* Author Card */}
-            <div className="bg-slate-50 rounded-2xl p-8 flex flex-col sm:flex-row gap-6 items-center sm:items-start text-center sm:text-left">
+            <div className="bg-bg-alt rounded-2xl p-8 flex flex-col sm:flex-row gap-6 items-center sm:items-start text-center sm:text-left">
               <CldImg
                 src={article.authorImg}
                 alt={article.author}
                 transform="w_200,q_auto,f_auto,c_fill,g_face"
-                className="w-24 h-24 rounded-full object-cover shadow-lg border-2 border-white shrink-0"
+                className="w-24 h-24 rounded-full object-cover shadow-lg border-2 border-border shrink-0"
               />
               <div>
                 <h3 className="text-xl font-bold text-slate-900 mb-2">

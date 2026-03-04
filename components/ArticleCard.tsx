@@ -2,6 +2,7 @@ import React from "react";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import { CldImg } from "./CldImg";
+import { useLangPath } from "../hooks/useLang";
 
 export interface ArticleCardProps {
   id: string;
@@ -40,9 +41,13 @@ const ArticleCard: React.FC<ArticleCardProps> = ({
   style,
 }) => {
   const { t } = useTranslation();
+  const buildPath = useLangPath();
 
   return (
-    <article className="rounded-2xl overflow-hidden hover:shadow-xl transition-shadow duration-300 group/card border flex flex-col h-full bg-surface border-border shadow-card" style={style}>
+    <article
+      className="rounded-2xl overflow-hidden hover:shadow-xl transition-shadow duration-300 group/card border flex flex-col h-full bg-surface border-border shadow-card"
+      style={style}
+    >
       <div className="relative h-56 overflow-hidden">
         <CldImg
           src={img}
@@ -88,7 +93,7 @@ const ArticleCard: React.FC<ArticleCardProps> = ({
             </span>
           </div>
           <Link
-            to={`/blog/${id}`}
+            to={buildPath(`/blog/${id}`)}
             aria-label={t("common.buttons.readMore", {
               title: title,
             })}

@@ -167,7 +167,7 @@ const Laboratory: React.FC = () => {
         rightContent={
           <div className="relative group h-full min-h-[400px]">
             <div className="absolute inset-0 bg-primary/20 rounded-3xl blur-3xl group-hover:bg-primary/30 transition-all"></div>
-            <div className="relative h-full rounded-3xl overflow-hidden border border-white/10 shadow-2xl">
+            <div className="relative h-full rounded-3xl overflow-hidden border border-border/20 shadow-2xl">
               <CldImg
                 src="/images/hero/laboratory-dept-hero.jpg"
                 alt={t("common.imgAlt.laboratoryTechnology")}

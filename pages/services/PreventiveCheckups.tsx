@@ -4,6 +4,7 @@ import { Link, useOutletContext } from "react-router-dom";
 import { OpenAppointmentFunc } from "../../Layout";
 import SEO from "../../components/SEO";
 import Reveal from "../../components/Reveal";
+import { useLangPath } from "../../hooks/useLang";
 import Button from "../../components/Button";
 import CTASection from "../../components/CTASection";
 import HeroSection from "../../components/HeroSection";
@@ -12,6 +13,7 @@ import { CldImg } from "../../components/CldImg";
 
 const PreventiveCheckups: React.FC = () => {
   const { t } = useTranslation();
+  const buildPath = useLangPath();
   const { openAppointment } = useOutletContext<{
     openAppointment: OpenAppointmentFunc;
   }>();
@@ -590,7 +592,7 @@ const PreventiveCheckups: React.FC = () => {
                   </div>
                 </li>
               </ul>
-              <Button to="/blog" variant="action" size="sm">
+              <Button to={buildPath("/blog")} variant="action" size="sm">
                 {t("pages.services.preventiveCheckups.wellness.success")}
                 <span className="material-icons text-sm ml-2 transition-transform group-hover:translate-x-1">
                   arrow_forward
@@ -612,7 +614,7 @@ const PreventiveCheckups: React.FC = () => {
         }}
         secondaryButton={{
           label: t("pages.services.preventiveCheckups.cta.buttons.contact"),
-          to: "/contact",
+          to: buildPath("/contact"),
         }}
         iconName="health_and_safety"
       />

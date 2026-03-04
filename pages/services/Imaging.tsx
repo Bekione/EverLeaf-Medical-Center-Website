@@ -1,5 +1,6 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
+import { useLangPath } from "../../hooks/useLang";
 import { Link, useOutletContext } from "react-router-dom";
 import { OpenAppointmentFunc } from "../../Layout";
 import SEO from "../../components/SEO";
@@ -14,6 +15,7 @@ import TeamSection from "../../components/TeamSection";
 
 const Imaging: React.FC = () => {
   const { t } = useTranslation();
+  const buildPath = useLangPath();
   const { openAppointment } = useOutletContext<{
     openAppointment: OpenAppointmentFunc;
   }>();
@@ -321,7 +323,7 @@ const Imaging: React.FC = () => {
                       <span>{t("pages.services.imaging.results.items.2")}</span>
                     </li>
                   </ul>
-                  <Button variant="white" to="/contact">
+                  <Button variant="white" to={buildPath("/contact")}>
                     {t("pages.services.imaging.results.button")}
                   </Button>
                 </div>
