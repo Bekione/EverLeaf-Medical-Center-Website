@@ -201,7 +201,7 @@ const Header: React.FC<HeaderProps> = ({ onBookAppointment }) => {
             </Link>
 
             {/* Desktop Menu */}
-            <div className="hidden lg:flex items-center space-x-4 xl:space-x-8">
+            <div className="hidden lg:flex items-center gap-2 xl:gap-4 2xl:gap-6">
               {topLevelLinks.map((link) => (
                 <Link
                   key={link.to}
@@ -237,10 +237,12 @@ const Header: React.FC<HeaderProps> = ({ onBookAppointment }) => {
             {/* Book Appointment Button (desktop) */}
             <div className="hidden lg:block">
               <Button onClick={onBookAppointment} className="xl:px-6 xl:py-2.5">
-                <span className="hidden xl:inline">
+                <span className="hidden xl:inline whitespace-nowrap">
                   {t("common.buttons.bookAppointment")}
                 </span>
-                <span className="xl:hidden">{t("common.buttons.book")}</span>
+                <span className="xl:hidden whitespace-nowrap">
+                  {t("common.buttons.book")}
+                </span>
                 <span className="material-icons text-sm ml-2">
                   arrow_forward
                 </span>

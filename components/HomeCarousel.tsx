@@ -16,7 +16,7 @@ const HomeCarousel: React.FC = () => {
   }, []);
 
   return (
-    <Reveal from="right" threshold={0.05} className="">
+    <Reveal from="right" threshold={0.05} className="-mt-10">
       <div className="relative hidden lg:block h-[480px] w-full">
         <div className="absolute -inset-4 bg-primary/20 rounded-full blur-3xl opacity-30 animate-pulse"></div>
         {heroImages.map((src, index) => (
