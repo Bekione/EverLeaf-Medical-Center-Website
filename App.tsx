@@ -14,8 +14,8 @@ import ArticleDetail from "./pages/ArticleDetail";
 import NotFound from "./pages/NotFound";
 import AppointmentConfirmation from "./pages/AppointmentConfirmation";
 import Privacy from "./pages/Privacy";
-import { EverleafLogo } from "./components/Logo";
 import LanguageRouter from "./components/LanguageRouter";
+import LoadingScreen from "./components/LoadingScreen";
 import i18n from "./i18n/config";
 
 // Lazy load department pages for code splitting
@@ -45,33 +45,6 @@ const PreventiveCheckups = React.lazy(
 );
 const Diagnostics = React.lazy(() => import("./pages/services/Diagnostics"));
 
-const Loading = () => (
-  <div className="fixed inset-0 z-100 bg-white flex flex-col justify-center items-center p-4">
-    <div className="flex flex-col items-center mb-12 animate-fade-in">
-      <div className="p-4 mb-4">
-        <EverleafLogo className="w-24 h-24" />
-      </div>
-      <div className="text-center">
-        <span className="text-4xl font-brand font-semibold text-slate-900 block leading-none mb-2">
-          Everleaf
-        </span>
-        <span className="text-xs text-slate-500 font-brand font-medium tracking-[0.2em] uppercase">
-          Medical Center
-        </span>
-      </div>
-    </div>
-    <div className="relative w-16 h-16 mb-8">
-      <div className="absolute inset-0 border-4 border-slate-100 rounded-full"></div>
-      <div className="absolute inset-0 border-4 border-primary rounded-full border-t-transparent animate-spin"></div>
-    </div>
-    <div className="text-center space-y-2">
-      <h2 className="text-lg font-medium text-slate-800">
-        Care That Grows With You...
-      </h2>
-    </div>
-  </div>
-);
-
 /** Determine the default language to redirect to from bare "/" */
 function getDefaultLang(): string {
   const stored = localStorage.getItem("i18nextLng");
@@ -82,7 +55,7 @@ function getDefaultLang(): string {
 const App: React.FC = () => {
   return (
     <HelmetProvider>
-      <Suspense fallback={<Loading />}>
+      <Suspense fallback={<LoadingScreen />}>
         <BrowserRouter>
           <Routes>
             {/* Redirect bare "/" to "/{lang}" */}
