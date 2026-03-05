@@ -9,6 +9,12 @@ interface RevealProps {
   delay?: number;
   /** Animation direction */
   from?: "bottom" | "left" | "right" | "fade";
+  /** Explicit animation direction for mobile */
+  mobileFrom?: "bottom" | "left" | "right" | "fade";
+  /** Mobile fallback behavior if mobileFrom is not provided. Default: "bottom" */
+  mobileFallback?: "bottom" | "fade" | "alternate" | "none";
+  /** Index for alternating animations (used when mobileFallback="alternate") */
+  index?: number;
   /** IntersectionObserver threshold (0‒1) */
   threshold?: number;
   key?: string | number;
@@ -36,10 +42,41 @@ function Reveal({
   style,
   delay = 0,
   from = "bottom",
+  mobileFrom,
+  mobileFallback = "bottom",
+  index = 0,
   threshold = 0.12,
   key,
 }: RevealProps) {
   const [ref, inView] = useInView<HTMLDivElement>({ threshold });
+  const [isMobile, setIsMobile] = React.useState(false);
+
+  React.useEffect(() => {
+    const mql = window.matchMedia("(max-width: 1024px)");
+    setIsMobile(mql.matches);
+    const handler = (e: MediaQueryListEvent) => setIsMobile(e.matches);
+    mql.addEventListener("change", handler);
+    return () => mql.removeEventListener("change", handler);
+  }, []);
+
+  // Determine actual starting direction
+  let actualFrom: NonNullable<RevealProps["from"]> = from;
+
+  if (isMobile) {
+    if (mobileFrom) {
+      actualFrom = mobileFrom;
+    } else if (mobileFallback === "fade") {
+      actualFrom = "fade";
+    } else if (mobileFallback === "alternate") {
+      actualFrom = index % 2 === 0 ? "left" : "right";
+    } else if (mobileFallback === "bottom") {
+      // For horizontal animations, fallback to bottom unless "none" or "alternate" is specified
+      if (from === "left" || from === "right") {
+        actualFrom = "bottom";
+      }
+    }
+    // if mobileFallback is "none", it stays as 'from'
+  }
 
   return (
     <div
@@ -48,7 +85,7 @@ function Reveal({
       className={className}
       style={{
         ...style,
-        ...(inView ? { opacity: 1, transform: "none" } : HIDDEN[from]),
+        ...(inView ? { opacity: 1, transform: "none" } : HIDDEN[actualFrom]),
         transition: `opacity 0.5s ease ${delay}ms, transform 0.5s ease ${delay}ms`,
         willChange: "opacity, transform",
       }}

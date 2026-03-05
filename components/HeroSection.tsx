@@ -319,7 +319,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
       )}
       <div className="container mx-auto px-6 relative z-10">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
-          <div className="max-w-2xl">
+          <div className="max-w-2xl min-w-0">
             <Reveal delay={0}>
               <div
                 className={`inline-flex items-center gap-2 px-3 py-1 mb-6 text-xs font-bold tracking-wider uppercase rounded-full ${
@@ -338,7 +338,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
               </div>
             </Reveal>
             <Reveal delay={100}>
-              <h1 className="text-4xl lg:text-6xl font-serif font-bold text-text mb-6 leading-tight">
+              <h1 className="text-3xl sm:text-4xl lg:text-6xl font-serif font-bold text-text mb-6 leading-tight">
                 {title || titlePart1}
                 {(titleHighlight || titlePart2) && <br />}
                 {titleHighlight && (

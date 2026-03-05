@@ -136,7 +136,7 @@ const TeamSection: React.FC<TeamSectionProps> = ({
         )}
 
         {viewAllLink && viewAllLabel && (
-          <div className="mt-0 md:hidden pb-8 text-center">
+          <div className="mt-8 md:hidden pb-8 text-center">
             <Button
               to={viewAllLink}
               variant="action"

@@ -134,8 +134,8 @@
   display: inline-flex !important;
   align-items: center;
   justify-content: center;
-  width: 1em;
-  height: 1em;
+  min-width: 1em;
+  min-height: 1em;
   overflow: hidden;
   vertical-align: middle;
 }
@@ -1271,12 +1271,17 @@ body {
   overflow: hidden !important;
 }
 
-/* --- Floating trigger button (the accessibility circle) --- */
 a.asw-menu-btn,
 .asw-menu-btn {
   background: var(--color-primary) !important;
   border: none !important;
   outline: none !important;
+  width: 48px !important;
+  height: 48px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  border-radius: 50% !important;
   box-shadow: 0 4px 20px
     color-mix(in srgb, var(--color-primary) 45%, transparent) !important;
   transition:

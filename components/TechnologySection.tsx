@@ -37,7 +37,7 @@ const TechnologySection: React.FC<TechnologySectionProps> = ({
       className={sectionClassName}
       style={{ color: isPrimary ? "white" : "var(--color-text)" }}
     >
-      <div className="container mx-auto px-6">
+      <div className="container mx-auto sm:px-4 md:px-6">
         <div
           className={`rounded-3xl p-8 md:p-12 overflow-hidden relative shadow-2xl border ${
             isPrimary

@@ -34,12 +34,13 @@ const NewsSection: React.FC = () => {
               </h2>
             </Reveal>
           </div>
-          <Reveal delay={200}>
+
+          <Reveal delay={200} className="hidden md:block">
             <Button
               to={buildPath("/blog")}
               variant="action"
               size="sm"
-              className="hidden md:flex transform-none"
+              className="transform-none"
             >
               {t("pages.blog.articles.viewAll")}
               <span className="material-icons text-sm ml-2">arrow_forward</span>
@@ -55,7 +56,7 @@ const NewsSection: React.FC = () => {
           ))}
         </div>
 
-        <div className="mt-12 text-center md:hidden">
+        <div className="mt-8 text-center md:hidden">
           <Button
             to={buildPath("/blog")}
             variant="secondary"
