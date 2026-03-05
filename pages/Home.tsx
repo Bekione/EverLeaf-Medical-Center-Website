@@ -18,6 +18,7 @@ import TeamSection from "../components/TeamSection";
 import NewsSection from "../components/NewsSection";
 import HomeCarousel from "../components/HomeCarousel";
 import { useLangPath } from "../hooks/useLang";
+import ScrollFade from "../components/ScrollFade";
 
 const Home: React.FC = () => {
   const { t } = useTranslation();
@@ -135,101 +136,107 @@ const Home: React.FC = () => {
             borderColor: "var(--color-border)",
           }}
         >
-          <div className="flex items-start gap-4 p-4 rounded-xl transition-colors cursor-pointer group hover:opacity-80">
-            <div className="bg-bg-alt p-3 rounded-lg text-primary group-hover:scale-110 transition-transform">
-              <span className="material-icons text-3xl">emergency</span>
+          <div className="flex flex-col p-4 rounded-xl transition-colors cursor-pointer group hover:opacity-80">
+            <div className="flex items-center gap-3 mb-3">
+              <div className="bg-bg-alt p-3 rounded-lg text-primary group-hover:scale-110 transition-transform shrink-0">
+                <span className="material-icons text-3xl">emergency</span>
+              </div>
+              <div>
+                <p
+                  className="text-lg font-bold mb-0.5"
+                  style={{ color: "var(--color-text)" }}
+                >
+                  {t("pages.home.infoCards.emergency.title")}
+                </p>
+                <p
+                  className="text-sm"
+                  style={{ color: "var(--color-text-muted)" }}
+                >
+                  {t("pages.home.infoCards.emergency.desc")}
+                </p>
+              </div>
             </div>
-            <div>
-              <p
-                className="text-lg font-bold mb-1"
-                style={{ color: "var(--color-text)" }}
-              >
-                {t("pages.home.infoCards.emergency.title")}
-              </p>
-              <p
-                className="text-sm mb-2"
-                style={{ color: "var(--color-text-muted)" }}
-              >
-                {t("pages.home.infoCards.emergency.desc")}
-              </p>
-              <Button
-                to={buildPath("/services/emergency")}
-                variant="action"
-                size="sm"
-                animate={false}
-                className="text-red-600 bg-red-50 hover:bg-red-100 group/btn"
-              >
-                {t("pages.home.infoCards.emergency.call")}
-                <span className="material-icons text-sm ml-2 transition-transform duration-300 group-hover/btn:translate-x-1">
-                  arrow_forward
-                </span>
-              </Button>
-            </div>
+            <Button
+              to={buildPath("/services/emergency")}
+              variant="action"
+              size="sm"
+              animate={false}
+              className="text-red-600 bg-red-50 hover:bg-red-100 group/btn w-full justify-center"
+            >
+              {t("pages.home.infoCards.emergency.call")}
+              <span className="material-icons text-sm ml-2 transition-transform duration-300 group-hover/btn:translate-x-1">
+                arrow_forward
+              </span>
+            </Button>
           </div>
           <div
-            className="flex items-start gap-4 p-4 rounded-xl transition-colors cursor-pointer group border-l border-r"
+            className="flex flex-col p-4 rounded-xl transition-colors cursor-pointer group border-l border-r"
             style={{ borderColor: "var(--color-border)" }}
           >
-            <div className="bg-primary/10 p-3 rounded-lg text-primary group-hover:scale-110 transition-transform">
-              <span className="material-icons text-3xl">person_search</span>
+            <div className="flex items-center gap-3 mb-3">
+              <div className="bg-primary/10 p-3 rounded-lg text-primary group-hover:scale-110 transition-transform shrink-0">
+                <span className="material-icons text-3xl">person_search</span>
+              </div>
+              <div>
+                <p
+                  className="text-lg font-bold mb-0.5"
+                  style={{ color: "var(--color-text)" }}
+                >
+                  {t("pages.home.infoCards.specialist.title")}
+                </p>
+                <p
+                  className="text-sm"
+                  style={{ color: "var(--color-text-muted)" }}
+                >
+                  {t("pages.home.infoCards.specialist.desc")}
+                </p>
+              </div>
             </div>
-            <div>
-              <p
-                className="text-lg font-bold mb-1"
-                style={{ color: "var(--color-text)" }}
-              >
-                {t("pages.home.infoCards.specialist.title")}
-              </p>
-              <p
-                className="text-sm mb-2"
-                style={{ color: "var(--color-text-muted)" }}
-              >
-                {t("pages.home.infoCards.specialist.desc")}
-              </p>
-              <Button
-                to={buildPath("/doctors")}
-                variant="action"
-                size="sm"
-                animate={false}
-                className="group/btn"
-              >
-                {t("pages.home.infoCards.specialist.search")}
-                <span className="material-icons text-sm ml-2 transition-transform duration-300 group-hover/btn:translate-x-1">
-                  arrow_forward
-                </span>
-              </Button>
-            </div>
+            <Button
+              to={buildPath("/doctors")}
+              variant="action"
+              size="sm"
+              animate={false}
+              className="group/btn w-full justify-center"
+            >
+              {t("pages.home.infoCards.specialist.search")}
+              <span className="material-icons text-sm ml-2 transition-transform duration-300 group-hover/btn:translate-x-1">
+                arrow_forward
+              </span>
+            </Button>
           </div>
-          <div className="flex items-start gap-4 p-4 rounded-xl transition-colors cursor-pointer group hover:opacity-80">
-            <div className="bg-secondary/10 p-3 rounded-lg text-secondary group-hover:scale-110 transition-transform">
-              <span className="material-icons text-3xl">domain</span>
+          <div className="flex flex-col p-4 rounded-xl transition-colors cursor-pointer group hover:opacity-80">
+            <div className="flex items-center gap-3 mb-3">
+              <div className="bg-secondary/10 p-3 rounded-lg text-secondary group-hover:scale-110 transition-transform shrink-0">
+                <span className="material-icons text-3xl">domain</span>
+              </div>
+              <div>
+                <p
+                  className="text-lg font-bold mb-0.5"
+                  style={{ color: "var(--color-text)" }}
+                >
+                  {t("pages.home.infoCards.departments.title")}
+                </p>
+                <p
+                  className="text-sm"
+                  style={{ color: "var(--color-text-muted)" }}
+                >
+                  {t("pages.home.infoCards.departments.desc")}
+                </p>
+              </div>
             </div>
-            <div>
-              <p
-                className="text-lg font-bold mb-1"
-                style={{ color: "var(--color-text)" }}
-              >
-                {t("pages.home.infoCards.departments.title")}
-              </p>
-              <p
-                className="text-sm mb-2"
-                style={{ color: "var(--color-text-muted)" }}
-              >
-                {t("pages.home.infoCards.departments.desc")}
-              </p>
-              <Button
-                to={buildPath("/departments")}
-                variant="action"
-                size="sm"
-                animate={false}
-                className="group/btn"
-              >
-                {t("pages.home.infoCards.departments.view")}
-                <span className="material-icons text-sm ml-2 transition-transform duration-300 group-hover/btn:translate-x-1">
-                  arrow_forward
-                </span>
-              </Button>
-            </div>
+            <Button
+              to={buildPath("/departments")}
+              variant="action"
+              size="sm"
+              animate={false}
+              className="group/btn w-full justify-center"
+            >
+              {t("pages.home.infoCards.departments.view")}
+              <span className="material-icons text-sm ml-2 transition-transform duration-300 group-hover/btn:translate-x-1">
+                arrow_forward
+              </span>
+            </Button>
           </div>
         </div>
       </div>
@@ -338,27 +345,29 @@ const Home: React.FC = () => {
             {t("pages.home.partners.title")}
           </p>
 
-          <div className="overflow-x-auto scrollbar-hide">
-            <div className="flex w-max items-center gap-12 mx-auto">
-              {[
-                { name: "MediGuard", icon: "health_and_safety" },
-                { name: "LifeCare", icon: "shield" },
-                { name: "HealthPlus", icon: "add_moderator" },
-                { name: "GlobalAssure", icon: "verified" },
-                { name: "CareFirst", icon: "favorite" },
-              ].map((partner, idx) => (
-                <div
-                  key={idx}
-                  className="shrink-0 flex items-center gap-2 text-2xl font-bold text-slate-700 opacity-75 grayscale hover:grayscale-0 hover:opacity-100 hover:text-primary transition-all duration-300 cursor-pointer hover:scale-105"
-                >
-                  <span className="material-icons text-3xl">
-                    {partner.icon}
-                  </span>{" "}
-                  {partner.name}
-                </div>
-              ))}
+          <ScrollFade>
+            <div className="overflow-x-auto scrollbar-hide">
+              <div className="flex w-max items-center gap-12 mx-auto">
+                {[
+                  { name: "MediGuard", icon: "health_and_safety" },
+                  { name: "LifeCare", icon: "shield" },
+                  { name: "HealthPlus", icon: "add_moderator" },
+                  { name: "GlobalAssure", icon: "verified" },
+                  { name: "CareFirst", icon: "favorite" },
+                ].map((partner, idx) => (
+                  <div
+                    key={idx}
+                    className="shrink-0 flex items-center gap-2 text-2xl font-bold text-slate-700 opacity-75 grayscale hover:grayscale-0 hover:opacity-100 hover:text-primary transition-all duration-300 cursor-pointer hover:scale-105"
+                  >
+                    <span className="material-icons text-3xl">
+                      {partner.icon}
+                    </span>{" "}
+                    {partner.name}
+                  </div>
+                ))}
+              </div>
             </div>
-          </div>
+          </ScrollFade>
         </div>
       </section>
     </div>

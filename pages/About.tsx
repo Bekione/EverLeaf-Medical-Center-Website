@@ -10,6 +10,7 @@ import HeroSection from "../components/HeroSection";
 import TeamSection from "../components/TeamSection";
 import FeaturesSection from "../components/FeaturesSection";
 import { useLangPath } from "../hooks/useLang";
+import ScrollFade from "../components/ScrollFade";
 
 // Counter Component for animation
 const CountUp = ({
@@ -108,61 +109,63 @@ const About: React.FC = () => {
           variant: "secondary",
         }}
         footerContent={
-          <div
-            className="flex items-center justify-center lg:justify-start gap-8 border-t pt-8"
-            style={{ borderColor: "var(--color-border)" }}
-          >
-            <div>
-              <p
-                className="text-3xl font-bold"
-                style={{ color: "var(--color-text)" }}
-              >
-                35+
-              </p>
-              <p
-                className="text-sm font-medium"
-                style={{ color: "var(--color-text-muted)" }}
-              >
-                {t("pages.about.stats.years")}
-              </p>
-            </div>
+          <ScrollFade className="w-full">
             <div
-              className="w-px h-10"
-              style={{ backgroundColor: "var(--color-border)" }}
-            ></div>
-            <div>
-              <p
-                className="text-3xl font-bold"
-                style={{ color: "var(--color-text)" }}
-              >
-                100k+
-              </p>
-              <p
-                className="text-sm font-medium"
-                style={{ color: "var(--color-text-muted)" }}
-              >
-                {t("pages.about.stats.patients")}
-              </p>
+              className="flex items-center gap-8 border-t pt-8 pb-2 overflow-x-auto scrollbar-hide outline-2 outline-border"
+              style={{ borderColor: "var(--color-border)" }}
+            >
+              <div className="shrink-0">
+                <p
+                  className="text-3xl font-bold whitespace-nowrap"
+                  style={{ color: "var(--color-text)" }}
+                >
+                  {t("pages.about.stats.yearsVal")}
+                </p>
+                <p
+                  className="text-sm font-medium whitespace-nowrap"
+                  style={{ color: "var(--color-text-muted)" }}
+                >
+                  {t("pages.about.stats.years")}
+                </p>
+              </div>
+              <div
+                className="w-px h-10 shrink-0"
+                style={{ backgroundColor: "var(--color-border)" }}
+              ></div>
+              <div className="shrink-0">
+                <p
+                  className="text-3xl font-bold whitespace-nowrap"
+                  style={{ color: "var(--color-text)" }}
+                >
+                  {t("pages.about.stats.patientsVal")}
+                </p>
+                <p
+                  className="text-sm font-medium whitespace-nowrap"
+                  style={{ color: "var(--color-text-muted)" }}
+                >
+                  {t("pages.about.stats.patients")}
+                </p>
+              </div>
+              <div
+                className="w-px h-10 shrink-0"
+                style={{ backgroundColor: "var(--color-border)" }}
+              ></div>
+              <div className="shrink-0">
+                <p
+                  className="text-3xl font-bold whitespace-nowrap"
+                  style={{ color: "var(--color-text)" }}
+                >
+                  {t("pages.about.stats.specialistsVal")}
+                </p>
+                <p
+                  className="text-sm font-medium whitespace-nowrap"
+                  style={{ color: "var(--color-text-muted)" }}
+                >
+                  {t("pages.about.stats.specialists")}
+                </p>
+              </div>
             </div>
-            <div
-              className="w-px h-10"
-              style={{ backgroundColor: "var(--color-border)" }}
-            ></div>
-            <div>
-              <p
-                className="text-3xl font-bold"
-                style={{ color: "var(--color-text)" }}
-              >
-                120+
-              </p>
-              <p
-                className="text-sm font-medium"
-                style={{ color: "var(--color-text-muted)" }}
-              >
-                {t("pages.about.stats.specialists")}
-              </p>
-            </div>
-          </div>
+          </ScrollFade>
         }
         customRightColumn={
           <Reveal
@@ -304,10 +307,9 @@ const About: React.FC = () => {
       {/* Quality Stats Section */}
       <section className="py-20 bg-primary text-white relative overflow-hidden">
         <div
-          className="absolute inset-0 opacity-10"
+          className="absolute inset-0 pointer-events-none"
           style={{
-            backgroundImage:
-              "url('https://www.transparenttextures.com/patterns/cubes.png')",
+            backgroundImage: "url('/images/leaf-bg.png')",
           }}
         ></div>
         <div className="container mx-auto px-6 relative z-10">
@@ -326,19 +328,19 @@ const About: React.FC = () => {
                 </p>
                 <ul className="space-y-4 mb-8">
                   <li className="flex items-center gap-3">
-                    <div className="bg-white/20 w-8 h-8 rounded-full flex items-center justify-center">
+                    <div className="bg-white/20 w-8 h-8 rounded-full flex items-center justify-center shrink-0">
                       <span className="material-icons text-sm">check</span>
                     </div>
                     <span>{t("pages.about.quality.item1")}</span>
                   </li>
                   <li className="flex items-center gap-3">
-                    <div className="bg-white/20 w-8 h-8 rounded-full flex items-center justify-center">
+                    <div className="bg-white/20 w-8 h-8 rounded-full flex items-center justify-center shrink-0">
                       <span className="material-icons text-sm">check</span>
                     </div>
                     <span>{t("pages.about.quality.item2")}</span>
                   </li>
                   <li className="flex items-center gap-3">
-                    <div className="bg-white/20 w-8 h-8 rounded-full flex items-center justify-center">
+                    <div className="bg-white/20 w-8 h-8 rounded-full flex items-center justify-center shrink-0">
                       <span className="material-icons text-sm">check</span>
                     </div>
                     <span>{t("pages.about.quality.item3")}</span>
@@ -464,9 +466,9 @@ const About: React.FC = () => {
       {/* Facilities Section */}
       <section className="py-20 bg-bg-alt">
         <div className="container mx-auto px-6">
-          <div className="flex flex-col md:flex-row justify-between items-end mb-12">
-            <Reveal delay={0}>
-              <div>
+          <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-4 md:mb-12 gap-6">
+            <div className="w-full md:max-w-3xl">
+              <Reveal delay={0}>
                 <span className="inline-block px-3 py-1 mb-2 text-xs font-semibold tracking-wider text-primary uppercase bg-primary-light rounded-full">
                   {t("pages.about.infrastructure.badge")}
                 </span>
@@ -476,17 +478,21 @@ const About: React.FC = () => {
                 >
                   {t("pages.about.infrastructure.title")}
                 </h2>
-              </div>
-            </Reveal>
-            <Button
-              to={buildPath("/gallery")}
-              variant="action"
-              size="sm"
-              className="hidden md:flex transform-none group/btn"
-            >
-              {t("pages.about.infrastructure.viewGallery")}
-              <span className="material-icons text-sm ml-2 transition-transform duration-300 group-hover/btn:translate-x-1">arrow_forward</span>
-            </Button>
+              </Reveal>
+            </div>
+            <div className="hidden md:block shrink-0">
+              <Button
+                to={buildPath("/gallery")}
+                variant="action"
+                size="sm"
+                className="transform-none group/btn"
+              >
+                {t("pages.about.infrastructure.viewGallery")}
+                <span className="material-icons text-sm ml-2 transition-transform duration-300 group-hover/btn:translate-x-1">
+                  arrow_forward
+                </span>
+              </Button>
+            </div>
           </div>
           <Reveal delay={80} threshold={0.05}>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-[250px]">
@@ -537,6 +543,19 @@ const About: React.FC = () => {
               </div>
             </div>
           </Reveal>
+
+          {/* Mobile-only View Gallery button */}
+          <div className="mt-8 md:hidden text-center">
+            <Button
+              to={buildPath("/gallery")}
+              variant="action"
+              size="md"
+              className="w-full sm:w-auto"
+            >
+              {t("pages.about.infrastructure.viewGallery")}
+              <span className="material-icons text-sm ml-2">arrow_forward</span>
+            </Button>
+          </div>
         </div>
       </section>
 

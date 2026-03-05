@@ -9,9 +9,11 @@ import { services } from "../data/services";
 import { useTranslation } from "react-i18next";
 import Button from "../components/Button";
 import CTASection from "../components/CTASection";
+import { useLangPath } from "@/hooks/useLang";
 
 const Services: React.FC = () => {
   const { t } = useTranslation();
+  const buildPath = useLangPath();
   const { openAppointment } = useOutletContext<{
     openAppointment: OpenAppointmentFunc;
   }>();
@@ -42,7 +44,7 @@ const Services: React.FC = () => {
                 description={t(`data.services.${service.id}.desc`)}
                 icon={service.icon}
                 color={service.color}
-                to={service.link}
+                to={buildPath(service.link)}
                 delay={idx * 70}
               />
             ))}
@@ -61,7 +63,7 @@ const Services: React.FC = () => {
         }}
         secondaryButton={{
           label: t("common.buttons.contactUs"),
-          to: "/contact",
+          to: buildPath("/contact"),
         }}
         iconName="medical_services"
       />
