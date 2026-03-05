@@ -46,7 +46,7 @@ const Emergency: React.FC = () => {
           icon: "directions",
         }}
       />
-      <section className="py-16 bg-slate-50 relative">
+      <section className="py-16 bg-slate-50 relative overflow-hidden">
         <div className="absolute inset-0 hero-pattern pointer-events-none"></div>
         <div className="container mx-auto px-6 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
@@ -147,7 +147,7 @@ const Emergency: React.FC = () => {
                     borderColor: "var(--color-border)",
                   }}
                 >
-                  <div className="flex items-start gap-4">
+                  <div className="flex flex-col sm:flex-row items-center sm:items-start gap-4 text-center sm:text-left">
                     <div className="w-12 h-12 rounded-full bg-red-50 flex items-center justify-center text-red-600 shrink-0">
                       <span className="material-icons text-2xl">
                         airport_shuttle
@@ -396,7 +396,7 @@ const Emergency: React.FC = () => {
                     <ul className="space-y-2 text-sm text-slate-600">
                       {team.items.map((item, idx) => (
                         <li key={idx} className="flex items-center gap-2">
-                          <span className="material-icons text-green-500 text-xs">
+                          <span className="material-icons text-green-500 text-xs shrink-0">
                             check_circle
                           </span>{" "}
                           {item}
@@ -424,8 +424,8 @@ const Emergency: React.FC = () => {
         <div className="absolute top-0 right-0 w-96 h-96 bg-primary opacity-20 blur-[100px] rounded-full translate-x-1/2 -translate-y-1/2"></div>
         <div className="container mx-auto px-6 relative z-10">
           <Reveal threshold={0.1}>
-            <div className="flex flex-col lg:flex-row items-center justify-between gap-12 bg-white/5 border border-white/10 rounded-3xl p-10 lg:p-16 backdrop-blur-sm">
-              <div className="flex-1">
+            <div className="flex flex-col lg:flex-row items-center justify-between gap-12 bg-white/5 border border-white/10 rounded-3xl p-4 sm:p-10 lg:p-16 backdrop-blur-sm">
+              <div className="flex-1 p-4 sm:p-0">
                 <h2 className="text-3xl lg:text-4xl font-bold mb-6">
                   {t(
                     "pages.services.emergency.contact.title",

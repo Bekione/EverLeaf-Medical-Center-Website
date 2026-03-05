@@ -95,7 +95,7 @@ const PreventiveCheckups: React.FC = () => {
       />
 
       <section
-        className="py-20 relative"
+        className="py-20 relative overflow-hidden"
         id="packages"
         style={{ backgroundColor: "var(--color-surface)" }}
       >
@@ -179,7 +179,7 @@ const PreventiveCheckups: React.FC = () => {
                         key={i}
                         className="flex items-start gap-3 text-sm text-slate-600"
                       >
-                        <span className="material-icons text-green-500 text-lg">
+                        <span className="material-icons text-green-500 text-lg shrink-0">
                           check_circle
                         </span>
                         <span>{feat}</span>
@@ -424,7 +424,7 @@ const PreventiveCheckups: React.FC = () => {
                       borderColor: "var(--color-border)",
                     }}
                   >
-                    <th className="p-4 md:p-6 text-sm font-semibold text-slate-500">
+                    <th className="p-4 md:p-6 text-sm font-semibold text-slate-500 whitespace-nowrap">
                       {t(
                         "pages.services.preventiveCheckups.comparison.header.feature",
                       )}
@@ -511,7 +511,7 @@ const PreventiveCheckups: React.FC = () => {
       </section>
 
       <section
-        className="py-20"
+        className="py-20 overflow-hidden"
         style={{ backgroundColor: "var(--color-surface)" }}
       >
         <div className="container mx-auto px-6">

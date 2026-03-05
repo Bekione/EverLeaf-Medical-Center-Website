@@ -102,7 +102,7 @@ const Laboratory: React.FC = () => {
       />
 
       <section
-        className="py-20"
+        className="py-20 overflow-hidden"
         id="collection"
         style={{ backgroundColor: "var(--color-surface)" }}
       >
@@ -117,7 +117,7 @@ const Laboratory: React.FC = () => {
                   <div className="absolute top-0 right-0 w-40 h-40 bg-blue-100 rounded-bl-full opacity-50"></div>
                   <div className="relative z-10">
                     <div className="flex items-center gap-4 mb-6">
-                      <div className="w-12 h-12 rounded-full bg-primary text-white flex items-center justify-center shadow-lg shadow-blue-500/30">
+                      <div className="w-12 h-12 rounded-full bg-primary text-white flex items-center justify-center shadow-lg shadow-blue-500/30 shrink-0">
                         <span className="material-icons">speed</span>
                       </div>
                       <h3
@@ -160,7 +160,9 @@ const Laboratory: React.FC = () => {
             <Reveal from="right" threshold={0.1}>
               <div className="flex flex-col justify-center">
                 <div className="inline-flex items-center gap-2 mb-4 text-primary font-semibold">
-                  <span className="material-icons text-lg">home_work</span>
+                  <span className="material-icons text-lg shrink-0">
+                    home_work
+                  </span>
                   <span>
                     {t("pages.services.laboratory.homeCollection.badge")}
                   </span>
@@ -181,7 +183,7 @@ const Laboratory: React.FC = () => {
                     t("pages.services.laboratory.homeCollection.features.2"),
                   ].map((text, i) => (
                     <li key={i} className="flex items-start gap-3">
-                      <div className="w-6 h-6 rounded-full bg-green-100 text-green-600 flex items-center justify-center mt-0.5">
+                      <div className="w-6 h-6 rounded-full bg-green-100 text-green-600 flex items-center justify-center mt-0.5 shrink-0">
                         <span className="material-icons text-sm">check</span>
                       </div>
                       <span className="text-slate-700">{text}</span>
@@ -209,10 +211,7 @@ const Laboratory: React.FC = () => {
         </div>
       </section>
 
-      <section
-        className="py-20"
-        style={{ backgroundColor: "var(--color-bg-alt)" }}
-      >
+      <section className="py-20 bg-bg-alt overflow-hidden">
         <div className="container mx-auto px-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <Reveal from="left" threshold={0.1}>
