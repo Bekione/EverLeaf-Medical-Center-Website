@@ -735,8 +735,11 @@
       },
       "stats": {
         "years": "Years Serving",
+        "yearsVal": "35+",
         "patients": "Patients Healed",
-        "specialists": "Specialists"
+        "patientsVal": "100k+",
+        "specialists": "Specialists",
+        "specialistsVal": "120+"
       },
       "story": {
         "badge": "Our Story",

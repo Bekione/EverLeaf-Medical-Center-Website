@@ -735,8 +735,11 @@
       },
       "stats": {
         "years": "የአገልግሎት ዓመታት",
+        "yearsVal": "35+",
         "patients": "የዳኑ ታካሚዎች",
-        "specialists": "ስፔሻሊስቶች"
+        "patientsVal": "100ሺ+",
+        "specialists": "ስፔሻሊስቶች",
+        "specialistsVal": "120+"
       },
       "story": {
         "badge": "ታሪካችን",
