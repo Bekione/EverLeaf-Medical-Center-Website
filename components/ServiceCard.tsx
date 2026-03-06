@@ -39,7 +39,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
           >
             <span className="material-icons text-3xl">{icon}</span>
           </div>
-          <h3 className="text-2xl font-bold mb-3 group-hover:text-primary transition-colors font-serif text-text">
+          <h3 className="text-xl md:text-2xl font-bold mb-3 group-hover:text-primary transition-colors font-serif text-text wrap-anywhere">
             {title}
           </h3>
           <p className="leading-relaxed mb-6 text-sm md:text-base grow text-text-muted">

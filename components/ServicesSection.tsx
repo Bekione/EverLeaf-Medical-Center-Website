@@ -64,7 +64,7 @@ const ServicesSection: React.FC<ServicesSectionProps> = ({
           >
             <div>
               {badge && (
-                <span className="text-primary font-bold tracking-wider text-sm uppercase mb-3 block">
+                <span className="inline-block px-3 py-1 mb-2 text-xs font-semibold tracking-wider text-primary uppercase bg-primary-light rounded-full">
                   {badge}
                 </span>
               )}

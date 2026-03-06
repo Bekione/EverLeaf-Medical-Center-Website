@@ -18,6 +18,7 @@ interface TechnologySectionProps {
   reverseLayout?: boolean;
   sectionClassName?: string;
   variant?: "primary" | "surface";
+  id?: string;
 }
 
 const TechnologySection: React.FC<TechnologySectionProps> = ({
@@ -29,30 +30,22 @@ const TechnologySection: React.FC<TechnologySectionProps> = ({
   reverseLayout = false,
   sectionClassName = "py-20",
   variant = "primary",
+  id,
 }) => {
   const isPrimary = variant === "primary";
 
   return (
     <section
-      className={sectionClassName}
-      style={{ color: isPrimary ? "white" : "var(--color-text)" }}
+      className={`${sectionClassName} ${isPrimary ? "text-white" : "text-text"}`}
+      id={id}
     >
       <div className="container mx-auto sm:px-4 md:px-6">
         <div
           className={`rounded-3xl p-8 md:p-12 overflow-hidden relative shadow-2xl border ${
             isPrimary
-              ? "bg-linear-to-br from-cta-from to-cta-to border-white/10 text-white"
-              : "border-slate-200"
+              ? "bg-linear-to-br from-cta-from to-cta-to border-white/10"
+              : "bg-surface border-border"
           }`}
-          style={
-            !isPrimary
-              ? {
-                  background:
-                    "linear-gradient(to right, var(--color-bg-alt), var(--color-surface))",
-                  borderColor: "var(--color-border)",
-                }
-              : {}
-          }
         >
           {/* Decorative Grid Pattern */}
           <div
@@ -64,7 +57,7 @@ const TechnologySection: React.FC<TechnologySectionProps> = ({
           ></div>
 
           <div
-            className={`relative z-10 flex flex-col lg:flex-row items-center gap-12 ${
+            className={`relative z-10 flex flex-col lg:flex-row items-stretch gap-10 lg:gap-12 ${
               reverseLayout ? "lg:flex-row-reverse" : ""
             }`}
           >
@@ -72,34 +65,27 @@ const TechnologySection: React.FC<TechnologySectionProps> = ({
             <Reveal
               from={reverseLayout ? "right" : "left"}
               threshold={0.1}
-              className="lg:w-1/2"
+              className="lg:w-1/2 w-full flex flex-col"
             >
               <div>
                 {badge && (
                   <span
-                    className="font-bold tracking-wider uppercase text-sm mb-2 block"
-                    style={{
-                      color: isPrimary
-                        ? "var(--color-primary-light)"
-                        : "var(--color-primary)",
-                    }}
+                    className={`inline-flex items-center gap-2 px-3 py-1 mb-6 text-xs font-bold tracking-wider uppercase rounded-full border ${
+                      isPrimary
+                        ? "text-primary-light bg-primary/20 border-white/10"
+                        : "text-primary bg-primary-light border-transparent"
+                    }`}
                   >
                     {badge}
                   </span>
                 )}
                 <h2
-                  className="text-3xl font-bold mb-6"
-                  style={{ color: isPrimary ? "white" : "var(--color-text)" }}
+                  className={`text-3xl font-bold mb-6 ${isPrimary ? "text-white" : "text-text"}`}
                 >
                   {title}
                 </h2>
                 <p
-                  className="mb-8 leading-relaxed"
-                  style={{
-                    color: isPrimary
-                      ? "rgba(255,255,255,0.8)"
-                      : "var(--color-text-muted)",
-                  }}
+                  className={`mb-8 leading-relaxed ${isPrimary ? "text-white/80" : "text-text-muted"}`}
                 >
                   {description}
                 </p>
@@ -109,13 +95,10 @@ const TechnologySection: React.FC<TechnologySectionProps> = ({
                       <div
                         className={`${
                           item.iconBgColor ||
-                          (isPrimary ? "bg-primary/20" : "bg-primary/10")
+                          (isPrimary
+                            ? "bg-primary/20"
+                            : "bg-primary-light text-primary")
                         } p-3 rounded-lg flex items-center justify-center shrink-0`}
-                        style={
-                          !isPrimary && !item.iconBgColor
-                            ? { backgroundColor: "var(--color-surface)" }
-                            : {}
-                        }
                       >
                         <span
                           className={`material-icons text-2xl ${
@@ -128,20 +111,12 @@ const TechnologySection: React.FC<TechnologySectionProps> = ({
                       </div>
                       <div>
                         <h4
-                          className="font-bold text-lg mb-1"
-                          style={{
-                            color: isPrimary ? "white" : "var(--color-text)",
-                          }}
+                          className={`font-bold text-lg mb-1 ${isPrimary ? "text-white" : "text-text"}`}
                         >
                           {item.title}
                         </h4>
                         <p
-                          className="text-sm"
-                          style={{
-                            color: isPrimary
-                              ? "rgba(255,255,255,0.7)"
-                              : "var(--color-text-muted)",
-                          }}
+                          className={`text-sm ${isPrimary ? "text-white/70" : "text-text-muted"}`}
                         >
                           {item.description}
                         </p>
@@ -156,9 +131,11 @@ const TechnologySection: React.FC<TechnologySectionProps> = ({
             <Reveal
               from={reverseLayout ? "left" : "right"}
               threshold={0.1}
-              className="lg:w-1/2 w-full"
+              className="lg:w-1/2 w-full h-full flex flex-col"
             >
-              {rightContent}
+              <div className="h-full flex flex-col justify-center">
+                {rightContent}
+              </div>
             </Reveal>
           </div>
         </div>

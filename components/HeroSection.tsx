@@ -284,7 +284,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
 
   return (
     <header
-      className={`relative overflow-hidden ${
+      className={`relative overflow-hidden min-h-[500px] h-[calc(100dvh-var(--header-height))] ${
         containerClassName || "py-12 lg:py-16"
       } ${backgroundClassName || "bg-white border-b border-slate-100"}`}
     >
@@ -307,7 +307,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
           }}
         />
       )}
-      <div className="container mx-auto px-6 relative z-10">
+      <div className="container mx-auto px-6 h-full flex flex-col justify-center relative z-10">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           <div className="max-w-2xl min-w-0">
             <Reveal delay={0}>
@@ -328,7 +328,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
               </div>
             </Reveal>
             <Reveal delay={100}>
-              <h1 className="text-3xl sm:text-4xl lg:text-6xl font-serif font-bold text-text mb-6 leading-tight">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-text mb-6 leading-tight">
                 {title || titlePart1}
                 {(titleHighlight || titlePart2) && <br />}
                 {titleHighlight && (
@@ -371,14 +371,14 @@ const HeroSection: React.FC<HeroSectionProps> = ({
             )}
 
             <Reveal delay={300}>
-              <div className="flex flex-wrap gap-4">
+              <div className="flex flex-col sm:flex-row gap-4">
                 {primaryButton && (
                   <Button
                     to={primaryButton.to}
                     href={primaryButton.href}
                     onClick={primaryButton.onClick}
                     variant={primaryButton.variant || "primary"}
-                    className={`${primaryButton.className || ""} shadow-lg shadow-primary/20`}
+                    className={`${primaryButton.className || ""} w-full sm:w-auto shadow-lg shadow-primary/20`}
                   >
                     {primaryButton.label}
                     {primaryButton.icon && (
@@ -394,7 +394,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
                     href={secondaryButton.href}
                     onClick={secondaryButton.onClick}
                     variant={secondaryButton.variant || "outline"}
-                    className={secondaryButton.className || ""}
+                    className={`${secondaryButton.className || ""} w-full sm:w-auto`}
                   >
                     {secondaryButton.label}
                     {secondaryButton.icon && (
