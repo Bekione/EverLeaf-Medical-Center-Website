@@ -88,6 +88,7 @@ const About: React.FC = () => {
 
       <HeroSection
         variant="info"
+        fullHeight={false}
         backgroundClassName="bg-linear-to-b from-primary-light to-surface"
         badge={t("pages.about.hero.badge")}
         badgeStyle={{
