@@ -53,6 +53,7 @@ interface HeroSectionProps {
     icon: string;
   };
   accentColor?: string;
+  fullHeight?: boolean;
 }
 
 const HeroSection: React.FC<HeroSectionProps> = ({
@@ -81,13 +82,14 @@ const HeroSection: React.FC<HeroSectionProps> = ({
   containerClassName,
   statsCard,
   accentColor = "blue",
+  fullHeight = true,
 }) => {
   const { t } = useTranslation();
 
   if (variant === "impact") {
     return (
       <header
-        className={`relative text-white overflow-hidden min-h-[500px] h-[calc(100dvh-var(--header-height))] flex items-center bg-footer-bg ${backgroundClassName || ""}`}
+        className={`relative text-white overflow-hidden ${fullHeight ? "min-h-[500px] h-[calc(100dvh-var(--header-height))]" : "h-auto"} flex items-center bg-footer-bg ${backgroundClassName || ""}`}
       >
         <div className="absolute inset-0">
           {image && (
@@ -284,7 +286,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
 
   return (
     <header
-      className={`relative overflow-hidden min-h-[500px] h-[calc(100dvh-var(--header-height))] ${
+      className={`relative overflow-hidden ${fullHeight ? "min-h-[500px] h-[calc(100dvh-var(--header-height))]" : "h-auto"} ${
         containerClassName || "py-12 lg:py-16"
       } ${backgroundClassName || "bg-white border-b border-slate-100"}`}
     >

@@ -77,6 +77,7 @@ const Home: React.FC = () => {
       />
       <HeroSection
         variant="info"
+        fullHeight={false}
         backgroundClassName="bg-alt"
         containerClassName="pt-12 pb-32 lg:pt-16 lg:pb-48"
         badge={t("pages.home.hero.badge")}
