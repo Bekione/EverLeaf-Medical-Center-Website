@@ -87,24 +87,26 @@ const HeroSection: React.FC<HeroSectionProps> = ({
   if (variant === "impact") {
     return (
       <header
-        className={`relative bg-slate-900 text-white overflow-hidden min-h-[480px] flex items-center ${backgroundClassName || ""}`}
+        className={`relative text-white overflow-hidden min-h-[500px] h-[calc(100dvh-var(--header-height))] flex items-center bg-footer-bg ${backgroundClassName || ""}`}
       >
         <div className="absolute inset-0">
           {image && (
             <CldImg
               src={image}
               alt={imageAlt || titlePart1}
-              className="w-full h-full object-cover object-center opacity-25 scale-105 animate-slow-zoom"
+              className="w-full h-full object-cover object-center opacity-30 sm:opacity-25"
             />
           )}
-          <div className="absolute inset-0 bg-linear-to-r from-slate-900 via-slate-900/95 to-transparent"></div>
+          <div className="absolute inset-0 block md:hidden bg-linear-to-b from-footer-bg via-footer-bg/85 to-transparent"></div>
+          <div className="absolute inset-0 hidden md:block bg-linear-to-r from-footer-bg via-footer-bg/95 to-transparent"></div>
         </div>
-        <div className="container mx-auto px-6 py-16 relative z-10">
+
+        <div className="container mx-auto px-6 h-full flex flex-col justify-center relative z-10">
           <div className="max-w-3xl">
             <Reveal delay={0}>
-              <div className="flex items-center gap-3 mb-6">
+              <div className="flex flex-wrap items-center gap-3 mb-6">
                 <div
-                  className={`inline-flex items-center gap-2 px-3 py-1 mb-6 text-xs font-bold uppercase tracking-wide rounded-full ${
+                  className={`inline-flex items-center gap-2 px-3 py-1 text-xs font-bold uppercase tracking-wide rounded-full ${
                     badgeClassName ||
                     "text-blue-300 bg-blue-500/10 border border-blue-500/20"
                   }`}
@@ -129,7 +131,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
               </div>
             </Reveal>
             <Reveal delay={100}>
-              <h1 className="text-4xl lg:text-5xl font-serif font-bold mb-6 leading-tight">
+              <h1 className="text-4xl md:text-5xl font-serif font-bold mb-4 sm:mb-6 leading-tight">
                 {title || titlePart1}
                 {titleHighlight && (
                   <>
@@ -166,7 +168,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
               </h1>
             </Reveal>
             <Reveal delay={200}>
-              <p className="text-lg text-slate-300 mb-8 max-w-2xl leading-relaxed">
+              <p className="text-base sm:text-lg text-white/70 mb-8 max-w-2xl leading-relaxed">
                 {description}
               </p>
             </Reveal>
@@ -178,18 +180,18 @@ const HeroSection: React.FC<HeroSectionProps> = ({
             )}
 
             <Reveal delay={300}>
-              <div className="flex flex-col sm:flex-row gap-4 mb-4 items-start sm:items-center">
+              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 mb-4 mt-14 md:mt-0 items-stretch sm:items-center">
                 {primaryButton && (
                   <Button
                     to={primaryButton.to}
                     href={primaryButton.href}
                     onClick={primaryButton.onClick}
                     variant={primaryButton.variant || "primary"}
-                    className={`${primaryButton.className || ""} px-8 py-3.5 text-base font-bold shadow-lg shadow-primary/30 hover:shadow-primary/50 transition-all transform hover:-translate-y-0.5`}
+                    className={`${primaryButton.className || ""} w-full sm:w-auto px-8 py-3.5 text-base font-bold shadow-lg shadow-primary/30 hover:shadow-primary/50 transition-all transform hover:-translate-y-0.5`}
                   >
                     {primaryButton.label}
                     {primaryButton.icon && (
-                      <span className="material-icons text-sm ml-2">
+                      <span className="material-icons text-base ml-2">
                         {primaryButton.icon}
                       </span>
                     )}
@@ -201,11 +203,11 @@ const HeroSection: React.FC<HeroSectionProps> = ({
                     href={secondaryButton.href}
                     onClick={secondaryButton.onClick}
                     variant={secondaryButton.variant || "glass"}
-                    className={secondaryButton.className || ""}
+                    className={`${secondaryButton.className || ""} w-full sm:w-auto`}
                   >
                     {secondaryButton.label}
                     {secondaryButton.icon && (
-                      <span className="material-icons text-sm ml-2">
+                      <span className="material-icons text-base ml-2">
                         {secondaryButton.icon}
                       </span>
                     )}
@@ -221,19 +223,6 @@ const HeroSection: React.FC<HeroSectionProps> = ({
             )}
           </div>
         </div>
-        <style
-          dangerouslySetInnerHTML={{
-            __html: `
-          @keyframes slow-zoom {
-            0% { transform: scale(1); }
-            100% { transform: scale(1.1); }
-          }
-          .animate-slow-zoom {
-            animation: slow-zoom 20s linear infinite alternate;
-          }
-        `,
-          }}
-        />
       </header>
     );
   }
@@ -313,7 +302,8 @@ const HeroSection: React.FC<HeroSectionProps> = ({
         <div
           className={`absolute right-0 top-0 h-full w-1/3 skew-x-12 translate-x-12 pointer-events-none transition-colors duration-500`}
           style={{
-            backgroundColor: `color-mix(in srgb, var(--color-primary) 6%, transparent)`,
+            backgroundColor:
+              "color-mix(in srgb, var(--color-primary) 6%, transparent)",
           }}
         />
       )}

@@ -108,6 +108,16 @@
   }
 }
 
+:root {
+  --header-height: 75px;
+}
+
+@media (min-width: 768px) {
+  :root {
+    --header-height: 129px;
+  }
+}
+
 /* ─── Material Icons — Tailwind v4 cascade fix ───────────────────────────
    Problem: the Google Fonts Material Icons stylesheet sets
      .material-icons { font-size: 24px }
