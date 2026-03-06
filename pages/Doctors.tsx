@@ -29,7 +29,15 @@ const Doctors: React.FC = () => {
   const [specialtyFilter, setSpecialtyFilter] = useState("");
   const [genderFilter, setGenderFilter] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
+  const [isSearchExpanded, setIsSearchExpanded] = useState(false);
+  const [isDesktop, setIsDesktop] = useState(window.innerWidth >= 1024);
   const [phase, animateFilter] = useFilterTransition(180, 40);
+
+  useEffect(() => {
+    const handleResize = () => setIsDesktop(window.innerWidth >= 1024);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
   const gridRef = useRef<HTMLElement>(null);
 
   /** Immediately update the visible input; debounce the card animation */
@@ -97,9 +105,10 @@ const Doctors: React.FC = () => {
       setCurrentPage(page);
       // Scroll after state update
       setTimeout(() => {
-        const scrollTarget = gridRef.current
-          ? Math.max(0, gridRef.current.offsetTop - 150)
-          : 0;
+        if (!gridRef.current) return;
+        const isMobile = window.innerWidth < 1024;
+        const offset = isMobile ? 165 : 145;
+        const scrollTarget = Math.max(0, gridRef.current.offsetTop - offset);
         window.scrollTo({ top: scrollTarget, behavior: "smooth" });
       }, 0);
     }
@@ -142,77 +151,147 @@ const Doctors: React.FC = () => {
       </div>
 
       {/* Filter Bar */}
-      <div className="sticky top-[72px] z-30 shadow-md border-b py-6 transition-all duration-300 bg-surface border-border">
-        <div className="container mx-auto px-6 flex flex-col lg:flex-row gap-4 lg:items-center justify-between">
-          <div className="relative grow max-w-xl">
-            <span className="material-icons absolute left-4 top-1/2 -translate-y-1/2 text-slate-400">
-              search
-            </span>
-            <input
-              id="doctor-search"
-              name="search"
-              type="text"
-              placeholder={t("pages.doctors.filters.searchPlaceholder")}
-              className="w-full pl-12 pr-10 py-3 rounded-lg border focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all shadow-sm placeholder-slate-400 bg-surface border-border text-text"
-              value={searchInput}
-              onChange={(e) => handleSearch(e.target.value)}
-            />
-            {searchInput && (
-              <Button
-                variant="ghost"
-                size="sm"
-                onClick={clearSearch}
-                animate={false}
-                className="absolute right-3 top-1/2 -translate-y-1/2 p-0.5 rounded-full h-8 w-8 min-w-0 shadow-none hover:shadow-none"
-                icon="close"
-                rounded="full"
-              ></Button>
-            )}
-          </div>
-          <div className="flex flex-col sm:flex-row gap-4 w-full lg:w-auto">
-            <CustomSelect
-              className="min-w-[220px]"
-              options={[
-                { value: "", label: t("pages.doctors.filters.allDepts") },
-                {
-                  value: "cardiology",
-                  label: t("data.departments.cardiology.name"),
-                },
-                {
-                  value: "neurology",
-                  label: t("data.departments.neurology.name"),
-                },
-                {
-                  value: "pediatrics",
-                  label: t("data.departments.pediatrics.name"),
-                },
-                {
-                  value: "orthopedics",
-                  label: t("data.departments.orthopedics.name"),
-                },
-                {
-                  value: "oncology",
-                  label: t("data.departments.oncology.name"),
-                },
-                {
-                  value: "dermatology",
-                  label: t("data.departments.dermatology.name"),
-                },
-                { value: "surgery", label: t("data.departments.surgery.name") },
-                {
-                  value: "ophthalmology",
-                  label: t("data.departments.ophthalmology.name"),
-                },
-              ]}
-              value={deptFilter}
-              onChange={(val) => animateFilter(() => setDeptFilter(val))}
-              placeholder={t("pages.doctors.filters.allDepts")}
-              icon="domain"
-            />
+      <div className="sticky top-(--header-height) lg:top-[74px] z-30 shadow-md border-b py-3 md:py-6 transition-all duration-300 bg-surface border-border">
+        <div className="container mx-auto px-4 md:px-6">
+          <div className="flex flex-col lg:flex-row gap-3 md:gap-4 lg:items-center lg:justify-between">
+            {/* Search and Dept Row (Side-by-side on mobile, part of unified row on desktop) */}
+            <div className="flex gap-3 items-center w-full lg:w-auto lg:grow lg:max-w-xl relative min-h-[50px]">
+              {/* Expandable Search Input Component */}
+              <div
+                className={`transition-[flex-grow] duration-500 ease-in-out overflow-hidden flex ${
+                  !isDesktop
+                    ? isSearchExpanded
+                      ? "flex-grow"
+                      : "flex-grow-0"
+                    : "lg:flex-grow"
+                }`}
+                style={
+                  !isDesktop && !isSearchExpanded ? { width: 50 } : undefined
+                }
+                onClick={() => {
+                  if (!isDesktop && !isSearchExpanded) {
+                    setIsSearchExpanded(true);
+                  }
+                }}
+              >
+                <div className="relative group">
+                  <span
+                    className={`material-icons absolute text-slate-400 transition-all duration-500 pointer-events-none z-10
+                    ${
+                      isSearchExpanded || isDesktop
+                        ? "left-3.5 top-1/2 -translate-y-1/2"
+                        : "left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
+                    }`}
+                  >
+                    search
+                  </span>
+                  <input
+                    id="doctor-search"
+                    name="search"
+                    type="text"
+                    placeholder={
+                      isSearchExpanded || isDesktop
+                        ? t("pages.doctors.filters.searchPlaceholder")
+                        : ""
+                    }
+                    className={`rounded-xl border focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all duration-500 shadow-sm bg-surface border-border text-text placeholder:transition-opacity ${
+                      isSearchExpanded || isDesktop
+                        ? "w-full pl-11 pr-10 py-3 opacity-100 placeholder:opacity-100 cursor-text"
+                        : "w-[50px] h-[50px] p-0 pl-0 caret-transparent text-transparent placeholder:opacity-0 cursor-pointer"
+                    }`}
+                    value={searchInput}
+                    onChange={(e) => handleSearch(e.target.value)}
+                    onFocus={() => setIsSearchExpanded(true)}
+                    onBlur={(e) => {
+                      if (!e.relatedTarget && !searchInput) {
+                        setIsSearchExpanded(false);
+                      }
+                    }}
+                  />
+                  {(isSearchExpanded || searchInput || isDesktop) && (
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      onClick={() => {
+                        if (searchInput) {
+                          clearSearch();
+                        }
+                        setIsSearchExpanded(false);
+                      }}
+                      animate={false}
+                      className={`absolute right-2 top-1/2 -translate-y-1/2 p-0.5 rounded-full h-8 w-8 min-w-0 shadow-none hover:shadow-none z-20 ${
+                        (isSearchExpanded && searchInput) ||
+                        (isDesktop && searchInput)
+                          ? "inline-flex"
+                          : "hidden"
+                      }`}
+                      icon="close"
+                      rounded="full"
+                    ></Button>
+                  )}
+                </div>
+              </div>
 
-            <div className="flex gap-4 w-full">
+              {/* Department Filter - Shrinks on mobile expansion */}
+              <div
+                className={`transition-[flex-grow] duration-500 ease-in-out flex ${
+                  !isDesktop
+                    ? isSearchExpanded
+                      ? "flex-grow-0"
+                      : "flex-grow"
+                    : "grow basis-0 lg:flex-none lg:min-w-[220px]"
+                }`}
+              >
+                <CustomSelect
+                  className="w-full"
+                  compact={isSearchExpanded && !isDesktop}
+                  options={[
+                    { value: "", label: t("pages.doctors.filters.allDepts") },
+                    {
+                      value: "cardiology",
+                      label: t("data.departments.cardiology.name"),
+                    },
+                    {
+                      value: "neurology",
+                      label: t("data.departments.neurology.name"),
+                    },
+                    {
+                      value: "pediatrics",
+                      label: t("data.departments.pediatrics.name"),
+                    },
+                    {
+                      value: "orthopedics",
+                      label: t("data.departments.orthopedics.name"),
+                    },
+                    {
+                      value: "oncology",
+                      label: t("data.departments.oncology.name"),
+                    },
+                    {
+                      value: "dermatology",
+                      label: t("data.departments.dermatology.name"),
+                    },
+                    {
+                      value: "surgery",
+                      label: t("data.departments.surgery.name"),
+                    },
+                    {
+                      value: "ophthalmology",
+                      label: t("data.departments.ophthalmology.name"),
+                    },
+                  ]}
+                  value={deptFilter}
+                  onChange={(val) => animateFilter(() => setDeptFilter(val))}
+                  placeholder={t("pages.doctors.filters.allDepts")}
+                  icon="domain"
+                />
+              </div>
+            </div>
+
+            {/* Specialty and Gender Row (Side-by-side on mobile) */}
+            <div className="flex gap-2 sm:gap-4 w-full lg:w-auto lg:shrink-0">
               <CustomSelect
-                className="min-w-[180px] grow"
+                className="min-w-0 flex-1"
                 options={[
                   {
                     value: "",
@@ -242,7 +321,7 @@ const Doctors: React.FC = () => {
               />
 
               <CustomSelect
-                className="min-w-[160px] grow"
+                className="min-w-0 flex-1"
                 options={[
                   { value: "", label: t("pages.doctors.filters.allGenders") },
                   {
@@ -309,10 +388,12 @@ const Doctors: React.FC = () => {
               variant="secondary"
               size="sm"
               onClick={() => {
+                setSearchInput("");
                 setSearchTerm("");
                 setDeptFilter("");
                 setSpecialtyFilter("");
                 setGenderFilter("");
+                setIsSearchExpanded(false);
               }}
               className="mt-6"
             >

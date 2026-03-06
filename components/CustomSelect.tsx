@@ -16,6 +16,7 @@ interface CustomSelectProps {
   maxHeight?: number;
   icon?: string;
   error?: string;
+  compact?: boolean;
 }
 
 export const CustomSelect: React.FC<CustomSelectProps> = ({
@@ -28,6 +29,7 @@ export const CustomSelect: React.FC<CustomSelectProps> = ({
   maxHeight = 15,
   icon,
   error,
+  compact = false,
 }) => {
   const { t } = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
@@ -66,7 +68,7 @@ export const CustomSelect: React.FC<CustomSelectProps> = ({
 
       <div
         onClick={() => setIsOpen(!isOpen)}
-        className={`group flex items-center justify-between px-4 py-3 rounded-xl border cursor-pointer transition-all duration-300 shadow-sm hover:shadow-md ${
+        className={`group flex items-center ${compact ? "justify-center px-0" : "justify-between px-4"} py-3 rounded-xl border cursor-pointer transition-all duration-300 shadow-sm hover:shadow-md ${
           isOpen ? "ring-2 ring-primary/20" : ""
         }`}
         style={{
@@ -75,27 +77,35 @@ export const CustomSelect: React.FC<CustomSelectProps> = ({
           color: selectedOption
             ? "var(--color-text)"
             : "var(--color-text-muted)",
+          width: compact ? "50px" : "100%",
+          height: "50px",
         }}
       >
-        <div className="flex items-center gap-3 overflow-hidden">
+        <div
+          className={`flex items-center gap-3 ${compact ? "justify-center" : "overflow-hidden"}`}
+        >
           {icon && (
             <span
-              className="material-icons text-xl"
+              className="material-icons text-xl shrink-0"
               style={{ color: "var(--color-primary)" }}
             >
               {icon}
             </span>
           )}
-          <span className="truncate whitespace-nowrap">
-            {selectedOption ? selectedOption.label : placeholder}
-          </span>
+          {!compact && (
+            <span className="truncate whitespace-nowrap">
+              {selectedOption ? selectedOption.label : placeholder}
+            </span>
+          )}
         </div>
-        <span
-          className={`material-icons transition-transform duration-300 ${isOpen ? "rotate-180" : ""}`}
-          style={{ color: "var(--color-text-muted)" }}
-        >
-          expand_more
-        </span>
+        {!compact && (
+          <span
+            className={`material-icons transition-transform duration-300 ${isOpen ? "rotate-180" : ""}`}
+            style={{ color: "var(--color-text-muted)" }}
+          >
+            expand_more
+          </span>
+        )}
       </div>
 
       {/* Options Dropdown */}
