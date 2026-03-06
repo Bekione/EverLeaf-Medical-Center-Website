@@ -110,7 +110,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
                 <div
                   className={`inline-flex items-center gap-2 px-3 py-1 text-xs font-bold uppercase tracking-wide rounded-full ${
                     badgeClassName ||
-                    "text-blue-300 bg-blue-500/10 border border-blue-500/20"
+                    "text-primary-light bg-primary/10 border border-primary/20"
                   }`}
                   style={badgeStyle}
                 >

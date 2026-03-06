@@ -95,7 +95,7 @@ const Blog: React.FC = () => {
         image={featuredArticle.img}
         badge={t("pages.blog.hero.featured")}
         showBadgeDot={true}
-        badgeClassName="bg-emerald-950/50 border border-emerald-500/30 text-emerald-400"
+        badgeClassName="bg-primary/10 border border-primary/30 text-primary-light"
         titlePart1={titleParts[0]}
         titleHighlight={titleParts[1]?.trim()}
         titleHighlightClassName="text-white"
