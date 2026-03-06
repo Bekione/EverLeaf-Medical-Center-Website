@@ -154,10 +154,7 @@ const Emergency: React.FC = () => {
                       </span>
                     </div>
                     <div>
-                      <h4
-                        className="font-bold"
-                        style={{ color: "var(--color-text)" }}
-                      >
+                      <h4 className="text-lg font-bold text-text">
                         {t(
                           "pages.services.emergency.intro.ambulance.title",
                           "Ambulance Services",
@@ -190,10 +187,7 @@ const Emergency: React.FC = () => {
               <span className="text-primary font-bold tracking-wider uppercase text-sm mb-2 block">
                 {t("pages.services.emergency.triage.badge", "Patient Flow")}
               </span>
-              <h2
-                className="text-3xl font-serif font-bold mb-4"
-                style={{ color: "var(--color-text)" }}
-              >
+              <h2 className="text-3xl lg:text-4xl font-serif font-bold text-text mb-6">
                 {t(
                   "pages.services.emergency.triage.title",
                   "Our Triage Process",
@@ -257,14 +251,8 @@ const Emergency: React.FC = () => {
                       {item.step}
                     </span>
                   </div>
-                  <div
-                    className="p-6 rounded-xl w-full hover:-translate-y-1 transition-transform duration-300 h-full"
-                    style={{ backgroundColor: "var(--color-primary-light)" }}
-                  >
-                    <h3
-                      className="text-xl font-bold mb-3"
-                      style={{ color: "var(--color-text)" }}
-                    >
+                  <div className="p-8 rounded-2xl relative overflow-hidden shadow-sm hover:shadow-md transition-all group bg-primary-light">
+                    <h3 className="text-xl font-bold mb-3 text-text">
                       {item.title}
                     </h3>
                     <p className="text-slate-600 text-sm leading-relaxed">
@@ -360,10 +348,7 @@ const Emergency: React.FC = () => {
               },
             ].map((team, i) => (
               <Reveal key={i} delay={i * 100} threshold={0.1}>
-                <div
-                  className="rounded-2xl overflow-hidden shadow-card hover:shadow-xl transition-shadow duration-300 group h-full"
-                  style={{ backgroundColor: "var(--color-surface)" }}
-                >
+                <div className="rounded-2xl overflow-hidden shadow-card hover:shadow-xl transition-shadow duration-300 group h-full bg-surface">
                   <div
                     className={`h-2 bg-${team.color === "primary" ? "primary" : team.color}`}
                   ></div>
@@ -384,10 +369,7 @@ const Emergency: React.FC = () => {
                         {team.icon}
                       </span>
                     </div>
-                    <h3
-                      className="text-xl font-bold mb-3"
-                      style={{ color: "var(--color-text)" }}
-                    >
+                    <h3 className="text-lg font-bold text-text">
                       {team.title}
                     </h3>
                     <p className="text-slate-500 leading-relaxed mb-6">

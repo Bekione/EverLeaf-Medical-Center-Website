@@ -101,29 +101,19 @@ const Laboratory: React.FC = () => {
         ]}
       />
 
-      <section
-        className="py-20 overflow-hidden"
-        id="collection"
-        style={{ backgroundColor: "var(--color-surface)" }}
-      >
+      <section className="py-20 bg-surface" id="collection">
         <div className="container mx-auto px-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
             <Reveal from="left" threshold={0.1}>
               <div className="relative">
-                <div
-                  className="rounded-3xl p-8 lg:p-12 relative overflow-hidden"
-                  style={{ backgroundColor: "var(--color-primary-light)" }}
-                >
+                <div className="p-8 rounded-2xl relative overflow-hidden group transition-colors h-full bg-primary-light">
                   <div className="absolute top-0 right-0 w-40 h-40 bg-blue-100 rounded-bl-full opacity-50"></div>
                   <div className="relative z-10">
                     <div className="flex items-center gap-4 mb-6">
                       <div className="w-12 h-12 rounded-full bg-primary text-white flex items-center justify-center shadow-lg shadow-blue-500/30 shrink-0">
                         <span className="material-icons">speed</span>
                       </div>
-                      <h3
-                        className="text-2xl font-bold"
-                        style={{ color: "var(--color-text)" }}
-                      >
+                      <h3 className="text-xl font-bold mb-2 text-text">
                         {t("pages.services.laboratory.results.title")}
                       </h3>
                     </div>
@@ -167,10 +157,7 @@ const Laboratory: React.FC = () => {
                     {t("pages.services.laboratory.homeCollection.badge")}
                   </span>
                 </div>
-                <h2
-                  className="text-3xl md:text-4xl font-serif font-bold mb-6"
-                  style={{ color: "var(--color-text)" }}
-                >
+                <h2 className="text-3xl lg:text-4xl font-serif font-bold text-text mb-6 leading-tight">
                   {t("pages.services.laboratory.homeCollection.title")}
                 </h2>
                 <p className="text-lg text-slate-600 mb-8 leading-relaxed">
@@ -272,18 +259,9 @@ const Laboratory: React.FC = () => {
                   ].map((item, i) => (
                     <div
                       key={i}
-                      className="p-4 rounded-lg border shadow-sm"
-                      style={{
-                        backgroundColor: "var(--color-surface)",
-                        borderColor: "var(--color-border)",
-                      }}
+                      className="p-4 rounded-lg border shadow-sm bg-surface border-border"
                     >
-                      <h4
-                        className="font-bold mb-2"
-                        style={{ color: "var(--color-text)" }}
-                      >
-                        {item.name}
-                      </h4>
+                      <h4 className="font-bold text-text">{item.name}</h4>
                       <p className="text-sm text-slate-500">{item.desc}</p>
                     </div>
                   ))}

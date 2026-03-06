@@ -55,17 +55,11 @@ const Diagnostics: React.FC = () => {
       />
 
       {/* Intro Section */}
-      <section
-        className="py-20"
-        style={{ backgroundColor: "var(--color-bg-alt)" }}
-      >
+      <section className="pt-24 pb-12 bg-bg-alt">
         <div className="container mx-auto px-6">
           <Reveal threshold={0.1}>
-            <div className="max-w-3xl mx-auto text-center mb-16">
-              <h2
-                className="text-3xl font-serif font-bold mb-6"
-                style={{ color: "var(--color-text)" }}
-              >
+            <div className="max-w-3xl mx-auto text-center">
+              <h2 className="text-3xl lg:text-4xl font-serif font-bold text-text mb-6 leading-tight">
                 {t(
                   "pages.services.diagnostics.intro.title",
                   "Why Precise Diagnostics Matter",
@@ -193,10 +187,7 @@ const Diagnostics: React.FC = () => {
               transform="w_1200,q_auto,f_auto,c_fill"
               src="/images/diagnostics-body-image-1.jpg"
             />
-            <div
-              className="absolute bottom-6 right-6 z-20 p-4 rounded-lg shadow-xl border-l-4 border-primary max-w-xs"
-              style={{ backgroundColor: "var(--color-surface)" }}
-            >
+            <div className="absolute bottom-6 left-1/2 right-1/2 -translate-x-1/2 md:left-auto md:translate-x-0 md:right-6 w-11/12 md:w-auto z-20 p-4 bg-white/60 backdrop-blur-sm rounded-lg shadow-xl border-l-4 border-primary max-w-xs">
               <p
                 className="text-sm font-semibold"
                 style={{ color: "var(--color-text)" }}
@@ -221,10 +212,7 @@ const Diagnostics: React.FC = () => {
       />
 
       {/* Preparation Section */}
-      <section
-        className="py-20"
-        style={{ backgroundColor: "var(--color-surface)" }}
-      >
+      <section className="py-20 bg-surface">
         <div className="container mx-auto px-6">
           <Reveal threshold={0.1}>
             <h2
@@ -304,10 +292,7 @@ const Diagnostics: React.FC = () => {
               },
             ].map((step, i) => (
               <Reveal key={i} delay={i * 100} threshold={0.1}>
-                <div
-                  className="p-8 rounded-2xl relative overflow-hidden group transition-colors h-full"
-                  style={{ backgroundColor: "var(--color-primary-light)" }}
-                >
+                <div className="p-8 rounded-2xl relative overflow-hidden group transition-colors h-full bg-primary-light">
                   <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
                     <span className="material-icons text-8xl text-primary">
                       {step.icon}
@@ -338,17 +323,11 @@ const Diagnostics: React.FC = () => {
       </section>
 
       {/* Why Choose Section */}
-      <section
-        className="py-20"
-        style={{ backgroundColor: "var(--color-bg-alt)" }}
-      >
+      <section className="py-20 bg-bg-alt">
         <div className="container mx-auto px-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
-              <h2
-                className="text-3xl font-serif font-bold mb-8"
-                style={{ color: "var(--color-text)" }}
-              >
+              <h2 className="text-3xl lg:text-4xl font-serif font-bold text-text mb-8">
                 {t(
                   "pages.services.diagnostics.whyChoose.title",
                   "Why Choose Everleaf Diagnostics?",
@@ -356,10 +335,7 @@ const Diagnostics: React.FC = () => {
               </h2>
               <div className="space-y-6">
                 <div className="flex gap-4">
-                  <div
-                    className="w-12 h-12 rounded-xl shadow-sm flex items-center justify-center text-primary shrink-0"
-                    style={{ backgroundColor: "var(--color-surface)" }}
-                  >
+                  <div className="w-12 h-12 rounded-full flex items-center justify-center shrink-0 bg-surface">
                     <span className="material-icons text-2xl">
                       medical_services
                     </span>
@@ -383,10 +359,7 @@ const Diagnostics: React.FC = () => {
                   </div>
                 </div>
                 <div className="flex gap-4">
-                  <div
-                    className="w-12 h-12 rounded-xl shadow-sm flex items-center justify-center text-primary shrink-0"
-                    style={{ backgroundColor: "var(--color-surface)" }}
-                  >
+                  <div className="w-12 h-12 rounded-xl shadow-sm flex items-center justify-center text-primary shrink-0 bg-surface">
                     <span className="material-icons text-2xl">timer</span>
                   </div>
                   <div>
@@ -408,10 +381,7 @@ const Diagnostics: React.FC = () => {
                   </div>
                 </div>
                 <div className="flex gap-4">
-                  <div
-                    className="w-12 h-12 rounded-xl shadow-sm flex items-center justify-center text-primary shrink-0"
-                    style={{ backgroundColor: "var(--color-surface)" }}
-                  >
+                  <div className="w-12 h-12 rounded-xl shadow-sm flex items-center justify-center text-primary shrink-0 bg-surface">
                     <span className="material-icons text-2xl">
                       sentiment_satisfied
                     </span>
@@ -439,7 +409,7 @@ const Diagnostics: React.FC = () => {
             <div className="relative h-96 rounded-2xl overflow-hidden shadow-2xl">
               <CldImg
                 alt={t("common.imgAlt.diagnosticResults")}
-                className="absolute inset-0 w-full h-full object-cover"
+                className="absolute inset-0 w-full h-full object-cover object-top-left sm:object-center"
                 transform="w_1200,h_384,q_auto,f_auto,c_fill"
                 src="/images/diagnostics-body-image-2.jpg"
               />

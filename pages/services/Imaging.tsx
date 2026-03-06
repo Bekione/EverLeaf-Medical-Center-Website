@@ -106,33 +106,18 @@ const Imaging: React.FC = () => {
           <SplitLayoutSection
             leftContent={
               <Reveal from="left" threshold={0.1} className="h-full">
-                <div
-                  className="rounded-2xl p-8 border shadow-card h-full"
-                  style={{
-                    backgroundColor: "var(--color-surface)",
-                    borderColor: "var(--color-border)",
-                  }}
-                >
+                <div className="rounded-2xl p-8 border shadow-card h-full bg-surface border-border">
                   <div className="flex items-center gap-4 mb-6">
-                    <div
-                      className="w-12 h-12 rounded-full text-primary flex items-center justify-center shrink-0"
-                      style={{ backgroundColor: "var(--color-primary-light)" }}
-                    >
+                    <div className="w-12 h-12 rounded-full text-primary flex items-center justify-center shrink-0 bg-primary-light">
                       <span className="material-icons text-2xl">biotech</span>
                     </div>
-                    <h2
-                      className="text-2xl font-bold"
-                      style={{ color: "var(--color-text)" }}
-                    >
+                    <h2 className="text-2xl font-bold text-text">
                       {t("pages.services.imaging.specialized.title")}
                     </h2>
                   </div>
                   <div className="grid md:grid-cols-2 gap-8">
                     <div>
-                      <h4
-                        className="font-bold mb-2"
-                        style={{ color: "var(--color-text)" }}
-                      >
+                      <h4 className="font-bold mb-2 text-text">
                         {t(
                           "pages.services.imaging.specialized.interventional.title",
                         )}
@@ -162,10 +147,7 @@ const Imaging: React.FC = () => {
                       </ul>
                     </div>
                     <div>
-                      <h4
-                        className="font-bold mb-2"
-                        style={{ color: "var(--color-text)" }}
-                      >
+                      <h4 className="font-bold mb-2 text-text">
                         {t("pages.services.imaging.specialized.women.title")}
                       </h4>
                       <p className="text-slate-500 text-sm leading-relaxed mb-4">
@@ -193,10 +175,7 @@ const Imaging: React.FC = () => {
                       </ul>
                     </div>
                   </div>
-                  <div
-                    className="mt-8 pt-8 border-t"
-                    style={{ borderColor: "var(--color-border)" }}
-                  >
+                  <div className="mt-8 pt-8 border-t border-border">
                     <p className="text-slate-500 italic text-sm">
                       "{t("pages.services.imaging.specialized.quote")}"
                     </p>
@@ -206,13 +185,7 @@ const Imaging: React.FC = () => {
             }
             rightContent={
               <Reveal from="right" threshold={0.1} className="h-full">
-                <div
-                  className="rounded-2xl p-8 border h-full"
-                  style={{
-                    backgroundColor: "var(--color-primary-light)",
-                    borderColor: "var(--color-border)",
-                  }}
-                >
+                <div className="rounded-2xl p-8 border h-full bg-primary-light border-border">
                   <div className="flex items-center gap-4 mb-6">
                     <div
                       className="w-12 h-12 rounded-full text-primary flex items-center justify-center shadow-sm"
@@ -220,10 +193,7 @@ const Imaging: React.FC = () => {
                     >
                       <span className="material-icons text-2xl">shield</span>
                     </div>
-                    <h2
-                      className="text-xl font-bold"
-                      style={{ color: "var(--color-text)" }}
-                    >
+                    <h2 className="text-xl font-bold text-text">
                       {t("pages.services.imaging.safety.title")}
                     </h2>
                   </div>
@@ -239,10 +209,7 @@ const Imaging: React.FC = () => {
                         verified
                       </span>
                       <div>
-                        <span
-                          className="block font-bold text-sm"
-                          style={{ color: "var(--color-text)" }}
-                        >
+                        <span className="block font-bold text-sm text-text">
                           {t("pages.services.imaging.safety.accredited")}
                         </span>
                         <span className="text-xs text-slate-500">

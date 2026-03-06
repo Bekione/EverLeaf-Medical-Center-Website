@@ -95,9 +95,8 @@ const PreventiveCheckups: React.FC = () => {
       />
 
       <section
-        className="py-20 relative overflow-hidden"
+        className="py-20 relative overflow-hidden bg-surface"
         id="packages"
-        style={{ backgroundColor: "var(--color-surface)" }}
       >
         <div
           className="absolute top-0 left-0 w-full h-full opacity-5 pointer-events-none"
@@ -114,10 +113,7 @@ const PreventiveCheckups: React.FC = () => {
               <span className="inline-block px-3 py-1 mb-2 text-xs font-semibold tracking-wider text-primary uppercase bg-primary-light rounded-full">
                 {t("pages.services.preventiveCheckups.packages.badge")}
               </span>
-              <h2
-                className="text-3xl md:text-4xl font-serif font-bold mt-2 mb-4"
-                style={{ color: "var(--color-text)" }}
-              >
+              <h2 className="text-3xl lg:text-4xl font-serif font-bold text-text mb-6 leading-tight">
                 {t("pages.services.preventiveCheckups.packages.title")}
               </h2>
               <p className="text-slate-600 max-w-2xl mx-auto">
@@ -208,8 +204,7 @@ const PreventiveCheckups: React.FC = () => {
 
             <Reveal threshold={0.1}>
               <div
-                className="rounded-2xl shadow-xl ring-2 ring-primary relative overflow-hidden flex flex-col transform md:-translate-y-4 h-full"
-                style={{ backgroundColor: "var(--color-surface)" }}
+                className="rounded-2xl shadow-xl ring-2 ring-primary bg-surface relative overflow-hidden flex flex-col transform md:-translate-y-4 h-full"
               >
                 <div className="absolute top-0 right-0 bg-primary text-white text-xs font-bold px-3 py-1 rounded-bl-lg">
                   {t(
@@ -396,15 +391,9 @@ const PreventiveCheckups: React.FC = () => {
         </div>
       </section>
 
-      <section
-        className="py-20"
-        style={{ backgroundColor: "var(--color-bg-alt)" }}
-      >
+      <section className="py-20 bg-bg-alt">
         <div className="container mx-auto px-6">
-          <h2
-            className="text-2xl font-bold text-center mb-10"
-            style={{ color: "var(--color-text)" }}
-          >
+          <h2 className="text-3xl font-serif font-bold text-text mb-8">
             {t("pages.services.preventiveCheckups.comparison.title")}
           </h2>
           <Reveal threshold={0.1}>
@@ -525,10 +514,7 @@ const PreventiveCheckups: React.FC = () => {
               />
             </Reveal>
             <Reveal from="right" threshold={0.1} className="lg:w-1/2">
-              <h2
-                className="text-3xl font-serif font-bold mb-6"
-                style={{ color: "var(--color-text)" }}
-              >
+              <h2 className="text-3xl font-serif font-bold text-text mb-6">
                 {t("pages.services.preventiveCheckups.wellness.title")}
               </h2>
               <p className="text-lg text-slate-600 mb-6 leading-relaxed">
