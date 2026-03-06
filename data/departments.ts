@@ -27,7 +27,7 @@ export const departments: Department[] = [
   },
   {
     id: "dental",
-    icon: "dentistry",
+    icon: "medical_services",
     color: "cyan",
   },
   {

@@ -209,15 +209,15 @@ const Pediatrics: React.FC = () => {
           },
         ]}
         rightContent={
-          <div className="relative h-full min-h-[350px] rounded-3xl overflow-hidden shadow-2xl border-4 border-border/40">
+          <div className="relative w-full min-h-[400px] h-full rounded-3xl overflow-hidden shadow-2xl border-4 border-border/40 group">
             <CldImg
               src="/images/pediatrics-body-1.jpg"
               alt={t("common.imgAlt.childFriendlyFacility")}
               transform="w_900,q_auto,f_auto,c_fill"
-              className="w-full h-full object-cover"
+              className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
             />
-            <div className="absolute inset-0 bg-linear-to-t from-slate-900/40 to-transparent"></div>
-            <div className="absolute bottom-6 left-6 right-6 p-4 bg-white/10 backdrop-blur-md rounded-xl border border-border/20">
+            <div className="absolute inset-0 bg-linear-to-t from-slate-900/60 via-slate-900/10 to-transparent"></div>
+            <div className="absolute bottom-6 left-6 right-6 p-4 bg-white/10 backdrop-blur-md rounded-xl border border-white/20">
               <p className="text-white text-sm font-medium">
                 {t("pages.departments.pediatrics.facility.subtitle")}
               </p>
