@@ -1,8 +1,7 @@
 import React from "react";
-import { Link, useOutletContext } from "react-router-dom";
+import { useOutletContext } from "react-router-dom";
 import { OpenAppointmentFunc } from "../Layout";
 import SEO from "../components/SEO";
-import Reveal from "../components/Reveal";
 import { CldImg } from "../components/CldImg";
 import { heroImages } from "../data/hero";
 import { testimonials } from "../data/testimonials";
@@ -110,14 +109,7 @@ const Home: React.FC = () => {
                   />
                 </div>
               ))}
-              <div
-                className="w-10 h-10 rounded-full border-2 flex items-center justify-center text-xs font-bold"
-                style={{
-                  borderColor: "var(--color-border)",
-                  backgroundColor: "var(--color-bg-alt)",
-                  color: "var(--color-text)",
-                }}
-              >
+              <div className="w-10 h-10 rounded-full border-2 flex items-center justify-center text-xs font-bold border-border bg-bg-alt text-text">
                 12k+
               </div>
             </div>
@@ -129,115 +121,78 @@ const Home: React.FC = () => {
 
       {/* Info Cards */}
       <div className="relative z-20 -mt-20 lg:-mt-24 mb-20 container mx-auto px-6">
-        <div
-          className="grid md:grid-cols-3 gap-6 rounded-2xl shadow-xl p-4 md:p-6 border"
-          style={{
-            backgroundColor: "var(--color-surface)",
-            borderColor: "var(--color-border)",
-          }}
-        >
-          <div className="flex flex-col p-4 rounded-xl transition-colors cursor-pointer group hover:opacity-80">
-            <div className="flex items-center gap-3 mb-3">
-              <div className="bg-bg-alt p-3 rounded-lg text-primary group-hover:scale-110 transition-transform shrink-0">
-                <span className="material-icons text-3xl">emergency</span>
-              </div>
-              <div>
-                <p
-                  className="text-lg font-bold mb-0.5"
-                  style={{ color: "var(--color-text)" }}
-                >
-                  {t("pages.home.infoCards.emergency.title")}
-                </p>
-                <p
-                  className="text-sm"
-                  style={{ color: "var(--color-text-muted)" }}
-                >
-                  {t("pages.home.infoCards.emergency.desc")}
-                </p>
-              </div>
-            </div>
-            <Button
-              to={buildPath("/services/emergency")}
-              variant="action"
-              size="sm"
-              animate={false}
-              className="text-red-600 bg-red-50 hover:bg-red-100 group/btn w-full justify-center"
+        <div className="grid md:grid-cols-3 gap-6 rounded-2xl shadow-xl p-4 md:p-6 border bg-surface border-border">
+          {[
+            {
+              id: "emergency",
+              icon: "emergency",
+              title: t("pages.home.infoCards.emergency.title"),
+              desc: t("pages.home.infoCards.emergency.desc"),
+              buttonLabel: t("pages.home.infoCards.emergency.call"),
+              link: "/services/emergency",
+              variant: "emergency",
+              iconBg: "bg-bg-alt",
+              iconColor: "text-primary",
+            },
+            {
+              id: "specialist",
+              icon: "person_search",
+              title: t("pages.home.infoCards.specialist.title"),
+              desc: t("pages.home.infoCards.specialist.desc"),
+              buttonLabel: t("pages.home.infoCards.specialist.search"),
+              link: "/doctors",
+              variant: "standard",
+              iconBg: "bg-primary/10",
+              iconColor: "text-primary",
+              border: "md:border-l md:border-r border-border",
+            },
+            {
+              id: "departments",
+              icon: "domain",
+              title: t("pages.home.infoCards.departments.title"),
+              desc: t("pages.home.infoCards.departments.desc"),
+              buttonLabel: t("pages.home.infoCards.departments.view"),
+              link: "/departments",
+              variant: "standard",
+              iconBg: "bg-secondary/10",
+              iconColor: "text-secondary",
+            },
+          ].map((card) => (
+            <div
+              key={card.id}
+              className={`flex flex-col p-4 rounded-xl transition-colors cursor-pointer group hover:opacity-80 ${card.border || ""}`}
             >
-              {t("pages.home.infoCards.emergency.call")}
-              <span className="material-icons text-sm ml-2 transition-transform duration-300 group-hover/btn:translate-x-1">
-                arrow_forward
-              </span>
-            </Button>
-          </div>
-          <div
-            className="flex flex-col p-4 rounded-xl transition-colors cursor-pointer group border-l border-r"
-            style={{ borderColor: "var(--color-border)" }}
-          >
-            <div className="flex items-center gap-3 mb-3">
-              <div className="bg-primary/10 p-3 rounded-lg text-primary group-hover:scale-110 transition-transform shrink-0">
-                <span className="material-icons text-3xl">person_search</span>
-              </div>
-              <div>
-                <p
-                  className="text-lg font-bold mb-0.5"
-                  style={{ color: "var(--color-text)" }}
+              <div className="flex items-center gap-3 mb-3">
+                <div
+                  className={`${card.iconBg} ${card.iconColor} p-3 rounded-lg group-hover:scale-110 transition-transform shrink-0`}
                 >
-                  {t("pages.home.infoCards.specialist.title")}
-                </p>
-                <p
-                  className="text-sm"
-                  style={{ color: "var(--color-text-muted)" }}
-                >
-                  {t("pages.home.infoCards.specialist.desc")}
-                </p>
+                  <span className="material-icons text-3xl">{card.icon}</span>
+                </div>
+                <div>
+                  <p className="text-lg font-bold mb-0.5 text-text">
+                    {card.title}
+                  </p>
+                  <p className="text-sm text-text-muted">{card.desc}</p>
+                </div>
               </div>
+              <Button
+                to={buildPath(card.link)}
+                variant="action"
+                size="sm"
+                animate={false}
+                className={`${
+                  card.variant === "emergency"
+                    ? "text-red-600 bg-red-50 hover:bg-red-100"
+                    : ""
+                } group/btn w-full md:w-auto md:ml-16 justify-center`}
+              >
+                {card.buttonLabel}
+                <span className="material-icons text-sm ml-2 transition-transform duration-300 group-hover/btn:translate-x-1">
+                  arrow_forward
+                </span>
+              </Button>
             </div>
-            <Button
-              to={buildPath("/doctors")}
-              variant="action"
-              size="sm"
-              animate={false}
-              className="group/btn w-full justify-center"
-            >
-              {t("pages.home.infoCards.specialist.search")}
-              <span className="material-icons text-sm ml-2 transition-transform duration-300 group-hover/btn:translate-x-1">
-                arrow_forward
-              </span>
-            </Button>
-          </div>
-          <div className="flex flex-col p-4 rounded-xl transition-colors cursor-pointer group hover:opacity-80">
-            <div className="flex items-center gap-3 mb-3">
-              <div className="bg-secondary/10 p-3 rounded-lg text-secondary group-hover:scale-110 transition-transform shrink-0">
-                <span className="material-icons text-3xl">domain</span>
-              </div>
-              <div>
-                <p
-                  className="text-lg font-bold mb-0.5"
-                  style={{ color: "var(--color-text)" }}
-                >
-                  {t("pages.home.infoCards.departments.title")}
-                </p>
-                <p
-                  className="text-sm"
-                  style={{ color: "var(--color-text-muted)" }}
-                >
-                  {t("pages.home.infoCards.departments.desc")}
-                </p>
-              </div>
-            </div>
-            <Button
-              to={buildPath("/departments")}
-              variant="action"
-              size="sm"
-              animate={false}
-              className="group/btn w-full justify-center"
-            >
-              {t("pages.home.infoCards.departments.view")}
-              <span className="material-icons text-sm ml-2 transition-transform duration-300 group-hover/btn:translate-x-1">
-                arrow_forward
-              </span>
-            </Button>
-          </div>
+          ))}
         </div>
       </div>
 
@@ -330,18 +285,9 @@ const Home: React.FC = () => {
       <NewsSection />
 
       {/* Partners */}
-      <section
-        className="py-12 border-t"
-        style={{
-          backgroundColor: "var(--color-surface)",
-          borderColor: "var(--color-border)",
-        }}
-      >
+      <section className="py-12 border-t bg-surface border-border">
         <div className="container mx-auto px-6">
-          <p
-            className="text-center text-sm font-semibold uppercase tracking-wider mb-8"
-            style={{ color: "var(--color-text-muted)" }}
-          >
+          <p className="text-center text-sm font-semibold uppercase tracking-wider mb-8 text-text-muted">
             {t("pages.home.partners.title")}
           </p>
 
