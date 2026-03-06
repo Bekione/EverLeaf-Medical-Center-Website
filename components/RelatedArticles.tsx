@@ -26,7 +26,7 @@ const RelatedArticles: React.FC<RelatedArticlesProps> = ({
   const related = [...sameCategory, ...otherCategory].slice(0, 3);
 
   return (
-    <div className="rounded-2xl shadow-card p-6 border sticky top-28 bg-surface border-border">
+    <div className="rounded-2xl shadow-card p-6 border bg-surface border-border">
       <h3 className="text-lg font-bold mb-6 border-b pb-2 text-text border-border">
         {t("components.relatedArticles.title")}
       </h3>

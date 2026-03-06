@@ -216,7 +216,7 @@ const ArticleDetail: React.FC = () => {
                   className="inline-flex items-center hover:text-primary transition-colors"
                 >
                   <span className="material-icons text-sm mr-1">home</span>
-                  {t("nav.home")}
+                  <span className="hidden md:flex">{t("nav.home")}</span>
                 </Link>
               </li>
               <li>
@@ -403,7 +403,7 @@ const ArticleDetail: React.FC = () => {
           </div>
 
           {/* Sidebar */}
-          <aside className="lg:col-span-4 space-y-8">
+          <aside className="lg:col-span-4 space-y-6 lg:sticky lg:top-22 h-fit">
             <RelatedArticles
               currentId={article.id}
               currentCategory={article.category}
