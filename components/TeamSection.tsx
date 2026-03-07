@@ -3,6 +3,7 @@ import Button from "./Button";
 import Reveal from "./Reveal";
 import ScrollFade from "./ScrollFade";
 import DoctorCard, { DoctorCardProps } from "./DoctorCard";
+import { useLangPath } from "../hooks/useLang";
 
 interface TeamSectionProps {
   badge?: string;
@@ -32,6 +33,7 @@ const TeamSection: React.FC<TeamSectionProps> = ({
   columns = 4,
 }) => {
   const scrollRef = React.useRef<HTMLDivElement>(null);
+  const buildPath = useLangPath();
 
   const scroll = (direction: "left" | "right") => {
     if (scrollRef.current) {
@@ -84,7 +86,11 @@ const TeamSection: React.FC<TeamSectionProps> = ({
               )}
               {viewAllLink && viewAllLabel && (
                 <div className="hidden md:block shrink-0">
-                  <Button to={viewAllLink} variant="action" size="sm">
+                  <Button
+                    to={buildPath(viewAllLink)}
+                    variant="action"
+                    size="sm"
+                  >
                     {viewAllLabel}
                     <span className="material-icons text-sm ml-2">
                       arrow_forward
@@ -138,7 +144,7 @@ const TeamSection: React.FC<TeamSectionProps> = ({
         {viewAllLink && viewAllLabel && (
           <div className="mt-8 md:hidden pb-8 text-center">
             <Button
-              to={viewAllLink}
+              to={buildPath(viewAllLink)}
               variant="action"
               size="md"
               className="w-full sm:w-auto"
