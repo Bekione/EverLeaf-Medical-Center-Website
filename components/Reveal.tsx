@@ -17,6 +17,8 @@ interface RevealProps {
   index?: number;
   /** IntersectionObserver threshold (0‒1) */
   threshold?: number;
+  /** IntersectionObserver rootMargin (e.g. "100px") */
+  rootMargin?: string;
   key?: string | number;
 }
 
@@ -45,10 +47,11 @@ function Reveal({
   mobileFrom,
   mobileFallback = "bottom",
   index = 0,
-  threshold = 0.12,
+  threshold = 0,
+  rootMargin = "100px",
   key,
 }: RevealProps) {
-  const [ref, inView] = useInView<HTMLDivElement>({ threshold });
+  const [ref, inView] = useInView<HTMLDivElement>({ threshold, rootMargin });
   const [isMobile, setIsMobile] = React.useState(false);
 
   React.useEffect(() => {
