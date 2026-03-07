@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import { useTranslation } from "react-i18next";
+import ScrollFade from "./ScrollFade";
 
 interface Option {
   value: string;
@@ -117,48 +118,50 @@ export const CustomSelect: React.FC<CustomSelectProps> = ({
             borderColor: "var(--color-border)",
           }}
         >
-          <div
-            className="overflow-y-auto custom-scrollbar"
-            style={{ maxHeight: `${maxHeight}rem` }}
-          >
-            {options.map((option) => (
-              <div
-                key={option.value}
-                onClick={() => handleSelect(option.value)}
-                className="px-4 py-2.5 text-sm cursor-pointer transition-all flex items-center justify-between group rounded-lg mx-1.5 mb-1 last:mb-0"
-                style={{
-                  color:
-                    value === option.value
-                      ? "var(--color-primary)"
-                      : "var(--color-text)",
-                  backgroundColor:
-                    value === option.value
-                      ? "color-mix(in srgb, var(--color-primary) 12%, transparent)"
-                      : undefined,
-                }}
-                onMouseEnter={(e) => {
-                  if (value !== option.value) {
-                    e.currentTarget.style.backgroundColor =
-                      "color-mix(in srgb, var(--color-primary) 8%, transparent)";
-                  }
-                }}
-                onMouseLeave={(e) => {
-                  if (value !== option.value) {
-                    e.currentTarget.style.backgroundColor = "transparent";
-                  }
-                }}
-              >
-                <span
-                  className={`inline-block transition-transform duration-300 ${value === option.value ? "font-semibold translate-x-1.5" : "group-hover:translate-x-1.5"}`}
+          <ScrollFade direction="vertical">
+            <div
+              className="overflow-y-auto custom-scrollbar"
+              style={{ maxHeight: `${maxHeight}rem` }}
+            >
+              {options.map((option) => (
+                <div
+                  key={option.value}
+                  onClick={() => handleSelect(option.value)}
+                  className="px-4 py-2.5 text-sm cursor-pointer transition-all flex items-center justify-between group rounded-lg mx-1.5 mb-1 last:mb-0"
+                  style={{
+                    color:
+                      value === option.value
+                        ? "var(--color-primary)"
+                        : "var(--color-text)",
+                    backgroundColor:
+                      value === option.value
+                        ? "color-mix(in srgb, var(--color-primary) 12%, transparent)"
+                        : undefined,
+                  }}
+                  onMouseEnter={(e) => {
+                    if (value !== option.value) {
+                      e.currentTarget.style.backgroundColor =
+                        "color-mix(in srgb, var(--color-primary) 8%, transparent)";
+                    }
+                  }}
+                  onMouseLeave={(e) => {
+                    if (value !== option.value) {
+                      e.currentTarget.style.backgroundColor = "transparent";
+                    }
+                  }}
                 >
-                  {option.label}
-                </span>
-                {value === option.value && (
-                  <span className="material-icons text-sm">check</span>
-                )}
-              </div>
-            ))}
-          </div>
+                  <span
+                    className={`inline-block transition-transform duration-300 ${value === option.value ? "font-semibold translate-x-1.5" : "group-hover:translate-x-1.5"}`}
+                  >
+                    {option.label}
+                  </span>
+                  {value === option.value && (
+                    <span className="material-icons text-sm">check</span>
+                  )}
+                </div>
+              ))}
+            </div>
+          </ScrollFade>
         </div>
       )}
 
