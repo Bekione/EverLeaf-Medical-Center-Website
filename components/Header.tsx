@@ -313,7 +313,7 @@ const Header: React.FC<HeaderProps> = ({ onBookAppointment }) => {
             fadeSize={35}
             className="max-h-[80vh]"
           >
-            <div className="py-4 px-6 overflow-y-auto max-h-[80vh] bg-surface shadow-lg">
+            <div className="py-4 px-6 overflow-y-auto overflow-x-hidden max-h-[80vh] bg-surface shadow-lg">
               <div className="flex flex-col space-y-2">
                 {topLevelLinks.map((link, index) => (
                   <Link
