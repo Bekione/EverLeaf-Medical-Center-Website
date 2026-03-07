@@ -2,7 +2,6 @@ import React, { useState, useEffect, useRef } from "react";
 import { useTranslation } from "react-i18next";
 import { useOutletContext, useSearchParams } from "react-router-dom";
 import { OpenAppointmentFunc } from "../Layout";
-import ImageSkeleton from "../components/ImageSkeleton";
 import Reveal from "../components/Reveal";
 import SEO from "../components/SEO";
 import { doctors } from "../data/doctors";
@@ -154,16 +153,16 @@ const Doctors: React.FC = () => {
       <div className="sticky top-(--header-height) lg:top-[74px] z-30 shadow-md border-b py-3 md:py-6 transition-all duration-300 bg-surface border-border">
         <div className="container mx-auto px-4 md:px-6">
           <div className="flex flex-col lg:flex-row gap-3 md:gap-4 lg:items-center lg:justify-between">
-            {/* Search and Dept Row (Side-by-side on mobile, part of unified row on desktop) */}
-            <div className="flex gap-3 items-center w-full lg:w-auto lg:grow lg:max-w-xl relative min-h-[50px]">
+            {/* Row 1 (Mobile) / Left Part (Desktop): Search and Dept */}
+            <div className="flex gap-3 items-center w-full lg:w-auto lg:grow lg:contents">
               {/* Expandable Search Input Component */}
               <div
-                className={`transition-[flex-grow] duration-500 ease-in-out overflow-hidden flex ${
+                className={`transition-[flex-grow] duration-500 ease-in-out flex ${
                   !isDesktop
                     ? isSearchExpanded
                       ? "flex-grow"
                       : "flex-grow-0"
-                    : "lg:flex-grow"
+                    : "lg:grow lg:basis-0"
                 }`}
                 style={
                   !isDesktop && !isSearchExpanded ? { width: 50 } : undefined
@@ -174,7 +173,7 @@ const Doctors: React.FC = () => {
                   }
                 }}
               >
-                <div className="relative group">
+                <div className="relative group w-full">
                   <span
                     className={`material-icons absolute text-slate-400 transition-all duration-500 pointer-events-none z-10
                     ${
@@ -208,23 +207,18 @@ const Doctors: React.FC = () => {
                       }
                     }}
                   />
-                  {(isSearchExpanded || searchInput || isDesktop) && (
+                  {/* Clear Search Button */}
+                  {searchInput && (
                     <Button
                       variant="ghost"
                       size="sm"
-                      onClick={() => {
-                        if (searchInput) {
-                          clearSearch();
-                        }
-                        setIsSearchExpanded(false);
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        clearSearch();
+                        if (!isDesktop) setIsSearchExpanded(false);
                       }}
                       animate={false}
-                      className={`absolute right-2 top-1/2 -translate-y-1/2 p-0.5 rounded-full h-8 w-8 min-w-0 shadow-none hover:shadow-none z-20 ${
-                        (isSearchExpanded && searchInput) ||
-                        (isDesktop && searchInput)
-                          ? "inline-flex"
-                          : "hidden"
-                      }`}
+                      className="absolute right-2 top-1/2 -translate-y-1/2 p-0.5 rounded-full h-8 w-8 min-w-0 shadow-none hover:shadow-none z-20 inline-flex"
                       icon="close"
                       rounded="full"
                     ></Button>
@@ -232,14 +226,14 @@ const Doctors: React.FC = () => {
                 </div>
               </div>
 
-              {/* Department Filter - Shrinks on mobile expansion */}
+              {/* Department Filter - Part of Row 1 on mobile, follows Search on desktop */}
               <div
                 className={`transition-[flex-grow] duration-500 ease-in-out flex ${
                   !isDesktop
                     ? isSearchExpanded
                       ? "flex-grow-0"
                       : "flex-grow"
-                    : "grow basis-0 lg:flex-none lg:min-w-[220px]"
+                    : "lg:w-[220px] lg:shrink-0"
                 }`}
               >
                 <CustomSelect
@@ -288,10 +282,10 @@ const Doctors: React.FC = () => {
               </div>
             </div>
 
-            {/* Specialty and Gender Row (Side-by-side on mobile) */}
-            <div className="flex gap-2 sm:gap-4 w-full lg:w-auto lg:shrink-0">
+            {/* Row 2 (Mobile) / Right Part (Desktop): Specialty and Gender */}
+            <div className="flex gap-2 sm:gap-4 w-full lg:w-auto lg:shrink-0 lg:contents">
               <CustomSelect
-                className="min-w-0 flex-1"
+                className="min-w-0 flex-1 lg:flex-none lg:w-[190px]"
                 options={[
                   {
                     value: "",
@@ -321,7 +315,7 @@ const Doctors: React.FC = () => {
               />
 
               <CustomSelect
-                className="min-w-0 flex-1"
+                className="min-w-0 flex-1 lg:flex-none lg:w-[170px]"
                 options={[
                   { value: "", label: t("pages.doctors.filters.allGenders") },
                   {

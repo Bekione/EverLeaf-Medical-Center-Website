@@ -4,6 +4,7 @@ import Reveal from "./Reveal";
 import { CldImg } from "./CldImg";
 import Button from "./Button";
 import ImageSkeleton from "./ImageSkeleton";
+import ScrollFade from "./ScrollFade";
 
 export interface DoctorCardProps {
   name: string;
@@ -91,8 +92,9 @@ const DoctorCard: React.FC<DoctorCardProps> = ({
 
           {/* Slide-up Overlay */}
           <div className="absolute inset-0 bg-slate-900/90 backdrop-blur-sm translate-y-full group-hover/card:translate-y-0 transition-transform duration-300 ease-in-out p-6 flex flex-col justify-center text-white text-center z-20">
+            <ScrollFade direction="vertical" className="flex flex-col">
             <div className="overflow-y-auto scrollbar-hide pr-1">
-              <h4 className="font-bold text-lg mb-2 text-blue-300 font-serif">
+              <h4 className="font-bold text-lg mb-2 text-primary font-serif">
                 {t("pages.doctors.card.about", "About")}
               </h4>
               <p className="text-sm text-slate-300 mb-4 leading-relaxed">
@@ -101,7 +103,7 @@ const DoctorCard: React.FC<DoctorCardProps> = ({
 
               {education && (
                 <>
-                  <h4 className="font-bold text-sm mb-1 text-blue-300 uppercase tracking-wide">
+                  <h4 className="font-bold text-sm mb-1 text-primary uppercase tracking-wide">
                     {t("pages.doctors.card.education", "Education")}
                   </h4>
                   <p className="text-xs text-slate-300 mb-6">{education}</p>
@@ -139,6 +141,7 @@ const DoctorCard: React.FC<DoctorCardProps> = ({
                 </button>
               </div>
             </div>
+            </ScrollFade>
           </div>
         </div>
 
