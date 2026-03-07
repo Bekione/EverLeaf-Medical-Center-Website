@@ -6,6 +6,7 @@ interface AutoHeightProps {
   type?: "spring" | "transition";
   /** Transition settings */
   duration?: number;
+  /** CSS easing function — defaults to a smooth ease-in-out curve */
   easing?: string;
   /** Spring settings */
   stiffness?: number;
@@ -17,7 +18,7 @@ const AutoHeight: React.FC<AutoHeightProps> = ({
   className,
   type = "transition",
   duration = 300,
-  easing = "ease-in-out",
+  easing = "cubic-bezier(0.4,0,0.2,1)",
   stiffness = 0.15,
   damping = 0.8,
 }) => {
