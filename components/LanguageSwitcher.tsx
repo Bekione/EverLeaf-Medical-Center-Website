@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { useLangNavigate } from "../hooks/useLang";
+import Collapsible from "./Collapsible";
 
 const LANGUAGES = [
   {
@@ -145,55 +146,128 @@ const LanguageSwitcher: React.FC<LanguageSwitcherProps> = ({
         </span>
       </button>
 
-      {isOpen && (
+      {/* Menu variant: smooth accordion via Collapsible */}
+      {!isNavbar && (
+        <Collapsible
+          open={isOpen}
+          duration={500}
+          easing="cubic-bezier(0.16,1,0.3,1)"
+        >
+          <div
+            className="mt-2 w-full py-2 rounded-xl border shadow-sm z-99999"
+            style={{
+              backgroundColor: "var(--color-surface)",
+              borderColor: "var(--color-border)",
+            }}
+          >
+            {LANGUAGES.map((lang) => {
+              const isActive = i18n.language === lang.code;
+              return (
+                <button
+                  key={lang.code}
+                  onClick={() => changeLanguage(lang.code)}
+                  className="w-11/12 mx-auto flex items-center gap-3 px-4 py-3 text-sm rounded-lg overflow-hidden transition-all relative group mb-1 last:mb-0"
+                  style={{
+                    color: isActive
+                      ? "var(--color-primary)"
+                      : "var(--color-text)",
+                    backgroundColor: isActive
+                      ? "var(--color-primary-light)"
+                      : "transparent",
+                  }}
+                  onMouseEnter={(e) => {
+                    if (!isActive)
+                      e.currentTarget.style.backgroundColor =
+                        "var(--color-bg-alt)";
+                  }}
+                  onMouseLeave={(e) => {
+                    if (!isActive)
+                      e.currentTarget.style.backgroundColor = "transparent";
+                  }}
+                >
+                  <span className="text-lg leading-none">{lang.flag}</span>
+                  <span
+                    className={`flex-1 text-left ${isActive ? "font-bold" : ""}`}
+                  >
+                    {lang.name}
+                  </span>
+                  {isActive && (
+                    <span
+                      className="material-icons text-xs"
+                      style={{ color: "var(--color-primary)" }}
+                    >
+                      check
+                    </span>
+                  )}
+                </button>
+              );
+            })}
+          </div>
+        </Collapsible>
+      )}
+
+      {/* Navbar variant: now using Collapsible for smooth height expansion */}
+      {isNavbar && (
         <div
-          className={`${
-            isNavbar
-              ? "absolute right-0 mt-2 w-48 shadow-2xl"
-              : "relative mt-2 w-full shadow-sm"
-          } py-2 rounded-xl border z-99999 animate-in fade-in slide-in-from-top-2 duration-200`}
+          className={`absolute right-0 mt-2 z-99999 transition-all duration-500 ${
+            isOpen
+              ? "opacity-100 translate-y-0 pointer-events-auto"
+              : "opacity-0 -translate-y-1 pointer-events-none"
+          }`}
           style={{
-            backgroundColor: "var(--color-surface)",
-            borderColor: "var(--color-border)",
+            width: "12rem", // w-48
           }}
         >
-          {LANGUAGES.map((lang) => (
-            <button
-              key={lang.code}
-              onClick={() => changeLanguage(lang.code)}
-              className={`w-11/12 mx-auto flex items-center gap-3 px-4 py-3 text-sm rounded-lg overflow-hidden transition-colors relative group ${
-                i18n.language === lang.code
-                  ? "bg-primary/10"
-                  : "hover:bg-primary/10"
-              }`}
+          <Collapsible
+            open={isOpen}
+            duration={500}
+            className="rounded-xl shadow-2xl border overflow-hidden"
+            easing="cubic-bezier(0.16,1,0.3,1)"
+          >
+            <div
+              className="py-2"
               style={{
-                color:
-                  i18n.language === lang.code
-                    ? "var(--color-primary)"
-                    : "var(--color-text)",
+                backgroundColor: "var(--color-surface)",
+                borderColor: "var(--color-border)",
               }}
             >
-              <span className="text-lg leading-none">{lang.flag}</span>
-              <span
-                className={`flex-1 text-left ${
-                  i18n.language === lang.code ? "font-bold" : ""
-                }`}
-              >
-                {lang.name}
-              </span>
-              {i18n.language === lang.code && (
-                <span
-                  className="material-icons text-xs"
-                  style={{ color: "var(--color-primary)" }}
+              {LANGUAGES.map((lang) => (
+                <button
+                  key={lang.code}
+                  onClick={() => changeLanguage(lang.code)}
+                  className={`w-11/12 mx-auto flex items-center gap-3 px-4 py-3 text-sm rounded-lg mb-1 last:mb-0 overflow-hidden transition-all relative group ${
+                    i18n.language === lang.code
+                      ? "bg-primary/15"
+                      : "hover:bg-primary/10 active:bg-primary/15"
+                  }`}
+                  style={{
+                    color:
+                      i18n.language === lang.code
+                        ? "var(--color-primary)"
+                        : "var(--color-text)",
+                  }}
                 >
-                  check
-                </span>
-              )}
-
-              {/* Hover highlight */}
-              <div className="absolute inset-0 bg-primary/10 opacity-0 group-hover:opacity-100 transition-opacity -z-10" />
-            </button>
-          ))}
+                  <span className="text-lg leading-none">{lang.flag}</span>
+                  <span
+                    className={`flex-1 text-left ${
+                      i18n.language === lang.code ? "font-bold" : ""
+                    }`}
+                  >
+                    {lang.name}
+                  </span>
+                  {i18n.language === lang.code && (
+                    <span
+                      className="material-icons text-xs"
+                      style={{ color: "var(--color-primary)" }}
+                    >
+                      check
+                    </span>
+                  )}
+                  <div className="absolute inset-0 bg-primary/10 opacity-0 group-hover:opacity-100 transition-opacity -z-10" />
+                </button>
+              ))}
+            </div>
+          </Collapsible>
         </div>
       )}
     </div>

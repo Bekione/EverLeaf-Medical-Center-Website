@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 import { THEMES, useTheme, type ThemeId } from "../contexts/ThemeContext";
 import { useTranslation } from "react-i18next";
 import Button from "./Button";
+import Collapsible from "./Collapsible";
 
 export const ThemeSwitcher: React.FC<{
   inline?: boolean;
@@ -28,12 +29,11 @@ export const ThemeSwitcher: React.FC<{
   if (variant === "menu") {
     return (
       <div className={`w-full ${className}`} ref={ref}>
-        {/* Trigger — mirrors LanguageSwitcher menu button */}
+        {/* Trigger */}
         <button
           onClick={() => setOpen((v) => !v)}
           className="flex items-center gap-3 px-3 py-2 rounded-lg transition-all text-sm font-semibold w-full bg-bg-alt text-text border border-border"
         >
-          {/* Current theme swatch */}
           <span
             className="w-5 h-5 rounded-full shrink-0 shadow-sm"
             style={{ backgroundColor: theme.swatch }}
@@ -47,10 +47,14 @@ export const ThemeSwitcher: React.FC<{
           </span>
         </button>
 
-        {/* Dropdown — opens downward, same style as LanguageSwitcher */}
-        {open && (
+        {/* Smooth dropdown via Collapsible — children always mounted */}
+        <Collapsible
+          open={open}
+          duration={500}
+          easing="cubic-bezier(0.16,1,0.3,1)"
+        >
           <div
-            className="relative mt-2 w-full py-2 rounded-xl border shadow-sm z-50 animate-in fade-in slide-in-from-top-2 duration-200"
+            className="mt-2 w-full py-2 rounded-xl border shadow-sm z-50"
             style={{
               backgroundColor: "var(--color-surface)",
               borderColor: "var(--color-border)",
@@ -69,30 +73,35 @@ export const ThemeSwitcher: React.FC<{
                     setTheme(t.id as ThemeId);
                     setOpen(false);
                   }}
-                  className={`w-11/12 mx-auto flex items-center gap-3 px-4 py-3 text-sm rounded-lg transition-colors relative group ${
-                    isActive ? "bg-primary/10" : "hover:bg-primary/10"
-                  }`}
+                  className="w-11/12 mx-auto flex items-center gap-3 px-4 py-3 text-sm rounded-lg transition-all relative group mb-1 last:mb-0"
                   style={{
                     color: isActive
                       ? "var(--color-primary)"
                       : "var(--color-text)",
+                    backgroundColor: isActive
+                      ? "var(--color-primary-light)"
+                      : "transparent",
+                  }}
+                  onMouseEnter={(e) => {
+                    if (!isActive)
+                      e.currentTarget.style.backgroundColor =
+                        "var(--color-bg-alt)";
+                  }}
+                  onMouseLeave={(e) => {
+                    if (!isActive)
+                      e.currentTarget.style.backgroundColor = "transparent";
                   }}
                 >
-                  {/* Color swatch */}
                   <span
                     className="w-5 h-5 rounded-full shrink-0 shadow-sm flex items-center justify-center"
                     style={{ backgroundColor: t.swatch }}
                     aria-hidden="true"
                   />
-
-                  {/* Label */}
                   <span
                     className={`flex-1 text-left ${isActive ? "font-bold" : ""}`}
                   >
                     {translate(t.label)}
                   </span>
-
-                  {/* Theme icon */}
                   <span
                     className="material-icons text-sm shrink-0"
                     style={{
@@ -103,14 +112,11 @@ export const ThemeSwitcher: React.FC<{
                   >
                     {t.icon}
                   </span>
-
-                  {/* Hover highlight */}
-                  <div className="absolute inset-0 bg-primary/10 opacity-0 group-hover:opacity-100 transition-opacity -z-10 rounded-lg" />
                 </button>
               );
             })}
           </div>
-        )}
+        </Collapsible>
       </div>
     );
   }
@@ -125,123 +131,144 @@ export const ThemeSwitcher: React.FC<{
           : `hidden md:flex fixed bottom-8 left-6 z-50 flex-col items-start gap-3 ${className}`
       }
     >
-      {/* Theme Menu */}
-      {open && (
-        <div
-          className={`rounded-2xl shadow-2xl overflow-hidden w-64 animate-fade-in border z-50 ${
-            inline ? "absolute bottom-full right-0 mb-2" : ""
-          }`}
-          style={{
-            backgroundColor: "var(--color-surface)",
-            borderColor: "var(--color-border)",
-          }}
-          role="dialog"
-          aria-label={translate("components.themeSwitcher.aria.selector")}
+      {/* Theme Menu — now using Collapsible for smooth height + fade expansion */}
+      <div
+        className={`absolute z-50 transition-all duration-500 ${
+          inline ? "bottom-full right-0 mb-2" : "bottom-full left-0 mb-3"
+        } ${
+          open
+            ? "opacity-100 translate-y-0 pointer-events-auto"
+            : "opacity-0 translate-y-2 pointer-events-none"
+        }`}
+        style={{
+          width: "16rem", // w-64
+        }}
+      >
+        <Collapsible
+          open={open}
+          duration={500}
+          align="bottom"
+          className="bg-surface rounded-2xl shadow-2xl overflow-hidden border"
+          easing="cubic-bezier(0.16,1,0.3,1)"
         >
-          {/* Header */}
           <div
-            className="px-4 py-3 flex items-center gap-2 border-b"
-            style={{ borderColor: "var(--color-border)" }}
+            style={{
+              backgroundColor: "var(--color-surface)",
+              borderColor: "var(--color-border)",
+            }}
+            role="dialog"
+            aria-label={translate("components.themeSwitcher.aria.selector")}
           >
-            <span
-              className="material-icons text-lg"
-              style={{ color: "var(--color-primary)" }}
+            {/* Header */}
+            <div
+              className="px-4 py-3 flex items-center gap-2 border-b"
+              style={{ borderColor: "var(--color-border)" }}
             >
-              palette
-            </span>
-            <span
-              className="text-sm font-bold"
-              style={{ color: "var(--color-text)" }}
-            >
-              {translate("components.themeSwitcher.title")}
-            </span>
-          </div>
+              <span
+                className="material-icons text-lg"
+                style={{ color: "var(--color-primary)" }}
+              >
+                palette
+              </span>
+              <span
+                className="text-sm font-bold"
+                style={{ color: "var(--color-text)" }}
+              >
+                {translate("components.themeSwitcher.title")}
+              </span>
+            </div>
 
-          {/* Theme Options */}
-          <ul
-            className="py-2"
-            role="listbox"
-            aria-label={translate("components.themeSwitcher.aria.list")}
-          >
-            {THEMES.map((t) => {
-              const isActive = t.id === theme.id;
-              return (
-                <li key={t.id} role="option" aria-selected={isActive}>
-                  <button
-                    onClick={() => {
-                      setTheme(t.id as ThemeId);
-                      setOpen(false);
-                    }}
-                    className="w-full flex items-center gap-3 px-4 py-2.5 text-left transition-colors"
-                    style={{
-                      backgroundColor: isActive
-                        ? "var(--color-primary-light)"
-                        : "transparent",
-                    }}
-                    onMouseEnter={(e) => {
-                      if (!isActive)
-                        (
-                          e.currentTarget as HTMLButtonElement
-                        ).style.backgroundColor = "var(--color-bg-alt)";
-                    }}
-                    onMouseLeave={(e) => {
-                      if (!isActive)
-                        (
-                          e.currentTarget as HTMLButtonElement
-                        ).style.backgroundColor = "transparent";
-                    }}
+            {/* Theme Options */}
+            <ul
+              className="py-2"
+              role="listbox"
+              aria-label={translate("components.themeSwitcher.aria.list")}
+            >
+              {THEMES.map((t) => {
+                const isActive = t.id === theme.id;
+                return (
+                  <li
+                    key={t.id}
+                    role="option"
+                    aria-selected={isActive}
+                    className="mb-1 last:mb-0"
                   >
-                    {/* Color swatch */}
-                    <span
-                      className="w-8 h-8 rounded-full shrink-0 flex items-center justify-center shadow-sm"
-                      style={{ backgroundColor: t.swatch }}
-                      aria-hidden="true"
+                    <button
+                      onClick={() => {
+                        setTheme(t.id as ThemeId);
+                        setOpen(false);
+                      }}
+                      className="w-11/12 mx-auto flex items-center gap-3 px-4 py-2.5 rounded-xl text-left transition-colors"
+                      style={{
+                        backgroundColor: isActive
+                          ? "var(--color-primary-light)"
+                          : "transparent",
+                      }}
+                      onMouseEnter={(e) => {
+                        if (!isActive)
+                          (
+                            e.currentTarget as HTMLButtonElement
+                          ).style.backgroundColor = "var(--color-bg-alt)";
+                      }}
+                      onMouseLeave={(e) => {
+                        if (!isActive)
+                          (
+                            e.currentTarget as HTMLButtonElement
+                          ).style.backgroundColor = "transparent";
+                      }}
                     >
-                      {isActive && (
-                        <span className="material-icons text-white text-sm">
-                          check
-                        </span>
-                      )}
-                    </span>
+                      {/* Color swatch */}
+                      <span
+                        className="w-8 h-8 rounded-full shrink-0 flex items-center justify-center shadow-sm"
+                        style={{ backgroundColor: t.swatch }}
+                        aria-hidden="true"
+                      >
+                        {isActive && (
+                          <span className="material-icons text-white text-sm">
+                            check
+                          </span>
+                        )}
+                      </span>
 
-                    {/* Label */}
-                    <div className="flex-1 min-w-0">
-                      <p
-                        className="text-sm font-semibold truncate"
+                      {/* Label */}
+                      <div className="flex-1 min-w-0">
+                        <p
+                          className="text-sm font-semibold truncate"
+                          style={{
+                            color: isActive
+                              ? "var(--color-primary)"
+                              : "var(--color-text)",
+                          }}
+                        >
+                          {translate(t.label)}
+                        </p>
+                        <p
+                          className="text-xs truncate"
+                          style={{ color: "var(--color-text-muted)" }}
+                        >
+                          {translate(t.description)}
+                        </p>
+                      </div>
+
+                      {/* Icon */}
+                      <span
+                        className="material-icons text-base shrink-0"
                         style={{
                           color: isActive
                             ? "var(--color-primary)"
-                            : "var(--color-text)",
+                            : "var(--color-text-muted)",
                         }}
                       >
-                        {translate(t.label)}
-                      </p>
-                      <p
-                        className="text-xs truncate"
-                        style={{ color: "var(--color-text-muted)" }}
-                      >
-                        {translate(t.description)}
-                      </p>
-                    </div>
-
-                    {/* Icon */}
-                    <span
-                      className="material-icons text-base shrink-0"
-                      style={{
-                        color: isActive
-                          ? "var(--color-primary)"
-                          : "var(--color-text-muted)",
-                      }}
-                    >
-                      {t.icon}
-                    </span>
-                  </button>
-                </li>
-              );
-            })}
-          </ul>
-        </div>
-      )}
+                        {t.icon}
+                      </span>
+                    </button>
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
+        </Collapsible>
+      </div>
 
       {/* Toggle Button */}
       <Button
