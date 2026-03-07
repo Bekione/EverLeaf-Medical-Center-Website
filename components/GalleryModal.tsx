@@ -135,7 +135,8 @@ const GalleryModal: React.FC<GalleryModalProps> = ({
       }
     };
     document.addEventListener("keydown", handleTabKey);
-    firstEl?.focus();
+    // Focus the modal container itself instead of the close button to avoid immediate focus ring
+    (modal as HTMLElement)?.focus();
     return () => document.removeEventListener("keydown", handleTabKey);
   }, [isOpen]);
 
@@ -143,7 +144,7 @@ const GalleryModal: React.FC<GalleryModalProps> = ({
 
   return (
     <div
-      className="fixed inset-0 z-99999 backdrop-blur-md flex flex-col justify-center items-center p-4 sm:p-8 animate-fade-in"
+      className="fixed inset-0 z-99999 backdrop-blur-md flex flex-col justify-center items-center p-4 sm:p-8 animate-fade-in outline-none"
       style={{
         backgroundColor:
           "color-mix(in srgb, var(--color-footer-bg) 95%, transparent)",
@@ -152,6 +153,7 @@ const GalleryModal: React.FC<GalleryModalProps> = ({
       role="dialog"
       aria-label={t("components.galleryModal.aria.viewer")}
       aria-modal="true"
+      tabIndex={-1}
     >
       <Button
         variant="ghost"
@@ -230,7 +232,7 @@ const GalleryModal: React.FC<GalleryModalProps> = ({
         <Button
           variant="ghost"
           onClick={onPrev}
-          className="p-2 text-white/70! hover:text-primary! transition-all rounded-full hover:bg-white/10 shadow-none hover:shadow-none h-12 w-12 min-w-0"
+          className="p-2 text-white/70! hover:text-primary! transition-all rounded-full bg-white/10 hover:bg-white/20 shadow-none hover:shadow-none h-12 w-12 min-w-0"
           icon="chevron_left"
           rounded="full"
           animate={false}
@@ -238,38 +240,40 @@ const GalleryModal: React.FC<GalleryModalProps> = ({
         <Button
           variant="ghost"
           onClick={onNext}
-          className="p-2 text-white/70! hover:text-primary! transition-all rounded-full hover:bg-white/10 shadow-none hover:shadow-none h-12 w-12 min-w-0"
+          className="p-2 text-white/70! hover:text-primary! transition-all rounded-full bg-white/10 hover:bg-white/20 shadow-none hover:shadow-none h-12 w-12 min-w-0"
           icon="chevron_right"
           rounded="full"
           animate={false}
         ></Button>
       </div>
 
-      {/* Thumbnail strip — justify-start so offsetLeft is always correct for scroll calc */}
+      {/* Thumbnail strip — Using w-max mx-auto to center content when not overflowing, while justify-start ensures scroll safety */}
       <ScrollFade className="mt-auto h-20 w-full max-w-4xl">
         <div
           ref={thumbnailContainerRef}
-          className="overflow-x-auto flex gap-4 py-2 px-6 scrollbar-hide justify-start scroll-smooth"
+          className="overflow-x-auto scrollbar-hide scroll-smooth"
         >
-          {thumbnails.map((thumb, idx) => (
-            <div
-              key={idx}
-              ref={idx === currentImageIndex ? activeThumbnailRef : null}
-              onClick={() => onSelect(idx)}
-              className={`shrink-0 w-24 h-16 rounded overflow-hidden cursor-pointer transition-all border ${
-                currentImageIndex === idx
-                  ? "ring-2 ring-primary border-transparent opacity-100"
-                  : "border-white/20 opacity-50 hover:opacity-100"
-              }`}
-            >
-              <CldImg
-                src={thumb}
-                transform="w_200,q_auto,f_auto,c_fill"
-                className="w-full h-full object-cover"
-                alt={t("components.galleryModal.thumbnails.alt")}
-              />
-            </div>
-          ))}
+          <div className="flex gap-4 py-2 px-6 w-max mx-auto justify-start">
+            {thumbnails.map((thumb, idx) => (
+              <div
+                key={idx}
+                ref={idx === currentImageIndex ? activeThumbnailRef : null}
+                onClick={() => onSelect(idx)}
+                className={`shrink-0 w-24 h-16 rounded overflow-hidden cursor-pointer transition-all border ${
+                  currentImageIndex === idx
+                    ? "ring-2 ring-primary border-transparent opacity-100"
+                    : "border-white/20 opacity-50 hover:opacity-100"
+                }`}
+              >
+                <CldImg
+                  src={thumb}
+                  transform="w_200,q_auto,f_auto,c_fill"
+                  className="w-full h-full object-cover"
+                  alt={t("components.galleryModal.thumbnails.alt")}
+                />
+              </div>
+            ))}
+          </div>
         </div>
       </ScrollFade>
     </div>
