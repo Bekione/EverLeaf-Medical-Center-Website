@@ -50,7 +50,7 @@ const Footer: React.FC = () => {
                     rel="noopener noreferrer"
                     aria-label={social.label}
                     title={social.label}
-                    className="w-10 h-10 rounded-full flex items-center justify-center bg-white/10 hover:bg-primary hover:text-white transition-all hover:scale-110"
+                    className="w-10 h-10 rounded-full flex items-center justify-center bg-white/10 hover:bg-primary hover:text-white transition-all"
                   >
                     <svg
                       className={`${social.iconSize} fill-current`}
