@@ -1,77 +1,56 @@
-  import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
+import { observe, unobserve } from "../utils/observerPool";
 
-  interface UseInViewOptions {
-    threshold?: number;
-    rootMargin?: string;
-    /** Fire animation only once (default: true) */
-    once?: boolean;
-  }
+interface UseInViewOptions {
+  threshold?: number;
+  rootMargin?: string;
+  once?: boolean;
+}
 
-  /**
-   * Returns [ref, isInView].
-   * Attach `ref` to a DOM element; `isInView` becomes true when it
-   * enters the viewport and stays true (once=true by default).
-   */
-  export function useInView<T extends Element = HTMLDivElement>(
-    options: UseInViewOptions = {},
-  ): [React.RefObject<T>, boolean] {
-    const { threshold = 0.12, rootMargin = "0px", once = true } = options;
-    const ref = useRef<T>(null);
-    const [inView, setInView] = useState(false);
+export function useInView<T extends Element = HTMLDivElement>(
+  options: UseInViewOptions = {},
+): [React.RefObject<T>, boolean] {
+  const { threshold = 0.12, rootMargin = "0px", once = true } = options;
 
-    useEffect(() => {
-      const el = ref.current;
-      if (!el) return;
+  const ref = useRef<T>(null);
+  const [inView, setInView] = useState(false);
 
-      // Initial check in case it's already in view on mount
-      const checkVisibility = () => {
-        if (!el) return;
-        const rect = el.getBoundingClientRect();
-        const isVisible =
-          rect.top <
-            (window.innerHeight || document.documentElement.clientHeight) &&
-          rect.bottom > 0;
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
 
-        if (isVisible) {
-          setInView(true);
-          return true;
-        }
-        return false;
-      };
+    const observerOptions = { threshold, rootMargin };
 
-      const isAlreadyInView = checkVisibility();
-
-      if (isAlreadyInView && once) {
-        return;
+    const callback = (visible: boolean) => {
+      if (visible) {
+        setInView(true);
+        if (once) unobserve(el, observerOptions);
+      } else if (!once) {
+        setInView(false);
       }
+    };
 
-      const observer = new IntersectionObserver(
-        ([entry]) => {
-          if (entry.isIntersecting) {
-            setInView(true);
-            if (once) observer.unobserve(el);
-          } else if (!once) {
-            setInView(false);
-          }
-        },
-        { threshold, rootMargin },
-      );
+    observe(el, callback, observerOptions);
 
-      observer.observe(el);
+    /**
+     * Initial visibility check
+     * Fixes cases where the element is already visible
+     * but IntersectionObserver hasn't fired yet.
+     */
+    requestAnimationFrame(() => {
+      const rect = el.getBoundingClientRect();
+      const vh = window.innerHeight || document.documentElement.clientHeight;
 
-      // Navigation fallback: re-check after a short delay to catch the
-      // scrollTo(0,0) that happens in Layout.tsx upon route change.
-      const navigationTimer = setTimeout(() => {
-        if (checkVisibility() && once) {
-          observer.disconnect();
-        }
-      }, 150);
+      if (rect.top < vh && rect.bottom > 0) {
+        setInView(true);
+        if (once) unobserve(el, observerOptions);
+      }
+    });
 
-      return () => {
-        clearTimeout(navigationTimer);
-        observer.disconnect();
-      };
-    }, [threshold, rootMargin, once]);
+    return () => {
+      unobserve(el, observerOptions);
+    };
+  }, [threshold, rootMargin, once]);
 
-    return [ref, inView];
-  }
+  return [ref, inView];
+}
