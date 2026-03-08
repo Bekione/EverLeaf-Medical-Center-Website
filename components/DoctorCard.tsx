@@ -5,6 +5,7 @@ import { CldImg } from "./CldImg";
 import Button from "./Button";
 import ImageSkeleton from "./ImageSkeleton";
 import ScrollFade from "./ScrollFade";
+import { useLangPath } from "../hooks/useLang";
 
 export interface DoctorCardProps {
   name: string;
@@ -45,10 +46,11 @@ const DoctorCard: React.FC<DoctorCardProps> = ({
 }) => {
   const { t, i18n } = useTranslation();
   const [copied, setCopied] = React.useState(false);
+  const buildPath = useLangPath();
 
   const shareUrl =
     typeof window !== "undefined"
-      ? `${window.location.origin}${i18n.language === "en" ? "" : `/${i18n.language}`}/doctors?search=${encodeURIComponent(name)}`
+      ? `${window.location.origin}${buildPath("/doctors")}?search=${encodeURIComponent(name)}`
       : "";
 
   const handleShare = async (e: React.MouseEvent) => {
@@ -93,54 +95,54 @@ const DoctorCard: React.FC<DoctorCardProps> = ({
           {/* Slide-up Overlay */}
           <div className="absolute inset-0 bg-slate-900/90 backdrop-blur-sm translate-y-full group-hover/card:translate-y-0 transition-transform duration-300 ease-in-out p-6 flex flex-col justify-center text-white text-center z-20">
             <ScrollFade direction="vertical" className="flex flex-col">
-            <div className="overflow-y-auto scrollbar-hide pr-1">
-              <h4 className="font-bold text-lg mb-2 text-primary font-serif">
-                {t("pages.doctors.card.about", "About")}
-              </h4>
-              <p className="text-sm text-slate-300 mb-4 leading-relaxed">
-                {bio}
-              </p>
+              <div className="overflow-y-auto scrollbar-hide pr-1">
+                <h4 className="font-bold text-lg mb-2 text-primary font-serif">
+                  {t("pages.doctors.card.about", "About")}
+                </h4>
+                <p className="text-sm text-slate-300 mb-4 leading-relaxed">
+                  {bio}
+                </p>
 
-              {education && (
-                <>
-                  <h4 className="font-bold text-sm mb-1 text-primary uppercase tracking-wide">
-                    {t("pages.doctors.card.education", "Education")}
-                  </h4>
-                  <p className="text-xs text-slate-300 mb-6">{education}</p>
-                </>
-              )}
+                {education && (
+                  <>
+                    <h4 className="font-bold text-sm mb-1 text-primary uppercase tracking-wide">
+                      {t("pages.doctors.card.education", "Education")}
+                    </h4>
+                    <p className="text-xs text-slate-300 mb-6">{education}</p>
+                  </>
+                )}
 
-              <div className="pt-2 border-t border-slate-700 flex gap-4 justify-center">
-                <a
-                  href={`mailto:${socialLinks?.email || ""}`}
-                  className="w-10 h-10 rounded-full bg-slate-800/80 flex items-center justify-center hover:bg-primary transition-colors text-white"
-                  title={t("pages.doctors.card.social.email", "Send Email")}
-                >
-                  <span className="material-icons text-sm">email</span>
-                </a>
-                <button
-                  onClick={handleShare}
-                  className="w-10 h-10 rounded-full bg-slate-800/80 flex items-center justify-center hover:bg-primary transition-colors text-white cursor-pointer"
-                  title={t("pages.doctors.card.social.share", "Share")}
-                >
-                  <span className="material-icons text-sm">share</span>
-                </button>
-                <button
-                  onClick={handleCopyLink}
-                  className="w-10 h-10 rounded-full bg-slate-800/80 flex items-center justify-center hover:bg-primary transition-colors text-white cursor-pointer relative"
-                  title={t("pages.doctors.card.social.copy", "Copy Link")}
-                >
-                  <span className="material-icons text-sm">
-                    {copied ? "check" : "link"}
-                  </span>
-                  {copied && (
-                    <span className="absolute -top-8 bg-slate-800 text-white text-[10px] px-2 py-1 rounded">
-                      {t("common.labels.copied", "Copied!")}
+                <div className="pt-2 border-t border-slate-700 flex gap-4 justify-center">
+                  <a
+                    href={`mailto:${socialLinks?.email || ""}`}
+                    className="w-10 h-10 rounded-full bg-slate-800/80 flex items-center justify-center hover:bg-primary transition-colors text-white"
+                    title={t("pages.doctors.card.social.email", "Send Email")}
+                  >
+                    <span className="material-icons text-sm">email</span>
+                  </a>
+                  <button
+                    onClick={handleShare}
+                    className="w-10 h-10 rounded-full bg-slate-800/80 flex items-center justify-center hover:bg-primary transition-colors text-white cursor-pointer"
+                    title={t("pages.doctors.card.social.share", "Share")}
+                  >
+                    <span className="material-icons text-sm">share</span>
+                  </button>
+                  <button
+                    onClick={handleCopyLink}
+                    className="w-10 h-10 rounded-full bg-slate-800/80 flex items-center justify-center hover:bg-primary transition-colors text-white cursor-pointer relative"
+                    title={t("pages.doctors.card.social.copy", "Copy Link")}
+                  >
+                    <span className="material-icons text-sm">
+                      {copied ? "check" : "link"}
                     </span>
-                  )}
-                </button>
+                    {copied && (
+                      <span className="absolute -top-8 bg-slate-800 text-white text-[10px] px-2 py-1 rounded">
+                        {t("common.labels.copied", "Copied!")}
+                      </span>
+                    )}
+                  </button>
+                </div>
               </div>
-            </div>
             </ScrollFade>
           </div>
         </div>
