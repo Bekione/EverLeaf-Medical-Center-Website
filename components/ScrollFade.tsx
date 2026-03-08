@@ -4,6 +4,7 @@ interface ScrollFadeProps {
   children: React.ReactNode;
   fadeSize?: number;
   direction?: "horizontal" | "vertical";
+  fadeMode?: "scroll" | "toggle";
   alwaysShowFade?: boolean;
   animateFade?: boolean;
   className?: string;
@@ -13,6 +14,7 @@ const ScrollFade: React.FC<ScrollFadeProps> = ({
   children,
   fadeSize = 40,
   direction = "horizontal",
+  fadeMode = "scroll",
   alwaysShowFade = false,
   animateFade = true,
   className = "",
@@ -20,8 +22,8 @@ const ScrollFade: React.FC<ScrollFadeProps> = ({
   const wrapperRef = useRef<HTMLDivElement>(null);
   const scrollElRef = useRef<HTMLElement | null>(null);
 
-  const [canScrollStart, setCanScrollStart] = useState(false);
-  const [canScrollEnd, setCanScrollEnd] = useState(false);
+  const [startFade, setStartFade] = useState(0);
+  const [endFade, setEndFade] = useState(0);
 
   const isHorizontal = direction === "horizontal";
 
@@ -33,12 +35,24 @@ const ScrollFade: React.FC<ScrollFadeProps> = ({
     const scrollSize = isHorizontal ? el.scrollWidth : el.scrollHeight;
     const clientSize = isHorizontal ? el.clientWidth : el.clientHeight;
 
-    const canStart = scrollPos > 0;
-    const canEnd = scrollPos + clientSize < scrollSize - 1;
+    const maxScroll = scrollSize - clientSize;
 
-    setCanScrollStart(canStart);
-    setCanScrollEnd(canEnd);
-  }, [isHorizontal]);
+    if (fadeMode === "scroll") {
+      // Dynamic fade based on proximity to edges
+      const start = Math.min(scrollPos, fadeSize);
+      const end = Math.min(maxScroll - scrollPos, fadeSize);
+
+      setStartFade(start);
+      setEndFade(end);
+    } else {
+      // Binary fade with optional animation
+      const canStart = scrollPos > 0;
+      const canEnd = scrollPos < maxScroll - 1;
+
+      setStartFade(alwaysShowFade ? fadeSize : canStart ? fadeSize : 0);
+      setEndFade(alwaysShowFade ? fadeSize : canEnd ? fadeSize : 0);
+    }
+  }, [isHorizontal, fadeMode, fadeSize, alwaysShowFade]);
 
   useEffect(() => {
     const wrapper = wrapperRef.current;
@@ -63,9 +77,6 @@ const ScrollFade: React.FC<ScrollFadeProps> = ({
     };
   }, [updateScrollState, children]);
 
-  const startFade = alwaysShowFade ? fadeSize : canScrollStart ? fadeSize : 0;
-  const endFade = alwaysShowFade ? fadeSize : canScrollEnd ? fadeSize : 0;
-
   const mask = isHorizontal
     ? `linear-gradient(to right, transparent 0px, black var(--start-fade), black calc(100% - var(--end-fade)), transparent 100%)`
     : `linear-gradient(to bottom, transparent 0px, black var(--start-fade), black calc(100% - var(--end-fade)), transparent 100%)`;
@@ -77,9 +88,10 @@ const ScrollFade: React.FC<ScrollFadeProps> = ({
       style={{
         WebkitMaskImage: mask,
         maskImage: mask,
-        transition: animateFade
-          ? "--start-fade 300ms cubic-bezier(0.4,0,0.2,1), --end-fade 300ms cubic-bezier(0.4,0,0.2,1)"
-          : undefined,
+        transition:
+          animateFade && fadeMode === "toggle"
+            ? "--start-fade 300ms cubic-bezier(0.4,0,0.2,1), --end-fade 300ms cubic-bezier(0.4,0,0.2,1)"
+            : undefined,
         // These get dynamically updated:
         ["--start-fade" as any]: `${startFade}px`,
         ["--end-fade" as any]: `${endFade}px`,
