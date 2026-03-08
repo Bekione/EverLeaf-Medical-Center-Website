@@ -40,6 +40,7 @@ const Laboratory: React.FC = () => {
         badgeIcon="science"
         titlePart1={t("pages.departments.laboratory.hero.titlePart1")}
         titleHighlight={t("pages.departments.laboratory.hero.titleHighlight")}
+        titleHighlightClassName="lg:text-[3.65rem] text-primary"
         description={t("pages.departments.laboratory.hero.description")}
         image="/images/hero/laboratory-dept-hero.jpg"
         accentColor="blue"
