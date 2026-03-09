@@ -166,7 +166,7 @@ const LanguageSwitcher: React.FC<LanguageSwitcherProps> = ({
                 <button
                   key={lang.code}
                   onClick={() => changeLanguage(lang.code)}
-                  className="w-11/12 mx-auto flex items-center gap-3 px-4 py-3 text-sm rounded-lg overflow-hidden transition-all relative group mb-1 last:mb-0"
+                  className="w-11/12 mx-auto flex items-center gap-3 px-4 py-3 text-sm rounded-lg overflow-hidden transition-all relative group mb-1 last:mb-0 active:scale-[0.98] active:bg-primary/20"
                   style={{
                     color: isActive
                       ? "var(--color-primary)"
@@ -221,7 +221,7 @@ const LanguageSwitcher: React.FC<LanguageSwitcherProps> = ({
           <Collapsible
             open={isOpen}
             duration={500}
-            className="rounded-xl shadow-2xl border overflow-hidden"
+            className="bg-surface rounded-xl shadow-2xl border overflow-hidden"
             easing="cubic-bezier(0.16,1,0.3,1)"
           >
             <div

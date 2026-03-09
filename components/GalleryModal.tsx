@@ -158,7 +158,7 @@ const GalleryModal: React.FC<GalleryModalProps> = ({
       <Button
         variant="ghost"
         onClick={onClose}
-        className="absolute top-6 right-6 h-12 sm:h-16 w-12 sm:w-16 z-100 text-white/70! hover:text-primary! transition-all p-2 rounded-full hover:bg-white/10 shadow-none hover:shadow-none min-w-0"
+        className="absolute top-6 right-6 h-12 sm:h-16 w-12 sm:w-16 z-100 text-white/70! hover:text-primary! active:text-primary!  transition-all p-2 rounded-full hover:bg-white/10 active:bg-white/10 shadow-none hover:shadow-none min-w-0"
         icon="close"
         rounded="full"
         animate={false}
@@ -221,7 +221,7 @@ const GalleryModal: React.FC<GalleryModalProps> = ({
         <Button
           variant="ghost"
           onClick={onNext}
-          className="hidden! sm:flex! absolute right-0 sm:-right-12 lg:-right-20 z-10 w-16 h-16 p-2 text-white/70! hover:text-primary! transition-all rounded-full hover:bg-white/10 shadow-none hover:shadow-none min-w-0"
+          className="hidden! sm:flex! absolute right-0 sm:-right-12 lg:-right-20 z-10 w-16 h-16 p-2 text-white/70! hover:text-primary! active:text-primary! transition-all rounded-full hover:bg-white/10 shadow-none hover:shadow-none min-w-0"
           icon="chevron_right"
           rounded="full"
           animate={false}
@@ -232,18 +232,16 @@ const GalleryModal: React.FC<GalleryModalProps> = ({
         <Button
           variant="ghost"
           onClick={onPrev}
-          className="p-2 text-white/70! hover:text-primary! transition-all rounded-full bg-white/10 hover:bg-white/20 shadow-none hover:shadow-none h-12 w-12 min-w-0"
+          className="p-2 text-white/70! hover:text-primary! active:text-primary! transition-all rounded-full bg-white/10 hover:bg-white/20 shadow-none hover:shadow-none h-12 w-12 min-w-0"
           icon="chevron_left"
           rounded="full"
-          animate={false}
         ></Button>
         <Button
           variant="ghost"
           onClick={onNext}
-          className="p-2 text-white/70! hover:text-primary! transition-all rounded-full bg-white/10 hover:bg-white/20 shadow-none hover:shadow-none h-12 w-12 min-w-0"
+          className="p-2 text-white/70! hover:text-primary! active:text-primary! transition-all rounded-full bg-white/10 hover:bg-white/20 shadow-none hover:shadow-none h-12 w-12 min-w-0"
           icon="chevron_right"
           rounded="full"
-          animate={false}
         ></Button>
       </div>
 
@@ -259,7 +257,7 @@ const GalleryModal: React.FC<GalleryModalProps> = ({
                 key={idx}
                 ref={idx === currentImageIndex ? activeThumbnailRef : null}
                 onClick={() => onSelect(idx)}
-                className={`shrink-0 w-24 h-16 rounded overflow-hidden cursor-pointer transition-all border ${
+                className={`shrink-0 w-24 h-16 rounded overflow-hidden cursor-pointer transition-all border active:scale-95 ${
                   currentImageIndex === idx
                     ? "ring-2 ring-primary border-transparent opacity-100"
                     : "border-white/20 opacity-50 hover:opacity-100"

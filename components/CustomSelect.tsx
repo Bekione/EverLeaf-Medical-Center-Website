@@ -69,7 +69,7 @@ export const CustomSelect: React.FC<CustomSelectProps> = ({
 
       <div
         onClick={() => setIsOpen(!isOpen)}
-        className={`group flex items-center ${compact ? "justify-center px-0" : "justify-between px-4"} py-3 rounded-xl border cursor-pointer transition-all duration-300 shadow-sm hover:shadow-md ${
+        className={`group flex items-center ${compact ? "justify-center px-0" : "justify-between px-4"} py-3 rounded-xl border cursor-pointer transition-all duration-300 shadow-sm hover:shadow-md active:scale-[0.99] ${
           isOpen ? "ring-2 ring-primary/20" : ""
         }`}
         style={{
@@ -127,7 +127,7 @@ export const CustomSelect: React.FC<CustomSelectProps> = ({
                 <div
                   key={option.value}
                   onClick={() => handleSelect(option.value)}
-                  className="px-4 py-2.5 text-sm cursor-pointer transition-all flex items-center justify-between group rounded-lg mx-1.5 mb-1 last:mb-0"
+                  className="px-4 py-2.5 text-sm cursor-pointer transition-all flex items-center justify-between group rounded-lg mx-1.5 mb-1 last:mb-0 active:scale-[0.98] active:bg-primary/15"
                   style={{
                     color:
                       value === option.value

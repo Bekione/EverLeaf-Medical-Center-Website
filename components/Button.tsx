@@ -45,7 +45,7 @@ const Button: React.FC<ButtonProps> = ({
   disabled = false,
 }) => {
   const baseStyles =
-    "inline-flex items-center justify-center font-bold transition-all duration-300 select-none cursor-pointer shadow-sm disabled:cursor-not-allowed";
+    "inline-flex items-center justify-center font-bold transition-all duration-300 select-none cursor-pointer shadow-sm disabled:cursor-not-allowed active:scale-95";
 
   const rounding = {
     none: "rounded-none",
@@ -57,9 +57,7 @@ const Button: React.FC<ButtonProps> = ({
     full: "rounded-full",
   };
 
-  const animation = animate
-    ? "hover:-translate-y-1 active:scale-95 hover:shadow-lg"
-    : "";
+  const animation = animate ? "hover:-translate-y-1 hover:shadow-lg" : "";
 
   const variants = {
     primary:

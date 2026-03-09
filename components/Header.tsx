@@ -157,13 +157,13 @@ const Header: React.FC<HeaderProps> = ({ onBookAppointment }) => {
     setExpandedMobileMenu(expandedMobileMenu === menu ? null : menu);
 
   const getMobileLinkClass = (path: string) =>
-    `block py-2 font-medium transition-colors ${plainPath === path ? "text-primary font-bold" : ""}`;
+    `block py-3 font-medium transition-all active:scale-[0.98] active:bg-primary/5 rounded-lg px-2 -mx-2 ${plainPath === path ? "text-primary font-bold" : ""}`;
 
   const getMobileSubLinkClass = (path: string) =>
-    `block text-sm transition-colors py-1.5 px-3 rounded-md ${
+    `block text-sm transition-all py-1.5 px-3 rounded-md active:scale-[0.98] ${
       plainPath === path
-        ? "text-primary font-semibold bg-primary/5"
-        : "hover:text-primary hover:bg-primary/5"
+        ? "text-primary font-semibold bg-primary/10"
+        : "hover:text-primary hover:bg-primary/5 active:bg-primary/10"
     }`;
 
   return (
@@ -352,7 +352,7 @@ const Header: React.FC<HeaderProps> = ({ onBookAppointment }) => {
                     }}
                   >
                     <div
-                      className={`flex justify-between items-center font-medium cursor-pointer select-none ${
+                      className={`flex justify-between items-center font-medium cursor-pointer select-none transition-all active:opacity-60 active:scale-[0.98] ${
                         plainPath.startsWith(group.basePath)
                           ? "text-primary"
                           : ""
