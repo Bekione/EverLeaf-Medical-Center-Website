@@ -123,7 +123,7 @@
 }
 
 :root {
-  --header-height: 75px;
+  --header-height: 74.5px;
 }
 
 @media (min-width: 768px) {
