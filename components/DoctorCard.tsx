@@ -184,24 +184,24 @@ const DoctorCard: React.FC<DoctorCardProps> = ({
     return (
       <Reveal delay={delay} threshold={0.1}>
         <div
-          className={`group relative rounded-2xl overflow-hidden shadow-lg h-96 cursor-pointer ${className}`}
-          style={style}
+          className={`group relative rounded-2xl overflow-hidden shadow-lg h-96 cursor-pointer transition-all duration-300 select-none ${className}`}
+          style={{ ...style, WebkitTouchCallout: "none" }}
         >
           <CldImg
             src={img}
             alt={name}
             className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
           />
-          <div className="absolute inset-0 bg-linear-to-t from-slate-900 via-slate-900/40 to-transparent p-6 flex flex-col justify-end transition-all duration-700 group-hover:bg-slate-900/60">
-            <div className="transform transition-transform duration-500 ease-out translate-y-18 group-hover:translate-y-0">
-              <h3 className="text-xl font-bold text-white mb-1 font-serif">
+          <div className="absolute inset-0 bg-linear-to-t from-slate-900 via-slate-900/40 to-transparent p-6 flex flex-col justify-end transition-all duration-700 group-hover:bg-slate-900/60 max-sm:from-slate-900/90 max-sm:via-slate-900/60">
+            <div className="transform transition-transform duration-500 ease-out translate-y-0 sm:translate-y-18 sm:group-hover:translate-y-0">
+              <h3 className="text-xl font-bold text-white mb-1 font-serif leading-tight">
                 {name}
               </h3>
               <p className="text-sm text-cta-accent font-bold uppercase tracking-wider drop-shadow-sm">
                 {role}
               </p>
               {bio && (
-                <p className="text-white/80 text-xs mt-4 opacity-0 group-hover:opacity-100 transition-all duration-500 delay-100 leading-relaxed">
+                <p className="text-white/80 text-xs mt-4 leading-relaxed opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-all duration-500 delay-100">
                   {bio}
                 </p>
               )}
