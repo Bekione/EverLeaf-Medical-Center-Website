@@ -826,6 +826,7 @@
     },
     "doctors": {
       "hero": {
+        "badge": "Nos Médecins",
         "title": "Trouver un médecin",
         "subtitle": "Consultez notre répertoire de professionnels de la santé et de spécialistes distingués."
       },

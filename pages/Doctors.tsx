@@ -11,6 +11,7 @@ import {
   useFilterTransition,
   cardAnimStyle,
 } from "../hooks/useFilterTransition";
+import HeroSection from "@/components/HeroSection";
 import DoctorCard from "../components/DoctorCard";
 import Pagination from "../components/Pagination";
 
@@ -133,21 +134,13 @@ const Doctors: React.FC = () => {
           })),
         }}
       />
-      {/* Page Header */}
-      <div className="border-b py-12 md:py-16 bg-surface border-border">
-        <div className="container mx-auto px-6">
-          <Reveal delay={0}>
-            <h1 className="text-3xl md:text-4xl font-serif font-bold mb-4 text-text">
-              {t("pages.doctors.hero.title")}
-            </h1>
-          </Reveal>
-          <Reveal delay={100}>
-            <p className="max-w-2xl text-lg leading-relaxed text-text-muted">
-              {t("pages.doctors.hero.subtitle")}
-            </p>
-          </Reveal>
-        </div>
-      </div>
+
+       <HeroSection
+        variant="centered"
+        badge={t("pages.doctors.hero.badge")}
+        title={t("pages.doctors.hero.title")}
+        description={t("pages.doctors.hero.subtitle")}
+      />
 
       {/* Filter Bar */}
       <div className="sticky top-(--header-height) lg:top-[74px] z-30 shadow-md border-b py-3 md:py-6 transition-all duration-300 bg-surface border-border">
@@ -160,8 +153,8 @@ const Doctors: React.FC = () => {
                 className={`transition-[flex-grow] duration-500 ease-in-out flex ${
                   !isDesktop
                     ? isSearchExpanded
-                      ? "flex-grow"
-                      : "flex-grow-0"
+                      ? "grow"
+                      : "grow-0"
                     : "lg:grow lg:basis-0"
                 }`}
                 style={
@@ -218,7 +211,7 @@ const Doctors: React.FC = () => {
                         if (!isDesktop) setIsSearchExpanded(false);
                       }}
                       animate={false}
-                      className="absolute right-2 top-1/2 -translate-y-1/2 p-0.5 rounded-full h-8 w-8 min-w-0 shadow-none hover:shadow-none z-20 inline-flex"
+                      className="absolute right-2 top-1/2 -translate-y-1/2 p-0.5 rounded-full h-8 w-8 min-w-0 items-center justify-center shadow-none hover:shadow-none z-20 inline-flex"
                       icon="close"
                       rounded="full"
                     ></Button>
