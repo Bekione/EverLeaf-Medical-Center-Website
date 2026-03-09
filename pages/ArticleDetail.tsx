@@ -367,7 +367,7 @@ const ArticleDetail: React.FC = () => {
                         ? `mailto:${article.authorEmail}`
                         : undefined
                     }
-                    className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center hover:bg-primary hover:text-white text-muted transition-colors"
+                    className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center hover:bg-primary active:bg-primary hover:text-white active:text-white active:scale-[0.98] text-muted transition-all"
                     title={t(
                       "pages.blog.article.emailAuthor",
                       "Send email to author",
@@ -380,7 +380,7 @@ const ArticleDetail: React.FC = () => {
                   {/* Copy article link */}
                   <button
                     onClick={handleCopyLink}
-                    className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center hover:bg-primary hover:text-white text-muted transition-colors relative"
+                    className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center hover:bg-primary active:bg-primary hover:text-white active:text-white active:scale-[0.98] text-muted transition-all relative"
                     title={
                       copied
                         ? t("common.labels.copied", "Copied!")

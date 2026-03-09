@@ -73,7 +73,7 @@ export const ThemeSwitcher: React.FC<{
                     setTheme(t.id as ThemeId);
                     setOpen(false);
                   }}
-                  className="w-11/12 mx-auto flex items-center gap-3 px-4 py-3 text-sm rounded-lg transition-all relative group mb-1 last:mb-0"
+                  className="w-11/12 mx-auto flex items-center gap-3 px-4 py-3 text-sm rounded-lg transition-all relative group mb-1 last:mb-0 active:scale-[0.98] active:bg-primary/20"
                   style={{
                     color: isActive
                       ? "var(--color-primary)"
