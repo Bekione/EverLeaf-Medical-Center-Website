@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect, useId } from "react";
 import { useTranslation } from "react-i18next";
 import ScrollFade from "./ScrollFade";
 
@@ -34,9 +34,23 @@ export const CustomSelect: React.FC<CustomSelectProps> = ({
 }) => {
   const { t } = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
+  const [highlightedIndex, setHighlightedIndex] = useState(() =>
+    Math.max(
+      0,
+      options.findIndex((option) => option.value === value),
+    ),
+  );
   const containerRef = useRef<HTMLDivElement>(null);
+  const selectId = useId();
+  const errorId = `${selectId}-error`;
+  const listboxId = `${selectId}-listbox`;
 
   const selectedOption = options.find((opt) => opt.value === value);
+
+  useEffect(() => {
+    const selectedIndex = options.findIndex((option) => option.value === value);
+    setHighlightedIndex(selectedIndex >= 0 ? selectedIndex : 0);
+  }, [options, value]);
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -56,10 +70,32 @@ export const CustomSelect: React.FC<CustomSelectProps> = ({
     setIsOpen(false);
   };
 
+  const handleKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
+    if (event.key === "ArrowDown" || event.key === "ArrowUp") {
+      event.preventDefault();
+      setIsOpen(true);
+      setHighlightedIndex((current) =>
+        event.key === "ArrowDown"
+          ? Math.min(current + 1, options.length - 1)
+          : Math.max(current - 1, 0),
+      );
+    } else if (event.key === "Enter" || event.key === " ") {
+      event.preventDefault();
+      if (isOpen && options[highlightedIndex]) {
+        handleSelect(options[highlightedIndex].value);
+      } else {
+        setIsOpen(true);
+      }
+    } else if (event.key === "Escape") {
+      setIsOpen(false);
+    }
+  };
+
   return (
     <div className={`relative ${className}`} ref={containerRef}>
       {label && (
         <label
+          htmlFor={selectId}
           className="block text-sm font-medium mb-1.5"
           style={{ color: "var(--color-text-muted)" }}
         >
@@ -68,7 +104,17 @@ export const CustomSelect: React.FC<CustomSelectProps> = ({
       )}
 
       <div
+        id={selectId}
+        role="combobox"
+        tabIndex={0}
+        aria-expanded={isOpen}
+        aria-controls={listboxId}
+        aria-haspopup="listbox"
+        aria-label={label || placeholder}
+        aria-invalid={Boolean(error)}
+        aria-describedby={error ? errorId : undefined}
         onClick={() => setIsOpen(!isOpen)}
+        onKeyDown={handleKeyDown}
         className={`group flex items-center ${compact ? "justify-center px-0" : "justify-between px-4"} py-3 rounded-xl border cursor-pointer transition-all duration-300 shadow-sm hover:shadow-md active:scale-[0.99] ${
           isOpen ? "ring-2 ring-primary/20" : ""
         }`}
@@ -112,6 +158,8 @@ export const CustomSelect: React.FC<CustomSelectProps> = ({
       {/* Options Dropdown */}
       {isOpen && (
         <div
+          id={listboxId}
+          role="listbox"
           className="absolute z-9999 w-full mt-2 py-2 rounded-xl border shadow-2xl animate-in fade-in zoom-in-95 duration-200 origin-top overflow-hidden"
           style={{
             backgroundColor: "var(--color-surface)",
@@ -126,6 +174,9 @@ export const CustomSelect: React.FC<CustomSelectProps> = ({
               {options.map((option) => (
                 <div
                   key={option.value}
+                  role="option"
+                  aria-selected={value === option.value}
+                  tabIndex={-1}
                   onClick={() => handleSelect(option.value)}
                   className="px-4 py-2.5 text-sm cursor-pointer transition-all flex items-center justify-between group rounded-lg mx-1.5 mb-1 last:mb-0 active:scale-[0.98] active:bg-primary/15"
                   style={{
@@ -139,6 +190,7 @@ export const CustomSelect: React.FC<CustomSelectProps> = ({
                         : undefined,
                   }}
                   onMouseEnter={(e) => {
+                    setHighlightedIndex(options.indexOf(option));
                     if (value !== option.value) {
                       e.currentTarget.style.backgroundColor =
                         "color-mix(in srgb, var(--color-primary) 8%, transparent)";
@@ -166,7 +218,7 @@ export const CustomSelect: React.FC<CustomSelectProps> = ({
       )}
 
       {error && (
-        <p className="mt-1 text-xs text-red-600 flex items-center gap-1">
+        <p id={errorId} role="alert" className="mt-1 text-xs text-red-600 flex items-center gap-1">
           <span className="material-icons text-xs">error</span>
           <span>{t(error)}</span>
         </p>

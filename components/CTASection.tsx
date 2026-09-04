@@ -12,6 +12,7 @@ interface CTASectionProps {
     label: string;
     onClick?: () => void;
     to?: string;
+    href?: string;
   };
   secondaryButton?: {
     label: string;

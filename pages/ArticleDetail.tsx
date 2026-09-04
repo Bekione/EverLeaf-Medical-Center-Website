@@ -166,6 +166,14 @@ const ArticleDetail: React.FC = () => {
   }
 
   const articleUrl = window.location.href;
+  const articleTitle = t(
+    `pages.blog.data.${article.id}.title`,
+    article.title,
+  );
+  const articleDescription = t(
+    `pages.blog.data.${article.id}.seoDescription`,
+    article.seoDescription,
+  );
 
   const handleShare = async () => {
     if (navigator.share) {
@@ -201,8 +209,28 @@ const ArticleDetail: React.FC = () => {
           article.seoDescription,
         )}
         type="article"
-        canonical={`https://everleaf-medical.com/blog/${article.id}`}
+        canonical={`${window.location.origin}${window.location.pathname}`}
         image={article.img}
+        imageAlt={articleTitle}
+        imageWidth={1200}
+        imageHeight={630}
+        publishedTime={article.date}
+        structuredData={{
+          "@context": "https://schema.org",
+          "@type": "Article",
+          headline: articleTitle,
+          description: articleDescription,
+          image: `${window.location.origin}${article.img}`,
+          datePublished: article.date,
+          author: {
+            "@type": "Person",
+            name: article.author,
+          },
+          mainEntityOfPage: {
+            "@type": "WebPage",
+            "@id": `${window.location.origin}${window.location.pathname}`,
+          },
+        }}
       />
 
       {/* Breadcrumb */}

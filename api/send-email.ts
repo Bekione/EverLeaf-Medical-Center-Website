@@ -158,7 +158,7 @@ export default async function handler(req: any, res: any) {
       to: [adminEmail],
       subject: emailContent.admin.subject,
       html: emailContent.admin.html,
-      reply_to: formData.email, // Allow replying directly to the sender
+      replyTo: formData.email, // Allow replying directly to the sender
     });
 
     if (adminEmailResult.error) {

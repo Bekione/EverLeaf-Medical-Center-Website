@@ -275,6 +275,12 @@ export const submitForm = async (
   formType: FormType,
 ): Promise<FormResponse> => {
   try {
+    if (FORM_SERVICE === "simulation" && !DEV_MODE) {
+      throw new Error(
+        "Form submission is not configured for production. Please set VITE_FORM_SERVICE.",
+      );
+    }
+
     switch (FORM_SERVICE) {
       case "emailjs":
         return await submitViaEmailJS(data, formType);

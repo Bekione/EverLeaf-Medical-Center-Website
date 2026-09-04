@@ -56,7 +56,7 @@ const AppointmentConfirmation: React.FC = () => {
           email: appointmentData.email,
           phone: appointmentData.phone,
         })}
-        // Usually, we don't want search engines indexing confirmation pages
+        noindex
         structuredData={{
           "@context": "https://schema.org",
           "@type": "WebPage",

@@ -15,7 +15,7 @@ interface ButtonProps {
   size?: "sm" | "md" | "lg";
   className?: string;
   style?: React.CSSProperties;
-  onClick?: () => void;
+  onClick?: (event: React.MouseEvent<HTMLButtonElement | HTMLAnchorElement>) => void;
   onMouseEnter?: () => void;
   onMouseLeave?: () => void;
   to?: string;

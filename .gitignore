@@ -12,6 +12,8 @@ dist
 dist-ssr
 *.local
 scripts
+!scripts/
+!scripts/generate-sitemap.js
 temp
 
 # Environment variables

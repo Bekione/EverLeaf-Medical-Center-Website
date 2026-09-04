@@ -19,6 +19,7 @@ interface TechnologySectionProps {
   sectionClassName?: string;
   variant?: "primary" | "surface";
   id?: string;
+  iconName?: string;
 }
 
 const TechnologySection: React.FC<TechnologySectionProps> = ({

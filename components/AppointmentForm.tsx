@@ -5,6 +5,7 @@ import { appointmentFormSchema, validateField } from "../utils/validation";
 import { CustomSelect } from "./CustomSelect";
 import { useTranslation, Trans } from "react-i18next";
 import Button from "./Button";
+import { useLangPath } from "../hooks/useLang";
 
 export interface AppointmentFormData {
   fullName: string;
@@ -54,6 +55,7 @@ const AppointmentForm: React.FC<AppointmentFormProps> = ({
   navigate,
 }) => {
   const { t } = useTranslation();
+  const buildPath = useLangPath();
 
   const [formData, setFormData] = useState<AppointmentFormData>({
     fullName: "",
@@ -137,7 +139,7 @@ const AppointmentForm: React.FC<AppointmentFormProps> = ({
       await submitForm(validation.data, "appointment");
 
       const referenceId = `REQ-${Date.now().toString().slice(-6)}`;
-      navigate("/appointment-confirmation", {
+      navigate(buildPath("/appointment-confirmation"), {
         state: {
           appointmentData: {
             fullName: validation.data.fullName,
