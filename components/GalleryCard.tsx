@@ -44,7 +44,7 @@ const GalleryCard: React.FC<GalleryCardProps> = ({
           className="absolute inset-0 bg-linear-to-t from-slate-900 via-primary/80 to-transparent backdrop-blur-[2px] max-sm:from-slate-900/80 max-sm:via-primary/40 max-sm:mask-[linear-gradient(to_top,black_0%,black_35%,transparent_65%)] -z-10"
           aria-hidden="true"
         />
-        <span className="text-xs font-bold tracking-wider uppercase text-primary text-shadow-sm mb-2">
+        <span className="text-xs font-bold tracking-wider uppercase text-primary sm:text-white text-shadow-sm mb-2">
           {t(`data.categories.${category}`)}
         </span>
         <h3 className="text-xl font-bold font-serif mb-2 text-white">
